@@ -32,7 +32,7 @@ unfixable = ["B"]
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2
-known-first-party = ["pyguard"]
+known-first-party = ["budconnect"]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.

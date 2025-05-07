@@ -1,5 +1,5 @@
 services:
-  pyguard-redis:
+  budconnect-redis:
     container_name: budserve-$NAMESPACE-$APP_NAME-redis
     image: redis:alpine
     ports:
@@ -13,12 +13,12 @@ services:
     healthcheck:
       test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     volumes:
-      - pyguard_redis_data:/data
+      - budconnect_redis_data:/data
     networks:
-      - pyguard-network
+      - budconnect-network
 volumes:
-  pyguard_redis_data:
+  budconnect_redis_data:
 networks:
-  pyguard-network:
+  budconnect-network:
     name: budserve-$NAMESPACE-$APP_NAME
     driver: bridge

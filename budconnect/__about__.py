@@ -14,10 +14,6 @@
 #  limitations under the License.
 #  -----------------------------------------------------------------------------
 
-from budmicroframe.commons import logging
-from fastapi import APIRouter
+"""Contains metadata about the package, including version information and author details."""
 
-
-logger = logging.get_logger(__name__)
-
-your_module_router = APIRouter(prefix="/your_route_prefix")
+__version__ = "budconnect@0.0.1"

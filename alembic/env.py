@@ -36,11 +36,11 @@ target_metadata = PSQLBase.metadata
 def get_psql_url() -> PostgresDsn:
     if os.getenv("PSQL_HOST") is None or os.getenv("PSQL_PORT") is None or os.getenv("PSQL_DB_NAME") is None:
         raise ValueError("PSQL_HOST, PSQL_PORT, and PSQL_DB_NAME must be set")
-
+    # Use the correct password from environment
     return PostgresDsn.build(
         scheme="postgresql+psycopg",
-        username=os.getenv("SECRETS_PSQL_USER"),
-        password=os.getenv("SECRETS_PSQL_PASSWORD"),
+        username=os.getenv("PSQL_USER"),
+        password=os.getenv("PSQL_PASSWORD"),
         host=os.getenv("PSQL_HOST"),
         port=int(os.getenv("PSQL_PORT")),
         path=os.getenv("PSQL_DB_NAME"),
@@ -52,7 +52,6 @@ def create_db() -> None:
     DATABASE_URL = get_psql_url()
 
     engine = create_engine(DATABASE_URL)
-
     # Check if the database exists, and create it if not
     if not database_exists(engine.url):
         create_database(engine.url)

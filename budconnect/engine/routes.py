@@ -14,14 +14,10 @@
 #  limitations under the License.
 #  -----------------------------------------------------------------------------
 
-"""The main entry point for the application, initializing the FastAPI app and setting up the application's lifespan management, including configuration and secret syncs."""
-
-from budmicroframe.main import configure_app
-
-from .commons.config import app_settings, secrets_settings
-from .your_module_name.routes import your_module_router
+from budmicroframe.commons import logging
+from fastapi import APIRouter
 
 
-app = configure_app(app_settings, secrets_settings)
+logger = logging.get_logger(__name__)
 
-app.include_router(your_module_router)
+engine_router = APIRouter(prefix="/engine")

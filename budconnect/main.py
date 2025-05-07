@@ -14,6 +14,14 @@
 #  limitations under the License.
 #  -----------------------------------------------------------------------------
 
-"""Contains metadata about the package, including version information and author details."""
+"""The main entry point for the application, initializing the FastAPI app and setting up the application's lifespan management, including configuration and secret syncs."""
 
-__version__ = "pyguard@0.0.1"
+from budmicroframe.main import configure_app
+
+from .commons.config import app_settings, secrets_settings
+from .engine.routes import engine_router
+
+
+app = configure_app(app_settings, secrets_settings)
+
+app.include_router(engine_router)

@@ -47,27 +47,23 @@ def get_requirements() -> List[str]:
     return _read_requirements("requirements.txt")
 
 
-name, version = get_project_name_and_version("pyguard/__about__.py")
+name, version = get_project_name_and_version("budconnect/__about__.py")
 version_range_max = max(sys.version_info[1], 10) + 1
 
 setup(
     name=name,
     version=version,
     description=(
-        "PyGuard is a comprehensive guide and toolkit for Python projects within the bud-microframe ecosystem."
-        "It provides essential tools such as hooks, testing frameworks, documentation guidelines, and profiling utilities"
-        "to ensure code quality, consistency, and performance. Additionally, PyGuard offers scripts, configurations, "
-        "and folder structures specifically designed for creating and deploying Python microservices. "
-        "Streamline your development and deployment processes with PyGuard, the cornerstone of your Python microservice architecture in org-microframe."
+        "BudConnect is a cloud service that provides compatibility checking and update synchronization for Bud inference runtimes on customer infrastructure. It acts as a central registry for validated models and engine versions."
     ),
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
-    url="https://github.com/BudEcosystem/pyguard",
+    url="https://github.com/BudEcosystem/bud-connect",
     project_urls={
-        "Homepage": "https://github.com/BudEcosystem/bud-microframe-pyguard",
-        "Documentation": "https://github.com/BudEcosystem/bud-microframe-pyguard/blob/main/README.md",
-        "Issues": "https://github.com/BudEcosystem/bud-microframe-pyguard/issues",
-        "Changelog": "https://github.com/BudEcosystem/bud-microframe-pyguard/blob/main/CHANGELOG.md",
+        "Homepage": "https://github.com/BudEcosystem/bud-connect",
+        "Documentation": "https://github.com/BudEcosystem/bud-connect/blob/main/README.md",
+        "Issues": "https://github.com/BudEcosystem/bud-connect/issues",
+        "Changelog": "https://github.com/BudEcosystem/bud-connect/blob/main/CHANGELOG.md",
     },
     keywords="pre-commit hooks testing documentation profiling code quality project maintenance"
     "best practices continuous integration code standards",
@@ -75,7 +71,7 @@ setup(
     author="Bud Ecosystem Inc.",
     package_dir={"": "./"},
     packages=find_packages(
-        "pyguard",
+        "budconnect",
         exclude=(
             "docs",
             "examples",
@@ -89,7 +85,7 @@ setup(
             "requirements*.txt",
         ),
     ),
-    package_data={"pyguard": ["py.typed"]},
+    package_data={"budconnect": ["py.typed"]},
     include_package_data=True,
     python_requires=">=3.8.0",
     install_requires=get_requirements(),
