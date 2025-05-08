@@ -5,7 +5,7 @@ from pydantic import PostgresDsn
 from sqlalchemy import engine_from_config, pool, create_engine
 from sqlalchemy_utils import create_database, database_exists
 
-from alembic import context
+from alembic import context  # type: ignore
 
 
 # this is the Alembic Config object, which provides
@@ -21,7 +21,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from budmicroframe.shared.psql_service import PSQLBase
+from budconnect.commons import PSQLBase
 from budmicroframe.shared.dapr_workflow import WorkflowRunsSchema, WorkflowStepsSchema
 
 
@@ -33,16 +33,20 @@ target_metadata = PSQLBase.metadata
 # ... etc.
 
 
-def get_psql_url() -> PostgresDsn:
+def get_psql_url() -> str:
     if os.getenv("PSQL_HOST") is None or os.getenv("PSQL_PORT") is None or os.getenv("PSQL_DB_NAME") is None:
         raise ValueError("PSQL_HOST, PSQL_PORT, and PSQL_DB_NAME must be set")
     # Use the correct password from environment
+    port_str = os.getenv("PSQL_PORT")
+    if port_str is None:
+        raise ValueError("PSQL_PORT must be set")
+        
     return PostgresDsn.build(
         scheme="postgresql+psycopg",
         username=os.getenv("PSQL_USER"),
         password=os.getenv("PSQL_PASSWORD"),
         host=os.getenv("PSQL_HOST"),
-        port=int(os.getenv("PSQL_PORT")),
+        port=int(port_str),
         path=os.getenv("PSQL_DB_NAME"),
     ).__str__()
 
