@@ -1,0 +1,30 @@
+namespace: bud-connect
+name: bud-connect
+image: "budstudio/budconnect:latest"
+
+host: "budconnect.bud.studio"
+
+env:
+  PSQL_HOST: "postgresql-service.bud-connect"
+  PSQL_PORT: "5432"
+  PSQL_USER: ""
+  PSQL_PASSWORD: ""
+  PSQL_DB: "budconnect"
+  REDIS_URI: "redis-service.bud-connect:6379"
+  REDIS_PASSWORD: ""
+
+  APP_PORT: 9088
+  APP_NAME: budconnect
+  NAMESPACE: development
+  LOG_LEVEL: DEBUG
+
+  SECRETSTORE_SECRET_NAME: "bud-connect-secret"
+  SECRETSTORE_NAME: "budconnect-secret-store"
+
+redis:
+  storage_size: 1Gi
+  host_path: /datadisk/pvc/budconnect/redis
+
+postgres:
+  storage_size: 10Gi
+  host_path: /datadisk/pvc/budconnect/postgres

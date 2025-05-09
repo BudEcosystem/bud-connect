@@ -60,3 +60,7 @@ Debug/
 
 # Screts
 secrets.json
+
+# Helm
+values-local.yaml
+*.lock
