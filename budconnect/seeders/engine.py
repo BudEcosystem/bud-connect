@@ -4,7 +4,7 @@ import os
 from typing import Any, Dict
 
 from ..engine.crud import EngineCompatibilityCRUD, EngineCRUD, EngineVersionCRUD
-from ..engine.schemas import Engine, EngineCompatibility, EngineVersion
+from ..engine.schemas import DeviceArchitecture, Engine, EngineCompatibility, EngineVersion
 from .base import BaseSeeder
 
 
@@ -39,7 +39,6 @@ class EngineSeeder(BaseSeeder):
 
         # Map engine seeder data by name for quick lookup
         engines_data_mapping = {engine["name"]: engine for engine in engines_data if "name" in engine}  # type: ignore
-
         # Process each engine in the JSON data
         for engine_name, engine_data in engines_data_mapping.items():
             # Check if engine already exists
@@ -54,7 +53,7 @@ class EngineSeeder(BaseSeeder):
                 new_engine = Engine(name=engine_name)
                 with engine_crud as engine_crud:
                     created_engine = engine_crud.insert(new_engine.model_dump(exclude_unset=True))
-                engine_id = created_engine.id
+                    engine_id = created_engine.id
                 logger.info(f"Created new engine: {engine_name} with ID {engine_id}")
 
             # Process versions for this engine
@@ -63,7 +62,11 @@ class EngineSeeder(BaseSeeder):
                     # Check if version already exists
                     with engine_version_crud as engine_version_crud:
                         existing_versions, _ = engine_version_crud.fetch_many(
-                            {"engine_id": engine_id, "version": version_data["version"]}  # type: ignore
+                            {
+                                "engine_id": engine_id,
+                                "version": version_data["version"],  # type: ignore
+                                "device_architecture": DeviceArchitecture(version_data["device_architecture"]),  # type: ignore
+                            }
                         )
 
                     if existing_versions:
@@ -99,10 +102,16 @@ class EngineSeeder(BaseSeeder):
                         existing_compat = engine_compatibility_crud.fetch_one({"engine_version_id": version_id})
 
                         if existing_compat:
-                            # Update existing compatibility
-                            existing_compat.architectures = all_architectures
-                            existing_compat.features = all_features
-                            engine_compatibility_crud.update(existing_compat)
+                            # Use dot notation to access object attributes
+                            update_data = {
+                                "engine_version_id": existing_compat.engine_version_id,
+                                "architectures": existing_compat.architectures,
+                                "features": existing_compat.features,
+                                # Other fields as needed
+                            }
+
+                            # Update with the existing ID
+                            engine_compatibility_crud.update(update_data, {"id": existing_compat.id})
                             logger.info(f"Updated compatibility for version {version_id}")
                         else:
                             # Create new compatibility

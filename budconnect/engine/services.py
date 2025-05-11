@@ -12,14 +12,12 @@ logger = logging.getLogger(__name__)
 
 class EngineService:
     @staticmethod
-    def check_model_compatibility(
+    def get_compatible_engines(
         model_architecture: str, device_architecture: DeviceArchitecture, engine_version: str, engine: str
     ) -> EngineCompatibility:
         """Check if a model architecture is compatible with a specific engine version and device architecture.
 
-        This method validates whether the provided model architecture is compatible with
-        the specified engine version running on the given device architecture by querying
-        the database for compatibility information.
+        This method returns a list of compatible engines for a given model architecture, device architecture, and engine version.
 
         Args:
             model_architecture (str): The architecture of the model to check.
@@ -37,17 +35,17 @@ class EngineService:
             logger.info(
                 f"Checking model compatibility for {model_architecture} on {device_architecture} with {engine} version {engine_version}"
             )
-            compatibility = engine_crud.validate_model_compatibility(
+            compatible_engines = engine_crud.get_compatible_engines(
                 model_architecture, device_architecture, engine_version, engine
             )
 
-        logger.info(f"Compatibility: {compatibility}")
+            logger.info(f"Compatible engines: {compatible_engines}")
 
-        if not compatibility:
+        if not compatible_engines:
             raise ClientException(
                 message="Model architecture is not compatible with the given device architecture and engine version"
             )
-        return compatibility  # type: ignore
+        return compatible_engines  # type: ignore
 
     @staticmethod
     def get_latest_engine_version(

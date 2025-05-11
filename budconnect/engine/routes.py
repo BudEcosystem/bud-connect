@@ -18,10 +18,10 @@ from typing import Union
 
 from budmicroframe.commons import logging
 from budmicroframe.commons.exceptions import ClientException
-from budmicroframe.commons.schemas import ErrorResponse, SuccessResponse
+from budmicroframe.commons.schemas import ErrorResponse
 from fastapi import APIRouter, status
 
-from .schemas import DeviceArchitecture, LatestEngineVersionResponse
+from .schemas import CompatibleEnginesResponse, DeviceArchitecture, LatestEngineVersionResponse
 from .services import EngineService
 
 
@@ -30,10 +30,13 @@ logger = logging.get_logger(__name__)
 engine_router = APIRouter(prefix="/engine", tags=["Engine"])
 
 
-@engine_router.get("/check-model-compatibility")
-async def check_model_compatibility(
-    model_architecture: str, device_architecture: DeviceArchitecture, engine_version: str, engine: str
-) -> Union[SuccessResponse, ErrorResponse]:
+@engine_router.get("/get-compatible-engines")
+async def get_compatible_engines(
+    model_architecture: str,
+    device_architecture: Union[DeviceArchitecture, None] = None,
+    engine_version: Union[str, None] = None,
+    engine: Union[str, None] = None,
+) -> Union[CompatibleEnginesResponse, ErrorResponse]:
     """Check if a model architecture is compatible with a device architecture and engine version.
 
     Args:
@@ -45,11 +48,18 @@ async def check_model_compatibility(
         HTTP response with compatibility check results or error information
     """
     try:
-        _ = EngineService.check_model_compatibility(model_architecture, device_architecture, engine_version, engine)
-        response = SuccessResponse(
+        # Cast Optional types to their required types as expected by the service
+        compatible_engines = EngineService.get_compatible_engines(
+            model_architecture=model_architecture,
+            device_architecture=device_architecture,  # type: ignore
+            engine_version=engine_version,  # type: ignore
+            engine=engine,  # type: ignore
+        )
+        response = CompatibleEnginesResponse(
             message="Model architecture is compatible with the given device architecture and engine version",
             code=status.HTTP_200_OK,
             object="engine.compatibility",
+            compatible_engines=compatible_engines,
         )
     except ClientException as e:
         logger.error(f"Client exception: {e}")

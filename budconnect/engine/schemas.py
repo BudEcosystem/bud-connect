@@ -44,3 +44,14 @@ class LatestEngineVersion(BaseModel):
 
 class LatestEngineVersionResponse(SuccessResponse, LatestEngineVersion):
     pass
+
+
+class CompatibleEngine(BaseModel):
+    engine: str
+    device_architecture: DeviceArchitecture
+    version: str
+    container_image: str
+
+
+class CompatibleEnginesResponse(SuccessResponse):
+    compatible_engines: List[CompatibleEngine]

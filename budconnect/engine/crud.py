@@ -1,11 +1,12 @@
 import logging
-from typing import Optional
+from typing import List, Optional
 
 from budmicroframe.shared.psql_service import CRUDMixin
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from .models import Engine, EngineCompatibility, EngineVersion
-from .schemas import DeviceArchitecture
+from .schemas import CompatibleEngine, DeviceArchitecture
 
 
 logger = logging.getLogger(__name__)
@@ -58,48 +59,90 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
 
         return engine_version
 
-    def validate_model_compatibility(
+    def get_compatible_engines(
         self,
         model_architecture: str,
-        device_architecture: DeviceArchitecture,
-        engine_version: str,
-        engine: str,
+        device_architecture: Optional[DeviceArchitecture] = None,
+        engine_version: Optional[str] = None,
+        engine: Optional[str] = None,
         session: Optional[Session] = None,
-    ) -> Optional[EngineCompatibility]:
-        """Validate if a model architecture is compatible with a specific engine version and device architecture.
+    ) -> List[CompatibleEngine]:
+        """Get compatible engines for a given model architecture, device architecture, and engine version.
 
-        This method checks if the provided model architecture is compatible with the specified engine version
-        running on the given device architecture. It performs a database query with joins to efficiently
-        retrieve the compatibility information.
+        This method retrieves compatible engines for a given model architecture, device architecture, and engine version.
+        It performs a database query with joins to efficiently retrieve the compatibility information.
+
+        If engine, engine_version, or device_architecture are not provided, the method will find the latest
+        compatible version for each engine and device architecture combination.
 
         Args:
             model_architecture (str): The architecture of the model to validate.
-            device_architecture (DeviceArchitecture): The architecture of the device.
-            engine_version (str): The version of the engine.
-            engine (str): The name of the engine.
+            device_architecture (Optional[DeviceArchitecture], optional): The architecture of the device. If None, all architectures are considered.
+            engine_version (Optional[str], optional): The version of the engine. If None, the latest version for each engine will be used.
+            engine (Optional[str], optional): The name of the engine. If None, all engines are considered.
             session (Optional[Session], optional): SQLAlchemy session to use. If None, a new session will be created.
 
         Returns:
-            Optional[EngineCompatibility]: The compatibility object if the model is compatible, None otherwise.
+            list[dict]: A list of dictionaries containing engine name, device architecture, and version for compatible combinations.
         """
         session = session or self.get_session()
 
-        # Use a single query with joins to get everything we need
-        compatibility: Optional[EngineCompatibility] = (
-            session.query(EngineCompatibility)
+        # Build base query with the columns we need
+        query = (
+            session.query(
+                Engine.name.label("engine"),
+                EngineVersion.device_architecture.label("device_architecture"),
+                EngineVersion.version.label("version"),
+                EngineVersion.engine_id.label("engine_id"),
+                EngineVersion.container_image.label("container_image"),
+            )
+            .select_from(EngineCompatibility)
             .join(EngineVersion, EngineCompatibility.engine_version_id == EngineVersion.id)
             .join(Engine, EngineVersion.engine_id == Engine.id)
-            .filter(
-                Engine.name == engine,
-                EngineVersion.version == engine_version,
-                EngineVersion.device_architecture == device_architecture,
-                # Use PostgreSQL's @> operator to check if the array contains an object with the specified name
-                EngineCompatibility.architectures.contains([{"name": model_architecture}]),
-            )
-            .first()
+            .filter(EngineCompatibility.architectures.contains([{"name": model_architecture}]))
         )
 
-        return compatibility
+        # Apply optional filters
+        if engine:
+            query = query.filter(Engine.name == engine)
+
+        if engine_version:
+            query = query.filter(EngineVersion.version == engine_version)
+
+        if device_architecture:
+            query = query.filter(EngineVersion.device_architecture == device_architecture)
+
+        # If no specific version is requested, get the latest for each engine/device combination
+        if not engine_version:
+            # Use a window function to rank versions by creation date for each engine/device combination
+            latest_versions = session.query(
+                EngineVersion.id,
+                func.row_number()
+                .over(
+                    partition_by=[EngineVersion.engine_id, EngineVersion.device_architecture],
+                    order_by=EngineVersion.created_at.desc(),
+                )
+                .label("rn"),
+            ).subquery()
+
+            # Only include the top-ranked version for each combination
+            query = query.join(
+                latest_versions, (EngineVersion.id == latest_versions.c.id) & (latest_versions.c.rn == 1)
+            )
+
+        # Execute query and convert results to dictionaries
+        results = query.all()
+        compatible_engines = []
+        for row in results:
+            compatible_engines.append(
+                CompatibleEngine(
+                    engine=row.engine,
+                    device_architecture=row.device_architecture,
+                    version=row.version,
+                    container_image=row.container_image,
+                )
+            )
+        return compatible_engines
 
 
 class EngineVersionCRUD(CRUDMixin[EngineVersion, None, None]):
