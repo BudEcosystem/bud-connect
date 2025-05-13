@@ -25,5 +25,16 @@
                 ]
             }
         ]
+    },
+    {
+        "name": "litellm",
+        "versions": [
+            {
+                "version": "0.1.0",
+                "device_architecture": "cpu",
+                "container_image": "budstudio/litellm-cpu:0.1.0",
+                "compatibilities": []
+            }
+        ]
     }
 ]
