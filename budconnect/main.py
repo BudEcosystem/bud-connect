@@ -26,6 +26,7 @@ from budmicroframe.shared.dapr_workflow import DaprWorkflow
 from fastapi import FastAPI
 
 from .commons.config import app_settings, secrets_settings
+from .commons.exceptions import SeederException
 from .engine.routes import engine_router
 from .seeders import seeders
 
@@ -54,6 +55,8 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         try:
             await seeder().seed()
             logger.info(f"Seeded {seeder_name} seeder successfully.")
+        except SeederException as e:
+            logger.error("Failed to seed %s. Error: %s", seeder_name, e.message)
         except Exception as e:
             logger.error(f"Failed to seed {seeder_name}. Error: {e}")
 
