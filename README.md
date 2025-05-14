@@ -36,3 +36,17 @@ cd bud-serve-budsim
 ```bash
 helm install bud-serve-budsim ./deploy/helm -n bud-serve-budsim --create-namespace
 ```
+
+### Steps to run migrations
+
+Execute in docker container
+
+Generate alembic revision
+```bash
+alembic -c ./alembic.ini revision --autogenerate -m "message"
+```
+
+Apply migrations
+```bash
+alembic -c ./alembic.ini upgrade head
+```
