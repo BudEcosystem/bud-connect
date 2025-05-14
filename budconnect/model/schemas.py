@@ -14,23 +14,27 @@
 #  limitations under the License.
 #  -----------------------------------------------------------------------------
 
-"""Initialization module for the `commons` subpackage. Contains common utilities, configurations, constants, and helper functions that are shared across the project."""
+"""The model schemas, containing essential data structures for the model microservice."""
 
-from budmicroframe.shared.psql_service import PSQLBase as PSQLBase
+from typing import Any, Dict, List
 
-# Import specific models instead of using wildcard import to avoid F403 error
-from ..engine.models import (
-    Engine as Engine,
-)
-from ..engine.models import (
-    EngineCompatibility as EngineCompatibility,
-)
-from ..engine.models import (
-    EngineVersion as EngineVersion,
-)
-from ..model.models import (
-    ModelInfo as ModelInfo,
-)
-from ..model.models import (
-    Provider as Provider,
-)
+from pydantic import BaseModel
+
+from ..commons.constants import ModalityEnum
+
+
+class LiteLLMModelInfo(BaseModel):
+    """Schema for LiteLLM model seeder."""
+
+    uri: str
+    config: Dict[str, Any]
+    modality: List[ModalityEnum]
+
+
+class ProviderCreate(BaseModel):
+    """Schema for provider creation."""
+
+    name: str
+    provider_type: str
+    icon: str
+    description: str
