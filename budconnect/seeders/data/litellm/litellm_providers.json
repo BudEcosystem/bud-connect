@@ -1,0 +1,277 @@
+{
+    "text-completion-codestral": {
+        "name": "Codestral API (Completions)",
+        "description": "",
+        "icon": ""
+    },
+    "palm": {
+        "name": "PaLM API",
+        "description": "",
+        "icon": ""
+    },
+    "jina_ai": {
+        "name": "Jina AI",
+        "description": "",
+        "icon": ""
+    },
+    "together_ai": {
+        "name": "Together AI",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-language-models": {
+        "name": "Vertex AI Language",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-anthropic_models": {
+        "name": "Vertex AI Anthropic",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-llama_models": {
+        "name": "Vertex AI Llama",
+        "description": "",
+        "icon": ""
+    },
+    "meta_llama": {
+        "name": "Meta Llama",
+        "description": "",
+        "icon": ""
+    },
+    "aleph_alpha": {
+        "name": "Aleph Alpha",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-code-chat-models": {
+        "name": "Vertex AI Code Chat",
+        "description": "",
+        "icon": ""
+    },
+    "replicate": {
+        "name": "Replicate",
+        "description": "",
+        "icon": ""
+    },
+    "fireworks_ai": {
+        "name": "Fireworks AI",
+        "description": "",
+        "icon": ""
+    },
+    "anyscale": {
+        "name": "Anyscale",
+        "description": "",
+        "icon": ""
+    },
+    "gemini": {
+        "name": "Gemini",
+        "description": "",
+        "icon": ""
+    },
+    "sambanova": {
+        "name": "Sambanova",
+        "description": "",
+        "icon": ""
+    },
+    "deepseek": {
+        "name": "Deepseek",
+        "description": "",
+        "icon": ""
+    },
+    "mistral": {
+        "name": "Mistral AI API",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-ai21_models": {
+        "name": "Vertex AI AI21",
+        "description": "",
+        "icon": ""
+    },
+    "ai21": {
+        "name": "AI21",
+        "description": "",
+        "icon": ""
+    },
+    "cloudflare": {
+        "name": "Cloudflare Workers AI",
+        "description": "",
+        "icon": ""
+    },
+    "cerebras": {
+        "name": "Cerebras",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-mistral_models": {
+        "name": "Vertex AI Mistral",
+        "description": "",
+        "icon": ""
+    },
+    "codestral": {
+        "name": "Codestral API",
+        "description": "",
+        "icon": ""
+    },
+    "nscale": {
+        "name": "Nscale (EU Sovereign)",
+        "description": "",
+        "icon": ""
+    },
+    "databricks": {
+        "name": "Databricks",
+        "description": "",
+        "icon": ""
+    },
+    "bedrock": {
+        "name": "Amazon Bedrock Knowledge Bases",
+        "description": "",
+        "icon": ""
+    },
+    "perplexity": {
+        "name": "Perplexity AI ",
+        "description": "",
+        "icon": ""
+    },
+    "groq": {
+        "name": "Groq",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-chat-models": {
+        "name": "Vertex AI Chat",
+        "description": "",
+        "icon": ""
+    },
+    "ollama": {
+        "name": "Ollama",
+        "description": "",
+        "icon": ""
+    },
+    "fireworks_ai-embedding-models": {
+        "name": "Fireworks",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-vision-models": {
+        "name": "Vertex AI Vision",
+        "description": "",
+        "icon": ""
+    },
+    "openrouter": {
+        "name": "OpenRouter",
+        "description": "",
+        "icon": ""
+    },
+    "snowflake": {
+        "name": "Snowflake",
+        "description": "",
+        "icon": ""
+    },
+    "azure": {
+        "name": "Azure OpenAI",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-text-models": {
+        "name": "Vertex AI Text",
+        "description": "",
+        "icon": ""
+    },
+    "openai": {
+        "name": "OpenAI",
+        "description": "",
+        "icon": ""
+    },
+    "watsonx": {
+        "name": "IBM watsonx.ai",
+        "description": "",
+        "icon": ""
+    },
+    "cohere_chat": {
+        "name": "Cohere Chat",
+        "description": "",
+        "icon": ""
+    },
+    "text-completion-openai": {
+        "name": "OpenAI (Text Completion)",
+        "description": "",
+        "icon": ""
+    },
+    "voyage": {
+        "name": "Voyage AI",
+        "description": "",
+        "icon": ""
+    },
+    "assemblyai": {
+        "name": "AssemblyAI",
+        "description": "",
+        "icon": ""
+    },
+    "cohere": {
+        "name": "Cohere",
+        "description": "",
+        "icon": ""
+    },
+    "sagemaker": {
+        "name": "AWS Sagemaker",
+        "description": "",
+        "icon": ""
+    },
+    "bedrock_converse": {
+        "name": "AWS Bedrock",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-image-models": {
+        "name": "Vertex AI Image",
+        "description": "",
+        "icon": ""
+    },
+    "nlp_cloud": {
+        "name": "NLP Cloud",
+        "description": "",
+        "icon": ""
+    },
+    "xai": {
+        "name": "xAI",
+        "description": "",
+        "icon": ""
+    },
+    "azure_ai": {
+        "name": "Azure AI Studio",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-code-text-models": {
+        "name": "Vertex AI Code Text",
+        "description": "",
+        "icon": ""
+    },
+    "friendliai": {
+        "name": "FriendliAI",
+        "description": "",
+        "icon": ""
+    },
+    "vertex_ai-embedding-models": {
+        "name": "Vertex AI Embedding",
+        "description": "",
+        "icon": ""
+    },
+    "deepinfra": {
+        "name": "DeepInfra",
+        "description": "",
+        "icon": ""
+    },
+    "anthropic": {
+        "name": "Anthropic",
+        "description": "",
+        "icon": ""
+    },
+    "azure_text": {
+        "name": "Azure Instruct Models",
+        "description": "",
+        "icon": ""
+    }
+}

@@ -17,22 +17,24 @@
 """The LiteLLM seeder, containing essential data structures for the LiteLLM microservice."""
 
 import json
-import logging
 import os
 from typing import Any, Dict
 
+from budmicroframe.commons import logging
+
 from ..commons.exceptions import SeederException
+from ..engine.crud import EngineCRUD
+from ..model.crud import ProviderCRUD
+from ..model.schemas import LiteLLMModelInfo, ProviderCreate
 from .base import BaseSeeder
 
 
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
+logger = logging.get_logger(__name__)
 
 # Pre-defined paths
 SEEDER_DIR = os.path.dirname(os.path.abspath(__file__))
-ENGINE_CONFIG_PATH = os.path.join(SEEDER_DIR, "data", "engines.json")
 LITELLM_DATA_DIR = os.path.join(SEEDER_DIR, "data", "litellm")
+LITELLM_PROVIDERS_PATH = os.path.join(LITELLM_DATA_DIR, "litellm_providers.json")
 
 
 def read_json_file(file_path: str) -> Dict[str, Any]:
@@ -93,7 +95,33 @@ class LiteLLMParser:
 
             provider_model_map[provider] = provider_models
 
-        return provider_model_map
+        # Read providers data
+        predefined_providers = read_json_file(LITELLM_PROVIDERS_PATH)
+
+        # Validate any missing providers with predefined providers
+        missing_providers = set(predefined_providers.keys()) - set(provider_model_map.keys())
+        if missing_providers:
+            logger.warning("Missing providers: %s", missing_providers)
+            raise SeederException("New providers found in LiteLLM data")
+
+        # Parse models to a common schema
+        parsed_model_data = {}
+        for provider, models in provider_model_map.items():
+            for model_uri, model_details in models.items():
+                if provider not in parsed_model_data:
+                    parsed_model_data[provider] = []
+
+                model_details.pop("litellm_provider", None)
+                # TODO: need to setup a proper mode for each model
+                mode = ["text_input", "text_output"]
+                if mode is None:
+                    raise SeederException("Unable to determine modality for model: %s", model_uri)
+
+                parsed_model_data[provider].append(
+                    LiteLLMModelInfo(uri=model_uri, config=model_details, modality=mode)
+                )
+
+        return parsed_model_data
 
 
 class LiteLLMSeeder(BaseSeeder):
@@ -162,26 +190,21 @@ class LiteLLMSeeder(BaseSeeder):
             SeederException: If there is an error during the seeding process
         """
         try:
-            # Load engine configuration
-            engines = read_json_file(str(ENGINE_CONFIG_PATH))
-            logger.debug("Loaded configuration for %d engines", len(engines))
+            # Load LiteLLM engine configuration from database
+            engine_crud = EngineCRUD()
+            with engine_crud as crud, crud.get_session() as session:
+                db_engine = engine_crud.fetch_one(conditions={"name": "litellm"}, session=session)
+                if not db_engine:
+                    logger.warning("No LiteLLM engine found")
+                    return
 
-            # Find LiteLLM engine configuration
-            litellm_engines = [engine for engine in engines if engine.get("name") == "litellm"]
-            if not litellm_engines:
-                logger.warning("No LiteLLM engine found")
-                return
-
-            litellm_engine = litellm_engines[0]
-            litellm_versions = litellm_engine.get("versions", [])
-
-            if not litellm_versions:
-                logger.warning("No versions defined for LiteLLM engine")
-                return
+                if not db_engine.versions:
+                    logger.warning("No versions defined for LiteLLM engine")
+                    return
 
             # Process each version
-            for version_config in litellm_versions:
-                version = version_config.get("version")
+            for version_config in db_engine.versions:
+                version = version_config.version
                 if not version:
                     logger.warning("Skipping invalid version configuration: missing version number")
                     continue
@@ -196,7 +219,22 @@ class LiteLLMSeeder(BaseSeeder):
                 # Parse model data
                 model_data = await self.parse_model_data_by_version(version, data_file_path)
 
-                print(model_data)
+                # Read providers data
+                predefined_providers = read_json_file(LITELLM_PROVIDERS_PATH)
+
+                # Prepare data for database insertion
+                for provider, _models in model_data.items():
+                    provider_data = ProviderCreate(
+                        name=predefined_providers[provider]["name"],
+                        provider_type=provider,
+                        icon=predefined_providers[provider]["icon"],
+                        description=predefined_providers[provider]["description"],
+                    )
+                    logger.debug("Provider data: %s", provider_data)
+
+                    # Upsert provider
+                    with ProviderCRUD() as provider_crud:
+                        provider_crud.upsert(data=provider_data.model_dump(), conflict_target=["provider_type"])
 
         except FileNotFoundError as e:
             logger.exception("File not found during LiteLLM seeding: %s", e)
