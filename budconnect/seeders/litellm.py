@@ -235,6 +235,7 @@ class LiteLLMSeeder(BaseSeeder):
                     # Upsert provider
                     with ProviderCRUD() as provider_crud:
                         provider_crud.upsert(data=provider_data.model_dump(), conflict_target=["provider_type"])
+                        provider_crud.add_engine_version(provider, version_config.id)
 
         except FileNotFoundError as e:
             logger.exception("File not found during LiteLLM seeding: %s", e)

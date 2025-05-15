@@ -17,6 +17,7 @@
 """ModelInfo, Provider CRUD operations."""
 
 from typing import Dict, List, Optional, Union
+from uuid import UUID
 
 from budmicroframe.commons import logging
 from budmicroframe.shared.psql_service import CRUDMixin, DBCreateSchemaType, ModelType
@@ -24,6 +25,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from ..engine.crud import EngineVersionCRUD
 from .models import Provider
 
 
@@ -89,5 +91,38 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
             if raise_on_error:
                 raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+    def add_engine_version(
+        self, provider_type: str, version_id: UUID, session: Optional[Session] = None, raise_on_error: bool = True
+    ):
+        """Add engine versions to a provider.
+
+        Args:
+            provider_type: The type of the provider to add the engine version to.
+            version_id: The ID of the engine version to add to the provider.
+        """
+        _session = session or self.get_session()
+        try:
+            db_provider = self.fetch_one(conditions={"provider_type": provider_type}, session=_session)
+            if not db_provider:
+                raise ValueError(f"Provider with ID {provider_type} not found")
+
+            db_version = EngineVersionCRUD().fetch_one(conditions={"id": version_id}, session=_session)
+            if not db_version:
+                raise ValueError(f"Engine version with ID {version_id} not found")
+
+            if db_version not in db_provider.supported_versions:
+                db_provider.supported_versions.append(db_version)
+                logger.debug("Added engine version %s to provider %s", version_id, provider_type)
+            else:
+                logger.debug("Engine version %s already exists in provider %s", version_id, provider_type)
+            _session.commit()
+        except SQLAlchemyError as e:
+            _session.rollback()
+            logger.exception("Failed to add engine versions to provider %s: %s", provider_type, str(e))
+            if raise_on_error:
+                raise ValueError(f"Failed to add engine versions to provider {provider_type}") from e
         finally:
             self.cleanup_session(_session if session is None else None)
