@@ -83,9 +83,12 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
                 stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
-            _session.execute(stmt)
+
+            result = _session.execute(stmt)
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
+
+            return result.inserted_primary_key[0]
         except SQLAlchemyError as e:
             _session.rollback()
             logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
