@@ -1,10 +1,12 @@
+from datetime import UTC, datetime
 from typing import Any, Dict, List
 from uuid import uuid4
 
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
-from sqlalchemy import Enum, ForeignKey, String
+from sqlalchemy import Column, DateTime, Enum, ForeignKey, String
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.schema import Table
 
 from ..commons.constants import ModalityEnum
 
@@ -41,6 +43,9 @@ class Provider(PSQLBase, TimestampMixin):
     description: Mapped[str] = mapped_column(String, nullable=False)
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="provider")
+    supported_versions: Mapped[List["EngineVersion"]] = relationship(  # noqa: F821
+        "EngineVersion", secondary="engine_version_provider", back_populates="supported_providers"
+    )
 
 
 class ModelInfo(PSQLBase, TimestampMixin):
@@ -73,3 +78,20 @@ class ModelInfo(PSQLBase, TimestampMixin):
     provider_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("provider.id"), nullable=False)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
+
+
+# Engine Version Provider Association
+engine_version_provider = Table(
+    "engine_version_provider",
+    PSQLBase.metadata,
+    Column("engine_version_id", UUID, ForeignKey("engine_version.id"), primary_key=True),
+    Column("provider_id", UUID, ForeignKey("provider.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)),
+    Column(
+        "updated_at",
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now(UTC),
+        onupdate=lambda: datetime.now(UTC),
+    ),
+)
