@@ -19,13 +19,26 @@
 import json
 import os
 from typing import Any, Dict
+from uuid import UUID
 
 from budmicroframe.commons import logging
 
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import ProviderCRUD
-from ..model.schemas import LiteLLMModelInfo, ProviderCreate
+from ..model.schemas import (
+    CacheCost,
+    Features,
+    InputCost,
+    LiteLLMModelInfo,
+    MediaLimits,
+    ModelInfoCreate,
+    OutputCost,
+    ProviderCreate,
+    RateLimits,
+    SearchContextCost,
+    Tokens,
+)
 from .base import BaseSeeder
 
 
@@ -99,7 +112,7 @@ class LiteLLMParser:
         predefined_providers = read_json_file(LITELLM_PROVIDERS_PATH)
 
         # Validate any missing providers with predefined providers
-        missing_providers = set(predefined_providers.keys()) - set(provider_model_map.keys())
+        missing_providers = set(provider_model_map.keys()) - set(predefined_providers.keys())
         if missing_providers:
             logger.warning("Missing providers: %s", missing_providers)
             raise SeederException("New providers found in LiteLLM data")
@@ -112,16 +125,131 @@ class LiteLLMParser:
                     parsed_model_data[provider] = []
 
                 model_details.pop("litellm_provider", None)
-                # TODO: need to setup a proper mode for each model
-                mode = ["text_input", "text_output"]
-                if mode is None:
-                    raise SeederException("Unable to determine modality for model: %s", model_uri)
 
-                parsed_model_data[provider].append(
-                    LiteLLMModelInfo(uri=model_uri, config=model_details, modality=mode)
-                )
+                parsed_model_data[provider].append(LiteLLMModelInfo(uri=model_uri, config=model_details))
 
         return parsed_model_data
+
+    @staticmethod
+    async def create_model_info(model_data: LiteLLMModelInfo, provider_id: UUID) -> ModelInfoCreate:
+        """Create a model info from the model data.
+
+        Args:
+            model_data: The model data
+        """
+        # Define explicit mappings for each configuration field to its category
+        CONFIG_FIELD_MAPPING = {
+            "input_cost_per_audio_per_second": "input_cost",
+            "input_cost_per_video_per_second_above_8s_interval": "input_cost",
+            "input_cost_per_image": "input_cost",
+            "input_cost_per_token_batch_requests": "input_cost",
+            "input_cost_per_audio_per_second_above_128k_tokens": "input_cost",
+            "input_cost_per_token_cache_hit": "input_cost",
+            "input_cost_per_video_per_second_above_15s_interval": "input_cost",
+            "input_cost_per_video_per_second": "input_cost",
+            "input_cost_per_token_batches": "input_cost",
+            "input_cost_per_pixel": "input_cost",
+            "input_cost_per_token_above_200k_tokens": "input_cost",
+            "input_cost_per_video_per_second_above_128k_tokens": "input_cost",
+            "input_cost_per_character": "input_cost",
+            "input_cost_per_image_above_128k_tokens": "input_cost",
+            "input_cost_per_token_above_128k_tokens": "input_cost",
+            "input_cost_per_query": "input_cost",
+            "input_cost_per_audio_token": "input_cost",
+            "input_cost_per_token": "input_cost",
+            "input_cost_per_request": "input_cost",
+            "input_cost_per_second": "input_cost",
+            "input_cost_per_character_above_128k_tokens": "input_cost",
+            "input_dbu_cost_per_token": "input_cost",
+            # Output costs
+            "output_cost_per_pixel": "output_cost",
+            "output_cost_per_token": "output_cost",
+            "output_cost_per_character": "output_cost",
+            "output_dbu_cost_per_token": "output_cost",
+            "output_cost_per_image": "output_cost",
+            "output_cost_per_token_above_200k_tokens": "output_cost",
+            "output_cost_per_character_above_128k_tokens": "output_cost",
+            "output_cost_per_second": "output_cost",
+            "output_cost_per_audio_token": "output_cost",
+            "output_cost_per_token_batches": "output_cost",
+            "output_cost_per_token_above_128k_tokens": "output_cost",
+            "output_cost_per_reasoning_token": "output_cost",
+            "output_db_cost_per_token": "output_cost",
+            # Cache costs
+            "cache_read_input_token_cost": "cache_cost",
+            "cache_read_input_audio_token_cost": "cache_cost",
+            "cache_creation_input_audio_token_cost": "cache_cost",
+            "cache_creation_input_token_cost": "cache_cost",
+            # Token limits
+            "max_input_tokens": "tokens",
+            "max_tokens_per_document_chunk": "tokens",
+            "max_query_tokens": "tokens",
+            "max_output_tokens": "tokens",
+            "max_tokens": "tokens",
+            "tool_use_system_prompt_tokens": "tokens",
+            # Rate limits
+            "rpm": "rate_limits",
+            "tpm": "rate_limits",
+            "rpd": "rate_limits",
+            # Media limits
+            "max_audio_per_prompt": "media_limits",
+            "max_document_chunks_per_query": "media_limits",
+            "max_audio_length_hours": "media_limits",
+            "max_images_per_prompt": "media_limits",
+            "max_videos_per_prompt": "media_limits",
+            "max_pdf_size_mb": "media_limits",
+            "max_video_length": "media_limits",
+            # Features
+            "supports_web_search": "features",
+            "supports_response_schema": "features",
+            "supports_reasoning": "features",
+            "supports_system_messages": "features",
+            "supports_tool_choice": "features",
+            "supports_parallel_function_calling": "features",
+            "supports_assistant_prefill": "features",
+            "supports_function_calling": "features",
+            "supports_native_streaming": "features",
+            "supports_prompt_caching": "features",
+            # Search context costs
+            "search_context_cost_per_query": "search_context_cost",
+        }
+
+        # Initialize category dictionaries
+        categorized_data = {
+            "input_cost": {},
+            "output_cost": {},
+            "cache_cost": {},
+            "search_context_cost": {},
+            "tokens": {},
+            "rate_limits": {},
+            "media_limits": {},
+            "features": {},
+        }
+
+        # Categorize the model data
+        for field, value in model_data.config.items():
+            category = CONFIG_FIELD_MAPPING.get(field)
+            if category:
+                categorized_data[category][field] = value
+
+        # Create a model info schema
+        return ModelInfoCreate(
+            uri=model_data.uri,
+            modality=["text_input", "text_output"],  # TODO: need to setup a proper mode for each model
+            provider_id=provider_id,
+            input_cost=InputCost(**categorized_data["input_cost"]),
+            output_cost=OutputCost(**categorized_data["output_cost"]),
+            cache_cost=CacheCost(**categorized_data["cache_cost"]),
+            search_context_cost=SearchContextCost(
+                **categorized_data["search_context_cost"]["search_context_cost_per_query"]
+                if categorized_data["search_context_cost"]
+                else {}
+            ),
+            tokens=Tokens(**categorized_data["tokens"]),
+            rate_limits=RateLimits(**categorized_data["rate_limits"]),
+            media_limits=MediaLimits(**categorized_data["media_limits"]),
+            features=Features(**categorized_data["features"]),
+        )
 
 
 class LiteLLMSeeder(BaseSeeder):
@@ -156,8 +284,8 @@ class LiteLLMSeeder(BaseSeeder):
         return os.path.join(LITELLM_DATA_DIR, f"litellm_v_{sanitized_version}.json")
 
     @staticmethod
-    async def parse_model_data_by_version(version: str, file_path: str) -> Dict[str, Any]:
-        """Parse LiteLLM model data based on the version specification.
+    async def get_parser_by_version(version: str) -> LiteLLMParser:
+        """Get the parser for the LiteLLM model data based on the version specification.
 
         Different versions may require different parsing logic.
 
@@ -166,14 +294,14 @@ class LiteLLMSeeder(BaseSeeder):
             file_path: Path to the model data file
 
         Returns:
-            Parsed model data organized by provider
+            A parser for the LiteLLM model data
 
         Raises:
             ValueError: If the version is not supported
             SeederException: If there is an error parsing the data
         """
         if version in ["0.1.0"]:
-            return await LiteLLMParser.parse_model_data(file_path)
+            return LiteLLMParser
         else:
             raise ValueError(f"Unsupported LiteLLM version: {version}")
 
@@ -217,13 +345,14 @@ class LiteLLMSeeder(BaseSeeder):
                     raise SeederException(f"LiteLLM data file not found for version {version}: {data_file_path}")
 
                 # Parse model data
-                model_data = await self.parse_model_data_by_version(version, data_file_path)
+                litellm_parser = await self.get_parser_by_version(version)
+                model_data = await litellm_parser.parse_model_data(data_file_path)
 
                 # Read providers data
                 predefined_providers = read_json_file(LITELLM_PROVIDERS_PATH)
 
                 # Prepare data for database insertion
-                for provider, _models in model_data.items():
+                for provider, supported_models in model_data.items():
                     provider_data = ProviderCreate(
                         name=predefined_providers[provider]["name"],
                         provider_type=provider,
@@ -234,8 +363,17 @@ class LiteLLMSeeder(BaseSeeder):
 
                     # Upsert provider
                     with ProviderCRUD() as provider_crud:
-                        provider_crud.upsert(data=provider_data.model_dump(), conflict_target=["provider_type"])
+                        db_provider_id = provider_crud.upsert(
+                            data=provider_data.model_dump(), conflict_target=["provider_type"]
+                        )
                         provider_crud.add_engine_version(provider, version_config.id)
+
+                    # Parse model info
+                    for model in supported_models:
+                        model_info_data = await litellm_parser.create_model_info(model, db_provider_id)
+                        logger.debug(
+                            "Model info data: of %s: %s", model.uri, model_info_data.model_dump(exclude_none=True)
+                        )
 
         except FileNotFoundError as e:
             logger.exception("File not found during LiteLLM seeding: %s", e)

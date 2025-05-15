@@ -16,9 +16,10 @@
 
 """The model schemas, containing essential data structures for the model microservice."""
 
-from typing import Any, Dict, List
+from decimal import Decimal
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel
+from pydantic import UUID4, BaseModel, Field
 
 from ..commons.constants import ModalityEnum
 
@@ -28,7 +29,6 @@ class LiteLLMModelInfo(BaseModel):
 
     uri: str
     config: Dict[str, Any]
-    modality: List[ModalityEnum]
 
 
 class ProviderCreate(BaseModel):
@@ -38,3 +38,167 @@ class ProviderCreate(BaseModel):
     provider_type: str
     icon: str
     description: str
+
+
+class InputCost(BaseModel):
+    """Validates input cost configuration for model pricing."""
+
+    input_cost_per_audio_per_second: Optional[Decimal] = Field(None)
+    input_cost_per_video_per_second_above_8s_interval: Optional[Decimal] = Field(None)
+    input_cost_per_image: Optional[Decimal] = Field(None)
+    input_cost_per_token_batch_requests: Optional[Decimal] = Field(None)
+    input_cost_per_audio_per_second_above_128k_tokens: Optional[Decimal] = Field(None)
+    input_cost_per_token_cache_hit: Optional[Decimal] = Field(None)
+    input_cost_per_video_per_second_above_15s_interval: Optional[Decimal] = Field(None)
+    input_cost_per_video_per_second: Optional[Decimal] = Field(None)
+    input_cost_per_token_batches: Optional[Decimal] = Field(None)
+    input_cost_per_pixel: Optional[Decimal] = Field(None)
+    input_cost_per_token_above_200k_tokens: Optional[Decimal] = Field(None)
+    input_cost_per_video_per_second_above_128k_tokens: Optional[Decimal] = Field(None)
+    input_cost_per_character: Optional[Decimal] = Field(None)
+    input_cost_per_image_above_128k_tokens: Optional[Decimal] = Field(None)
+    input_cost_per_token_above_128k_tokens: Optional[Decimal] = Field(None)
+    input_cost_per_query: Optional[Decimal] = Field(None)
+    input_cost_per_audio_token: Optional[Decimal] = Field(None)
+    input_cost_per_token: Optional[Decimal] = Field(None)
+    input_cost_per_request: Optional[Decimal] = Field(None)
+    input_cost_per_second: Optional[Decimal] = Field(None)
+    input_cost_per_character_above_128k_tokens: Optional[Decimal] = Field(None)
+    input_dbu_cost_per_token: Optional[Decimal] = Field(None)
+
+    class Config:
+        """Config for input cost."""
+
+        extra = "forbid"
+
+
+class OutputCost(BaseModel):
+    """Validates output cost configuration for model pricing."""
+
+    output_cost_per_pixel: Optional[Decimal] = Field(None)
+    output_cost_per_token: Optional[Decimal] = Field(None)
+    output_cost_per_character: Optional[Decimal] = Field(None)
+    output_dbu_cost_per_token: Optional[Decimal] = Field(None)
+    output_cost_per_image: Optional[Decimal] = Field(None)
+    output_cost_per_token_above_200k_tokens: Optional[Decimal] = Field(None)
+    output_cost_per_character_above_128k_tokens: Optional[Decimal] = Field(None)
+    output_cost_per_second: Optional[Decimal] = Field(None)
+    output_cost_per_audio_token: Optional[Decimal] = Field(None)
+    output_cost_per_token_batches: Optional[Decimal] = Field(None)
+    output_cost_per_token_above_128k_tokens: Optional[Decimal] = Field(None)
+    output_cost_per_reasoning_token: Optional[Decimal] = Field(None)
+    output_db_cost_per_token: Optional[Decimal] = Field(None)
+
+    class Config:
+        """Config for output cost."""
+
+        extra = "forbid"
+
+
+class CacheCost(BaseModel):
+    """Validates cache cost configuration for model pricing."""
+
+    cache_read_input_token_cost: Optional[Decimal] = Field(None)
+    cache_read_input_audio_token_cost: Optional[Decimal] = Field(None)
+    cache_creation_input_audio_token_cost: Optional[Decimal] = Field(None)
+    cache_creation_input_token_cost: Optional[Decimal] = Field(None)
+
+    class Config:
+        """Config for cache cost."""
+
+        extra = "forbid"
+
+
+class SearchContextCost(BaseModel):
+    """Validates search context cost configuration."""
+
+    search_context_size_low: Optional[Decimal] = Field(None)
+    search_context_size_medium: Optional[Decimal] = Field(None)
+    search_context_size_high: Optional[Decimal] = Field(None)
+
+    class Config:
+        """Config for search context cost."""
+
+        extra = "forbid"
+
+
+class Tokens(BaseModel):
+    """Validates token limits configuration."""
+
+    max_input_tokens: Optional[int] = Field(None)
+    max_tokens_per_document_chunk: Optional[int] = Field(None)
+    max_query_tokens: Optional[int] = Field(None)
+    max_output_tokens: Optional[int] = Field(None)
+    max_tokens: Optional[int] = Field(None)
+    tool_use_system_prompt_tokens: Optional[int] = Field(None)
+
+    class Config:
+        """Config for tokens."""
+
+        extra = "forbid"
+
+
+class RateLimits(BaseModel):
+    """Validates rate limits configuration."""
+
+    rpd: Optional[int] = Field(None)
+    tpm: Optional[int] = Field(None)
+    rpm: Optional[int] = Field(None)
+
+    class Config:
+        """Config for rate limits."""
+
+        extra = "forbid"
+
+
+class MediaLimits(BaseModel):
+    """Validates media limits configuration."""
+
+    max_audio_per_prompt: Optional[int] = Field(None)
+    max_document_chunks_per_query: Optional[int] = Field(None)
+    max_audio_length_hours: Optional[float] = Field(None)
+    max_images_per_prompt: Optional[int] = Field(None)
+    max_videos_per_prompt: Optional[int] = Field(None)
+    max_pdf_size_mb: Optional[float] = Field(None)
+    max_video_length: Optional[float] = Field(None)
+
+    class Config:
+        """Config for media limits."""
+
+        extra = "forbid"
+
+
+class Features(BaseModel):
+    """Validates model features configuration."""
+
+    supports_web_search: Optional[bool] = Field(None)
+    supports_response_schema: Optional[bool] = Field(None)
+    supports_reasoning: Optional[bool] = Field(None)
+    supports_system_messages: Optional[bool] = Field(None)
+    supports_tool_choice: Optional[bool] = Field(None)
+    supports_parallel_function_calling: Optional[bool] = Field(None)
+    supports_assistant_prefill: Optional[bool] = Field(None)
+    supports_function_calling: Optional[bool] = Field(None)
+    supports_native_streaming: Optional[bool] = Field(None)
+    supports_prompt_caching: Optional[bool] = Field(None)
+
+    class Config:
+        """Config for features."""
+
+        extra = "forbid"
+
+
+class ModelInfoCreate(BaseModel):
+    """Schema for model info creation."""
+
+    uri: str
+    modality: List[ModalityEnum]
+    provider_id: UUID4
+    input_cost: InputCost
+    output_cost: OutputCost
+    cache_cost: CacheCost
+    search_context_cost: SearchContextCost
+    tokens: Tokens
+    rate_limits: RateLimits
+    media_limits: MediaLimits
+    features: Features
