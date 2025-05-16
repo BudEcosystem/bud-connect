@@ -18,12 +18,12 @@
 
 import json
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict
 from uuid import UUID
 
 from budmicroframe.commons import logging
 
-from ..commons.constants import ModalityEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import ProviderCRUD
@@ -233,12 +233,13 @@ class LiteLLMParser:
                 categorized_data[category][field] = value
 
         # Determine the modality of the model
-        modalities = await self.determine_modality(model_data)
+        model_specs = await self.derive_model_specs(model_data)
 
         # Create a model info schema
         return ModelInfoCreate(
             uri=model_data.uri,
-            modality=modalities,
+            modality=model_specs["modalities"],
+            endpoints=model_specs["endpoints"],
             provider_id=provider_id,
             input_cost=InputCost(**categorized_data["input_cost"]),
             output_cost=OutputCost(**categorized_data["output_cost"]),
@@ -255,8 +256,8 @@ class LiteLLMParser:
         )
 
     @staticmethod
-    async def determine_modality(model_data: LiteLLMModelInfo) -> List[ModalityEnum]:
-        """Determine the modality of the model.
+    async def derive_model_specs(model_data: LiteLLMModelInfo) -> Dict[str, Any]:
+        """Determine the modality and endpoints of the model.
 
         Args:
             provider_data: The provider data
@@ -265,36 +266,48 @@ class LiteLLMParser:
 
         # Initialize supported modalities
         supported_modalities = []
+        supported_model_endpoints = []
 
         # Determine input modalities
         input_modalities = config.get("supported_modalities", [])
         for modality in input_modalities:
             if modality == "text":
                 supported_modalities.append(ModalityEnum.TEXT_INPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.COMPLETION, ModelEndpointEnum.CHAT])
             elif modality == "image":
                 supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION])
             elif modality == "audio":
                 supported_modalities.append(ModalityEnum.AUDIO_INPUT)
+                supported_model_endpoints.extend(
+                    [ModelEndpointEnum.AUDIO_TRANSCRIPTION, ModelEndpointEnum.AUDIO_SPEECH]
+                )
 
         # Determine output modalities
         output_modalities = config.get("supported_output_modalities", [])
         for modality in output_modalities:
             if modality == "text":
                 supported_modalities.append(ModalityEnum.TEXT_OUTPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.COMPLETION, ModelEndpointEnum.CHAT])
             elif modality == "image":
                 supported_modalities.append(ModalityEnum.IMAGE_OUTPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION])
             elif modality == "audio":
                 supported_modalities.append(ModalityEnum.AUDIO_OUTPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_SPEECH])
             elif modality == "code":
                 supported_modalities.append(ModalityEnum.TEXT_OUTPUT)
+                supported_model_endpoints.extend([ModelEndpointEnum.COMPLETION, ModelEndpointEnum.CHAT])
 
         # supports_embedding_image_input
         if config.get("supports_embedding_image_input", False):
             supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+            supported_model_endpoints.extend([ModelEndpointEnum.EMBEDDING])
 
         # supports_audio_input
         if config.get("supports_audio_input", False):
             supported_modalities.append(ModalityEnum.AUDIO_INPUT)
+            supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_TRANSCRIPTION])
 
         # supports_pdf_input
         if config.get("supports_pdf_input", False):
@@ -311,14 +324,17 @@ class LiteLLMParser:
             supported_modalities.append(ModalityEnum.TEXT_INPUT)
             supported_modalities.append(ModalityEnum.IMAGE_INPUT)
             supported_modalities.append(ModalityEnum.IMAGE_OUTPUT)
+            supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION, ModelEndpointEnum.CHAT])
 
         # supports_image_input
         if config.get("supports_image_input", False):
             supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+            supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION])
 
         # supports_audio_output
         if config.get("supports_audio_output", False):
             supported_modalities.append(ModalityEnum.AUDIO_OUTPUT)
+            supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_SPEECH])
 
         # Remove duplicates
         supported_modalities = list(set(supported_modalities))
@@ -326,18 +342,40 @@ class LiteLLMParser:
         if not supported_modalities:
             # Get modalities from mode
             mode = config.get("mode")
-            if mode == "chat" or mode == "embedding" or mode == "completion":  # noqa: E701
+            if mode == "chat":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.CHAT])
+            elif mode == "embedding":
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.EMBEDDING])
+            elif mode == "completion":
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.COMPLETION])
             elif mode == "image_generation":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.IMAGE_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION])
             elif mode == "audio_transcription":
                 supported_modalities = [ModalityEnum.AUDIO_INPUT, ModalityEnum.TEXT_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_TRANSCRIPTION])
             elif mode == "audio_speech":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.AUDIO_OUTPUT]
-            elif mode == "moderation" or mode == "rerank":  # noqa: E701
+                supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_SPEECH])
+            elif mode == "moderation" or mode == "rerank":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+                # No specific endpoint for reranking, moderation
 
-        return list(set(supported_modalities))
+        # Get supported endpoints
+        if config.get("supported_endpoints", []):
+            # Get supported endpoints from config
+            logger.debug("Found supported endpoints in config")
+            supported_model_endpoints = []
+            for endpoint in config.get("supported_endpoints", []):
+                supported_model_endpoints.append(ModelEndpointEnum(endpoint))
+
+        return {
+            "modalities": list(set(supported_modalities)),
+            "endpoints": list(set(supported_model_endpoints)),
+        }
 
 
 class LiteLLMSeeder(BaseSeeder):

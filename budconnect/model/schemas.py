@@ -21,7 +21,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import UUID4, BaseModel, Field
 
-from ..commons.constants import ModalityEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum
 
 
 class LiteLLMModelInfo(BaseModel):
@@ -202,3 +202,4 @@ class ModelInfoCreate(BaseModel):
     rate_limits: RateLimits
     media_limits: MediaLimits
     features: Features
+    endpoints: List[ModelEndpointEnum]
