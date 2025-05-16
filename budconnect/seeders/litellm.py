@@ -18,11 +18,12 @@
 
 import json
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 from uuid import UUID
 
 from budmicroframe.commons import logging
 
+from ..commons.constants import ModalityEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import ProviderCRUD
@@ -130,8 +131,7 @@ class LiteLLMParser:
 
         return parsed_model_data
 
-    @staticmethod
-    async def create_model_info(model_data: LiteLLMModelInfo, provider_id: UUID) -> ModelInfoCreate:
+    async def create_model_info(self, model_data: LiteLLMModelInfo, provider_id: UUID) -> ModelInfoCreate:
         """Create a model info from the model data.
 
         Args:
@@ -232,10 +232,13 @@ class LiteLLMParser:
             if category:
                 categorized_data[category][field] = value
 
+        # Determine the modality of the model
+        modalities = await self.determine_modality(model_data)
+
         # Create a model info schema
         return ModelInfoCreate(
             uri=model_data.uri,
-            modality=["text_input", "text_output"],  # TODO: need to setup a proper mode for each model
+            modality=modalities,
             provider_id=provider_id,
             input_cost=InputCost(**categorized_data["input_cost"]),
             output_cost=OutputCost(**categorized_data["output_cost"]),
@@ -250,6 +253,91 @@ class LiteLLMParser:
             media_limits=MediaLimits(**categorized_data["media_limits"]),
             features=Features(**categorized_data["features"]),
         )
+
+    @staticmethod
+    async def determine_modality(model_data: LiteLLMModelInfo) -> List[ModalityEnum]:
+        """Determine the modality of the model.
+
+        Args:
+            provider_data: The provider data
+        """
+        config = model_data.config
+
+        # Initialize supported modalities
+        supported_modalities = []
+
+        # Determine input modalities
+        input_modalities = config.get("supported_modalities", [])
+        for modality in input_modalities:
+            if modality == "text":
+                supported_modalities.append(ModalityEnum.TEXT_INPUT)
+            elif modality == "image":
+                supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+            elif modality == "audio":
+                supported_modalities.append(ModalityEnum.AUDIO_INPUT)
+
+        # Determine output modalities
+        output_modalities = config.get("supported_output_modalities", [])
+        for modality in output_modalities:
+            if modality == "text":
+                supported_modalities.append(ModalityEnum.TEXT_OUTPUT)
+            elif modality == "image":
+                supported_modalities.append(ModalityEnum.IMAGE_OUTPUT)
+            elif modality == "audio":
+                supported_modalities.append(ModalityEnum.AUDIO_OUTPUT)
+            elif modality == "code":
+                supported_modalities.append(ModalityEnum.TEXT_OUTPUT)
+
+        # supports_embedding_image_input
+        if config.get("supports_embedding_image_input", False):
+            supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+
+        # supports_audio_input
+        if config.get("supports_audio_input", False):
+            supported_modalities.append(ModalityEnum.AUDIO_INPUT)
+
+        # supports_pdf_input
+        if config.get("supports_pdf_input", False):
+            # TODO: Enable when budserve supports file input
+            pass
+
+        # supports_video_input
+        if config.get("supports_video_input", False):
+            # TODO: Enable when budserve supports file input
+            pass
+
+        # supports_vision
+        if config.get("supports_vision", False):
+            supported_modalities.append(ModalityEnum.TEXT_INPUT)
+            supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+            supported_modalities.append(ModalityEnum.IMAGE_OUTPUT)
+
+        # supports_image_input
+        if config.get("supports_image_input", False):
+            supported_modalities.append(ModalityEnum.IMAGE_INPUT)
+
+        # supports_audio_output
+        if config.get("supports_audio_output", False):
+            supported_modalities.append(ModalityEnum.AUDIO_OUTPUT)
+
+        # Remove duplicates
+        supported_modalities = list(set(supported_modalities))
+
+        if not supported_modalities:
+            # Get modalities from mode
+            mode = config.get("mode")
+            if mode == "chat" or mode == "embedding" or mode == "completion":  # noqa: E701
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+            elif mode == "image_generation":
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.IMAGE_OUTPUT]
+            elif mode == "audio_transcription":
+                supported_modalities = [ModalityEnum.AUDIO_INPUT, ModalityEnum.TEXT_OUTPUT]
+            elif mode == "audio_speech":
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.AUDIO_OUTPUT]
+            elif mode == "moderation" or mode == "rerank":  # noqa: E701
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+
+        return list(set(supported_modalities))
 
 
 class LiteLLMSeeder(BaseSeeder):
@@ -301,7 +389,7 @@ class LiteLLMSeeder(BaseSeeder):
             SeederException: If there is an error parsing the data
         """
         if version in ["0.1.0"]:
-            return LiteLLMParser
+            return LiteLLMParser()
         else:
             raise ValueError(f"Unsupported LiteLLM version: {version}")
 
