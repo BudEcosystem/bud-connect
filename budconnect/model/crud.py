@@ -25,7 +25,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from .models import Provider, engine_version_provider
+from .models import ModelInfo, Provider, engine_version_model_info, engine_version_provider
 
 
 logger = logging.get_logger(__name__)
@@ -126,5 +126,104 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             logger.exception("Failed to add engine versions to provider %s: %s", provider_id, str(e))
             if raise_on_error:
                 raise ValueError(f"Failed to add engine versions to provider {provider_id}") from e
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+
+class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
+    __model__ = ModelInfo
+
+    def __init__(self) -> None:
+        """Initialize the ProviderCRUD class.
+
+        This constructor initializes the ProviderCRUD class by calling the parent
+        CRUDMixin constructor with the Provider model. The ProviderCRUD class provides
+        database operations for the Provider model.
+        """
+        super().__init__(self.__model__)
+
+    def upsert(
+        self,
+        data: Union[DBCreateSchemaType, ModelType, Dict[str, Any]],
+        conflict_target: Optional[List[str]] = None,
+        session: Optional[Session] = None,
+        raise_on_error: bool = True,
+    ) -> UUID:
+        """Perform an upsert (insert or update) operation on the database.
+
+        This method inserts a new record if it doesn't exist, or updates an existing record
+        if it does, based on the specified conflict target columns. It handles different
+        input data types and manages database transaction details.
+
+        Args:
+            data: The data to insert or update. Can be a dictionary, a Pydantic schema,
+                or a SQLAlchemy model instance.
+            conflict_target: A list of column names to check for conflicts. These should
+                typically be columns with unique constraints. If None, performs a regular
+                insert with no conflict handling.
+            session: An existing SQLAlchemy session to use. If None, a new session will
+                be created and closed after the operation.
+            raise_on_error: If True, raises a ValueError when an SQLAlchemy error occurs.
+                If False, errors are logged but not raised.
+
+        Raises:
+            ValueError: If the data type is invalid or if the upsert operation fails and
+                raise_on_error is True.
+            SQLAlchemyError: If a database error occurs and is not caught.
+        """
+        _session = session or self.get_session()
+        try:
+            if isinstance(data, (type(DBCreateSchemaType), self.model, dict)):
+                obj: dict = data.copy() if isinstance(data, dict) else data.model_dump(exclude_unset=True)
+            else:
+                raise ValueError("Invalid data type for upsert")
+
+            stmt = insert(self.model.__table__).values(obj)
+            if conflict_target:
+                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+
+            stmt = stmt.returning(self.model)
+            result = _session.execute(stmt)
+            _session.commit()
+            logger.debug("Upsert operation successful on %s", self.model.__tablename__)
+
+            return result.first()[0]
+        except SQLAlchemyError as e:
+            _session.rollback()
+            logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
+            if raise_on_error:
+                raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+    def add_engine_version(
+        self,
+        model_info_id: UUID,
+        engine_version_id: UUID,
+        session: Optional[Session] = None,
+        raise_on_error: bool = True,
+    ) -> None:
+        """Add engine versions to a provider.
+
+        Args:
+            model_info_id: The ID of the model info to add the engine version to.
+            engine_version_id: The IDs of the engine versions to add to the model info.
+        """
+        _session = session or self.get_session()
+        try:
+            stmt = (
+                insert(engine_version_model_info)
+                .values(model_info_id=model_info_id, engine_version_id=engine_version_id)
+                .on_conflict_do_nothing()
+                .returning(engine_version_model_info.c.model_info_id, engine_version_model_info.c.engine_version_id)
+            )
+            _session.execute(stmt)
+            _session.commit()
+            logger.debug("Added engine version %s to model info %s", engine_version_id, model_info_id)
+        except SQLAlchemyError as e:
+            _session.rollback()
+            logger.exception("Failed to add engine versions to model info %s: %s", model_info_id, str(e))
+            if raise_on_error:
+                raise ValueError(f"Failed to add engine versions to model info {model_info_id}") from e
         finally:
             self.cleanup_session(_session if session is None else None)
