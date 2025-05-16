@@ -16,7 +16,7 @@
 
 """ModelInfo, Provider CRUD operations."""
 
-from typing import Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -25,8 +25,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from ..engine.crud import EngineVersionCRUD
-from .models import Provider
+from .models import Provider, engine_version_provider
 
 
 logger = logging.get_logger(__name__)
@@ -46,11 +45,11 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
 
     def upsert(
         self,
-        data: Union[DBCreateSchemaType, ModelType, Dict],
+        data: Union[DBCreateSchemaType, ModelType, Dict[str, Any]],
         conflict_target: Optional[List[str]] = None,
         session: Optional[Session] = None,
         raise_on_error: bool = True,
-    ):
+    ) -> UUID:
         """Perform an upsert (insert or update) operation on the database.
 
         This method inserts a new record if it doesn't exist, or updates an existing record
@@ -84,11 +83,12 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             if conflict_target:
                 stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
 
+            stmt = stmt.returning(self.model)
             result = _session.execute(stmt)
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
-            return result.inserted_primary_key[0]
+            return result.first()[0]
         except SQLAlchemyError as e:
             _session.rollback()
             logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
@@ -98,34 +98,33 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             self.cleanup_session(_session if session is None else None)
 
     def add_engine_version(
-        self, provider_type: str, version_id: UUID, session: Optional[Session] = None, raise_on_error: bool = True
-    ):
+        self,
+        provider_id: UUID,
+        engine_version_id: UUID,
+        session: Optional[Session] = None,
+        raise_on_error: bool = True,
+    ) -> None:
         """Add engine versions to a provider.
 
         Args:
-            provider_type: The type of the provider to add the engine version to.
-            version_id: The ID of the engine version to add to the provider.
+            provider_id: The ID of the provider to add the engine version to.
+            version_ids: The IDs of the engine versions to add to the provider.
         """
         _session = session or self.get_session()
         try:
-            db_provider = self.fetch_one(conditions={"provider_type": provider_type}, session=_session)
-            if not db_provider:
-                raise ValueError(f"Provider with ID {provider_type} not found")
-
-            db_version = EngineVersionCRUD().fetch_one(conditions={"id": version_id}, session=_session)
-            if not db_version:
-                raise ValueError(f"Engine version with ID {version_id} not found")
-
-            if db_version not in db_provider.supported_versions:
-                db_provider.supported_versions.append(db_version)
-                logger.debug("Added engine version %s to provider %s", version_id, provider_type)
-            else:
-                logger.debug("Engine version %s already exists in provider %s", version_id, provider_type)
+            stmt = (
+                insert(engine_version_provider)
+                .values(provider_id=provider_id, engine_version_id=engine_version_id)
+                .on_conflict_do_nothing()
+                .returning(engine_version_provider.c.provider_id, engine_version_provider.c.engine_version_id)
+            )
+            _session.execute(stmt)
             _session.commit()
+            logger.debug("Added engine version %s to provider %s", engine_version_id, provider_id)
         except SQLAlchemyError as e:
             _session.rollback()
-            logger.exception("Failed to add engine versions to provider %s: %s", provider_type, str(e))
+            logger.exception("Failed to add engine versions to provider %s: %s", provider_id, str(e))
             if raise_on_error:
-                raise ValueError(f"Failed to add engine versions to provider {provider_type}") from e
+                raise ValueError(f"Failed to add engine versions to provider {provider_id}") from e
         finally:
             self.cleanup_session(_session if session is None else None)

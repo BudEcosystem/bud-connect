@@ -492,7 +492,8 @@ class LiteLLMSeeder(BaseSeeder):
                         db_provider_id = provider_crud.upsert(
                             data=provider_data.model_dump(), conflict_target=["provider_type"]
                         )
-                        provider_crud.add_engine_version(provider, version_config.id)
+                        logger.debug("Upserted provider: %s", db_provider_id)
+                        provider_crud.add_engine_version(db_provider_id, version_config.id)
 
                     # Parse model info
                     for model in supported_models:
