@@ -233,7 +233,19 @@ class LiteLLMParser:
                 categorized_data[category][field] = value
 
         # Determine the modality of the model
-        model_specs = await self.derive_model_specs(model_data)
+        if model_data.uri in [
+            "fireworks-ai-4.1b-to-16b",
+            "fireworks-ai-above-16b",
+            "fireworks-ai-moe-up-to-56b",
+            "fireworks-ai-56b-to-176b",
+            "fireworks-ai-default",
+            "fireworks-ai-up-to-4b",
+            "fireworks-ai-embedding-up-to-150m",
+            "fireworks-ai-embedding-150m-to-350m",
+        ]:
+            model_specs = await self.derive_predefined_model_specs(model_data)
+        else:
+            model_specs = await self.derive_model_specs(model_data)
 
         if categorized_data["search_context_cost"]:
             search_context_cost_per_query = SearchContextCost(
@@ -258,6 +270,39 @@ class LiteLLMParser:
             features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
             deprecation_date=model_data.config.get("deprecation_date"),
         )
+
+    @staticmethod
+    async def derive_predefined_model_specs(model_data: LiteLLMModelInfo) -> Dict[str, Any]:
+        """Determine the modality adn endpoints of the predefined model.
+
+        Args:
+            model_data: The model data
+
+        Returns:
+            The modality and endpoints of the model
+        """
+        uri = model_data.uri
+
+        if uri in [
+            "fireworks-ai-4.1b-to-16b",
+            "fireworks-ai-above-16b",
+            "fireworks-ai-moe-up-to-56b",
+            "fireworks-ai-56b-to-176b",
+            "fireworks-ai-default",
+            "fireworks-ai-up-to-4b",
+        ]:
+            return {
+                "modalities": [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT],
+                "endpoints": [ModelEndpointEnum.COMPLETION, ModelEndpointEnum.CHAT],
+            }
+        elif uri in [
+            "fireworks-ai-embedding-up-to-150m",
+            "fireworks-ai-embedding-150m-to-350m",
+        ]:
+            return {
+                "modalities": [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT],
+                "endpoints": [ModelEndpointEnum.EMBEDDING],
+            }
 
     @staticmethod
     async def derive_model_specs(model_data: LiteLLMModelInfo) -> Dict[str, Any]:
@@ -364,9 +409,12 @@ class LiteLLMParser:
             elif mode == "audio_speech":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.AUDIO_OUTPUT]
                 supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_SPEECH])
-            elif mode == "moderation" or mode == "rerank":
+            elif mode == "moderation":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
-                # No specific endpoint for reranking, moderation
+                supported_model_endpoints.extend([ModelEndpointEnum.MODERATION])
+            elif mode == "rerank":
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.RERANK])
 
         # Get supported endpoints
         if config.get("supported_endpoints", []):
