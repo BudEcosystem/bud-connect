@@ -1,8 +1,10 @@
 import logging
 from typing import List, Optional
+from uuid import UUID
 
 from budmicroframe.shared.psql_service import CRUDMixin
-from sqlalchemy import func
+from sqlalchemy import func, select
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from .models import Engine, EngineCompatibility, EngineVersion
@@ -162,6 +164,32 @@ class EngineVersionCRUD(CRUDMixin[EngineVersion, None, None]):
         CRUDMixin constructor with the EngineVersion model.
         """
         super().__init__(self.__model__)
+
+    def get_latest_engine_version(
+        self, engine_id: UUID, session: Optional[Session] = None, raise_on_error: bool = True
+    ) -> Optional[EngineVersion]:
+        """Get the latest engine version for a given engine.
+
+        This method retrieves the latest engine version for a given engine. It first finds the engine by name, then queries
+        for the latest version based on creation timestamp.
+        """
+        _session = session or self.get_session()
+
+        try:
+            stmt = (
+                select(EngineVersion)
+                .where(EngineVersion.engine_id == engine_id)
+                .order_by(EngineVersion.created_at.desc())
+            )
+            result = _session.execute(stmt)
+            return result.scalar_one_or_none()
+        except SQLAlchemyError as e:
+            session.rollback()
+            logger.exception(f"Error getting latest engine version for {engine_id}: {e}")
+            if raise_on_error:
+                raise e
+        finally:
+            self.cleanup_session(_session if session is None else None)
 
 
 class EngineCompatibilityCRUD(CRUDMixin[EngineCompatibility, None, None]):
