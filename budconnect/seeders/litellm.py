@@ -26,7 +26,7 @@ from budmicroframe.commons import logging
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
-from ..model.crud import ProviderCRUD
+from ..model.crud import ModelInfoCRUD, ProviderCRUD
 from ..model.schemas import (
     CacheCost,
     Features,
@@ -235,24 +235,28 @@ class LiteLLMParser:
         # Determine the modality of the model
         model_specs = await self.derive_model_specs(model_data)
 
+        if categorized_data["search_context_cost"]:
+            search_context_cost_per_query = SearchContextCost(
+                **categorized_data["search_context_cost"]["search_context_cost_per_query"]
+            )
+        else:
+            search_context_cost_per_query = None
+
         # Create a model info schema
         return ModelInfoCreate(
             uri=model_data.uri,
             modality=model_specs["modalities"],
             endpoints=model_specs["endpoints"],
             provider_id=provider_id,
-            input_cost=InputCost(**categorized_data["input_cost"]),
-            output_cost=OutputCost(**categorized_data["output_cost"]),
-            cache_cost=CacheCost(**categorized_data["cache_cost"]),
-            search_context_cost=SearchContextCost(
-                **categorized_data["search_context_cost"]["search_context_cost_per_query"]
-                if categorized_data["search_context_cost"]
-                else {}
-            ),
-            tokens=Tokens(**categorized_data["tokens"]),
-            rate_limits=RateLimits(**categorized_data["rate_limits"]),
-            media_limits=MediaLimits(**categorized_data["media_limits"]),
-            features=Features(**categorized_data["features"]),
+            input_cost=InputCost(**categorized_data["input_cost"]) if categorized_data["input_cost"] else None,
+            output_cost=OutputCost(**categorized_data["output_cost"]) if categorized_data["output_cost"] else None,
+            cache_cost=CacheCost(**categorized_data["cache_cost"]) if categorized_data["cache_cost"] else None,
+            search_context_cost_per_query=search_context_cost_per_query,
+            tokens=Tokens(**categorized_data["tokens"]) if categorized_data["tokens"] else None,
+            rate_limits=RateLimits(**categorized_data["rate_limits"]) if categorized_data["rate_limits"] else None,
+            media_limits=MediaLimits(**categorized_data["media_limits"]) if categorized_data["media_limits"] else None,
+            features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
+            deprecation_date=model_data.config.get("deprecation_date"),
         )
 
     @staticmethod
@@ -498,9 +502,16 @@ class LiteLLMSeeder(BaseSeeder):
                     # Parse model info
                     for model in supported_models:
                         model_info_data = await litellm_parser.create_model_info(model, db_provider_id)
-                        logger.debug(
-                            "Model info data: of %s: %s", model.uri, model_info_data.model_dump(exclude_none=True)
-                        )
+                        logger.debug("Model info data: %s", model_info_data.model_dump())
+
+                        # Upsert model info
+                        with ModelInfoCRUD() as model_info_crud:
+                            db_model_info_id = model_info_crud.upsert(
+                                data=model_info_data.model_dump(),
+                                conflict_target=["uri"],
+                            )
+                            logger.debug("Upserted model info: %s", db_model_info_id)
+                            model_info_crud.add_engine_version(db_model_info_id, version_config.id)
 
         except FileNotFoundError as e:
             logger.exception("File not found during LiteLLM seeding: %s", e)
