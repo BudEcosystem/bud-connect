@@ -19,7 +19,8 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from pydantic import UUID4, BaseModel, Field
+from budmicroframe.commons.schemas import PaginatedResponse
+from pydantic import UUID4, BaseModel, ConfigDict, Field
 
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 
@@ -230,3 +231,46 @@ class ModelInfoCreate(BaseModel):
                 data[field] = nested_data if nested_data else None
 
         return data
+
+
+# Api Schemas
+
+
+class ModelInfoResponse(BaseModel):
+    """Schema for model."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID4
+    uri: str
+    modality: List[ModalityEnum]
+    provider_id: UUID4
+    input_cost: Optional[dict] = None
+    output_cost: Optional[dict] = None
+    cache_cost: Optional[dict] = None
+    search_context_cost_per_query: Optional[dict] = None
+    tokens: Optional[dict] = None
+    rate_limits: Optional[dict] = None
+    media_limits: Optional[dict] = None
+    features: Optional[dict] = None
+    endpoints: List[ModelEndpointEnum]
+    deprecation_date: Optional[datetime] = None
+
+
+class CompatibleProviders(ProviderCreate):
+    """Schema for compatible providers."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID4
+    models: List[ModelInfoResponse] = []
+
+
+class CompatibleModelsResponse(PaginatedResponse):
+    """Schema for compatible models response."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    engine_name: str
+    engine_version: Optional[str] = None
+    items: List[CompatibleProviders]
