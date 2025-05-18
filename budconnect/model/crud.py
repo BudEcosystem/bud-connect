@@ -21,6 +21,7 @@ from uuid import UUID
 
 from budmicroframe.commons import logging
 from budmicroframe.shared.psql_service import CRUDMixin, DBCreateSchemaType, ModelType
+from sqlalchemy import and_, distinct, func
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
@@ -128,6 +129,64 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
                 raise ValueError(f"Failed to add engine versions to provider {provider_id}") from e
         finally:
             self.cleanup_session(_session if session is None else None)
+
+    def get_compatible_providers(
+        self, version_id: UUID, offset: int, limit: int, session: Optional[Session] = None
+    ) -> List[Provider]:
+        """Get the compatible providers for a given engine version.
+
+        Args:
+            version_id: The ID of the engine version to get compatible providers for.
+            offset: The offset to start the pagination from.
+            limit: The number of providers to return.
+            session: The session to use for the query.
+
+        Returns:
+            A list of compatible providers.
+        """
+        _session = session or self.get_session()
+
+        # Get total count of providers
+        total_providers = (
+            _session.query(func.count(distinct(Provider.id)))
+            .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+            .filter(engine_version_provider.c.engine_version_id == version_id)
+            .scalar()
+        )
+
+        # Get all providers and their models in a single query
+        query = (
+            _session.query(Provider, ModelInfo)
+            .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+            .outerjoin(  # Use outerjoin to include providers with no models
+                engine_version_model_info, engine_version_model_info.c.engine_version_id == version_id
+            )
+            .outerjoin(
+                ModelInfo,
+                and_(ModelInfo.id == engine_version_model_info.c.model_info_id, ModelInfo.provider_id == Provider.id),
+            )
+            .filter(engine_version_provider.c.engine_version_id == version_id)
+            .order_by(Provider.provider_type)
+        )
+
+        # Get distinct providers for pagination
+        provider_ids = [
+            p.id
+            for p in _session.query(Provider.id)
+            .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+            .filter(engine_version_provider.c.engine_version_id == version_id)
+            .order_by(Provider.name)
+            .offset(offset)
+            .limit(limit)
+        ]
+
+        # Filter the main query by paginated provider IDs
+        query = query.filter(Provider.id.in_(provider_ids))
+
+        # Execute query
+        results = query.all()
+
+        return total_providers, results
 
 
 class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
