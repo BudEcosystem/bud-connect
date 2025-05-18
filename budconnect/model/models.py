@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.schema import Table
 
-from ..commons.constants import ModalityEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum
 
 
 class Provider(PSQLBase, TimestampMixin):
@@ -73,9 +73,18 @@ class ModelInfo(PSQLBase, TimestampMixin):
 
     id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
     uri: Mapped[str] = mapped_column(String, nullable=False, unique=True)
-    modality: Mapped[List[ModalityEnum]] = mapped_column(ARRAY(Enum(ModalityEnum)), default=[], nullable=True)
-    config: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=False)
+    modality: Mapped[List[ModalityEnum]] = mapped_column(ARRAY(Enum(ModalityEnum)), nullable=True)
+    input_cost: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    output_cost: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    cache_cost: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    search_context_cost_per_query: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    tokens: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    rate_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    media_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    features: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     provider_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("provider.id"), nullable=False)
+    deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
+    endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
 
@@ -86,6 +95,22 @@ engine_version_provider = Table(
     PSQLBase.metadata,
     Column("engine_version_id", UUID, ForeignKey("engine_version.id"), primary_key=True),
     Column("provider_id", UUID, ForeignKey("provider.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)),
+    Column(
+        "updated_at",
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now(UTC),
+        onupdate=lambda: datetime.now(UTC),
+    ),
+)
+
+# Engine Version Model Info Association
+engine_version_model_info = Table(
+    "engine_version_model_info",
+    PSQLBase.metadata,
+    Column("engine_version_id", UUID, ForeignKey("engine_version.id"), primary_key=True),
+    Column("model_info_id", UUID, ForeignKey("model_info.id"), primary_key=True),
     Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)),
     Column(
         "updated_at",

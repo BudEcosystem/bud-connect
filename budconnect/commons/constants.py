@@ -66,3 +66,5 @@ class ModelEndpointEnum(Enum):
     EMBEDDING = "/v1/embeddings"
     BATCH = "/v1/batch"
     RESPONSE = "/v1/responses"
+    RERANK = "/v1/rerank"  # https://docs.litellm.ai/docs/rerank
+    MODERATION = "/v1/moderations"  # https://docs.litellm.ai/docs/moderation
