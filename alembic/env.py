@@ -1,4 +1,5 @@
 import os
+import alembic_postgresql_enum
 from logging.config import fileConfig
 
 from pydantic import PostgresDsn
