@@ -16,7 +16,7 @@
 
 """The model schemas, containing essential data structures for the model microservice."""
 
-from decimal import Decimal
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from pydantic import UUID4, BaseModel, Field
@@ -43,28 +43,28 @@ class ProviderCreate(BaseModel):
 class InputCost(BaseModel):
     """Validates input cost configuration for model pricing."""
 
-    input_cost_per_audio_per_second: Optional[Decimal] = Field(None)
-    input_cost_per_video_per_second_above_8s_interval: Optional[Decimal] = Field(None)
-    input_cost_per_image: Optional[Decimal] = Field(None)
-    input_cost_per_token_batch_requests: Optional[Decimal] = Field(None)
-    input_cost_per_audio_per_second_above_128k_tokens: Optional[Decimal] = Field(None)
-    input_cost_per_token_cache_hit: Optional[Decimal] = Field(None)
-    input_cost_per_video_per_second_above_15s_interval: Optional[Decimal] = Field(None)
-    input_cost_per_video_per_second: Optional[Decimal] = Field(None)
-    input_cost_per_token_batches: Optional[Decimal] = Field(None)
-    input_cost_per_pixel: Optional[Decimal] = Field(None)
-    input_cost_per_token_above_200k_tokens: Optional[Decimal] = Field(None)
-    input_cost_per_video_per_second_above_128k_tokens: Optional[Decimal] = Field(None)
-    input_cost_per_character: Optional[Decimal] = Field(None)
-    input_cost_per_image_above_128k_tokens: Optional[Decimal] = Field(None)
-    input_cost_per_token_above_128k_tokens: Optional[Decimal] = Field(None)
-    input_cost_per_query: Optional[Decimal] = Field(None)
-    input_cost_per_audio_token: Optional[Decimal] = Field(None)
-    input_cost_per_token: Optional[Decimal] = Field(None)
-    input_cost_per_request: Optional[Decimal] = Field(None)
-    input_cost_per_second: Optional[Decimal] = Field(None)
-    input_cost_per_character_above_128k_tokens: Optional[Decimal] = Field(None)
-    input_dbu_cost_per_token: Optional[Decimal] = Field(None)
+    input_cost_per_audio_per_second: Optional[float] = Field(None)
+    input_cost_per_video_per_second_above_8s_interval: Optional[float] = Field(None)
+    input_cost_per_image: Optional[float] = Field(None)
+    input_cost_per_token_batch_requests: Optional[float] = Field(None)
+    input_cost_per_audio_per_second_above_128k_tokens: Optional[float] = Field(None)
+    input_cost_per_token_cache_hit: Optional[float] = Field(None)
+    input_cost_per_video_per_second_above_15s_interval: Optional[float] = Field(None)
+    input_cost_per_video_per_second: Optional[float] = Field(None)
+    input_cost_per_token_batches: Optional[float] = Field(None)
+    input_cost_per_pixel: Optional[float] = Field(None)
+    input_cost_per_token_above_200k_tokens: Optional[float] = Field(None)
+    input_cost_per_video_per_second_above_128k_tokens: Optional[float] = Field(None)
+    input_cost_per_character: Optional[float] = Field(None)
+    input_cost_per_image_above_128k_tokens: Optional[float] = Field(None)
+    input_cost_per_token_above_128k_tokens: Optional[float] = Field(None)
+    input_cost_per_query: Optional[float] = Field(None)
+    input_cost_per_audio_token: Optional[float] = Field(None)
+    input_cost_per_token: Optional[float] = Field(None)
+    input_cost_per_request: Optional[float] = Field(None)
+    input_cost_per_second: Optional[float] = Field(None)
+    input_cost_per_character_above_128k_tokens: Optional[float] = Field(None)
+    input_dbu_cost_per_token: Optional[float] = Field(None)
 
     class Config:
         """Config for input cost."""
@@ -75,19 +75,19 @@ class InputCost(BaseModel):
 class OutputCost(BaseModel):
     """Validates output cost configuration for model pricing."""
 
-    output_cost_per_pixel: Optional[Decimal] = Field(None)
-    output_cost_per_token: Optional[Decimal] = Field(None)
-    output_cost_per_character: Optional[Decimal] = Field(None)
-    output_dbu_cost_per_token: Optional[Decimal] = Field(None)
-    output_cost_per_image: Optional[Decimal] = Field(None)
-    output_cost_per_token_above_200k_tokens: Optional[Decimal] = Field(None)
-    output_cost_per_character_above_128k_tokens: Optional[Decimal] = Field(None)
-    output_cost_per_second: Optional[Decimal] = Field(None)
-    output_cost_per_audio_token: Optional[Decimal] = Field(None)
-    output_cost_per_token_batches: Optional[Decimal] = Field(None)
-    output_cost_per_token_above_128k_tokens: Optional[Decimal] = Field(None)
-    output_cost_per_reasoning_token: Optional[Decimal] = Field(None)
-    output_db_cost_per_token: Optional[Decimal] = Field(None)
+    output_cost_per_pixel: Optional[float] = Field(None)
+    output_cost_per_token: Optional[float] = Field(None)
+    output_cost_per_character: Optional[float] = Field(None)
+    output_dbu_cost_per_token: Optional[float] = Field(None)
+    output_cost_per_image: Optional[float] = Field(None)
+    output_cost_per_token_above_200k_tokens: Optional[float] = Field(None)
+    output_cost_per_character_above_128k_tokens: Optional[float] = Field(None)
+    output_cost_per_second: Optional[float] = Field(None)
+    output_cost_per_audio_token: Optional[float] = Field(None)
+    output_cost_per_token_batches: Optional[float] = Field(None)
+    output_cost_per_token_above_128k_tokens: Optional[float] = Field(None)
+    output_cost_per_reasoning_token: Optional[float] = Field(None)
+    output_db_cost_per_token: Optional[float] = Field(None)
 
     class Config:
         """Config for output cost."""
@@ -98,10 +98,10 @@ class OutputCost(BaseModel):
 class CacheCost(BaseModel):
     """Validates cache cost configuration for model pricing."""
 
-    cache_read_input_token_cost: Optional[Decimal] = Field(None)
-    cache_read_input_audio_token_cost: Optional[Decimal] = Field(None)
-    cache_creation_input_audio_token_cost: Optional[Decimal] = Field(None)
-    cache_creation_input_token_cost: Optional[Decimal] = Field(None)
+    cache_read_input_token_cost: Optional[float] = Field(None)
+    cache_read_input_audio_token_cost: Optional[float] = Field(None)
+    cache_creation_input_audio_token_cost: Optional[float] = Field(None)
+    cache_creation_input_token_cost: Optional[float] = Field(None)
 
     class Config:
         """Config for cache cost."""
@@ -112,9 +112,9 @@ class CacheCost(BaseModel):
 class SearchContextCost(BaseModel):
     """Validates search context cost configuration."""
 
-    search_context_size_low: Optional[Decimal] = Field(None)
-    search_context_size_medium: Optional[Decimal] = Field(None)
-    search_context_size_high: Optional[Decimal] = Field(None)
+    search_context_size_low: Optional[float] = Field(None)
+    search_context_size_medium: Optional[float] = Field(None)
+    search_context_size_high: Optional[float] = Field(None)
 
     class Config:
         """Config for search context cost."""
@@ -194,12 +194,39 @@ class ModelInfoCreate(BaseModel):
     uri: str
     modality: List[ModalityEnum]
     provider_id: UUID4
-    input_cost: InputCost
-    output_cost: OutputCost
-    cache_cost: CacheCost
-    search_context_cost: SearchContextCost
-    tokens: Tokens
-    rate_limits: RateLimits
-    media_limits: MediaLimits
-    features: Features
+    input_cost: Optional[InputCost] = None
+    output_cost: Optional[OutputCost] = None
+    cache_cost: Optional[CacheCost] = None
+    search_context_cost_per_query: Optional[SearchContextCost] = None
+    tokens: Optional[Tokens] = None
+    rate_limits: Optional[RateLimits] = None
+    media_limits: Optional[MediaLimits] = None
+    features: Optional[Features] = None
     endpoints: List[ModelEndpointEnum]
+    deprecation_date: Optional[datetime] = None
+
+    def model_dump(self, **kwargs):
+        """Implement custom model_dump to convert nested Pydantic models to None."""
+        # Get the base dump with all fields
+        data = super().model_dump(**kwargs)
+
+        # Process nested Pydantic models to exclude nulls
+        nested_fields = [
+            "input_cost",
+            "output_cost",
+            "cache_cost",
+            "search_context_cost_per_query",
+            "tokens",
+            "rate_limits",
+            "media_limits",
+            "features",
+        ]
+
+        for field in nested_fields:
+            if data[field] is not None:
+                # Dump nested models with exclude_none=True
+                nested_data = getattr(self, field).model_dump(exclude_none=True)
+                # Only include the field if it has non-null values
+                data[field] = nested_data if nested_data else None
+
+        return data
