@@ -110,6 +110,7 @@ class ModelService:
                     provider_type=db_provider.provider_type,
                     icon=db_provider.icon,
                     description=db_provider.description,
+                    credentials=db_provider.credentials,
                     models=[db_model] if db_model else [],
                 )
             else:
