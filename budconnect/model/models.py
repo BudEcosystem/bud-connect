@@ -41,6 +41,7 @@ class Provider(PSQLBase, TimestampMixin):
     provider_type: Mapped[str] = mapped_column(String, nullable=False, unique=True)
     icon: Mapped[str] = mapped_column(String, nullable=False)
     description: Mapped[str] = mapped_column(String, nullable=False)
+    credentials: Mapped[List[Dict[str, Any]]] = mapped_column(JSONB, nullable=False)
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="provider")
     supported_versions: Mapped[List["EngineVersion"]] = relationship(  # noqa: F821

@@ -536,6 +536,7 @@ class LiteLLMSeeder(BaseSeeder):
                         provider_type=provider,
                         icon=predefined_providers[provider]["icon"],
                         description=predefined_providers[provider]["description"],
+                        credentials=predefined_providers[provider]["credentials"],
                     )
                     logger.debug("Provider data: %s", provider_data)
 

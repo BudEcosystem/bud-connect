@@ -39,6 +39,7 @@ class ProviderCreate(BaseModel):
     provider_type: str
     icon: str
     description: str
+    credentials: List[Dict[str, Any]]
 
 
 class InputCost(BaseModel):
