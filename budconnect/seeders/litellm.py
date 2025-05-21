@@ -528,6 +528,26 @@ class LiteLLMSeeder(BaseSeeder):
 
                 # Read providers data
                 predefined_providers = read_json_file(LITELLM_PROVIDERS_PATH)
+                logger.debug("Predefined providers: %s", len(predefined_providers))
+
+                if version == "0.1.0":
+                    # NOTE: Upsert huggingface default provider
+                    hf_provider_type = "huggingface"
+                    hf_provider_data = ProviderCreate(
+                        name=predefined_providers[hf_provider_type]["name"],
+                        provider_type=hf_provider_type,
+                        icon=predefined_providers[hf_provider_type]["icon"],
+                        description=predefined_providers[hf_provider_type]["description"],
+                        credentials=predefined_providers[hf_provider_type]["credentials"],
+                    )
+
+                    # Upsert provider
+                    with ProviderCRUD() as hf_provider_crud:
+                        db_provider_id = hf_provider_crud.upsert(
+                            data=hf_provider_data.model_dump(), conflict_target=["provider_type"]
+                        )
+                        logger.debug("Upserted provider: %s", db_provider_id)
+                        hf_provider_crud.add_engine_version(db_provider_id, version_config.id)
 
                 # Prepare data for database insertion
                 for provider, supported_models in model_data.items():
@@ -538,7 +558,6 @@ class LiteLLMSeeder(BaseSeeder):
                         description=predefined_providers[provider]["description"],
                         credentials=predefined_providers[provider]["credentials"],
                     )
-                    logger.debug("Provider data: %s", provider_data)
 
                     # Upsert provider
                     with ProviderCRUD() as provider_crud:
@@ -551,7 +570,6 @@ class LiteLLMSeeder(BaseSeeder):
                     # Parse model info
                     for model in supported_models:
                         model_info_data = await litellm_parser.create_model_info(model, db_provider_id)
-                        logger.debug("Model info data: %s", model_info_data.model_dump())
 
                         # Upsert model info
                         with ModelInfoCRUD() as model_info_crud:
