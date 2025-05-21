@@ -123,6 +123,6 @@ class ModelService:
             engine_version=db_engine_version.version,
             items=compatible_providers.values(),
             total_items=total_providers,
-            page=offset,
+            page=(offset // limit) + 1,
             limit=limit,
         )
