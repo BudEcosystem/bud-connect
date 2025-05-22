@@ -14,23 +14,31 @@
 #  limitations under the License.
 #  -----------------------------------------------------------------------------
 
-"""Initialization module for the `commons` subpackage. Contains common utilities, configurations, constants, and helper functions that are shared across the project."""
+"""The exceptions used in the budconnect module."""
 
-from budmicroframe.shared.psql_service import PSQLBase as PSQLBase
 
-# Import specific models instead of using wildcard import to avoid F403 error
-from ..engine.models import (
-    Engine as Engine,
-)
-from ..engine.models import (
-    EngineCompatibility as EngineCompatibility,
-)
-from ..engine.models import (
-    EngineVersion as EngineVersion,
-)
-from ..model.models import (
-    ModelInfo as ModelInfo,
-)
-from ..model.models import (
-    Provider as Provider,
-)
+class BaseException(Exception):
+    """Base exception class for BudConnect."""
+
+    def __init__(self, message: str) -> None:
+        """Initialize the base exception.
+
+        Args:
+            message: Error message
+        """
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self) -> str:
+        """Return string representation of the exception.
+
+        Returns:
+            Formatted error message with exception class name
+        """
+        return f"{self.__class__.__name__}: {self.message}"
+
+
+class SeederException(BaseException):
+    """Exception raised for errors in the seeder."""
+
+    pass

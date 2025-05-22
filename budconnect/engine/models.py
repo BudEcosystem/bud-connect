@@ -8,6 +8,7 @@ from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from budconnect.engine.schemas import DeviceArchitecture
+from budconnect.model.models import engine_version_provider
 
 
 logger = logging.get_logger(__name__)
@@ -63,6 +64,12 @@ class EngineVersion(PSQLBase, TimestampMixin):
 
     engine = relationship("Engine", back_populates="versions")
     compatibilities = relationship("EngineCompatibility", back_populates="engine_version")
+    supported_providers: Mapped[List["Provider"]] = relationship(  # noqa: F821
+        "Provider",
+        secondary=engine_version_provider,
+        back_populates="supported_versions",
+        cascade="all, delete",
+    )
 
     def __repr__(self) -> str:
         """Return a string representation of the EngineVersion object.
