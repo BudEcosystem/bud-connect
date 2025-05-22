@@ -110,6 +110,8 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         Args:
             provider_id: The ID of the provider to add the engine version to.
             version_ids: The IDs of the engine versions to add to the provider.
+            session: The session to use for the query.
+            raise_on_error: Whether to raise an error if the operation fails.
         """
         _session = session or self.get_session()
         try:
@@ -267,6 +269,8 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
         Args:
             model_info_id: The ID of the model info to add the engine version to.
             engine_version_id: The IDs of the engine versions to add to the model info.
+            session: The session to use for the query.
+            raise_on_error: Whether to raise an error if the operation fails.
         """
         _session = session or self.get_session()
         try:
