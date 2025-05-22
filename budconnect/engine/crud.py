@@ -172,6 +172,14 @@ class EngineVersionCRUD(CRUDMixin[EngineVersion, None, None]):
 
         This method retrieves the latest engine version for a given engine. It first finds the engine by name, then queries
         for the latest version based on creation timestamp.
+
+        Args:
+            engine_id (UUID): The ID of the engine to get the latest version for.
+            session (Optional[Session], optional): SQLAlchemy session to use. If None, a new session will be created.
+            raise_on_error (bool, optional): Whether to raise an error if the latest engine version is not found. Defaults to True.
+
+        Returns:
+            Optional[EngineVersion]: The latest engine version object if found, None otherwise.
         """
         _session = session or self.get_session()
 
