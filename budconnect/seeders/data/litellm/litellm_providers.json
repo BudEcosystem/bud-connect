@@ -834,7 +834,7 @@
     "openai": {
         "name": "OpenAI",
         "description": "Offers advanced models for language, image generation, and audio conversion.",
-        "icon": "icons/providers/assembly_ai.png",
+        "icon": "icons/providers/openai.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -949,7 +949,7 @@
     "assemblyai": {
         "name": "AssemblyAI",
         "description": "AssemblyAI provides AI models via an API for speech-to-text, speaker diarization, sentiment analysis, summarization, and more.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/assembly_ai.png",
         "credentials": [
             {
                 "field": "api_key",
