@@ -19,7 +19,7 @@ The following sections expand on each step, accompanied by diagrams and usage ex
 
 The seeder is responsible for ingesting provider and model data. It runs whenever a new engine version is released or when additional providers and models are added. The seeder operates idempotently; running it multiple times with the same data does not create duplicates.
 
-```
+``` mermaid
 flowchart TD
     A[LiteLLM JSON files] --> B[Seeder process]
     B --> C{Parse providers and models}
@@ -39,7 +39,7 @@ BudConnect maintains two main tables for this feature:
 - `provider` – references the `engine_version` table and contains each provider's metadata.
 - `model_info` – models offered by a provider under a specific engine version.
 
-```
+``` mermaid
 classDiagram
     class EngineVersion {
         string name
@@ -78,7 +78,7 @@ Query parameters:
 
 The following sequence diagram illustrates how BudServe syncs with BudConnect:
 
-```
+``` mermaid
 sequenceDiagram
     participant BudServe
     participant BudConnect
