@@ -17,7 +17,7 @@
     "palm": {
         "name": "PaLM API",
         "description": "Google PaLM (Pathways Language Model) is a family of large language models developed by Google AI.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/palm_api.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -32,7 +32,7 @@
     "jina_ai": {
         "name": "Jina AI",
         "description": "Jina AI offers affordable, high-performance inference for multilingual embeddings, reranking, and multimodal AI, optimized for search applications.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/jina_ai.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -155,7 +155,7 @@
     "meta_llama": {
         "name": "Meta Llama",
         "description": "Provides access to Meta's family of large language models.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/meta_llama_3.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -451,7 +451,7 @@
     "nscale": {
         "name": "Nscale (EU Sovereign)",
         "description": "European-domiciled full-stack AI cloud platform for LLMs and image generation.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/nscale.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -621,7 +621,7 @@
     "ollama": {
         "name": "Ollama",
         "description": "Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 3, Mistral Small 3.1 and other large language models.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/ollama.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -705,7 +705,7 @@
     "snowflake": {
         "name": "Snowflake",
         "description": "The Snowflake Cortex LLM REST API lets you access the COMPLETE function via HTTP POST requests",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/snowflake.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -834,7 +834,7 @@
     "openai": {
         "name": "OpenAI",
         "description": "Offers advanced models for language, image generation, and audio conversion.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/assembly_ai.png",
         "credentials": [
             {
                 "field": "api_key",
@@ -1183,7 +1183,7 @@
     "xai": {
         "name": "xAI",
         "description": "xAI's inference provider allows access to their large language models, like Grok, for generating text and other AI outputs.",
-        "icon": "icons/providers/openai.png",
+        "icon": "icons/providers/x_ai.png",
         "credentials": [
             {
                 "field": "api_key",
