@@ -16,12 +16,11 @@
 
 """The main entry point for the application, initializing the FastAPI app and setting up the application's lifespan management, including configuration and secret syncs."""
 
-import asyncio
 import logging
 from contextlib import asynccontextmanager
 from typing import AsyncIterator
 
-from budmicroframe.main import configure_app, schedule_secrets_and_config_sync
+from budmicroframe.main import configure_app
 from budmicroframe.shared.dapr_workflow import DaprWorkflow
 from fastapi import FastAPI
 
@@ -50,11 +49,11 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     Yields:
         None: Yields control back to the context where the lifespan management is performed.
     """
-    task = asyncio.create_task(schedule_secrets_and_config_sync())
+    # task = asyncio.create_task(schedule_secrets_and_config_sync())
 
     for seeder_name, seeder in seeders.items():
         try:
-            await seeder().seed()
+            await seeder().seed()  # type: ignore[abstract]
             logger.info(f"Seeded {seeder_name} seeder successfully.")
         except SeederException as e:
             logger.error("Failed to seed %s. Error: %s", seeder_name, e.message)
@@ -63,14 +62,16 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
     yield
 
-    try:
-        task.cancel()
-    except asyncio.CancelledError:
-        logger.exception("Failed to cleanup config & store sync.")
+    # NOTE: Config and secrets sync task is currently disabled
+    # try:
+    #     task.cancel()
+    # except asyncio.CancelledError:
+    #     logger.exception("Failed to cleanup config & store sync.")
 
     DaprWorkflow().shutdown_workflow_runtime()
 
 
+# mypy: ignore-errors
 app = configure_app(app_settings, secrets_settings, lifespan=lifespan)
 
 app.include_router(engine_router)

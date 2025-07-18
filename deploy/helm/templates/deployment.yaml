@@ -22,7 +22,7 @@ spec:
       - name: "{{ .Values.name }}"
         image: {{ .Values.image }}
         imagePullPolicy: IfNotPresent
-        command: ["sh","-c","alembic upgrade head && uvicorn budconnect.main:app --host 0.0.0.0 --port {{ .Values.env.APP_PORT }}"]
+        command: ["sh","-c","alembic upgrade head && uvicorn budconnect.main:app --host 0.0.0.0 --port {{ .Values.env.APP_PORT }} --no-access-log"]
         ports:
         - containerPort: {{ .Values.env.APP_PORT }}
         envFrom:

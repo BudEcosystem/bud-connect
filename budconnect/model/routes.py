@@ -16,14 +16,14 @@
 
 """This module contains the routes for the model API."""
 
-from typing import Literal, Optional, Union
+from typing import Literal, Optional
 
 from budmicroframe.commons import logging
 from budmicroframe.commons.exceptions import ClientException
 from budmicroframe.commons.schemas import ErrorResponse
 from fastapi import APIRouter, Query, status
+from fastapi.responses import JSONResponse
 
-from .schemas import CompatibleModelsResponse
 from .services import ModelService
 
 
@@ -34,24 +34,25 @@ model_router = APIRouter(prefix="/model", tags=["Model"])
 
 @model_router.get("/get-compatible-models")
 async def get_compatible_models(
-    engine: Literal["litellm"],
+    engine: Literal["litellm", "tensorzero"],
     engine_version: Optional[str] = None,
     page: int = Query(1, ge=1),
     limit: int = Query(5, ge=0),
-) -> Union[CompatibleModelsResponse, ErrorResponse]:
+) -> JSONResponse:
     """Get the compatible models for a given engine version."""
     # Calculate offset
     offset = (page - 1) * limit
 
     try:
         response = ModelService.get_compatible_models(engine, offset, limit, engine_version)
+        return response.to_http_response()
     except ClientException as e:
         logger.error(f"Client exception: {e}")
-        response = ErrorResponse(message=e.message, code=e.status_code)
+        error_response = ErrorResponse(message=e.message, code=e.status_code)
+        return error_response.to_http_response()
     except Exception as e:
         logger.exception(f"Error fetching compatible models: {e}")
-        response = ErrorResponse(
+        error_response = ErrorResponse(
             message="Error fetching compatible models:", code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
-
-    return response.to_http_response()
+        return error_response.to_http_response()

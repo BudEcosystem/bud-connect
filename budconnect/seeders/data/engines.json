@@ -36,5 +36,16 @@
                 "compatibilities": []
             }
         ]
+    },
+    {
+        "name": "tensorzero",
+        "versions": [
+            {
+                "version": "0.1.0",
+                "device_architecture": "cpu",
+                "container_image": "budstudio/budproxy:0.4.0",
+                "compatibilities": []
+            }
+        ]
     }
 ]

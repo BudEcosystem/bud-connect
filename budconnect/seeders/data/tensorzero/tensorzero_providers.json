@@ -1,0 +1,433 @@
+{
+    
+    "together_ai": {
+        "name": "Together AI",
+        "description": "Offers Llama, Falcon, Alpaca, and other Chat and Code LLMs, along with language/instruction models.",
+        "icon": "icons/providers/together_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Together AI API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "vertex_ai-gemini-models": {
+        "name": "Vertex AI Gemini",
+        "description": "Gemini is a family of large language models developed by Google. It is a general-purpose model that can be used for a variety of tasks, including natural language understanding and generation, translation, and more.",
+        "icon": "icons/providers/vertexai.png",
+        "credentials": [
+            {
+                "field": "vertex_credentials",
+                "label": "Vertex AI Credentials",
+                "type": "textarea",
+                "description": "Your Vertex AI credentials (JSON format)",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "vertex_project",
+                "label": "Vertex Project",
+                "type": "text",
+                "description": "Your Vertex AI project ID (optional)",
+                "required": false,
+                "order": 2
+            },
+            {
+                "field": "vertex_location",
+                "label": "Vertex Location",
+                "type": "text",
+                "description": "The location for Vertex AI resources",
+                "required": true,
+                "order": 3
+            }
+        ]
+    },
+    "vertex_ai-anthropic_models": {
+        "name": "Vertex AI Anthropic",
+        "description": "Can be implemented for ethical and aligned conversational AI applications.",
+        "icon": "icons/providers/vertexai.png",
+        "credentials": [
+            {
+                "field": "vertex_credentials",
+                "label": "Vertex AI Credentials",
+                "type": "textarea",
+                "description": "Your Vertex AI credentials (JSON format)",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "vertex_project",
+                "label": "Vertex Project",
+                "type": "text",
+                "description": "Your Vertex AI project ID (optional)",
+                "required": false,
+                "order": 2
+            },
+            {
+                "field": "vertex_location",
+                "label": "Vertex Location",
+                "type": "text",
+                "description": "The location for Vertex AI resources",
+                "required": true,
+                "order": 3
+            }
+        ]
+    },
+    "gemini": {
+        "name": "Gemini - Google AI Studio",
+        "description": "Access Google's Gemini Pro, 1.5 Pro, and Pro Vision models for multimodal AI.",
+        "icon": "icons/providers/gemini_google_ai_studio.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Gemini API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "deepseek": {
+        "name": "Deepseek",
+        "description": "Advanced models like DeepSeek LLM, Coder, Math, VL for various AI-driven tasks, from coding to math reasoning and vision-language applications",
+        "icon": "icons/providers/deepseek.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Deepseek API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "mistral": {
+        "name": "Mistral AI API",
+        "description": "Provides embedding, coding, edge, math, image, and multimodal reasoning models.",
+        "icon": "icons/providers/mistral_ai_api.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Mistral API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "bedrock": {
+        "name": "AWS Bedrock",
+        "description": "Offers embedding, image, and natural language processing models.",
+        "icon": "icons/providers/aws_bedrock.png",
+        "credentials": [
+            {
+                "field": "aws_access_key_id",
+                "label": "AWS Access Key ID",
+                "type": "text",
+                "description": "Your AWS Access Key ID",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "aws_secret_access_key",
+                "label": "AWS Secret Access Key",
+                "type": "password",
+                "description": "Your AWS Secret Access Key",
+                "required": true,
+                "order": 2
+            },
+            {
+                "field": "aws_session_token",
+                "label": "AWS Session Token",
+                "type": "password",
+                "description": "Your AWS Session Token (optional)",
+                "required": false,
+                "order": 3
+            },
+            {
+                "field": "aws_region_name",
+                "label": "AWS Region Name",
+                "type": "text",
+                "description": "The AWS region name",
+                "required": true,
+                "order": 4
+            },
+            {
+                "field": "aws_session_name",
+                "label": "AWS Session Name",
+                "type": "text",
+                "description": "Your AWS Session Name (optional)",
+                "required": false,
+                "order": 5
+            },
+            {
+                "field": "aws_profile_name",
+                "label": "AWS Profile Name",
+                "type": "text",
+                "description": "Your AWS Profile Name (optional)",
+                "required": false,
+                "order": 6
+            },
+            {
+                "field": "aws_role_name",
+                "label": "AWS Role Name",
+                "type": "text",
+                "description": "Your AWS Role Name (optional)",
+                "required": false,
+                "order": 7
+            },
+            {
+                "field": "aws_web_identity_token",
+                "label": "AWS Web Identity Token",
+                "type": "password",
+                "description": "Your AWS Web Identity Token (optional)",
+                "required": false,
+                "order": 8
+            }
+        ]
+    },
+    "fireworks_ai-embedding-models": {
+        "name": "Fireworks",
+        "description": "The fastest and most efficient inference engine to build production-ready, compound AI systems.",
+        "icon": "icons/providers/fireworks_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Fireworks AI API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "azure": {
+        "name": "Azure OpenAI",
+        "description": "Provides access to OpenAI's GPT-4, Codex, and other models through Azure integration.",
+        "icon": "icons/providers/azure_ai_studio.png",
+        "credentials": [
+            {
+                "field": "api_base",
+                "label": "API Base URL",
+                "type": "url",
+                "description": "The base URL for Azure API",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "api_version",
+                "label": "API Version",
+                "type": "text",
+                "description": "Azure API version",
+                "required": true,
+                "order": 2
+            },
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Azure API key",
+                "required": true,
+                "order": 3
+            },
+            {
+                "field": "azure_ad_token",
+                "label": "Azure AD Token",
+                "type": "password",
+                "description": "Azure Active Directory token",
+                "required": false,
+                "order": 4
+            },
+            {
+                "field": "tenant_id",
+                "label": "Tenant ID",
+                "type": "text",
+                "description": "Your Azure tenant ID",
+                "required": false,
+                "order": 5,
+                "dependencies": [
+                    "client_id",
+                    "client_secret"
+                ]
+            },
+            {
+                "field": "client_id",
+                "label": "Client ID",
+                "type": "text",
+                "description": "Your Azure client ID",
+                "required": false,
+                "order": 6,
+                "dependencies": [
+                    "tenant_id",
+                    "client_secret"
+                ]
+            },
+            {
+                "field": "client_secret",
+                "label": "Client Secret",
+                "type": "password",
+                "description": "Your Azure client secret",
+                "required": false,
+                "order": 7,
+                "dependencies": [
+                    "tenant_id",
+                    "client_id"
+                ]
+            }
+        ]
+    },
+    "openai": {
+        "name": "OpenAI",
+        "description": "Offers advanced models for language, image generation, and audio conversion.",
+        "icon": "icons/providers/openai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your OpenAI API key",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "api_base",
+                "label": "API Base URL",
+                "type": "url",
+                "description": "Custom base URL for API requests (optional)",
+                "required": false,
+                "order": 2
+            },
+            {
+                "field": "organization",
+                "label": "Organization ID",
+                "type": "text",
+                "description": "Your OpenAI organization ID (optional)",
+                "required": false,
+                "order": 3
+            }
+        ]
+    },
+    "sagemaker": {
+        "name": "AWS Sagemaker",
+        "description": "Supports Jumpstart Huggingface embedding models and Meta's Llama series.",
+        "icon": "icons/providers/aws_sagemaker.png",
+        "credentials": [
+            {
+                "field": "aws_access_key_id",
+                "label": "AWS Access Key ID",
+                "type": "text",
+                "description": "Your AWS Access Key ID",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "aws_secret_access_key",
+                "label": "AWS Secret Access Key",
+                "type": "password",
+                "description": "Your AWS Secret Access Key",
+                "required": true,
+                "order": 2
+            },
+            {
+                "field": "aws_session_token",
+                "label": "AWS Session Token",
+                "type": "password",
+                "description": "Your AWS Session Token (optional)",
+                "required": false,
+                "order": 3
+            },
+            {
+                "field": "aws_region_name",
+                "label": "AWS Region Name",
+                "type": "text",
+                "description": "The AWS region name",
+                "required": true,
+                "order": 4
+            },
+            {
+                "field": "aws_session_name",
+                "label": "AWS Session Name",
+                "type": "text",
+                "description": "Your AWS Session Name (optional)",
+                "required": false,
+                "order": 5
+            },
+            {
+                "field": "aws_profile_name",
+                "label": "AWS Profile Name",
+                "type": "text",
+                "description": "Your AWS Profile Name (optional)",
+                "required": false,
+                "order": 6
+            },
+            {
+                "field": "aws_role_name",
+                "label": "AWS Role Name",
+                "type": "text",
+                "description": "Your AWS Role Name (optional)",
+                "required": false,
+                "order": 7
+            },
+            {
+                "field": "aws_web_identity_token",
+                "label": "AWS Web Identity Token",
+                "type": "password",
+                "description": "Your AWS Web Identity Token (optional)",
+                "required": false,
+                "order": 8
+            }
+        ]
+    },
+    "xai": {
+        "name": "xAI",
+        "description": "xAI's inference provider allows access to their large language models, like Grok, for generating text and other AI outputs.",
+        "icon": "icons/providers/x_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your xAI API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "anthropic": {
+        "name": "Anthropic",
+        "description": "Anthropic is an AI safety and research company that's working to build reliable, interpretable, and steerable AI systems.",
+        "icon": "icons/providers/anthropic.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Anthropic API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    },
+    "hyperbolicai": {
+        "name": "Hyperbolic AI",
+        "description": "Hyperbolic AI is a platform for building and deploying AI models.",
+        "icon": "icons/providers/hyperbolic_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Hyperbolic AI API key",
+                "required": true,
+                "order": 1
+            }
+        ]
+    }
+}
