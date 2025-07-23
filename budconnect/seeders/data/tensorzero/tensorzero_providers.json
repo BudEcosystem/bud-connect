@@ -295,22 +295,6 @@
                 "description": "Your OpenAI API key",
                 "required": true,
                 "order": 1
-            },
-            {
-                "field": "api_base",
-                "label": "API Base URL",
-                "type": "url",
-                "description": "Custom base URL for API requests (optional)",
-                "required": false,
-                "order": 2
-            },
-            {
-                "field": "organization",
-                "label": "Organization ID",
-                "type": "text",
-                "description": "Your OpenAI organization ID (optional)",
-                "required": false,
-                "order": 3
             }
         ]
     },

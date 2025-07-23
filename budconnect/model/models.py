@@ -1,9 +1,9 @@
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List
 from uuid import uuid4
 
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
-from sqlalchemy import Column, DateTime, Enum, ForeignKey, String
+from sqlalchemy import Column, DateTime, Enum, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.schema import Table
@@ -88,6 +88,57 @@ class ModelInfo(PSQLBase, TimestampMixin):
     endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
+    details: Mapped["ModelDetails"] = relationship(back_populates="model_info", uselist=False)
+
+
+class ModelDetails(PSQLBase, TimestampMixin):
+    """Stores enriched details about AI models extracted from documentation.
+
+    This class contains detailed information about models including descriptions,
+    use cases, evaluations, and other metadata extracted from model documentation.
+
+    Attributes:
+        id (UUID): Unique identifier for the model details.
+        model_info_id (UUID): Foreign key reference to the associated ModelInfo.
+        description (str): Comprehensive description of the model.
+        advantages (List[str]): List of model strengths and capabilities.
+        disadvantages (List[str]): List of model limitations and weaknesses.
+        use_cases (List[str]): List of practical applications for the model.
+        evaluations (List[Dict]): Model evaluation scores and benchmarks.
+        languages (List[str]): Supported languages.
+        tags (List[str]): Categorization tags for the model.
+        tasks (List[str]): Supported tasks and capabilities.
+        papers (List[Dict]): Related research papers and publications.
+        github_url (str): GitHub repository URL if available.
+        website_url (str): Model website URL if available.
+        logo_url (str): Model logo URL if available.
+        architecture (Dict): Technical architecture details.
+        model_tree (Dict): Information about model derivatives and relationships.
+        extraction_metadata (Dict): Metadata about when and how the data was extracted.
+        model_info (ModelInfo): Relationship to the associated ModelInfo.
+    """
+
+    __tablename__ = "model_details"
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
+    model_info_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("model_info.id"), nullable=False, unique=True)
+    description: Mapped[str] = mapped_column(Text, nullable=True)
+    advantages: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    disadvantages: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    use_cases: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    evaluations: Mapped[List[Dict[str, Any]]] = mapped_column(JSONB, nullable=True)
+    languages: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    tags: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    tasks: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
+    papers: Mapped[List[Dict[str, Any]]] = mapped_column(JSONB, nullable=True)
+    github_url: Mapped[str] = mapped_column(String, nullable=True)
+    website_url: Mapped[str] = mapped_column(String, nullable=True)
+    logo_url: Mapped[str] = mapped_column(String, nullable=True)
+    architecture: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    model_tree: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    extraction_metadata: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+
+    model_info: Mapped[ModelInfo] = relationship(back_populates="details")
 
 
 # Engine Version Provider Association
@@ -96,13 +147,13 @@ engine_version_provider = Table(
     PSQLBase.metadata,
     Column("engine_version_id", UUID, ForeignKey("engine_version.id"), primary_key=True),
     Column("provider_id", UUID, ForeignKey("provider.id"), primary_key=True),
-    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)),
+    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc)),
     Column(
         "updated_at",
         DateTime(timezone=True),
         nullable=False,
-        default=lambda: datetime.now(UTC),
-        onupdate=lambda: datetime.now(UTC),
+        default=lambda: datetime.now(timezone.utc),
+        onupdate=lambda: datetime.now(timezone.utc),
     ),
 )
 
@@ -112,12 +163,12 @@ engine_version_model_info = Table(
     PSQLBase.metadata,
     Column("engine_version_id", UUID, ForeignKey("engine_version.id"), primary_key=True),
     Column("model_info_id", UUID, ForeignKey("model_info.id"), primary_key=True),
-    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)),
+    Column("created_at", DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc)),
     Column(
         "updated_at",
         DateTime(timezone=True),
         nullable=False,
-        default=lambda: datetime.now(UTC),
-        onupdate=lambda: datetime.now(UTC),
+        default=lambda: datetime.now(timezone.utc),
+        onupdate=lambda: datetime.now(timezone.utc),
     ),
 )

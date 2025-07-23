@@ -56,3 +56,34 @@ async def get_compatible_models(
             message="Error fetching compatible models:", code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
         return error_response.to_http_response()
+
+
+@model_router.get("/models/{model_uri:path}/details")
+async def get_model_details(model_uri: str) -> JSONResponse:
+    """Get detailed information for a specific model by URI.
+
+    Args:
+        model_uri: The URI of the model to get details for.
+
+    Returns:
+        JSONResponse containing the model details or error message.
+    """
+    try:
+        response = ModelService.get_model_details(model_uri)
+        if response:
+            return JSONResponse(status_code=status.HTTP_200_OK, content=response.model_dump(mode="json"))
+        else:
+            error_response = ErrorResponse(
+                message=f"Model details not found for model URI: {model_uri}", code=status.HTTP_404_NOT_FOUND
+            )
+            return error_response.to_http_response()
+    except ClientException as e:
+        logger.error(f"Client exception: {e}")
+        error_response = ErrorResponse(message=e.message, code=e.status_code)
+        return error_response.to_http_response()
+    except Exception as e:
+        logger.exception(f"Error fetching model details: {e}")
+        error_response = ErrorResponse(
+            message="Error fetching model details", code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+        return error_response.to_http_response()

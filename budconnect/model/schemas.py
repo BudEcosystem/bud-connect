@@ -207,7 +207,7 @@ class ModelInfoCreate(BaseModel):
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
 
-    def model_dump(self, **kwargs):
+    def model_dump(self, **kwargs: Any) -> Dict[str, Any]:
         """Implement custom model_dump to convert nested Pydantic models to None."""
         # Get the base dump with all fields
         data = super().model_dump(**kwargs)
@@ -246,14 +246,14 @@ class ModelInfoResponse(BaseModel):
     uri: str
     modality: List[ModalityEnum]
     provider_id: UUID4
-    input_cost: Optional[dict] = None
-    output_cost: Optional[dict] = None
-    cache_cost: Optional[dict] = None
-    search_context_cost_per_query: Optional[dict] = None
-    tokens: Optional[dict] = None
-    rate_limits: Optional[dict] = None
-    media_limits: Optional[dict] = None
-    features: Optional[dict] = None
+    input_cost: Optional[Dict[str, Any]] = None
+    output_cost: Optional[Dict[str, Any]] = None
+    cache_cost: Optional[Dict[str, Any]] = None
+    search_context_cost_per_query: Optional[Dict[str, Any]] = None
+    tokens: Optional[Dict[str, Any]] = None
+    rate_limits: Optional[Dict[str, Any]] = None
+    media_limits: Optional[Dict[str, Any]] = None
+    features: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
 
@@ -275,3 +275,63 @@ class CompatibleModelsResponse(PaginatedResponse):
     engine_name: str
     engine_version: Optional[str] = None
     items: List[CompatibleProviders]
+
+
+class ModelEvaluation(BaseModel):
+    """Schema for model evaluation scores."""
+
+    name: str = Field(..., description="Name of the evaluation benchmark")
+    score: float = Field(..., description="Score achieved on the benchmark")
+
+
+class ModelPaper(BaseModel):
+    """Schema for model-related research papers."""
+
+    title: str = Field(..., description="Title of the paper")
+    authors: List[str] = Field(default_factory=list, description="List of authors")
+    url: Optional[str] = Field(None, description="URL to the paper")
+
+
+class ModelDetailsResponse(BaseModel):
+    """Schema for model details response with model info and provider."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    # ModelDetails fields
+    id: UUID4
+    model_info_id: UUID4
+    description: Optional[str] = None
+    advantages: Optional[List[str]] = None
+    disadvantages: Optional[List[str]] = None
+    use_cases: Optional[List[str]] = None
+    evaluations: Optional[List[ModelEvaluation]] = None
+    languages: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+    tasks: Optional[List[str]] = None
+    papers: Optional[List[ModelPaper]] = None
+    github_url: Optional[str] = None
+    website_url: Optional[str] = None
+    logo_url: Optional[str] = None
+    architecture: Optional[Dict[str, Any]] = None
+    model_tree: Optional[Dict[str, Any]] = None
+    extraction_metadata: Optional[Dict[str, Any]] = None
+    created_at: datetime
+    modified_at: datetime
+
+    # ModelInfo fields
+    uri: str
+    modality: Optional[List[ModalityEnum]] = None
+    input_cost: Optional[Dict[str, Any]] = None
+    output_cost: Optional[Dict[str, Any]] = None
+    cache_cost: Optional[Dict[str, Any]] = None
+    search_context_cost_per_query: Optional[Dict[str, Any]] = None
+    tokens: Optional[Dict[str, Any]] = None
+    rate_limits: Optional[Dict[str, Any]] = None
+    media_limits: Optional[Dict[str, Any]] = None
+    features: Optional[Dict[str, Any]] = None
+    endpoints: Optional[List[ModelEndpointEnum]] = None
+    deprecation_date: Optional[datetime] = None
+
+    # Provider fields
+    provider_name: str
+    provider_type: str

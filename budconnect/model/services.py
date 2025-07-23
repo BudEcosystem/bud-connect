@@ -22,8 +22,8 @@ from budmicroframe.commons import logging
 from fastapi import status
 
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
-from .crud import ProviderCRUD
-from .schemas import CompatibleModelsResponse, CompatibleProviders
+from .crud import ModelDetailsCRUD, ProviderCRUD
+from .schemas import CompatibleModelsResponse, CompatibleProviders, ModelDetailsResponse
 
 
 logger = logging.get_logger(__name__)
@@ -126,3 +126,19 @@ class ModelService:
             page=(offset // limit) + 1,
             limit=limit,
         )
+
+    @staticmethod
+    def get_model_details(model_uri: str) -> Optional[ModelDetailsResponse]:
+        """Get detailed information for a specific model by URI.
+
+        Args:
+            model_uri: The URI of the model to get details for.
+
+        Returns:
+            ModelDetailsResponse if found, None otherwise.
+        """
+        with ModelDetailsCRUD() as model_details_crud:
+            combined_data = model_details_crud.get_by_model_uri(model_uri)
+            if combined_data:
+                return ModelDetailsResponse(**combined_data)
+            return None

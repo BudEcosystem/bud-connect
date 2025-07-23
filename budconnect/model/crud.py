@@ -16,7 +16,7 @@
 
 """ModelInfo, Provider CRUD operations."""
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -26,7 +26,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from .models import ModelInfo, Provider, engine_version_model_info, engine_version_provider
+from .models import ModelDetails, ModelInfo, Provider, engine_version_model_info, engine_version_provider
 
 
 logger = logging.get_logger(__name__)
@@ -76,7 +76,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         _session = session or self.get_session()
         try:
             if isinstance(data, (type(DBCreateSchemaType), self.model, dict)):
-                obj: dict = data.copy() if isinstance(data, dict) else data.model_dump(exclude_unset=True)
+                obj: Dict[str, Any] = data.copy() if isinstance(data, dict) else data.model_dump(exclude_unset=True)
             else:
                 raise ValueError("Invalid data type for upsert")
 
@@ -89,12 +89,16 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
-            return result.first()[0]
+            row = result.first()
+            if row and hasattr(row[0], "id"):
+                return UUID(str(row[0].id))  # Ensure we return a UUID
+            raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()
             logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
             if raise_on_error:
                 raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+            return UUID("00000000-0000-0000-0000-000000000000")  # Return a null UUID on error
         finally:
             self.cleanup_session(_session if session is None else None)
 
@@ -134,7 +138,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
 
     def get_compatible_providers(
         self, version_id: UUID, offset: int, limit: int, session: Optional[Session] = None
-    ) -> List[Provider]:
+    ) -> Tuple[int, List[Provider]]:
         """Get the compatible providers for a given engine version.
 
         Args:
@@ -235,7 +239,7 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
         _session = session or self.get_session()
         try:
             if isinstance(data, (type(DBCreateSchemaType), self.model, dict)):
-                obj: dict = data.copy() if isinstance(data, dict) else data.model_dump(exclude_unset=True)
+                obj: Dict[str, Any] = data.copy() if isinstance(data, dict) else data.model_dump(exclude_unset=True)
             else:
                 raise ValueError("Invalid data type for upsert")
 
@@ -248,12 +252,16 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
-            return result.first()[0]
+            row = result.first()
+            if row and hasattr(row[0], "id"):
+                return UUID(str(row[0].id))  # Ensure we return a UUID
+            raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()
             logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
             if raise_on_error:
                 raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+            return UUID("00000000-0000-0000-0000-000000000000")  # Return a null UUID on error
         finally:
             self.cleanup_session(_session if session is None else None)
 
@@ -288,5 +296,93 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
             logger.exception("Failed to add engine versions to model info %s: %s", model_info_id, str(e))
             if raise_on_error:
                 raise ValueError(f"Failed to add engine versions to model info {model_info_id}") from e
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+
+class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
+    __model__ = ModelDetails
+
+    def __init__(self) -> None:
+        """Initialize the ModelDetailsCRUD class.
+
+        This constructor initializes the ModelDetailsCRUD class by calling the parent
+        CRUDMixin constructor with the ModelDetails model. The ModelDetailsCRUD class provides
+        database operations for the ModelDetails model.
+        """
+        super().__init__(self.__model__)
+
+    def get_by_model_uri(self, model_uri: str, session: Optional[Session] = None) -> Optional[Dict[str, Any]]:
+        """Get model details with model info and provider by model URI.
+
+        Args:
+            model_uri: The URI of the model to get details for.
+            session: The session to use for the query.
+
+        Returns:
+            A dictionary containing model details, model info, and provider if found, None otherwise.
+        """
+        _session = session or self.get_session()
+        try:
+            # Join with ModelInfo and Provider to get all data
+            result = (
+                _session.query(
+                    self.model,
+                    ModelInfo,
+                    Provider.name.label("provider_name"),
+                    Provider.provider_type.label("provider_type"),
+                )
+                .join(ModelInfo, self.model.model_info_id == ModelInfo.id)
+                .join(Provider, ModelInfo.provider_id == Provider.id)
+                .filter(ModelInfo.uri == model_uri)
+                .first()
+            )
+
+            if result:
+                model_details, model_info, provider_name, provider_type = result
+
+                # Combine all data into a single dictionary
+                combined_data = {
+                    # ModelDetails fields
+                    "id": model_details.id,
+                    "model_info_id": model_details.model_info_id,
+                    "description": model_details.description,
+                    "advantages": model_details.advantages,
+                    "disadvantages": model_details.disadvantages,
+                    "use_cases": model_details.use_cases,
+                    "evaluations": model_details.evaluations,
+                    "languages": model_details.languages,
+                    "tags": model_details.tags,
+                    "tasks": model_details.tasks,
+                    "papers": model_details.papers,
+                    "github_url": model_details.github_url,
+                    "website_url": model_details.website_url,
+                    "logo_url": model_details.logo_url,
+                    "architecture": model_details.architecture,
+                    "model_tree": model_details.model_tree,
+                    "extraction_metadata": model_details.extraction_metadata,
+                    "created_at": model_details.created_at,
+                    "modified_at": model_details.modified_at,
+                    # ModelInfo fields
+                    "uri": model_info.uri,
+                    "modality": model_info.modality,
+                    "input_cost": model_info.input_cost,
+                    "output_cost": model_info.output_cost,
+                    "cache_cost": model_info.cache_cost,
+                    "search_context_cost_per_query": model_info.search_context_cost_per_query,
+                    "tokens": model_info.tokens,
+                    "rate_limits": model_info.rate_limits,
+                    "media_limits": model_info.media_limits,
+                    "features": model_info.features,
+                    "endpoints": model_info.endpoints,
+                    "deprecation_date": model_info.deprecation_date,
+                    # Provider fields
+                    "provider_name": provider_name,
+                    "provider_type": provider_type,
+                }
+
+                return combined_data
+
+            return None
         finally:
             self.cleanup_session(_session if session is None else None)
