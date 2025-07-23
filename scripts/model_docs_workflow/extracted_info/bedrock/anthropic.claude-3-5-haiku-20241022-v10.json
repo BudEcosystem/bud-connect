@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Anthropic's Claude 3.5 Haiku is a text-only large language model developed by Anthropic and available on AWS Bedrock. It combines rapid response times with enhanced reasoning capabilities, featuring a 200,000-token context window and support for multiple languages including English, Spanish, and Japanese. Designed for high-volume applications requiring speed and cost-effectiveness, it excels in coding, data processing, and conversational AI tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Interactive chatbots and virtual assistants requiring fast responses",
+      "Real-time customer support and sales automation systems",
+      "Code completion, debugging, and technical documentation generation",
+      "Automated data extraction, labeling, and document processing",
+      "Content moderation and information retrieval with intelligent summarization",
+      "Enterprise automation for transaction processing and document analysis",
+      "Cross-industry applications in finance, healthcare, e-commerce, and education"
+    ],
+    "strengths": [
+      "Fastest model in the Claude 3.5 family with sub-second response times for most queries",
+      "Surpasses Claude 3 Opus on intelligence benchmarks including coding and reasoning tasks",
+      "200,000-token context window for handling long conversations and documents",
+      "Cost-optimized pricing with up to 90% savings via prompt caching and 50% savings with Batch API",
+      "Native AWS integration with IAM, CloudWatch, VPC support, and cross-region inference capabilities",
+      "Enhanced coding capabilities with substantial performance gains over previous versions",
+      "Supports enterprise security features including FedRAMP High and DoD IL4/5 compliance"
+    ],
+    "limitations": [
+      "Text-only model with no vision/image processing capabilities",
+      "Limited to 200,000-token context window per conversation",
+      "Regional availability constraints (US East/West regions primarily)",
+      "May require fine-tuning for highly specialized domain applications",
+      "Latency-optimized version only available in US East (Ohio) region",
+      "Subject to AWS Bedrock service quotas and rate limits"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "anthropic.claude-3-5-haiku-20241022-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:31:04.312094"
+}

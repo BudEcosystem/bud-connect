@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Llama 3.2 3B Instruct Turbo is a lightweight, efficient chat/instruct model developed by Meta and hosted on Together AI. With 3 billion parameters, it is optimized for real-time applications through FP8 quantization, offering a 128K token context window and high output speed (131.7 tokens/second). It supports multiple languages and multimodal capabilities, including image and audio processing, while prioritizing cost-effective deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time conversational AI (chatbots, virtual assistants)",
+      "Edge deployment in resource-constrained environments",
+      "Content generation (blog posts, social media, creative writing)",
+      "Code assistance and programming tasks",
+      "Educational tools (tutoring, learning applications)",
+      "Customer support automation",
+      "Gaming NPC dialogue and interactive storytelling",
+      "IoT voice assistants and smart home integration"
+    ],
+    "strengths": [
+      "High output speed of 131.7 tokens/second for real-time applications",
+      "FP8 quantization reduces memory usage by 50% while maintaining performance",
+      "Large 128K token context window for handling extended inputs",
+      "Supports multimodal inputs (text, images, audio) for diverse use cases",
+      "Cost-efficient deployment with serverless and batch processing options",
+      "OpenAI-compatible API for seamless integration",
+      "MMLU benchmark score of 63.4% for strong general knowledge"
+    ],
+    "limitations": [
+      "3B parameter size may limit complex reasoning compared to larger models",
+      "128K context window insufficient for extremely long documents",
+      "FP8 quantization may introduce minor quality trade-offs for speed",
+      "Requires fine-tuning for domain-specific applications",
+      "Multimodal capabilities (image/audio) not quantitatively benchmarked"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 63.4
+    }
+  ],
+  "model_name": "meta-llama/Llama-3.2-3B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:11:29.612531"
+}

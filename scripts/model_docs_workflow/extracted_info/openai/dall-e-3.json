@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "DALL-E 3 is OpenAI's advanced image generation model with improved understanding of nuance and detail. It supports multiple aspect ratios, adjustable quality settings, and enhanced text rendering within images. The model generates images via text prompts and offers 'vivid' or 'natural' style options, with higher resolution outputs available in HD quality.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional artwork and illustrations",
+      "Marketing and advertising campaigns",
+      "Concept art and design mockups",
+      "Educational materials requiring high detail",
+      "Social media content creation",
+      "Book and magazine illustrations",
+      "Product visualization",
+      "Architectural renders"
+    ],
+    "strengths": [
+      "Enhanced prompt understanding automatically creates detailed prompts for better results",
+      "Native support for multiple aspect ratios (1024\u00d71024, 1024\u00d71792, 1792\u00d71024) and larger sizes",
+      "Adjustable quality settings (standard/hd) for different use cases",
+      "Style control with 'vivid' (artistic) or 'natural' (realistic) options",
+      "Improved text rendering for readable text within generated images",
+      "Enhanced safety measures and content filtering"
+    ],
+    "limitations": [
+      "Limited to single-image generation (n=1) per request",
+      "No support for edit/variations endpoints (DALL-E 2 only)",
+      "Generated image URLs expire after one hour",
+      "Higher latency for HD quality generation",
+      "More expensive than DALL-E 2 (HD is 2x standard cost)",
+      "No backward compatibility for edit features from DALL-E 2"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "dall-e-3",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:17:05.812380"
+}

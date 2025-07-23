@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "GPT-4 Turbo with Vision (GPT-4-turbo-vision-preview) is a large multimodal model developed by Azure OpenAI that combines advanced natural language processing with computer vision capabilities. It supports text and image inputs (up to 10 images per request) with a 128,000-token context window and 4,096-token output limit. The model integrates Azure AI Vision services for OCR, object detection, and video processing, while incorporating enterprise security features like privacy protection and content filtering.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis (forms, invoices, reports with visual elements)",
+      "Content moderation and compliance checking of visual content",
+      "E-commerce product image analysis and description generation",
+      "Medical imaging support and documentation",
+      "Visual learning material analysis and explanation",
+      "Security and monitoring applications with image-based analysis",
+      "Enterprise knowledge management with visual content integration"
+    ],
+    "strengths": [
+      "True multimodal processing of text and images in a single context window",
+      "Advanced vision capabilities including object recognition, scene analysis, and OCR via Azure AI integration",
+      "128,000-token context window for complex multimodal tasks",
+      "Support for high/low detail image processing with configurable cost-quality balance",
+      "Enterprise-grade security features including automatic face blurring and content filtering",
+      "Regional deployment options in compliance-focused locations (Switzerland, Sweden, US, Australia)",
+      "Integration with Azure AI services for document processing, video analysis, and multimodal search"
+    ],
+    "limitations": [
+      "Currently in preview with potential stability issues and limited regional availability",
+      "Function calling and JSON mode not supported with vision inputs",
+      "Maximum 10-image limit per request",
+      "Higher processing costs for high-detail image analysis",
+      "Automatic face blurring may hinder applications requiring facial recognition",
+      "OCR integration required for optimal text-heavy image analysis",
+      "Not recommended for production deployments during preview period"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-turbo-vision-preview",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:48:10.489420"
+}

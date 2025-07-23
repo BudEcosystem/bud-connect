@@ -1,0 +1,47 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash 001 is Google's next-generation multimodal AI model designed for the agentic era, offering a 1,048,576-token context window, native tool use, and advanced multimodal capabilities. It maintains quality on par with larger models while delivering 2x faster performance than Gemini 1.5 Pro. The model supports text, images, audio, and video inputs, with planned multimodal output features for early-access partners.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time conversational AI and customer service chatbots",
+      "Multimodal content analysis and document intelligence",
+      "Code generation, debugging, and execution",
+      "Video/audio understanding and transcription",
+      "Large-scale document processing with 1M token context",
+      "Complex reasoning tasks requiring multi-step planning",
+      "Interactive applications using Multimodal Live API"
+    ],
+    "strengths": [
+      "1M token context window for processing large inputs like codebases and lengthy documents",
+      "2x faster than Gemini 1.5 Pro with 0.29s average latency for low-latency applications",
+      "Native multimodal understanding of text, images, audio, and video with cross-modal reasoning",
+      "Built-in tool use, code execution, and function calling capabilities for dynamic task automation",
+      "Simplified pricing model with cost optimization for mixed-context workloads",
+      "Enhanced math reasoning (73.3% on AIME2024) and science understanding (74.2% on GPQA Diamond)",
+      "Supports structured outputs, caching, and batch processing for enterprise scalability"
+    ],
+    "limitations": [
+      "Currently limited to text-only output (multimodal output in early access)",
+      "Maximum image size restriction (7 MB) and 3,000 image limit per prompt",
+      "Video input limited to ~45 minutes with audio and ~1 hour without audio",
+      "Experimental features (e.g., 'thinking' capability) may have stability issues",
+      "Requires careful prompt engineering for optimal performance",
+      "Rate limits apply based on tier and platform"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME2024 (Math)",
+      "score": 73.3
+    },
+    {
+      "name": "GPQA Diamond (Science)",
+      "score": 74.2
+    }
+  ],
+  "model_name": "gemini-2.0-flash-001",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:26:37.802085"
+}

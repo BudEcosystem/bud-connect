@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-4 Turbo Preview is a next-generation language model developed by OpenAI, offering a 128,000-token context window (equivalent to 300+ pages of text) and knowledge updated through April 2023. It provides cost reductions of 3x for input tokens and 2x for output tokens compared to GPT-4, with vision capabilities available via a separate model variant (`gpt-4-vision-preview`).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and summarization of long texts",
+      "Long-form content generation and creative writing",
+      "Code review and generation for large codebases",
+      "Research and academic applications requiring multi-document analysis",
+      "Business intelligence and data analysis with extensive context",
+      "Applications needing knowledge up to April 2023"
+    ],
+    "strengths": [
+      "Supports 128,000-token context window for processing long documents and maintaining extensive conversation history",
+      "3x cheaper for input tokens and 2x cheaper for output tokens compared to GPT-4",
+      "Knowledge cutoff updated to April 2023, more recent than the original GPT-4",
+      "Advanced capabilities in natural language understanding, code generation, and multilingual support",
+      "Vision capabilities available through a dedicated model variant for image-text analysis"
+    ],
+    "limitations": [
+      "Currently in preview phase with potential inconsistencies compared to stable releases",
+      "Vision features require a separate model variant (`gpt-4-vision-preview`)",
+      "Token costs can accumulate with heavy usage despite reduced pricing",
+      "Large context window may not be fully utilized in all applications",
+      "Performance may vary depending on task complexity and prompt engineering"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-turbo-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:23:35.525572"
+}

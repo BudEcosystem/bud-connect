@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Ministral 3B 2410 is a 3-billion parameter edge-optimized model developed by Mistral AI in October 2024. It features a 128,000 token context window and is part of the 'Les Ministraux' family, designed for resource-constrained environments. The model includes a 0.43x internal temperature scaling multiplier and supports function calling, fine-tuning, and real-time edge deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "IoT sensor data processing and real-time analytics",
+      "Autonomous robotics and industrial automation",
+      "On-device mobile AI assistants",
+      "Fraud detection and transaction monitoring",
+      "Healthcare device intelligence and predictive maintenance",
+      "Custom domain fine-tuning for sentiment analysis, content moderation, and anomaly detection"
+    ],
+    "strengths": [
+      "Outperforms Mistral 7B, Gemma 2 2B, and Llama 3.2 3B despite 57% fewer parameters",
+      "128k token context window unprecedented for edge models",
+      "Edge-first design with minimal memory/compute requirements and fast inference",
+      "Supports function calling, fine-tuning, and specialized task adaptation",
+      "Internal temperature scaling (0.43x multiplier) for controlled output variability"
+    ],
+    "limitations": [
+      "3B parameter size limits complex reasoning capabilities",
+      "Requires specific hardware (6-8GB RAM, modern CPU/GPU) for edge deployment",
+      "Temperature scaling requires manual adjustment (0.43x multiplier)",
+      "Context window management needed for optimal efficiency"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "ministral-3b-2410",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:50:44.961353"
+}

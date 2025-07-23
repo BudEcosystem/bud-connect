@@ -1,0 +1,65 @@
+{
+  "model_info": {
+    "description": "thenlper/gte-large is a BERT-based text embedding model developed by Alibaba DAMO Academy, optimized for English text with a 512-token context window and 1024-dimensional embeddings. It employs multi-stage contrastive learning and achieves an average score of 63.13 on the MTEB benchmark, excelling in semantic similarity, reranking, and information retrieval tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise search engines and semantic search systems",
+      "Legal/technical document analysis and retrieval",
+      "Advanced question-answering systems with knowledge bases",
+      "Content recommendation engines requiring semantic understanding",
+      "Research document analysis and academic literature search"
+    ],
+    "strengths": [
+      "Delivers state-of-the-art performance in semantic textual similarity (STS score: 83.35) and pair classification (85.00) tasks",
+      "Outperforms larger models in efficiency while maintaining high accuracy across domains",
+      "Supports multi-domain applications without requiring fine-tuning",
+      "Strong reranking capabilities (59.13) for search result optimization",
+      "Optimized for enterprise-scale information retrieval with robust handling of complex semantic relationships"
+    ],
+    "limitations": [
+      "Limited to English text processing with automatic truncation of inputs exceeding 512 tokens",
+      "Higher computational and memory requirements compared to smaller models (1024-dimensional embeddings)",
+      "Inherent BERT architecture constraint restricts context length to 512 tokens",
+      "May require specialized vector storage solutions for 1024-dimensional embeddings"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB Average",
+      "score": 63.13
+    },
+    {
+      "name": "Clustering",
+      "score": 46.84
+    },
+    {
+      "name": "Pair Classification",
+      "score": 85.0
+    },
+    {
+      "name": "Reranking",
+      "score": 59.13
+    },
+    {
+      "name": "Retrieval",
+      "score": 52.22
+    },
+    {
+      "name": "STS (Semantic Textual Similarity)",
+      "score": 83.35
+    },
+    {
+      "name": "Summarization",
+      "score": 31.66
+    },
+    {
+      "name": "Classification",
+      "score": 73.33
+    }
+  ],
+  "model_name": "thenlper/gte-large",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:08:59.653713"
+}

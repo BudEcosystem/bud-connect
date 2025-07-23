@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Grok-3 Mini Fast Latest is a speed-optimized, cost-efficient reasoning model developed by xAI, designed for STEM and logical tasks. It features a 131,072-token context window, sub-second latency, and automatic updates to incorporate the latest improvements. The model maintains API compatibility while prioritizing STEM excellence and infrastructure optimizations.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Cutting-edge STEM education and tutoring",
+      "Modern development tools and algorithm assistance",
+      "Research applications requiring advanced statistical analysis",
+      "Innovation projects and R&D initiatives",
+      "Proof-of-concept development with experimental capabilities"
+    ],
+    "strengths": [
+      "Automatic updates ensure access to the latest performance improvements and features without manual intervention",
+      "Sub-second response latency with moderate cost for efficient STEM and logical reasoning tasks",
+      "Maintains API compatibility across updates for seamless integration",
+      "Large 131,072-token context window for handling complex inputs",
+      "Specialized STEM capabilities with experimental domain expansions",
+      "Matches or exceeds Mini Fast Beta performance with regular enhancements"
+    ],
+    "limitations": [
+      "Automatic updates may introduce unpredictable changes requiring testing",
+      "Pricing may adjust with major releases despite current stability",
+      "Less suitable for environments requiring strict compliance or change-averse workflows",
+      "Documentation delays possible due to rapid feature additions",
+      "Requires robust testing infrastructure to handle update-driven changes"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-3-mini-fast-latest",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:54:53.106653"
+}

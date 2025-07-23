@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "GPT-4.1 is a flagship large language model developed by OpenAI, introduced in April 2025 as a major upgrade to the GPT-4o series. It features a 1 million token context window (up from 128,000 tokens), enhanced coding capabilities, and improved long-context understanding. Trained on data up to June 2024, it excels in web development, instruction following, and complex coding tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex coding projects requiring precise instruction following",
+      "Web development and full-stack application development",
+      "Long-document analysis (up to 1M tokens)",
+      "Tasks requiring extensive context processing",
+      "Applications needing GPT-4o capabilities with better performance and lower cost"
+    ],
+    "strengths": [
+      "21.4% improvement over GPT-4o on SWE-bench Verified and 26.6% over GPT-4.5",
+      "38.3% score on MultiChallenge benchmark, a 10.5% increase over GPT-4o",
+      "72.0% performance on Video-MME long, no subtitles category (6.7% improvement over GPT-4o)",
+      "8x larger context window (1M tokens) with reliable attention across full length",
+      "26% lower cost than GPT-4o for median queries and 83% cost reduction in some cases",
+      "Nearly half the latency of GPT-4o while maintaining or exceeding its intelligence"
+    ],
+    "limitations": [
+      "API-only access with no direct fine-tuning available",
+      "Image processing converts images to tokens, consuming token limits",
+      "Not recommended for simple classification tasks (GPT-4.1-nano is more cost-effective)",
+      "For complex reasoning tasks, o3 models may be more suitable"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 21.4
+    },
+    {
+      "name": "MultiChallenge",
+      "score": 38.3
+    },
+    {
+      "name": "Video-MME",
+      "score": 72.0
+    }
+  ],
+  "model_name": "gpt-4.1",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T12:54:38.151405"
+}

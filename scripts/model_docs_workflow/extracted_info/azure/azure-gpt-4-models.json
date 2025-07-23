@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI's GPT-4 family includes advanced language models with superior reasoning, creativity, and multimodal capabilities. Models range from text-only variants like gpt-4 (8,192 tokens) to multimodal versions like gpt-4o (128,000 tokens) supporting text, images, and audio. Specialized models include vision-enabled, audio-capable, and real-time conversation variants.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex reasoning and analysis tasks with gpt-4 or gpt-4-turbo",
+      "Long document analysis and extended conversations with gpt-4-32k",
+      "Image analysis and visual Q&A with vision-enabled models",
+      "Real-time voice assistants and audio applications with gpt-4o-realtime-preview",
+      "High-volume applications requiring cost efficiency with gpt-4o-mini",
+      "Multimodal tasks combining text, images, and audio with gpt-4o"
+    ],
+    "strengths": [
+      "Superior reasoning and complex problem-solving capabilities across all models",
+      "Extended context windows up to 128,000 tokens for handling long documents and conversations",
+      "Multimodal support for text, images, and audio in select models (e.g., gpt-4o)",
+      "Cost-effective options like gpt-4o-mini for high-volume applications",
+      "Real-time audio processing capabilities in gpt-4o-realtime-preview",
+      "Enterprise-grade security features including customer-managed keys and SOC 2 compliance",
+      "Flexible deployment options with auto-update and pinned version management"
+    ],
+    "limitations": [
+      "Higher costs for full-featured models like gpt-4 compared to gpt-4o-mini",
+      "Limited regional availability for specialized models (e.g., audio and vision variants)",
+      "Preview status for audio and real-time models with potential stability limitations",
+      "Complex deployment requirements for multimodal models requiring additional infrastructure",
+      "Higher computational resource requirements for models with extended context windows"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-gpt-4-models",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:37:47.993735"
+}

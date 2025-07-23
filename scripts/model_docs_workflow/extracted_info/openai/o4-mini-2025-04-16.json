@@ -1,0 +1,62 @@
+{
+  "model_info": {
+    "description": "OpenAI o4-mini, released on April 16, 2025, is a compact model optimized for fast, cost-efficient reasoning with strong performance in math, coding, and visual tasks. It replaces o3-mini, offering native multimodal input (text and images), tool compatibility (web browsing, Python execution, image analysis), and a 200,000-token context window. Available to all ChatGPT users, including free tier, it provides a 2.3x cost reduction over GPT-4o and outperforms o3-mini across benchmarks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Math tutoring with visual problem-solving and diagram analysis",
+      "Software development tasks including code generation, review, and debugging",
+      "Scientific research assistance with data analysis and technical documentation",
+      "Business applications like financial modeling with chart interpretation",
+      "Educational test preparation with multi-subject support and visual reasoning"
+    ],
+    "strengths": [
+      "Achieves 92.7% on AIME 2025 (math) without tools and 99.5% with Python interpreter, outperforming o3 and o3-mini",
+      "Supports native multimodal input (text + images) for visual reasoning and diagram analysis",
+      "Costs 2.3x less than GPT-4o and an order of magnitude cheaper than o3, with API caching and batching for efficiency",
+      "Available to all ChatGPT users (free tier) with paid variant (o4-mini-high) for enhanced complex task performance",
+      "Excels in coding (Codeforces ELO 2719) and scientific reasoning (81.4% on GPQA Diamond PhD-level questions)"
+    ],
+    "limitations": [
+      "Less capable than o3 on complex reasoning tasks and may struggle with extremely difficult problems",
+      "Knowledge cutoff in October 2023 limits real-time data access",
+      "Token limits (200k input, 100k output) may constrain very long tasks",
+      "Rate limits apply based on user tier, with paid tiers required for o4-mini-high variant",
+      "Less general-purpose than GPT-4o and less versatile for non-structured problems"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025 (no tools)",
+      "score": 92.7
+    },
+    {
+      "name": "AIME 2025 (with Python)",
+      "score": 99.5
+    },
+    {
+      "name": "Codeforces ELO (with terminal)",
+      "score": 2719
+    },
+    {
+      "name": "SWE-Bench Verified",
+      "score": 68.1
+    },
+    {
+      "name": "GPQA Diamond",
+      "score": 81.4
+    },
+    {
+      "name": "Aider Polyglot (whole)",
+      "score": 68.9
+    },
+    {
+      "name": "Aider Polyglot (diff)",
+      "score": 58.2
+    }
+  ],
+  "model_name": "o4-mini-2025-04-16",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:48:03.174090"
+}

@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Together AI is a platform offering access to over 200 open-source models, including Meta Llama, Qwen, DeepSeek, and Mistral series. It provides serverless inference, OpenAI-compatible APIs, and transparent token-based pricing. The platform supports diverse use cases like general chat, code generation, vision tasks, and embeddings, with models optimized for performance and cost efficiency.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "General-purpose conversational AI (Llama 3.3-70B Turbo)",
+      "Code generation and debugging (Qwen2.5-Coder-32B)",
+      "Cost-effective text generation (Llama 3.1-8B Turbo)",
+      "Complex reasoning tasks (DeepSeek-V3)",
+      "Multilingual content processing (Mixtral-8x7B)",
+      "Image understanding and multimodal tasks (Llama 3.2-11B Vision)",
+      "Embedding generation for RAG systems (BAAI/bge models)"
+    ],
+    "strengths": [
+      "Offers 200+ open-source models for varied use cases (chat, code, vision, embeddings)",
+      "Serverless inference with automatic scaling and OpenAI-compatible API for easy migration",
+      "Transparent token-based pricing with batch processing discounts (up to 50%)",
+      "Supports long context lengths (up to 131K tokens) and FP8 quantization for speed",
+      "Provides multilingual models (100+ languages) and MoE architectures for efficiency",
+      "Includes dedicated endpoints, fine-tuning services, and enterprise-grade security"
+    ],
+    "limitations": [
+      "Model-specific limitations not detailed in the overview (e.g., exact parameter counts for most models)",
+      "Pricing tiers may increase costs for large-scale deployments (e.g., 80.1B-110B models at $1.80/M tokens)",
+      "Documentation references external sources for detailed model specs and evaluations"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "README",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:16:48.412046"
+}

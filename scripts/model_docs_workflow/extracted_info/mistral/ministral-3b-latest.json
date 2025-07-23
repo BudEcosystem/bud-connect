@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Ministral 3B is Mistral AI's edge-optimized large language model with 3 billion parameters and a 128,000-token context window. Designed for resource-constrained environments, it delivers state-of-the-art performance in the sub-10B parameter category with specialized features like function calling and fine-tuning capabilities for tasks such as moderation and fraud detection.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "IoT devices and sensor data processing",
+      "Mobile applications with offline functionality",
+      "Privacy-sensitive local processing",
+      "Real-time systems requiring low-latency responses",
+      "Content moderation and fraud detection",
+      "Custom classification tasks in edge environments"
+    ],
+    "strengths": [
+      "Outperforms Mistral 7B on most benchmarks despite being less than half the size",
+      "Superior performance to competing 3B models (Gemma 2 2B, Llama 3.2 3B)",
+      "128,000-token context window for extended text processing",
+      "Full support for function calling and tool use",
+      "Optimized for edge deployment with minimal memory footprint and low power consumption",
+      "Fine-tuning ready for specialized tasks like sentiment analysis and fraud detection"
+    ],
+    "limitations": [
+      "3B parameter count limits complexity compared to larger models",
+      "May require fine-tuning for domain-specific applications",
+      "Advanced reasoning tasks better suited for larger models",
+      "Requires appropriate edge hardware for deployment"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "ministral-3b-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:51:30.192567"
+}

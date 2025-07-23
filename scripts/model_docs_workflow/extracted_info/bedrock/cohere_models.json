@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Cohere models on AWS Bedrock provide enterprise-grade access to advanced language models, embeddings, and reranking capabilities. These models excel in search, retrieval-augmented generation (RAG), and multilingual applications, supporting 10 key business languages. Text generation models like Command R+ and Command R offer large context windows (128,000 tokens), while embedding models (e.g., Cohere Embed 3) support multimodal inputs (text and images). The reranking model (Cohere Rerank 3.5) enhances search relevance for RAG systems.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Retrieval-augmented generation (RAG) with multi-step tool use and reranking for enterprise search",
+      "Multilingual content generation and customer support in 100+ languages",
+      "Semantic search and recommendation systems using multimodal embeddings",
+      "Automated business report generation and technical documentation",
+      "Cross-lingual analysis and global knowledge base management",
+      "Workflow automation with function calling in Command R+ for complex business processes"
+    ],
+    "strengths": [
+      "Large context windows (128,000 tokens) for handling complex, long-form tasks in Command R+ and Command R",
+      "Multimodal support in Cohere Embed 3 for semantic search across text and images",
+      "Enterprise-grade security and compliance with AWS certifications (SOC, HIPAA, GDPR, etc.)",
+      "Optimized for multilingual applications with support for 100+ languages in Cohere Embed Multilingual",
+      "Reranking capabilities (Cohere Rerank 3.5) improve search relevance in RAG systems",
+      "Flexible pricing options (on-demand and provisioned throughput) for cost management"
+    ],
+    "limitations": [
+      "Regional availability varies for models like Rerank 3.5 (limited to specific AWS regions)",
+      "Feature parity with direct Cohere APIs may lag due to AWS integration timelines",
+      "Limited customization to AWS-supported configurations compared to direct provider access",
+      "Command Light's smaller context window (4,096 tokens) restricts handling of complex tasks",
+      "Rerank 3.5 pricing scales per query, which may increase costs for high-volume applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere_models",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:41:42.301297"
+}

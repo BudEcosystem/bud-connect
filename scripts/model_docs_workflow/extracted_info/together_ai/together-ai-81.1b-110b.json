@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Together AI's 81.1B-110B parameter models are enterprise-grade large language models designed for mission-critical applications requiring advanced reasoning, domain expertise, and nuanced understanding. These models support 64K-256K token context windows, multilingual proficiency in 60+ languages, and specialized variants for chat, language, code, and domain-specific tasks. Built with state-of-the-art transformer architectures and RLHF training, they prioritize security (SOC 2 Type II compliance) and performance (NVIDIA Blackwell/Hopper hardware).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "C-suite strategic planning and market analysis",
+      "Scientific research and grant proposal writing",
+      "Legal contract review and compliance analysis",
+      "Financial modeling and investment strategy development",
+      "Drug discovery and clinical trial analysis",
+      "Technical system architecture and security threat modeling",
+      "Board-level reporting and investor relations documentation"
+    ],
+    "strengths": [
+      "Expert-level multi-domain reasoning with PhD-level understanding in specialized fields",
+      "Advanced code generation across 25+ programming languages with master-level proficiency",
+      "Native-level multilingual support for 60+ languages with long-form coherence (50K+ words)",
+      "Ultra-low latency streaming (<100ms first token) and high throughput (20-40 tokens/second)",
+      "Enterprise-grade security features including SOC 2 Type II compliance and HIPAA/GDPR adherence",
+      "Specialized capabilities for strategic business analysis, scientific computing, and legal/financial tasks",
+      "40-60% improvement over 41.1B-80B models on complex reasoning benchmarks"
+    ],
+    "limitations": [
+      "High cost ($1.80 per 1M tokens) with no free tier or low-cost alternatives",
+      "Requires dedicated infrastructure (NVIDIA Blackwell/Hopper) for optimal performance",
+      "Complex deployment needs including enterprise-grade networking (NVLink/InfiniBand)",
+      "Limited accessibility for non-enterprise users due to premium pricing structure",
+      "Batch processing requires minimum volume commitments for cost optimization"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-81.1b-110b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:25:28.268141"
+}

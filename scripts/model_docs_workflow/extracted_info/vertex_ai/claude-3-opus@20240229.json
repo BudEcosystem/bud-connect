@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Claude 3 Opus@20240229 is the most intelligent model in Anthropic's Claude 3 family, optimized for complex tasks with a 200,000-token context window and multimodal capabilities (text and image processing). It supports advanced reasoning, function calling, and streaming responses, and is available on Google Cloud Vertex AI with enterprise-grade security and compliance features.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Financial market analysis and risk modeling",
+      "Scientific research and drug discovery",
+      "Complex codebase modernization and optimization",
+      "Business strategy development and competitive analysis",
+      "Medical imaging preliminary analysis",
+      "Technical diagram and chart interpretation",
+      "Content moderation with image analysis"
+    ],
+    "strengths": [
+      "200,000-token context window for handling extremely long and complex inputs",
+      "Advanced vision processing with text output generation for image analysis",
+      "Supports function calling, structured outputs, and multi-turn conversations",
+      "Optimized for graduate-level reasoning (GPQA) and mathematical problem-solving (GSM8K)",
+      "Enterprise-grade security with end-to-end encryption and compliance certifications",
+      "Seamless integration with Google Cloud services like BigQuery and Vertex AI"
+    ],
+    "limitations": [
+      "Highest pricing tier in the Claude 3 family ($15/MTok input, $75/MTok output)",
+      "Limited regional availability (primarily us-east5)",
+      "4,096-token output limit per response",
+      "Longer processing times due to model complexity",
+      "May be superseded by newer versions like Claude Opus 4"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-opus@20240229",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:40:35.316704"
+}

@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Text G1 - Lite is a lightweight, cost-effective large language model developed by Amazon for speed and efficiency. It features a 4,000 token context window and transformer-based architecture, optimized for fast response times and low cost per token. The model is ideal for applications prioritizing quick processing and cost efficiency over maximum context length or advanced reasoning capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content summarization for articles, documents, and reports",
+      "Marketing copywriting and product description generation",
+      "Basic code generation and programming assistance",
+      "Data formatting and table creation",
+      "Customer support response generation",
+      "E-commerce product content creation",
+      "Internal communications and documentation",
+      "Batch processing of high-volume text generation requests"
+    ],
+    "strengths": [
+      "Fastest response times in the Titan model family with optimized speed and efficiency",
+      "Lowest cost per token in the Titan text model lineup (input: $0.0003/1K tokens, output: $0.0004/1K tokens)",
+      "Supports customizable parameters like temperature, topP, and maxTokenCount for fine-grained control",
+      "Efficient 4K context window reduces processing costs while maintaining high throughput",
+      "Enterprise features including batch processing, streaming support, and model customization (preview)",
+      "Strong performance in text generation, summarization, code generation, and data formatting tasks"
+    ],
+    "limitations": [
+      "Limited context window of 4,000 tokens restricts handling of long documents",
+      "Primarily optimized for English language support",
+      "Limited advanced reasoning capabilities compared to larger Titan models",
+      "Requires fine-tuning for domain-specific tasks or specialized knowledge",
+      "Not suitable for complex reasoning tasks requiring extended context (32K tokens in Titan Premier)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.titan-text-lite-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:28:34.939694"
+}

@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-Image-1 is a natively multimodal image generation model developed by OpenAI, integrated into ChatGPT and available via API. It enables developers to create high-quality, professional-grade images across diverse artistic styles with built-in safety guardrails and text rendering capabilities. The model supports multiple quality settings, aspect ratios, and style customization through prompts.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Design generation for marketing materials and social media content",
+      "Professional logo creation and branding for startups and businesses",
+      "Product visualization and architectural concept rendering",
+      "Educational illustrations and media content creation",
+      "Concept art generation for games, films, and creative projects",
+      "UI/UX design mockups and book/album cover design"
+    ],
+    "strengths": [
+      "Generates images across diverse artistic styles with professional quality",
+      "Accurately renders text within images and follows detailed prompts",
+      "Leverages world knowledge for contextually appropriate image synthesis",
+      "Integrated safety guardrails and content filtering matching ChatGPT standards",
+      "Native multimodal architecture for seamless text-image understanding",
+      "Offers flexible quality settings (low, medium, high) for cost-performance balance"
+    ],
+    "limitations": [
+      "Fixed dimension options limit flexibility in output size",
+      "Generation time increases significantly with higher quality settings",
+      "No direct image editing capabilities for post-generation modifications",
+      "Limited control over specific visual details in complex prompts",
+      "Higher costs for high-quality outputs (up to $0.17 per high-quality image)",
+      "Cannot perfectly replicate specific artistic styles or exact visual references"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-image-1",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:39:22.420396"
+}

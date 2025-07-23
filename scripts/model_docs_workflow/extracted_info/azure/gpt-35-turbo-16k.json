@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-35-Turbo-16K is Azure OpenAI's extended context variant of the GPT-3.5-Turbo model, offering a 16,385-token context window (4x larger than standard GPT-35-Turbo). It maintains core GPT-3.5-Turbo capabilities while enabling long document processing, extended conversation histories, and complex multi-part prompts. The model includes enhanced steerability, responsible AI guardrails, and mixed text/code generation, with training data cutoff in September 2021.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Processing long legal/technical documents and research papers",
+      "Extended customer support conversations with session continuity",
+      "Multi-document synthesis and comprehensive analytical reporting",
+      "Long-form content creation (articles, technical documentation)",
+      "Code review and extended project planning tasks"
+    ],
+    "strengths": [
+      "4x larger context window (16,385 tokens) for processing extensive documents and maintaining long conversation histories",
+      "Enhanced steerability with improved system message adherence and behavior customization",
+      "Optimized for multi-turn conversations with better context retention and turn management",
+      "Supports mixed generation of natural language and code within extended contexts",
+      "Azure-specific features including comprehensive analysis capabilities and chat format optimization"
+    ],
+    "limitations": [
+      "Training data limited to September 2021, resulting in outdated knowledge",
+      "Higher token costs ($0.0015/prompt token, $0.002/completion token) compared to standard models",
+      "Increased processing time and resource requirements for extended contexts",
+      "Version 0613 scheduled for retirement on October 1, 2024",
+      "Limited regional availability compared to standard GPT-35-Turbo models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-35-turbo-16k",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:45:49.207437"
+}

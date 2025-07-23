@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "The Ada (text-embedding-ada-002) model is a second-generation text embedding model developed by Azure OpenAI, designed for converting text into vector representations. It supports up to 8,192 tokens (v2) with fixed 1,536-dimensional outputs and training data current through September 2021. Microsoft recommends newer third-generation models (text-embedding-3) for improved multi-language performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Text similarity comparisons for semantic analysis",
+      "Document retrieval in large text corpora",
+      "Clustering similar content for categorization",
+      "Content-based recommendation systems",
+      "Automated FAQ matching in customer support",
+      "Product similarity detection in e-commerce"
+    ],
+    "strengths": [
+      "Cost-effective at $0.0001 per 1,000 tokens, ideal for budget-conscious projects",
+      "Efficient batch processing of up to 2,048 input items per call",
+      "Reliable for standard text similarity and retrieval tasks in English",
+      "Fully integrated with Azure AI Foundry Models and Embedding API",
+      "Fixed 1,536-dimensional outputs ensure consistency for downstream applications"
+    ],
+    "limitations": [
+      "Training data cutoff in September 2021 limits relevance to newer information",
+      "Multi-language performance surpassed by newer third-generation models",
+      "Fixed 1,536-dimensional outputs cannot be adjusted for specific use cases",
+      "No in-place upgrades to newer models; full re-embedding required for migration",
+      "Fine-tuning incurs continuous hosting costs regardless of usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "ada",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:31:05.079297"
+}

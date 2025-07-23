@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Grok-2-latest is a multimodal language model developed by xAI (founded by Elon Musk) that supports text and image inputs. It features a 131,072-token context window, real-time knowledge integration from the X platform (Twitter), and dual personality modes (regular and fun). The model excels in creative writing, code generation, and visual content analysis.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time social media monitoring and trend analysis",
+      "Creative content generation (memes, satire, entertainment)",
+      "Technical documentation and code explanation",
+      "Visual document processing and image-based Q&A",
+      "Research assistance combining real-time data with analysis",
+      "Interactive education with current events integration"
+    ],
+    "strengths": [
+      "Real-time knowledge integration from the X platform for current events and trending topics",
+      "Multimodal capabilities for text and image processing, including OCR and visual content analysis",
+      "Dual personality modes (regular for professional tasks and fun for creative/witty responses)",
+      "Large 131,072-token context window for extended conversations and complex inputs",
+      "Strong performance in creative writing, code generation, and unconventional content creation",
+      "API compatibility with OpenAI and Anthropic SDKs for seamless integration"
+    ],
+    "limitations": [
+      "Higher pricing compared to competitors like GPT-4o ($5/$15 per 131K tokens vs $2.50/$10 per 1M tokens)",
+      "Smaller context window (131K tokens) than GPT-4o's 1M tokens",
+      "Slower response times for complex multimodal tasks",
+      "Potential for edgy or inappropriate content in 'fun mode' requiring moderation",
+      "Behavior may change with updates as it's an alias to the latest stable version",
+      "Regional restrictions on free credits and data-sharing programs"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-2-latest",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:47:43.728429"
+}

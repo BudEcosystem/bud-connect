@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "Grok-2 is xAI's flagship large language model designed for truthful, insightful answers with a blend of intelligence and wit. It features a 131,072-token context window, supports text and code generation, multi-lingual capabilities, and real-time knowledge integration from the X platform. The model is part of xAI's family, which includes Grok-2 mini and a vision-enabled variant, and offers competitive pricing with a 60% reduction in input costs compared to previous versions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise document analysis and automated report generation",
+      "Customer service chatbots and virtual assistants",
+      "Code generation, debugging, and documentation",
+      "Content creation for articles, marketing, and creative writing",
+      "Real-time social media trend analysis via X integration",
+      "Scientific research and educational content development"
+    ],
+    "strengths": [
+      "131,072-token context window for handling large documents and complex tasks",
+      "3x faster inference compared to previous versions with improved accuracy",
+      "Real-time knowledge integration from the X platform for up-to-date information",
+      "Competitive pricing with $2/million input tokens and a $25 monthly free tier",
+      "Grok-2 mini variant outperforms larger models on MMLU, HumanEval, and MMLU-Pro benchmarks",
+      "Strong performance in graduate-level science, math reasoning (MathVista), and visual math tasks",
+      "Engaging conversational style with adaptable tone and humor"
+    ],
+    "limitations": [
+      "No support for custom dataset fine-tuning",
+      "Limited to us-east region during beta phase",
+      "API rate limits (1 request/second, 60-1,200/hour) restrict high-volume usage",
+      "Knowledge cutoff based on training data (real-time updates via X platform only)",
+      "Vision capabilities require separate 'grok-2-vision-1212' model"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 0.703
+    }
+  ],
+  "model_name": "grok-2",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:50:11.429741"
+}

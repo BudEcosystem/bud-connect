@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Ministral 8B is a state-of-the-art edge-optimized language model developed by Mistral AI, part of the 'Les Ministraux' family. It features 8 billion parameters, a 128,000-token context window, and an architecture designed for efficient deployment on edge devices. The model balances high performance with cost-effectiveness, excelling in knowledge reasoning, multilingual support, and function calling while maintaining a strong performance/price ratio.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Edge AI systems for distributed computing environments",
+      "Agentic workflows requiring multi-step task orchestration",
+      "Code analysis and development assistance",
+      "Industrial IoT process optimization",
+      "Healthcare edge applications for patient monitoring",
+      "Retail analytics for real-time customer behavior insights"
+    ],
+    "strengths": [
+      "Outperforms comparable 8-9B models like Gemma 2 9B and Llama 3.1 8B in benchmarks",
+      "Supports 128,000-token context window for long-form processing",
+      "Advanced function calling capabilities for tool integration",
+      "Optimized for edge deployment with modest hardware requirements",
+      "Strong multilingual performance across multiple languages",
+      "Exceptional performance/price ratio in its parameter category"
+    ],
+    "limitations": [
+      "8B parameter count limits handling of extremely complex reasoning tasks",
+      "Requires specific hardware (16GB RAM minimum) for edge deployment",
+      "Temperature parameter requires 0.43x scaling adjustment for consistent results",
+      "Benefits from fine-tuning for domain-specific applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "ministral-8b-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:53:03.275207"
+}

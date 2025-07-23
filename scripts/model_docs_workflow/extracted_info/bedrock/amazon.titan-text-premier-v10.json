@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Text G1 - Premier is a flagship enterprise-grade large language model developed by AWS, designed for sophisticated text processing with a 32K token context window. It excels in complex reasoning, long document analysis, and Retrieval-Augmented Generation (RAG) workflows, optimized for building agent-based systems and knowledge management solutions. The model supports multilingual inputs but is primarily optimized for English.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Strategic document analysis of business proposals and reports",
+      "Advanced RAG systems for knowledge retrieval and synthesis",
+      "Enterprise chatbots for internal and customer-facing applications",
+      "Long-form content generation for technical documentation",
+      "Multi-document summarization across lengthy enterprise data",
+      "Complex code analysis and architectural documentation",
+      "Industry-specific applications in finance, healthcare, legal, and consulting"
+    ],
+    "strengths": [
+      "32K token context window for handling long documents and complex reasoning tasks",
+      "Enterprise-grade optimization for advanced RAG applications and agent-based systems",
+      "Superior performance on multi-step logical tasks and document synthesis",
+      "Native integration with Amazon Bedrock Knowledge Bases and Agents",
+      "Advanced multilingual pre-training with primary English optimization",
+      "Sophisticated parameter controls (temperature, topP, stop sequences) for fine-tuned outputs"
+    ],
+    "limitations": [
+      "Limited context window for extremely long documents despite 32K capacity",
+      "Primary optimization for English with variable multilingual performance",
+      "Higher computational resource requirements compared to lighter models",
+      "Premium pricing may require careful cost-benefit analysis for enterprise use",
+      "Integration complexity for advanced features like multi-agent systems"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.titan-text-premier-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:29:23.492155"
+}

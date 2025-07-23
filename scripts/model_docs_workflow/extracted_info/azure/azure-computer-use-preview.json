@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI's Computer-Use Preview (CUA) is a multimodal AI model designed to interact with graphical user interfaces (GUIs), automate multi-step tasks, and execute workflows through natural language instructions. It supports screen understanding, mouse/keyboard control, application navigation, and cross-platform (Windows, macOS, Linux) operations with a 200,000-token context window. The model is available in a limited preview with specific regional deployments and requires Azure OpenAI resources for deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated data entry and report generation across enterprise systems",
+      "End-to-end invoice processing and customer onboarding workflows",
+      "UI testing, regression testing, and cross-browser compatibility checks",
+      "System administration tasks like software deployment and backup operations",
+      "Process documentation creation and compliance training automation"
+    ],
+    "strengths": [
+      "Enables automation of complex workflows across applications with mouse, keyboard, and UI element interactions",
+      "Supports cross-platform operations (Windows, macOS, Linux) and multi-monitor configurations",
+      "Includes adaptive learning to improve interaction patterns and error recovery mechanisms",
+      "Offers sandboxed execution and granular security controls for enterprise environments",
+      "Integrates with Azure services like Logic Apps, Power Automate, and Microsoft 365 for extended automation capabilities"
+    ],
+    "limitations": [
+      "Limited to preview availability in select regions with potential regional restrictions",
+      "Requires specific Azure infrastructure (e.g., Computer Vision API, Virtual Desktop Infrastructure)",
+      "High operational costs per action ($0.05/action) and screenshot analysis ($0.02/image)",
+      "Potential challenges with UI element recognition accuracy and application launch failures",
+      "Dependent on Azure ecosystem integration, limiting standalone deployment flexibility"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-computer-use-preview",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:33:50.647874"
+}

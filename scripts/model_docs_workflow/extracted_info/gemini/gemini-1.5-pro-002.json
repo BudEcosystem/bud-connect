@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro 002 is a multimodal large language model developed by Google, optimized for high-volume, cost-effective applications with enhanced multilingual capabilities across 102 languages. It features a 2 million token context window and supports text, images, audio, and video inputs. However, it is classified as a legacy model with a migration deadline of April 29, 2025.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "International business applications requiring multilingual support",
+      "Technical documentation translation and analysis",
+      "Educational platforms with cross-cultural content delivery",
+      "Content creation for global marketing and social media",
+      "Multimodal analysis of complex technical manuals and diagrams"
+    ],
+    "strengths": [
+      "Enhanced multilingual understanding across 102 languages with improved accuracy and cultural context awareness",
+      "2 million token context window for long document processing and coherent conversations",
+      "Improved reasoning capabilities including mathematical analysis, code generation, and technical documentation",
+      "Dynamic shared quota system for efficient resource utilization in high-volume applications",
+      "Advanced multimodal processing with better alignment between text, images, audio, and video inputs",
+      "Model copyability through Vertex AI Model Registry for easier deployment and sharing"
+    ],
+    "limitations": [
+      "Legacy model status with no future updates and mandatory migration deadline (April 29, 2025)",
+      "Limited to 2 million token context window with increased processing time for large inputs",
+      "Rate limits apply based on pricing tier",
+      "Some experimental features unavailable compared to newer Gemini 2.0 models",
+      "Access restricted to existing projects only after deadline"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-pro-002",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:21:55.121336"
+}

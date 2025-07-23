@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "DALL-E 2 is an image generation model developed by OpenAI that creates realistic images and art from text descriptions. It supports text-to-image generation, image editing, and concept combination across multiple sizes (1024\u00d71024, 512\u00d7512, 256\u00d7256). The model outputs image URLs valid for one hour and includes features like variations and edits through its API.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Art and creative content generation",
+      "Product design mockups and concept visualization",
+      "Educational illustrations and diagrams",
+      "Marketing and advertising visuals",
+      "Game asset creation and concept art",
+      "Custom image editing and variation generation"
+    ],
+    "strengths": [
+      "Generates high-quality, realistic images and art from natural language descriptions",
+      "Supports advanced editing features including image variations and mask-based edits",
+      "Offers multiple output sizes to suit different use cases",
+      "Combines concepts, attributes, and artistic styles for creative flexibility",
+      "Provides backward compatibility as the default model for existing workflows"
+    ],
+    "limitations": [
+      "Generated image URLs expire after one hour",
+      "Shared rate limits with other OpenAI API services",
+      "Org-level caps on images per minute may restrict high-volume usage",
+      "Less advanced than newer models like DALL-E 3 and GPT Image API",
+      "Costs increase significantly for high-quality image generation"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "dall-e-2",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:16:23.953927"
+}

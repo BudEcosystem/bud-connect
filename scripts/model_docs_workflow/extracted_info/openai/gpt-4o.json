@@ -1,0 +1,64 @@
+{
+  "model_info": {
+    "description": "GPT-4o is OpenAI's flagship multimodal model capable of real-time reasoning across audio, vision, and text. It features a 128,000-token context window, GPT-4-level intelligence, and native multimodal processing with a knowledge cutoff of October 2023. The model supports advanced API integrations and offers improved efficiency and cost-effectiveness compared to GPT-4 Turbo.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multimodal analysis combining text, images, and audio inputs",
+      "Complex reasoning tasks requiring extended context (128K tokens)",
+      "Code generation and debugging across multiple programming languages",
+      "Enterprise applications like business analysis, report generation, and customer service",
+      "Real-time applications with streaming responses (e.g., chatbots)",
+      "Visual question answering, document processing, and diagram interpretation"
+    ],
+    "strengths": [
+      "128,000-token context window with 16,384 output tokens per request for extended processing",
+      "Native multimodal capabilities (text, vision, audio) with real-time processing and reduced latency",
+      "High language understanding benchmarks: MMLU 87.2%, HellaSwag 95.3%, HumanEval 90.2%",
+      "Strong vision performance: MMMU 69.1%, MathVista 63.8%, AI2D 94.2%",
+      "Cost-efficient pricing (50% discount on batch API) and API compatibility with GPT-4",
+      "Advanced features including structured outputs, function calling, and streaming responses"
+    ],
+    "limitations": [
+      "Knowledge cutoff at October 2023 limits access to newer information",
+      "Audio processing capabilities remain in preview/development phase",
+      "Image inputs require URL/base64 encoding (no direct file upload)",
+      "Complex vision tasks may consume more tokens, increasing costs",
+      "Context limit of 128K tokens (input + output) may restrict very long interactions"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 87.2
+    },
+    {
+      "name": "HellaSwag",
+      "score": 95.3
+    },
+    {
+      "name": "HumanEval",
+      "score": 90.2
+    },
+    {
+      "name": "MMMU",
+      "score": 69.1
+    },
+    {
+      "name": "MathVista",
+      "score": 63.8
+    },
+    {
+      "name": "AI2D",
+      "score": 94.2
+    },
+    {
+      "name": "MBPP",
+      "score": 87.6
+    }
+  ],
+  "model_name": "gpt-4o",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:38:29.197763"
+}

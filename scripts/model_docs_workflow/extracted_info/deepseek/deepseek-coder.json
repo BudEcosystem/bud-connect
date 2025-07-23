@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "DeepSeek Coder is a specialized open-source code language model developed by DeepSeek AI, designed for programming tasks like code generation, completion, and understanding. It features a Mixture-of-Experts (MoE) architecture with parameter sizes ranging from 1B to 236B, a 128K token context window, and supports 338 programming languages. Trained on 10.2 trillion tokens (60% code, 10% math, 30% natural language), it offers cost-effective API pricing and commercial-friendly licensing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code generation for functions, classes, and modules across 338 languages",
+      "Context-aware code completion and infilling for large codebases (128K token context)",
+      "Code review, debugging, and optimization suggestions",
+      "Automated test case generation and documentation creation",
+      "Code translation between programming languages",
+      "Project-level code analysis and refactoring"
+    ],
+    "strengths": [
+      "Achieves performance comparable to GPT4-Turbo in code-specific tasks with open-source accessibility",
+      "Mixture-of-Experts (MoE) architecture enables 16B/236B parameter models with only 2.4B/21B active parameters for efficiency",
+      "Supports 338 programming languages, making it one of the most versatile code models available",
+      "Cost-effective API pricing (27x cheaper than OpenAI o1) with off-peak discounts and context caching",
+      "Outperforms open-source competitors like CodeLlama-34B by +7.9% on HumanEval Python and +10.8% on MBPP",
+      "OpenAI-compatible API for seamless integration with existing tools and workflows"
+    ],
+    "limitations": [
+      "Requires 80GB \u00d7 8 GPUs for full model inference in BF16 format",
+      "API data sent to DeepSeek servers may be used for training (privacy consideration)",
+      "Trade-off between cost and performance compared to proprietary models like GPT-4",
+      "Limited to code-specific tasks rather than general-purpose language capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Intelligence Index",
+      "score": 29
+    }
+  ],
+  "model_name": "deepseek-coder",
+  "provider": "deepseek",
+  "extraction_date": "2025-07-23T10:00:08.469483"
+}

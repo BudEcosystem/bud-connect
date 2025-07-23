@@ -1,0 +1,44 @@
+{
+  "model_info": {
+    "description": "Mistral Medium 3 (mistral-medium-2505) is a medium-sized frontier model developed by Mistral AI, released in May 2025. It offers a balance between performance and cost, with an 8X lower cost than comparable models and a 128k token context window. The model is optimized for enterprise deployment on four GPUs or more, featuring a transformer-based dense decoder-only architecture and support for continuous pretraining, fine-tuning, and domain-specific adaptations.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise AI integration for coding assistance and STEM problem-solving.",
+      "Document understanding and analysis in professional workflows.",
+      "Custom domain-specific applications with continuous learning systems.",
+      "Adaptive workflows requiring integration with enterprise knowledge bases.",
+      "Production-ready deployments optimized for cost and speed in large-scale operations."
+    ],
+    "strengths": [
+      "Delivers state-of-the-art performance at 8X lower cost than larger models, with significantly faster inference speeds.",
+      "Outperforms leading open models like Llama 4 Maverick and enterprise models like Cohere Command A in coding and STEM tasks.",
+      "Supports enterprise-grade features including continuous pretraining, full fine-tuning, and integration with knowledge bases.",
+      "Offers a 128k token context window (upgraded from 32k in previous versions) for handling long-form inputs.",
+      "Maintains high fidelity for domain-specific training and adaptive workflows in professional settings."
+    ],
+    "limitations": [
+      "Requires a minimum of four GPUs for self-hosted deployment, necessitating enterprise-grade infrastructure.",
+      "Performance may vary with task complexity and may require domain-specific fine-tuning for specialized applications.",
+      "Legacy version (pre-2025) had a MMLU score of 0.491, indicating potential limitations in general knowledge reasoning."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 0.491
+    },
+    {
+      "name": "Output Speed",
+      "score": 84.5
+    },
+    {
+      "name": "Latency (TTFT)",
+      "score": 0.39
+    }
+  ],
+  "model_name": "mistral-medium-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T13:04:20.159568"
+}

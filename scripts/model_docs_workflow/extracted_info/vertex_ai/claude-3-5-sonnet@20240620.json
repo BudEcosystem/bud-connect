@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet@20240620 is a production-ready large language model developed by Anthropic, launched on June 20, 2024. It offers advanced reasoning, coding, and content generation capabilities with a 200,000-token context window and 8,000-token output limit. The model is optimized for cost-effectiveness and speed, with knowledge cutoff in April 2024 and deployment on Google Cloud Vertex AI.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Software development (code generation, debugging, architecture design)",
+      "Technical and creative content creation (documentation, storytelling, marketing)",
+      "Business intelligence and data analysis",
+      "Mathematical problem-solving and logical reasoning tasks",
+      "Educational applications (tutoring, curriculum development, assessment creation)"
+    ],
+    "strengths": [
+      "Advanced reasoning capabilities for complex logical analysis and problem-solving",
+      "Superior coding assistance with high-quality code generation and debugging",
+      "Support for function calling and sophisticated tool integration",
+      "Batch prediction processing for bulk operations with up to 50% cost savings",
+      "Prompt caching reduces costs by up to 90% for repeated content",
+      "Streaming responses for real-time output generation",
+      "Precise token counting and 30-day request-response logging for compliance",
+      "Production-ready stability with proven enterprise deployment track record"
+    ],
+    "limitations": [
+      "Output limited to 8,000 tokens per response",
+      "Knowledge cutoff in April 2024 with no access to real-time data",
+      "No extended reasoning mode or computer use capabilities (introduced in later versions)",
+      "Regional availability restricted to Google Cloud regions",
+      "Subject to Google Cloud API quotas and subscription-based token limits",
+      "Vertex AI-specific API patterns require Google Cloud integration"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-5-sonnet@20240620",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:35:55.599711"
+}

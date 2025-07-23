@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-3.5 Turbo 16k is an extended context version of the GPT-3.5 Turbo model family developed by OpenAI. It supports a maximum context length of 16,384 tokens, enabling processing of longer documents and conversations while maintaining the efficiency of the base GPT-3.5 Turbo model. The model is optimized for chat-based interactions via the Chat Completions API and is available under the `gpt-3.5-turbo-16k` identifier with versioned variants.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and summarization of long texts",
+      "Extended conversation applications requiring historical context",
+      "Code review and analysis of larger code files",
+      "Multi-document synthesis and research paper analysis",
+      "Legal document processing and long-form content generation"
+    ],
+    "strengths": [
+      "Supports 16,384 token context window for processing longer documents and maintaining extended conversation history",
+      "Maintains GPT-3.5 Turbo's efficiency and capabilities while handling larger inputs",
+      "More cost-effective than GPT-4 models for long-context tasks",
+      "Fast response times despite extended context capabilities",
+      "Optimized for code generation, multilingual support, and conversational AI tasks"
+    ],
+    "limitations": [
+      "Not recommended to exceed 4,096 input tokens for newer model versions",
+      "Knowledge cutoff date applies (varies by version)",
+      "Reduced performance compared to GPT-4 on complex reasoning tasks",
+      "Lacks multimodal capabilities (text-only)",
+      "OpenAI recommends newer models like GPT-4o Mini for better cost efficiency and enhanced capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-3.5-turbo-16k",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:17:50.900153"
+}

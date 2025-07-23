@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-4.5 Preview is OpenAI's research preview of their largest and most advanced general-purpose language model, offering enhanced understanding, reduced hallucinations, and a 128,000-token context window. Trained on more data and compute than previous models, it excels in nuanced human interaction and broad knowledge tasks but is characterized as 'weirdly slow' due to its massive size. Available to Pro users and developers, it is set to be deprecated by July 2025.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex writing tasks requiring nuanced understanding and creativity",
+      "Programming assistance with sophisticated code generation",
+      "Problem-solving requiring broad knowledge and deep contextual understanding",
+      "Applications needing high 'EQ' to interpret subtle human cues and expectations",
+      "Tasks prioritizing reliability over speed with reduced hallucination risks"
+    ],
+    "strengths": [
+      "Enhanced understanding of human intent with improved 'EQ' for nuanced interactions",
+      "Broader knowledge base with lower hallucination rates compared to GPT-4o and o1 models",
+      "General-purpose intelligence for immediate responses without extended reasoning",
+      "128,000-token context window for handling long-form inputs",
+      "Positioned as OpenAI's 'strongest GPT model' for general intelligence tasks"
+    ],
+    "limitations": [
+      "Extremely high operational costs ($75/$150 per million tokens) make it impractical for high-volume use",
+      "Slower response times due to massive model size and computational requirements",
+      "Research preview status with limited stability and availability",
+      "Deprecation scheduled for July 14, 2025, requiring migration to other models",
+      "Overkill for simple tasks that could be handled by less expensive models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4.5-preview-2025-02-27",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:16:48.318100"
+}

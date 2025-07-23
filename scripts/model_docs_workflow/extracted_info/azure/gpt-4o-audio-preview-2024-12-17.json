@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-4o Audio Preview (2024-12-17) is a multimodal AI model developed by OpenAI that supports text and audio processing. It enables asynchronous audio interactions with speech recognition, sentiment analysis, and text-to-speech capabilities. The model requires API version 2025-01-01-preview or later and supports audio file sizes up to 20 MB with WAV output format.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Creating spoken summaries and audio content for podcasts/audiobooks",
+      "Analyzing voice recordings for sentiment and emotional tone",
+      "Building voice-enabled applications and conversational audio systems",
+      "Enhancing multimedia production with text-to-speech integration",
+      "Processing and improving audio content for transcription or enhancement"
+    ],
+    "strengths": [
+      "Supports comprehensive audio input/output with speech recognition, sentiment analysis, and natural-sounding voice synthesis",
+      "Offers three distinct voice options (Alloy, Echo, Shimmer) for tailored audio output",
+      "Inherits GPT-4o's text processing capabilities while adding enhanced audio understanding and generation",
+      "Seamless multimodal integration for switching between text and audio modalities",
+      "Optimized for asynchronous audio processing with batch operation support"
+    ],
+    "limitations": [
+      "Limited to 20 MB maximum audio file size",
+      "WAV format restriction for audio output (no other formats supported)",
+      "Higher processing costs for audio operations compared to text-only tasks",
+      "Increased latency compared to real-time audio models",
+      "Not suitable for applications requiring immediate audio responses"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-audio-preview-2024-12-17",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:02:05.152940"
+}

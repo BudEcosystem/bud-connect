@@ -1,0 +1,56 @@
+{
+  "model_info": {
+    "description": "GPT-Image-1 is a cutting-edge AI image generation model developed by Azure OpenAI Service. It excels in advanced text-to-image generation, image editing, and inpainting with support for 1024\u00d71024, 1024\u00d71536, and 1536\u00d71024 resolutions. The model offers three quality levels (low, medium, high) and base64-encoded output, with enterprise features like C2PA metadata and Azure AI Content Safety. It is currently in limited access public preview.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Educational material creation with interactive visual content",
+      "Game development for character designs and environments",
+      "Marketing collateral generation with custom branded imagery",
+      "Product visualization and prototyping",
+      "Digital art creation with professional-quality outputs",
+      "UI/UX design with photorealistic interface mockups",
+      "Enterprise workflow integration with Azure Logic Apps and Power Automate"
+    ],
+    "strengths": [
+      "Advanced text-to-image generation with 98% prompt adherence accuracy",
+      "Reliable text rendering within images with 95% readability accuracy",
+      "Supports image editing, inpainting, and zero-shot generation capabilities",
+      "Enterprise-grade security with C2PA metadata and Azure AI Content Safety",
+      "Three quality settings (low, medium, high) for optimized performance and detail",
+      "Style consistency maintenance across generated elements",
+      "Granular instruction following for complex, multi-part prompts"
+    ],
+    "limitations": [
+      "Limited to predefined resolution options (1024\u00d71024, 1024\u00d71536, 1536\u00d71024)",
+      "Only supports base64-encoded output format (no URL output)",
+      "Requires formal approval for access through Microsoft's limited access model",
+      "Available in select Azure regions (West US 3, UAE North, Poland Central)",
+      "Higher costs for complex or high-quality image generations",
+      "Subject to Azure OpenAI content moderation policies and restrictions",
+      "Variable processing times based on complexity and quality settings"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Prompt Adherence",
+      "score": 98
+    },
+    {
+      "name": "Text Readability",
+      "score": 95
+    },
+    {
+      "name": "Style Consistency",
+      "score": 90
+    },
+    {
+      "name": "Compositional Balance",
+      "score": 85
+    }
+  ],
+  "model_name": "gpt-image-1",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:08:21.296839"
+}

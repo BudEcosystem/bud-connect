@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Grok-2 Vision is a state-of-the-art multimodal AI model developed by xAI, launched on December 15, 2024. It excels in text and vision understanding with a 32,768-token context window, supporting image processing for documents, diagrams, charts, and photographs. The model integrates real-time information from the \ud835\udd4f platform and offers advanced visual analysis capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and question answering for charts, graphs, and technical diagrams",
+      "Visual mathematical problem-solving with image-based equations",
+      "Business intelligence tasks involving dashboard and report interpretation",
+      "Creative design assistance with image-based content generation",
+      "Scientific data visualization analysis and technical diagram interpretation"
+    ],
+    "strengths": [
+      "Achieves state-of-the-art performance in visual math reasoning (69.0% on MathVista benchmark)",
+      "Supports real-time integration with the \ud835\udd4f platform for up-to-date information",
+      "Handles complex visual formats including documents, diagrams, and technical charts",
+      "API-compatible with OpenAI and Anthropic, simplifying migration for developers",
+      "Offers $25 monthly free API credits during public beta (through end of 2024)"
+    ],
+    "limitations": [
+      "Limited to 10MB image size with only JPG/JPEG and PNG format support",
+      "No support for video or animated content processing",
+      "Lacks fine-tuning capabilities for custom datasets",
+      "Unspecified knowledge cutoff date for training data",
+      "Rate limits of 1 request/second and 60-1,200 requests/hour depending on tier"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MathVista",
+      "score": 69.0
+    }
+  ],
+  "model_name": "grok-2-vision",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:49:11.814990"
+}

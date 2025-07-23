@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "WhereIsAI/UAE-Large-V1 is a state-of-the-art text embedding model developed by WhereIsAI, optimized for semantic textual similarity tasks. It uses a RoBERTa-Large backbone with 1024-dimensional embeddings and a 512-token context length. The model introduces angle optimization in complex space to address cosine similarity limitations, achieving a MTEB score of 64.64 (ranked 10th as of December 2023).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Semantic search and document similarity retrieval",
+      "Retrieval-Augmented Generation (RAG) with vector databases",
+      "Text classification using embedding similarity",
+      "Long-text semantic similarity analysis (e.g., GitHub Issues)"
+    ],
+    "strengths": [
+      "Superior angle optimization in complex space addresses cosine similarity saturation issues",
+      "Achieves SOTA performance on MTEB with a score of 64.64",
+      "Balanced 1024-dimensional architecture provides strong performance/efficiency trade-off",
+      "Robust training on diverse STS benchmarks including MRPC, QQP, and long-text GitHub Issues datasets"
+    ],
+    "limitations": [
+      "Limited context length of 512 tokens (shorter than models like text-embedding-ada-002 with 8191 tokens)",
+      "Primarily optimized for English text with no explicit multilingual support mentioned",
+      "Higher computational requirements due to 1024-dimensional embeddings compared to smaller models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 64.64
+    }
+  ],
+  "model_name": "WhereIsAI-UAE-Large-V1",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:02:51.512320"
+}

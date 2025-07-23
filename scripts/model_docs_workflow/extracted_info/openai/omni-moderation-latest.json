@@ -1,0 +1,54 @@
+{
+  "model_info": {
+    "description": "The `omni-moderation-latest` is OpenAI's multimodal content moderation model built on GPT-4o architecture. It automatically updates to the latest version (currently `omni-moderation-2024-09-26`) and supports text and image analysis across 40+ languages. The model detects 13 text categories (e.g., hate, harassment, self-harm) and 6 image categories (e.g., violence, self-harm, sexual content). It is free to use and integrates with OpenAI API for real-time or batch moderation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time social media content moderation",
+      "Automated image screening for visual platforms",
+      "Multilingual content filtering for global platforms",
+      "User-generated content safety in gaming and e-commerce",
+      "Corporate compliance monitoring",
+      "Educational platform content safety",
+      "Brand safety for advertisement placement"
+    ],
+    "strengths": [
+      "42% accuracy improvement over legacy models with enhanced multilingual performance (40+ languages)",
+      "Multimodal capabilities for combined text-image analysis and cross-modal reasoning",
+      "Automatic updates to latest versions with backward-compatible API",
+      "Comprehensive text moderation covering 13 categories including nuanced subcategories",
+      "Free usage with no impact on monthly token limits",
+      "High cross-language consistency (98% of tested languages show improvement)",
+      "Detailed response scores (0.0-1.0) for each category to assess risk levels"
+    ],
+    "limitations": [
+      "Image moderation limited to 6 categories (missing sexual/minors and illicit categories)",
+      "Higher false positive rate due to increased sensitivity in detection",
+      "Challenges with contextual content (satire, art, educational material)",
+      "Limited cultural nuance understanding in some cases",
+      "Dependence on automatic updates for new threat detection capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Accuracy Improvement",
+      "score": 42
+    },
+    {
+      "name": "Multilingual Dataset Advantage",
+      "score": 0.322
+    },
+    {
+      "name": "Legacy Model Comparison",
+      "score": 0.167
+    },
+    {
+      "name": "Cross-Language Consistency",
+      "score": 98
+    }
+  ],
+  "model_name": "omni-moderation-latest",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:34:56.411512"
+}

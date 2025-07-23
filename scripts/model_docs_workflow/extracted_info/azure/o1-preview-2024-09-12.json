@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "The o1-preview-2024-09-12 model is an advanced reasoning model developed by Azure OpenAI, released on September 12, 2024. It features a 200K token context window, chain-of-thought processing, and enhanced capabilities in mathematical problem-solving, scientific analysis, code generation, and logical reasoning. The model introduces reasoning token tracking, prompt caching, and improved safety measures, with a knowledge cutoff in October 2023.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Academic research in mathematics, physics, and computational sciences",
+      "Complex algorithm development and software engineering tasks",
+      "Multi-step analytical tasks requiring logical reasoning and strategy selection",
+      "Educational applications for advanced tutoring and explanation generation",
+      "Scientific analysis in research institutions and healthcare diagnostics",
+      "Financial modeling and risk analysis in enterprise environments"
+    ],
+    "strengths": [
+      "Advanced reasoning capabilities with chain-of-thought processing for complex problem-solving",
+      "200K token context window for handling extensive input/output requirements",
+      "Enhanced mathematical, scientific, and code generation performance compared to GPT-4o",
+      "Integrated reasoning token tracking and prompt caching for cost optimization",
+      "Improved safety features including resistance to jailbreaking and adversarial inputs",
+      "Support for multi-step logical reasoning and strategy selection in problem-solving"
+    ],
+    "limitations": [
+      "Limited availability through a restricted access program for approved enterprise customers",
+      "Higher cost due to premium pricing and additional billing for reasoning tokens",
+      "Extended processing latency caused by complex reasoning computations",
+      "Regional deployment constraints limited to East US2 and Sweden Central",
+      "Preview status with potential stability issues and conservative rate limits",
+      "Limited parameter support compared to standard models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o1-preview-2024-09-12",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:10:54.137488"
+}

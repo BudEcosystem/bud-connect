@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "Gemma 3 27B-IT is Google's instruction-tuned open model with 27 billion parameters, released in 2025. Built on Gemini 2.0 research, it features a 128K token context window, supports 140+ languages, and handles multimodal inputs (text and images). Optimized for conversational AI and task completion, it is available in quantized formats for efficient deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Conversational AI and multi-turn dialogue systems",
+      "Multilingual applications and translation services",
+      "Long document analysis and summarization",
+      "Code generation and programming assistance",
+      "Creative writing and narrative generation",
+      "Multimodal tasks combining text and images"
+    ],
+    "strengths": [
+      "128K token context window (16x larger than Gemma 2) for long document analysis",
+      "Multimodal support for text and image inputs",
+      "Strong multilingual performance across 140+ languages",
+      "Instruction-tuned for conversational AI and task completion",
+      "Available in quantized formats (4-bit/5-bit/8-bit) for efficient deployment",
+      "Outperforms Llama3-405B and DeepSeek-V3 in LMSys Chatbot Arena (Elo 1339)",
+      "Based on Gemini 2.0 research for advanced capabilities"
+    ],
+    "limitations": [
+      "Requires significant computational resources (16-32GB RAM for quantized versions)",
+      "No access to real-time data or current events",
+      "Image support varies by implementation",
+      "Lacks built-in tool calling capabilities",
+      "Requires self-hosting and infrastructure management",
+      "Quantized versions may sacrifice some accuracy for efficiency"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "LMSys Chatbot Arena",
+      "score": 1339
+    }
+  ],
+  "model_name": "gemma-3-27b-it",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:45:14.739280"
+}

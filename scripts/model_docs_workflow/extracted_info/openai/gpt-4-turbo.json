@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-4 Turbo is an optimized version of GPT-4 developed by OpenAI, offering the same advanced capabilities at reduced costs and improved performance. It features a 128,000-token context window (equivalent to over 300 pages of text), supports text and vision inputs, and includes enhanced reasoning, code generation, and multimodal processing. The model's knowledge cutoff varies by version, with newer iterations incorporating more recent training data.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and summarization (e.g., contracts, research papers)",
+      "Code generation, debugging, and architecture design",
+      "Business strategic planning and market analysis",
+      "Creative writing, script development, and content refinement",
+      "Visual question answering and image content extraction"
+    ],
+    "strengths": [
+      "3x cheaper input tokens and 2x cheaper output tokens compared to standard GPT-4",
+      "128,000-token context window for processing lengthy documents and cross-referencing information",
+      "Multimodal support for text, image analysis, OCR, and visual question answering",
+      "Improved performance optimization with faster response times and reduced latency",
+      "Maintains GPT-4-level accuracy while offering cost savings and enhanced instruction adherence"
+    ],
+    "limitations": [
+      "Knowledge cutoff date varies by version, potentially limiting access to the latest information",
+      "Not suitable for real-time applications requiring sub-second response times",
+      "Token usage costs still apply despite cost reductions, requiring careful budget management",
+      "May exhibit biases present in training data",
+      "Large context window requires efficient prompt structuring to avoid token limits"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-turbo",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:24:22.846137"
+}

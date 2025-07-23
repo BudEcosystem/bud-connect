@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Stability AI's image generation models on AWS Bedrock offer enterprise-grade text-to-image and image-to-image capabilities. Available models include Stable Diffusion 3.5 Large (8.1B parameters), Stable Image Ultra 1.1, Stable Diffusion 3 Large, and Stable Image Core. These models excel in photorealistic image generation with advanced control over composition, style, and text quality, optimized for professional applications like marketing, media, and design.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional print and digital marketing materials",
+      "Product visualization and e-commerce mockups",
+      "Architectural and interior design concepts",
+      "Media and entertainment concept art/storyboarding",
+      "Educational and scientific visualizations",
+      "High-volume content generation for websites and social media"
+    ],
+    "strengths": [
+      "Generates high-quality, 1-megapixel photorealistic images with advanced text rendering and spatial reasoning",
+      "Offers cost savings of up to 50% compared to previous generations for high-volume use cases",
+      "Provides native AWS integration with enterprise security, scalability, and compliance certifications (SOC, ISO, GDPR)",
+      "Supports diverse generation modes (text-to-image, image-to-image, inpainting/outpainting) and customizable parameters (CFG scale, steps, aspect ratios)",
+      "Delivers professional-grade outputs suitable for print media, marketing, and creative projects"
+    ],
+    "limitations": [
+      "Regional availability limitations (e.g., SD3.5 Large only in US West [Oregon])",
+      "Feature updates may lag behind direct Stability AI API implementations",
+      "Pricing varies by model, resolution, and step count with no fixed benchmark scores provided",
+      "Limited customization options compared to direct API access",
+      "Content safety filters and compliance requirements may restrict creative freedom"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability_ai_models",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-20T20:24:06.363105"
+}

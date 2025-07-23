@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Together AI's 21.1B-41B parameter models are mid-range language models designed to balance performance and cost-effectiveness for production workloads. They support chat, language, and code generation tasks with varying context windows and include multimodal capabilities in some variants. Optimized using the Together Inference Stack and deployed on NVIDIA Blackwell/Hopper GPUs, these models emphasize fast inference and scalable deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation with sophisticated chatbots",
+      "Long-form content creation requiring nuanced understanding",
+      "Code generation and development tooling",
+      "Natural language interfaces for data analysis",
+      "Complex document processing and generation",
+      "Medical documentation and patient interaction systems",
+      "Technical documentation and code review"
+    ],
+    "strengths": [
+      "Advanced language understanding for complex tasks across technical, creative, and business domains",
+      "4x faster inference compared to standard vLLM implementations via optimized infrastructure",
+      "Support for code generation across multiple programming languages",
+      "Multimodal capabilities in select models for text and image inputs",
+      "OpenAI-compatible APIs enabling seamless platform migration",
+      "50% discount on batch processing for cost optimization",
+      "Scalable deployment options from serverless endpoints to dedicated GPU clusters"
+    ],
+    "limitations": [
+      "Context window limitations requiring document chunking for long inputs",
+      "Not suitable for edge deployment due to model size (21.1B-41B parameters)",
+      "Requires stable internet connection for API access",
+      "Higher cost than smaller models (<8B parameters) with no vendor lock-in guarantees",
+      "Competitive but unspecified benchmark performance on MMLU/GSM8K compared to larger models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-21.1b-41b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:21:04.407418"
+}

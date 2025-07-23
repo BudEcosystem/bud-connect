@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "The Meta Llama 3.2 1B Instruct is an ultra-lightweight (1 billion parameters) language model developed by Meta for AWS Bedrock, optimized for edge devices and resource-constrained environments. It features a 128K token context window, making it suitable for retrieval, basic reasoning, and lightweight text processing tasks. The model supports eight languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai) and emphasizes cost-effectiveness for high-volume applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Information retrieval systems and search engines for efficient query processing.",
+      "Edge computing applications in IoT devices and mobile apps requiring offline AI capabilities.",
+      "Content moderation and filtering for real-time text analysis in e-commerce or social platforms.",
+      "Preprocessing for larger models in high-volume workflows (e.g., categorization, summarization).",
+      "Customer support automation for basic Q&A and ticket triage in cost-sensitive environments."
+    ],
+    "strengths": [
+      "Ultra-lightweight with 1 billion parameters for maximum efficiency and low computational requirements.",
+      "128K token context window enables processing of long documents and extended conversation history.",
+      "Edge-optimized for deployment on IoT devices, mobile apps, and offline environments with minimal latency.",
+      "Cost-effective for high-volume, budget-sensitive applications with ultra-low per-token pricing.",
+      "Strong performance in retrieval, classification, and summarization tasks for well-defined use cases."
+    ],
+    "limitations": [
+      "Limited complexity handling compared to larger models; struggles with sophisticated reasoning or creative writing.",
+      "Regional availability restrictions due to geofencing (e.g., US West, Europe) may limit deployment flexibility.",
+      "Not ideal for advanced analysis, complex problem-solving, or tasks requiring extensive contextual understanding.",
+      "Performance may degrade with highly complex or ambiguous inputs beyond basic task automation."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-2-1b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:47:40.536754"
+}

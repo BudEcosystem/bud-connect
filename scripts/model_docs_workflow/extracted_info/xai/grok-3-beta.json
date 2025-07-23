@@ -1,0 +1,51 @@
+{
+  "model_info": {
+    "description": "Grok-3 Beta is xAI's flagship enterprise-grade large language model designed for complex reasoning tasks. Trained on xAI's Colossus supercluster with 10x more compute than Grok-2, it features a 131,072-token context window and knowledge cutoff in November 2024. Key capabilities include code execution, internet access, tool calling, and multi-language support, with reasoning modes like 'Big Brain' for extended problem-solving.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise data analysis and complex problem-solving",
+      "Scientific research and mathematical reasoning",
+      "Code generation and debugging with live execution",
+      "Domain-specific expertise in finance, healthcare, and law",
+      "Truth-seeking research via DeepSearch Agent for synthesizing conflicting information"
+    ],
+    "strengths": [
+      "10x more compute during training compared to Grok-2 for enhanced performance",
+      "Advanced reasoning capabilities with error correction and alternative solution exploration",
+      "Transparent thinking process with accessible reasoning traces",
+      "State-of-the-art performance on academic benchmarks (AIME 93.3%, GPQA 84.6%)",
+      "Built-in code interpreter and internet access for real-time problem-solving",
+      "Outperforms leading models in math (AIME), science (GPQA), and coding (LiveCodeBench)"
+    ],
+    "limitations": [
+      "Currently in beta with ongoing development and potential instability",
+      "API context limit of 131,072 tokens despite 1M token claims",
+      "High operational costs for reasoning mode ($15/million output tokens) and internet access ($0.025 per source)",
+      "No vision capabilities or fine-tuning support",
+      "Not all API parameters (e.g., presencePenalty) work in reasoning mode"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025",
+      "score": 93.3
+    },
+    {
+      "name": "GPQA",
+      "score": 84.6
+    },
+    {
+      "name": "LiveCodeBench",
+      "score": 79.4
+    },
+    {
+      "name": "Chatbot Arena Elo",
+      "score": 1402
+    }
+  ],
+  "model_name": "grok-3-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:51:16.527484"
+}

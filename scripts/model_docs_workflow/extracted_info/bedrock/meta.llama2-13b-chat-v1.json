@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Meta Llama 2 13B Chat is a dialogue-optimized large language model with 13 billion parameters, developed by Meta and available on AWS Bedrock. It uses supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) for safety and helpfulness, with an approximate 8,000-token context window. The model is licensed for commercial and research use in English language tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and virtual assistants",
+      "Interactive content generation and creative writing assistance",
+      "Educational tutoring systems and Q&A applications",
+      "Enterprise knowledge management and employee assistance tools",
+      "Gaming and entertainment interactive applications"
+    ],
+    "strengths": [
+      "Optimized for conversational AI applications with SFT and RLHF training for safety and helpfulness",
+      "13 billion parameter count balances performance and computational efficiency",
+      "Integrated with AWS Bedrock for seamless API access and cloud-native deployment",
+      "Cost-effective solution with on-demand pricing and provisioned throughput options",
+      "Supports streaming inference and regional availability in major AWS regions"
+    ],
+    "limitations": [
+      "Limited to approximately 8,000 token context window",
+      "Primarily optimized for English language tasks with limited multilingual support",
+      "Generation length capped at 2048 tokens by default",
+      "May show reduced performance on complex reasoning tasks compared to 70B variant",
+      "Regional availability limited to specific AWS regions"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama2-13b-chat-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:42:27.130954"
+}

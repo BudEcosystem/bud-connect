@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Google Gemini Pro is a first-generation multimodal AI model from Google, released on December 13, 2023, designed for a wide range of tasks. It uses a Transformer-based Mixture-of-Experts (MoE) architecture with a 32,768-token context window and was trained on TPUv5e and TPUv4 hardware. The model supports text and image processing but is now retired, replaced by newer versions like Gemini 1.5 and 2.0.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Healthcare analysis combining text and medical imaging for diagnostic support.",
+      "Engineering applications requiring diagram interpretation and technical documentation.",
+      "Content generation and summarization for text and code, including conversational AI systems.",
+      "Enterprise document processing and customer service chatbots integrated with Google Workspace.",
+      "Multimodal data analysis involving charts, graphs, and visual data interpretation."
+    ],
+    "strengths": [
+      "Mixture-of-Experts (MoE) architecture enhances efficiency and performance by activating relevant neural pathways for specific inputs.",
+      "Multimodal capabilities for text and image processing, enabling applications like healthcare analysis and engineering diagram interpretation.",
+      "Outperformed GPT-3.5 in benchmarks and offered 10x cheaper pricing compared to GPT-4 Turbo/Vision at launch.",
+      "Strong integration with Google services (e.g., Bard, Google Workspace) and enterprise platforms like Vertex AI.",
+      "Superior speed, reading comprehension, and instruction-following capabilities compared to GPT-3.5."
+    ],
+    "limitations": [
+      "Retired as of current updates (requests return a 404 error), with no further access available.",
+      "Limited to text and image processing, lacking full audio/video capabilities present in Gemini Ultra.",
+      "32K token context window is smaller than newer models (e.g., Gemini 2.5 Pro's 1M tokens).",
+      "API design complexity and restrictive safety policies may hinder developer experience.",
+      "Less mature ecosystem compared to OpenAI models, with fewer third-party integrations and customization options."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-pro",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:44:25.469581"
+}

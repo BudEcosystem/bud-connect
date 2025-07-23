@@ -1,0 +1,45 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Flash is a fast, cost-efficient multimodal model developed by Google, supporting text, images, audio, video, and PDF inputs. It features a 1 million token context window and 9.5-hour audio processing capability but is now designated as a legacy model with migration to newer versions recommended.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and content moderation systems",
+      "Real-time translation services and automated transcription",
+      "Document processing pipelines and media content analysis",
+      "Educational content creation and e-commerce product description generation",
+      "Cross-modal search systems and multi-language customer support"
+    ],
+    "strengths": [
+      "Supports multimodal inputs including text, images, audio, video, and PDF with seamless integration",
+      "1 million token context window with 75% accuracy maintenance for long conversations",
+      "99.8% recall performance for videos up to 2 million tokens and 98.7% success rate for audio-haystack evaluations",
+      "Optimized for low latency and cost-effective processing, suitable for high-volume applications",
+      "Handles up to 9.5 hours of audio in a single request with multi-speaker recognition"
+    ],
+    "limitations": [
+      "Designated as a legacy model with April 29, 2025 deadline for new project access",
+      "1 million token context limit with increased processing time for larger inputs",
+      "Some features require specific API versions and face rate limits based on usage tier",
+      "Lower capability ceiling compared to newer Gemini 2.0/2.5 Flash models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Context Accuracy (1M tokens)",
+      "score": 75
+    },
+    {
+      "name": "Video Recall (2M tokens)",
+      "score": 99.8
+    },
+    {
+      "name": "Audio Haystack Success",
+      "score": 98.7
+    }
+  ],
+  "model_name": "gemini-1.5-flash-latest",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:19:36.466871"
+}

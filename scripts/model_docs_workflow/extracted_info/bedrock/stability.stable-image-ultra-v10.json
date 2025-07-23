@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Stable Image Ultra v1.0 is a premium image generation model developed by Stability AI and hosted on AWS Bedrock. It leverages Stable Diffusion 3.5 technology to produce photorealistic, professional-grade images with exceptional detail in typography, complex compositions, 3D imagery, and dynamic lighting. The model is optimized for print media, large-format applications, and commercial use.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional print media (magazine covers, book illustrations)",
+      "Commercial photography alternatives (product visualization, fashion imagery)",
+      "Architectural and 3D visualization",
+      "Concept art for film, games, and media production",
+      "Scientific and medical visualization",
+      "High-end marketing collateral and advertising campaigns",
+      "Large-format printing (billboards, exhibition displays)"
+    ],
+    "strengths": [
+      "Generates photorealistic images with exceptional detail, color accuracy, and lifelike lighting",
+      "Excels in handling complex scenes with multiple subjects and intricate compositions",
+      "Advanced typography rendering for professional print media applications",
+      "Produces highly detailed 3D imagery with accurate textures and anatomical features",
+      "Integrated with AWS Bedrock for scalable infrastructure and service compatibility",
+      "Supports dynamic lighting simulation and vibrant color reproduction"
+    ],
+    "limitations": [
+      "Longer processing times compared to standard models due to high-quality output",
+      "Higher cost per image generation requiring careful budget planning",
+      "Limited to AWS US West (Oregon) region (us-west-2) for current availability",
+      "Subject to content policies and filtering mechanisms",
+      "Large output file sizes may require additional storage and bandwidth resources",
+      "May produce overly complex results for simple image generation tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability.stable-image-ultra-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:54:52.487107"
+}

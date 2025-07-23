@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash Experimental is Google's next-generation multimodal AI model with a 1 million token context window, supporting text, audio, video, and image inputs/outputs across over 140 languages. It improves speed (TTFT) and benchmarks over Gemini 1.5 Pro while introducing features like multimodal live API, native image generation, and compositional function calling. Currently in experimental phase with some features requiring private access.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time voice assistants and live translation services",
+      "Multimodal content creation (blog posts with text/images)",
+      "Code generation and debugging assistance",
+      "Interactive educational platforms with multimodal interactions",
+      "Customer service chatbots with visual/audio understanding",
+      "Automated data analysis of mixed media content",
+      "Creative tools for image editing and generation"
+    ],
+    "strengths": [
+      "1 million token context window for handling long documents",
+      "Multimodal capabilities across text, audio, video, and image modalities",
+      "Significantly improved time to first token (TTFT) compared to previous Flash models",
+      "Superior benchmark performance over Gemini 1.5 Pro in most metrics",
+      "Native support for over 140 languages",
+      "Real-time multimodal live API for interactive applications",
+      "Compositional function calling for complex workflows",
+      "Thinking mode variant (gemini-2.0-flash-thinking-exp) for visible reasoning processes",
+      "2D spatial understanding for generating normalized bounding boxes"
+    ],
+    "limitations": [
+      "Experimental status with potential feature changes",
+      "Image and audio generation require private experimental access (allowlist)",
+      "Context window limitations may still require chunking for extremely long documents",
+      "Not recommended for production use without thorough testing",
+      "Some features (e.g., text-to-speech) are in private beta"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-flash-exp",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:27:28.969303"
+}

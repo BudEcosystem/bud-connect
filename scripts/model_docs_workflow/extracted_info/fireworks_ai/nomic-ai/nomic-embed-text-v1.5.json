@@ -1,0 +1,64 @@
+{
+  "model_info": {
+    "description": "nomic-ai/nomic-embed-text-v1.5 is a text embedding model developed by Nomic AI, offering an industry-leading 8192-token context window and variable embedding dimensions (768, 512, 256, 128, 64) via Matryoshka Representation Learning. It outperforms OpenAI's Ada-002 and text-embedding-3-small models on both short and long context tasks, with multimodal alignment to nomic-embed-vision-v1. Trained using self-supervised MLM, contrastive learning, and fine-tuning on paired data, it is open-source under Apache-2 license.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Long document processing (PDFs, research papers, legal contracts)",
+      "Retrieval-Augmented Generation (RAG) with extended context understanding",
+      "Semantic search across large document collections",
+      "Document similarity analysis for lengthy texts",
+      "Legal/academic document analysis and clustering",
+      "Multimodal applications combining text and vision embeddings"
+    ],
+    "strengths": [
+      "Industry-leading 8192-token context window for processing long documents without truncation",
+      "Matryoshka Representation Learning enables variable embedding dimensions (768 to 64) with minimal performance loss (e.g., 64 dimensions retain 85-90% performance)",
+      "Outperforms OpenAI Ada-002 and text-embedding-3-small models on both short and long context tasks",
+      "Multimodal alignment with nomic-embed-vision-v1 for combined text-vision applications",
+      "Open-source with full model weights and training code available under Apache-2 license",
+      "Task-specific prefixes (e.g., 'search_document:', 'search_query:') optimize performance for different use cases"
+    ],
+    "limitations": [
+      "Requires task-specific prefixes for optimal performance (e.g., 'search_document:' for documents)",
+      "Primarily optimized for English text with limited multilingual support",
+      "Longer context processing (8192 tokens) demands higher computational resources",
+      "May require domain-specific fine-tuning for highly specialized applications",
+      "Dimension reduction impacts performance (e.g., 64 dimensions retain only 85-90% of full performance)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Long Context Performance",
+      "score": 100
+    },
+    {
+      "name": "Short Context Performance",
+      "score": 100
+    },
+    {
+      "name": "768-dimension Performance",
+      "score": 100
+    },
+    {
+      "name": "512-dimension Performance",
+      "score": 99
+    },
+    {
+      "name": "256-dimension Performance",
+      "score": 97.5
+    },
+    {
+      "name": "128-dimension Performance",
+      "score": 92.5
+    },
+    {
+      "name": "64-dimension Performance",
+      "score": 87.5
+    }
+  ],
+  "model_name": "nomic-ai/nomic-embed-text-v1.5",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:05:49.369964"
+}

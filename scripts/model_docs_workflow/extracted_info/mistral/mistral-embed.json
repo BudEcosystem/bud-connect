@@ -1,0 +1,27 @@
+{
+  "model_info": {
+    "description": "Mistral Embed is a semantic text embedding model developed by Mistral AI for converting text into dense vector representations. It supports multilingual capabilities and is optimized for retrieval-augmented generation (RAG), semantic search, and text similarity tasks. A specialized variant, Codestral Embed, is optimized for code retrieval with features like variable dimensions, int8 precision, and a context size of up to 8,192 tokens.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Retrieval-Augmented Generation (RAG) systems",
+      "Enterprise semantic search and document retrieval",
+      "Code snippet and function similarity detection",
+      "Text clustering and content organization",
+      "Duplicate detection and paraphrase identification"
+    ],
+    "strengths": [
+      "State-of-the-art semantic understanding for accurate text representations",
+      "Optimized for retrieval tasks with strong multilingual performance",
+      "Efficient vector representations with storage options like int8 precision",
+      "Codestral Embed variant excels in code retrieval with superior performance over competitors",
+      "Flexible API integration with batch processing and real-time deployment options"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-embed",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:53:42.438361"
+}

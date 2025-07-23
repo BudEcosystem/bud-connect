@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI's GPT-4.1 series includes three variants (gpt-4.1, gpt-4.1-mini, gpt-4.1-nano) offering enhanced reasoning, reduced hallucinations, and cost efficiency. The full GPT-4.1 model provides a 200,000-token context window with maximum accuracy, while the mini and nano variants prioritize speed and cost optimization for high-volume and resource-constrained applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex analytical tasks requiring maximum accuracy (GPT-4.1)",
+      "Customer support automation and content generation (GPT-4.1-mini)",
+      "Real-time applications, IoT devices, and mobile apps (GPT-4.1-nano)",
+      "Code review and debugging",
+      "High-volume batch processing of simple tasks",
+      "Edge deployment and regional compliance scenarios"
+    ],
+    "strengths": [
+      "Improved logical reasoning and problem-solving capabilities with 15-20% better performance on benchmark tasks",
+      "Reduced hallucinations for more accurate and reliable responses",
+      "Enhanced instruction-following for complex tasks",
+      "Multimodal understanding of text and images",
+      "Optimized code generation and debugging capabilities",
+      "Cost efficiency: GPT-4.1-mini is 40% cheaper than GPT-4o-Mini, and GPT-4.1-nano offers ultra-low cost for high-volume use",
+      "Flexible deployment options with pay-as-you-go and provisioned throughput units"
+    ],
+    "limitations": [
+      "Higher cost for GPT-4.1 compared to smaller variants for simple tasks",
+      "Limited context window for nano variant (64,000 tokens) may restrict complex input handling",
+      "Performance trade-offs in nano variant (90% of GPT-4.1 quality at 50% cost)",
+      "Requires careful model selection to avoid unnecessary costs for resource-constrained applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-gpt-4-1-series",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:36:09.187349"
+}

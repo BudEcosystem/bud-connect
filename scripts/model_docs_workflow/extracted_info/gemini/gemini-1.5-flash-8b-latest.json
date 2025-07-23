@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Flash 8B is a lightweight, multimodal model developed by Google for lower intelligence tasks requiring high-volume processing and cost efficiency. With 8 billion parameters, it supports text, images, audio, video, and PDF inputs but is optimized for speed and affordability over advanced capabilities. Now considered a legacy model, Google recommends migrating to newer Gemini 2.0 or 2.5 Flash variants for improved performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content moderation (spam detection, toxicity checks)",
+      "Basic customer service automation (FAQ responses, query routing)",
+      "Elementary data processing (formatting, sorting, filtering)",
+      "Simple content generation (product descriptions, social media posts)",
+      "High-volume text classification and batch operations"
+    ],
+    "strengths": [
+      "Fast inference due to compact 8B parameter size",
+      "Lowest cost option in the Gemini family for high-volume tasks",
+      "Supports multimodal inputs (text, images, audio, video, PDF)",
+      "Optimized for batch processing and resource efficiency",
+      "Suitable for simple text classification, summarization, and data extraction"
+    ],
+    "limitations": [
+      "Legacy model with April 29, 2025, access deadline",
+      "Limited capabilities compared to larger Gemini models",
+      "Struggles with complex reasoning, nuanced tasks, and advanced multimodal analysis",
+      "Potential issues with simple counting tasks and tokenization",
+      "Not recommended for high-stakes or multi-step problem-solving"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-8b-latest",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:16:53.060002"
+}

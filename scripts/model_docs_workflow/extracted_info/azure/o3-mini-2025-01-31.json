@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "The o3-mini-2025-01-31 model is a compact reasoning model developed by Azure OpenAI, released on January 31, 2025. It succeeds the o1-mini model with enhanced reasoning capabilities, cost efficiency, and enterprise-ready features. The model supports a 200K token input and 100K token output context window, with a knowledge cutoff of October 2023. It is optimized for business intelligence, scientific analysis, and complex problem-solving while maintaining backward compatibility with system messages and APIs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Business process automation and strategic planning",
+      "Financial modeling and risk assessment",
+      "Supply chain optimization and predictive maintenance",
+      "Scientific research and hypothesis generation",
+      "Code optimization and technical documentation generation",
+      "Customer service automation with reasoning capabilities",
+      "DevOps pipeline optimization and testing automation",
+      "Medical data analysis and clinical decision support"
+    ],
+    "strengths": [
+      "Improved cost-performance ratio with optimized reasoning efficiency compared to previous versions",
+      "Production-ready stability with enhanced reliability for enterprise deployments",
+      "Advanced tool integration and structured JSON schema support for precise data extraction",
+      "Expanded context window (200K input tokens) for handling complex tasks",
+      "Dynamic reasoning effort allocation for optimized performance",
+      "Comprehensive API support including Chat Completions, Assistants, Batch, and Responses APIs",
+      "Enhanced security and compliance features (SOC2, ISO27001, HIPAA, GDPR)",
+      "Multi-region deployment options with disaster recovery capabilities"
+    ],
+    "limitations": [
+      "Knowledge cutoff limited to October 2023, requiring external tools for real-time data",
+      "Context window constraints (200K input/100K output tokens) may limit ultra-large tasks",
+      "Balanced efficiency vs. reasoning depth may require tuning for complex workloads",
+      "Migration planning and staff training required for enterprise adoption",
+      "Integration complexity for hybrid and edge deployment scenarios"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3-mini-2025-01-31",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:15:10.967631"
+}

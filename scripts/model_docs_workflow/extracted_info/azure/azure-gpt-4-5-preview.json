@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI GPT-4.5 Preview is a next-generation language model developed by Microsoft, offering enhanced reasoning, multimodal understanding, and enterprise-specific features. It supports text, images, audio (preview), and document inputs with a 300,000-token context window. The model includes advanced capabilities for mathematical analysis, scientific reasoning, and code intelligence, with a knowledge cutoff in December 2024. It is available in limited preview with regional restrictions and requires enterprise-level Azure subscriptions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Scientific research and hypothesis generation",
+      "Enterprise business intelligence and strategic planning",
+      "Complex multi-variable optimization and mathematical problem-solving",
+      "Advanced code analysis, optimization, and security assessment",
+      "Creative content generation with structured formatting",
+      "Document intelligence for legal, financial, or technical analysis",
+      "Multimodal analysis of reports, charts, and visual data"
+    ],
+    "strengths": [
+      "Extended 300,000-token context window for handling complex, long-form inputs",
+      "Multimodal support for text, images, audio (preview), and document analysis",
+      "Advanced reasoning capabilities in mathematics, scientific analysis, and abstract thinking",
+      "Specialized features for code generation, debugging, and optimization",
+      "Enterprise-grade security with content filtering, bias detection, and hallucination prevention",
+      "Cross-modal reasoning for integrating multiple input types (e.g., text + images + audio)",
+      "Comprehensive document intelligence for structured data extraction and analysis"
+    ],
+    "limitations": [
+      "Limited preview availability with invitation-only access and regional restrictions",
+      "Requires enterprise-level Azure subscription and compliance approval",
+      "Higher computational resource requirements and premium pricing during preview",
+      "No production SLA and potential API changes during preview period",
+      "Audio and document processing features are in preview with possible instability",
+      "Knowledge cutoff in December 2024 may limit access to recent data",
+      "Limited PTU (provisioned throughput units) availability during preview"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-gpt-4-5-preview",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:36:55.077378"
+}

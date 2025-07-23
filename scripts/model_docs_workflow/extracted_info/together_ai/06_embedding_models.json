@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Together AI offers a suite of high-quality embedding models for transforming text into numerical vectors, supporting applications like search systems, recommendation engines, and Retrieval Augmented Generation (RAG). The BAAI BGE series includes English and multilingual models with varying sizes (small, base, large) and specialized models for tasks like semantic similarity and long document retrieval. Key features include multi-functionality (dense/sparse/multi-vector retrieval), multilingual support (100+ languages), and extended context lengths (up to 8192 tokens).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multilingual semantic search with BGE-M3",
+      "High-precision document retrieval for RAG systems",
+      "Cost-effective large-scale embeddings with BGE-small",
+      "Long-form content analysis (up to 8K tokens)",
+      "Cross-lingual information retrieval",
+      "Vector database indexing for recommendation engines"
+    ],
+    "strengths": [
+      "High-quality embeddings with state-of-the-art performance on retrieval benchmarks (MTEB)",
+      "Multi-functionality in BGE-M3 for dense, sparse, and multi-vector retrieval",
+      "Support for 100+ languages in BGE-M3 for cross-lingual tasks",
+      "Extended context handling up to 8192 tokens for long document processing",
+      "Cost-effective options like BGE-small and all-MiniLM-L6-v2 for budget-sensitive applications",
+      "Open-source transparency and reproducibility for the BGE model family"
+    ],
+    "limitations": [
+      "Higher cost for large models (e.g., BGE-large at $0.015/1M tokens)",
+      "Limited to English-only models for some use cases (e.g., BGE-base-en-v1.5)",
+      "Performance trade-offs in smaller models (e.g., BGE-small with 33M parameters)",
+      "BGE-M3's higher pricing ($0.02/1M tokens) compared to monolingual alternatives"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "06_embedding_models",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:16:04.736784"
+}

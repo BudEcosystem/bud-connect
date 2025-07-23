@@ -1,0 +1,28 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI Service is a comprehensive suite of AI models developed by Microsoft, offering text generation, reasoning, computer automation, image generation, and audio processing capabilities. It includes variants like GPT-3.5 Turbo, GPT-4, and specialized models such as DALL-E 3 and computer-use-preview. The service emphasizes enterprise features like security, compliance, and flexible deployment options across global regions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Text generation and chatbot development with GPT-3.5 Turbo and GPT-4 variants.",
+      "Advanced reasoning and analysis using O-series models (o1, o3, o4).",
+      "Computer automation and GUI interaction via computer-use-preview.",
+      "High-quality image generation with DALL-E 3.",
+      "Speech-to-text and text-to-speech processing using Whisper-1 and TTS models.",
+      "Enterprise applications requiring compliance and data residency (e.g., healthcare, finance)."
+    ],
+    "strengths": [
+      "Provides a wide range of models for diverse tasks including text, image, audio, and computer automation.",
+      "Offers enterprise-grade security, compliance certifications (SOC 2, GDPR), and data residency options.",
+      "Supports multimodal capabilities (text, vision, audio) through models like GPT-4o and gpt-4o-audio-preview.",
+      "Flexible pricing models (pay-as-you-go, provisioned throughput) and deployment strategies (regional/global).",
+      "Seamless integration with Azure services, Power Platform, and Microsoft 365 for enterprise workflows."
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "README",
+  "provider": "azure",
+  "extraction_date": "2025-07-20T20:11:24.390681"
+}

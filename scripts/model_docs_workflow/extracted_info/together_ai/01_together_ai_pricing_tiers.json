@@ -1,0 +1,29 @@
+{
+  "model_info": {
+    "description": "Together AI provides a tiered pricing structure for serverless AI model deployment, with costs based on model size, complexity, and usage type. It supports 200+ open-source models, including text, multimodal, code, and image models, with flexible options for dedicated endpoints, fine-tuning, and batch processing. The platform offers transparent token-based billing, GPU-optimized infrastructure, and OpenAI compatibility for seamless integration.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Serverless deployment of chat, code, and multimodal models",
+      "Enterprise-grade AI model fine-tuning with volume discounts",
+      "Cost-effective batch inference for high-volume workloads",
+      "Custom GPU-optimized deployments for guaranteed capacity",
+      "Integration of open-source models with OpenAI-compatible APIs"
+    ],
+    "strengths": [
+      "Transparent token-based pricing with no hidden fees",
+      "Flexible deployment options (serverless and dedicated endpoints)",
+      "Support for 200+ open-source models across text, code, image, and audio domains",
+      "OpenAI compatibility for easy migration from other providers",
+      "Cost efficiency with 70-90% savings compared to closed models",
+      "Batch processing discounts (50% off input/output tokens for supported models)",
+      "High-performance infrastructure using NVIDIA Blackwell and Hopper GPUs"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "01_together_ai_pricing_tiers",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:11:45.298967"
+}

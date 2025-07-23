@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Vertex AI Models is a Google Cloud service offering enterprise-grade access to models like Anthropic Claude and Gemini, with features including VPC Service Controls, Customer-Managed Encryption Keys, and MLOps integration. It provides regional data residency, compliance tools, and access to advanced models such as Claude Opus 4 and Gemini 2.5 series. The service emphasizes security, scalability, and enterprise controls, with SDK migration to the Google Gen AI SDK required by June 2025.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Secure AI deployment in regulated industries requiring compliance and data residency",
+      "Enterprise-scale MLOps workflows with enhanced security and quota management",
+      "High-throughput text generation using Gemini Flash models for cost-sensitive applications",
+      "Advanced reasoning tasks leveraging Claude Opus 4's hybrid capabilities",
+      "Integration with Google Cloud infrastructure for scalable AI solutions"
+    ],
+    "strengths": [
+      "Enterprise-grade security features including VPC Service Controls (VPC-SC) and Customer-Managed Encryption Keys (CMEK)",
+      "Compliance with regional data residency and enhanced security controls for enterprise environments",
+      "Access to advanced models like Claude Opus 4 with hybrid reasoning capabilities and Gemini 2.5 series for high-throughput tasks",
+      "Integration with MLOps tooling and IAM for scalable AI deployment",
+      "Support for regional endpoints and improved quota management compared to direct API access"
+    ],
+    "limitations": [
+      "Vertex AI SDK's generative AI modules deprecated by June 24, 2025, requiring migration to Google Gen AI SDK",
+      "Gemini 1.5 Pro and Flash models restricted in new projects after April 29, 2025 without prior usage",
+      "Limited availability of legacy Gemini 1.5 models with deprecation notices for 2025"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "README",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-20T21:17:31.685551"
+}

@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Gemini 2.5 Pro Experimental (03-25 version) is Google's most intelligent AI model, released in March 2025, featuring advanced multi-step reasoning and complex problem-solving capabilities. It is the top-performing model on LMArena and includes a Deep Think mode for enhanced reasoning. The experimental version is available via Google AI Studio and Vertex AI but is not yet generally available for production use.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex coding and software development",
+      "Scientific research and analysis",
+      "Mathematical proof generation and problem-solving",
+      "Strategic planning and multi-step task decomposition",
+      "Advanced analytics and deep insight generation"
+    ],
+    "strengths": [
+      "Advanced multi-step reasoning and complex problem-solving capabilities",
+      "Deep Think mode for enhanced reasoning with configurable thinking budgets up to 32K tokens",
+      "State-of-the-art performance on benchmarks like AIME 2025, GPQA, and I/O 2025 coding",
+      "Leading multimodal reasoning with an 84.0% score on the MMMU benchmark",
+      "Transparent thinking process with optional visibility into reasoning steps and summaries"
+    ],
+    "limitations": [
+      "Experimental status with potential feature changes and limited availability",
+      "Not recommended for production use due to evolving documentation and rate limits",
+      "Higher computational and cost requirements from increased token usage and latency",
+      "Limited to trusted testers on Vertex AI with pending general availability"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMMU",
+      "score": 84.0
+    }
+  ],
+  "model_name": "gemini-2.5-pro-exp-03-25",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:34:05.076653"
+}

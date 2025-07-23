@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "The o3-2025-04-16 model is an advanced multimodal reasoning model developed by Azure OpenAI Service, released in April 2025. It features a 200K token input and 100K token output context window, with knowledge cutoff in June 2024. The model emphasizes enhanced reasoning capabilities, enterprise-grade features, and integration with Azure's ecosystem for complex business applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Strategic business consulting and analysis",
+      "Scientific research and hypothesis generation",
+      "Financial modeling and risk assessment",
+      "Legal document analysis and interpretation",
+      "Pharmaceutical drug discovery and clinical trials",
+      "Aerospace system design and safety analysis",
+      "Multi-agent AI orchestration and automation"
+    ],
+    "strengths": [
+      "Advanced multimodal integration for enhanced vision-text reasoning",
+      "Expanded tool ecosystem with broader supported integrations",
+      "Optimized performance for faster reasoning with maintained accuracy",
+      "Enterprise-grade security and compliance (SOC 2, ISO 27001, HIPAA, GDPR)",
+      "Exceptional STEM performance and superior visual analysis capabilities",
+      "Sophisticated code generation and business intelligence features"
+    ],
+    "limitations": [
+      "Knowledge cutoff limited to June 2024 training data",
+      "High computational requirements for advanced reasoning tasks",
+      "200K input/100K output token context window limitations",
+      "Limited real-time data access without external tool integration",
+      "Requires complex implementation planning and organizational change management",
+      "Significant infrastructure and budget planning for enterprise deployment"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3-2025-04-16",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:14:18.115557"
+}

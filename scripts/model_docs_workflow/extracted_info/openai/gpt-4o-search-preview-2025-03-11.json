@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-4o Search Preview is OpenAI's advanced model that combines the full capabilities of GPT-4o with real-time web search functionality. It features a 128,000-token context window, 16,384-token max output, and a knowledge cutoff of October 1, 2023, supplemented by live web search. The model integrates specialized web search layers for geographic localization, multi-source synthesis, and real-time information access.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Academic research with access to current papers and findings",
+      "Business intelligence and competitive analysis using real-time market data",
+      "News synthesis and fact-checking with multi-source verification",
+      "Educational applications requiring up-to-date information and critical thinking training",
+      "Technical documentation and policy analysis with current standards and regulations"
+    ],
+    "strengths": [
+      "Seamless integration of GPT-4o's multimodal capabilities with real-time web search to overcome training data cutoff limitations",
+      "Advanced geographic localization and cultural customization for region-specific results",
+      "Sophisticated multi-source synthesis and intelligent query processing for complex information needs",
+      "Full GPT-4o features including code generation, reasoning, and creative tasks combined with live data access",
+      "High accuracy in information retrieval with source credibility prioritization and bias mitigation"
+    ],
+    "limitations": [
+      "Preview status with potential stability and feature limitations",
+      "Search quality and coverage may vary by topic/region due to source dependency",
+      "Additional costs for web search operations and potential latency from search integration",
+      "Network dependencies affecting performance and lack of caching optimizations for search results",
+      "Risk of misinformation propagation and bias amplification from web sources"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-search-preview-2025-03-11",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:24:29.978238"
+}

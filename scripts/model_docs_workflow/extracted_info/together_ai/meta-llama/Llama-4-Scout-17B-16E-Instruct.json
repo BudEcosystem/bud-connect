@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Llama 4 Scout 17B 16E Instruct is a multimodal Mixture-of-Experts (MoE) model developed by Meta and hosted on Together AI. It features 17 billion active parameters (109B total) with a 320K standard context length (up to 10 million tokens) and supports 12 languages. The model integrates text and vision via early fusion technology, enabling advanced multi-document analysis, codebase reasoning, and personalized tasks while fitting on a single NVIDIA H100 GPU using int4 quantization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Legal document review and multi-document analysis",
+      "Software development tasks including codebase analysis and architecture evaluation",
+      "Educational applications with visual and textual materials",
+      "Healthcare diagnostics using technical diagrams and medical documents",
+      "Financial services report analysis and compliance review"
+    ],
+    "strengths": [
+      "Delivers best-in-class performance for 17B parameter multimodal models, outperforming competitors like Gemma 3, Gemini 2.0 Flash-Lite, and Mistral 3.1",
+      "Supports up to 10 million token context windows with efficient single-GPU deployment (NVIDIA H100) via int4 quantization",
+      "Native multimodal architecture with early fusion technology for seamless text and vision integration",
+      "Processes up to 5 images per request with advanced visual reasoning capabilities (object detection, multi-step image analysis)",
+      "Optimized for multi-document analysis, codebase understanding, and personalized task adaptation"
+    ],
+    "limitations": [
+      "Maximum context limit of 10 million tokens may constrain extremely large-scale applications",
+      "Restricted to 5 image inputs per request for multimodal tasks",
+      "Requires substantial GPU resources (NVIDIA H100) for deployment",
+      "Higher cost compared to smaller models for basic applications",
+      "May be overkill for simple tasks due to its advanced capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:14:52.840533"
+}

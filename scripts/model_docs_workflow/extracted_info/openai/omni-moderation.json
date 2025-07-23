@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Omni-Moderation is OpenAI's advanced multimodal content moderation model built on GPT-4o. It analyzes text and images to detect harmful content across categories like violence, self-harm, sexual content, and hate speech. The model provides calibrated probability scores and supports non-English languages with enhanced accuracy. It offers variants including 'latest', '2024-09-26', and 'latest-intents' for intent detection, with free access for developers.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Social media platform content moderation",
+      "Gaming chat and user-generated content filtering",
+      "Educational platform safety monitoring",
+      "E-commerce review and listing moderation",
+      "Community forum content filtering",
+      "AI-generated content guardrails",
+      "Dating app profile and message screening",
+      "Customer service request filtering"
+    ],
+    "strengths": [
+      "Multimodal analysis of text and images for comprehensive content evaluation",
+      "Enhanced accuracy for non-English language content detection",
+      "Calibrated probability scores for precise risk assessment",
+      "Intent detection capability in specialized variants",
+      "Supports combined text-image analysis for contextual understanding",
+      "Free tier with no hidden costs for developers",
+      "Regular updates through the 'latest' endpoint for continuous improvement"
+    ],
+    "limitations": [
+      "Cannot detect all types of harmful content with 100% accuracy",
+      "Potential for false positives/negatives in content classification",
+      "Cultural context may affect moderation accuracy",
+      "Rate limits apply based on usage tier",
+      "Not a replacement for human judgment in nuanced cases",
+      "Some nuanced or context-dependent content may be misclassified"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "omni-moderation",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:48:57.232182"
+}

@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Cohere Rerank v3.5 is an advanced cross-encoding reranking model developed by Cohere and available on AWS Bedrock. It enhances search relevance and content ranking by analyzing query-document pairs with semantic understanding, supporting 100+ languages, and optimizing for enterprise-scale processing. The model specializes in complex reasoning, multilingual comprehension, and technical/business content understanding.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise search systems for internal knowledge bases and document management",
+      "E-commerce product search and recommendation optimization",
+      "Legal and compliance document ranking",
+      "Medical literature and clinical documentation retrieval",
+      "Content management platform optimization for SEO and user engagement",
+      "Business intelligence and technical documentation analysis"
+    ],
+    "strengths": [
+      "Supports 100+ languages including Arabic, Chinese, English, and Spanish for global enterprise use",
+      "Advanced reasoning capabilities for complex queries and technical/business content",
+      "High precision in document ranking with semantic similarity analysis beyond keyword matching",
+      "Optimized for enterprise-scale processing with efficient handling of large document sets",
+      "Integrated with AWS Bedrock APIs (Rerank, InvokeModel) and Knowledge Bases for seamless deployment",
+      "Consistent performance across diverse content types with cultural context awareness"
+    ],
+    "limitations": [
+      "512-token limit per document chunk requiring manual splitting for longer content",
+      "Maximum 100 document chunks per query with additional charges for larger volumes",
+      "Currently available in only 4 AWS regions (us-west-2, ca-central-1, eu-central-1, ap-northeast-1)",
+      "Performance may vary across languages and domain-specific content",
+      "Query-based pricing model may increase costs for high-volume operations",
+      "Processing time increases with large document sets"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.rerank-v3-50",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:40:37.391974"
+}

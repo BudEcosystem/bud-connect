@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "The Azure OpenAI Computer-Use-Preview model is an experimental AI developed by Azure OpenAI for the Responses API, enabling autonomous interaction with computer systems and applications via user interfaces. It supports tasks like web automation, form filling, and cross-platform workflows with a context window of 8,192 tokens and a training data cutoff of October 2023. The model requires specific integration libraries and operates in controlled environments with human oversight.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated web form filling and data entry workflows",
+      "UI testing and quality assurance across applications",
+      "Legacy system integration without API access",
+      "Accessibility tools for users with computer interaction challenges",
+      "Robotic Process Automation (RPA) for multi-application business processes"
+    ],
+    "strengths": [
+      "Enables autonomous navigation and task execution across web and desktop applications through UI interactions.",
+      "Adapts dynamically to real-time UI changes and executes multi-step workflows seamlessly.",
+      "Supports natural language task descriptions, translating them into precise mouse/keyboard actions.",
+      "Includes built-in safety mechanisms like malicious instruction detection and sensitive domain warnings.",
+      "Operates in isolated environments with human acknowledgment requirements for high-risk actions."
+    ],
+    "limitations": [
+      "Experimental/preview status with no production-readiness guarantees.",
+      "Limited to 8,192 token context window and 1,024 token output, restricting complex tasks.",
+      "Training data cutoff in October 2023 may lead to outdated knowledge for newer systems.",
+      "Requires specific integration libraries (e.g., Playwright) and controlled test environments.",
+      "Human supervision mandatory for all operations; not suitable for autonomous use.",
+      "Limited access via Microsoft's approval process and regional deployment constraints."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "computer-use-preview",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:41:42.078866"
+}

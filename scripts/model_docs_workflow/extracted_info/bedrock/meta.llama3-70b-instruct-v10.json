@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3 70B Instruct is a 70-billion-parameter large language model developed by Meta, offering enhanced reasoning, content creation, and enterprise capabilities. It features an 8K token context window (double Llama 2), 15 trillion training tokens (7x larger than Llama 2), and 4x more code training data. Optimized for AWS Bedrock, it supports advanced fine-tuning with SFT and RLHF, and is ideal for complex reasoning, conversational AI, and code generation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise content creation (marketing, documentation, creative writing)",
+      "Advanced conversational AI and customer service chatbots",
+      "Business intelligence and document analysis",
+      "Code generation and programming assistance across multiple languages",
+      "Technical applications like data analysis and research support",
+      "Creative writing, storytelling, and educational content generation"
+    ],
+    "strengths": [
+      "70 billion parameters enable advanced reasoning and generation capabilities",
+      "8K token context window (double Llama 2) for handling longer documents and conversations",
+      "Trained on 15 trillion tokens (7x larger dataset than Llama 2) for broader knowledge",
+      "4x more code training data enhances programming and code generation capabilities",
+      "Optimized for AWS Bedrock with efficient inference and enterprise scalability",
+      "Advanced SFT and RLHF training improves instruction following and conversational performance"
+    ],
+    "limitations": [
+      "8K token context window may be insufficient for extremely long documents",
+      "Higher computational and cost requirements compared to smaller models",
+      "May not match capabilities of larger models (e.g., Llama 3.1 70B with 128K context)",
+      "Performance may vary in highly specialized domain knowledge scenarios",
+      "Requires AWS Bedrock integration for deployment"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-70b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:49:17.758218"
+}

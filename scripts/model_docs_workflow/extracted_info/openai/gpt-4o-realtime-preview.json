@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "GPT-4o-realtime-preview is a multimodal large language model developed by OpenAI for real-time voice interactions. It enables low-latency speech-to-speech conversations via WebSocket/WebRTC connections, eliminating the need for intermediate transcription steps. The December 2024 version offers improved voice quality, reliable input handling, and 60%+ cheaper audio pricing. It supports emotion preservation, function calling, and multimodal text/audio inputs/outputs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Voice assistants for real-time conversational AI",
+      "Live customer service automation",
+      "Interactive language learning platforms",
+      "Voice-controlled gaming interfaces",
+      "Accessibility tools for real-time audio interfaces",
+      "Telehealth consultations via voice",
+      "Smart home voice control systems",
+      "Educational tutoring with interactive voice",
+      "Entertainment applications like AI performers",
+      "Real-time voice translation services"
+    ],
+    "strengths": [
+      "Enables low-latency, real-time speech-to-speech conversations through WebSocket/WebRTC connections",
+      "Preserves emotion, emphasis, and accents in voice outputs",
+      "Supports natural conversation interruptions and function calling for interactive workflows",
+      "December 2024 version reduces audio costs by 60%+ while improving voice quality",
+      "Maintains conversation context through session-based architecture",
+      "Simplifies integration with WebRTC for web applications"
+    ],
+    "limitations": [
+      "Requires persistent WebSocket/WebRTC connection for continuous operation",
+      "Higher complexity compared to traditional request-response APIs",
+      "Limited to preset voice options (alloy, echo, fable, etc.)",
+      "Necessitates real-time audio processing capabilities",
+      "Beta status may introduce stability concerns",
+      "Higher cost compared to text-only interactions (audio input: $0.06/minute, output: $0.24/minute)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-realtime-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:35:41.919550"
+}

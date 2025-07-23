@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet (20240620) is a transformer-based, multimodal large language model developed by Anthropic, launched on June 20, 2024. It features a 200,000-token context window, 4,096-token output (8,192 in beta), and excels in vision tasks, coding (64% success rate on internal agentic coding evaluation), and graduate-level reasoning. It operates at twice the speed of Claude 3 Opus while maintaining cost efficiency.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex customer support automation",
+      "Data analysis and visualization interpretation",
+      "Code generation and review",
+      "Document processing and text extraction from images",
+      "Content creation and technical writing",
+      "Graduate-level academic reasoning tasks",
+      "Multilingual communication and translation"
+    ],
+    "strengths": [
+      "Outperforms Claude 3 Opus on most benchmarks, including vision and reasoning tasks",
+      "2x faster processing speed compared to Claude 3 Opus",
+      "Strongest vision capabilities at launch, with chart/graph interpretation and technical diagram analysis",
+      "64% success rate on internal agentic coding evaluation",
+      "Cost-efficient at 5x lower price than Claude 3 Opus",
+      "Supports 200,000-token context window and 8,192-token output in beta",
+      "Multilingual and multimodal (text and vision) capabilities"
+    ],
+    "limitations": [
+      "Limited to 200,000-token context window",
+      "Standard output restricted to 4,096 tokens (8,192 in beta)",
+      "No internet access or real-time data processing",
+      "Knowledge cutoff at April 2024",
+      "Cannot execute code or process audio/video inputs",
+      "Limited to text and image modalities"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "HumanEval",
+      "score": 64
+    }
+  ],
+  "model_name": "claude-3-5-sonnet-20240620",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:18:39.699594"
+}

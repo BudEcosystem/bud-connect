@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Mistral Large 2411 (Mistral Large 2.1) is a 123B-parameter, 128k-token context window transformer-based model developed by Mistral AI in November 2024. It maintains the architecture of Mistral Large 2407 while incorporating refinements for improved inference efficiency and stability. The model excels in advanced reasoning, code generation, mathematics, and supports 80+ languages.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise business analysis and decision support",
+      "Full-cycle software development assistance",
+      "Academic research including literature review and data analysis",
+      "Legal contract review and case law research",
+      "Medical literature synthesis and clinical decision support",
+      "Financial risk assessment and market analysis",
+      "Multilingual translation and cross-cultural communication"
+    ],
+    "strengths": [
+      "128k-token context window for handling long-form and complex documents",
+      "123B parameters with single-node optimization for high-throughput inference",
+      "Strong performance on MMLU benchmark (~84.0% accuracy)",
+      "Advanced code generation capabilities from extensive code repository training",
+      "Comprehensive multilingual support for 80+ natural and programming languages",
+      "Function calling integration for tool usage",
+      "Competitive with top models like GPT-4o and Claude 3 Opus"
+    ],
+    "limitations": [
+      "Requires significant computational resources for self-hosting",
+      "Large model size increases latency and deployment complexity",
+      "128k token limit may still restrict extremely long documents",
+      "Premium pricing requires careful cost management",
+      "API subject to tier-based rate limits",
+      "Specialized domains may require additional fine-tuning"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 84.0
+    }
+  ],
+  "model_name": "mistral-large-2411",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:55:05.706618"
+}

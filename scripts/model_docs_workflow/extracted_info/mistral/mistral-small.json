@@ -1,0 +1,63 @@
+{
+  "model_info": {
+    "description": "Mistral Small is a 24-billion-parameter multimodal large language model developed by Mistral AI, designed for tasks like programming, mathematical reasoning, document understanding, and dialogue. It features a transformer-based dense decoder-only architecture with an expanded context window of up to 128,000 tokens (versions 3.1+). The model supports both text and vision inputs, with open-source Apache 2.0 licensing and deployment flexibility across cloud platforms and consumer hardware when quantized.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document verification and analysis for enterprises",
+      "Code generation, review, and translation for developers",
+      "Visual inspection and quality control in manufacturing",
+      "Multimodal content creation and customer support",
+      "Educational assistance and research support",
+      "On-device image processing for mobile applications",
+      "Mathematical reasoning and problem-solving tasks"
+    ],
+    "strengths": [
+      "24 billion parameters with a transformer-based architecture for strong text and vision performance",
+      "Multimodal capabilities (text + image processing) in versions 3.1 and 3.2",
+      "Expanded context window of 128,000 tokens for handling long inputs",
+      "High benchmark scores: 81% on MMLU, 92.90% on HumanEval Plus, and 78.33% on MBPP Pass@5",
+      "Efficient deployment options including single RTX 4090 support with quantization",
+      "Significant improvements in 3.2 version: 4.17% higher HumanEval Plus score and 43% reduction in infinite generation errors",
+      "Competitive with larger models while maintaining lower computational requirements"
+    ],
+    "limitations": [
+      "Requires ~55 GB GPU RAM for full precision deployment",
+      "Quantization recommended for consumer hardware (RTX 4090/32GB MacBook)",
+      "API rate limits apply for cloud usage",
+      "Slight decrease in infinite generation rate (1.29%) compared to 3.1 (2.11%)",
+      "Limited to specific image formats for multimodal inputs (not explicitly detailed)",
+      "Higher cost for API usage ($0.0002-$0.0006 per 1,000 tokens)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 81
+    },
+    {
+      "name": "HumanEval Plus",
+      "score": 92.9
+    },
+    {
+      "name": "MBPP Pass@5",
+      "score": 78.33
+    },
+    {
+      "name": "Internal Accuracy",
+      "score": 84.78
+    },
+    {
+      "name": "Infinite Generation Rate",
+      "score": 1.29
+    },
+    {
+      "name": "Output Speed",
+      "score": 150
+    }
+  ],
+  "model_name": "mistral-small",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:01:20.212285"
+}

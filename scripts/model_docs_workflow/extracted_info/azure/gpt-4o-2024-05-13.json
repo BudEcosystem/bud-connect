@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "GPT-4o-2024-05-13 is a multimodal large language model developed by OpenAI for Azure OpenAI Service. It combines text and image processing capabilities, offering performance parity with GPT-4 Turbo in English and coding tasks while excelling in non-English languages and vision tasks. Key technical features include a 128,000-token input context window, 4,096-token output limit, and specialized image tokenization (85 tokens for low-detail images, 170 tokens per 512x512 tile for high-detail images). Training data is current through October 2023.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multimodal document analysis (text + images)",
+      "Customer support with visual content understanding",
+      "Medical image analysis with contextual text interpretation",
+      "Product catalog management and visual description generation",
+      "Educational content creation with visual materials",
+      "Data analysis of charts, graphs, and visual datasets",
+      "Quality control in manufacturing through visual inspection"
+    ],
+    "strengths": [
+      "Matches GPT-4 Turbo performance in English text and coding tasks",
+      "Superior non-English language support compared to GPT-4 Turbo",
+      "Enhanced vision task accuracy with multimodal integration",
+      "Supports parallel function calling and JSON mode for structured outputs",
+      "Offers multiple Azure deployment options (standard, global, data zone, batch)",
+      "Includes enterprise security features like Azure AD authentication and data encryption",
+      "Optimized for cost efficiency with batch processing and regional pricing"
+    ],
+    "limitations": [
+      "Limited to 4,096 output tokens per request",
+      "Exclusive compatibility with Chat Completions API (no Completions API support)",
+      "Training data cutoff in October 2023 limits recent knowledge",
+      "Preview status with Microsoft recommending against production use",
+      "High-resolution image processing significantly increases token costs",
+      "Context window may be insufficient for extremely long documents",
+      "Regional availability restrictions and potential latency variations",
+      "Compliance limitations in certain geographic locations"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-2024-05-13",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:59:32.490884"
+}

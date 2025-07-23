@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Claude 3 Opus is the most intelligent model in Anthropic's Claude 3 family, designed for complex tasks requiring advanced reasoning, analysis, and automation. Hosted on Google Cloud Vertex AI since March 13, 2024, it supports up to 200,000 input tokens and 4,096 output tokens, with a knowledge cutoff of August 1, 2023. Key features include vision processing, multi-modal inputs, tool calling, and enterprise-grade security through Google Cloud integration.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced financial market analysis and risk management",
+      "Drug discovery and clinical data analysis in life sciences",
+      "Complex codebase modernization and system architecture design",
+      "Scientific hypothesis generation and technical research",
+      "Enterprise workflow automation and compliance processes",
+      "Multi-step task automation with vision and tool integration"
+    ],
+    "strengths": [
+      "Outperforms peers on major AI benchmarks like MMLU (undergraduate-level knowledge) and GPQA (graduate-level reasoning)",
+      "Supports multi-modal inputs (text and images) with advanced vision processing capabilities",
+      "Enterprise-grade security and compliance features via Google Cloud integration",
+      "Large context window of 200,000 tokens for handling complex, lengthy inputs",
+      "Sophisticated tool calling and forced tool use for reliable automation",
+      "Serverless deployment with auto-scaling and high availability on Vertex AI"
+    ],
+    "limitations": [
+      "Higher cost compared to Anthropic's smaller models (Haiku and Sonnet)",
+      "Output token limit of 4,096 tokens per response",
+      "Knowledge cutoff date of August 1, 2023, limiting access to newer information",
+      "Longer processing times due to model complexity",
+      "Regional deployment restrictions with quota limits on queries and tokens per minute"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-opus",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:39:36.630226"
+}

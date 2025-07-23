@@ -1,0 +1,66 @@
+{
+  "model_info": {
+    "description": "The thenlper/gte-base is a BERT-based text embedding model developed by Alibaba DAMO Academy, optimized for information retrieval and semantic similarity tasks. It features a 768-dimensional embedding space, 512-token context window, and 0.22 GB model size. Trained on a large-scale corpus of text pairs across diverse domains, it excels in semantic textual similarity (82.3 MTEB score) and classification tasks while maintaining efficiency for practical deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Semantic search engines and information retrieval systems",
+      "Document similarity analysis and clustering",
+      "Question-answering systems with knowledge bases",
+      "Content recommendation engines",
+      "Retrieval-augmented generation (RAG) systems",
+      "Vector database indexing and querying"
+    ],
+    "strengths": [
+      "Excels in semantic textual similarity (82.3 MTEB score) and pair classification (84.57 MTEB score)",
+      "Balanced performance-to-size ratio (0.22 GB) with competitive results against larger models",
+      "Multi-stage contrastive learning enables strong semantic understanding without specialized prompts",
+      "Supports batch processing via Fireworks AI API for efficient deployment",
+      "Achieves 62.39 average MTEB score across diverse tasks"
+    ],
+    "limitations": [
+      "Limited to English text inputs with 512-token context window (BERT constraint)",
+      "Long texts are automatically truncated to 512 tokens",
+      "May require domain adaptation for highly specialized applications",
+      "Lower performance in summarization tasks (31.17 MTEB score)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB Average",
+      "score": 62.39
+    },
+    {
+      "name": "Clustering",
+      "score": 46.2
+    },
+    {
+      "name": "Pair Classification",
+      "score": 84.57
+    },
+    {
+      "name": "Reranking",
+      "score": 58.61
+    },
+    {
+      "name": "Retrieval",
+      "score": 51.14
+    },
+    {
+      "name": "STS (Semantic Textual Similarity)",
+      "score": 82.3
+    },
+    {
+      "name": "Summarization",
+      "score": 31.17
+    },
+    {
+      "name": "Classification",
+      "score": 73.01
+    }
+  ],
+  "model_name": "thenlper/gte-base",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:08:13.418300"
+}

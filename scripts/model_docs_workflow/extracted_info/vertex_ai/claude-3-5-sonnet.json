@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet is Anthropic's flagship model in the Claude 3.5 series, designed for advanced reasoning, complex task completion, and high-quality content generation. Available on Google Cloud Vertex AI as a managed Model-as-a-Service (MaaS), it features a 200,000-token context window, 8,000-token output limit, and a knowledge cutoff in April 2024. The transformer-based model supports regional deployment in Google Cloud and includes features like prompt caching, batch processing, and function calling.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex workflow automation and agentic task orchestration",
+      "Code analysis, migration, and optimization in software development",
+      "Legal and compliance document review with multi-document synthesis",
+      "Strategic content creation and technical documentation",
+      "Business intelligence analysis and market research",
+      "Multi-step logical problem-solving and technical reasoning tasks"
+    ],
+    "strengths": [
+      "200,000-token context window for handling extensive input data",
+      "Balanced speed and quality optimization for efficient processing",
+      "Prompt caching reduces costs by up to 90% for repeated content",
+      "Advanced reasoning capabilities for complex problem-solving and analysis",
+      "High-quality content generation with strong coherence and technical depth",
+      "Support for batch processing and real-time streaming responses",
+      "Integrated with Google Cloud security and compliance features"
+    ],
+    "limitations": [
+      "8,000-token output limit per response",
+      "Knowledge cutoff in April 2024 (no real-time data access)",
+      "Extended reasoning capabilities unavailable (requires Claude 3.7 Sonnet)",
+      "Limited to specific Google Cloud regions (e.g., us-east5)",
+      "Subject to regional quotas and rate limits (QPM/TPM)",
+      "Potential cold start latency for initial requests",
+      "Token-based pricing may increase costs for high-volume usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-5-sonnet",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:35:06.021552"
+}

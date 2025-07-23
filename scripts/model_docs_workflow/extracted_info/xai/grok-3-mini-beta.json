@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Grok-3 Mini Beta is a cost-efficient reasoning model developed by xAI, optimized for logic-based tasks requiring minimal world knowledge. It features a 131,072-token context window, reinforcement learning training, and chain-of-thought reasoning. The model is 10x cheaper than Grok-3 Beta, supports multi-language inputs, and excels in STEM tasks, code generation, and mathematical problem-solving.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical problem-solving and tutoring",
+      "Code generation, review, and debugging",
+      "Technical analysis and algorithm optimization",
+      "Business process optimization and decision tree analysis",
+      "Scientific hypothesis testing and experimental design"
+    ],
+    "strengths": [
+      "10x cheaper than Grok-3 Beta with input/output pricing of $0.30/$0.50 per million tokens",
+      "Large 131,072-token context window for handling complex reasoning tasks",
+      "Chain-of-thought reasoning with transparent thinking traces accessible to users",
+      "Exceptional performance on STEM tasks (95.8% AIME 2024, 80.4% LiveCodeBench)",
+      "Multi-language support for diverse technical applications",
+      "Fast response times (<1 second for routine queries) and scalable for high-volume use"
+    ],
+    "limitations": [
+      "Limited world knowledge and inability to handle current events or cultural context",
+      "No vision support or fine-tuning capabilities",
+      "High-effort reasoning tasks may take several minutes to complete",
+      "Less effective for general knowledge queries or creative writing",
+      "Knowledge cutoff in November 2024 may impact relevance for newer topics"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2024",
+      "score": 95.8
+    },
+    {
+      "name": "LiveCodeBench",
+      "score": 80.4
+    }
+  ],
+  "model_name": "grok-3-mini-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:53:34.157584"
+}

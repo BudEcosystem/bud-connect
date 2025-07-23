@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "GPT-4o Search Preview is an advanced model developed by OpenAI that integrates GPT-4o with live web search capabilities. It addresses static training data limitations by enabling real-time information retrieval, featuring a 128,000-token context window and dynamic access to current web content. The model supports structured outputs, geolocation-based search customization, and multi-modal processing, though it remains in preview status with potential instability.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time news and event monitoring",
+      "Current market data analysis and financial research",
+      "Fact-checking and verification of recent claims",
+      "Dynamic content generation requiring up-to-date information",
+      "Customer support with access to latest product updates",
+      "Competitive intelligence gathering",
+      "Time-sensitive decision support systems"
+    ],
+    "strengths": [
+      "Live web search integration provides access to current data, overcoming traditional knowledge cutoff limitations",
+      "Real-time information retrieval reduces hallucination risks for recent events and time-sensitive queries",
+      "Structured JSON outputs enhance API integration and data usability",
+      "Geolocation customization enables region-specific search results",
+      "Multi-modal processing combines text generation with contextual web search results",
+      "Source attribution features improve response verifiability with reference URLs"
+    ],
+    "limitations": [
+      "Preview status indicates potential instability and possible feature changes",
+      "Limited detailed documentation availability",
+      "Search functionality introduces additional latency to responses",
+      "Higher costs for web search operations ($25 per 1,000 calls)",
+      "Search quality depends on web source availability and crawler limitations",
+      "Geographic restrictions may limit access to certain regions",
+      "Potential for inconsistent search result quality"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-search-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:36:20.295330"
+}

@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o Mini Search Preview is a specialized variant of OpenAI's GPT-4o mini model that integrates web search capabilities into the Chat Completions API. It provides real-time information access through live web data while maintaining conversational abilities and cost efficiency. The model features a 128,000-token context window, transformer-based architecture with web search adaptation layers, and a knowledge cutoff of October 2023 supplemented by real-time search. It supports geographic localization, structured JSON outputs, and advanced search customization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time research and fact-checking for current events and market data",
+      "Localized customer support with region-specific information retrieval",
+      "Dynamic content creation incorporating up-to-date data and trends",
+      "Academic research requiring access to recent publications and datasets",
+      "Travel and local business information with geolocation-based search",
+      "Automated data collection and synthesis from multiple authoritative sources"
+    ],
+    "strengths": [
+      "Integrates real-time web search with conversational AI for up-to-date information retrieval",
+      "Supports geographic localization and regional preferences for tailored search results",
+      "Offers configurable search context size (low/medium/high) for optimized query depth",
+      "Maintains cost efficiency compared to full GPT-4o while preserving search capabilities",
+      "Provides structured JSON outputs and clear citation references for search results",
+      "Balances computational resource usage with optimized speed and token efficiency"
+    ],
+    "limitations": [
+      "Currently in preview status with potential stability limitations",
+      "Search scope constrained by available web sources and indexing quality",
+      "Additional latency introduced by real-time web search operations",
+      "Higher costs for web search tool calls beyond base token pricing",
+      "Varying geographic coverage quality and potential misinformation risks from web sources",
+      "Dependent on third-party web source reliability and availability"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-search-preview-2025-03-11",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:22:46.668133"
+}

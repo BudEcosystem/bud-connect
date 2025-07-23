@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Codestral 2405 is a 22B parameter code generation model developed by Mistral AI in May 2024. It supports 80+ programming languages with a 32,000 token context window, enabling advanced code generation, completion, and test creation. The model excels in multi-language tasks and large codebase handling through its optimized architecture and fill-in-the-middle capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "IDE autocomplete and real-time code suggestions",
+      "Algorithm implementation and boilerplate code generation",
+      "Automated test case creation for existing code",
+      "Code migration between programming languages",
+      "Security vulnerability identification in codebases",
+      "Educational use for programming exercises and concept explanations",
+      "Database schema generation from requirements"
+    ],
+    "strengths": [
+      "Supports 80+ programming languages including Python, Java, C++, JavaScript, and SQL",
+      "32,000 token context window for handling large codebases and repository-level completions",
+      "Advanced fill-in-the-middle (FIM) capabilities for code completion at any cursor position",
+      "Outperforms DeepSeek Coder 33B on Python, JavaScript, and Java FIM tasks",
+      "Strong performance on Python benchmarks like HumanEval, MBPP, and CruxEval",
+      "Dual endpoint system for IDE integration and general API usage"
+    ],
+    "limitations": [
+      "32,000 token context window may be limiting for extremely large projects",
+      "Not optimized for general text tasks - specialized for code generation",
+      "Better performance on popular languages compared to less common ones",
+      "Requires commercial license for production use (research/test use only under MNPL)",
+      "Newer Codestral 2501 version offers improved speed and architecture"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "codestral-2405",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:47:01.211859"
+}

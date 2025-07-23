@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-3.5 Turbo is a fast, efficient, and cost-effective language model developed by OpenAI, powering ChatGPT. It features a 16,385-token context window, function calling capabilities, JSON mode, and improved instruction following. Available in multiple versions (e.g., gpt-3.5-turbo-0125), it balances performance, speed, and affordability for general-purpose tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Chatbots and customer service automation",
+      "Content generation (blog posts, marketing copy)",
+      "Code completion and debugging assistance",
+      "Data extraction and analysis",
+      "Educational tools (tutoring, quiz generation)",
+      "Real-time conversational interfaces"
+    ],
+    "strengths": [
+      "90% cost reduction compared to original GPT-3.5 models",
+      "16,385-token context window for handling long inputs",
+      "Supports function calling, JSON mode, and system messages for structured outputs",
+      "Fast response times ideal for real-time applications",
+      "Improved multilingual support and edge-case handling",
+      "Separate input/output pricing for better cost control"
+    ],
+    "limitations": [
+      "Knowledge cutoff limited to September 2021 (varies by version)",
+      "Less capable than GPT-4 for complex reasoning tasks",
+      "Smaller context window compared to newer models",
+      "May struggle with highly specialized or domain-specific tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-3.5-turbo",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:18:33.258981"
+}

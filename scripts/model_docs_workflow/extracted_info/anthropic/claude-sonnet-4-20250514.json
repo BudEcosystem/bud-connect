@@ -1,0 +1,61 @@
+{
+  "model_info": {
+    "description": "Claude Sonnet 4 (20250514) is a production-ready hybrid reasoning model developed by Anthropic, optimized for coding and reasoning tasks with a 200,000 token context window. It offers advanced tool integration, reduced error rates (65% lower than Sonnet 3.7), and cost efficiency (5x cheaper than Opus 4). The model excels in software development workflows and complex problem-solving with extended thinking modes.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Full-stack software development and API generation",
+      "Code analysis, bug detection, and refactoring",
+      "AI-powered customer support agents",
+      "Large document analysis and knowledge processing",
+      "Enterprise application development with file access",
+      "Complex system debugging and optimization"
+    ],
+    "strengths": [
+      "200,000 token context window for handling long inputs",
+      "72.7% SWE-bench score (state-of-the-art for Sonnet tier)",
+      "65% reduced error rate compared to previous Sonnet versions",
+      "5x more cost-efficient than Opus 4 tier models",
+      "Supports extended thinking mode for complex problem-solving",
+      "Advanced tool integration for codebase navigation and file operations",
+      "98% instruction following accuracy with near-zero navigation errors"
+    ],
+    "limitations": [
+      "Finite 200,000 token context window limit",
+      "Standard output capacity may restrict very long responses",
+      "Extended thinking mode increases response latency",
+      "Tool use adds processing overhead to response times",
+      "Cost may still be prohibitive for high-volume applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench",
+      "score": 72.7
+    },
+    {
+      "name": "Instruction Following",
+      "score": 98
+    },
+    {
+      "name": "Code Generation Accuracy",
+      "score": 95
+    },
+    {
+      "name": "Bug Detection Success Rate",
+      "score": 89
+    },
+    {
+      "name": "Code Review Quality",
+      "score": 92
+    },
+    {
+      "name": "Test Writing Coverage",
+      "score": 94
+    }
+  ],
+  "model_name": "claude-sonnet-4-20250514",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:30:12.748917"
+}

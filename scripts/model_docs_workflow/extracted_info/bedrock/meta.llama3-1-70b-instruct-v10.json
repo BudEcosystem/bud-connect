@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 70B Instruct is a 70-billion-parameter language model with a 128K token context window, developed for enterprise applications. It supports 8 languages, offers fine-tuning on AWS Bedrock, and balances advanced capabilities with computational efficiency. Optimized for instruction following, it excels in content creation, conversational AI, and multilingual tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content creation (articles, marketing materials, creative writing)",
+      "Conversational AI (customer service chatbots, virtual assistants)",
+      "Enterprise document analysis and information extraction",
+      "Multilingual translation and global customer support",
+      "Code generation and software development assistance",
+      "Research tasks requiring complex data interpretation"
+    ],
+    "strengths": [
+      "128K token context window (16x larger than Llama 3) for handling long documents and conversation history",
+      "70 billion parameters with 7x larger training data (15 trillion tokens) and 4x more code data than Llama 2",
+      "Latency-optimized inference for faster performance compared to other cloud providers",
+      "Multilingual support across 8 languages with improved reasoning capabilities",
+      "Fine-tuning available on AWS Bedrock for domain-specific adaptations",
+      "Balanced cost-to-performance ratio for enterprise-scale deployments"
+    ],
+    "limitations": [
+      "Limited to 128K token context window (still constrained for extremely long inputs)",
+      "Higher cost per token than smaller models like Llama 3.1 8B",
+      "Requires 8 Custom Model Units (CMUs) for provisioned throughput on AWS",
+      "Regional availability initially limited to US West (Oregon) and US East (N. Virginia)",
+      "Higher computational requirements and latency compared to lightweight alternatives"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-1-70b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:44:55.644983"
+}

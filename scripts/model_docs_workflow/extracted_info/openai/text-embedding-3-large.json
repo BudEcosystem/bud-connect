@@ -1,0 +1,48 @@
+{
+  "model_info": {
+    "description": "Text-embedding-3-large is OpenAI's best-performing text embedding model, designed to convert text into high-dimensional vectors for semantic analysis. It offers 3,072 default dimensions with flexible size adjustment, supports up to 8,191 tokens via the cl100k_base tokenizer, and features improved multilingual capabilities. The model excels in semantic search, clustering, classification, and cross-lingual retrieval tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multilingual semantic search and document retrieval",
+      "Cross-lingual content recommendation systems",
+      "Text clustering and duplicate detection",
+      "Legal document discovery and FAQ matching",
+      "Content moderation through semantic similarity",
+      "Machine learning feature engineering for text data",
+      "Personalized content recommendation across languages"
+    ],
+    "strengths": [
+      "Achieves 64.6% on MTEB benchmark (3.6% improvement over ada-002)",
+      "54.9% on MIRACL benchmark (23.5% improvement over ada-002)",
+      "Flexible dimensionality adjustment from 3,072 down to 256 dimensions",
+      "Maintains 94-100% performance across reduced dimensions",
+      "Native multilingual support with consistent cross-language performance",
+      "Normalized vector outputs for direct similarity calculations",
+      "Cost-effective for high-performance requirements compared to ada-002"
+    ],
+    "limitations": [
+      "Maximum input limit of 8,191 tokens",
+      "No fine-tuning capability available",
+      "Performance degrades with very small dimensions (<256)",
+      "Requires vector database infrastructure for large-scale applications",
+      "Deterministic output (no variability in embeddings for identical inputs)",
+      "Not optimized for keyword-based matching tasks",
+      "Higher cost per token ($0.00013/1K) compared to text-embedding-3-small"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 64.6
+    },
+    {
+      "name": "MIRACL",
+      "score": 54.9
+    }
+  ],
+  "model_name": "text-embedding-3-large",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:49:41.040070"
+}

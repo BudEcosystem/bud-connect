@@ -1,0 +1,29 @@
+{
+  "model_info": {
+    "description": "Anthropic's Claude models on AWS Bedrock offer advanced AI capabilities with enterprise-grade security and scalability. The Claude Opus 4 is the most powerful model for complex reasoning and coding, while the Claude 3.5 Sonnet balances performance and cost, and the Claude 3.5 Haiku prioritizes speed and efficiency. All models share a 200,000-token context window and are optimized for tasks like coding, analysis, and creative writing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-complexity software development and mathematical problem solving (Opus 4)",
+      "General-purpose applications requiring balanced performance (Sonnet 3.5)",
+      "High-volume customer support and sales automation (Haiku 3.5)",
+      "Agentic workflows with tool integration and computer use (Sonnet 3.5)",
+      "Document analysis and summarization across all models"
+    ],
+    "strengths": [
+      "Claude Opus 4 excels in advanced coding, complex mathematical reasoning, and multi-step problem solving with a 200,000-token context window.",
+      "Claude 3.5 Sonnet delivers superior intelligence and speed at 80% lower cost than Opus, with capabilities in agentic tasks and computer use (beta).",
+      "Claude 3.5 Haiku is optimized for rapid response generation and high-volume applications, with latency-optimized inference on AWS.",
+      "All models support detailed analysis, creative writing, and document processing, with regional availability across multiple AWS regions."
+    ],
+    "limitations": [
+      "Claude Opus 4 has a 60-minute timeout for inference calls, limiting long-running tasks.",
+      "Claude 3.5 Haiku's speed and efficiency optimizations may not suit complex reasoning tasks requiring deeper analysis."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "anthropic_claude_models",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:34:19.104368"
+}

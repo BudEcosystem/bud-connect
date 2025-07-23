@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Stable Image Core v1.1 is an enhanced SDXL-based image generation model developed by Stability AI and integrated with AWS Bedrock. It delivers high-quality outputs with 2.6 billion parameters, optimized for speed and cost efficiency (50% cheaper than SDXL). Key features include zero prompt engineering, improved scene layout, and versatility across image sizes and applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Creative concept art and storyboard visualization for film/animation",
+      "E-commerce product visualization and lifestyle imagery generation",
+      "Advertising campaign creative development and asset creation",
+      "Educational material illustration and research concept visualization",
+      "Game development environment and asset design",
+      "Corporate presentation graphics and training material creation",
+      "High-volume content generation for digital platforms"
+    ],
+    "strengths": [
+      "Achieves high-quality image generation without requiring complex prompt engineering",
+      "50% cost reduction compared to SDXL while maintaining Stable Diffusion quality standards",
+      "Enhanced spatial reasoning for improved scene layout and object placement",
+      "Supports rapid iteration with low-latency API responses and high throughput",
+      "Maintains professional-grade output across diverse artistic styles and applications",
+      "Offers flexible output formats (PNG, JPEG, WebP) and aspect ratios (16:9, 3:2, etc.)",
+      "Includes reproducibility features via seed management for consistent results"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability.stable-image-core-v11",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:54:08.215189"
+}

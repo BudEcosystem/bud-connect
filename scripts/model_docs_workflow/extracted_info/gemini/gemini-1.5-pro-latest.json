@@ -1,0 +1,59 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro is a mid-size multimodal model developed by Google, optimized for reasoning tasks with an industry-leading 2 million token context window. It processes diverse data types (text, images, audio, video) and supports up to 2,000 pages of text, 2 hours of video, 19 hours of audio, or 60,000 lines of code. However, it is now classified as a legacy model, with Google recommending newer alternatives like Gemini 2.0 Flash.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Analyzing large legal or academic documents for key insights.",
+      "Codebase review and refactoring for software development teams.",
+      "Summarizing long videos or audio recordings (e.g., lectures, interviews).",
+      "Cross-language translation using in-context learning for low-resource languages.",
+      "Research assistance by synthesizing information from multi-modal datasets.",
+      "Content creation based on extensive contextual inputs (e.g., generating reports from raw data)."
+    ],
+    "strengths": [
+      "Industry-leading 2 million token context window for processing extensive data (e.g., 2,000 pages of text or 19 hours of audio).",
+      "Multimodal capabilities to analyze text, images, audio, and video with seamless integration.",
+      "In-context learning to adapt to new tasks, such as translating rare languages (e.g., Kalamang) using minimal examples.",
+      "Code understanding for analyzing and generating codebases up to 60,000 lines with context-aware execution support.",
+      "Advanced features like context caching for repeated content and parallel function calling for complex workflows.",
+      "Exceptional 'needle in the haystack' performance, outperforming GPT-4 Turbo in multi-needle retrieval tasks."
+    ],
+    "limitations": [
+      "Legacy model status with restricted access for new projects starting April 29, 2025.",
+      "Processing time increases significantly with larger context sizes (e.g., 2 million tokens).",
+      "Rate limits apply based on usage tier, requiring optimization for high-volume applications.",
+      "Requires migration to newer models (e.g., Gemini 2.0 Flash) for improved performance and support."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Needle in the Haystack (1M tokens)",
+      "score": 99.7
+    },
+    {
+      "name": "Needle in the Haystack (10M tokens)",
+      "score": 99.2
+    },
+    {
+      "name": "Context Window Accuracy (1M tokens)",
+      "score": 75
+    },
+    {
+      "name": "Multimodal Text Recall",
+      "score": 99.7
+    },
+    {
+      "name": "Multimodal Audio Recall",
+      "score": 99.2
+    },
+    {
+      "name": "Multimodal Video Recall",
+      "score": 99.2
+    }
+  ],
+  "model_name": "gemini-1.5-pro-latest",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:24:59.327984"
+}

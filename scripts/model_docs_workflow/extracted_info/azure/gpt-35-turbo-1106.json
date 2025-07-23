@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-35-Turbo-1106 is Azure OpenAI's enhanced version of the GPT-3.5-Turbo model, featuring a 16K token context window, improved function calling, and JSON Mode capabilities. It maintains cost-effectiveness while offering advanced features previously available in GPT-4 Turbo, making it the new default GPT-3.5 Turbo model.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "API integration with systems requiring structured JSON outputs",
+      "Multi-tool workflows involving parallel function execution",
+      "Enterprise business intelligence and customer service automation",
+      "Development tools for code generation and API documentation",
+      "Workflow automation with complex decision-making processes"
+    ],
+    "strengths": [
+      "16,385-token context window for extended conversation handling and document processing",
+      "Improved function calling accuracy and support for parallel function execution",
+      "JSON Mode for structured output generation with enhanced format compliance",
+      "3x more cost-effective for input tokens and 2x more cost-effective for output tokens compared to GPT-3.5-Turbo-16K",
+      "Enhanced instruction following and response coherence for better user experience"
+    ],
+    "limitations": [
+      "Training data cutoff in early 2023 limits knowledge of recent developments",
+      "Maximum output token limit of 4,096 tokens restricts response length",
+      "JSON Mode requires specific formatting requirements and post-validation",
+      "Regional availability is not universal at launch, requiring capacity planning",
+      "Complex function calls may require careful orchestration and error handling"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-35-turbo-1106",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:44:04.881879"
+}

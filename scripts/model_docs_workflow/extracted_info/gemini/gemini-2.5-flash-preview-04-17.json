@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Gemini 2.5 Flash Preview (04-17 version) is Google's first Flash model with built-in thinking capabilities, released in April 2025 as part of the Gemini 2.5 series. It combines Flash efficiency with enhanced reasoning, featuring an expanded context window and full multimodal support. The model is optimized for price-performance and maintains Flash-level speed while offering reasoning comparable to Pro models.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Intelligent assistants requiring multi-step reasoning",
+      "Code analysis and complex codebase understanding",
+      "Mathematical problem solving with step-by-step explanations",
+      "Multi-step project planning and decision tree analysis",
+      "Educational tools with explanatory capabilities",
+      "Data analysis requiring logical progression tracking"
+    ],
+    "strengths": [
+      "First Flash model with built-in reasoning capabilities enabled by default",
+      "Maintains Flash-level speed and latency while improving quality over previous Flash versions",
+      "Offers best price-performance ratio in the Gemini family with thinking capabilities at Flash pricing",
+      "Supports dynamic thinking budget adjustment for optimized resource allocation",
+      "Full multimodal support for text, images, and other modalities",
+      "API-compatible with Gemini 2.0 Flash for seamless migration"
+    ],
+    "limitations": [
+      "Currently in preview with potential feature changes before general availability",
+      "Rate limits and regional availability restrictions during preview period",
+      "Documentation and implementation details may evolve before GA",
+      "Not recommended for production use until June 2025 general availability",
+      "Thinking capabilities may require additional computational resources compared to non-thinking models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.5-flash-preview-04-17",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:32:57.192027"
+}

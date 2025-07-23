@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "The o3 model from OpenAI is a cutting-edge reasoning model designed for complex problem-solving and advanced reasoning tasks, particularly excelling in STEM fields. It features a 200,000-token context window, 100,000-token maximum output, and a knowledge cutoff of June 2024. The model outperforms competitors like Google's Gemini 2.5 Pro and Anthropic's Claude 4 Opus on benchmarks such as AIME 2024 and GPQA Diamond.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Solving complex mathematical equations and AIME-level problems",
+      "PhD-level scientific research and analysis",
+      "Technical documentation and STEM education assistance",
+      "Scientific modeling and hypothesis testing",
+      "Advanced logical reasoning tasks requiring deep analysis"
+    ],
+    "strengths": [
+      "Outperforms leading models on AIME 2024 and GPQA Diamond benchmarks for mathematical and scientific reasoning",
+      "Supports large context (200,000 tokens) and output (100,000 tokens) for handling complex tasks",
+      "Optimized for STEM domains with exceptional performance in mathematics and scientific analysis",
+      "Available via multiple APIs (Chat Completions, Assistants, Batch) with structured output and function calling capabilities",
+      "80% price reduction in June 2025 compared to previous pricing"
+    ],
+    "limitations": [
+      "Slower response times due to advanced reasoning processes",
+      "Higher computational cost ($2.00 per 1M input tokens, $8.00 per 1M output tokens)",
+      "More compute-intensive than smaller models like o3-mini",
+      "Better suited for complex reasoning tasks rather than quick responses"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:16:52.072070"
+}

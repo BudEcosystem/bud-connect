@@ -1,0 +1,29 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash is Google's first model in the Gemini 2.0 family, designed as a low-latency workhorse with enhanced performance for the agentic era. It supports a 1 million token context window and multimodal inputs (text, images, audio, video) with text and in-line image outputs. The model outperforms Gemini 1.5 Pro on most benchmarks at twice the speed, featuring native tool use, compositional function calling, and real-time streaming capabilities via the Live API.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Conversational AI development for advanced chatbots and assistants",
+      "Multimodal content generation (text, code, images, audio)",
+      "Real-time applications using streaming APIs for vision/audio processing",
+      "Large document analysis and complex instruction-following tasks",
+      "Enterprise applications requiring native tool integration and UI interaction capabilities"
+    ],
+    "strengths": [
+      "1 million token context window for processing long documents and complex inputs",
+      "2x faster performance compared to Gemini 1.5 Pro with improved time-to-first-token (TTFT)",
+      "Native support for multimodal inputs (text, images, audio, video) and in-line image outputs",
+      "Built-in compositional function calling and tool use capabilities without requiring adapters",
+      "Real-time streaming via Multimodal Live API (25 tokens/sec audio, 258 tokens/sec video)",
+      "High-quality text-to-speech generation and enhanced multimodal reasoning",
+      "Outperforms Gemini 1.5 Pro on key benchmarks while maintaining backward compatibility"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-flash",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:31:32.015246"
+}

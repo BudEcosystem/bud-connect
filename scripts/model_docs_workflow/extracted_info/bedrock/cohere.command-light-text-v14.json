@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "Cohere Command Light Text v14 is a lightweight, efficient text generation model developed by Cohere and available on AWS Bedrock. With 6 billion parameters and a 4,096 token context window, it balances speed and quality for fast, cost-effective text generation while maintaining lower computational requirements compared to the standard Command model.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support automation and chatbots",
+      "Content marketing (blog posts, social media content)",
+      "Business report summarization and documentation",
+      "E-commerce product descriptions and customer communications",
+      "Healthcare report summarization and patient communication",
+      "Educational tools and learning assistance applications",
+      "Legal document summarization and writing assistance",
+      "Real-time content generation with streaming responses"
+    ],
+    "strengths": [
+      "Optimized for speed and efficiency with lower computational resource usage",
+      "Faster inference times compared to the full Command model",
+      "Maintains high-quality text generation despite reduced model size",
+      "Cost-effective pricing for high-volume applications",
+      "Supports streaming responses for real-time applications",
+      "Offers precise control over output via parameters like temperature, top-p, and top-k sampling",
+      "Integrates with AWS services (Lambda, API Gateway, S3, etc.) for scalable deployment",
+      "Capable of handling diverse text generation tasks including creative writing, code generation, and business communications"
+    ],
+    "limitations": [
+      "4,096 token context window may limit long-form content generation",
+      "6 billion parameter size may reduce performance on complex reasoning tasks",
+      "Less specialized than domain-specific models for niche applications",
+      "Limited multi-turn conversation support",
+      "May require multiple API calls for complex workflows",
+      "Potential need for fine-tuning to adapt to specialized domains",
+      "Latency considerations for time-critical applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.command-light-text-v14",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:35:09.104215"
+}

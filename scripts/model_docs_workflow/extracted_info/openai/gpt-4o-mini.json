@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "GPT-4o mini is a cost-efficient small model developed by OpenAI, designed for high-volume, cost-sensitive applications. It features a 128,000-token context window, 16,384-token output limit, and improved non-English text handling. The model supports text and vision inputs with upcoming audio/video capabilities, and includes safety features like instruction hierarchy and resistance to jailbreaks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support chatbots requiring real-time, cost-effective responses.",
+      "Content moderation and classification at scale for platforms with high-volume needs.",
+      "Codebase analysis and repository processing with extended context handling.",
+      "Document summarization and knowledge base querying with 128K-token context.",
+      "Receipt data extraction and structured information processing (e.g., Superhuman integration)."
+    ],
+    "strengths": [
+      "Offers GPT-3.5 Turbo-beating performance at 60% lower cost, making it ideal for budget-sensitive applications.",
+      "Larger 128,000-token context window compared to GPT-3.5 Turbo's 16,000 tokens for handling extended inputs.",
+      "Enhanced multimodal capabilities with current text/vision support and planned audio/video expansion.",
+      "Advanced safety features including instruction hierarchy and resistance to prompt injections and jailbreaks.",
+      "Supports function calling for external integrations and improved coding capabilities in the GPT-4.1 mini variant."
+    ],
+    "limitations": [
+      "Knowledge cutoff in October 2023 limits access to post-2023 information.",
+      "16,384-token output limit per request may restrict complex response generation.",
+      "Audio/video support remains in development and not yet available.",
+      "Reduced performance on highly complex reasoning tasks compared to larger models like GPT-4o.",
+      "MMMU benchmark score of 59.4% indicates moderate multimodal performance relative to competitors."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 82
+    },
+    {
+      "name": "MMMU",
+      "score": 59.4
+    }
+  ],
+  "model_name": "gpt-4o-mini",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:34:49.114207"
+}

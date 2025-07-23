@@ -1,0 +1,56 @@
+{
+  "model_info": {
+    "description": "Anthropic Claude 3.5 Sonnet (20241022-v2:0) is a multimodal large language model developed by Anthropic and available on AWS Bedrock. It features a 200,000 token context window, supports text and vision inputs, and excels in coding, reasoning, and computer interface interaction. The model maintains the same pricing as its predecessor while offering significant performance improvements across technical and enterprise tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Software development (code generation, debugging, optimization)",
+      "Business intelligence and data analysis",
+      "Technical document processing and OCR",
+      "Visual reasoning and chart interpretation",
+      "Workflow automation and desktop application interaction",
+      "Enterprise research and strategic planning",
+      "Multi-language content creation and technical writing"
+    ],
+    "strengths": [
+      "Enhanced coding capabilities with 49% SWE-bench Verified performance (highest among public models)",
+      "Advanced reasoning with 69.2% TAU-bench retail domain performance and 46% airline domain performance",
+      "Strongest vision processing in the Claude family surpassing Claude 3 Opus",
+      "Computer interface interaction capabilities in public beta for GUI automation",
+      "Cost efficiency with unchanged pricing despite substantial capability improvements",
+      "Supports 200,000 token context window for long conversations and complex tasks",
+      "Multilingual support including English, Spanish, French, German, Japanese, Korean, and Chinese"
+    ],
+    "limitations": [
+      "Computer use feature is in public beta with potential instability",
+      "Image size constraints for vision tasks not specified in documentation",
+      "200,000 token context window limit for extended interactions",
+      "Not optimized for extremely low-latency applications",
+      "Regional availability limited to specific AWS regions",
+      "Security considerations required for computer interface capabilities",
+      "Requires AWS infrastructure integration for full feature utilization"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 49
+    },
+    {
+      "name": "TAU-bench Retail Domain",
+      "score": 69.2
+    },
+    {
+      "name": "TAU-bench Airline Domain",
+      "score": 46
+    },
+    {
+      "name": "Vision Benchmarks",
+      "score": 100
+    }
+  ],
+  "model_name": "anthropic.claude-3-5-sonnet-20241022-v20",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:31:52.676681"
+}

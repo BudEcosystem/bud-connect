@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Vertex AI Enterprise Features, developed by Google Cloud, provides comprehensive security and governance capabilities for deploying AI models in enterprise environments. Key features include VPC Service Controls (VPC-SC) for data boundary protection, Customer-Managed Encryption Keys (CMEK) for data encryption, and Access Transparency (AXT) for monitoring Google personnel access. These features enable strict compliance, data residency controls, and integration with enterprise IAM systems. Limitations include lack of support for Vertex AI Agent Engine and complex implementation requirements.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Secure deployment of AI models in regulated industries (finance, healthcare)",
+      "GDPR-compliant AI processing for EU citizen data",
+      "Enterprise-grade access control for multi-team AI development environments",
+      "Compliance auditing for SOC 2, HIPAA, and ISO 27001 certifications",
+      "Monitoring and alerting for unauthorized access attempts to AI resources"
+    ],
+    "strengths": [
+      "VPC-SC prevents data exfiltration and enforces network-level access control for AI model interactions",
+      "CMEK allows organizations to encrypt training data, model artifacts, and prediction data using customer-managed keys",
+      "AXT provides near real-time logs of Google personnel access to AI resources for transparency and compliance",
+      "Data residency controls ensure processing occurs in GDPR/EU-compliant regions with audit trails",
+      "Fine-grained IAM integration enables conditional access policies based on time, location, and user roles"
+    ],
+    "limitations": [
+      "Vertex AI Agent Engine does not support VPC-SC, CMEK, or AXT security controls",
+      "Implementation requires complex configuration through CLI, Python SDK, and infrastructure setup",
+      "Key rotation and compliance monitoring add operational overhead for enterprise teams"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "enterprise_features",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:43:12.423979"
+}

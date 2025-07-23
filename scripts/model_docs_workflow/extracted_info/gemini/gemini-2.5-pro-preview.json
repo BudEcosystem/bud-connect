@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Gemini 2.5 Pro Preview is a preview/development model developed by Google, featuring native thinking capabilities, an extended context window, and full multimodal support. It excels in advanced reasoning, multi-step planning, and tool integration, with leading benchmark results in reasoning, code generation, mathematics, and science. Available in multiple preview versions (e.g., gemini-2.5-pro-preview-03-25 and gemini-2.5-pro-preview-05-06), it is designed for experimentation and research rather than production use.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Prototype development for advanced AI applications",
+      "Research projects requiring cutting-edge reasoning and multimodal capabilities",
+      "Benchmark testing and performance evaluation of new AI features",
+      "Exploration of experimental capabilities like Deep Think mode",
+      "Preparation for future GA model migration through early testing"
+    ],
+    "strengths": [
+      "Native thinking capabilities enabled by default with transparent reasoning chains and multi-step planning",
+      "Full multimodal support for text, images, and other data types",
+      "Leading benchmark performance in reasoning (e.g., 84.0% on MMMU), mathematics (USAMO 2025 top scores), and code generation (LiveCodeBench leadership)",
+      "Efficient token usage and fast inference for preview models",
+      "Experimental Deep Think mode for parallel hypothesis evaluation with 32K token budget",
+      "Enhanced tool integration and enterprise features like thought summaries and debugging capabilities"
+    ],
+    "limitations": [
+      "Preview status with no SLA, limited support, and potential breaking changes",
+      "Not suitable for production workloads due to instability and restricted rate limits",
+      "Experimental features (e.g., Deep Think) may be removed or modified",
+      "No formal guarantees for uptime or feature availability",
+      "Requires migration to a stable GA model for production deployment"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMMU",
+      "score": 84.0
+    }
+  ],
+  "model_name": "gemini-2.5-pro-preview",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:37:52.850671"
+}

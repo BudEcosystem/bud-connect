@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet V2 is an upgraded version of Anthropic's flagship model, featuring enhanced capabilities and introducing the 'computer use' functionality in public beta. It excels in real-world software engineering tasks, agentic workflows, and complex problem-solving with a 200,000-token context window and 8,000-token output limit. The model maintains the same speed and pricing as the original Claude 3.5 Sonnet while offering advanced reasoning, tool integration, and security features on Google Cloud Vertex AI.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Agentic task automation for complex workflow orchestration and intelligent decision-making.",
+      "Software engineering tasks including code migration, automated code review, and architecture design.",
+      "UI testing automation, desktop application interaction, and web scraping.",
+      "Document processing and analysis for legal contracts, technical documentation, and research.",
+      "Business intelligence applications like advanced data analysis, market research, and process optimization."
+    ],
+    "strengths": [
+      "Introduces revolutionary 'computer use' functionality for direct UI interaction, including screen analysis, mouse/keyboard control, and application navigation.",
+      "Maintains performance parity with the original Claude 3.5 Sonnet in speed and pricing.",
+      "Enhanced reasoning capabilities with improved logical analysis, error correction, and context utilization.",
+      "Advanced tool integration for sophisticated function calling and API coordination.",
+      "Cost-saving features like prompt caching (up to 90% savings) and batch processing (up to 50% savings).",
+      "Robust security model with sandboxed computer use, audit logging, and compliance retention.",
+      "Supports high-efficiency workflows through streaming responses and real-time output generation."
+    ],
+    "limitations": [
+      "Computer use functionality is in public beta with potential instability and limited platform support.",
+      "Regional availability restricted to Google Cloud's 'us-east5' region.",
+      "Output token limit of 8,000 tokens per response.",
+      "No access to real-time data or extended reasoning capabilities (available in Claude 3.7 Sonnet).",
+      "Computer use features require special permissions, security configurations, and may have inconsistent performance across UIs.",
+      "Knowledge cutoff in April 2024 limits access to post-2024 information."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-5-sonnet-v2",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:33:13.490060"
+}

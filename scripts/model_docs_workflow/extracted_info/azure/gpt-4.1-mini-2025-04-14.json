@@ -1,0 +1,56 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-mini-2025-04-14 is a production-optimized compact variant of the GPT-4.1 series developed by Azure OpenAI Service, released on April 14, 2025. It balances performance, cost efficiency, and speed with a 1M+ token context window, multimodal text/image input support, and 83% cost reduction compared to larger models. Trained on data up to May 31, 2024, it excels in enterprise applications requiring high-quality AI capabilities with reduced resource demands.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation with intelligent chatbots",
+      "Enterprise document processing and summarization",
+      "Code generation and analysis across multiple programming languages",
+      "Content creation and SEO optimization for marketing",
+      "Business intelligence reporting and market research",
+      "Educational technology applications including personalized learning and tutoring"
+    ],
+    "strengths": [
+      "1M+ token context window (1,047,576 tokens) for handling extensive inputs",
+      "50% faster inference speed compared to GPT-4o with 83% cost reduction",
+      "Multimodal support for text and image inputs with structured output formatting",
+      "80.1% accuracy on MMLU benchmark for comprehensive language understanding",
+      "Native integration with Azure AI Foundry, DevOps, and enterprise security features (SOC 2, ISO 27001, GDPR)",
+      "Production-ready deployment options including provisioned throughput and batch processing"
+    ],
+    "limitations": [
+      "Training data cutoff on May 31, 2024 (no real-time data access)",
+      "50.3% accuracy on GPQA benchmark indicates limitations in graduate-level reasoning",
+      "9.8% Aider Polyglot Coding score suggests moderate performance in multi-language code generation",
+      "Performance variability with very large context windows (1M+ tokens)",
+      "Specialized domains may require fine-tuning for optimal results"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 80.1
+    },
+    {
+      "name": "GPQA",
+      "score": 50.3
+    },
+    {
+      "name": "Aider Polyglot Coding",
+      "score": 9.8
+    },
+    {
+      "name": "GSM8K",
+      "score": 75.0
+    },
+    {
+      "name": "HumanEval",
+      "score": 62.4
+    }
+  ],
+  "model_name": "gpt-4.1-mini-2025-04-14",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:50:48.411937"
+}

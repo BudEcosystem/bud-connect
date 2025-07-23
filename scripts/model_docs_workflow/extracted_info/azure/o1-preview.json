@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-preview is an advanced AI model designed to enhance reasoning capabilities for complex problems in science, coding, and mathematics. It uses transformer architecture with reinforcement learning and chain-of-thought (CoT) reasoning, featuring a 128,000-token context window and 32,768-token output limit. The model's knowledge is current as of October 1, 2023, and it processes text-only inputs with a slower response time (17.03 seconds TTFT) due to its internal reasoning process.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Solving complex mathematical problems requiring step-by-step reasoning (e.g., IMO-level challenges).",
+      "Advanced coding tasks, including code generation and debugging for competitive programming.",
+      "Scientific research applications such as physics formula generation and healthcare data annotation.",
+      "Educational tools requiring detailed, accurate explanations for STEM subjects.",
+      "High-accuracy workflows where reasoning depth outweighs the need for speed."
+    ],
+    "strengths": [
+      "Excels in mathematics with an 83% score on the International Mathematics Olympiad (IMO) qualifying exam, significantly outperforming GPT-4o (13%).",
+      "Achieves 89th percentile in Codeforces competitions and demonstrates strong coding performance on HumanEval benchmarks.",
+      "Leverages reinforcement learning to navigate complex reasoning tasks without fixating on failed paths, improving data efficiency.",
+      "Scores 84 on the hardest jailbreaking tests, showing advanced resistance to manipulation compared to GPT-4o (22/100).",
+      "Leads in general performance on the MMLU benchmark and excels in precise instruction following and Spanish-language fluency."
+    ],
+    "limitations": [
+      "High cost with input tokens at $15.00 per 1M and output tokens at $60.00 per 1M, significantly more expensive than GPT-4o.",
+      "Lacks support for images, web browsing, file uploads, and multimodal input/output during the beta phase.",
+      "Slower response times (17.03 seconds TTFT) due to internal reasoning process, making it unsuitable for low-latency tasks.",
+      "Beta phase restrictions include no streaming, function calling, or system messages, and limited API access (50 queries/week).",
+      "Reasoning tokens consume context window space and billing costs without being visible to users."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "IMO",
+      "score": 83
+    },
+    {
+      "name": "Codeforces",
+      "score": 89
+    },
+    {
+      "name": "Jailbreaking",
+      "score": 84
+    }
+  ],
+  "model_name": "o1-preview",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:12:22.874717"
+}

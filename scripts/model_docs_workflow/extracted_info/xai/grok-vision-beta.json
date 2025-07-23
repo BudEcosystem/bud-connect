@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Grok Vision Beta is xAI's early-stage multimodal model introduced on November 19, 2024, offering basic vision capabilities for prototyping and experimentation. It supports image and text processing with an 8,192-token context window, handles JPG/PNG formats up to 10MB, and provides OCR and general visual analysis. Designed as a beta testing tier, it prioritizes accessibility for developers and researchers.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Prototyping multimodal applications and proof-of-concept development",
+      "Basic image description, captioning, and object identification",
+      "Simple text extraction from images (OCR) for non-critical workflows",
+      "Educational and research projects requiring accessible vision AI testing"
+    ],
+    "strengths": [
+      "Cost-effective entry point for multimodal AI development and testing",
+      "Basic image processing capabilities including OCR and simple document analysis",
+      "Supports multiple languages and function calling for flexible integration",
+      "Optimized for prototyping with a streamlined context window for focused tasks"
+    ],
+    "limitations": [
+      "Limited to 8,192-token context window (1/4 of Grok-2 Vision's capacity)",
+      "Higher per-token costs compared to production models (2.5x input, 1.5x output)",
+      "Beta-level accuracy and reliability unsuitable for production workloads",
+      "Restricted to basic vision tasks with limited performance on complex documents or high-resolution analysis",
+      "Rate-limited to 1 request/second and 60 requests/hour for beta tier"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-vision-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:56:32.879359"
+}

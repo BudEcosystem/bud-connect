@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "description": "Pixtral Large is a 124B open-weights multimodal model built on Mistral Large 2. It combines a 123B parameter language model with a 1B parameter vision encoder, enabling sophisticated understanding of documents, charts, and natural images. The model has a 128,000 token context window and can process up to 30 high-resolution images per input while maintaining the text capabilities of Mistral Large 2.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document processing (PDF analysis, form understanding, contract review)",
+      "Data analysis (chart/graph interpretation, dashboard analysis)",
+      "Educational applications (mathematical problem solving with diagrams)",
+      "Business applications (invoice processing, receipt analysis)",
+      "Visual question answering",
+      "OCR and text extraction from images",
+      "Complex visual reasoning tasks",
+      "Presentation understanding and visual quality control"
+    ],
+    "strengths": [
+      "Frontier-level image understanding capabilities",
+      "Combines a 123B parameter language model with a 1B parameter vision encoder",
+      "Can process up to 30 high-resolution images per input",
+      "Maintains the leading text-only capabilities of Mistral Large 2",
+      "Outperforms other models on MathVista benchmark with 69.4%",
+      "Competitive with leading multimodal models on MM-MT-Bench",
+      "Supports complex visual reasoning and document understanding",
+      "Enables sophisticated understanding of documents, charts, and natural images"
+    ],
+    "limitations": [
+      "API has a maximum of 8 images per request",
+      "File size limit of 10MB per image via API",
+      "Requires significant GPU memory (124B parameters)",
+      "Inference time increases with image count",
+      "Balance needed between image resolution and processing speed",
+      "Licensing requirements for commercial use"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MathVista",
+      "score": 69.4
+    },
+    {
+      "name": "MM-MT-Bench",
+      "score": 100
+    }
+  ],
+  "model_name": "pixtral-large-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:06:48.329756"
+}

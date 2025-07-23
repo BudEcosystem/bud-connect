@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "description": "Gemma 2 27B-IT is a 27-billion parameter, open-source instruction-tuned language model developed by Google in 2024. It features a 8,192-token context window, multilingual capabilities (primarily English), and is optimized for conversational AI and complex instruction-following tasks. The model supports PyTorch, JAX, and quantized formats (INT4/INT8) for deployment flexibility.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support automation with contextual responses",
+      "Content generation for articles and educational materials",
+      "Code writing assistance with language-specific implementations",
+      "Educational tutoring for concept explanations at various learning levels"
+    ],
+    "strengths": [
+      "Instruction-tuned for complex tasks and conversational AI with strong performance on benchmarks like MMLU, HumanEval, and MT-Bench",
+      "Offers quantized versions (INT4/INT8) for edge deployment and reduced memory usage",
+      "Includes safety mitigations and responsible AI practices for content filtering and bias reduction",
+      "Supports multilingual capabilities with primary focus on English",
+      "Provides optimized inference with Flash Attention 2 and batch processing techniques"
+    ],
+    "limitations": [
+      "Limited to 8,192 token context window (shorter than 128K in Gemma 3)",
+      "Text-only model with no image understanding capabilities",
+      "Requires significant hardware (minimum 24GB GPU for INT4, 80GB for FP16)",
+      "Best performance in English with multilingual capabilities not explicitly quantified",
+      "No access to real-time data or current information"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 85
+    },
+    {
+      "name": "HumanEval",
+      "score": 78
+    },
+    {
+      "name": "MT-Bench",
+      "score": 92
+    },
+    {
+      "name": "TruthfulQA",
+      "score": 89
+    }
+  ],
+  "model_name": "gemini-gemma-2-27b-it",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:41:04.249241"
+}

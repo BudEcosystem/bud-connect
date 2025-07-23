@@ -1,0 +1,22 @@
+{
+  "extraction_date": "2025-07-23T13:27:01.303938",
+  "total_files": 1,
+  "successful": 0,
+  "failed": 1,
+  "success_rate": "0.0%",
+  "llm_provider": "openai",
+  "llm_model": "qwen3-32b",
+  "by_provider": {
+    "anthropic": 15,
+    "azure": 58,
+    "bedrock": 39,
+    "deepseek": 3,
+    "fireworks_ai": 4,
+    "gemini": 39,
+    "mistral": 25,
+    "together_ai": 16,
+    "vertex_ai": 20,
+    "xai": 13,
+    "openai": 65
+  }
+}

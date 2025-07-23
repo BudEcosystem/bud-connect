@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "GPT-4o Mini is a compact, cost-efficient small language model (SLM) developed by OpenAI, released on July 18, 2024. It features a 128,000-token context window, 16,384-token maximum output, and a knowledge cutoff of October 1, 2023. The model supports text and vision processing, with planned audio/video capabilities, and is optimized for high-volume, performance-sensitive applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation with cost-effective scaling for high-volume interactions.",
+      "Bulk content generation and large-scale text analysis for businesses with budget constraints.",
+      "Code review assistance and software development tasks requiring efficient processing.",
+      "Educational applications such as tutoring systems and learning platforms.",
+      "Prototyping and development of AI applications with low-latency requirements."
+    ],
+    "strengths": [
+      "Cost-efficient with input/output token pricing significantly lower than GPT-3.5 Turbo ($0.15/$0.60 per 1M tokens).",
+      "Strong academic performance with 82.0% on MMLU and 87.0% on MGSM benchmarks.",
+      "Multimodal capabilities for text and vision tasks, with future audio/video support planned.",
+      "Low-latency responses and high throughput for real-time and high-volume applications.",
+      "Supports multilingual input/output and domain-specific fine-tuning for customization."
+    ],
+    "limitations": [
+      "Smaller model size may limit performance on complex reasoning tasks compared to GPT-4o.",
+      "Audio and video processing capabilities are not yet available in the current API release.",
+      "Not optimal for highly complex or mission-critical reasoning tasks requiring maximum model capacity.",
+      "Knowledge cutoff limited to October 1, 2023, which may affect relevance for recent data."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 82.0
+    },
+    {
+      "name": "MGSM",
+      "score": 87.0
+    }
+  ],
+  "model_name": "gpt-4o-mini-2024-07-18",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:19:27.686777"
+}

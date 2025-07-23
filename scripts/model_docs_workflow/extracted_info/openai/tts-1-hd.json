@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "TTS-1-HD is OpenAI's high-definition text-to-speech model designed for superior audio quality compared to the standard TTS-1. It offers enhanced clarity, natural prosody, and multilingual support with advanced voice steering for tone and emotion. The model produces high-bitrate audio in formats like MP3, WAV, and FLAC, but with increased latency and file size due to quality optimization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional audiobook production",
+      "Podcast creation with high-quality narration",
+      "E-learning content with clear educational narration",
+      "Corporate communications and executive announcements",
+      "TV/radio commercials and documentary voice-overs",
+      "Premium accessibility solutions for screen readers",
+      "Museum audio guides and wellness app narration",
+      "Luxury brand voice assistants and marketing videos"
+    ],
+    "strengths": [
+      "Delivers high-fidelity audio with reduced artifacts and natural prosody for professional-grade output",
+      "Supports advanced voice steering for precise control over speaking style, tone, and emotion",
+      "Offers same voice options as TTS-1 (e.g., alloy, onyx, nova) with enhanced HD quality",
+      "Comprehensive multilingual capabilities for global applications",
+      "Suitable for commercial/broadcast use with broadcast-ready audio output",
+      "Preserves HD quality in lossless formats (WAV, FLAC) for post-production editing"
+    ],
+    "limitations": [
+      "Cost is double the standard TTS-1 at $0.030 per 1,000 characters",
+      "Higher processing latency compared to standard TTS-1",
+      "Larger file sizes require more storage and bandwidth",
+      "Not suitable for real-time applications requiring low latency",
+      "Limited to preset voice options with no custom voice creation capabilities",
+      "Quality improvements may be subtle for simple text in A/B comparisons"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "tts-1-hd",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:52:29.121346"
+}

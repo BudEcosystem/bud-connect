@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o-realtime-preview-2024-12-17 is a real-time audio model developed by OpenAI, optimized for low-latency interactions. It supports text and audio modalities with eight distinct voice personalities and advanced speech-to-speech capabilities. Released on December 17, 2024, it features enhanced voice quality, input reliability, and context continuity for real-time applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise customer service with AI-powered call centers",
+      "Interactive storytelling and podcast generation",
+      "Language learning with conversational practice",
+      "Healthcare patient interaction and medical documentation",
+      "Voice assistant implementations for business productivity",
+      "Real-time meeting assistance and process automation"
+    ],
+    "strengths": [
+      "Supports eight distinct voice personalities with enhanced naturalness and emotional range",
+      "Optimized for sub-second latency in real-time audio interactions",
+      "Advanced multimodal capabilities with seamless text and audio context continuity",
+      "Includes prompt caching to reduce costs and improve response times",
+      "Offers WebRTC and WebSocket integration for reliable real-time communication",
+      "Provides enterprise-grade security with end-to-end encryption and access controls"
+    ],
+    "limitations": [
+      "Currently in preview status, not optimized for full production deployment",
+      "Limited to text and audio modalities (image support not yet available)",
+      "Development-focused rate limits (100,000 TPM/1,000 RPM) may restrict high-volume use",
+      "Requires stable low-latency network connections for optimal performance",
+      "Voice output may not capture all nuances of human speech",
+      "Subject to OpenAI content policies and safety guardrails that may block certain requests"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-realtime-preview-2024-12-17",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:06:45.350383"
+}

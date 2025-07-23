@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Mistral Small 2409 is a 22-billion parameter model released in September 2024, featuring a 32,000 token context window and an efficient transformer architecture. It is optimized for performance across complex instructions, code generation, and multi-turn conversations while maintaining deployment efficiency. The model operates under the Mistral Research License (MRL) and is part of the Mistral Small series with enhanced capabilities compared to earlier versions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code completion, debugging, and documentation generation",
+      "Automated customer support response generation",
+      "Technical writing and content creation for blogs/summaries",
+      "Data analysis and transformation workflows",
+      "Conversational AI development for chatbots and virtual assistants",
+      "Educational tools for tutoring and explanation generation",
+      "Workflow automation with function/tool integration"
+    ],
+    "strengths": [
+      "Outperforms Mistral 7B across all benchmarks with improved instruction adherence and conversation quality",
+      "Supports efficient deployment on consumer GPUs (RTX 4090), professional GPUs, cloud instances, and high-end Macs",
+      "Strong code generation capabilities across multiple programming languages",
+      "Solid reasoning performance for a 22B parameter model with competitive performance/parameter ratio",
+      "Cost-effective API pricing compared to larger Mistral models while maintaining strong performance"
+    ],
+    "limitations": [
+      "32,000 token context window is smaller than newer versions (e.g., Mistral Small 3.1's 128k)",
+      "22B parameter size requires significant computational resources for deployment",
+      "Less specialized than domain-specific models for niche applications",
+      "MRL license imposes restrictions on commercial use and model redistribution"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-small-2409",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:59:34.512956"
+}

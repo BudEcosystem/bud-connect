@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Stable Image Ultra v1.1 is a premium image generation model developed by Stability AI and integrated with AWS Bedrock. It leverages Stable Diffusion 3.5 Large (8.1B parameters) to deliver photorealistic outputs optimized for professional print media, large-format displays, and complex scene compositions. The model excels in typography accuracy, dynamic lighting simulation, and maintaining artistic cohesion across intricate multi-element designs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional print media production (magazines, coffee table books)",
+      "Commercial product photography for e-commerce and catalogs",
+      "Architectural visualization and interior design concepts",
+      "Luxury brand advertising and packaging design",
+      "Medical and scientific visualization",
+      "Film concept art and game asset development",
+      "Corporate headshots and team portraits"
+    ],
+    "strengths": [
+      "Utilizes 8.1B parameter Stable Diffusion 3.5 Large architecture for ultra-high-quality outputs",
+      "Achieves professional-grade photorealism suitable for print media and commercial applications",
+      "Exceptional typography rendering with precise spelling, kerning, and spacing",
+      "Handles complex multi-subject compositions with advanced spatial reasoning",
+      "Supports high-resolution outputs (up to 1536x1536 pixels) with lossless PNG format",
+      "Optimized for large-format displays and professional photography replacement"
+    ],
+    "limitations": [
+      "Premium pricing structure significantly higher than standard image generation models",
+      "Extended processing times due to ultra-high-quality rendering requirements",
+      "Requires high-end hardware for handling large file sizes and resolutions",
+      "Potential over-detailing in applications where simplicity is preferred",
+      "Consistency challenges across multiple generations for brand alignment",
+      "Limited flexibility for budget-conscious applications due to cost constraints"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability.stable-image-ultra-v11",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:55:41.174943"
+}

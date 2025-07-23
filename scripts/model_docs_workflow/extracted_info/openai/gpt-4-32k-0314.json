@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "GPT-4-32k-0314 is a fixed snapshot version of OpenAI's GPT-4 model with an extended 32,768-token context window, released on March 14, 2023. It supports text-based input/output only and is compatible with the Chat Completions API. The model was deprecated in 2024 and is no longer available for new usage, with a final retirement date of June 6, 2025.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and summarization of lengthy texts",
+      "Complex reasoning tasks requiring extensive context",
+      "Code generation and analysis for software development",
+      "Text-based conversation and content generation in chat formats"
+    ],
+    "strengths": [
+      "Extended 32,768-token context window for processing long-form content and complex documents",
+      "Supports text generation, code analysis, and complex reasoning tasks",
+      "Fixed snapshot version ensures consistent performance for specific use cases",
+      "Part of OpenAI's early GPT-4 release strategy for extended context capabilities"
+    ],
+    "limitations": [
+      "Deprecated and no longer available for new usage (retired June 6, 2025)",
+      "Lacks modern features like function calling and vision capabilities",
+      "Higher pricing compared to base GPT-4 ($0.06 per 1K input tokens, $0.12 per 1K output tokens)",
+      "Limited to text input/output with no multimodal support",
+      "Restricted access through OpenAI's waitlist system during its active period"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-32k-0314",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:21:04.108318"
+}

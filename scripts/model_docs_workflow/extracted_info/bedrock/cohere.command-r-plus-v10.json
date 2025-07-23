@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Cohere Command R+ v10 is a large language model developed by Cohere, optimized for enterprise applications requiring advanced reasoning, long-context understanding (128,000 tokens), and tool integration. It supports 10 key business languages (English, French, Spanish, Italian, German, Portuguese, Japanese, Korean, Arabic, Chinese) and features retrieval-augmented generation (RAG) with citations, multi-step tool usage, and enterprise-grade performance for complex workflows.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise knowledge management and document analysis (legal, financial, technical)",
+      "Business intelligence and market research with multi-source data synthesis",
+      "Workflow automation for complex business processes and decision support systems",
+      "Customer support systems with knowledge-base integration and multilingual capabilities",
+      "Scientific/technical research assistance with cross-document analysis and RAG"
+    ],
+    "strengths": [
+      "128,000 token context window for processing complex, long documents and multi-document analysis",
+      "Supports 10 key business languages with cross-language understanding and cultural context adaptation",
+      "Retrieval-augmented generation (RAG) with automatic citation generation and multi-document reasoning",
+      "Advanced tool integration for multi-step workflows, function calling, and external API connectivity",
+      "Enterprise-grade optimization for accuracy, scalability, and compliance in business-critical applications"
+    ],
+    "limitations": [
+      "128,000 token context window may be insufficient for extremely long documents or workflows",
+      "Tool usage limited to predefined function interfaces with potential complexity constraints",
+      "Higher cost considerations due to enterprise-grade features and AWS Bedrock pricing structure",
+      "Regional availability limited to specific AWS regions (e.g., US East, US West) with potential latency implications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.command-r-plus-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:35:59.339783"
+}

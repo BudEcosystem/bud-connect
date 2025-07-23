@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash Thinking Experimental is an advanced reasoning model developed by Google, combining the speed of Gemini 2.0 Flash with visible chain-of-thought reasoning. It features a 1M token context window, step-by-step problem decomposition, and transparent reasoning steps. Available free during the experimental phase, it is designed for complex problem-solving and educational applications but is not recommended for production use.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex mathematical and logical problem-solving",
+      "Code debugging and analysis with transparent reasoning",
+      "Educational platforms requiring step-by-step explanations",
+      "Research tasks involving multi-faceted problem decomposition",
+      "Decision-making processes requiring audit trails and transparency"
+    ],
+    "strengths": [
+      "Visible chain-of-thought reasoning with traceable steps and assumptions",
+      "Enhanced complex problem-solving capabilities for mathematical, logical, and multi-step tasks",
+      "Combines Flash-level speed with advanced reasoning performance",
+      "Free access during experimental phase via Google AI Studio and Gemini app",
+      "Ranked as the world's best model for reasoning benchmarks"
+    ],
+    "limitations": [
+      "Experimental status with potential feature changes and no production guarantees",
+      "Rate limits and restricted availability during testing phase",
+      "Increased computational requirements for reasoning processes",
+      "Larger response size when including thinking steps",
+      "Overkill for simple tasks due to focus on complex problem-solving"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-flash-thinking-exp",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:30:40.605158"
+}

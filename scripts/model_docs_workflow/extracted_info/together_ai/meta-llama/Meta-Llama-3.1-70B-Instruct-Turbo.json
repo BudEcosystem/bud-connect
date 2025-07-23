@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 70B Instruct Turbo is a 70-billion-parameter large language model developed by Meta and hosted on Together AI. It features a 128,000-token context window, advanced optimizations like RoPE and Grouped Query Attention, and is optimized for enterprise-grade applications requiring sophisticated reasoning, code generation, and multilingual capabilities. Enhanced by Together AI's Turbo optimization, it delivers 2-3x faster inference while maintaining high-quality outputs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Business intelligence and market trend analysis",
+      "Technical documentation and software development support",
+      "Legal document analysis and contract review",
+      "Financial modeling and risk assessment",
+      "Scientific research assistance and hypothesis generation",
+      "Multilingual content creation and translation",
+      "Customer support automation with advanced chatbots"
+    ],
+    "strengths": [
+      "128,000-token context window for handling long documents and complex inputs",
+      "2-3x faster inference with Together AI's Turbo optimization, reducing effective cost per task",
+      "17x lower cost than GPT-4o with competitive performance in the 70B parameter class",
+      "Advanced reasoning capabilities for multi-step logical tasks and technical problem-solving",
+      "Expert-level code generation across programming languages and production-ready code quality",
+      "Multilingual support with native-level performance across diverse language datasets",
+      "Enterprise-grade reliability with high availability and security certifications"
+    ],
+    "limitations": [
+      "128,000-token context limit may constrain processing of extremely large documents",
+      "Requires substantial GPU resources (H100 or equivalent) and high memory for deployment",
+      "Higher cost compared to smaller models for basic or low-complexity tasks",
+      "Not optimized for ultra-low latency real-time applications due to computational demands"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:16:37.454949"
+}

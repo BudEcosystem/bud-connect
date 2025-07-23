@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Llama 4 Maverick 17B 128E Instruct FP8 is a multimodal Mixture-of-Experts (MoE) model developed by Meta and hosted on Together AI. It features 17 billion active parameters with 128 experts, FP8 quantization for efficiency, and a 512K token context window (up to 1 million tokens). The model supports 12 languages and integrates text and vision processing via early fusion architecture, enabling native multimodal understanding.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Visual content analysis and document understanding (charts, infographics)",
+      "Multimodal chatbots with vision capabilities",
+      "Medical image analysis and diagnostic assistance",
+      "E-commerce product image analysis and customer service",
+      "Scientific document analysis combining text and visual data"
+    ],
+    "strengths": [
+      "Native multimodal integration via early fusion architecture for seamless text and image processing",
+      "FP8 quantization reduces memory requirements by ~50% while maintaining quality",
+      "Supports up to 1 million token context windows for complex, long-form tasks",
+      "Trained on 22 trillion tokens of multimodal data for robust cross-modal understanding",
+      "Optimized for single H100 GPU deployment with cost-effective $0.19/Mtok distributed inference pricing"
+    ],
+    "limitations": [
+      "Limited to 5 image inputs per request",
+      "FP8 quantization may introduce minor quality trade-offs",
+      "Requires substantial GPU resources (H100 DGX host recommended)",
+      "1 million token context window may constrain ultra-long document processing",
+      "Higher cost ($0.30-$0.49/Mtok) for single-host deployments compared to text-only models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:14:01.508855"
+}

@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Amazon Rerank 1.0 is a reranking model developed by AWS Bedrock to enhance the relevance of query responses in Retrieval-Augmented Generation (RAG) applications. It processes up to 100 text-only document chunks per query, calculates relevance scores, and reorders results to prioritize the most pertinent documents. The model integrates with AWS Bedrock Knowledge Bases and supports JSON/text document formats.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enhancing document relevance in RAG pipelines",
+      "Improving search result accuracy for enterprise knowledge bases",
+      "Optimizing question-answering systems with better document selection",
+      "Supporting customer support by retrieving relevant information",
+      "Assisting academic/technical research with document ranking"
+    ],
+    "strengths": [
+      "Improves RAG application performance by prioritizing relevant documents",
+      "Provides numerical relevance scores for transparent result ranking",
+      "Seamlessly integrates with AWS Bedrock Knowledge Bases and Agents",
+      "Handles up to 100 document chunks per query with scalable multi-query support",
+      "Optimized for low-latency real-time processing in typical use cases"
+    ],
+    "limitations": [
+      "Limited to text-only data processing (no multimodal support)",
+      "Maximum 100 document chunks per query with additional queries required for larger sets",
+      "Primarily optimized for English text",
+      "Real-time only processing with no batch capabilities mentioned",
+      "Per-query pricing model increases costs for large document sets"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.rerank-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:24:16.207897"
+}

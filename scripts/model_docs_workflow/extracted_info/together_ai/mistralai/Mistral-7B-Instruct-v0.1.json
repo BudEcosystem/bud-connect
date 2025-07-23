@@ -1,0 +1,73 @@
+{
+  "model_info": {
+    "description": "Mistral-7B-Instruct-v0.1 is an instruction-tuned large language model developed by Mistral AI, featuring 7.42 billion parameters and an 8,192-token context window. It uses a Transformer architecture with Sliding Window Attention (SWA) and is optimized for conversational AI, code generation, and mathematical reasoning. The model is licensed under Apache 2.0 and was released in October 2023.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and conversational AI",
+      "Programming assistance and code generation",
+      "Educational tutoring and explanation systems",
+      "Content creation for marketing and social media",
+      "Task automation with instruction-following capabilities",
+      "Resource-constrained deployments requiring cost efficiency"
+    ],
+    "strengths": [
+      "Outperforms Llama 2 13B and matches Llama 34B performance in many tasks while using 7B parameters",
+      "Delivers large model performance with smaller resource requirements (14.4GB VRAM for full precision)",
+      "Strong code generation and mathematical reasoning capabilities (GSM8K score: 48.4%)",
+      "High conversational performance with 8K context window and optimized instruction-following",
+      "Cost-efficient deployment with pay-per-use pricing and batch processing discounts",
+      "Supports quantization (4-bit/8-bit) for reduced memory usage"
+    ],
+    "limitations": [
+      "Limited to 8,192 token context window (smaller than newer versions like v0.2's 32K)",
+      "Lacks built-in content moderation mechanisms",
+      "Training data cutoff is pre-2023, limiting recent knowledge",
+      "Multilingual support is basic compared to specialized models",
+      "May struggle with complex multi-step reasoning and highly specialized domains",
+      "Requires specific [INST]/[/INST] prompt formatting for optimal performance"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "ARC",
+      "score": 80.1
+    },
+    {
+      "name": "HellaSwag",
+      "score": 64.1
+    },
+    {
+      "name": "MMLU",
+      "score": 56.3
+    },
+    {
+      "name": "TruthfulQA",
+      "score": 56.3
+    },
+    {
+      "name": "WinoGrande",
+      "score": 73.7
+    },
+    {
+      "name": "GSM8K",
+      "score": 48.4
+    },
+    {
+      "name": "HF Score",
+      "score": 55
+    },
+    {
+      "name": "LLM Explorer Score",
+      "score": 0.4
+    },
+    {
+      "name": "ELO Rating",
+      "score": 1004
+    }
+  ],
+  "model_name": "mistralai/Mistral-7B-Instruct-v0.1",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:18:13.753005"
+}

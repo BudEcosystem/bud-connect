@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Text Embeddings V2 is a second-generation text embeddings model developed by AWS, optimized for Retrieval-Augmented Generation (RAG) applications. It supports up to 8,192 tokens (50,000 characters) with flexible output dimensions (256, 384, or 1,024) and improved multilingual capabilities for 100+ languages. The model offers enhanced cost efficiency, binary embeddings, and integration with AWS services like Bedrock Knowledge Bases.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Retrieval-augmented generation (RAG) systems for enhanced knowledge retrieval",
+      "Semantic search and document similarity detection in enterprise knowledge bases",
+      "Text classification and clustering for content organization",
+      "E-commerce product search and recommendation engines",
+      "Legal document analysis and similarity detection",
+      "Vector database storage and similarity queries with flexible dimensionality",
+      "Batch processing of large-scale text data via AWS Bedrock Batch"
+    ],
+    "strengths": [
+      "Enhanced RAG optimization for improved retrieval-augmented generation workflows",
+      "33% cost reduction compared to V1 due to smaller default dimensions (1,024 vs. 1,536)",
+      "Flexible output dimensions (256, 384, or 1,024) with 4x cost savings at 256 dimensions (3.24% accuracy loss)",
+      "Multilingual preview support for 100+ languages beyond English",
+      "Binary embeddings support via the embeddingTypes parameter",
+      "Native integration with AWS Bedrock Knowledge Bases and vector databases like OpenSearch",
+      "MTEB benchmark score of 60.37, demonstrating strong semantic similarity and reranking performance"
+    ],
+    "limitations": [
+      "Maximum input token limit of 8,192 tokens may restrict processing of very long texts",
+      "Multilingual support is in preview with varying performance levels across 100+ languages",
+      "Suboptimal cross-language similarity performance for non-English text",
+      "Binary embeddings are a newer feature with potential limitations",
+      "Accuracy trade-offs with smaller dimensions (e.g., 3.24% loss at 256 dimensions)",
+      "Language optimization prioritizes English, with reduced effectiveness for other languages"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 60.37
+    }
+  ],
+  "model_name": "amazon.titan-embed-text-v20",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:27:11.000739"
+}

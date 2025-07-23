@@ -1,0 +1,56 @@
+{
+  "model_info": {
+    "description": "GPT-4o mini is a cost-efficient small language model developed by OpenAI, designed for high-volume, cost-sensitive applications. It features a 128,000-token context window, 16,384-token output limit, and improved non-English text handling via a shared tokenizer with GPT-4o. The model supports text and vision processing, with upcoming audio/video capabilities, and includes enhanced safety features like resistance to jailbreaks and prompt injections.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support chatbots with real-time responses",
+      "Content moderation and classification at scale",
+      "Email and message generation with thread history analysis",
+      "Data extraction from documents and receipts",
+      "Codebase analysis and repository processing",
+      "High-volume document summarization and knowledge base querying"
+    ],
+    "strengths": [
+      "Over 60% cheaper than GPT-3.5 Turbo and significantly more affordable than previous frontier models",
+      "Outperforms GPT-3.5 Turbo on academic benchmarks and matches/exceeds GPT-4o performance in some metrics",
+      "Larger context window (128K tokens) compared to GPT-3.5 Turbo (16K tokens)",
+      "Enhanced safety features with resistance to jailbreaks, prompt injections, and system prompt extractions",
+      "Multimodal support for text and vision processing with plans for audio/video expansion",
+      "Improved instruction-following and function calling capabilities for complex workflows"
+    ],
+    "limitations": [
+      "Knowledge cutoff in October 2023 limits access to newer information",
+      "16,384-token output limit per request may restrict lengthy responses",
+      "Reduced performance on highly complex reasoning tasks compared to larger models like GPT-4.1",
+      "Audio/video support still in development (not yet available)",
+      "MMLU score of 82% indicates room for improvement in academic reasoning compared to top-tier models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 82
+    },
+    {
+      "name": "MMMU",
+      "score": 59.4
+    },
+    {
+      "name": "vs Gemini Flash (MMMU)",
+      "score": 59.4
+    },
+    {
+      "name": "vs Claude Haiku (MMMU)",
+      "score": 59.4
+    },
+    {
+      "name": "vs GPT-3.5 Turbo",
+      "score": 60
+    }
+  ],
+  "model_name": "gpt-4o-mini",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:05:11.786354"
+}

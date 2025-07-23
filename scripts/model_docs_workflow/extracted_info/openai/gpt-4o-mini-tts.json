@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o-mini-tts is OpenAI's next-generation text-to-speech model that enables natural language control over voice synthesis. Built on the GPT-4o-mini foundation, it offers 11 base voices with dynamic customization for tone, emotion, and style. Key innovations include instruction-based voice adjustments, stage direction support, and efficient token-based processing at ~$0.015 per minute of audio.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Personalized customer service voice agents",
+      "Character-specific audiobook narration",
+      "Dynamic NPC voice generation for gaming",
+      "Adaptive teaching voices for e-learning platforms",
+      "Podcast production with style-directed narration",
+      "Interactive storytelling with emotion-controlled delivery",
+      "Customized screen readers for accessibility"
+    ],
+    "strengths": [
+      "Natural language voice customization through text instructions (e.g., 'energetic podcast host')",
+      "11 diverse base voices with dynamic per-request adjustments for tone, emotion, and style",
+      "Support for stage directions with parenthetical text for pacing and emphasis",
+      "Token-efficient processing with 85% lower cost compared to ElevenLabs (estimates)",
+      "Flexible API integration for commercial and creative applications including customer service, gaming, and e-learning"
+    ],
+    "limitations": [
+      "Currently in beta with limited voice cloning capabilities",
+      "Only 11 base voices available (no expansion mentioned in current documentation)",
+      "English-optimized with multilingual support pending",
+      "API rate limits apply for production use",
+      "Instruction effectiveness varies for complex emotional delivery",
+      "No support for background music/effects or voice blending"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-tts",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:33:35.367177"
+}

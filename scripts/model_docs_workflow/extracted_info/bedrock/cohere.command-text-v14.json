@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Cohere Command Text v14 is a text generation model developed by Cohere for AWS Bedrock, optimized for business applications requiring high-quality, professional text output. It features a 4,096-token context window (2,048 input characters max), supports instruction-following tasks, and maintains a professional tone. The model is trained for reliability, efficiency, and versatility across enterprise use cases but has limitations in long-form content due to token constraints and primarily English language support.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional email and report generation",
+      "Business proposal and marketing content creation",
+      "Technical documentation and process writing",
+      "Customer service chatbots and support scripts",
+      "Educational material and training content development",
+      "Content summarization and data interpretation",
+      "Multi-language translation assistance"
+    ],
+    "strengths": [
+      "High-quality text generation with professional tone and style consistency for business applications",
+      "4,096-token context window (2,048 input characters) for handling complex prompts and outputs",
+      "Optimized for instruction-following tasks with customizable parameters (temperature, top-p, top-k)",
+      "Supports streaming responses via AWS Bedrock for real-time applications",
+      "Versatile for content creation, business communications, and technical writing",
+      "Integrated with AWS services like Comprehend, Translate, and Polly for extended functionality",
+      "Balanced cost structure with on-demand pricing and provisioned throughput options"
+    ],
+    "limitations": [
+      "4,096-token context window limits long-form content generation",
+      "Primarily optimized for English, with limited multilingual support",
+      "Potential for generating plausible but factually inaccurate information",
+      "Knowledge cutoff restricts current event awareness",
+      "Cost considerations for high-volume usage (e.g., $29,462.40/month for 1 model unit)",
+      "Requires careful management of input/output token limits and cost optimization"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.command-text-v14",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:37:48.244178"
+}

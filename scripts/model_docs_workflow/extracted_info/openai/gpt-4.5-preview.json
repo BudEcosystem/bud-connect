@@ -1,0 +1,28 @@
+{
+  "model_info": {
+    "description": "GPT-4.5-preview is a research preview model developed by OpenAI as their largest and best chat model at release. It was designed for experimentation with large-scale architectures but was deprecated in favor of the more efficient GPT-4.1 family. The model had a smaller context window than GPT-4.1's 1 million tokens and was compute-intensive, with an unspecified training data cutoff.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Creative writing projects requiring nuanced responses",
+      "Research and experimentation with large-scale language models",
+      "Complex language understanding tasks with emphasis on creativity"
+    ],
+    "strengths": [
+      "Known for high-quality creative outputs, writing, humor generation, and nuanced language understanding",
+      "Served as a testbed for pre-training and post-training techniques later refined in GPT-4.1",
+      "Provided valuable research insights into large-scale model capabilities and developer feedback"
+    ],
+    "limitations": [
+      "High computational cost and slower latency compared to optimized models",
+      "Smaller context window than GPT-4.1 (exact size unspecified)",
+      "Challenging scalability for high-volume applications",
+      "Deprecated and removed from API as of July 14, 2025"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4.5-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:29:40.043815"
+}

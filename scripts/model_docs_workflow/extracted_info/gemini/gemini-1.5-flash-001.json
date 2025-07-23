@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Google Gemini 1.5 Flash-001 is a fast, lightweight multimodal model designed for high-volume, low-latency tasks. It supports text, image, audio, video, and PDF inputs with a 1,048,576-token context window and 8,192-token output limit. Optimized for speed, it excels in summarization, categorization, and real-time applications but is lighter than the Gemini 1.5 Pro variant.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document and content summarization",
+      "Real-time chat and conversational AI",
+      "Image/video captioning and description generation",
+      "Data extraction from long documents and tables",
+      "Multi-language translation and content categorization",
+      "Customer service automation and content moderation at scale",
+      "Code generation for quick programming assistance"
+    ],
+    "strengths": [
+      "Supports multimodal inputs (text, image, audio, video, PDF) for diverse tasks",
+      "Handles long contexts up to 1,048,576 tokens for extensive document processing",
+      "Optimized for low-latency, high-volume deployment with fast response times",
+      "Includes streaming support via streamGenerateContent API for real-time applications",
+      "Efficient for summarization, categorization, and content moderation at scale"
+    ],
+    "limitations": [
+      "Limited to 1,048,576 input tokens and 8,192 output tokens per response",
+      "Lighter architecture may reduce performance on complex reasoning tasks compared to Pro models",
+      "Legacy model status with migration required to Gemini 2.0 Flash by April 29, 2025",
+      "Not available for new projects after April 29, 2025 without prior usage",
+      "Pricing for extended context (>128K tokens) requires contacting Google"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-001",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:13:43.105785"
+}

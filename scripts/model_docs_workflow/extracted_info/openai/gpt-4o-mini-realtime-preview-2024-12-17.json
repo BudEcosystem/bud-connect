@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "GPT-4o-mini-realtime-preview-2024-12-17 is a multimodal AI model developed by OpenAI, supporting text and audio interactions. Released on December 17, 2024, it features enhanced voice quality, real-time processing, and 8 distinct voice options. Designed for testing and feedback, it includes prompt caching, improved rate limiting, and cost optimization for real-time applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Dynamic customer service with voice-enabled support systems",
+      "Real-time audio content generation and interactive media creation",
+      "Live cross-language translation with voice preservation",
+      "Corporate voice assistant implementations and training tools",
+      "Accessibility solutions with voice-controlled automation",
+      "Multilingual customer interactions with context retention"
+    ],
+    "strengths": [
+      "Significant improvements in voice output quality and audio input reliability",
+      "Real-time processing with low-latency audio interactions (speech-to-speech capabilities)",
+      "Supports 8 distinct voice personalities (alloy, ash, ballad, etc.) for personalized interactions",
+      "Prompt caching reduces costs and improves response times for repeated queries",
+      "Token-based rate limiting (100,000 TPM, 1,000 RPM) enables flexible usage patterns",
+      "More cost-efficient than GPT-4o-realtime-preview while maintaining quality",
+      "Enhanced WebRTC and WebSocket connectivity for stable real-time communication"
+    ],
+    "limitations": [
+      "Preview status - not optimized for production traffic or high-volume deployments",
+      "Limited to text and audio modalities (no image support)",
+      "Does not support existing GPT-4o structured output features",
+      "Rate limits (100,000 TPM, 1,000 RPM) suitable only for testing/development",
+      "Requires stable internet connection for optimal performance",
+      "May exhibit stability issues typical of preview releases",
+      "Latency sensitivity to network conditions"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-realtime-preview-2024-12-17",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:21:05.134257"
+}

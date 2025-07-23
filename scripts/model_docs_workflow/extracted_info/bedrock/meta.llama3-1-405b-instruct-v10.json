@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 405B Instruct is the world's largest publicly available large language model (LLM) with 405 billion parameters and a 128K token context window. Developed by Meta and available on AWS Bedrock, it excels in reasoning, code generation, multilingual tasks (8 languages), and synthetic data generation. Trained on 15 trillion tokens (7x larger than Llama 2) with 4x more code data, it offers advanced capabilities for complex problem-solving and enterprise-grade AI applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced analytics and complex data analysis for enterprises",
+      "Scientific research assistance and hypothesis generation",
+      "High-quality content creation (articles, reports, creative writing)",
+      "Software development support (code generation, debugging, architecture)",
+      "Financial modeling and risk analysis in banking/finance",
+      "Medical research and clinical decision support in healthcare",
+      "Synthetic data generation for training other AI models",
+      "Multilingual communication and professional-grade translation services"
+    ],
+    "strengths": [
+      "405 billion parameters and 128K context window for handling complex, long-form tasks",
+      "Optimized for synthetic data generation and model distillation to improve smaller models",
+      "Multilingual support for 8 languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai)",
+      "Advanced reasoning, mathematical problem-solving, and code generation across multiple programming languages",
+      "AWS Bedrock integration with latency-optimized inference and end-to-end encryption for enterprise security",
+      "State-of-the-art performance in complex analysis, creative writing, and multilingual translation"
+    ],
+    "limitations": [
+      "High computational requirements and premium pricing due to massive scale",
+      "Limited regional availability (initially US West and US East regions)",
+      "128K context window and 2048 token generation limit may still be insufficient for ultra-long tasks",
+      "Over-engineered for simple tasks; smaller Llama models may be more cost-effective for routine applications",
+      "Higher latency compared to smaller models due to computational intensity"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-1-405b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:44:05.094306"
+}

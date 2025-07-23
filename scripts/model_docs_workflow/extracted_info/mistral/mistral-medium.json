@@ -1,0 +1,29 @@
+{
+  "model_info": {
+    "description": "Mistral Medium 3 is a state-of-the-art multimodal language model developed by Mistral AI, released in May 2025. It balances frontier-class performance with cost efficiency, offering 8X lower costs than competitors and deployment flexibility across clouds or self-hosted environments with four GPUs. The model is available via API (e.g., `mistral-medium-latest`) and supports complex reasoning and multimodal tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex reasoning tasks requiring advanced multimodal analysis",
+      "Enterprise applications needing cost-effective, high-performance AI solutions",
+      "Cloud or self-hosted deployments for scalable AI integration",
+      "Multimodal applications combining text and other data types"
+    ],
+    "strengths": [
+      "8X lower cost compared to competitors while maintaining frontier-class performance",
+      "Performs at or above 90% of Claude Sonnet 3.7 on benchmarks at significantly reduced pricing",
+      "Supports flexible deployment options (API, self-hosted, and any cloud provider)",
+      "Optimized for high-complexity tasks requiring advanced reasoning and multimodal capabilities"
+    ],
+    "limitations": [
+      "Proprietary license restricts open-source flexibility",
+      "Self-hosted deployment requires environments with four GPUs or more",
+      "Older `mistral-medium` endpoint is deprecated, requiring migration to newer versions"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-medium",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:58:40.568509"
+}

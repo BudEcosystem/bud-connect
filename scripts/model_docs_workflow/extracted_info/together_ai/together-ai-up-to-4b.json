@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Together AI's up to 4B parameter models are cost-effective language models designed for applications requiring AI capabilities without high computational costs. These models support chat, language, and code tasks with context windows up to 32K tokens, optimized transformer architectures, and instruction-tuning. Available models include Qwen 1.5 variants (4B, 1.8B, 0.5B), Microsoft Phi-2, and Google Gemma (2B, deprecated). They prioritize speed, low latency, and resource efficiency for high-volume and edge deployments.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation (FAQ responses, ticket categorization)",
+      "Content generation at scale (product descriptions, social media content)",
+      "Data processing (text classification, sentiment analysis, summarization)",
+      "Cost-sensitive applications (startups, SMBs, educational tools)",
+      "Real-time systems (chatbots, live content moderation, dynamic personalization)",
+      "Internal business tools (documentation generation, workflow automation)"
+    ],
+    "strengths": [
+      "Cost-effective pricing at $0.10 per 1 million tokens with batch processing discounts",
+      "Supports context windows up to 32K tokens (Qwen 1.5 variants)",
+      "Optimized for speed with ultra-low latency and high throughput for real-time applications",
+      "Low memory footprint (2-4GB) suitable for edge computing and standard GPU infrastructure",
+      "Multilingual capabilities in Qwen models for major languages",
+      "Scalable for high-volume applications with horizontal scaling and efficient batch processing",
+      "Competitive cost-performance ratio (70-80% quality of larger models at 10-20% cost)"
+    ],
+    "limitations": [
+      "Limited to basic reasoning and straightforward tasks, with lower performance on complex reasoning",
+      "Google Gemma (2B) model is deprecated but still available",
+      "Multilingual support is decent but not as comprehensive as larger models",
+      "Lower performance on advanced benchmarks compared to larger models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-up-to-4b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:28:15.683554"
+}

@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Together AI's 41.1B-80B parameter models are high-performance large language models designed for advanced reasoning, complex problem-solving, and nuanced understanding. They bridge mid-range efficiency and enterprise-grade capability, supporting 50+ languages, code generation across 20+ languages, and specialized domains. The models use advanced transformer architectures with mixed precision and are optimized for NVIDIA Blackwell/Hopper GPUs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced analytics and predictive modeling",
+      "Long-form content creation and brand strategy",
+      "Code review, optimization, and architecture design",
+      "Legal/contract analysis and regulatory compliance",
+      "Financial risk modeling and investment research",
+      "Healthcare research and clinical documentation",
+      "Market research and competitive analysis"
+    ],
+    "strengths": [
+      "Large parameter range (41.1B-80B) for complex reasoning and domain expertise",
+      "Extended context window (32K-128K tokens) for long-form generation and analysis",
+      "Advanced infrastructure with 4x performance improvement over vLLM via Together Inference Stack",
+      "Multilingual proficiency across 50+ languages and code generation in 20+ programming languages",
+      "Specialized features including mathematical reasoning, creative writing, and multi-modal capabilities (select models)",
+      "Competitive pricing with 50% discount for batch processing and dedicated endpoints",
+      "Top-tier performance on benchmarks like MMLU, GSM8K, HumanEval, BBH, and MT-Bench"
+    ],
+    "limitations": [
+      "Higher operating costs compared to smaller models",
+      "Context window limitations for extremely long documents",
+      "Not suitable for ultra-low latency applications (<100ms)",
+      "Limited multimodal capabilities compared to dedicated vision models",
+      "May require fine-tuning for highly specialized domains",
+      "Cost efficiency depends on prompt optimization and batch processing usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-41.1b-80b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:23:12.118771"
+}

@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash-Lite is a cost-efficient large language model developed by Google, designed to deliver better quality than Gemini 1.5 Flash at the same speed and cost. It features a 1 million token context window, supports multimodal inputs (text, images, audio, video), and maintains low latency. The model prioritizes efficiency over advanced features, making it ideal for high-volume, cost-sensitive applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume text generation for cost-sensitive applications",
+      "Batch processing of large datasets",
+      "Basic conversational AI and chatbots",
+      "Content classification and categorization",
+      "Data extraction from multimodal sources",
+      "Development and testing environments"
+    ],
+    "strengths": [
+      "Outperforms Gemini 1.5 Flash on most benchmarks while maintaining identical speed and cost",
+      "1 million token context window for handling long inputs",
+      "Multimodal input support for text, images, audio, and video",
+      "Same API interface as Gemini 1.5 Flash for seamless migration",
+      "50% discount for batch processing tasks",
+      "Improved token/dollar efficiency ratio"
+    ],
+    "limitations": [
+      "Fewer advanced features compared to the full Gemini Flash model",
+      "Limited tool use capabilities and basic function calling support",
+      "Optimized for efficiency over cutting-edge performance",
+      "Preview versions may have unstable rate limits",
+      "Not suitable for complex reasoning tasks requiring advanced features"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-flash-lite",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:29:02.566362"
+}

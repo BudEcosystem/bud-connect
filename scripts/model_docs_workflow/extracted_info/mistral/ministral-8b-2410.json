@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Ministral 8B 2410 is an 8-billion parameter edge-optimized large language model developed by Mistral AI in October 2024. It features a 128,000 token context window, efficient transformer architecture, and internal temperature scaling (0.43x multiplier). Part of the 'Les Ministraux' family, it balances performance and cost for edge deployment scenarios.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Smart manufacturing optimization and predictive maintenance",
+      "Autonomous vehicle decision-making systems",
+      "Real-time healthcare IoT diagnostics",
+      "Smart city traffic management",
+      "Retail edge analytics and personalization",
+      "Industry-specific fine-tuning for vertical markets",
+      "Language specialization and domain expertise adaptation"
+    ],
+    "strengths": [
+      "Outperforms larger models like Gemma 2 9B and Llama 3.1 8B in evaluation metrics",
+      "128k token context window enables extensive document processing and long-form reasoning",
+      "Internal temperature scaling (0.43x multiplier) provides precise output control",
+      "Industry-leading performance/price ratio for edge computing applications",
+      "Supports agentic workflows and function calling for complex task orchestration"
+    ],
+    "limitations": [
+      "8B parameter count may limit performance on very complex reasoning tasks",
+      "Temperature scaling requires users to adjust settings with 0.43x multiplier in mind",
+      "Requires minimum 16GB RAM and 8-core CPU for deployment",
+      "Edge deployment still demands decent hardware (e.g., NVIDIA Jetson AGX Orin)",
+      "Commercial use requires licensing agreement"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "ministral-8b-2410",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:52:21.286934"
+}

@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Together AI's 8.1B-21B parameter models are designed for production workloads requiring advanced reasoning and generation capabilities without the computational overhead of larger models. These models offer parameter ranges from 8.1B to 21B, context windows of 8K-64K tokens, and support for 40+ languages and 15+ programming languages. They feature optimized transformer architectures, efficient attention mechanisms, and infrastructure with 4x performance boost over vLLM.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content marketing (blog posts, social media, SEO strategies)",
+      "Customer support (chatbots, ticket routing, multilingual service)",
+      "Business intelligence (report summarization, market research)",
+      "Software development (code review, documentation, test case generation)",
+      "Healthcare (clinical documentation, patient education materials)",
+      "E-commerce (product descriptions, sales analytics)"
+    ],
+    "strengths": [
+      "Balances cost-effectiveness with enhanced capabilities for production workloads",
+      "Supports advanced reasoning, domain knowledge, code understanding, and multilingual communication",
+      "Offers efficient infrastructure with Together Inference Stack and high-bandwidth networking",
+      "Provides API features like streaming, function calling, batch processing, and fine-tuning readiness",
+      "Includes competitive pricing with batch discounts (50% off) and volume-tiered options"
+    ],
+    "limitations": [
+      "Context window may require chunking for very long documents",
+      "Less effective in highly technical domains without fine-tuning",
+      "Limited vision capabilities compared to specialized multimodal models",
+      "Struggles with complex multi-step mathematical proofs",
+      "Not suitable for ultra-low latency applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Customer Satisfaction",
+      "score": 4.2
+    }
+  ],
+  "model_name": "together-ai-8.1b-21b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:24:19.336658"
+}

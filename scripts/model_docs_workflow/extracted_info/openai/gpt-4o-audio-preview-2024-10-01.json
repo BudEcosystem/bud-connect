@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o Audio Preview is a real-time, low-latency multimodal model developed by OpenAI for seamless text and audio interactions. It supports up to 128,000 input tokens and 4,096 output tokens, with a maximum 20 MB audio file size. The model enables bidirectional audio processing, voice synthesis (Alloy, Echo, Shimmer), and real-time streaming via WebSocket for applications like voice assistants, customer support, and translation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time customer support agents with voice interaction capabilities",
+      "Interactive voice assistants for smart devices and personal AI assistants",
+      "Live language translation services with cross-language communication",
+      "Healthcare coaching applications with natural conversation flow",
+      "Language learning platforms with real-time pronunciation feedback",
+      "Automated multi-language support systems for international businesses"
+    ],
+    "strengths": [
+      "Optimized for ultra-low latency speech interactions with real-time audio streaming capabilities",
+      "Supports multimodal input/output (text, audio) with seamless modality switching in conversations",
+      "High-quality speech synthesis with natural-sounding voices (Alloy, Echo, Shimmer)",
+      "Bidirectional audio processing for complex conversational flows",
+      "WebSocket-based Realtime API for persistent, low-latency connections",
+      "Integrated safety features including real-time content filtering and end-to-end encryption"
+    ],
+    "limitations": [
+      "Higher pricing compared to text-only models ($100-200 per 1M audio tokens)",
+      "20 MB maximum audio file size limit for inputs",
+      "Requires stable internet connection for real-time features",
+      "WebSocket connection management adds technical complexity",
+      "Audio processing costs significantly exceed text processing costs",
+      "May be overkill for non-real-time applications due to resource-intensive requirements"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-audio-preview-2024-10-01",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:17:43.876400"
+}

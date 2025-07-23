@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Claude 3.7 Sonnet is Anthropic's most intelligent hybrid reasoning model as of February 2025, designed for advanced coding and reasoning tasks. It features dual-mode operation (standard LLM and extended thinking mode), a 128K-token output limit (via beta header), and a knowledge cutoff of October 2024. The model excels in software development, complex problem-solving, and multi-step reasoning.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex software development tasks including code generation, debugging, and refactoring",
+      "Mathematical computations, physics problems, and logic puzzles",
+      "Multi-step strategic planning and deep analytical reasoning",
+      "Full-stack web development and agent workflow automation",
+      "Terminal-based code development with Claude Code integration (research preview)"
+    ],
+    "strengths": [
+      "Hybrid reasoning capability with self-reflective extended thinking mode for improved math, physics, and coding performance",
+      "State-of-the-art performance on SWE-bench Verified for real-world software issue resolution",
+      "128K-token output limit (configurable via beta header) for handling extended tasks",
+      "Advanced code generation, debugging, and full-stack web development capabilities",
+      "Available on multiple platforms including Anthropic API, Amazon Bedrock, and Google Cloud's Vertex AI"
+    ],
+    "limitations": [
+      "Knowledge cutoff date of October 2024 limits access to post-2024 data",
+      "Thinking tokens in extended mode count toward output limits, increasing costs",
+      "Extended thinking mode may introduce latency for real-time applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-7-sonnet-20250219",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:22:01.818780"
+}

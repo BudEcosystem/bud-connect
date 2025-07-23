@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Text Embeddings G1 (amazon.titan-embed-text-v1) is a first-generation text embeddings model developed by Amazon for converting text into 1,536-dimensional vector representations. It captures semantic relationships to enable tasks like similarity search, document retrieval, and text classification, with a maximum input of 8,192 tokens and English language optimization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Retrieval-Augmented Generation (RAG) document retrieval",
+      "Semantic search engines for content discovery",
+      "Enterprise knowledge base organization and search",
+      "E-commerce product recommendation systems",
+      "Text classification feature extraction for ML models",
+      "Duplicate content detection and clustering"
+    ],
+    "strengths": [
+      "Captures deep semantic relationships in text for accurate similarity comparisons",
+      "Supports batch processing for efficient enterprise-scale applications",
+      "Provides high throughput and consistent performance across diverse inputs",
+      "Seamlessly integrates with AWS services like OpenSearch, RDS, and SageMaker",
+      "Delivers dense 1,536-dimensional vectors for detailed text representations"
+    ],
+    "limitations": [
+      "Fixed 1,536-dimensional output cannot be adjusted for different use cases",
+      "Primarily optimized for English text with suboptimal cross-language performance",
+      "Higher memory and computational requirements compared to smaller dimension models",
+      "No configurable inference parameters (e.g., maxTokenCount, topP)",
+      "8,192 token input limit may require text segmentation for long documents"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.titan-embed-text-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:25:47.507574"
+}

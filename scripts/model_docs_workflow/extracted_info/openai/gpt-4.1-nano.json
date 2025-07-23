@@ -1,0 +1,47 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-nano is OpenAI's first nano-sized model, offering exceptional speed and cost efficiency while maintaining a 1 million token context window. Released in April 2025, it excels in classification, autocompletion, and document processing tasks, with benchmark scores surpassing GPT-4o-mini. Its technical strengths include ultra-low latency and optimized performance for high-volume, cost-sensitive applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content moderation and spam detection",
+      "Code completion in IDEs and command-line tools",
+      "High-volume log analysis and data extraction",
+      "Real-time chat preprocessing and translation hints",
+      "Structured data pattern matching"
+    ],
+    "strengths": [
+      "Fastest model in OpenAI's lineup with first-token latency under 5 seconds for 128k input tokens",
+      "Cheapest model available with 75% prompt caching discount and 50% Batch API discount",
+      "Maintains 1 million token context window for large document analysis",
+      "Outperforms GPT-4o-mini on MMLU (80.1%) and GPQA (50.3%) benchmarks",
+      "Excellent for code analysis and autocompletion tasks",
+      "Processes 55-page RTF files in under 4 seconds"
+    ],
+    "limitations": [
+      "Limited complex reasoning capabilities compared to larger models",
+      "Not optimized for creative writing or generation tasks",
+      "Potential for unreliable responses on complex queries",
+      "Higher hallucination risk outside its specialized use cases",
+      "Lower Aider Polyglot Coding score (9.8%) indicates limited coding versatility"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 80.1
+    },
+    {
+      "name": "GPQA",
+      "score": 50.3
+    },
+    {
+      "name": "Aider Polyglot Coding",
+      "score": 9.8
+    }
+  ],
+  "model_name": "gpt-4.1-nano",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:26:59.497266"
+}

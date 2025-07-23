@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-pro is the company's most advanced reasoning model, released on March 19, 2025. It uses significantly more computing power than standard o1 to deliver superior reliability and consistency for complex problem-solving. The model features a 200,000-token context window, 100,000-token output limit, and supports image inputs, function calling, and structured outputs. It is exclusively available via OpenAI's Responses API for multi-turn interactions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced mathematical research and theorem proving",
+      "Mission-critical software architecture and security analysis",
+      "Scientific simulations and hypothesis testing",
+      "Financial risk modeling and quantitative analysis",
+      "Legal contract review and regulatory compliance analysis",
+      "High-stakes business strategy and market analysis"
+    ],
+    "strengths": [
+      "Enhanced computing power for more reliable and consistent answers to complex problems",
+      "Larger context window (200,000 tokens) and output limit (100,000 tokens) for handling extensive inputs",
+      "Supports multi-turn interactions and structured outputs for advanced workflows",
+      "Excels in logical progression, mathematical reasoning, and complex problem decomposition",
+      "More reliable than standard o1 on the most challenging reasoning tasks"
+    ],
+    "limitations": [
+      "Extremely high pricing (10x more expensive than standard o1)",
+      "Limited access requires prior $5+ spending on OpenAI API services",
+      "No streaming support for real-time interactions",
+      "Same knowledge cutoff as other o1 models (September 30, 2023)",
+      "Exclusivity to Responses API necessitates implementation changes"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o1-pro-2025-03-19",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:41:18.904751"
+}

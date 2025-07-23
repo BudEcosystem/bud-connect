@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Mistral Tiny (now open-mistral-7b) is Mistral AI's first released model, featuring 7B parameters, sliding window attention (SWA) for 8K token context, and Apache 2.0 open-source licensing. It was deprecated in May 2024, requiring migration to the `open-mistral-7b` endpoint. The model emphasizes efficiency, speed, and customization for deployment on resource-constrained hardware.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Text generation and content creation",
+      "Code completion and programming assistance",
+      "Question answering and summarization",
+      "General-purpose language understanding tasks",
+      "Edge deployments on resource-constrained hardware"
+    ],
+    "strengths": [
+      "Outperforms Llama 2 13B on all metrics despite having fewer parameters (7B vs. 13B)",
+      "Matches performance of Llama 34B while maintaining a smaller model size",
+      "Optimized for fast inference and edge deployment with sliding window attention (8K token context)",
+      "Open-source under Apache 2.0 license with no usage restrictions",
+      "Designed for easy fine-tuning and customization"
+    ],
+    "limitations": [
+      "Deprecated as of May 2024; requires migration to `open-mistral-7b` endpoint",
+      "Limited to 7B parameters compared to larger competitors like Llama 34B",
+      "No specific benchmark scores provided for standardized evaluation metrics"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-tiny",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:01:59.258407"
+}

@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-35-Turbo-16K-0613 is a version of Azure OpenAI's GPT-3.5-Turbo model with a 16,384-token context window, released on June 13, 2023. It supports function calling, maintains GPT-3.5 capabilities, and uses training data up to September 2021. The model was retired on October 1, 2024, and is no longer available for new deployments.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Processing long documents (e.g., legal contracts, research papers)",
+      "Extended customer support conversations with context retention",
+      "Function-enabled automation (e.g., API integration, data retrieval)",
+      "Educational tutoring with multi-turn interactions",
+      "Technical documentation analysis and summarization"
+    ],
+    "strengths": [
+      "Extended 16K token context window for handling long documents and conversations",
+      "Supports function calling with structured parameter extraction and single-function execution",
+      "Stable snapshot version (June 13, 2023) ensures consistent behavior",
+      "Azure OpenAI service integration with Chat Completions API compatibility",
+      "Balanced performance across extended context windows with coherent outputs"
+    ],
+    "limitations": [
+      "Retired as of October 1, 2024, requiring migration to newer models",
+      "Not recommended to exceed 4,096 input tokens despite 16K context capacity",
+      "Limited to basic single-function calling (no parallel function support)",
+      "Training data cutoff in September 2021 limits modern knowledge",
+      "Higher cost compared to standard GPT-3.5-Turbo due to extended context",
+      "Context quality may degrade beyond 4,096 tokens"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-35-turbo-16k-0613",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:45:02.196832"
+}

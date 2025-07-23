@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro 001 is a mid-size multimodal model developed by Google, designed for lightweight tasks while maintaining high performance across domains. It supports text, image, video, and audio inputs, with a standard context window of 128,000 tokens and experimental support up to 2,097,152 tokens. The model balances efficiency and quality, using less compute than Gemini 1.0 Ultra while achieving comparable performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Analyzing large documents, codebases, and research papers",
+      "Processing hour-long videos and lengthy audio recordings",
+      "Multimodal applications combining text, image, and video inputs",
+      "Business intelligence and data extraction from complex datasets",
+      "Customer service automation with multi-turn conversation support",
+      "Educational tools for code generation and academic analysis"
+    ],
+    "strengths": [
+      "Supports multimodal inputs (text, image, video, audio) with full vision and audio processing capabilities",
+      "Offers a context window up to 2,097,152 tokens in experimental configurations, enabling long-context understanding",
+      "Achieves performance comparable to Gemini 1.0 Ultra with improved efficiency and speed",
+      "Handles complex tasks like code analysis (30,000+ lines) and document processing (700,000+ words)",
+      "Includes cost reductions for text input/output (64% input, 52% output) and batch processing discounts (50%)",
+      "Supports tool calling, multi-language processing, and fine-tuning for specialized use cases"
+    ],
+    "limitations": [
+      "Marked as a legacy model with migration required by April 29, 2025",
+      "Higher pricing for contexts exceeding 128,000 tokens",
+      "Output limited to 8,192 tokens per generation",
+      "Processing time increases significantly with extended context lengths",
+      "Resource-intensive for maximum context usage (2M+ tokens)",
+      "Rate limits apply, especially for free-tier users"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-pro-001",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:21:12.828475"
+}

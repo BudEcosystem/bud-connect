@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "nomic-ai/nomic-embed-text-v1 is a text embedding model developed by Nomic AI, utilizing a Transformer architecture trained via self-supervised MLM and contrastive learning. It supports extended context lengths (shorter than v1.5's 8192 tokens) and is optimized for retrieval-augmented generation (RAG), semantic search, and document similarity tasks. The model is open-source under Apache-2 license with full access to weights and training code, and is API-compatible with OpenAI through Fireworks AI.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Retrieval-augmented generation (RAG) systems",
+      "Semantic search in large document corpora",
+      "Document similarity analysis and clustering",
+      "Information retrieval from text databases",
+      "Content management and duplicate detection"
+    ],
+    "strengths": [
+      "Uses contrastive training on web-scale data for enhanced semantic understanding",
+      "Open-source with full auditability via Apache-2 license and public training code",
+      "OpenAI API-compatible through Fireworks AI for seamless integration",
+      "Optimized for production deployment with support for RAG, semantic search, and document clustering",
+      "Requires specific task prefixes (search_document/search_query) to maximize performance"
+    ],
+    "limitations": [
+      "Requires strict use of task-specific prefixes (search_document/search_query) for optimal results",
+      "Context length limited compared to newer v1.5 (8192 tokens) version",
+      "Primarily optimized for English text with potential domain adaptation needs",
+      "May require fine-tuning for highly specialized domains"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "nomic-ai/nomic-embed-text-v1",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:06:41.015285"
+}

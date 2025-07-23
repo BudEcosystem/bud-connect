@@ -1,0 +1,281 @@
+{
+  "azure/azure-reasoning-models": {
+    "model_info": {
+      "description": "Azure OpenAI's o-series reasoning models are advanced AI systems designed for complex problem-solving, featuring enhanced reasoning, multi-step processing, and chain-of-thought capabilities. These models excel in mathematical, scientific, and analytical tasks, with varying context windows (128k\u2013200k tokens) and specialized features like visual analysis (o3) and cost efficiency (o4-mini).",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Scientific research (hypothesis testing, experimental design)",
+        "Mathematical problem-solving and theorem proving",
+        "Code generation, debugging, and algorithm design",
+        "Visual analysis of charts, graphics, and images (o3)",
+        "Business analytics and strategic decision-making",
+        "Enterprise applications requiring deep reasoning and verification"
+      ],
+      "strengths": [
+        "Enhanced reasoning and multi-step problem-solving capabilities for complex tasks",
+        "Chain-of-thought processing with transparent, traceable reasoning steps",
+        "Specialized models for visual analysis (o3) and cost-effective reasoning (o4-mini)",
+        "High context windows (up to 200k tokens) for handling extensive inputs",
+        "Optimized for mathematical, scientific, coding, and logical reasoning tasks",
+        "Enterprise-grade features like advanced analytics, security, and compliance"
+      ],
+      "limitations": [
+        "Higher computational resource requirements and longer response times due to reasoning processes",
+        "Limited regional availability for certain models (e.g., o1-pro in preview regions)",
+        "Separate reasoning token costs and higher PTU allocation requirements",
+        "Restricted to specific use cases (e.g., o3's visual analysis capabilities not available in all models)",
+        "Knowledge cutoff dates (e.g., June 2024 for o3-mini and o4-mini)"
+      ],
+      "languages": []
+    },
+    "model_evals": [],
+    "model_name": "azure-reasoning-models",
+    "provider": "azure",
+    "extraction_date": "2025-07-23T12:52:59.283313"
+  },
+  "azure/gpt-4.1": {
+    "model_info": {
+      "description": "GPT-4.1 is a flagship large language model developed by OpenAI, introduced in April 2025 as a major upgrade to the GPT-4o series. It features a 1 million token context window (up from 128,000 tokens), enhanced coding capabilities, and improved long-context understanding. Trained on data up to June 2024, it excels in web development, instruction following, and complex coding tasks.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Complex coding projects requiring precise instruction following",
+        "Web development and full-stack application development",
+        "Long-document analysis (up to 1M tokens)",
+        "Tasks requiring extensive context processing",
+        "Applications needing GPT-4o capabilities with better performance and lower cost"
+      ],
+      "strengths": [
+        "21.4% improvement over GPT-4o on SWE-bench Verified and 26.6% over GPT-4.5",
+        "38.3% score on MultiChallenge benchmark, a 10.5% increase over GPT-4o",
+        "72.0% performance on Video-MME long, no subtitles category (6.7% improvement over GPT-4o)",
+        "8x larger context window (1M tokens) with reliable attention across full length",
+        "26% lower cost than GPT-4o for median queries and 83% cost reduction in some cases",
+        "Nearly half the latency of GPT-4o while maintaining or exceeding its intelligence"
+      ],
+      "limitations": [
+        "API-only access with no direct fine-tuning available",
+        "Image processing converts images to tokens, consuming token limits",
+        "Not recommended for simple classification tasks (GPT-4.1-nano is more cost-effective)",
+        "For complex reasoning tasks, o3 models may be more suitable"
+      ],
+      "languages": []
+    },
+    "model_evals": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 21.4
+      },
+      {
+        "name": "MultiChallenge",
+        "score": 38.3
+      },
+      {
+        "name": "Video-MME",
+        "score": 72.0
+      }
+    ],
+    "model_name": "gpt-4.1",
+    "provider": "azure",
+    "extraction_date": "2025-07-23T12:54:38.151405"
+  },
+  "azure/gpt-4.5-preview": {
+    "model_info": {
+      "description": "GPT-4.5-preview is a research preview model developed by OpenAI as their largest and best chat-focused model at release (late 2024). It was deprecated in July 2025 in favor of the more efficient GPT-4.1 family. The model featured a compute-intensive architecture for experimentation but had a smaller context window than GPT-4.1 and was removed from the API.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Creative writing projects requiring nuanced language",
+        "Research and experimentation with large-scale models",
+        "Complex language understanding tasks with subtle requirements"
+      ],
+      "strengths": [
+        "Known for high-quality creative outputs, writing, humor generation, and nuanced language understanding",
+        "Served as a testbed for pre-training and post-training techniques later refined in GPT-4.1",
+        "Provided valuable research insights into large-scale model capabilities"
+      ],
+      "limitations": [
+        "High computational cost and slower latency compared to optimized models",
+        "Smaller context window than GPT-4.1 (1 million tokens)",
+        "Deprecated and no longer available in the API as of July 14, 2025",
+        "Scalability challenges for high-volume production applications"
+      ],
+      "languages": []
+    },
+    "model_evals": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 26.6
+      }
+    ],
+    "model_name": "gpt-4.5-preview",
+    "provider": "azure",
+    "extraction_date": "2025-07-23T12:55:15.592037"
+  },
+  "fireworks_ai/fireworks-ai-embedding-proprietary-models": {
+    "model_info": {
+      "description": "Fireworks AI offers two proprietary embedding models optimized for high-scale text processing and semantic understanding. The 'fireworks-ai-embedding-up-to-150m' handles up to 150 million tokens, while the 'fireworks-ai-embedding-150m-to-350m' supports 150-350 million tokens. Both are OpenAI-compatible, designed for enterprise applications requiring high throughput, and feature fast inference for similarity comparisons and RAG pipelines.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Semantic search and content recommendation systems",
+        "Retrieval-Augmented Generation (RAG) pipelines for LLM context retrieval",
+        "Clustering and similarity analysis of large text datasets",
+        "Customer support automation and business intelligence applications",
+        "Vector database integration for document similarity matching"
+      ],
+      "strengths": [
+        "Competitive pricing at $0.008 per 1 million tokens with no output charges",
+        "High-volume token processing (150M-350M range) for large-scale applications",
+        "12x faster than vLLM and 40x faster than GPT-4 for real-time inference",
+        "OpenAI-compatible API for seamless integration with existing workflows",
+        "Enterprise-grade reliability with 99.99% API uptime and auto-scaling infrastructure"
+      ],
+      "limitations": [],
+      "languages": []
+    },
+    "model_evals": [],
+    "model_name": "fireworks-ai-embedding-proprietary-models",
+    "provider": "fireworks_ai",
+    "extraction_date": "2025-07-23T12:58:26.973593"
+  },
+  "fireworks_ai/thenlper-gte-embedding-models": {
+    "model_info": {
+      "description": "The GTE (General Text Embeddings) models, developed by Alibaba DAMO Academy, are BERT-based text embedding models trained using multi-stage contrastive learning on large-scale relevance text pairs. The gte-base variant has ~110M parameters and 768 dimensions, while gte-large has 335M parameters and 1024 dimensions. Both support 512-token context lengths and outperform models like OpenAI's text-embedding-ada-002 in efficiency and performance.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Information retrieval systems",
+        "Semantic textual similarity analysis",
+        "Text reranking for search optimization",
+        "Cross-domain text comparison",
+        "Integration with vector databases (Chroma, Weaviate, FAISS)"
+      ],
+      "strengths": [
+        "gte-base outperforms text-embedding-ada-002 with 10x fewer parameters, achieving exceptional performance-to-size ratio",
+        "gte-large maintains competitive accuracy with larger models while optimizing efficiency",
+        "BERT-based architecture with multi-stage contrastive learning ensures strong semantic understanding",
+        "Apache 2.0 license enables open use and integration",
+        "Supports diverse applications including information retrieval, semantic similarity, and cross-domain tasks"
+      ],
+      "limitations": [
+        "512-token context length limits handling of long documents",
+        "Primarily optimized for English texts with potential limitations in other languages",
+        "Training data has temporal cutoff, affecting relevance to recent developments",
+        "gte-base may lack precision for complex tasks compared to gte-large",
+        "Not suitable for real-time streaming applications due to fixed context window"
+      ],
+      "languages": []
+    },
+    "model_evals": [
+      {
+        "name": "MTEB",
+        "score": 63.13
+      },
+      {
+        "name": "MTEB (gte-base)",
+        "score": 61.5
+      },
+      {
+        "name": "text-embedding-ada-002",
+        "score": 61.0
+      },
+      {
+        "name": "E5-large-v2",
+        "score": 62.0
+      }
+    ],
+    "model_name": "thenlper-gte-embedding-models",
+    "provider": "fireworks_ai",
+    "extraction_date": "2025-07-23T12:59:28.154709"
+  },
+  "gemini/gemini-2.5-pro-preview-03-25": {
+    "model_info": {
+      "description": "Gemini 2.5 Pro Preview 03-25 is Google's most advanced multimodal thinking model, released March 25, 2025. It features a 1,000,000-token context window (expandable to 2 million), 65,000-token output capacity, and native reasoning capabilities with configurable thinking budgets. The model excels in text, audio, image, video, and code processing, achieving #1 rankings on LMArena and WebDev Arena while supporting transparent reasoning steps.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Enterprise software development (code refactoring, architecture design)",
+        "Scientific research and multi-document analysis",
+        "Complex problem-solving in mathematics and science",
+        "Multimodal content analysis (video, code repositories, mixed media)",
+        "Web application development with visual design capabilities",
+        "Mission-critical decision support systems"
+      ],
+      "strengths": [
+        "1,000,000-token context window (expandable to 2 million) for handling vast datasets",
+        "Industry-leading reasoning performance without test-time techniques like majority voting",
+        "Multimodal input support (text, audio, images, video, code repositories) with integrated analysis",
+        "63.8% SWE-Bench Verified score for code generation and refactoring",
+        "Transparent thinking process with configurable budgets for cost/latency optimization",
+        "First-place rankings on LMArena and WebDev Arena benchmarks",
+        "Supports function calling for external tool integration"
+      ],
+      "limitations": [
+        "Preview version deprecated by June 19, 2025 with automatic migration to 05-06",
+        "Overkill for simple queries due to advanced reasoning capabilities",
+        "Thinking mode may introduce latency/cost trade-offs for basic tasks",
+        "No numerical scores provided for GPQA, AIME 2025, or WebDev Arena benchmarks"
+      ],
+      "languages": []
+    },
+    "model_evals": [
+      {
+        "name": "SWE-Bench Verified",
+        "score": 63.8
+      },
+      {
+        "name": "Humanity's Last Exam",
+        "score": 18.8
+      }
+    ],
+    "model_name": "gemini-2.5-pro-preview-03-25",
+    "provider": "gemini",
+    "extraction_date": "2025-07-23T13:02:38.658094"
+  },
+  "mistral/mistral-medium-latest": {
+    "model_info": {
+      "description": "Mistral Medium 3 (mistral-medium-2505) is a medium-sized frontier model developed by Mistral AI, released in May 2025. It offers a balance between performance and cost, with an 8X lower cost than comparable models and a 128k token context window. The model is optimized for enterprise deployment on four GPUs or more, featuring a transformer-based dense decoder-only architecture and support for continuous pretraining, fine-tuning, and domain-specific adaptations.",
+      "tags": [],
+      "tasks": [],
+      "use_cases": [
+        "Enterprise AI integration for coding assistance and STEM problem-solving.",
+        "Document understanding and analysis in professional workflows.",
+        "Custom domain-specific applications with continuous learning systems.",
+        "Adaptive workflows requiring integration with enterprise knowledge bases.",
+        "Production-ready deployments optimized for cost and speed in large-scale operations."
+      ],
+      "strengths": [
+        "Delivers state-of-the-art performance at 8X lower cost than larger models, with significantly faster inference speeds.",
+        "Outperforms leading open models like Llama 4 Maverick and enterprise models like Cohere Command A in coding and STEM tasks.",
+        "Supports enterprise-grade features including continuous pretraining, full fine-tuning, and integration with knowledge bases.",
+        "Offers a 128k token context window (upgraded from 32k in previous versions) for handling long-form inputs.",
+        "Maintains high fidelity for domain-specific training and adaptive workflows in professional settings."
+      ],
+      "limitations": [
+        "Requires a minimum of four GPUs for self-hosted deployment, necessitating enterprise-grade infrastructure.",
+        "Performance may vary with task complexity and may require domain-specific fine-tuning for specialized applications.",
+        "Legacy version (pre-2025) had a MMLU score of 0.491, indicating potential limitations in general knowledge reasoning."
+      ],
+      "languages": []
+    },
+    "model_evals": [
+      {
+        "name": "MMLU",
+        "score": 0.491
+      },
+      {
+        "name": "Output Speed",
+        "score": 84.5
+      },
+      {
+        "name": "Latency (TTFT)",
+        "score": 0.39
+      }
+    ],
+    "model_name": "mistral-medium-latest",
+    "provider": "mistral",
+    "extraction_date": "2025-07-23T13:04:20.159568"
+  }
+}

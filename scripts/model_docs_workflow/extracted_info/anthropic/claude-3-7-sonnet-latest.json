@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Claude 3.7 Sonnet Latest (claude-3-7-sonnet-latest) is a development-focused alias maintained by Anthropic that automatically points to the most recent version of Claude 3.7 Sonnet. It provides access to the latest updates, including hybrid reasoning capabilities, 128K token output support (beta), and state-of-the-art coding performance. Designed for non-production use, it shares technical specifications with the current versioned model (claude-3-7-sonnet-20250219) but is not recommended for mission-critical applications due to potential behavior changes from automatic updates.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Development and testing environments for rapid prototyping",
+      "Automated testing pipelines and CI/CD workflows",
+      "Research and experimentation with model capabilities",
+      "Proof-of-concept development and API integration testing",
+      "Staging deployments requiring access to the latest features"
+    ],
+    "strengths": [
+      "Automatic access to the latest model improvements and bug fixes without code changes",
+      "State-of-the-art coding and reasoning capabilities inherited from the versioned model",
+      "Supports 128K token output with beta activation for extended context handling",
+      "Flexible thinking budget control for optimized performance",
+      "Immediate availability of safety and alignment updates"
+    ],
+    "limitations": [
+      "Not suitable for production environments due to unpredictable behavior changes from updates",
+      "Potential breaking changes with major version updates",
+      "Unpredictable update timing (within 1 week of new releases)",
+      "Requires re-testing after updates to ensure application compatibility",
+      "Higher cost for output tokens ($15 per million) compared to some alternatives"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 100
+    }
+  ],
+  "model_name": "claude-3-7-sonnet-latest",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:22:50.148290"
+}

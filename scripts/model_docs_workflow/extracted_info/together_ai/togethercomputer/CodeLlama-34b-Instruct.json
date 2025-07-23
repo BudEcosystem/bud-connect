@@ -1,0 +1,66 @@
+{
+  "model_info": {
+    "description": "CodeLlama-34b-Instruct is a 34-billion parameter code-specialized large language model developed by Meta, designed for code generation, debugging, and programming assistance. Built on the Llama 2 architecture, it supports 100,000 token context windows and excels in multi-language code generation (Python, C++, Java, JavaScript, etc.). The model is optimized for tasks like code completion, translation, and infilling, with a focus on safety alignment and instruction-following capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "IDE integration for code completion and suggestions",
+      "Automated code review and quality assessment",
+      "Cross-language code translation and migration",
+      "Educational programming tutoring systems",
+      "Legacy codebase modernization and documentation",
+      "Algorithm implementation for data science projects",
+      "RESTful API and microservice development",
+      "SQL query generation and optimization"
+    ],
+    "strengths": [
+      "34B parameters with Llama 2 architecture for advanced code understanding",
+      "100,000 token context window for handling large codebases",
+      "State-of-the-art code generation performance (HumanEval pass@1: 41.5%)",
+      "Multi-language support for 10+ programming languages including Python, C++, and JavaScript",
+      "Specialized features like code translation, infilling, and debugging",
+      "Open-source license allowing research and commercial use",
+      "High safety alignment with 0.00% toxicity score",
+      "Optimized for code-specific tasks with dedicated deployment options"
+    ],
+    "limitations": [
+      "Requires 67.5GB VRAM and 64GB+ RAM for full precision deployment",
+      "High inference costs due to large model size (estimated $0.80 per 1M tokens)",
+      "Knowledge cutoff at 2023 training data",
+      "Generated code may contain security vulnerabilities requiring manual review",
+      "Weaker performance in less popular programming languages",
+      "Higher latency compared to smaller models",
+      "Complex logic implementation may require additional refinement"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "HumanEval pass@1",
+      "score": 41.5
+    },
+    {
+      "name": "MBPP pass@1",
+      "score": 57.0
+    },
+    {
+      "name": "MultiPL-E average pass@1",
+      "score": 36.08
+    },
+    {
+      "name": "APPS pass@100",
+      "score": 16.38
+    },
+    {
+      "name": "Toxicity Score",
+      "score": 0.0
+    },
+    {
+      "name": "TruthfulQA",
+      "score": 47.37
+    }
+  ],
+  "model_name": "togethercomputer/CodeLlama-34b-Instruct",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:29:10.445150"
+}

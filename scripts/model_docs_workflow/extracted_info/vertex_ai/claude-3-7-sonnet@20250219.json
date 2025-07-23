@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Claude 3.7 Sonnet@20250219 is Anthropic's most advanced AI model, offering hybrid reasoning (Standard + Extended Thinking) with a 200,000-token context window and 8,000-token output capacity. Available on Google Cloud Vertex AI, it features step-by-step problem-solving, self-correction, and configurable thinking budgets while maintaining the same pricing as Claude 3.5 Sonnet. Trained on data up to December 2024, it supports advanced tool integration, computer use, and agentic workflows.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced software engineering and code optimization",
+      "Complex problem-solving in research, business strategy, and legal analysis",
+      "Computer use tasks including UI testing and system administration",
+      "Visual data analysis of charts, graphs, and documents",
+      "Customer support with transparent reasoning for complex issue resolution",
+      "Academic research with multi-perspective analysis and citations",
+      "Enterprise decision support systems with visible reasoning chains"
+    ],
+    "strengths": [
+      "Hybrid reasoning mode combines instant responses with deep, step-by-step analysis for complex problems",
+      "200,000-token context window and 8,000-token output capacity for handling extensive inputs/outputs",
+      "Extended thinking budget (1,024-4096 tokens) with visible reasoning process and self-correction capabilities",
+      "Same pricing as Claude 3.5 Sonnet despite enhanced reasoning capabilities",
+      "Advanced Vertex AI integration including computer use, agentic coding, and visual data extraction",
+      "Deterministic behavior with versioned model ID for reproducible results",
+      "Configurable thinking budget control for cost optimization"
+    ],
+    "limitations": [
+      "Knowledge cutoff in December 2024 limits access to real-time information",
+      "Extended thinking requires manual configuration and budget allocation",
+      "Thinking token budget consumes output token quota (1:1 ratio)",
+      "Regional availability restrictions for full feature support (e.g., us-east5)",
+      "Complex API configuration required for extended thinking and tool integration",
+      "Performance quotas and billing considerations for enterprise workloads"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-7-sonnet@20250219",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:36:45.463960"
+}

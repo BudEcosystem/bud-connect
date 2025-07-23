@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Flash 002 is a multimodal large language model developed by Google, optimized for speed, cost-efficiency, and multilingual applications. It supports text, images, audio, video, and PDF inputs with a 1 million token context window and 9.5 hours of audio per request. As a legacy model, it is recommended to migrate to newer Gemini 2.0+ versions for continued support.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Global customer support and multilingual content creation",
+      "Cross-cultural communication and international documentation",
+      "High-reliability chatbots and automated content generation",
+      "Media analysis and cross-modal search systems",
+      "Educational content creation and e-commerce product descriptions",
+      "Healthcare multilingual patient communication"
+    ],
+    "strengths": [
+      "Enhanced parameter handling with improved top_k support (1-41 range) and automatic value adjustment",
+      "Strong multilingual capabilities across 140+ languages with better translation accuracy and cultural context awareness",
+      "Large 1 million token context window with improved context retention and reference resolution",
+      "Optimized for production use with high reliability, consistent performance, and efficient resource utilization",
+      "Better instruction following and task completion rates compared to previous versions"
+    ],
+    "limitations": [
+      "Legacy model status with April 29, 2025 deadline for existing projects",
+      "Limited to 1 million token context window (no expansion mentioned)",
+      "No native image/audio generation capabilities",
+      "Outdated architecture compared to newer Gemini 2.0+ models",
+      "Restricted parameter flexibility (top_k capped at 40, no thinking mode)",
+      "Limited tool use and function calling capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-002",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:14:27.044960"
+}

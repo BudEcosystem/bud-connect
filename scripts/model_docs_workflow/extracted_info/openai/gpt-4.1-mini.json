@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-mini is a fast, efficient small model in the GPT-4.1 family developed by OpenAI, offering significant improvements in instruction-following, coding, and overall intelligence compared to GPT-4o mini. It features a 1 million token context window (matching GPT-4.1), a training data cutoff of June 2024, and 83% lower cost than GPT-4o. The model supports image inputs and is optimized for high-volume, low-latency applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume API applications requiring cost efficiency",
+      "Real-time applications with low latency requirements",
+      "General-purpose chatbots and assistants",
+      "Code generation and review tasks",
+      "Document analysis and summarization",
+      "Replacing GPT-4o in applications needing cost reduction"
+    ],
+    "strengths": [
+      "1 million token context window for long-context comprehension",
+      "83% cost reduction compared to GPT-4o with nearly half the latency",
+      "Matches or exceeds GPT-4o performance in benchmarks despite being a 'mini' model",
+      "Strong instruction-following and coding capabilities suitable for development tasks",
+      "Efficient resource usage with prompt caching (75% discount) and batch API (50% discount)",
+      "Supports image inputs for multi-modal applications",
+      "Same 1M token context as GPT-4.1 with no additional cost for long contexts"
+    ],
+    "limitations": [
+      "Slightly reduced performance on highly complex reasoning compared to full GPT-4.1",
+      "Not suitable for specialized fine-tuning (API-only model)",
+      "Training data cutoff limited to June 2024",
+      "Not recommended for ultra-low latency requirements or ultra-complex tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4.1-mini",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:26:06.107789"
+}

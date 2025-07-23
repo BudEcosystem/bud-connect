@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI DALL-E 3 is an advanced text-to-image generation model that creates high-quality, detailed images (1024x1024, 1024x1792, 1792x1024) from natural language descriptions. It supports photorealistic, artistic, and technical styles with built-in safety mechanisms and prompt revision capabilities. Available via REST and Python SDKs, it integrates with Azure services like storage and CDN.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Marketing campaign visuals and social media content creation",
+      "Product design mockups and architectural concept visualization",
+      "Book cover design and educational material illustrations",
+      "Game asset creation and film storyboard visualization",
+      "Technical diagram generation and UI/UX prototyping"
+    ],
+    "strengths": [
+      "Generates high-resolution images (up to 1792x1024) in PNG format with photorealistic and artistic styles",
+      "Handles complex scenes with multiple elements and maintains character consistency across generations",
+      "Supports architectural accuracy, lighting/shadow understanding, and precise text rendering within images",
+      "Includes safety mechanisms with content filtering, prompt revision, and region-specific compliance",
+      "Offers flexible deployment options with Azure integration for storage, CDN, and workflow automation"
+    ],
+    "limitations": [
+      "Limited to PNG output format with no support for other image types",
+      "Requires significant computational resources for HD/large-format generations (30-60 seconds per image)",
+      "Content filtering policies may block prompts involving violence, adult content, or public figures",
+      "Pricing varies significantly by resolution/quality (up to $0.080 per image for HD/large formats)",
+      "Regional availability restrictions may affect global deployment consistency"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-dall-e-3",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:34:34.892638"
+}

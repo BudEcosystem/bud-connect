@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "LearnLM 1.5 Pro Experimental is Google's specialized task-specific educational language model designed for learning applications. Built on learning science principles, it integrates into Gemini 2.5 Pro and focuses on teaching, tutoring, and educational content generation. The model emphasizes pedagogical alignment through active learning, cognitive load management, and metacognition.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Personalized tutoring sessions with adaptive difficulty levels",
+      "Curriculum development for lesson plans and educational materials",
+      "Assessment generation with varied question formats and rubrics",
+      "Content adaptation for diverse learners including special needs"
+    ],
+    "strengths": [
+      "Excels in inspiring active learning through engaging questions and interactive scenarios",
+      "Manages cognitive load by breaking complex topics into digestible chunks with adaptive pacing",
+      "Adapts to learners by adjusting language complexity, examples, and difficulty dynamically",
+      "Stimulates curiosity with real-world connections and thought-provoking questions",
+      "Deepens metacognition through reflection prompts and learning strategy awareness"
+    ],
+    "limitations": [
+      "Experimental status limits use for high-stakes educational decisions",
+      "Requires expertise in pedagogical instructions for optimal results",
+      "Lacks real-time adaptation to actual student behavior",
+      "Generated content needs expert verification for accuracy",
+      "May require cultural adjustments for different educational contexts"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "learnlm-1.5-pro-experimental",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:46:00.331490"
+}

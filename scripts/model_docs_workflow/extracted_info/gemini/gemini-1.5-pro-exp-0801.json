@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro Experimental 0801 (exp-0801) is an experimental multimodal model developed by Google, released on August 1, 2024. It features a 2 million token context window, improved Mixture-of-Experts (MoE) architecture, and excels in reasoning, vision processing, and multimodal integration. The model achieved #1 on the LMSYS leaderboard with a 1300 ELO rating, surpassing GPT-4o and Claude 3.5 Sonnet.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced reasoning and problem-solving for complex logical analysis",
+      "Multimodal projects combining text, image, and video analysis",
+      "Code development, debugging, and technical documentation creation",
+      "Research applications requiring large context and multimodal integration",
+      "Content analysis of extensive multimedia datasets"
+    ],
+    "strengths": [
+      "Achieved #1 position on LMSYS leaderboard with 1300 ELO rating, outperforming GPT-4o and Claude 3.5 Sonnet",
+      "Supports 2 million token context window for processing extensive inputs like video, audio, codebases, and documents",
+      "Enhanced Mixture-of-Experts (MoE) architecture improves efficiency and performance",
+      "Superior vision processing capabilities, ranking #1 on LMSYS Vision Leaderboard",
+      "Faster processing speed compared to Gemini 1.0 Ultra with lower compute requirements",
+      "Strong performance in complex reasoning, mathematical tasks, and code generation"
+    ],
+    "limitations": [
+      "Experimental status with heavy rate limiting and limited availability",
+      "Not recommended for production use due to potential instability and frequent updates",
+      "Replaced by exp-0827 version on September 3, 2024, with automatic redirection",
+      "Limited documentation and support compared to production models",
+      "Restricted access requiring API or Google AI Studio integration"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "LMSYS ELO",
+      "score": 1300
+    },
+    {
+      "name": "Vision Leaderboard Rank",
+      "score": 1
+    }
+  ],
+  "model_name": "gemini-1.5-pro-exp-0801",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:22:56.217407"
+}

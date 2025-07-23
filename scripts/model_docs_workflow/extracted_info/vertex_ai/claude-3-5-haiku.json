@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Haiku is Anthropic's fastest and most cost-effective model in the Claude 3.5 series, optimized for speed and affordability. Available on Google Cloud Vertex AI as a Model-as-a-Service (MaaS), it offers serverless API access with a 200,000-token context window, 8,000-token output limit, and July 2024 knowledge cutoff. It supports batch predictions, prompt caching, and streaming responses, with regional availability in `us-east5` and multi-region ML processing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time code completions and development workflow integration",
+      "High-volume customer support chatbots and automated ticket triage",
+      "Data extraction, labeling, and document information processing",
+      "Content moderation at scale with immediate policy enforcement",
+      "E-commerce product categorization and review analysis"
+    ],
+    "strengths": [
+      "Fastest and most cost-effective model in the Claude 3.5 series with near-instant response times",
+      "Supports batch predictions and prompt caching for up to 90% cost savings on repeated content",
+      "Includes streaming responses for reduced latency and request-response logging for compliance",
+      "Integrated with Google Cloud's security, billing, and monitoring systems for enterprise use",
+      "Optimized for high-throughput workloads with 80 queries per minute and 350,000 tokens per minute capacity"
+    ],
+    "limitations": [
+      "Lacks extended thinking capabilities (available in Claude 3.7 Sonnet)",
+      "Limited to 8,000-token output per response",
+      "Regional availability restricted to `us-east5` and multi-region ML processing",
+      "Requires careful quota management for queries per minute (80 QPM) and tokens per minute (350,000 TPM)",
+      "Not suitable for complex reasoning tasks due to speed-focused optimization"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-5-haiku",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:31:30.238825"
+}

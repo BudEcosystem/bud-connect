@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "GPT-4o Mini Audio Preview is a compact, cost-effective audio-enabled AI model developed by OpenAI, designed for asynchronous audio applications. It supports text and audio modalities with specialized audio processing capabilities, including speech analysis, sentiment detection, and text-to-speech synthesis. The model is optimized for cost efficiency, with a maximum audio file size of 20 MB and WAV output format, and requires API version 2025-01-01-preview or later.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Cost-effective spoken summaries and educational audio content generation for startups and budget-constrained projects.",
+      "High-volume batch audio processing for voice messaging, audio analysis, and content creation.",
+      "Asynchronous audio applications requiring sentiment analysis and voice-enabled interfaces.",
+      "Development and prototyping of minimum viable products (MVPs) with audio AI capabilities.",
+      "Large-scale audio processing for non-real-time applications like educational tools and voice-enabled interfaces."
+    ],
+    "strengths": [
+      "Significantly lower cost compared to the full GPT-4o Audio Preview, ideal for cost-sensitive and high-volume applications.",
+      "Supports both text and audio modalities with specialized audio processing capabilities like speech analysis and sentiment detection.",
+      "Offers three voice options (Alloy, Echo, Shimmer) for natural-sounding speech synthesis.",
+      "Optimized for asynchronous and batch audio processing, enabling efficient handling of multiple requests.",
+      "Inherits the cost-efficient architecture of the GPT-4o Mini family while adding audio functionality."
+    ],
+    "limitations": [
+      "Limited to 20 MB maximum audio file size for input processing.",
+      "Requires WAV format for audio output, which may necessitate format conversion in some workflows.",
+      "Asynchronous processing only, unsuitable for real-time audio applications.",
+      "Potential quality trade-offs compared to the larger GPT-4o Audio Preview model.",
+      "Higher latency than real-time audio models due to non-real-time optimization."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-audio-preview-2024-12-17",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:03:41.560613"
+}

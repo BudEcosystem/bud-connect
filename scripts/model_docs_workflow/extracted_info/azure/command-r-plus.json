@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Cohere Command-R-Plus is a large language model optimized for Retrieval Augmented Generation (RAG) and enterprise-grade workloads, developed by Cohere in collaboration with Microsoft Azure. It supports 10 business languages (including English, Japanese, Korean, and Chinese) and features a long-context window with known issues between 112K-128K tokens. The model integrates with Azure AI services like Content Safety and AI Search, and is designed for production scalability with multi-step tool use capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise knowledge management systems with internal data integration",
+      "Advanced customer support chatbots using proprietary data",
+      "Document analysis and summarization for enterprise workflows",
+      "Multi-step agent development for complex RAG tasks",
+      "Global business operations requiring multilingual support"
+    ],
+    "strengths": [
+      "Optimized for RAG workflows with high-quality citation generation to reduce hallucinations",
+      "Supports 10 business languages including Japanese, Korean, and Chinese with consistent cross-language performance",
+      "Integrated with Azure AI Content Safety and AI Search for responsible AI and enhanced RAG capabilities",
+      "Production-ready architecture balancing efficiency and accuracy for enterprise scalability",
+      "API-based deployment with no GPU requirements and multi-region accessibility"
+    ],
+    "limitations": [
+      "Known context window issues with prompts between 112K-128K tokens",
+      "No fine-tuning capabilities available",
+      "Restricted to paid Azure subscriptions (not available for free/trial or CSP programs)",
+      "Rate-limited to 200,000 tokens/minute and 1,000 requests/minute",
+      "Limited to 10 supported business languages"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "command-r-plus",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:40:40.750123"
+}

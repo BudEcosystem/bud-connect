@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "Text-embedding-3-large is OpenAI's best-performing embedding model, designed to convert text into high-dimensional vector representations (default 3,072 dimensions). It excels in semantic search, clustering, classification, and cross-lingual tasks with improved multilingual performance and flexible dimensionality adjustment. The model uses a Transformer-based architecture trained on diverse multilingual data.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Cross-lingual document retrieval and semantic search",
+      "Content-based recommendation systems",
+      "Text clustering and duplicate detection",
+      "Legal document analysis and knowledge base navigation",
+      "Machine learning feature engineering for classification tasks"
+    ],
+    "strengths": [
+      "Achieves 64.6% on MTEB (3.6% improvement over ada-002) and 54.9% on MIRACL (23.5% improvement over ada-002)",
+      "Supports flexible dimensionality reduction (e.g., 1024 dimensions retain ~96% of full performance)",
+      "Native multilingual support with consistent performance across languages",
+      "Normalized vector outputs for direct cosine similarity calculations",
+      "Cost-effective for high-performance requirements with dimension reduction options"
+    ],
+    "limitations": [
+      "Higher cost ($0.00013/1K tokens) compared to text-embedding-3-small ($0.00002/1K)",
+      "Maximum input limit of 8,191 tokens",
+      "No fine-tuning capability",
+      "Requires vector databases for large-scale similarity search",
+      "Performance degrades significantly with very small dimensions (<256)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 64.6
+    },
+    {
+      "name": "MIRACL",
+      "score": 54.9
+    }
+  ],
+  "model_name": "text-embedding-3-large",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:20:00.058767"
+}

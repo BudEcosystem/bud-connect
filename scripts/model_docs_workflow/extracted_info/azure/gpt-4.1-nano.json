@@ -1,0 +1,47 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-nano is OpenAI's first nano-sized model, released in April 2025, offering a 1 million token context window with exceptional speed and cost efficiency. It is API-only, optimized for high-speed, cost-sensitive applications, and trained on data up to June 2024. Despite its small size, it outperforms GPT-4o-mini on benchmarks like MMLU and GPQA.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Content moderation and spam detection classification systems",
+      "Code completion in IDEs and search suggestions",
+      "High-volume log analysis and data extraction",
+      "Real-time chat preprocessing and live translation hints",
+      "Structured data pattern matching and document analysis"
+    ],
+    "strengths": [
+      "Fastest model in OpenAI's lineup with first-token latency under 5 seconds for 128k input tokens",
+      "Cheapest model available with 75% prompt caching discount and 50% Batch API discount",
+      "1 million token context window matching larger GPT-4.1 models",
+      "Exceeds GPT-4o-mini's performance on MMLU (80.1%) and GPQA (50.3%) benchmarks",
+      "Excels at classification, code analysis, and document processing (55-page RTF in <4 seconds)",
+      "Ultra-low latency design for real-time applications"
+    ],
+    "limitations": [
+      "Limited complex reasoning capabilities compared to larger models",
+      "Not optimized for creative writing or generation tasks",
+      "Reports of unreliable responses for complex queries and higher hallucination risk",
+      "Performance drops on tasks requiring deep understanding",
+      "Not suitable for applications needing highest accuracy"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 80.1
+    },
+    {
+      "name": "GPQA",
+      "score": 50.3
+    },
+    {
+      "name": "Aider Polyglot Coding",
+      "score": 9.8
+    }
+  ],
+  "model_name": "gpt-4.1-nano",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:53:31.253351"
+}

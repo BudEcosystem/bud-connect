@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-mini is a fast, efficient small model in the GPT-4.1 family developed by OpenAI, offering significant improvements over GPT-4o mini in instruction-following, coding, and overall intelligence. It features a 1 million token context window (matching GPT-4.1), a June 2024 knowledge cutoff, and 83% lower cost compared to GPT-4o. Despite its 'mini' designation, it outperforms GPT-4o in many benchmarks while maintaining low latency.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume API applications requiring cost efficiency",
+      "Real-time applications with low latency requirements",
+      "Code generation and review tasks",
+      "Document analysis and summarization",
+      "General-purpose chatbots and assistants",
+      "Applications needing 1M token context processing"
+    ],
+    "strengths": [
+      "1 million token context window for long-context comprehension",
+      "83% cost reduction compared to GPT-4o with same pricing as o3 model",
+      "Nearly half the latency of GPT-4o for faster response times",
+      "Strong instruction-following and coding capabilities suitable for development tasks",
+      "Supports image inputs with efficient multi-modal processing",
+      "Prompt caching provides 75% discount for repeated contexts"
+    ],
+    "limitations": [
+      "Slightly reduced performance on highly complex reasoning compared to full GPT-4.1",
+      "Not suitable for specialized fine-tuning (API-only model)",
+      "Image processing consumes token limits",
+      "May require GPT-4.1 for most demanding applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4.1-mini",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:51:40.784889"
+}

@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI's o-series reasoning models are advanced AI systems designed for complex problem-solving, featuring enhanced reasoning, multi-step processing, and chain-of-thought capabilities. These models excel in mathematical, scientific, and analytical tasks, with varying context windows (128k\u2013200k tokens) and specialized features like visual analysis (o3) and cost efficiency (o4-mini).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Scientific research (hypothesis testing, experimental design)",
+      "Mathematical problem-solving and theorem proving",
+      "Code generation, debugging, and algorithm design",
+      "Visual analysis of charts, graphics, and images (o3)",
+      "Business analytics and strategic decision-making",
+      "Enterprise applications requiring deep reasoning and verification"
+    ],
+    "strengths": [
+      "Enhanced reasoning and multi-step problem-solving capabilities for complex tasks",
+      "Chain-of-thought processing with transparent, traceable reasoning steps",
+      "Specialized models for visual analysis (o3) and cost-effective reasoning (o4-mini)",
+      "High context windows (up to 200k tokens) for handling extensive inputs",
+      "Optimized for mathematical, scientific, coding, and logical reasoning tasks",
+      "Enterprise-grade features like advanced analytics, security, and compliance"
+    ],
+    "limitations": [
+      "Higher computational resource requirements and longer response times due to reasoning processes",
+      "Limited regional availability for certain models (e.g., o1-pro in preview regions)",
+      "Separate reasoning token costs and higher PTU allocation requirements",
+      "Restricted to specific use cases (e.g., o3's visual analysis capabilities not available in all models)",
+      "Knowledge cutoff dates (e.g., June 2024 for o3-mini and o4-mini)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-reasoning-models",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T12:52:59.283313"
+}

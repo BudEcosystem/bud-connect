@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "The o4-mini-2025-04-16 model is Azure OpenAI's compact reasoning model released in April 2025, featuring a 200K token context window, multimodal (text and vision) capabilities, and enterprise-grade security. It excels in complex reasoning, agentic workflows, and cost-effective automation with enhanced visual-textual synthesis and global deployment options.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Intelligent document processing with visual elements analysis",
+      "Strategic business intelligence with visual data integration",
+      "Automated quality assurance in manufacturing through visual inspection",
+      "Financial modeling with visual data interpretation",
+      "Scientific research automation with visual data processing",
+      "Customer experience optimization via multi-modal interaction analysis"
+    ],
+    "strengths": [
+      "Advanced multimodal reasoning with seamless integration of visual and textual data for complex document analysis",
+      "Enterprise-grade security with SOC2, ISO27001, HIPAA, GDPR, and FedRAMP certifications",
+      "99.5% pass@1 performance on AIME 2025 mathematical benchmarks with computational tools",
+      "Optimized cost-performance ratio for business-critical applications with 98.5% processing efficiency",
+      "Global deployment options including hybrid cloud, edge computing, and sovereign cloud regions",
+      "Dynamic tool ecosystem for multi-agent coordination and workflow orchestration"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME_2025",
+      "score": 99.5
+    }
+  ],
+  "model_name": "o4-mini-2025-04-16",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:17:39.417676"
+}

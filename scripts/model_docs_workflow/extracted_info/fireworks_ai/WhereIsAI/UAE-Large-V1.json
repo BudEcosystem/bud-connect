@@ -1,0 +1,60 @@
+{
+  "model_info": {
+    "description": "WhereIsAI/UAE-Large-V1 is a state-of-the-art text embedding model developed by WhereIsAI, achieving SOTA performance on the MTEB Leaderboard with an average score of 64.64. It uses a BERT-based architecture (110M parameters) with 'cls' pooling and a 512-token context window, optimized for universal NLP tasks through angle-optimized loss in complex space. The model is MIT-licensed and supports OpenAI-compatible API integration.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Semantic search and similarity comparisons",
+      "Information retrieval from large text corpora",
+      "Document clustering and duplicate detection",
+      "Search engine enhancements with semantic understanding",
+      "Retrieval-augmented generation (RAG) systems",
+      "Content management and organization of document collections"
+    ],
+    "strengths": [
+      "Achieves state-of-the-art performance on MTEB with an average score of 64.64",
+      "Innovative AnglE architecture addresses vanishing gradients via angle optimization in complex space",
+      "Compact BERT-based design (110M parameters) balances efficiency and performance",
+      "MIT license allows free use in any scenario",
+      "OpenAI-compatible API and multi-framework support (angle_emb, sentence-transformers)",
+      "High classification accuracy (75.58 average) and strong pair classification (87.25 average)"
+    ],
+    "limitations": [
+      "Primarily optimized for English text with limited multilingual support",
+      "512-token context window restricts input length (BERT-based limitation)",
+      "Smaller model size (110M parameters) may limit capabilities compared to LLM-based embeddings",
+      "May require fine-tuning for highly specialized domains",
+      "Clustering performance (46.73 average) lags behind other tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB Overall Average",
+      "score": 64.64
+    },
+    {
+      "name": "MTEB Classification",
+      "score": 75.58
+    },
+    {
+      "name": "MTEB Clustering",
+      "score": 46.73
+    },
+    {
+      "name": "MTEB Pair Classification",
+      "score": 87.25
+    },
+    {
+      "name": "MTEB Re-ranking",
+      "score": 59.88
+    },
+    {
+      "name": "MTEB Retrieval",
+      "score": 54.66
+    }
+  ],
+  "model_name": "WhereIsAI/UAE-Large-V1",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:01:58.947734"
+}

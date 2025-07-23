@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Text-embedding-ada-002 is a transformer-based embedding model developed by OpenAI, released in December 2022. It generates 1,536-dimensional unit-length vectors using the cl100k_base tokenizer, with a maximum input of 8,191 tokens. While superseded by the text-embedding-3 series, it remains supported for legacy systems and applications requiring fixed-dimension embeddings.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Legacy systems requiring stable, fixed-dimension embeddings",
+      "Document clustering and semantic search in production environments",
+      "Chatbot memory and conversation retrieval systems",
+      "Knowledge base organization and information retrieval pipelines",
+      "Recommendation engines with pre-existing vector database integrations"
+    ],
+    "strengths": [
+      "Reliable performance with extensive production usage and maturity",
+      "Broad compatibility with existing systems and vector databases",
+      "Predictable behavior and well-documented implementation",
+      "Stable pricing ($0.0001 per 1K tokens) with no planned deprecation",
+      "Proven effectiveness for semantic search, clustering, and similarity tasks",
+      "MTEB score of 61.0% for general-purpose embedding quality"
+    ],
+    "limitations": [
+      "Fixed 1,536-dimensional output with no flexibility for reduction",
+      "Higher cost compared to newer models (5x more expensive than text-embedding-3-small)",
+      "Lower multilingual performance relative to updated models",
+      "No recent training data updates since December 2022",
+      "MIRACL score of 31.4% indicates weaker cross-lingual retrieval capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 61.0
+    },
+    {
+      "name": "MIRACL",
+      "score": 31.4
+    }
+  ],
+  "model_name": "text-embedding-ada-002",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:51:41.693184"
+}

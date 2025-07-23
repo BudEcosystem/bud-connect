@@ -1,0 +1,45 @@
+{
+  "model_info": {
+    "description": "GPT-4o-2024-08-06 is an advanced multimodal large language model developed by Azure OpenAI Service. It offers enhanced structured output capabilities, increased token limits (128,000 input tokens and 16,384 output tokens), and significant cost reductions compared to its predecessor. The model maintains multimodal text and image processing while introducing features like JSON Schema support and improved performance benchmarks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise structured data generation for APIs and business intelligence",
+      "Document processing with complex analysis and formatted outputs",
+      "Financial services reporting and structured financial analysis",
+      "Healthcare medical data extraction and analysis",
+      "E-commerce product catalog management with consistent formatting",
+      "Developer tool integration with precise function signature definitions"
+    ],
+    "strengths": [
+      "Structured output generation with JSON Schema compliance for consistent, post-processing-free data formats",
+      "4x increase in output token limit (16,384 tokens) enabling longer, more detailed responses",
+      "50% cheaper input token pricing ($2.50/1M tokens) and 33% cheaper output token pricing ($10.00/1M tokens)",
+      "Superior benchmark performance with LiveBench score of 56.71 and ZeroEval average of 88.5275",
+      "Multimodal capabilities supporting simultaneous text and image processing with optimized vision fine-tuning",
+      "Azure-specific features including Direct Preference Optimization (DPO) and parallel function calling"
+    ],
+    "limitations": [
+      "Restricted to Chat Completions API compatibility only",
+      "Training data cutoff in October 2023 limits knowledge of recent developments",
+      "High image processing costs (170 tokens per 512x512 tile for high-detail images)",
+      "Manual migration required from GPT-4o-2024-05-13 with schema definition complexity",
+      "Regional availability limited to specific US and European regions initially",
+      "Structured output validation introduces additional processing overhead"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "LiveBench",
+      "score": 56.71
+    },
+    {
+      "name": "ZeroEval",
+      "score": 88.5275
+    }
+  ],
+  "model_name": "gpt-4o-2024-08-06",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:00:26.092407"
+}

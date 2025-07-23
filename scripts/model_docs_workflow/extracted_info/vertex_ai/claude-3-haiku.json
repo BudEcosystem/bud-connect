@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Claude 3 Haiku is Anthropic's fastest vision and text model, optimized for speed and affordability. It supports up to 200,000 input tokens and 8,000 output tokens with a 21K+ tokens/second processing speed. Key features include vision processing, multi-language support, prompt caching, and streaming responses, but lacks batch predictions and extended thinking capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time code completions and customer support automation",
+      "High-volume chatbots and content moderation systems",
+      "Document analysis and data extraction workflows",
+      "Interactive applications requiring fast, low-complexity responses"
+    ],
+    "strengths": [
+      "Fastest model in the Claude 3 family with near-instant response times for basic queries",
+      "Cost-effective for high-volume applications with pay-as-you-go pricing",
+      "Supports large context windows (200,000 tokens) and vision processing for image analysis",
+      "Multi-language support and streaming responses for real-time interactions",
+      "Prompt caching optimizes performance for repeated queries"
+    ],
+    "limitations": [
+      "No batch prediction capabilities for bulk processing",
+      "Lacks extended thinking mode for complex reasoning tasks",
+      "Vision capabilities follow Anthropic's general limitations",
+      "Maximum output limited to 8,000 tokens"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-haiku",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:37:39.795387"
+}

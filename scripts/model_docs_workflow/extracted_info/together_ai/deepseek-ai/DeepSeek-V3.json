@@ -1,0 +1,55 @@
+{
+  "model_info": {
+    "description": "DeepSeek-V3 is an advanced Mixture-of-Experts (MoE) language model developed by DeepSeek AI, featuring 671B total parameters with 37B activated per token. It offers a 131K-token context window, FP8 quantization, and excels in math, code generation, and multilingual tasks. Trained on 14.8 trillion tokens, it outperforms top models like GPT-4o on benchmarks such as MMLU (88.5%) and MATH-500 (90.2%).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced mathematical problem-solving and theorem proving",
+      "Software development with code generation and debugging",
+      "Multilingual content creation and cross-language translation",
+      "Long-form document analysis and summarization",
+      "Educational tutoring systems with complex reasoning",
+      "Financial modeling and quantitative analysis"
+    ],
+    "strengths": [
+      "Outperforms GPT-4o on math (MATH-500: 90.2%) and code generation (HumanEval: 82.6%) benchmarks",
+      "70 KB KV cache per token (vs. 516 KB in LLaMA-3.1 405B), enabling memory-efficient inference",
+      "131K-token context window with 128K effective tokens for handling long documents",
+      "Open-source MIT license allows commercial use with no irrecoverable training loss spikes",
+      "Specialized features like Multi-Token Prediction (MTP) and load-balancing MoE routing"
+    ],
+    "limitations": [
+      "Requires modern GPU infrastructure (NVIDIA H100/H800, AMD, or Huawei Ascend) for optimal performance",
+      "High inference cost ($1.25 per 1M tokens) due to model size and computational demands",
+      "No built-in content moderation requires external filtering implementation",
+      "Theoretical maximum inference speed of ~67 tokens/second may lag behind smaller models",
+      "131K context window may still be insufficient for extremely long documents"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 88.5
+    },
+    {
+      "name": "DROP Reading Comprehension F1",
+      "score": 91.6
+    },
+    {
+      "name": "HumanEval Code (pass@1)",
+      "score": 82.6
+    },
+    {
+      "name": "MATH-500",
+      "score": 90.2
+    },
+    {
+      "name": "C-Eval",
+      "score": 86.5
+    }
+  ],
+  "model_name": "deepseek-ai/DeepSeek-V3",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:10:12.703373"
+}

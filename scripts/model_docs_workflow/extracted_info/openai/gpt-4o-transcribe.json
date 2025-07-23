@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "GPT-4o Transcribe is OpenAI's advanced speech-to-text model built on the GPT-4o architecture, offering superior transcription accuracy across 100+ languages and challenging acoustic conditions. It features audio-centric optimizations, reinforcement learning for accuracy, and real-time processing capabilities via WebSocket. The model excels in noise resilience, technical terminology recognition, and contextual understanding.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service call center transcription and analysis",
+      "Medical dictation and patient consultation documentation",
+      "Legal court proceedings and deposition transcription",
+      "Educational lecture capture and accessibility services",
+      "Real-time meeting transcription and voice assistant command recognition",
+      "Automated subtitle generation for media content",
+      "Multi-language customer support and compliance recording",
+      "Journalism and academic research documentation"
+    ],
+    "strengths": [
+      "Superior transcription accuracy compared to Whisper models in background noise and rapid speech scenarios",
+      "Supports over 100 languages with enhanced handling of low-resource languages (FLEURS benchmark tested)",
+      "Real-time processing via WebSocket with configurable noise reduction modes (near_field/far_field)",
+      "Advanced capabilities including speaker diarization, accent/dialect recognition, and technical terminology accuracy",
+      "Improved punctuation and formatting accuracy with contextual understanding",
+      "Robust performance in challenging acoustic environments through specialized pretraining and distillation techniques"
+    ],
+    "limitations": [
+      "Higher computational cost and resource requirements compared to Whisper models",
+      "Real-time API currently in preview/beta status with potential access limitations",
+      "Requires specific audio formats (e.g., PCM16 at 24kHz sample rate)",
+      "Rate limits apply for API usage",
+      "Latency varies with audio quality and processing demands",
+      "Memory and network bandwidth requirements for real-time streaming"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "FLEURS",
+      "score": 0
+    }
+  ],
+  "model_name": "gpt-4o-transcribe",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:37:30.307702"
+}

@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Nomic AI's nomic-embed-text-v1 and v1.5 are open-source text embedding models designed for long-context understanding and reproducible embeddings. They support variable embedding dimensions (64-768) and a context length of 8192 tokens, outperforming closed-source models like OpenAI's text-embedding-ada-002 on benchmarks like MTEB. Both models use contrastive learning and are licensed under Apache 2.0.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Long document processing (research papers, legal texts)",
+      "Advanced RAG (Retrieval-Augmented Generation) implementations",
+      "Semantic search with adjustable precision-storage tradeoffs",
+      "Cross-lingual similarity comparisons",
+      "Multilingual and domain-specific embedding tasks"
+    ],
+    "strengths": [
+      "Supports 8192-token context length, ideal for long document processing and document-level embeddings",
+      "Variable embedding dimensions (64-768) for balancing performance and computational efficiency",
+      "Outperforms closed-source models like text-embedding-ada-002 on MTEB benchmarks",
+      "Fully open-source with Apache 2.0 license and reproducible embeddings",
+      "v1.5 includes enhanced training data and methodology for improved performance"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 62.0
+    },
+    {
+      "name": "MTEB",
+      "score": 60.5
+    }
+  ],
+  "model_name": "nomic-ai-embedding-models",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T10:07:29.533236"
+}

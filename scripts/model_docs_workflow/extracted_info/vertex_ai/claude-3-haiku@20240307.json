@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Claude 3 Haiku@20240307 is a versioned vision and text model developed by Anthropic for Vertex AI, optimized for speed and cost-effectiveness. It supports 200,000 input tokens, 8,000 output tokens, and multimodal inputs (text/images) with 5 MB per image limits. The model integrates with Google Cloud IAM, offers prompt caching, and is designed for high-volume, low-complexity tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Live customer support and real-time chat interactions",
+      "Multilingual content translation services",
+      "Content moderation and inappropriate content detection",
+      "Inventory management and data processing",
+      "Image analysis for charts, diagrams, and document processing",
+      "Cost-sensitive, high-throughput applications with low-latency requirements"
+    ],
+    "strengths": [
+      "Fastest model in the Claude 3 family for near-instant responses to basic queries",
+      "Multimodal capabilities supporting text and image inputs with common formats (PNG, JPEG, etc.)",
+      "Optimized for cost-effectiveness in high-volume deployments",
+      "Includes prompt caching, function calling, and multi-language support",
+      "Integrated with Vertex AI's managed infrastructure, security, and compliance features",
+      "Supports real-time streaming responses and 30-day request-response logging"
+    ],
+    "limitations": [
+      "8,000 token output limit restricts long-form responses",
+      "5 MB maximum image file size and 20-image-per-request constraints",
+      "Not optimized for complex reasoning or extended analytical tasks",
+      "No batch processing capabilities",
+      "Requires versioned model usage for production consistency",
+      "Regional availability may vary (check Vertex AI documentation)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-haiku@20240307",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:38:24.636335"
+}

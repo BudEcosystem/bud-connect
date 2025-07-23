@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "ChatGPT-4o-latest is the most current version of OpenAI's GPT-4o model family, designed to provide developers with automatic access to the latest improvements and optimizations. It features multimodal capabilities for text, audio, and visual data, an extended context window, and is optimized for chat-based interactions. The model identifier 'chatgpt-4o-latest' automatically points to the newest GPT-4o release, eliminating the need for manual version updates.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Virtual assistants and conversational AI development",
+      "Multimodal content creation (text, image, audio analysis)",
+      "Code development and debugging assistance",
+      "Educational tools and interactive learning experiences",
+      "Customer support automation with cross-modal capabilities",
+      "Visual question answering and image captioning",
+      "Audio transcription and synthesis applications"
+    ],
+    "strengths": [
+      "Automatic access to the latest model improvements and optimizations without manual updates",
+      "Multimodal processing of text, images, and audio for cross-modal reasoning",
+      "Extended context window for comprehensive understanding of inputs",
+      "Simplified integration with a single API endpoint for the latest capabilities",
+      "Future-proof applications that stay current with new features and performance enhancements",
+      "Reduced maintenance overhead through automatic version management"
+    ],
+    "limitations": [
+      "Behavior may change unpredictably with updates, requiring testing for critical applications",
+      "Not suitable for applications requiring version stability or reproducibility",
+      "Subject to standard OpenAI usage policies, rate limits, and token constraints",
+      "Changes to the model may occur without prior notice to users",
+      "Content moderation policies may restrict certain types of outputs"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "chatgpt-4o-latest",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:15:47.650159"
+}

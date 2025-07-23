@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "Mistral AI's Mixtral models, available via Together AI, are Mixture-of-Experts (MoE) large language models with variants including Mixtral-8x7B Instruct (~56B total parameters) and Mixtral-8x22B Instruct (~176B total parameters). These models support multilingual tasks (English, French, Italian, German, Spanish), code generation, and long context processing (up to 65,536 tokens). The DiscoLM-Mixtral-8x7B-v2 variant is fine-tuned for enhanced conversational abilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "General chat and customer support with multilingual capabilities",
+      "Code generation and debugging across multiple programming languages",
+      "Content creation, editing, and summarization",
+      "Translation between supported languages",
+      "Complex document analysis and insight extraction",
+      "Enterprise business intelligence and reporting",
+      "Scientific and mathematical problem solving"
+    ],
+    "strengths": [
+      "Mixture-of-Experts architecture enables efficient computation with only ~13B-39B active parameters per token",
+      "High throughput of up to 100+ tokens per second for fast inference",
+      "Strong code generation capabilities across multiple programming languages",
+      "Extended context length of 65,536 tokens in Mixtral-8x22B for handling long documents",
+      "Multilingual support for 5 languages with translation capabilities",
+      "Competitive pricing with unified input/output rates ($0.60-1.20 per 1M tokens)",
+      "MT-Bench score of 8.3 for Mixtral-8x7B Instruct demonstrating strong instruction-following performance"
+    ],
+    "limitations": [
+      "Limited to 5 supported languages (English, French, Italian, German, Spanish)",
+      "Higher cost for Mixtral-8x22B Instruct ($1.20 per 1M tokens) compared to alternatives",
+      "Requires significant computational resources for large expert models",
+      "No explicit mention of performance on standard benchmarks like MMLU or GSM8K"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MT-Bench",
+      "score": 8.3
+    }
+  ],
+  "model_name": "05_mistral_models",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:15:06.380783"
+}

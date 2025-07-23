@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "OpenAI o4-mini-deep-research-2025-06-26 is a lightweight, research-optimized model developed by OpenAI for latency-sensitive applications. Built on the o4-mini architecture with Deep Research API integration, it balances speed and intelligence for high-volume research tasks. Key features include web search, document analysis, code execution, and structured output generation, with a knowledge cutoff of October 2023.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated market monitoring and competitive intelligence",
+      "Rapid literature reviews and academic citation gathering",
+      "Technical documentation analysis and security bulletin research",
+      "Product comparisons and real-time industry trend tracking",
+      "Scalable enterprise research workflows and grant opportunity analysis"
+    ],
+    "strengths": [
+      "Faster response times than o3-deep-research while maintaining high-quality research outputs",
+      "Cost-effective for high-volume and automated research workflows",
+      "Supports multi-step reasoning and seamless tool integration (e.g., web search, code interpreter)",
+      "Excels in mathematics (99.5% on AIME 2025 with tools) and scientific analysis (strong GPQA Diamond performance)",
+      "Optimized for rapid iteration and real-time applications with efficient token usage",
+      "Generates structured reports with automated citations and formatted outputs"
+    ],
+    "limitations": [
+      "Less comprehensive than o3-deep-research for extremely complex research tasks",
+      "Knowledge cutoff in October 2023 may limit access to recent data",
+      "Regional availability restrictions and rate-limiting for high-volume usage",
+      "May miss nuanced insights requiring deeper analysis",
+      "Limited to Deep Research API endpoint, requiring specific integration"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025 (Mathematics)",
+      "score": 99.5
+    }
+  ],
+  "model_name": "o4-mini-deep-research_o4-mini-deep-research-2025-06-26",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:46:55.735552"
+}

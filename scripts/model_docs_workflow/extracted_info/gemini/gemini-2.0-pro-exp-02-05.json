@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Pro Experimental (02-05 version) is an advanced experimental model in the Gemini 2.0 family developed by Google, released on February 5, 2025. It offers full multimodal capabilities and is designed for testing enhanced reasoning, extended context processing, and new features. The model is intended for research, prototyping, and benchmarking rather than production use due to its experimental status.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Cutting-edge AI research and academic studies",
+      "Development of prototype applications for new AI capabilities",
+      "Benchmark testing of future Gemini model features",
+      "Complex analysis tasks requiring advanced reasoning",
+      "Exploration of multimodal processing innovations"
+    ],
+    "strengths": [
+      "Advanced analytical capabilities for complex reasoning tasks",
+      "Superior multimodal understanding of text and images",
+      "Large context window for processing extended inputs",
+      "Advanced tool integration for function calling",
+      "Optimized performance for experimental and research applications"
+    ],
+    "limitations": [
+      "Experimental status with no service level agreements (SLA)",
+      "APIs may change without notice due to breaking changes",
+      "Limited availability through restricted access programs",
+      "More restrictive rate limits compared to production models",
+      "Potential instability and performance variability during testing"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-pro-exp-02-05",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:32:09.646004"
+}

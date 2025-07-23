@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Codestral is Mistral AI's advanced code generation model with 22 billion parameters and a 32,000-token context window. It supports 80+ programming languages and excels in code generation, completion, and test writing. The latest version (2501) offers 2x faster performance and improved architecture.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code completion in IDEs for real-time suggestions",
+      "Generating complete functions or programs from descriptions",
+      "Automated test case generation for existing code",
+      "SQL query generation and optimization",
+      "Algorithm implementation and code translation between languages",
+      "DevOps script creation and API endpoint development",
+      "Code review and documentation generation"
+    ],
+    "strengths": [
+      "Supports 80+ programming languages including Python, Java, C++, JavaScript, and SQL",
+      "32k token context window for handling large codebases",
+      "Fill-in-the-middle (FIM) capability for code completion at any position",
+      "Top-tier performance on Python benchmarks like HumanEval and MBPP",
+      "2x faster code generation and completion in version 2501",
+      "Dedicated IDE endpoint for optimized development workflows",
+      "Outperforms DeepSeek Coder 33B in FIM tasks"
+    ],
+    "limitations": [
+      "32k token context window smaller than some other Mistral models",
+      "Specialized for code tasks, less effective for general text generation",
+      "Limited support for niche programming languages",
+      "Mistral AI Non-Production License restricts commercial use without additional licensing",
+      "Rate limits vary between IDE and standard API endpoints"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "codestral-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:48:28.946930"
+}

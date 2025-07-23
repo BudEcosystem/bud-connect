@@ -1,0 +1,30 @@
+{
+  "model_info": {
+    "description": "GPT-4-32k is an extended context version of OpenAI's GPT-4 model, featuring a 32,768-token context window (4x larger than standard GPT-4) and multimodal capabilities for text and image inputs. It supports function calling since June 2023 but is deprecated, with retirement scheduled for June 2025. The model is optimized for long document analysis, extended conversations, and codebase processing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Long document analysis and summarization",
+      "Extended multi-turn conversations with context retention",
+      "Legal document review and academic paper processing",
+      "Large codebase analysis and multi-page content evaluation"
+    ],
+    "strengths": [
+      "Quadrupled context length (32,768 tokens) enables processing of ~50 pages of text in a single pass",
+      "Multimodal architecture supports text and image inputs for visual reasoning tasks",
+      "Function calling capabilities (added in 2023) enhance complex multi-turn conversations",
+      "Ideal for long document analysis, legal/academic content processing, and codebase evaluation"
+    ],
+    "limitations": [
+      "Pricing is double standard GPT-4 rates ($0.06/1K input tokens, $0.12/1K output tokens)",
+      "Deprecation timeline (retiring June 2025) necessitates migration to newer models",
+      "Vision capabilities remain in research preview with limited public API availability",
+      "Superseded by models with larger context windows (e.g., GPT-4 Turbo with 128K tokens)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-32k",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:22:50.227327"
+}

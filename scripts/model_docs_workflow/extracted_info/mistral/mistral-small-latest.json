@@ -1,0 +1,43 @@
+{
+  "model_info": {
+    "description": "Mistral Small is an efficient, powerful model developed by Mistral AI, designed for fast inference with strong performance. The latest version (around 22B parameters) features a 128,000-token context window, efficient transformer architecture, and multimodal capabilities including image understanding. It balances capability and efficiency, supporting multilingual tasks and running on hardware like RTX 4090 or Mac with 32GB RAM.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and support automation",
+      "Content generation (articles, summaries, creative writing)",
+      "Code completion, debugging, and documentation",
+      "Data analysis and quick insights",
+      "Educational tutoring and content creation",
+      "Real-time interactive applications",
+      "Edge computing deployments",
+      "High-volume processing tasks",
+      "Multimodal image-text understanding tasks"
+    ],
+    "strengths": [
+      "Excellent instruction following and multi-turn conversation handling",
+      "Strong code generation and understanding capabilities",
+      "Solid reasoning performance for its size class",
+      "Supports function calling for tool integration",
+      "Multimodal capabilities for image-text tasks",
+      "Comprehensive multilingual support",
+      "Fast inference speed (150 tokens/second)",
+      "128,000-token context window (32x longer than Llama-2-13B)",
+      "Outperforms Gemma 3 and GPT-4o Mini in performance/cost ratio",
+      "Runs on moderate hardware (RTX 4090, Mac 32GB RAM, or cloud instances)"
+    ],
+    "limitations": [
+      "Less suitable for highly complex reasoning compared to Mistral Large",
+      "May require fine-tuning for niche domains",
+      "128,000-token context window may need chunking for extremely large documents",
+      "Moderate GPU requirements for self-hosting",
+      "Scaling high-traffic applications requires load balancing",
+      "Version management needed to stay updated with latest releases"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-small-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:00:31.910564"
+}

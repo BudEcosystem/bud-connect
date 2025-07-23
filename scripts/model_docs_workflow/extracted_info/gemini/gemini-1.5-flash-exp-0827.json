@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Google Gemini 1.5 Flash-Exp-0827 is an experimental full-size version of the Gemini 1.5 Flash model, released on August 27, 2024. It supports multimodal inputs (text, images, audio, video, documents) with a 1,000,000-token context window and advanced transformer-based architecture. The model includes experimental optimizations for complex tasks, programming, and multimodal reasoning.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex reasoning and multi-step problem-solving tasks",
+      "Code generation, debugging, and technical documentation",
+      "Multimodal content creation and storytelling",
+      "Document analysis and research assistance",
+      "Testing cutting-edge AI capabilities and providing developer feedback"
+    ],
+    "strengths": [
+      "Significant performance improvements over standard Gemini 1.5 Flash, particularly in complex prompts and programming tasks",
+      "Enhanced multimodal integration for cross-modal understanding",
+      "Free access during the experimental phase via Google AI Studio and Gemini API",
+      "Faster response times and higher-quality outputs compared to prior versions",
+      "Jumped from #23 to #6 in Chatbot Arena rankings, indicating strong competitive performance"
+    ],
+    "limitations": [
+      "Experimental status with no long-term availability guarantees",
+      "Not available on Vertex AI and limited to specific experimental API endpoints",
+      "No enterprise features or SLA commitments",
+      "Limited official documentation and potential for unexpected behavior",
+      "Not suitable for production systems due to potential changes/removal"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Chatbot Arena",
+      "score": 6
+    }
+  ],
+  "model_name": "gemini-1.5-flash-exp-0827",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:18:54.890101"
+}

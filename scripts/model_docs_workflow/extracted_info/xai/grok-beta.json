@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Grok-beta is xAI's experimental multimodal language model designed for testing new features and capabilities before stable releases. It maintains a 131,072-token context window and supports text and image inputs, with potential experimental modalities. As a beta release, it offers early access to advanced reasoning, extended tool use, and performance optimizations while retaining core Grok family capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Feature evaluation and feedback for upcoming capabilities",
+      "Research projects testing novel AI approaches",
+      "Proof-of-concept development for future applications",
+      "Innovation labs and academic research initiatives",
+      "Early adopter programs requiring cutting-edge AI capabilities"
+    ],
+    "strengths": [
+      "Provides early access to experimental features like advanced reasoning and extended tool use",
+      "Maintains same context window (131,072 tokens) and pricing as stable Grok releases",
+      "Offers free monthly credits ($25) during public beta period",
+      "Enables community feedback to shape future model development",
+      "Supports multimodal processing with text and image understanding"
+    ],
+    "limitations": [
+      "Beta features may change, be removed, or exhibit inconsistent behavior without notice",
+      "Not recommended for production systems requiring stability",
+      "Limited support for beta features with no SLA guarantees",
+      "Potential for increased costs due to experimental feature usage",
+      "Documentation gaps for experimental parameters and behaviors"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:55:35.510168"
+}

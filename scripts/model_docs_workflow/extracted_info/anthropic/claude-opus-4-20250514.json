@@ -1,0 +1,54 @@
+{
+  "model_info": {
+    "description": "Claude Opus 4 (claude-opus-4-20250514) is Anthropic's most advanced AI model as of May 2025, designed for complex, high-value tasks requiring sustained performance. It features a 32,000-token output limit, advanced long-context processing, and hybrid reasoning modes (instant and extended thinking). The model excels in software engineering, autonomous task execution, and complex agent applications, with benchmark scores like 72.5% on SWE-bench and 96.8% on HumanEval.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Autonomous software development (feature implementation, refactoring, bug fixing)",
+      "Complex system design and architecture planning",
+      "Long-running AI agent development with multi-step workflows",
+      "Graduate-level reasoning tasks (GPQA score: 73.2%)",
+      "Technical documentation generation and algorithm development"
+    ],
+    "strengths": [
+      "Achieves world-leading performance on SWE-bench (72.5%) and HumanEval (96.8%) for coding tasks",
+      "Supports 32,000-token output with advanced long-context processing for extended workflows",
+      "Hybrid reasoning modes (instant and extended thinking) for flexible task execution",
+      "65% fewer shortcuts compared to Sonnet 3.7, improving reliability in complex tasks",
+      "State-of-the-art performance on TAU-bench for complex agent applications"
+    ],
+    "limitations": [
+      "High cost with input at $15/million tokens and output at $75/million tokens",
+      "Maximum single output limited to 32,000 tokens",
+      "Extended thinking mode increases latency and resource consumption",
+      "Requires careful cost management for extensive use",
+      "Not optimized for simple or low-value tasks due to high pricing"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench",
+      "score": 72.5
+    },
+    {
+      "name": "Terminal-bench",
+      "score": 43.2
+    },
+    {
+      "name": "TAU-bench",
+      "score": 100
+    },
+    {
+      "name": "HumanEval",
+      "score": 96.8
+    },
+    {
+      "name": "GPQA",
+      "score": 73.2
+    }
+  ],
+  "model_name": "claude-opus-4-20250514",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:28:41.708140"
+}

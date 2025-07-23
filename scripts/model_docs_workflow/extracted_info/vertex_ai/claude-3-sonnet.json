@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet is a balanced performance and efficiency model developed by Anthropic, available on Google Cloud Vertex AI. It offers a 200,000-token context window, 8,000-token output limit, and advanced features like vision processing, function calling, and multi-language support. The model outperforms Claude 3 Opus on many benchmarks while maintaining cost and speed advantages for enterprise applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code generation, review, and optimization for software development",
+      "Complex customer support query resolution and technical troubleshooting",
+      "Data analysis, visualization interpretation, and business intelligence",
+      "Visual content processing for charts, diagrams, and technical documentation",
+      "Professional content creation with tone/style consistency",
+      "Enterprise AI agent deployment and RAG engine integration"
+    ],
+    "strengths": [
+      "Balances intelligence, speed, and cost for enterprise use cases",
+      "200,000-token context window for handling long inputs",
+      "Advanced vision processing for charts, graphs, and technical diagrams",
+      "Superior performance on complex reasoning, coding, and mathematical tasks",
+      "Enterprise-grade security with Google Cloud IAM integration and data privacy controls",
+      "Supports streaming responses and prompt caching for efficiency",
+      "Outperforms Claude 3 Opus on benchmarks while maintaining mid-tier pricing"
+    ],
+    "limitations": [
+      "8,000-token output limit may restrict lengthy responses",
+      "Regional availability varies with deployment-specific quotas",
+      "Balances speed with complex reasoning capabilities (not optimized for extreme complexity)",
+      "Cost optimization requires careful usage monitoring"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-sonnet",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:41:43.259529"
+}

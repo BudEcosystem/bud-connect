@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Mistral Large is Mistral AI's flagship model designed for high-complexity tasks, featuring 123 billion parameters and a 128,000-token context window. It excels in advanced reasoning, code generation, mathematics, and multilingual support (80+ languages). The model is optimized for single-node inference and trained on diverse data including extensive code repositories.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Legal analysis and scientific research",
+      "Full-stack software development and code review",
+      "Multilingual translation and cross-lingual understanding",
+      "Advanced mathematical problem solving and statistical analysis",
+      "Long document analysis for contracts and research papers"
+    ],
+    "strengths": [
+      "State-of-the-art performance on complex reasoning tasks with 84.0% accuracy on MMLU",
+      "Enhanced code generation capabilities from training on large code datasets",
+      "Supports 80+ languages including major European, Asian, Middle Eastern, and programming languages",
+      "Optimized for single-node deployment with efficient long-context processing",
+      "Sets a new benchmark on the performance/cost Pareto front for open models"
+    ],
+    "limitations": [
+      "Requires significant computational resources for self-deployment",
+      "Higher inference latency compared to smaller models",
+      "Commercial use requires a separate commercial license",
+      "Very long documents may still need chunking despite 128k token context window",
+      "Subject to API rate limits on La Plateforme"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 84.0
+    }
+  ],
+  "model_name": "mistral-large-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:55:50.483854"
+}

@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "GPT-4.1 is a flagship model developed by OpenAI, released in April 2025 as a major upgrade to the GPT-4o series. It features a 1 million token context window (up from 128,000), enhanced coding capabilities, and improved long-context understanding. Trained on data up to June 2024, it offers 26% lower cost than GPT-4o and 83% reduced latency, with specialized optimizations for web development and instruction-following tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex coding projects requiring precise instruction following",
+      "Web development and full-stack application development",
+      "Long-document analysis (up to 1 million tokens)",
+      "Tasks requiring extensive context processing",
+      "Replacing GPT-4o in applications needing better performance and lower cost"
+    ],
+    "strengths": [
+      "1 million token context window for processing extensive documents and complex tasks",
+      "21.4% improvement over GPT-4o on SWE-bench Verified and 10.5% on MultiChallenge benchmark",
+      "72.0% score on Video-MME long, no subtitles category (6.7% improvement over GPT-4o)",
+      "26% lower cost and nearly half the latency of GPT-4o with 75% prompt caching discount",
+      "Specialized coding excellence with enhanced web development and instruction-following capabilities",
+      "API and ChatGPT availability for Plus, Pro, Team, Enterprise, and Edu users"
+    ],
+    "limitations": [
+      "API-only access with no direct fine-tuning available",
+      "Image processing converts images to tokens, consuming context window capacity",
+      "Not recommended for simple classification tasks (GPT-4.1-nano is more cost-effective)",
+      "For complex reasoning tasks, o3 models may still be more suitable"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MultiChallenge",
+      "score": 38.3
+    },
+    {
+      "name": "Video-MME",
+      "score": 72.0
+    }
+  ],
+  "model_name": "gpt-4.1",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:28:31.384744"
+}

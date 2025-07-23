@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4-0613 is a static snapshot version of OpenAI's GPT-4 model released on June 13, 2023. It features an 8,192-token context window, transformer-based architecture, and supports function calling but lacks vision capabilities. The model is trained on diverse internet data up to its knowledge cutoff and remains available in maintenance mode with no planned updates.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Applications requiring stable, consistent model behavior",
+      "Function calling integrations for API/tool interactions",
+      "Complex reasoning tasks like analysis and problem-solving",
+      "Creative writing and content generation in multiple languages",
+      "Code generation and programming assistance",
+      "Budget-conscious projects needing cost-effective LLM solutions"
+    ],
+    "strengths": [
+      "Supports function calling with improved accuracy and JSON output format",
+      "High-quality text generation for complex reasoning, creative writing, and code generation",
+      "Multi-language capabilities for international applications",
+      "8,192-token context window suitable for most document processing tasks",
+      "Lower cost compared to GPT-4-32K-0613 ($0.03/input, $0.06/output per 1,000 tokens)",
+      "Static model ensures consistent, reproducible behavior for critical applications"
+    ],
+    "limitations": [
+      "No vision support for image processing tasks",
+      "Fixed capabilities with no updates or improvements since June 2023",
+      "8,192-token context limit may be insufficient for long documents",
+      "Knowledge cutoff restricts awareness of post-training data",
+      "Function calling and vision capabilities are mutually exclusive in OpenAI models",
+      "Expected future deprecation with no guaranteed end date"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-0613",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:20:16.149461"
+}

@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "Grok-3 Mini Fast Beta is a speed-optimized variant of Grok-3 Mini developed by XAI, designed for real-time STEM applications requiring quick logical reasoning. It features a 131,072-token context window, sub-second response times, and a knowledge cutoff of November 2024. The model excels in mathematical solutions, code generation, and low-latency tool calling but lacks vision capabilities and fine-tuning options.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Interactive STEM education (real-time math tutoring, coding assistance)",
+      "IDE integrations and live code debugging",
+      "Real-time data analysis and formula evaluation",
+      "Game AI opponents and logic puzzle solving",
+      "Time-sensitive technical tools requiring instant responses"
+    ],
+    "strengths": [
+      "Sub-second response times for most queries with low latency",
+      "Excellent performance in mathematical reasoning (AIME 2024: 95.8%) and coding tasks (LiveCodeBench: 80.4%)",
+      "Cost-efficient for real-time applications compared to Grok-3 Fast (8.3x cheaper)",
+      "Multi-language support for technical tasks",
+      "Optimized infrastructure with priority processing queues for consistent performance"
+    ],
+    "limitations": [
+      "Higher API costs than standard Grok-3 Mini (2x input, 8x output pricing)",
+      "Not suitable for general knowledge tasks or vision-based applications",
+      "Lacks fine-tuning capabilities",
+      "Speed premium makes it less cost-effective for non-time-sensitive workloads",
+      "Limited to STEM/logical reasoning focus"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2024",
+      "score": 95.8
+    },
+    {
+      "name": "LiveCodeBench",
+      "score": 80.4
+    }
+  ],
+  "model_name": "grok-3-mini-fast-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:54:15.952987"
+}

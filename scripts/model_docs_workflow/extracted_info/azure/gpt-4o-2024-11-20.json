@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "GPT-4o-2024-11-20 is a multimodal large language model developed by OpenAI and available via Azure OpenAI Service. It features a 128,000-token context window, enhanced visual understanding, STEM problem-solving capabilities, and coding assistance. The model's training data extends to June 2024, with improved integration of text and image inputs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex technical problem-solving in STEM fields",
+      "Multimodal document and data analysis with text-image integration",
+      "Advanced code generation and debugging assistance",
+      "Scientific research methodology support",
+      "Engineering design and optimization tasks",
+      "Enterprise-grade technical consulting and innovation"
+    ],
+    "strengths": [
+      "Expanded context window of 128,000 tokens for handling long inputs and outputs",
+      "Enhanced visual understanding with improved image analysis and multimodal task performance",
+      "Advanced STEM problem-solving capabilities for mathematical reasoning and scientific analysis",
+      "Optimized coding assistance with better debugging and architecture design support",
+      "Extended training data cutoff to June 2024 for more up-to-date knowledge",
+      "Azure-specific features including structured JSON outputs, tool calling, and enterprise security controls"
+    ],
+    "limitations": [
+      "Limited to Chat Completions API compatibility (Assistant API not supported)",
+      "Training data cutoff in June 2024 may lack post-2024 information",
+      "Higher token consumption costs for complex tasks and image processing",
+      "Regional deployment limitations with initial availability in select Azure regions",
+      "Requires manual model version selection for deployment"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-2024-11-20",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:01:16.273944"
+}

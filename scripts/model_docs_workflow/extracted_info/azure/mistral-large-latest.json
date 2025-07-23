@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Mistral Large Latest is a 123 billion parameter, transformer-based large language model developed by Mistral AI and available through Azure OpenAI Service. It features a 128,000 token context window, advanced reasoning capabilities, multilingual support (English, French, German, Spanish, Italian, Chinese, Japanese, Korean, etc.), and proficiency in 80+ programming languages. The model is optimized for enterprise workflows with RAG specialization, function calling, and high throughput deployment options.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise document analysis (legal, financial, research)",
+      "Code generation and review across multiple programming languages",
+      "Customer support chatbots and automated assistance",
+      "Business intelligence and data analysis",
+      "Academic research and literature review",
+      "Multilingual content creation and translation",
+      "DevOps tasks including test case generation and system design"
+    ],
+    "strengths": [
+      "123 billion parameters with 128,000 token context window for handling complex documents",
+      "Native support for 80+ programming languages and 12+ multilingual languages",
+      "Optimized for Retrieval-Augmented Generation (RAG) with minimal information loss",
+      "Advanced function calling capabilities (parallel/sequential execution)",
+      "Enterprise-grade security with Azure AI Content Safety and compliance standards",
+      "Flexible deployment options (MaaS with pay-per-token billing or dedicated real-time endpoints)",
+      "High throughput performance with single-node deployment efficiency"
+    ],
+    "limitations": [
+      "Text-only input/output with no multimodal capabilities",
+      "128,000 token context window limit may restrict ultra-long document processing",
+      "Rate limitations (200,000 tokens/minute default) require scaling management",
+      "Token-based billing model necessitates cost monitoring for large-scale usage",
+      "Variable processing times based on request complexity"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "mistral-large-latest",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:09:08.911922"
+}

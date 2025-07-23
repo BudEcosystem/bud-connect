@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "The Google Gen AI SDK is the recommended approach for accessing generative AI models on Vertex AI, replacing the deprecated Vertex AI SDK. It provides unified access to Google AI and Vertex AI, with migration tools and support for multiple authentication methods including default credentials, service accounts, and workload identity. The SDK supports Anthropic models and includes advanced configurations like regional settings and custom HTTP options.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Deploying and managing generative AI models on Vertex AI",
+      "Integrating Anthropic Claude models with Vertex AI infrastructure",
+      "Setting up secure authentication for Vertex AI in development, production, and testing environments",
+      "Implementing regional or global endpoint configurations for high availability",
+      "Monitoring and optimizing API usage with built-in metrics tracking"
+    ],
+    "strengths": [
+      "Unified SDK for Google AI and Vertex AI with generally available status",
+      "Supports multiple authentication methods (default credentials, service accounts, workload identity)",
+      "Includes migration tools and documentation for transitioning from deprecated Vertex AI SDK",
+      "Enables use of Anthropic Claude models on Vertex AI",
+      "Offers advanced configurations like regional endpoints, custom HTTP options, and global load balancing",
+      "Provides robust error handling, retry logic, and monitoring capabilities"
+    ],
+    "limitations": [
+      "Requires migration from deprecated Vertex AI SDK (deprecation date: June 24, 2025)",
+      "Complex setup for authentication and environment configuration",
+      "Dependent on proper Google Cloud project and service account permissions"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "authentication_setup",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:30:36.116659"
+}

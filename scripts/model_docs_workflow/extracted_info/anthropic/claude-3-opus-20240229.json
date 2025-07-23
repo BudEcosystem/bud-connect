@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Claude 3 Opus (20240229) is the flagship model of the Claude 3 family, developed by Anthropic. Released on February 29, 2024, it features a 200,000-token context window, 4,096-token output limit, and multimodal support for text and vision. Trained on data up to August 2023, it excels at complex cognitive tasks with near-human understanding and fluency.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Academic research synthesis and literature reviews",
+      "Legal/medical document analysis and financial modeling",
+      "Complex problem decomposition and scientific hypothesis generation",
+      "Long-form creative writing and multi-language translation",
+      "Advanced tutoring, curriculum development, and technical architecture design"
+    ],
+    "strengths": [
+      "Superior performance on MMLU (undergraduate-level knowledge) compared to GPT-4 and Gemini Ultra",
+      "Leading scores on GPQA (graduate-level reasoning) and strong results on GSM8K (mathematics)",
+      "Competitive code generation capabilities on HumanEval and robust vision processing for charts, diagrams, and technical drawings",
+      "Near-human comprehension of complex tasks, zero-shot adaptability, and advanced creative/analytical reasoning",
+      "Strong safety guardrails with reduced hallucination rates and nuanced context understanding"
+    ],
+    "limitations": [
+      "200,000-token context window and 4,096-token output limit restrict handling of extremely large inputs/outputs",
+      "No internet access or real-time data capabilities, with knowledge cutoff at August 2023",
+      "Higher latency and cost compared to Claude 3 Sonnet/Haiku variants (2.5x input cost, 5x output cost)",
+      "Resource-intensive processing makes it overkill for simple tasks",
+      "Cannot execute code or interact with external systems"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-opus-20240229",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:24:55.364373"
+}

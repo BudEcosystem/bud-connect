@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "GPT-4o Realtime Preview (2024-10-01) is a multimodal AI model developed by Azure OpenAI Service for low-latency, real-time audio and text interactions. It supports speech-to-speech conversational capabilities with text message integration, optimized for sub-second response times and multi-turn dialogue. The model is in preview status and not recommended for production use, with technical limitations including no image modality support.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support voice assistants with context-aware responses",
+      "Interactive voice response (IVR) systems with natural language understanding",
+      "Real-time cross-language translation services",
+      "Smart home/personal assistant voice interfaces",
+      "Accessibility solutions with voice-controlled interfaces",
+      "Conversational AI prototyping and research applications"
+    ],
+    "strengths": [
+      "Enables real-time speech input and output with sub-second latency for conversational interactions",
+      "Supports WebRTC integration for browser-based audio streaming and WebSocket-based bidirectional communication",
+      "Maintains conversational context across multi-turn dialogues with minimal delay",
+      "Offers 8 distinct voice options (e.g., 'alloy', 'ash') for natural-sounding audio synthesis",
+      "Provides high-quality audio output with minimal artifacts and natural speech patterns"
+    ],
+    "limitations": [
+      "Preview status - not optimized for production traffic or enterprise workloads",
+      "No image modality support (unlike standard GPT-4o) despite being a multimodal model",
+      "Rate limits restricted to 100,000 TPM and 1,000 RPM for test/development only",
+      "Lacks structured outputs feature and has no function tool calling capabilities",
+      "Data storage of prompts/completions enabled by default with abuse monitoring",
+      "API version subject to change with potential deprecation risks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-realtime-preview-2024-10-01",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:06:00.347543"
+}

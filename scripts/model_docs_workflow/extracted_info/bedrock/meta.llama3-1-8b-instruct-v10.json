@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 8B Instruct is a lightweight, efficient language model with 8 billion parameters and a 128K token context window, designed for applications with limited computational resources. It offers fast inference, multilingual support for eight languages, and enhanced code training (4x more than Llama 2) while maintaining a cost-effective solution for edge devices and high-volume processing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Edge devices and IoT applications with resource constraints",
+      "Real-time customer service chatbots and live assistance",
+      "High-volume content moderation and batch processing",
+      "Mobile app integration for lightweight AI features",
+      "Educational technology tools requiring fast responses",
+      "Small business solutions with budget constraints"
+    ],
+    "strengths": [
+      "128K context window for handling long documents and conversation history",
+      "8 billion parameters with 7x larger training data (15 trillion tokens) than Llama 2",
+      "Optimized for low-latency, real-time applications and edge computing",
+      "Cost-effective with 2 CMUs required for provisioned throughput (lowest in the Llama 3.1 series)",
+      "Multilingual support for eight languages including English, Spanish, and Hindi",
+      "Fine-tuning capabilities on AWS Bedrock for domain-specific adaptations"
+    ],
+    "limitations": [
+      "Smaller parameter count may limit performance on complex reasoning tasks",
+      "Less sophisticated than larger models like Llama 3.1 70B/405B for specialized domains",
+      "Requires careful prompt engineering for optimal results",
+      "Limited suitability for tasks requiring deep expertise or highly specialized knowledge"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-1-8b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:45:45.632035"
+}

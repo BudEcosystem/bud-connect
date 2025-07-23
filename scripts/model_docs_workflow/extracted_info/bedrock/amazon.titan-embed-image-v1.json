@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Multimodal Embeddings G1 (amazon.titan-embed-image-v1) is a foundation model developed by Amazon that converts text and images into numerical embeddings for cross-modal understanding. It supports English text (up to 256 tokens) and images (PNG/JPEG, up to 25 MB) in a unified embedding space. The model offers configurable output dimensions (256, 384, or 1024) and is optimized for applications like image-text matching, multimodal search, and content recommendation systems.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Visual search and discovery (e.g., finding images using text descriptions)",
+      "Content recommendation systems based on multimodal similarity",
+      "E-commerce product matching and search",
+      "Medical image analysis with textual context",
+      "Multimodal RAG (Retrieval-Augmented Generation) systems",
+      "Automated image tagging and categorization"
+    ],
+    "strengths": [
+      "Handles both text and images in a unified embedding space for cross-modal similarity comparisons",
+      "Supports flexible output dimensions (256, 384, 1024) to balance detail and computational efficiency",
+      "Optimized for image-text retrieval and cross-modal search applications",
+      "Enterprise features include fine-tuning with image-text pairs and scalable architecture for on-demand/provisioned workloads",
+      "Seamless integration with AWS services like S3, SageMaker, and Bedrock Knowledge Bases",
+      "Provides base64-encoded image processing and batch operations for cost efficiency"
+    ],
+    "limitations": [
+      "Limited to English language support for text inputs",
+      "Maximum input text token limit of 256 tokens",
+      "Image file size restriction to 25 MB with PNG/JPEG format exclusivity",
+      "Embedding dimension trade-offs: 1024 dimensions provide more detail but increase computational cost and latency",
+      "Fine-tuning requires minimum 1,000 image-text pairs and incurs additional training/storage costs",
+      "Large images (up to 4,096 pixels) require more processing time and resources"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.titan-embed-image-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:25:13.085062"
+}

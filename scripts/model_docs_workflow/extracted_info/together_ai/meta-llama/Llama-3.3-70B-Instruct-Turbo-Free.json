@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Llama 3.3 70B Instruct Turbo Free is a free-tier multilingual large language model developed by Meta and hosted on Together AI. It features 70 billion parameters, a 131,072-token context length, and is optimized for dialogue-based tasks. The model supports comprehensive multilingual capabilities and outperforms many chat models in benchmarks, making it ideal for testing, development, and small-scale applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Prototype development for conversational AI",
+      "Educational and research projects",
+      "Personal developer experiments",
+      "API evaluation before production deployment",
+      "Low-volume content generation testing"
+    ],
+    "strengths": [
+      "70 billion parameters for advanced reasoning and dialogue capabilities",
+      "131,072-token context window for handling long inputs",
+      "Optimized for multilingual conversational use cases",
+      "Free tier access with no initial cost for development/testing",
+      "Outperforms many open-source and closed chat models in benchmarks"
+    ],
+    "limitations": [
+      "Free tier rate limits (0.3-60 requests per minute)",
+      "No support for function/tool calling on free tier",
+      "Commercial use restrictions may apply",
+      "Limited concurrent request handling and lower priority than paid tiers",
+      "Not suitable for production or high-volume applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:12:14.632356"
+}

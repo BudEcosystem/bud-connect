@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet (20241022) is a transformer-based large language model developed by Anthropic, released on October 22, 2024. It features a 200,000-token context window, 8,192-token output limit, and multimodal capabilities (text and vision). This version introduces public beta computer use functionality, enabling interaction with computer interfaces, and demonstrates significant improvements in coding performance, including a 49.0% score on SWE-bench Verified.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated code generation, refactoring, and debugging",
+      "Application testing and GUI-based workflow automation",
+      "Visual data analysis and interpretation",
+      "Technical documentation creation and research assistance",
+      "Data entry, form filling, and cross-application workflow execution"
+    ],
+    "strengths": [
+      "Outperforms all publicly available models on SWE-bench Verified (49.0%) and exceeds specialized agentic coding systems",
+      "First frontier AI model with public beta computer use capabilities for GUI navigation, automation, and multi-step workflows",
+      "Maintains graduate-level reasoning while improving coding performance from 33.4% to 49.0% on SWE-bench Verified",
+      "Same pricing and speed as previous version despite performance enhancements",
+      "Superior vision processing for visual content interpretation"
+    ],
+    "limitations": [
+      "Computer use feature is in beta with potential errors and application-specific performance variability",
+      "200,000 token context window and 8,192 token output limits may restrict complex tasks",
+      "No real-time internet access capability",
+      "Beta computer use may struggle with complex GUI elements",
+      "Requires additional safety measures and monitoring for automation tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 49.0
+    },
+    {
+      "name": "HumanEval",
+      "score": 100
+    },
+    {
+      "name": "Internal Agentic Coding",
+      "score": 64
+    }
+  ],
+  "model_name": "claude-3-5-sonnet-20241022",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:19:19.659021"
+}

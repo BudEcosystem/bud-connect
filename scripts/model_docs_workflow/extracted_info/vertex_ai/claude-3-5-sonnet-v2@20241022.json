@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet V2@20241022 is a versioned large language model developed by Anthropic, launched on October 22, 2024. It features a 200,000-token context window, computer interaction capabilities in public beta (screen capture, mouse/keyboard control, UI navigation), and enhanced reasoning for agentic tasks. Available on Google Cloud Vertex AI with deterministic behavior for consistent deployments.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced software engineering (full-stack development, code migration, CI/CD automation)",
+      "UI/UX testing and desktop/web application validation",
+      "Business process automation (customer service, data pipelines, compliance monitoring)",
+      "Technical documentation and market research analysis",
+      "Automated system administration and data entry workflows"
+    ],
+    "strengths": [
+      "Revolutionary computer use capabilities for UI automation (screen capture, mouse control, keyboard input, automated testing)",
+      "Enhanced reasoning and multi-step problem-solving with 200,000-token context integration",
+      "Deterministic behavior via versioned model ID for production stability",
+      "Cost-optimization features like prompt caching (up to 90% savings) and batch processing",
+      "Advanced tool integration for complex workflows (database queries, API requests)"
+    ],
+    "limitations": [
+      "Computer use features are in public beta with potential instability and platform dependencies",
+      "Regional availability limited primarily to Google Cloud's us-east5 region",
+      "Knowledge cutoff at April 2024 with no access to real-time data",
+      "Output limited to 8,000 tokens per response",
+      "Extended thinking capabilities not available (requires Claude 3.7 Sonnet)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-5-sonnet-v2@20241022",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:33:54.066889"
+}

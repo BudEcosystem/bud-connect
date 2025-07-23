@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro is a mid-size multimodal model developed by Google, optimized for high-volume, cost-effective reasoning tasks with a 2 million token context window. It supports text, images, audio, and video processing, but is now classified as a legacy model with migration to newer versions recommended.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise-scale document analysis and summarization",
+      "Multilingual customer support and global content localization",
+      "Codebase analysis and generation across programming languages",
+      "Cross-modal content moderation of user-generated material",
+      "Large-scale data processing pipelines for international business operations"
+    ],
+    "strengths": [
+      "Features a 2 million token context window for extensive data processing across modalities",
+      "Supports 102 languages with enhanced multilingual understanding in Korean, French, German, Spanish, Japanese, Russian, and Chinese",
+      "Processes up to 60,000 lines of code and handles large documents (2,000 pages, 2-hour videos, 19-hour audio)",
+      "Includes advanced features like context caching, parallel function calling, and code execution capabilities",
+      "Optimized for speed, efficiency, and cost-effectiveness in high-volume applications"
+    ],
+    "limitations": [
+      "Marked as a legacy model with no new features or improvements planned",
+      "Access restricted to projects with prior usage starting April 29, 2025",
+      "Future support limitations and potential migration requirements to newer models",
+      "Version 001 lacks the multilingual and quality improvements of version 002"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-pro",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:25:48.008140"
+}

@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "TTS-1 is OpenAI's standard text-to-speech model that converts written text into natural-sounding audio. It offers multiple pre-built voice options, adjustable speech rate, and supports various audio formats. The model prioritizes speed over quality for real-time applications and includes features like streaming support and voice steering for tone/style adjustments.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Accessibility features for visually impaired users",
+      "Podcast and audiobook generation",
+      "Voice assistants and chatbot responses",
+      "Educational content narration",
+      "Real-time navigation/announcement systems",
+      "Language learning applications",
+      "Social media content creation",
+      "Interactive voice response (IVR) systems",
+      "Gaming and entertainment narration"
+    ],
+    "strengths": [
+      "Produces natural-sounding speech with multiple voice profiles (alloy, echo, fable, etc.)",
+      "Supports adjustable playback speed (0.25 to 4.0x) for customized audio output",
+      "Offers streaming capabilities for real-time applications with low latency",
+      "Generates audio in multiple formats (MP3, OPUS, WAV, etc.) for different use cases",
+      "Cost-effective at $0.015 per 1,000 characters (half the price of TTS-1-HD)",
+      "Supports automatic language detection and multiple languages/accents"
+    ],
+    "limitations": [
+      "Lower audio quality compared to TTS-1-HD model",
+      "Limited to preset voices with no custom voice cloning capabilities",
+      "No fine-grained prosody control or SSML markup support",
+      "Potential artifacts in complex pronunciations and voice consistency variations",
+      "Voice selection is restricted to OpenAI's predefined options",
+      "No support for advanced text formatting or markup languages"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "tts-1",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:53:13.944156"
+}

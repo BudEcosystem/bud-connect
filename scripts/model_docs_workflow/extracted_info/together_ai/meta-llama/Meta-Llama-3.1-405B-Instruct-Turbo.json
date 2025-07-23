@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 405B Instruct Turbo is a 405-billion-parameter large language model developed by Meta and hosted on Together AI. It features a 128K token context length, advanced optimizations like RoPE and Grouped Query Attention, and is trained on 15 trillion tokens up to December 2023. The model excels in complex reasoning, code generation, multilingual tasks, and long-form content creation, with Together AI's Turbo optimization enabling 2-3x faster inference.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise research and development analysis",
+      "Legal document analysis and case research",
+      "Financial modeling and risk assessment",
+      "Technical documentation and system design",
+      "Multilingual content creation and translation",
+      "Scientific hypothesis generation and experimental design",
+      "Advanced tutoring and educational content creation",
+      "Creative writing and narrative development"
+    ],
+    "strengths": [
+      "405B parameters with 128K token context length for handling complex, long-form tasks",
+      "Turbo optimization provides 2-3x faster inference without sacrificing quality",
+      "Advanced features like RoPE, Grouped Query Attention, and chain-of-thought reasoning",
+      "State-of-the-art performance in multi-step reasoning, mathematical problem-solving, and code generation",
+      "Multilingual support across 8 languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai)",
+      "Production-ready code generation with debugging and architecture design capabilities"
+    ],
+    "limitations": [
+      "Requires massive GPU resources (H100 or equivalent) for deployment",
+      "128K token context limit may constrain ultra-large document tasks",
+      "Premium pricing ($5.00 per million tokens) with high computational costs",
+      "Overkill for simple tasks due to its scale and complexity",
+      "High memory requirements for optimal performance",
+      "Not suitable for ultra-low latency applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:15:41.955261"
+}

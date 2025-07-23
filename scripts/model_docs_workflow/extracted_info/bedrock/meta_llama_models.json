@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Llama 3.3 70B is a text-only instruction-tuned model developed by Meta, available on AWS Bedrock. It features 70 billion parameters and a 128,000-token context window, offering enhanced performance compared to Llama 3.1 70B while using fewer computational resources. The model excels in advanced reasoning, code generation, and multilingual tasks, making it ideal for enterprise applications requiring high performance and efficient resource utilization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise-level text generation and analysis",
+      "Advanced code generation and debugging for software development",
+      "Multilingual content creation and translation",
+      "Complex reasoning tasks requiring large context windows",
+      "High-performance applications with strict resource efficiency requirements"
+    ],
+    "strengths": [
+      "70 billion parameters for robust language understanding and generation",
+      "128,000-token context window for handling long-form text and complex inputs",
+      "Enhanced performance relative to Llama 3.1 70B with similar capabilities to Llama 3.1 405B using fewer resources",
+      "Advanced reasoning and problem-solving capabilities for technical and analytical tasks",
+      "Code generation and debugging support for software development workflows",
+      "Multilingual support for global enterprise applications",
+      "Optimized for enterprise-grade infrastructure on AWS Bedrock"
+    ],
+    "limitations": [
+      "Text-only model with no multimodal capabilities (image/audio processing)",
+      "70B parameter size requires significant computational resources for deployment",
+      "Limited to AWS Bedrock infrastructure, restricting flexibility for non-AWS environments",
+      "Not suitable for resource-constrained or edge computing scenarios",
+      "No explicit benchmark scores provided for performance validation"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta_llama_models",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:51:01.873755"
+}

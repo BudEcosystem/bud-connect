@@ -1,0 +1,29 @@
+{
+  "model_info": {
+    "description": "Open Mistral 7B is a 7-billion-parameter transformer-based language model developed by Mistral AI, released under the Apache 2.0 license. It features a Sliding Window Attention (SWA) mechanism with a 4,096-token attention window and an 8K-token context window. The model is optimized for efficiency, outperforming larger models like Llama 2 13B and matching Llama 34B in performance despite being 5x smaller.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Text generation and completion for content creation",
+      "Code generation and understanding for software development",
+      "Question-answering systems for educational or enterprise applications",
+      "Document summarization for data processing",
+      "Translation tasks across multiple languages",
+      "Edge deployments requiring low-latency inference"
+    ],
+    "strengths": [
+      "Sliding Window Attention (SWA) mechanism enables efficient long-context processing with 4,096-token attention windows.",
+      "Outperforms Llama 2 13B on all metrics and matches Llama 34B performance despite being 5x smaller.",
+      "Fully open-source under Apache 2.0 license with no usage restrictions.",
+      "Optimized for edge deployments, running on consumer GPUs with low latency.",
+      "Strong multilingual support and adaptability for domain-specific fine-tuning.",
+      "Provides flexible deployment options (open-source, API, edge, and cloud)."
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "open-mistral-7b",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:03:32.978193"
+}

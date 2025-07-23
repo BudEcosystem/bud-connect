@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI Audio Models provide comprehensive audio processing capabilities through specialized models for speech recognition, text-to-speech, and audio analysis. Developed by Microsoft, these models support 99+ languages, handle multiple audio formats (MP3, WAV, WEBM, etc.), and offer enterprise-grade security with compliance certifications. Advanced models like gpt-4o-audio-preview enable multimodal audio-text interactions, while real-time models support ultra-low latency voice applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Meeting transcription and analysis with speaker identification",
+      "Professional audiobook and media content creation",
+      "Real-time voice assistants and customer support systems",
+      "Automated podcast/video subtitle generation",
+      "Language learning applications with pronunciation feedback",
+      "Accessibility features for audio-based content consumption"
+    ],
+    "strengths": [
+      "Supports 99+ languages with varying quality levels for speech-to-text models",
+      "Offers high-definition text-to-speech synthesis (tts-1-hd) with professional audio quality",
+      "Enables real-time audio conversation with ultra-low latency via gpt-4o-realtime-preview",
+      "Provides multimodal capabilities with native audio understanding in gpt-4o-audio-preview",
+      "Includes enterprise security features like end-to-end encryption and HIPAA/SOC 2 compliance",
+      "Supports integration with Azure services, Microsoft Teams, and Power Platform"
+    ],
+    "limitations": [
+      "Speech-to-text models have a 25 MB file size limit for audio inputs",
+      "Higher-quality models (e.g., tts-1-hd, gpt-4o-audio) incur significantly higher costs",
+      "Real-time audio models are limited to preview availability in select regions",
+      "Some advanced features (e.g., speaker identification) require premium pricing",
+      "Regional availability varies, with limited support for preview languages"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-audio-models",
+  "provider": "azure",
+  "extraction_date": "2025-07-20T20:12:15.481931"
+}

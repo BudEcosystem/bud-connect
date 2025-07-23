@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "TTS-1 is OpenAI's standard text-to-speech model that converts written text into natural-sounding audio. It balances quality and speed for real-time applications, offering multiple voice options, adjustable speech rates, and support for various audio formats. The model includes features like voice steering, streaming capabilities, and automatic language detection.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Accessibility features for applications and websites",
+      "Podcast and audiobook generation",
+      "Voice assistants and chatbots",
+      "Educational content narration",
+      "Real-time voice responses in interactive systems",
+      "Navigation and announcement systems",
+      "Language learning applications",
+      "Content creation for social media platforms",
+      "Interactive voice response (IVR) systems",
+      "Gaming and entertainment narration"
+    ],
+    "strengths": [
+      "Produces natural, human-like speech with multiple pre-built voice profiles (e.g., alloy, echo, nova)",
+      "Supports adjustable playback speed (0.25 to 4.0x) and multiple audio formats (MP3, WAV, OPUS, etc.)",
+      "Enables real-time streaming for low-latency applications with chunk-based output",
+      "Offers voice steering for tone, style, and accent customization",
+      "Cost-effective at $0.015 per 1,000 characters (half the price of TTS-1-HD)",
+      "Supports automatic language detection from input text"
+    ],
+    "limitations": [
+      "Lower audio quality compared to TTS-1-HD model",
+      "Limited to preset voices with no custom voice cloning capabilities",
+      "No fine-grained prosody control or SSML markup support",
+      "Potential artifacts in complex pronunciations and inconsistent voice output",
+      "Voice selection is restricted to OpenAI's predefined options",
+      "No explicit benchmark scores for audio quality or performance metrics"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "tts-1",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:22:52.307598"
+}

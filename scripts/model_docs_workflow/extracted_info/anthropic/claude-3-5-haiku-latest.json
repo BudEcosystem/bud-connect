@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Haiku is Anthropic's fastest and most cost-effective model in the Claude 3.5 generation. It offers a 200,000 token context window, 8,192 maximum output tokens, and sub-second response times. The model is multimodal (text and vision), optimized for speed and efficiency, and surpasses Claude 3 Opus on many intelligence benchmarks while maintaining affordability.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Live chat and customer support systems",
+      "Interactive coding assistants and automated code generation",
+      "Real-time content moderation and translation",
+      "Bulk data classification and large-scale content analysis",
+      "Mobile/IoT applications requiring low-latency responses",
+      "Cost-sensitive projects like educational platforms and startup prototypes"
+    ],
+    "strengths": [
+      "Sub-second response times for real-time applications with minimal latency",
+      "Surpasses Claude 3 Opus on multiple intelligence benchmarks despite smaller size",
+      "40.6% performance on SWE-bench Verified for coding tasks",
+      "Industry-leading cost efficiency with $0.80 input and $4 output token pricing",
+      "Supports multimodal inputs (text and vision) for diverse applications",
+      "Optimized for high-throughput and edge deployments with low computational requirements"
+    ],
+    "limitations": [
+      "Less capable than Claude 3.5 Sonnet/Opus for complex reasoning tasks",
+      "Reduced performance on highly specialized or nuanced tasks",
+      "Requires specific prompting for optimal results",
+      "No internet access capability",
+      "Knowledge cutoff date varies with version updates",
+      "Maximum output token limit of 8,192 tokens"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 40.6
+    }
+  ],
+  "model_name": "claude-3-5-haiku-latest",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:17:05.077878"
+}

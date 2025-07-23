@@ -1,0 +1,54 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-pro is the most advanced reasoning model in the OpenAI o1 family, designed for complex tasks requiring deep analysis, mathematical reasoning, and reliable problem-solving. It features a 200,000-token context window, enhanced transformer architecture with reinforcement learning, and a 4/4 reliability metric (must answer correctly in 4 out of 4 attempts). The model is exclusively available via OpenAI's Responses API and is significantly more expensive than standard models, with input tokens priced at $150 per million and output tokens at $600 per million.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex code refactoring and optimization of large codebases",
+      "Scientific research including hypothesis generation and data analysis",
+      "Legal/financial document analysis and risk assessment",
+      "Advanced mathematical problem-solving and proof generation",
+      "Synthetic data generation for specialized domains"
+    ],
+    "strengths": [
+      "Excels at complex reasoning tasks with 86% accuracy on AIME 2024 (math competitions) and 90% accuracy on Codeforces (competitive programming)",
+      "Demonstrates 34% reduction in major errors on difficult problems compared to o1-preview",
+      "Supports multi-turn reasoning and structured decision-tree analysis for complex problem-solving",
+      "Achieves 79% accuracy on PhD-level scientific questions, surpassing o1 and o1-preview",
+      "Provides 4/4 reliability metric ensuring consistent performance across multiple attempts"
+    ],
+    "limitations": [
+      "Exclusively available through the Responses API, requiring code updates for integration",
+      "Significantly higher cost (2x input and 10x output pricing compared to standard models)",
+      "Requires substantial computational resources for deeper reasoning",
+      "Overkill for simple tasks where standard models would suffice",
+      "Access limited to ChatGPT Pro subscribers and premium API tiers"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2024",
+      "score": 86
+    },
+    {
+      "name": "Codeforces",
+      "score": 90
+    },
+    {
+      "name": "PhD-level questions",
+      "score": 79
+    },
+    {
+      "name": "4/4 reliability metric",
+      "score": 100
+    },
+    {
+      "name": "Error reduction vs o1-preview",
+      "score": 34
+    }
+  ],
+  "model_name": "o1-pro",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:26:49.911314"
+}

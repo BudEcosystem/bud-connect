@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "The `omni-moderation-latest-intents` is a speculative OpenAI model focused on intent detection and behavioral analysis. Based on the GPT-4o architecture, it is hypothesized to specialize in identifying harmful intentions (e.g., grooming, radicalization, fraud) through multi-turn conversation analysis. However, it is not officially documented by OpenAI and remains unverified.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Social platform safety monitoring for manipulation or grooming attempts",
+      "Child safety protection on online platforms",
+      "Fraud detection in financial or dating services",
+      "Extremism prevention through radicalization intent analysis",
+      "Mental health platform monitoring for self-harm escalation"
+    ],
+    "strengths": [
+      "Hypothetical enhanced capability to detect harmful intentions beyond basic content moderation",
+      "Potential for multi-turn conversation analysis to understand evolving intent patterns",
+      "Specialized intent categories (e.g., grooming, radicalization) for targeted safety applications",
+      "Behavioral prediction features to assess risk levels and recommend moderation actions"
+    ],
+    "limitations": [
+      "Not officially documented or verified by OpenAI",
+      "Lacks confirmed technical specifications or performance metrics",
+      "Higher computational cost and processing time for deep intent analysis",
+      "Potential for increased false positives due to the complexity of intent detection",
+      "Privacy concerns related to analyzing user intent and conversation history"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "omni-moderation-latest-intents",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:34:03.307406"
+}

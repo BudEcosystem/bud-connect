@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Stable Diffusion 3.5 Large is a 8.1 billion parameter image generation model developed by Stability AI and available on AWS Bedrock. It produces high-quality 1-megapixel images with advanced prompt adherence, photorealism, and improved text rendering. Trained on Amazon SageMaker HyperPod, it supports versatile visual styles and complex scene generation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Creative industries (storyboarding, concept art, visual effects prototyping)",
+      "Marketing/advertising campaigns requiring high-quality image generation",
+      "Cross-industry applications in media, gaming, e-commerce, and education",
+      "Batch processing of large image generation workloads",
+      "Image-to-image transformations with adjustable similarity parameters"
+    ],
+    "strengths": [
+      "Largest model in the Stable Diffusion family with 8.1 billion parameters for enhanced image quality",
+      "Generates 1-megapixel images with superior photorealism and text quality",
+      "Advanced prompt adherence for precise text-to-image generation",
+      "Optimized for production use with AWS infrastructure integration",
+      "Supports complex scenes with multiple subjects and improved human anatomy rendering"
+    ],
+    "limitations": [
+      "Limited to US West (Oregon) AWS region availability",
+      "Requires explicit access request through Bedrock console",
+      "Subject to AWS content filtering policies and rate limits",
+      "Dependent on AWS infrastructure for deployment and execution",
+      "No specific language support or benchmark scores provided"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability.sd3-5-large-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:51:45.555186"
+}

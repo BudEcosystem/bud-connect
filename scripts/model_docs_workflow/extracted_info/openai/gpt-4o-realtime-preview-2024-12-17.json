@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o-realtime-preview-2024-12-17 is a real-time audio model from OpenAI, optimized for low-latency voice interactions. It supports text and audio modalities with eight distinct voice personalities and features enhanced voice quality, input reliability, and multimodal context continuity. Released on December 17, 2024, it is currently in preview status for testing and feedback.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise customer service with multilingual support and context retention",
+      "Interactive storytelling and AI-assisted podcast creation",
+      "Language learning with native-like pronunciation practice",
+      "Healthcare patient communication and voice-to-text documentation",
+      "Voice assistant implementations for business process automation"
+    ],
+    "strengths": [
+      "Advanced audio processing with enhanced voice quality and input reliability for natural-sounding speech synthesis",
+      "Low-latency processing (sub-second response times) for real-time conversational interactions",
+      "Eight distinct voice personalities (e.g., alloy, ballad, echo) with customizable emotional expression",
+      "Multimodal capabilities combining text and audio with context continuity across modalities",
+      "Support for WebRTC and WebSocket protocols for robust real-time communication",
+      "Prompt caching to reduce costs and improve response times for repeated interactions"
+    ],
+    "limitations": [
+      "Currently in preview status and not optimized for production deployment",
+      "Limited to text and audio modalities (image support planned but unavailable)",
+      "Missing GPT-4o features like structured outputs",
+      "Development-focused rate limits (100,000 TPM, 1,000 RPM) unsuitable for high-volume production",
+      "Network dependency with performance impacted by latency and bandwidth",
+      "Voice synthesis limitations in capturing all human speech nuances",
+      "Content filtering and safety guardrails may restrict certain requests"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-realtime-preview-2024-12-17",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:23:41.767991"
+}

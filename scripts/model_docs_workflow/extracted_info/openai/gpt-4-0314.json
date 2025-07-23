@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "GPT-4-0314 is a static snapshot version of GPT-4 developed by OpenAI, released on March 14, 2023. It features a standard context length of 8,192 tokens and an extended version of 32,768 tokens (gpt-4-32k-0314), with training data cutoff in September 2021. The model supports advanced NLP tasks like text generation, translation, and code understanding but lacks function calling and vision capabilities. It was deprecated on June 13, 2024, with migration recommended to newer GPT-4 variants.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and summarization with long context requirements",
+      "Consistent text generation for applications requiring stable model behavior",
+      "General knowledge tasks leveraging high MMLU benchmark performance (86.4)",
+      "Translation and code generation for developers needing reliable outputs"
+    ],
+    "strengths": [
+      "Large context window (up to 32,768 tokens) for handling complex or lengthy inputs",
+      "High performance on benchmarks (HellaSwag 95.3, MMLU 86.4) for natural language understanding and reasoning",
+      "Stable and reliable behavior, preferred by developers for consistent results",
+      "API compatibility with GPT-3.5-turbo for seamless integration",
+      "Extended support period (until June 2024) due to strong developer demand"
+    ],
+    "limitations": [
+      "No function calling support (introduced in later models like gpt-4-0613)",
+      "Limited to text-only inputs with no vision/image processing capabilities",
+      "Static model with no post-release updates or improvements",
+      "Training data cutoff in September 2021, limiting knowledge of newer developments",
+      "Higher cost per token compared to newer, more efficient GPT-4 variants",
+      "Fully deprecated and inaccessible as of June 13, 2024"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "HellaSwag",
+      "score": 95.3
+    },
+    {
+      "name": "MMLU",
+      "score": 86.4
+    }
+  ],
+  "model_name": "gpt-4-0314",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:19:26.084784"
+}

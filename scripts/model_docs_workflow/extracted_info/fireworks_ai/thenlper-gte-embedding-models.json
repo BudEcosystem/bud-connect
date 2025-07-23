@@ -1,0 +1,50 @@
+{
+  "model_info": {
+    "description": "The GTE (General Text Embeddings) models, developed by Alibaba DAMO Academy, are BERT-based text embedding models trained using multi-stage contrastive learning on large-scale relevance text pairs. The gte-base variant has ~110M parameters and 768 dimensions, while gte-large has 335M parameters and 1024 dimensions. Both support 512-token context lengths and outperform models like OpenAI's text-embedding-ada-002 in efficiency and performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Information retrieval systems",
+      "Semantic textual similarity analysis",
+      "Text reranking for search optimization",
+      "Cross-domain text comparison",
+      "Integration with vector databases (Chroma, Weaviate, FAISS)"
+    ],
+    "strengths": [
+      "gte-base outperforms text-embedding-ada-002 with 10x fewer parameters, achieving exceptional performance-to-size ratio",
+      "gte-large maintains competitive accuracy with larger models while optimizing efficiency",
+      "BERT-based architecture with multi-stage contrastive learning ensures strong semantic understanding",
+      "Apache 2.0 license enables open use and integration",
+      "Supports diverse applications including information retrieval, semantic similarity, and cross-domain tasks"
+    ],
+    "limitations": [
+      "512-token context length limits handling of long documents",
+      "Primarily optimized for English texts with potential limitations in other languages",
+      "Training data has temporal cutoff, affecting relevance to recent developments",
+      "gte-base may lack precision for complex tasks compared to gte-large",
+      "Not suitable for real-time streaming applications due to fixed context window"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 63.13
+    },
+    {
+      "name": "MTEB (gte-base)",
+      "score": 61.5
+    },
+    {
+      "name": "text-embedding-ada-002",
+      "score": 61.0
+    },
+    {
+      "name": "E5-large-v2",
+      "score": 62.0
+    }
+  ],
+  "model_name": "thenlper-gte-embedding-models",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T12:59:28.154709"
+}

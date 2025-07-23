@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "Claude Opus 4.0 is Anthropic's most advanced model, launched on May 22, 2025, excelling in coding, agentic search, and creative writing. It features a 32K token output capacity, extended task duration (hours), and hybrid reasoning architecture with tool integration. The model achieves 72.5% on SWE-bench and 43.2% on Terminal-bench, with capabilities for thousands of coherent steps in complex tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced software development (multi-day refactoring, codebase modifications)",
+      "Autonomous agent workflows for long-running processes",
+      "Deep technical research and multi-domain problem solving",
+      "Background code execution via Claude Code integration"
+    ],
+    "strengths": [
+      "World's best coding performance with 72.5% on SWE-bench and 43.2% on Terminal-bench",
+      "Handles extended tasks (hours) with sustained performance and thousands of coherent steps",
+      "Hybrid reasoning architecture supports instant responses or deep, step-by-step thinking",
+      "Advanced tool integration with parallel execution and local file access",
+      "65% less likely to engage in shortcut behavior compared to Sonnet 3.7"
+    ],
+    "limitations": [
+      "Higher cost compared to other models ($15/input, $75/output per million tokens)",
+      "Extended thinking increases latency and requires careful cost management",
+      "Best suited for complex, high-value tasks rather than simple queries",
+      "Requires versioned model IDs for production stability"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench",
+      "score": 72.5
+    },
+    {
+      "name": "Terminal-bench",
+      "score": 43.2
+    }
+  ],
+  "model_name": "claude-opus-4-0",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:27:57.318422"
+}

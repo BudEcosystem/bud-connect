@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Together AI's embedding models up to 150M parameters are entry-level, cost-effective solutions for semantic understanding and vector representation tasks. Designed for startups and small businesses, they offer lightweight dense vector embeddings (384-768 dimensions) with a 4,096-token context window, optimized for high-throughput, low-latency applications. They support English and major languages, with a competitive pricing model ($0.008 per 1M input tokens) and batch processing discounts.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "E-commerce product search and recommendation systems",
+      "Content categorization and duplicate detection in CMS",
+      "Customer support ticket classification and FAQ matching",
+      "Startup MVP development with AI features",
+      "Educational tool development and research projects",
+      "SMB document organization and workflow optimization"
+    ],
+    "strengths": [
+      "Cost-effective with the lowest price point in Together AI's embedding lineup ($0.008 per 1M input tokens)",
+      "Ultra-fast inference latency (<50ms) and high throughput (1,000-5,000 documents per minute)",
+      "Low memory footprint (50-100MB for 10K document index) and CPU efficiency",
+      "Multilingual support with decent performance across major languages",
+      "Batch processing discounts (50% introductory rate for large volumes)",
+      "Simple REST API integration with normalized output for reliable similarity computation"
+    ],
+    "limitations": [
+      "15-25% quality reduction compared to larger 151M-350M parameter models",
+      "Limited parameter scale (up to 150M) may affect performance on complex tasks",
+      "Decent but not premium cross-lingual performance",
+      "Optimized for cost over precision, making it less suitable for high-stakes applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-embedding-up-to-150m",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:27:24.678529"
+}

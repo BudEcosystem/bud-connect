@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Cohere Embed English v3 is an industry-leading embedding model developed by Cohere for generating high-quality vector representations from English text and images. Available on AWS Bedrock, it supports semantic search, text classification, and retrieval-augmented generation (RAG) with 1,024-dimensional embeddings. The model handles up to 2,048 characters per text input and includes multimodal capabilities for cross-modal text-image embeddings.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise semantic search systems",
+      "Product discovery and recommendation engines",
+      "Content categorization and sentiment analysis",
+      "Retrieval-augmented generation (RAG) for LLM applications",
+      "Image-text matching and visual search implementations"
+    ],
+    "strengths": [
+      "Industry-leading embedding quality for English text and images",
+      "Supports multimodal inputs with unified text-image embedding space",
+      "Fast inference and processing with batch capabilities (up to 96 texts per request)",
+      "Specialized input types for search, classification, and clustering tasks",
+      "Integration with AWS services like Amazon Kendra and OpenSearch for enterprise applications"
+    ],
+    "limitations": [
+      "Limited to English language support (use multilingual v3 for other languages)",
+      "Maximum 2,048 character limit per text input",
+      "Batch size restriction of 96 texts per request",
+      "Image support limited to 1 image per call with 5MB size constraint",
+      "Not optimized for exact keyword matching or temporal relationship analysis"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.embed-english-v3",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:38:22.572917"
+}

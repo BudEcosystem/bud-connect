@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "AWS Bedrock Stability AI SD3 Large v1.0 is a text-to-image generation model developed by Stability AI, available on Amazon Bedrock. It uses an Advanced Diffusion Transformer architecture to produce high-quality images with superior text rendering and photorealistic details. The model supports both text-to-image and image-to-image generation modes, making it suitable for creating digital assets like marketing materials, product visuals, and creative content.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Media and entertainment concept art/storyboarding",
+      "Marketing campaign visuals and social media content creation",
+      "E-commerce product visualization and lifestyle imagery",
+      "Gaming asset creation (characters, environments)",
+      "Educational visual materials and illustrations",
+      "Corporate training presentations and brand asset development",
+      "High-volume digital asset production for websites/newsletters"
+    ],
+    "strengths": [
+      "Exceptional text rendering with improved spelling, kerning, and spacing accuracy",
+      "Handles complex prompts involving spatial reasoning, compositional elements, and multi-subject scenes",
+      "Generates photorealistic images with high color accuracy and lifelike lighting",
+      "Supports both text-to-image and image-to-image generation modes",
+      "Optimized for high-volume production workflows with faster generation times compared to SD3.5 Large",
+      "Offers 9 aspect ratio options (1:1, 16:9, 2:3, etc.) for flexible composition",
+      "Provides reproducible results through seed value control"
+    ],
+    "limitations": [
+      "Currently limited to US West (Oregon) region availability",
+      "Requires explicit access approval through Amazon Bedrock",
+      "Subject to AWS content policies and rate limits",
+      "Fewer parameters than SD3.5 Large model",
+      "Slower generation speed compared to Stable Image Core model",
+      "Higher cost per image than lower-quality alternatives like Stable Image Core"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "stability.sd3-large-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:52:26.111819"
+}

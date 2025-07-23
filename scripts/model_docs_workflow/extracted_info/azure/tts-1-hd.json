@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "TTS-1-HD is OpenAI's high-definition text-to-speech model offering superior audio quality compared to standard TTS-1. It provides enhanced clarity, multilingual support, and advanced voice control for professional applications. The model supports multiple audio formats with higher bitrates but incurs double the cost of standard TTS-1 and produces larger file sizes.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Professional audiobook production",
+      "Podcast and e-learning content creation",
+      "Corporate communications and executive announcements",
+      "TV/radio commercials and documentary narration",
+      "Premium voice-over work for marketing videos",
+      "Accessibility solutions for assistive technology",
+      "Museum audio guides and wellness app narration"
+    ],
+    "strengths": [
+      "Delivers high-fidelity audio with reduced artifacts and natural prosody",
+      "Offers 11+ high-quality voice options with enhanced emotional expression",
+      "Supports comprehensive multilingual capabilities for global applications",
+      "Provides professional-grade output suitable for commercial and broadcast use",
+      "Allows precise control over speech rate (0.25-4.0) and voice styling",
+      "Produces broadcast-ready audio in lossless formats like WAV and FLAC"
+    ],
+    "limitations": [
+      "Cost is exactly 2x standard TTS-1 ($0.030 per 1,000 characters)",
+      "Higher processing latency due to quality optimization",
+      "Larger file sizes require more storage and bandwidth (50-100% larger than TTS-1)",
+      "Not suitable for real-time applications requiring low latency",
+      "Limited to preset voice options with no custom voice creation capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "tts-1-hd",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:22:10.331829"
+}

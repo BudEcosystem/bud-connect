@@ -1,0 +1,61 @@
+{
+  "model_info": {
+    "description": "OpenAI o3, released on April 16, 2025, is a reasoning-focused AI model with advanced tool integration and visual reasoning capabilities. It supports multi-modal inputs (text and images), a 200,000-token context window, and access to the full ChatGPT tool suite. The model excels in complex problem-solving, multi-tool workflows, and visual analysis tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Software engineering with visual component analysis",
+      "Scientific research combining web search and data analysis",
+      "Medical image interpretation with reasoning",
+      "Complex multi-step problem solving requiring tool orchestration",
+      "Educational support for multi-modal learning"
+    ],
+    "strengths": [
+      "First OpenAI reasoning model with native tool integration for web search, Python analysis, image generation, and memory personalization",
+      "Pioneering visual reasoning capabilities to analyze whiteboard sketches, diagrams, and low-quality images during chain-of-thought processing",
+      "Outperforms previous models on benchmarks like SWE-bench Verified (69.1%), AIME 2024 (91.6%), and ARC-AGI (88% in high-compute settings)",
+      "Handles multi-modal problems with integrated text and visual analysis",
+      "80% price reduction post-June 2025 makes it competitive with GPT-4.1 pricing"
+    ],
+    "limitations": [
+      "Knowledge cutoff remains at October 2023",
+      "Longer response times compared to traditional models",
+      "Higher computational requirements and resource demands",
+      "May be overkill for simple tasks where o4-mini would be more cost-effective"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 69.1
+    },
+    {
+      "name": "AIME 2024",
+      "score": 91.6
+    },
+    {
+      "name": "MMMU",
+      "score": 82.9
+    },
+    {
+      "name": "MathVista",
+      "score": 86.8
+    },
+    {
+      "name": "CharXiv-Reasoning",
+      "score": 78.6
+    },
+    {
+      "name": "GPQA Diamond",
+      "score": 83.3
+    },
+    {
+      "name": "ARC-AGI (high-compute)",
+      "score": 88
+    }
+  ],
+  "model_name": "o3-2025-04-16",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:45:38.102737"
+}

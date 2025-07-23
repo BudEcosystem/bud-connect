@@ -1,0 +1,55 @@
+{
+  "model_info": {
+    "description": "OpenAI o3-mini is a small reasoning model developed by OpenAI, optimized for STEM tasks like mathematics, coding, and science. It supports function calling, structured outputs, and developer messages, with a 200,000-token context window and 100,000-token output limit. The model offers three reasoning effort levels (low, medium, high) and is 24% faster and 93% cheaper than the o1 model while maintaining comparable performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "STEM education (math, coding, science tutoring)",
+      "Software development (code generation, debugging)",
+      "High-volume reasoning applications requiring cost efficiency",
+      "Customer support for complex technical inquiries",
+      "Scientific data analysis and interpretation",
+      "Interactive learning platforms with reasoning capabilities"
+    ],
+    "strengths": [
+      "93% cheaper than o1 with comparable STEM reasoning performance",
+      "24% faster than o1 with lower latency for real-time applications",
+      "Supports function calling, structured outputs, and developer messages for production use",
+      "Matches o1 performance on AIME and GPQA benchmarks at medium reasoning effort",
+      "Excels in software engineering tasks (SWE-bench Verified and LiveBench Coding benchmarks)",
+      "Outperforms o1-mini in general knowledge evaluations"
+    ],
+    "limitations": [
+      "Less capable than larger models (o3/o3-pro) for extremely complex reasoning tasks",
+      "Slower than non-reasoning models for simple tasks due to reasoning overhead",
+      "Optimized for STEM domains, with potentially weaker performance in non-STEM areas",
+      "Limited free tier access (150 messages/day for Plus/Team users)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME Performance",
+      "score": 100
+    },
+    {
+      "name": "GPQA",
+      "score": 100
+    },
+    {
+      "name": "SWE-bench Verified",
+      "score": 100
+    },
+    {
+      "name": "LiveBench Coding",
+      "score": 100
+    },
+    {
+      "name": "General Knowledge Evaluations",
+      "score": 100
+    }
+  ],
+  "model_name": "o3-mini",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:28:19.608868"
+}

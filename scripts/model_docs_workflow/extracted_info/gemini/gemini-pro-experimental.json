@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini Pro Experimental is Google's cutting-edge experimental model in the Gemini Pro line, with the latest version (February 2025) being Gemini 2.0 Pro Experimental. It features a 2 million token context window, advanced coding capabilities, complex reasoning, and tool integration (e.g., Google Search, code execution). Designed for testing new features before stable releases, it excels in handling large-scale codebases and documents.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Large codebase analysis and architecture design",
+      "Processing and summarizing extensive technical documents",
+      "Multi-step problem solving and strategic planning",
+      "Tool-augmented tasks combining web research and code execution",
+      "Research applications requiring complex reasoning and data interpretation"
+    ],
+    "strengths": [
+      "Strongest coding performance among Google models with multi-language support and advanced refactoring suggestions",
+      "2 million token context window for processing entire codebases and large documents",
+      "Enhanced complex reasoning and multi-constraint problem-solving capabilities",
+      "Integrated tool use for web search, code execution, and dynamic information retrieval",
+      "Superior handling of nuanced, long-context prompts and world knowledge reasoning"
+    ],
+    "limitations": [
+      "Experimental nature with potential for unexpected behaviors and feature instability",
+      "Not recommended for production use due to possible sudden changes in functionality",
+      "Limited official documentation and minimal support compared to stable models",
+      "Performance variability in response quality and reasoning accuracy",
+      "Requires specific access credentials (Google Cloud account, API key, or Gemini Advanced subscription)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-pro-experimental",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:42:47.647913"
+}

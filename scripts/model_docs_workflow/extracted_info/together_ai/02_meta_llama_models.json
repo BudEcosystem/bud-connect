@@ -1,0 +1,24 @@
+{
+  "model_info": {
+    "description": "Llama 3.2 11B Vision Instruct Turbo is a multimodal large language model developed by Meta, designed for cost-effective vision-language tasks. It features 11 billion parameters, a context length of 131,072 tokens, and FP8 quantization. The model supports text and vision inputs, making it suitable for applications requiring both modalities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Visual question answering",
+      "Image captioning and description generation",
+      "Multimodal content analysis and synthesis"
+    ],
+    "strengths": [
+      "Multimodal capabilities combining text and vision for advanced understanding tasks",
+      "Cost-effective solution for vision-language applications with 11B parameters",
+      "Extended context window of 131,072 tokens for handling long inputs",
+      "FP8 quantization for optimized inference speed and memory efficiency"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "02_meta_llama_models",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:12:42.893872"
+}

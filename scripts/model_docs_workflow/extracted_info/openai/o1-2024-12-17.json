@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-2024-12-17 is an advanced reasoning model developed by OpenAI, released on December 17, 2024. It features a 200,000-token context window, 100,000-token max output, and a knowledge cutoff of September 30, 2023. The model emphasizes self-fact-checking, chain-of-thought reasoning, and a `reasoning_effort` parameter (low/medium/high) to control processing time. It supports vision capabilities, structured JSON outputs, and function calling for external API integration.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex programming tasks (code generation/debugging/architecture)",
+      "Scientific research (hypothesis generation, problem analysis)",
+      "Business strategy (market analysis, decision-making)",
+      "Advanced mathematical problem-solving and proof verification",
+      "Engineering system design and technical troubleshooting"
+    ],
+    "strengths": [
+      "Self-fact-checking mechanism reduces common errors and improves accuracy",
+      "Chain-of-thought training enables refined problem-solving and mistake recognition",
+      "Adjustable `reasoning_effort` parameter (low/medium/high) for task-specific performance tuning",
+      "Outperforms GPT-4o in function calling and structured output generation",
+      "Supports vision reasoning for applications in science, manufacturing, and coding",
+      "Sets new state-of-the-art results on multiple benchmarks for complex reasoning tasks"
+    ],
+    "limitations": [
+      "Higher latency compared to GPT-4o due to extended reasoning processes",
+      "Significantly more expensive ($15/million input tokens, $60/million output tokens)",
+      "Limited initial access to 'tier 5' OpenAI users (minimum $1,000 spent, 30-day account age)",
+      "Not optimized for low-latency tasks, multimodal input/output needs, or simple conversational use cases",
+      "Reasoning tokens are billed as output tokens, increasing cost for complex tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o1-2024-12-17",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:42:11.993273"
+}

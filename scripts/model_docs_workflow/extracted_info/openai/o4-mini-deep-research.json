@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "The o4-mini-deep-research model is a lightweight, speed-optimized variant of OpenAI's Deep Research API designed for low-latency research tasks. It features a 200,000-token context window, 100,000-token output capacity, and a knowledge cutoff of June 1, 2024. The model emphasizes multi-step research synthesis, web search integration, document analysis, and code execution for empirical research.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Business intelligence and market research",
+      "Academic literature reviews and research synthesis",
+      "Journalistic investigative research",
+      "Consulting research briefs",
+      "Product market analysis",
+      "Real-time customer support research",
+      "Educational research assistance",
+      "Strategic planning and due diligence",
+      "Regulatory compliance research"
+    ],
+    "strengths": [
+      "Optimized for speed and latency-sensitive applications while maintaining research quality",
+      "Cost-effective alternative to the o3-deep-research model with similar research capabilities",
+      "Supports multi-step research workflows with autonomous query decomposition and synthesis",
+      "Integrated web search, document analysis, and code execution for comprehensive research",
+      "Generates structured, evidence-based reports with proper citations",
+      "Ideal for interactive applications requiring rapid research results"
+    ],
+    "limitations": [
+      "Limited to OpenAI's ecosystem with no external API access for evaluation",
+      "Sacrifices some depth compared to the full o3-deep-research model for speed optimization",
+      "Requires clear, specific prompts for optimal performance",
+      "Human review recommended for critical research applications",
+      "Processing limitations for extremely complex queries due to resource constraints"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o4-mini-deep-research",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:31:18.364258"
+}

@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4-Vision-Preview is a deprecated multimodal model developed by OpenAI, combining GPT-4's language capabilities with vision understanding. It supports image analysis (PNG, JPEG, WEBP, non-animated GIFs up to 20MB), document reading, and real-world scene interpretation. The model uses a token-based pricing structure with costs varying by image resolution and size. Note: It was replaced by newer models like GPT-4o as of March 2025.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Accessibility tools for visually impaired users",
+      "Document processing of scanned text and figures",
+      "Product image analysis for e-commerce",
+      "Educational diagram and chart explanation",
+      "Medical imaging analysis (with appropriate disclaimers)",
+      "Real estate property description generation",
+      "Manufacturing quality control defect detection",
+      "Social media image content moderation"
+    ],
+    "strengths": [
+      "Analyzes and interprets visual content with detailed image analysis capabilities",
+      "Supports multimodal reasoning by combining text and image inputs",
+      "Reads text and figures in documents for information extraction",
+      "Processes multiple images in a single request for comparative analysis",
+      "Offers low/high resolution modes to balance detail and cost"
+    ],
+    "limitations": [
+      "Deprecated as of March 2025 with no support for new implementations",
+      "No support for video or animated GIFs",
+      "Cannot generate, edit, or manipulate images",
+      "Limited to 20MB per image with potential struggles for small text/complex diagrams",
+      "Processing time and costs increase with image complexity and resolution"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-vision-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:25:06.842236"
+}

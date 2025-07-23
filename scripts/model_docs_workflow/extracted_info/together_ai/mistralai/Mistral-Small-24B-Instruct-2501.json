@@ -1,0 +1,53 @@
+{
+  "model_info": {
+    "description": "Mistral-Small-24B-Instruct-2501 (Mistral Small 3) is a 24B-parameter instruction-tuned language model developed by Mistral AI. Optimized for low-latency performance, it features a 32K token context window, multilingual support (10+ languages), and a knowledge-dense architecture. The model excels in conversational AI, code generation, and agentic applications while being deployable on single-GPU systems via quantization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Low-latency conversational agents and chatbots",
+      "Code generation and programming assistance",
+      "On-premises deployment for sensitive data processing",
+      "Multilingual customer support automation",
+      "Agentic AI applications with function calling capabilities",
+      "Edge computing solutions with limited GPU resources"
+    ],
+    "strengths": [
+      "Delivers competitive performance with 24B parameters, matching larger models in benchmarks like MMLU (81%) and HumanEval (84.8%)",
+      "3x faster inference speed than Llama 3.3 70B on same hardware with 150 tokens/second latency",
+      "Supports 10+ languages including English, Chinese, Japanese, and Spanish with robust multilingual capabilities",
+      "Optimized for local deployment on RTX 4090 or 32GB MacBook via 4-bit/8-bit quantization",
+      "Strong function calling and JSON output generation for API integration",
+      "Apache 2.0 license allows commercial use with full model weights access"
+    ],
+    "limitations": [
+      "Smaller parameter count (24B) compared to 70B+ models may limit complex reasoning capabilities",
+      "Knowledge cutoff in early 2025 restricts access to post-2025 information",
+      "32K token context window may degrade performance for extremely long inputs",
+      "Multilingual performance varies across supported languages",
+      "May struggle with highly specialized domain tasks requiring deeper expertise",
+      "Requires careful prompt engineering for optimal results"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 81
+    },
+    {
+      "name": "HumanEval",
+      "score": 84.8
+    },
+    {
+      "name": "Math Tasks",
+      "score": 70.6
+    },
+    {
+      "name": "Inference Speed",
+      "score": 150
+    }
+  ],
+  "model_name": "mistralai/Mistral-Small-24B-Instruct-2501",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:19:23.841687"
+}

@@ -1,0 +1,54 @@
+{
+  "model_info": {
+    "description": "Gemini 2.5 Pro Preview 05-06 is a multimodal AI model developed by Google, released on May 6, 2025, with enhanced coding capabilities and a 1 million token context window. It supports text, code, images, audio, and video inputs, featuring state-of-the-art performance in coding benchmarks and multimodal understanding. The model is available until June 19, 2025, and includes configurable thinking budgets for cost/latency control.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Full-stack web application development with UI/UX design",
+      "Complex codebase refactoring and architecture design",
+      "Video-to-application conversion from YouTube content",
+      "Cross-modal content generation and rich media processing",
+      "Interactive web app prototyping with responsive design",
+      "Design system implementation and UI component replication"
+    ],
+    "strengths": [
+      "Ranked #1 on WebDev Arena (1443 Elo) and LMArena Coding (1470 Elo) for coding excellence",
+      "First model to solve complex backend refactoring evaluations (per Cognition)",
+      "Supports 1 million token context window with plans to expand to 2 million tokens",
+      "Handles 3,000 images, 8.4-hour audio, and 1-hour video inputs",
+      "Delivers state-of-the-art video understanding (84.8% on VideoMME benchmark)",
+      "Includes advanced features like video-to-code conversion and design replication",
+      "Free during experimental preview with no token charges"
+    ],
+    "limitations": [
+      "Experimental preview model with June 19, 2025 deprecation date",
+      "Input size limitations (7 MB max image size, 500 MB total input limit)",
+      "Not recommended for production use without testing",
+      "Rate limits may apply during preview period",
+      "Limited to 65,535 output tokens by default",
+      "Not optimized for high-volume, low-latency applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "WebDev Arena",
+      "score": 1443
+    },
+    {
+      "name": "LMArena Coding",
+      "score": 1470
+    },
+    {
+      "name": "SWE-Bench Verified",
+      "score": 63.8
+    },
+    {
+      "name": "VideoMME",
+      "score": 84.8
+    }
+  ],
+  "model_name": "gemini-2.5-pro-preview-05-06",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:36:53.978604"
+}

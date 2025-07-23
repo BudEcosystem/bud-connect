@@ -1,0 +1,59 @@
+{
+  "model_info": {
+    "description": "OpenAI o3-mini is a small reasoning model optimized for STEM tasks, offering production-ready features like function calling, structured outputs, and developer messages. It provides 200,000-token context windows, 100,000-token output limits, and three configurable reasoning effort levels (low, medium, high). The model balances speed (24% faster than o1) and cost efficiency (93% cheaper than o1) while maintaining comparable performance to larger models.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "STEM education and tutoring applications",
+      "Software development tasks (code generation, debugging)",
+      "High-volume reasoning applications requiring cost efficiency",
+      "Customer support for complex technical inquiries",
+      "Scientific and mathematical data analysis",
+      "Interactive educational platforms with reasoning capabilities",
+      "Content generation for STEM-focused domains"
+    ],
+    "strengths": [
+      "Optimized for STEM reasoning with strong performance in mathematics, coding, and science tasks",
+      "Three configurable reasoning effort levels (low, medium, high) for balancing speed, cost, and accuracy",
+      "24% faster than o1 model with 93% lower cost while maintaining comparable performance",
+      "Production-ready features including function calling, structured outputs, and developer messages",
+      "Matches o1 performance on AIME and GPQA benchmarks at medium reasoning effort",
+      "Highest performer on SWE-bench Verified software engineering benchmarks",
+      "Outperforms o1-mini in general knowledge domains",
+      "Cost-effective for high-volume applications compared to o3 and o3-pro"
+    ],
+    "limitations": [
+      "Less capable than larger models (o3/o3-pro) for extremely complex reasoning tasks",
+      "Slower than non-reasoning models for simple tasks due to reasoning overhead",
+      "Optimized for STEM domains with potentially reduced performance in non-technical areas",
+      "Free tier users have limited access (150 messages/day for Plus/Team users)",
+      "Higher latency compared to basic models due to reasoning process"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME Performance",
+      "score": 100
+    },
+    {
+      "name": "GPQA",
+      "score": 100
+    },
+    {
+      "name": "SWE-bench Verified",
+      "score": 100
+    },
+    {
+      "name": "LiveBench Coding",
+      "score": 100
+    },
+    {
+      "name": "General Knowledge",
+      "score": 100
+    }
+  ],
+  "model_name": "o3-mini",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:16:00.034743"
+}

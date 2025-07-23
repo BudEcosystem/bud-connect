@@ -1,0 +1,52 @@
+{
+  "model_info": {
+    "description": "Claude 3 Opus is Anthropic's most powerful model in the Claude 3 generation, designed for complex tasks requiring deep analysis, nuanced understanding, and sophisticated reasoning. It features a 200,000-token context window, 4,096-token output limit, and multimodal support (text and vision). The model outperforms peers on benchmarks like MMLU (undergraduate knowledge), GPQA (graduate reasoning), and GSM8K (mathematics), with industry-leading performance at release.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex academic research and literature reviews",
+      "Legal document analysis and medical research synthesis",
+      "Financial modeling and strategic consulting support",
+      "Sophisticated creative writing and narrative development",
+      "Technical system analysis and algorithm development",
+      "Advanced data interpretation from visual sources like charts and diagrams"
+    ],
+    "strengths": [
+      "Exhibits near-human comprehension and fluency on complex tasks with graduate-level reasoning capabilities",
+      "Industry-leading performance on MMLU (undergraduate knowledge) and GPQA (graduate reasoning) benchmarks",
+      "Advanced vision processing for analyzing photos, charts, graphs, and technical diagrams",
+      "Excellent mathematical ability demonstrated on GSM8K benchmark",
+      "Strong programming capabilities as shown on HumanEval benchmark",
+      "Comprehensive cross-domain knowledge synthesis for multi-step reasoning tasks"
+    ],
+    "limitations": [
+      "5x more expensive than Claude 3.5 Sonnet with higher input/output token costs ($15/$75 per million tokens)",
+      "Slower response times and higher latency compared to Sonnet and Haiku models",
+      "200,000-token context window and 4,096-token output limit may be restrictive for some applications",
+      "No real-time data access with knowledge cutoff date limitations",
+      "Overkill for simple tasks where Claude 3.5 Sonnet or Haiku would be more cost-effective"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 0
+    },
+    {
+      "name": "GPQA",
+      "score": 0
+    },
+    {
+      "name": "GSM8K",
+      "score": 0
+    },
+    {
+      "name": "HumanEval",
+      "score": 0
+    }
+  ],
+  "model_name": "claude-3-opus-latest",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:26:12.845268"
+}

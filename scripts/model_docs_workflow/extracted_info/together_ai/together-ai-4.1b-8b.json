@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Together AI's 4.1B-8B parameter models are mid-range language models designed for cost-effective applications requiring more capability than tiny models (under 4B) but less than larger models. They offer parameter ranges of 4.1B to 8B, support chat, language, and code tasks, and feature context windows of 8K-32K tokens. Optimized for fast inference and compatible with standard transformer architectures, they run on NVIDIA Hopper and Ampere GPUs with distributed inference capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Chatbots and virtual assistants for customer support/FAQs",
+      "Content generation (blog drafts, product descriptions, social media)",
+      "Code assistance (completion, bug detection, documentation)",
+      "Data processing (summarization, classification, sentiment analysis)",
+      "Educational tools (language learning, quiz creation, explanations)",
+      "Industry-specific applications in e-commerce, SaaS, marketing, legal, and healthcare"
+    ],
+    "strengths": [
+      "Cost-effective compared to larger models (60% cheaper than 21.1B-41B models)",
+      "Fast inference speeds with <200ms first token latency and 50-100 tokens/second throughput",
+      "Supports chat, language, and code models with fine-tuning capabilities",
+      "Streaming and batch processing options (50% cost discount for batch)",
+      "High uptime SLA (99.9%) for Scale tier customers",
+      "Pay-as-you-go pricing with free tier credits for new users"
+    ],
+    "limitations": [
+      "Limited context length (8K-32K tokens) compared to larger models",
+      "Struggles with complex multi-step reasoning and niche domain expertise",
+      "Less exceptional performance for highly creative tasks",
+      "MMLU score is only 'competitive for model size category' (no specific benchmark)",
+      "HumanEval code performance is 'suitable for basic to intermediate tasks' (no specific score)"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-4.1b-8b",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:22:08.629458"
+}

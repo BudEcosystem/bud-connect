@@ -1,0 +1,41 @@
+{
+  "model_info": {
+    "description": "GPT-4o Mini is a compact, cost-efficient small language model (SLM) developed by OpenAI, released on July 18, 2024. It features a 128,000-token context window, 16,384-token output limit, and a knowledge cutoff of October 1, 2023. Built on a streamlined GPT-4o architecture, it supports text and vision processing with plans for future audio/video capabilities. The model is optimized for high-volume, performance-sensitive applications while maintaining multilingual support and core functionalities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation with cost-effective scaling and reduced response times.",
+      "Bulk content generation and large-scale text analysis for high-volume applications.",
+      "Code review assistance and software development tasks with enhanced programming capabilities.",
+      "Educational applications and tutoring systems leveraging multilingual support and math reasoning.",
+      "Real-time systems requiring low-latency responses for interactive user experiences."
+    ],
+    "strengths": [
+      "Cost-efficient API pricing (60%+ cheaper than GPT-3.5 Turbo) with competitive performance for high-volume tasks.",
+      "Large 128,000-token context window and 16,384-token output capacity for handling extensive inputs and outputs.",
+      "Superior benchmark performance (82.0% on MMLU, 87.0% on MGSM) compared to competitors like Gemini 1.5 Flash and Claude 3 Haiku.",
+      "Multimodal text and vision capabilities with future audio/video expansion planned.",
+      "Seamless integration with OpenAI's ecosystem and support for fine-tuning (gpt-4o-mini-2024-07-18 version)."
+    ],
+    "limitations": [
+      "Smaller model size may limit complex reasoning capabilities compared to full GPT-4o.",
+      "Audio and video processing capabilities not yet available in the current API release.",
+      "Knowledge cutoff limited to October 1, 2023, which may affect up-to-date information accuracy.",
+      "Not optimal for highly complex reasoning tasks requiring frontier model capabilities."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 82.0
+    },
+    {
+      "name": "MGSM",
+      "score": 87.0
+    }
+  ],
+  "model_name": "gpt-4o-mini-2024-07-18",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:02:57.326327"
+}

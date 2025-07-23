@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Open Mixtral 8x22B is a large sparse Mixture-of-Experts (SMoE) model developed by Mistral AI, offering efficient inference with 141B total parameters but only 39B active parameters per forward pass. It features a 64K token context window, native function calling, multilingual support, and is optimized for reasoning, coding, and mathematical tasks. The model is open-source under Apache 2.0 and available via API or self-hosting.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced reasoning and multi-step logical inference tasks.",
+      "Code generation, algorithm implementation, and code optimization.",
+      "Mathematical problem solving and scientific computing.",
+      "Multilingual content generation and cross-language translation.",
+      "Automated workflows via native function calling and API integration."
+    ],
+    "strengths": [
+      "Efficient inference with sparse activation, using only 39B active parameters out of 141B total.",
+      "64K token context window for handling long documents and complex inputs.",
+      "Native function calling capability for seamless API/tool integration.",
+      "Superior performance in coding, mathematics, and multilingual tasks.",
+      "Open-source under Apache 2.0 license with no licensing fees for self-hosting."
+    ],
+    "limitations": [
+      "Requires high-end GPU infrastructure (e.g., multiple A100 80GB GPUs) for deployment.",
+      "Limited to API access or self-hosting; no pre-trained model weights provided for direct download.",
+      "Sparse architecture may require specialized optimization techniques for maximum efficiency.",
+      "Multilingual support is implied but lacks specific language coverage details."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "open-mixtral-8x22b",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:05:09.744757"
+}

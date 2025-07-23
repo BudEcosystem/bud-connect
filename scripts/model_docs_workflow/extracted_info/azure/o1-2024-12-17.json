@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "The o1-2024-12-17 model is a multimodal reasoning model developed by Azure OpenAI, released on December 17, 2024. It supports text and vision inputs with a 200K token context window (128K input) and a knowledge cutoff of October 2023. Key features include developer messages, configurable reasoning effort (low/medium/high), and tools support for agentic AI applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Scientific research and hypothesis generation",
+      "Financial modeling and risk assessment",
+      "Legal document analysis and contract processing",
+      "Healthcare data analysis and diagnostic support",
+      "Advanced code generation and algorithm development"
+    ],
+    "strengths": [
+      "Supports multimodal inputs (text and vision) for comprehensive analysis",
+      "Offers configurable reasoning effort settings (low/medium/high) for task complexity",
+      "Enhanced response formatting and extended context window (200K tokens)",
+      "Advanced capabilities in scientific reasoning (physics, chemistry, biology) and mathematical computation",
+      "Native integration with Azure AI Foundry and enterprise security standards"
+    ],
+    "limitations": [
+      "Knowledge cutoff in October 2023 limits access to newer information",
+      "Processing latency due to complex reasoning architecture",
+      "Higher computational costs from reasoning tokens and effort scaling",
+      "Limited regional availability (East US2, Sweden Central)",
+      "Requires approval-based access and enterprise-grade security verification"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o1-2024-12-17",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:10:03.361740"
+}

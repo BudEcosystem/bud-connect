@@ -1,0 +1,37 @@
+{
+  "model_info": {
+    "description": "Claude 3 Sonnet (20240229) is the balanced middle-tier model in the Claude 3 family, released on February 29, 2024. It balances intelligence and speed for enterprise workloads, featuring a 200,000 token context window, 4,096 token output limit, and multimodal (text and vision) capabilities. Trained on data up to August 2023, it is optimized for high-volume deployments with 2x faster processing than Claude 2.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support automation and service desk systems",
+      "Sales and marketing automation (lead qualification, outreach)",
+      "Knowledge management and information retrieval",
+      "Business intelligence and data analysis tasks",
+      "Content generation at scale for marketing and documentation",
+      "API backend services and real-time chat applications",
+      "Medical record summarization in healthcare",
+      "Code review and documentation in technology sectors"
+    ],
+    "strengths": [
+      "2x faster processing than Claude 2 and Claude 2.1",
+      "Balanced price-performance ratio for enterprise use",
+      "Enterprise-ready with high reliability and low error rates",
+      "Multimodal support for text and vision tasks",
+      "Strong reasoning capabilities for production workloads",
+      "Optimized for high-volume deployments with consistent output quality"
+    ],
+    "limitations": [
+      "Less capable than Opus on complex reasoning tasks",
+      "200,000 token context window and 4,096 token output limit",
+      "August 2023 knowledge cutoff",
+      "Not optimal for cutting-edge research or highly nuanced tasks",
+      "Requires careful prompt optimization for best results"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-sonnet-20240229",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:27:07.475129"
+}

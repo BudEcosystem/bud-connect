@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Claude 3 Opus is the most intelligent model in the Claude 3 family, developed by Anthropic and available on AWS Bedrock. It excels in complex reasoning, multimodal processing (text and images), and maintains high reliability with reduced hallucinations. The model supports 100+ languages and features a 200,000-token context window, making it suitable for sophisticated analytical tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Strategic business analysis and financial modeling",
+      "Complex research and development tasks",
+      "Multimodal document analysis (text and images)",
+      "Advanced code generation and algorithm design",
+      "Legal and medical research support",
+      "Creative content generation and technical documentation"
+    ],
+    "strengths": [
+      "Exceptional performance on complex reasoning and multi-step logical tasks",
+      "Multimodal capabilities for text and image analysis with high fidelity",
+      "200,000-token context window for handling extensive inputs",
+      "Significantly reduced hallucination rates compared to previous generations",
+      "Strong performance in benchmarks like MMLU, GPQA, GSM8K, and HumanEval",
+      "Enterprise-grade features for task automation, strategic planning, and research"
+    ],
+    "limitations": [
+      "Slower processing speed compared to simpler models like Haiku",
+      "Higher cost per token than other Claude models (e.g., 80% cost savings with Sonnet)",
+      "200,000-token limit may restrict extremely long document analysis",
+      "Not optimized for low-latency real-time applications",
+      "Image processing limited to specific formats (JPEG, PNG, GIF, WebP) and 20MB size",
+      "Regional availability restrictions in some AWS regions"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "anthropic.claude-3-opus-20240229-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:32:51.858114"
+}

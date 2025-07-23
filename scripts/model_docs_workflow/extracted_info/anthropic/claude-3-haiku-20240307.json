@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Claude 3 Haiku (20240307) is a compact, multimodal large language model developed by Anthropic, designed for rapid, cost-effective AI responses. It features a 200,000-token context window, 4,096-token output limit, and processes 10k tokens in under 3 seconds. Optimized for speed and affordability, it supports text and vision inputs while maintaining core capabilities for high-volume applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time customer support and live chat applications",
+      "High-volume content moderation and classification",
+      "Quick information retrieval and document summarization",
+      "Code completion and syntax validation in development tools",
+      "Edge computing scenarios requiring low-latency responses"
+    ],
+    "strengths": [
+      "Fastest model in the Claude 3 family with sub-3-second processing for 10k tokens",
+      "60x cheaper than Claude 3 Opus with entry-level pricing for high-volume use cases",
+      "Full multimodal support for text and vision processing",
+      "Minimal first-token latency and optimized streaming for real-time interactions",
+      "High throughput and low-latency performance for concurrent request handling"
+    ],
+    "limitations": [
+      "Less sophisticated reasoning compared to larger Claude 3 models (Sonnet/Opus)",
+      "Struggles with complex multi-step tasks and nuanced content",
+      "Knowledge cutoff in August 2023 with no internet access",
+      "Limited to 4,096-token outputs and 200,000-token context window",
+      "Best suited for simple, well-defined tasks rather than advanced reasoning"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "claude-3-haiku-20240307",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:23:45.481751"
+}

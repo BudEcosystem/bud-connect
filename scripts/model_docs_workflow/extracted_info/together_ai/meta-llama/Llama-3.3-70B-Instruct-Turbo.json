@@ -1,0 +1,52 @@
+{
+  "model_info": {
+    "description": "Llama 3.3 70B Instruct Turbo is a 70-billion-parameter multilingual chat model developed by Meta and hosted on Together AI. It uses FP8 quantization for performance optimization, supports a 128K-token context window, and excels in multilingual dialogue, instruction following, and code generation. The model outperforms many open-source and closed chat models on industry benchmarks like MMLU (71.3%) and is optimized for high-quality conversational AI applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multilingual customer service chatbots",
+      "Content localization and translation",
+      "Educational platforms requiring multilingual tutoring",
+      "International business communication tools",
+      "Code documentation and technical writing in multiple languages",
+      "Enterprise-grade conversational AI applications"
+    ],
+    "strengths": [
+      "Outperforms many open-source and closed chat models on industry benchmarks (e.g., MMLU 71.3%)",
+      "Supports 128K-token context window for handling long documents",
+      "FP8 quantization enables 2.6x-4.3x decoding speedup over vLLM on 8xH100 GPUs",
+      "Strong multilingual capabilities with exceptional performance in English, European, and Asian languages",
+      "High output speed (98 tokens/second) and low first-token latency (0.43 seconds)",
+      "Together Turbo endpoint offers 17x lower cost than GPT-4o and 4.5x performance improvement over vLLM"
+    ],
+    "limitations": [
+      "Requires substantial computational resources (8xH100 GPUs recommended)",
+      "Higher cost per token compared to smaller models ($0.60-0.88 per 1M tokens)",
+      "128K context window may limit processing of extremely long documents",
+      "Slower than smaller models despite optimizations (98 tokens/second output speed)",
+      "Significant GPU memory requirements for 70B parameters"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 71.3
+    },
+    {
+      "name": "AlpacaEval 2.0",
+      "score": 1.9
+    },
+    {
+      "name": "Intelligence Index",
+      "score": 41
+    },
+    {
+      "name": "Private Domain Accuracy",
+      "score": 56.6
+    }
+  ],
+  "model_name": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:13:05.724362"
+}

@@ -1,0 +1,27 @@
+{
+  "model_info": {
+    "description": "Fireworks AI offers two proprietary embedding models optimized for high-scale text processing and semantic understanding. The 'fireworks-ai-embedding-up-to-150m' handles up to 150 million tokens, while the 'fireworks-ai-embedding-150m-to-350m' supports 150-350 million tokens. Both are OpenAI-compatible, designed for enterprise applications requiring high throughput, and feature fast inference for similarity comparisons and RAG pipelines.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Semantic search and content recommendation systems",
+      "Retrieval-Augmented Generation (RAG) pipelines for LLM context retrieval",
+      "Clustering and similarity analysis of large text datasets",
+      "Customer support automation and business intelligence applications",
+      "Vector database integration for document similarity matching"
+    ],
+    "strengths": [
+      "Competitive pricing at $0.008 per 1 million tokens with no output charges",
+      "High-volume token processing (150M-350M range) for large-scale applications",
+      "12x faster than vLLM and 40x faster than GPT-4 for real-time inference",
+      "OpenAI-compatible API for seamless integration with existing workflows",
+      "Enterprise-grade reliability with 99.99% API uptime and auto-scaling infrastructure"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "fireworks-ai-embedding-proprietary-models",
+  "provider": "fireworks_ai",
+  "extraction_date": "2025-07-23T12:58:26.973593"
+}

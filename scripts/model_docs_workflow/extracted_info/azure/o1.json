@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "OpenAI o1 is a large language model developed by OpenAI, designed for advanced reasoning in complex mathematical, scientific, and coding tasks. It utilizes a transformer-based architecture enhanced with reinforcement learning and chain-of-thought (CoT) reasoning. Key features include function calling, structured JSON outputs, vision capabilities for image reasoning, and strong performance in benchmarks like the International Mathematics Olympiad (83%) and Codeforces (89th percentile).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Solving complex mathematical problems in algebra, calculus, and formal logic.",
+      "Generating and debugging code across multiple programming languages.",
+      "Scientific research tasks like annotating cell sequencing data in healthcare.",
+      "Physics applications requiring mathematical formula generation for quantum optics.",
+      "Multi-step workflow development and execution in research and engineering domains."
+    ],
+    "strengths": [
+      "Excels in mathematical reasoning with 83% accuracy on the International Mathematics Olympiad (IMO) compared to GPT-4o's 13%.",
+      "Achieves 89th percentile in Codeforces programming competitions, demonstrating strong coding proficiency.",
+      "Utilizes reinforcement learning (RL) to enhance chain-of-thought reasoning for complex problem-solving.",
+      "Supports function calling, structured JSON outputs, and vision capabilities for image-based reasoning.",
+      "o1-mini variant offers 80% lower cost than o1-preview for applications requiring reasoning but not broad world knowledge."
+    ],
+    "limitations": [
+      "Slower response times due to internal reasoning processes and token overhead.",
+      "Higher computational cost per token compared to standard models like GPT-4o.",
+      "Limited availability of ChatGPT features depending on access method.",
+      "Reasoning tokens consume context window space, reducing available input/output capacity.",
+      "Not suitable for low-latency or cost-sensitive applications due to performance and pricing trade-offs."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "IMO",
+      "score": 83
+    },
+    {
+      "name": "AIME",
+      "score": 78
+    },
+    {
+      "name": "Codeforces",
+      "score": 89
+    }
+  ],
+  "model_name": "o1",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:13:37.770523"
+}

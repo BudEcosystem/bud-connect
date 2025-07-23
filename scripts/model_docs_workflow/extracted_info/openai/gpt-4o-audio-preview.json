@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "GPT-4o-audio-preview is a multimodal model developed by OpenAI that enables native audio understanding and generation in the Chat Completions API. It processes audio inputs and generates audio outputs alongside text, supporting multilingual audio and maintaining voice characteristics. The December 2024 version offers improved voice quality and 60%+ cheaper audio pricing.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Voice assistants with natural speech capabilities",
+      "Accessibility tools for visually impaired users",
+      "Language learning platforms with pronunciation practice",
+      "Automated customer service voice response systems",
+      "Podcast content generation from text scripts",
+      "Interactive voice note transcription and response systems",
+      "Multimodal applications requiring text and voice integration",
+      "Educational tools with audio-based learning experiences",
+      "Healthcare voice-based patient interaction systems",
+      "Entertainment applications with interactive storytelling"
+    ],
+    "strengths": [
+      "Supports multimodal inputs combining text and audio for enhanced interaction",
+      "December 2024 version provides 60%+ cheaper audio pricing and improved voice quality",
+      "Preserves voice characteristics (emotion, emphasis, accents) for natural-sounding outputs",
+      "Offers six preset voices and multilingual audio understanding/generation capabilities",
+      "Enables function calling with audio inputs for integrated application workflows",
+      "Part of a unified multimodal processing system eliminating the need for external stitching"
+    ],
+    "limitations": [
+      "Not suitable for real-time interactions (use Realtime API for low-latency needs)",
+      "Limited to six preset voices with no custom voice cloning capabilities",
+      "Higher latency compared to text-only responses",
+      "Audio processing subject to token limits and format restrictions",
+      "Sequential processing required (not streaming-capable)",
+      "Pricing for audio input/output is significantly higher than text-only operations"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-audio-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:31:23.359671"
+}

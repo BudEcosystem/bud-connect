@@ -1,0 +1,57 @@
+{
+  "model_info": {
+    "description": "Qwen2.5-7B-Instruct-Turbo is a compact instruction-tuned large language model from Alibaba Cloud's Qwen team, hosted on Together AI. It features 7.61 billion parameters, a 131,072-token context window, and FP8 quantization for optimized inference speed. The model excels in mathematical reasoning, coding, and multilingual tasks while supporting multimodal interactions (text + image).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Conversational AI and chatbot development",
+      "Code generation, debugging, and programming assistance",
+      "Mathematical problem-solving and reasoning",
+      "Multilingual content creation and translation",
+      "Structured data processing and JSON generation",
+      "Educational tools and tutoring systems",
+      "Multimodal applications combining text and image analysis"
+    ],
+    "strengths": [
+      "FP8 quantization enables faster inference while maintaining high performance",
+      "131,072-token context window supports long-text processing and complex multi-step tasks",
+      "Significant benchmark improvements: MMLU 74.2 (\u21913.9), MATH 75.5 (\u219122.6) over predecessor",
+      "Multimodal capabilities for text-image interactions and JSON generation",
+      "Strong multilingual support (12+ languages including Chinese, English, and Arabic)",
+      "Cost-effective at $0.30 per million tokens compared to larger models"
+    ],
+    "limitations": [
+      "7B parameter size may lag behind larger models on highly complex tasks",
+      "FP8 quantization introduces minor accuracy trade-offs in edge cases",
+      "Performance degrades with extremely long contexts (128K+ tokens)",
+      "Requires careful prompt engineering for optimal results",
+      "Limited to 7B parameters vs 72B variants for extreme performance needs"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 74.2
+    },
+    {
+      "name": "MATH",
+      "score": 75.5
+    },
+    {
+      "name": "HumanEval",
+      "score": 57.9
+    },
+    {
+      "name": "GPQA",
+      "score": 74.2
+    },
+    {
+      "name": "ARC-c",
+      "score": 74.2
+    }
+  ],
+  "model_name": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:09:17.472215"
+}

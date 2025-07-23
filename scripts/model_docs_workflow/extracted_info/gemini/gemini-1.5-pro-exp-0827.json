@@ -1,0 +1,38 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Pro Experimental 0827 (exp-0827) is an advanced experimental multimodal model developed by Google, released in late August 2024. It enhances the Gemini 1.5 Pro architecture with optimizations for coding, mathematical reasoning, and complex prompt handling. The model supports up to 1 million tokens in context (2 million in certain configurations) and maintains an 8,192 token output limit. It replaced the exp-0801 version on September 3, 2024, and is optimized for tasks involving codebases, long-form documentation, and multi-file projects.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex code generation and optimization across multiple programming languages",
+      "Scientific computing, mathematical proof generation, and statistical analysis",
+      "Technical documentation creation and advanced text editing tasks",
+      "AI-assisted programming and software architecture design",
+      "Data science applications requiring complex algorithm implementation and visualization"
+    ],
+    "strengths": [
+      "Achieved No. 4 ranking in coding arena benchmarks with exceptional code generation and understanding capabilities",
+      "Improved mathematical reasoning and logical problem-solving performance compared to predecessors",
+      "Enhanced handling of complex, multi-part prompts and large-scale context processing (up to 1 million tokens)",
+      "Full multimodal support for text, code, images, and structured data",
+      "Superior performance in code editing, problem-solving, and data extraction tasks"
+    ],
+    "limitations": [
+      "Experimental status with limited availability and potential discontinuation",
+      "Subject to restrictive rate limits and potential instability",
+      "Standard 8,192 token output limit maintained despite large context window",
+      "Not recommended for critical production systems due to experimental nature",
+      "Feature set may change without notice and lacks comprehensive documentation"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Coding Arena Rank",
+      "score": 4
+    }
+  ],
+  "model_name": "gemini-1.5-pro-exp-0827",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:23:57.079104"
+}

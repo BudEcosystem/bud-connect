@@ -1,0 +1,44 @@
+{
+  "model_info": {
+    "description": "Mixtral-8x7B-Instruct-v0.1 is a Sparse Mixture of Experts (SMoE) language model developed by Mistral AI, designed for conversational and task-specific applications. It features 46.7B total parameters with 32,768 token context window, multilingual support (English, French, Italian, German, Spanish), and a MoE architecture that activates only 2 of 8 experts per token. The model is optimized for computational efficiency, offering 6x faster inference than Llama 2 70B while maintaining high performance.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced conversational AI and chatbots",
+      "Programming assistance and code generation",
+      "Mathematical problem-solving and analysis",
+      "Multilingual content creation and translation",
+      "Educational tutoring systems",
+      "Software development tools (IDE integration)",
+      "Customer support systems with multilingual capabilities"
+    ],
+    "strengths": [
+      "Achieves 70B-class performance with 13B-class compute efficiency through MoE architecture",
+      "6x faster inference than Llama 2 70B with comparable performance",
+      "32K token context window for handling long-form content",
+      "Strong multilingual capabilities across five languages",
+      "Superior mathematical reasoning and code generation compared to Llama 2 70B",
+      "Cost-effective with Apache 2.0 license and competitive pricing ($0.60 per 1M tokens)",
+      "Demonstrates reduced bias on BBQ benchmark compared to Llama 2"
+    ],
+    "limitations": [
+      "High RAM requirements (~70B model equivalent) for full deployment",
+      "Complex multi-GPU setup needed for optimal performance",
+      "Lacks built-in content moderation mechanisms",
+      "Knowledge cutoff limited to pre-2024 data",
+      "Potential performance degradation at maximum 32K token context length",
+      "Response quality variations due to expert routing mechanism",
+      "Requires specific prompt format (<s> [INST] ... [/INST]) for proper operation"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MT-Bench",
+      "score": 8.3
+    }
+  ],
+  "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:20:16.372430"
+}

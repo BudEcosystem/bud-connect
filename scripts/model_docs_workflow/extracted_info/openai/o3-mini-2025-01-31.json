@@ -1,0 +1,60 @@
+{
+  "model_info": {
+    "description": "OpenAI o3-mini, released on January 31, 2025, is a cost-efficient reasoning model optimized for STEM fields (science, math, coding) with three adjustable reasoning levels (low, medium, high). It offers a 200,000-token context window, 100,000-token output limit, and a knowledge cutoff of October 2023. The model is 63% cheaper and 24% faster than o1-mini, with improved STEM performance and developer features like function calling and structured outputs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical problem-solving and proof verification",
+      "Algorithm development, code review, and debugging",
+      "Scientific research analysis and hypothesis testing",
+      "Medical diagnostic support (94.8% MedQA accuracy)",
+      "Automated technical documentation and reporting",
+      "STEM education tutoring and interactive learning"
+    ],
+    "strengths": [
+      "63% lower cost and 24% faster response times compared to o1-mini",
+      "Three adjustable reasoning levels (low, medium, high) for task-specific optimization",
+      "Exceptional STEM performance with 91.8% Math500 and 94.8% MedQA scores",
+      "Supports function calling, structured JSON outputs, and developer message customization",
+      "39% fewer major mistakes on complex real-world questions",
+      "Expanded context window (200,000 tokens) and improved token efficiency"
+    ],
+    "limitations": [
+      "No image analysis support at launch (planned for future updates)",
+      "Knowledge cutoff limited to October 2023",
+      "Restricted API access to select developers",
+      "Struggles with non-STEM domains compared to general-purpose models",
+      "Eventually replaced by o4-mini with superior performance and features"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Math500",
+      "score": 91.8
+    },
+    {
+      "name": "AIME",
+      "score": 86.5
+    },
+    {
+      "name": "MedQA",
+      "score": 94.8
+    },
+    {
+      "name": "MMLU Pro",
+      "score": 78.7
+    },
+    {
+      "name": "LiveCodeBench",
+      "score": 71.5
+    },
+    {
+      "name": "Average Accuracy",
+      "score": 73.1
+    }
+  ],
+  "model_name": "o3-mini-2025-01-31",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:43:47.915960"
+}

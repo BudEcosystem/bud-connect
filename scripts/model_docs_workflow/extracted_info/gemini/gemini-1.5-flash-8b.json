@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Google Gemini 1.5 Flash-8B is the smallest production model in Google's Gemini 1.5 family, optimized for speed and efficiency while maintaining 97% of the original Flash model's accuracy. It features a 1 million token context window, multimodal capabilities (text, images, audio, video, documents), and is designed for high-volume, low-latency tasks. Trained via distillation from larger Gemini models, it supports real-time applications and cost-effective deployments.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume chat applications (customer service bots, interactive assistants)",
+      "Audio-to-text transcription services",
+      "Multi-language translation tasks",
+      "Document summarization and data extraction",
+      "Real-time content processing with low latency requirements"
+    ],
+    "strengths": [
+      "5x faster inference speed compared to the original Gemini 1.5 Flash model",
+      "40% faster than competing models like GPT-4o with 97% accuracy retention",
+      "50% cost reduction compared to Gemini 1.5 Flash with a free tier via Google AI Studio",
+      "Supports multimodal inputs including text, images, audio, video, and documents",
+      "Handles up to 1 million tokens with remarkable accuracy for long context processing",
+      "Enhanced rate limits (4,000 RPM) for high-throughput applications"
+    ],
+    "limitations": [
+      "Optimized for simple to moderate complexity tasks, may underperform on highly complex reasoning",
+      "Performance may vary with extreme context lengths (1M tokens)",
+      "Not available on all platforms (e.g., experimental on Vertex AI)",
+      "Some advanced features may be limited compared to larger models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-8b",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:17:52.261992"
+}

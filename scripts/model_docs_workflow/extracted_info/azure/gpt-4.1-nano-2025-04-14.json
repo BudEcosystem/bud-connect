@@ -1,0 +1,48 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-nano-2025-04-14 is an ultra-compact, cost-effective language model in OpenAI's GPT-4.1 series, optimized for low latency and high throughput. It features a 1M+ token context window, sub-100ms response latency, and excels in real-time classification, autocompletion, and high-volume processing tasks. Benchmarks include 80.1% on MMLU, 50.3% on GPQA, and 9.8% on Aider polyglot coding.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time sentiment analysis and content moderation",
+      "Intent recognition in conversational AI systems",
+      "High-volume document classification and log analysis",
+      "Code autocompletion in IDEs and development tools",
+      "Edge/mobile applications requiring lightweight AI capabilities",
+      "Customer support ticket triage and survey analysis"
+    ],
+    "strengths": [
+      "Ultra-low latency (<100ms average response time) for real-time applications",
+      "High throughput with exceptional token processing rates",
+      "Minimal computational resource requirements for cost efficiency",
+      "1M+ token context window for handling extensive inputs",
+      "Strong performance on MMLU (80.1%) and GPQA (50.3%) benchmarks",
+      "Multimodal support for text and image inputs",
+      "Seamless integration with Azure's cloud-native ecosystem"
+    ],
+    "limitations": [
+      "Limited coding capabilities (9.8% on Aider polyglot coding benchmark)",
+      "Provisioned deployment context window capped at 128,000 tokens",
+      "Batch processing context window limited to 300,000 tokens",
+      "Not the most advanced model in the GPT-4.1 series for cutting-edge tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 80.1
+    },
+    {
+      "name": "GPQA",
+      "score": 50.3
+    },
+    {
+      "name": "Aider Polyglot Coding",
+      "score": 9.8
+    }
+  ],
+  "model_name": "gpt-4.1-nano-2025-04-14",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:52:47.387983"
+}

@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-4 Turbo is an optimized version of GPT-4 developed by OpenAI, offering the same capabilities at reduced costs and improved performance. It features a 128,000-token context window (equivalent to over 300 pages of text), supports multimodal inputs (text and vision), and includes enhanced features like better instruction adherence and factual accuracy. The model's knowledge cutoff varies by version, with newer iterations incorporating more recent training data.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis (contract review, research paper summarization, book-length content)",
+      "Software development (code review, architecture design, bug detection)",
+      "Business applications (strategic planning, market analysis, report generation)",
+      "Creative work (long-form content creation, story/script writing, complex text translation)",
+      "Visual tasks (image understanding, OCR, object detection, visual question answering)"
+    ],
+    "strengths": [
+      "3x cheaper input tokens and 2x cheaper output tokens compared to standard GPT-4",
+      "128,000-token context window for processing lengthy documents and complex tasks",
+      "Multimodal support for text, image analysis, OCR, and visual question answering",
+      "Improved performance optimization with faster response times and reduced latency",
+      "Maintains GPT-4-level capabilities while offering better cost-effectiveness",
+      "Enhanced factual accuracy and consistent outputs through improved instruction adherence"
+    ],
+    "limitations": [
+      "Knowledge cutoff date varies by version, limiting access to the most recent information",
+      "Potential biases inherited from training data",
+      "Not suitable for real-time applications requiring sub-second responses",
+      "Token limits still apply despite the large context window",
+      "More expensive than GPT-3.5 Turbo despite superior capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-turbo",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:48:55.277068"
+}

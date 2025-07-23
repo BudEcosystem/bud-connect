@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "OpenAI's o3-pro is a cutting-edge reasoning model launched in early 2025, designed for complex mathematical and scientific tasks. It features a 200,000-token context window, multi-modal capabilities, and exclusive API access via the Responses API. The model excels in advanced problem-solving, surpassing competitors like Google Gemini 2.5 Pro and Anthropic Claude 4 Opus on benchmarks such as AIME 2024 and GPQA Diamond.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced scientific research and PhD-level problem solving",
+      "Complex mathematical analysis and equation solving",
+      "High-stakes consulting requiring precise reasoning",
+      "Enterprise strategic planning and technical innovation",
+      "Cutting-edge R&D projects demanding deep analytical capabilities"
+    ],
+    "strengths": [
+      "Outperforms leading models on AIME 2024 and GPQA Diamond benchmarks for mathematical and scientific reasoning",
+      "Largest context window (200,000 tokens) in OpenAI's o3 series for handling complex inputs",
+      "Supports multi-modal tasks with file search and image generation tool integration",
+      "Highest precision and accuracy in OpenAI's model lineup for advanced reasoning",
+      "Exclusive access via Responses API with version snapshots for production stability"
+    ],
+    "limitations": [
+      "Highest cost in the o3 series ($20/$80 per million input/output tokens)",
+      "Slower response times due to maximum reasoning depth optimization",
+      "High compute requirements making it the most resource-intensive model",
+      "Best suited only for tasks requiring maximum reasoning capability",
+      "Additional per-call fees for file search and image generation tools"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3-pro",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:29:36.789118"
+}

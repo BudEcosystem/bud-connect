@@ -1,0 +1,58 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-preview is a large language model trained with reinforcement learning to perform complex reasoning. Released on September 12, 2024, it uses a chain-of-thought process and self-reflection to break down problems, refine strategies, and correct mistakes. It features a 128,000-token context window, 32,768 max output tokens, and a knowledge cutoff of October 2023. The model emphasizes deep analytical reasoning but lacks web browsing, file upload, and image capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical research and competition problem-solving",
+      "Scientific analysis in physics, chemistry, and biology",
+      "Advanced software engineering and algorithm design",
+      "Data science and statistical modeling",
+      "Strategic business planning and multi-step reasoning tasks"
+    ],
+    "strengths": [
+      "Excels in complex mathematical problem-solving (93% accuracy on AIME 2024 with 1000 samples)",
+      "Achieves PhD-level performance in scientific reasoning (GPQA Diamond benchmark)",
+      "Demonstrates advanced coding skills (89th percentile on Codeforces competitions)",
+      "Uses reinforcement learning to refine strategies and correct mistakes",
+      "Supports multi-step logical reasoning with a 128,000-token context window"
+    ],
+    "limitations": [
+      "Significantly more expensive than GPT-4o due to reasoning token costs",
+      "Higher latency compared to standard models (not suitable for low-latency tasks)",
+      "Lacks web browsing, file upload, and image generation/analysis capabilities",
+      "Knowledge cutoff limited to October 2023",
+      "Medium risk classification for CBRN weapons-related queries"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2024 (single sample)",
+      "score": 74
+    },
+    {
+      "name": "AIME 2024 (64 samples consensus)",
+      "score": 83
+    },
+    {
+      "name": "AIME 2024 (1000 samples re-ranked)",
+      "score": 93
+    },
+    {
+      "name": "GPQA Diamond (scientific reasoning)",
+      "score": 100
+    },
+    {
+      "name": "IOI 2024 (competition rules)",
+      "score": 49
+    },
+    {
+      "name": "Codeforces (competitions)",
+      "score": 89
+    }
+  ],
+  "model_name": "o1-preview-2024-09-12",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:40:21.904191"
+}

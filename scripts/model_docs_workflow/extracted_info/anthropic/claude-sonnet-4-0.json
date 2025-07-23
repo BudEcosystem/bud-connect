@@ -1,0 +1,50 @@
+{
+  "model_info": {
+    "description": "Claude Sonnet 4.0 is a hybrid reasoning model developed by Anthropic, offering advanced coding and reasoning capabilities while maintaining cost-effectiveness. It features a 200K token context window, dual-mode reasoning (instant or extended thinking), and parallel tool execution. The model excels in software development, AI agent workflows, and knowledge processing tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Full-stack software development and API design",
+      "Autonomous AI agent workflows and customer-facing chatbots",
+      "Codebase analysis and optimization",
+      "Complex debugging and error resolution",
+      "Large document processing and research assistance",
+      "Multi-step task automation with parallel tool execution"
+    ],
+    "strengths": [
+      "Achieves 72.7% on SWE-bench, rivaling Opus-tier coding performance",
+      "5x more cost-effective than Opus 4 for many tasks with $3/million input token pricing",
+      "Hybrid reasoning with instant responses or extended thinking for complex tasks",
+      "Advanced error detection and correction capabilities (65% less shortcut behavior than Sonnet 3.7)",
+      "Supports parallel tool execution and local file access for enhanced workflows",
+      "98% instruction following accuracy with improved tool selection precision"
+    ],
+    "limitations": [
+      "Less suitable for extremely complex, multi-hour tasks compared to Opus 4",
+      "Output token pricing at $15/million may be cost-prohibitive for high-volume applications",
+      "200K token context window may be insufficient for ultra-large document analysis"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench",
+      "score": 72.7
+    },
+    {
+      "name": "Coding Tasks",
+      "score": 95
+    },
+    {
+      "name": "Instruction Following",
+      "score": 98
+    },
+    {
+      "name": "Agent Tasks",
+      "score": 90
+    }
+  ],
+  "model_name": "claude-sonnet-4-0",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:29:27.985889"
+}

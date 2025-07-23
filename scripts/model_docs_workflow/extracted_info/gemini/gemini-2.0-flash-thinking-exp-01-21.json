@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash Thinking Experimental 01-21 is Google's advanced multimodal reasoning model with transparent, step-by-step thinking capabilities. Released on January 21, 2025, it features a 1 million token context window (upgraded from 32k), native code execution, and configurable 'thinking budgets' for reasoning depth. Designed for complex tasks like mathematical proofs, scientific analysis, and code generation with verification.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical theorem proving and complex problem solving",
+      "Scientific hypothesis validation and analysis",
+      "Code generation with verification and debugging",
+      "Multi-document synthesis and research paper analysis",
+      "Educational applications requiring step-by-step explanations",
+      "Engineering system design with trade-off analysis",
+      "Financial modeling with assumption validation"
+    ],
+    "strengths": [
+      "1 million token context window enables processing entire codebases and research papers",
+      "Transparent reasoning process with step-by-step explanations and alternative solution paths",
+      "73.3% accuracy on AIME2024 math benchmark (37.8% improvement over v2.0)",
+      "74.2% accuracy on GPQA Diamond science benchmark",
+      "Native code execution support for direct verification and debugging",
+      "Configurable thinking budgets (0-50,000 tokens) for optimized reasoning depth",
+      "Dynamic thinking mode (-1) automatically adjusts resources based on task complexity"
+    ],
+    "limitations": [
+      "Experimental model with potential changes and restrictive rate limits",
+      "Thinking process adds latency to responses",
+      "Higher thinking budgets increase computational costs",
+      "Not all tasks benefit from deep reasoning (e.g., simple Q&A)",
+      "Not recommended for production use without thorough testing"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME2024 (Math)",
+      "score": 73.3
+    },
+    {
+      "name": "GPQA Diamond (Science)",
+      "score": 74.2
+    }
+  ],
+  "model_name": "gemini-2.0-flash-thinking-exp-01-21",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:29:45.485380"
+}

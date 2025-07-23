@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.2 11B Instruct is a multimodal large language model developed by Meta, available on AWS Bedrock. It supports both text and image inputs with 11 billion parameters and a 128,000-token context window. The model integrates advanced vision capabilities for tasks like image captioning, visual question answering, and document analysis, while maintaining strong text generation and instruction-following skills. It supports eight languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Visual question answering for customer service inquiries involving images",
+      "Document visual analysis for extracting information from scanned forms and reports",
+      "Image captioning and description generation for marketing and social media content",
+      "Predictive maintenance through visual inspection and defect detection in manufacturing",
+      "Medical imaging support with appropriate oversight for diagnostic assistance"
+    ],
+    "strengths": [
+      "First Llama model with vision support, enabling multimodal text and image processing.",
+      "128K context length for handling extended documents and complex visual-textual inputs.",
+      "Advanced image reasoning capabilities for tasks like visual question answering and diagram analysis.",
+      "Optimized for enterprise applications including document processing, quality control, and customer service.",
+      "Seamless integration with AWS Bedrock services for multimodal RAG and image storage."
+    ],
+    "limitations": [
+      "Performance may degrade with low-quality or highly technical images.",
+      "Limited to static image analysis (no video processing capabilities).",
+      "Geofencing restrictions limit regional availability compared to text-only models.",
+      "Higher computational and cost requirements for image processing compared to text-only tasks.",
+      "Shared context window between text and visual tokens may reduce efficiency for complex multimodal inputs."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-2-11b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:46:50.690261"
+}

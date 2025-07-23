@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Gemini Experimental 1114 (gemini-exp-1114) is an experimental large language model developed by Google, released on November 14, 2024, as part of the Gemini API development cycle. It serves as a testing platform for new capabilities before stable releases, with its name reflecting the release date (November 14). The model is available through Google AI Studio and Vertex AI for developers to experiment with advanced reasoning and code generation features.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Testing and validating new Gemini capabilities before stable releases",
+      "Complex reasoning tasks requiring advanced instruction following",
+      "Code generation, debugging, and comprehension tasks",
+      "Research and development of experimental AI features"
+    ],
+    "strengths": [
+      "Improved reasoning capabilities compared to Gemini 1.5 Pro at the time of release",
+      "Enhanced performance on complex instruction-following tasks",
+      "Advanced code generation and debugging abilities",
+      "Acts as a testing ground for features later integrated into Gemini 2.0 and 2.5 series models",
+      "Provides early access to experimental capabilities for developer feedback"
+    ],
+    "limitations": [
+      "Experimental nature may result in unexpected behaviors or inconsistencies",
+      "Not recommended for production use due to potential instability",
+      "Limited official documentation and sparse feature support",
+      "Risk of deprecation as newer models (e.g., Gemini 2.0/2.5) are released",
+      "May lack compatibility with certain Gemini API features"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-exp-1114",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:38:33.614957"
+}

@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "GPT-4-32k-0613 is a variant of OpenAI's GPT-4 large language model with a 32,768-token context window, released on June 13, 2023. It maintains the core capabilities of the GPT-4-0613 series while extending context handling for lengthy documents. Key features include function calling support, improved coherence in long-form text, and multilingual capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis and processing of lengthy technical texts",
+      "Long-form content creation requiring extended context maintenance",
+      "Code analysis and documentation within context limits",
+      "Academic and professional research with context-dependent tasks",
+      "API integration for structured data outputs via function calling"
+    ],
+    "strengths": [
+      "Extended 32,768-token context window for processing lengthy documents and maintaining thematic consistency",
+      "Supports function calling with structured JSON outputs for API integration",
+      "Improved performance and coherence compared to the deprecated GPT-4-32k-0314 version",
+      "Maintains GPT-4's core capabilities including multilingual support and code generation"
+    ],
+    "limitations": [
+      "Lacks vision capabilities for image analysis (unlike later GPT-4o and GPT-4 Turbo with Vision)",
+      "High token costs ($0.06 per 1,000 input tokens, $0.12 per 1,000 output tokens)",
+      "Slower processing speed compared to newer models like GPT-4o",
+      "Hard context limit of 32,768 tokens (128k tokens available in GPT-4o)",
+      "Higher computational resource requirements and longer response times"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4-32k-0613",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:21:54.416657"
+}

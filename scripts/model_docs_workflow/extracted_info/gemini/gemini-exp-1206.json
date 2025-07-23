@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Gemini Experimental 1206 (gemini-exp-1206) is an experimental large language model developed by Google in December 2024 as a preview of Gemini 2.0 capabilities. It focuses on showcasing advancements in coding, math, reasoning, and instruction following, with an extended context window and experimental features. The model is available through Gemini Advanced, Google AI Studio, Vertex AI, and experimental API endpoints.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code generation, debugging, and optimization for software development",
+      "Advanced mathematical problem solving and theoretical proofs",
+      "Multi-step logical reasoning and strategic planning tasks",
+      "Research applications including data interpretation and hypothesis generation"
+    ],
+    "strengths": [
+      "Significantly improved code generation, debugging, and algorithm design capabilities",
+      "Enhanced mathematical reasoning for solving complex problems and statistical analysis",
+      "Advanced logical reasoning with better multi-step problem decomposition and chain-of-thought processing",
+      "Stronger instruction-following accuracy for complex, multi-part tasks",
+      "Demonstrated substantial performance improvements over Gemini 1.5 Pro in code completion, math, and multi-turn conversations"
+    ],
+    "limitations": [
+      "Experimental status with potential instability and unsuitability for production use",
+      "Lacks access to real-time data and current events",
+      "Incompatible with all Gemini features due to its preview nature",
+      "Sparse official documentation and limited feature compatibility",
+      "May exhibit unexpected behaviors typical of early-stage models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-exp-1206",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:39:20.693872"
+}

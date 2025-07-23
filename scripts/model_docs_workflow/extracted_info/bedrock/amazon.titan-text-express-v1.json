@@ -1,0 +1,39 @@
+{
+  "model_info": {
+    "description": "Amazon Titan Text G1 - Express is a general-purpose large language model developed by Amazon for advanced text generation tasks. It features an 8,000-token context window, transformer-based architecture, and is optimized for English with preview support for 100+ languages. The model balances capability and efficiency, making it suitable for enterprise applications like conversational AI, Retrieval-Augmented Generation (RAG), and code generation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Conversational AI (chatbots, virtual assistants)",
+      "Content generation (articles, marketing copy, creative writing)",
+      "Document processing (summarization, information extraction)",
+      "RAG applications (knowledge base querying, document Q&A)",
+      "Code generation and programming assistance",
+      "Customer support automation (response generation, ticket analysis)",
+      "Educational tools (tutoring, learning assistance)",
+      "Healthcare documentation and patient communication",
+      "Financial services report generation and analysis"
+    ],
+    "strengths": [
+      "Balances capability and efficiency for enterprise applications with moderate resource requirements",
+      "Supports conversational AI, RAG, code generation, summarization, and question answering",
+      "Native integration with AWS services like Bedrock Knowledge Bases, Agents, and Lambda",
+      "Optimized for English with preview multilingual support for 100+ languages",
+      "High coherence and factual accuracy in text generation",
+      "Real-time response streaming and batch processing capabilities"
+    ],
+    "limitations": [
+      "8,000-token context window may be restrictive for very long documents",
+      "Primary optimization for English; multilingual performance is in preview and varies by language",
+      "Not designed for extremely low-latency applications",
+      "May require fine-tuning for highly specialized domains",
+      "Content filtering and safety measures may limit certain outputs",
+      "Token usage costs require careful management for cost control"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon.titan-text-express-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:27:52.309453"
+}

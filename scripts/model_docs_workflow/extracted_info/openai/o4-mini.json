@@ -1,0 +1,45 @@
+{
+  "model_info": {
+    "description": "OpenAI o4-mini is a cost-efficient, smaller model optimized for fast reasoning in math, coding, and visual tasks. It integrates text and images natively, offering a 200,000-token context window and 100,000-token output capacity. The model excels in mathematical reasoning (99.5% pass@1 on AIME 2025) and coding benchmarks (Codeforces, SWE-bench), with a 0.832 MMLU score for general knowledge.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume applications requiring cost-effective reasoning (e.g., educational platforms, enterprise document processing).",
+      "Mathematical tutoring and problem-solving with Python integration.",
+      "Visual analysis of charts, diagrams, and low-quality images.",
+      "Code generation and debugging across multiple programming languages.",
+      "Scientific computing with real-time web search and Python execution."
+    ],
+    "strengths": [
+      "Excels in mathematical reasoning with 99.5% pass@1 on AIME 2025 using Python interpreter.",
+      "Sets new state-of-the-art performance on Codeforces and SWE-bench coding benchmarks.",
+      "Multimodal by default, integrating images into chain-of-thought reasoning for visual tasks.",
+      "Cost-efficient with 10x lower cost than o3 model ($1.10/$4.40 per 1M input/output tokens).",
+      "High context window (200,000 tokens) and fast output speed (122.6 tokens/second)."
+    ],
+    "limitations": [
+      "Higher latency (39.43 seconds TTFT) due to reasoning-intensive processes.",
+      "More computationally intensive than non-reasoning models.",
+      "Best suited for reasoning tasks rather than simple queries.",
+      "Limited to specific image formats and quality requirements for visual tasks."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025 pass@1",
+      "score": 99.5
+    },
+    {
+      "name": "MMLU",
+      "score": 0.832
+    },
+    {
+      "name": "Intelligence Index",
+      "score": 70
+    }
+  ],
+  "model_name": "o4-mini",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:32:35.213107"
+}

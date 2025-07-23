@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "OpenAI o1-preview is an advanced AI model designed for complex reasoning in science, coding, and mathematics. It uses reinforcement learning-enhanced chain-of-thought (CoT) reasoning with a 128,000-token context window and 32,768-token output limit. The model's knowledge is current through October 1, 2023, and it features a transformer architecture optimized for deep problem-solving.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Solving complex mathematical problems (e.g., IMO/AIME benchmarks).",
+      "Advanced coding tasks, including code generation and debugging.",
+      "Scientific research applications (e.g., physics formula generation, cell sequencing data annotation).",
+      "Educational tools requiring step-by-step reasoning explanations.",
+      "High-accuracy workflows where reasoning depth outweighs latency concerns."
+    ],
+    "strengths": [
+      "Excels in mathematics with an 83% score on the International Mathematics Olympiad (IMO) qualifying exam, surpassing GPT-4o's 13%.",
+      "Achieves 89th percentile in Codeforces competitions and strong performance on HumanEval coding benchmarks.",
+      "Matches PhD-level performance in physics, chemistry, and biology research tasks.",
+      "Demonstrates advanced jailbreak resistance with an 84 score on the hardest jailbreaking tests (vs. GPT-4o's 22).",
+      "Utilizes internal 'reasoning tokens' for deeper, more complex problem-solving without fixating on failed reasoning paths."
+    ],
+    "limitations": [
+      "Significantly more expensive than standard models, with input/output token costs of $15.00 and $60.00 per 1M tokens.",
+      "Slower response times (17.03 seconds TTFT and 171.5 tokens/second) compared to GPT-4o due to internal reasoning processes.",
+      "Beta phase limitations: no image/web support, file uploads, code interpreter, or streaming capabilities.",
+      "Strict API rate limits (20 RPM for qualified developers) and weekly message caps (50 queries/week).",
+      "Not ideal for tasks prioritizing speed or requiring multimodal input/output."
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "IMO Qualifying Exam",
+      "score": 83
+    },
+    {
+      "name": "Codeforces",
+      "score": 89
+    },
+    {
+      "name": "Jailbreaking Test",
+      "score": 84
+    }
+  ],
+  "model_name": "o1-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:25:59.640393"
+}

@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini 2.0 Flash-Lite Preview 02-05 is Google's most cost-efficient multimodal model in the Gemini 2.0 family, designed for high-volume, low-latency tasks with a 1 million token context window. It supports text, code, images, audio, and video inputs but outputs only text. The model improves quality over Gemini 1.5 Flash while maintaining speed and cost efficiency, making it ideal for lightweight multimodal tasks like image captioning and document summarization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume batch processing of documents, images, and code",
+      "Real-time content moderation for social media platforms",
+      "Bulk image and video captioning for e-commerce or media",
+      "Large-scale document classification and summarization",
+      "Lightweight chatbot applications with structured output requirements"
+    ],
+    "strengths": [
+      "Most cost-efficient model in the Gemini 2.0 family with a single price tier for all context lengths",
+      "Fastest model in the Flash family with low latency for real-time and high-throughput applications",
+      "Handles lightweight multimodal tasks efficiently (image captioning, document summarization, content categorization)",
+      "Higher quality outputs and improved accuracy compared to Gemini 1.5 Flash at the same speed and cost",
+      "Simplified pricing structure with no context length tiers"
+    ],
+    "limitations": [
+      "Preview/experimental version with potential changes to features and performance",
+      "Optimized for lightweight tasks and may underperform on complex reasoning compared to larger models",
+      "Text-only output format with no support for code execution or live API",
+      "Not recommended for mission-critical production use without testing",
+      "Lacks advanced features like Google Search grounding and Vertex AI RAG Engine"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-2.0-flash-lite-preview-02-05",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:28:19.825328"
+}

@@ -1,0 +1,58 @@
+{
+  "model_info": {
+    "description": "GPT-4o-mini-realtime-preview is a real-time, low-latency variant of OpenAI's GPT-4o mini model designed for speech-to-speech and text-based conversational interactions. It supports a 128K token context window, 16K output tokens, and multimodal inputs (text and audio). The model features enhanced tokenization for non-English text, strong function calling capabilities, and robust safety mechanisms like instruction hierarchy and jailbreak resistance. It has a knowledge cutoff of October 2023 and is optimized for applications requiring real-time audio processing and multilingual support.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time customer service chatbots and voice-enabled support systems",
+      "Personal voice assistants and smart home integrations",
+      "Live multilingual translation and cross-language communication tools",
+      "Development applications requiring large context processing (e.g., codebase analysis)",
+      "Interactive content generation with voice-based interfaces",
+      "Function-driven applications integrating external APIs and services"
+    ],
+    "strengths": [
+      "Optimized for real-time, low-latency conversations with minimal delay, ideal for chatbots and voice assistants",
+      "Supports multimodal interactions (text and audio) with multilingual speech capabilities",
+      "Scores 82% on MMLU benchmark, outperforming GPT-4 on chat preferences and GPT-3.5 Turbo on academic benchmarks",
+      "Enhanced tokenization for cost-effective handling of non-English text and multilingual tasks",
+      "Strong function calling capabilities for external system integration and API interactions",
+      "Advanced safety features including instruction hierarchy method and resistance to jailbreaks/prompt injections",
+      "Cost-efficient compared to previous frontier models (60% cheaper than GPT-3.5 Turbo)"
+    ],
+    "limitations": [
+      "Preview model not optimized for production traffic with limited rate limits for testing",
+      "Currently restricted to text and audio modalities (image support pending)",
+      "Knowledge cutoff at October 2023, limiting access to newer information",
+      "High pricing for audio input/output tokens ($100/M for audio input, $200/M for audio output)",
+      "Audio quality dependent on input source and network conditions",
+      "Real-time requirements may introduce latency in certain scenarios"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 82
+    },
+    {
+      "name": "Chat Preferences (LMSYS)",
+      "score": 100
+    },
+    {
+      "name": "Academic Benchmarks",
+      "score": 100
+    },
+    {
+      "name": "Multimodal Reasoning",
+      "score": 100
+    },
+    {
+      "name": "Function Calling",
+      "score": 100
+    }
+  ],
+  "model_name": "gpt-4o-mini-realtime-preview",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:22:00.792316"
+}

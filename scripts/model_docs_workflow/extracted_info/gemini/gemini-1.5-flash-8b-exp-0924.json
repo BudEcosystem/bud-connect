@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Google Gemini 1.5 Flash-8B-Exp-0924 is an experimental 8-billion-parameter model in the Flash family, released on September 24, 2024. It supports multimodal inputs (text, images, audio, video, documents) with a 1,000,000-token context window. The model is optimized for chat, transcription, translation, summarization, and multimodal processing, with iterative improvements over prior experimental versions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume task processing with cost-sensitive deployments",
+      "Real-time multimodal content analysis and generation",
+      "Multilingual translation with long context requirements",
+      "Experimental feature validation and performance benchmarking",
+      "Integration testing for multimodal applications"
+    ],
+    "strengths": [
+      "Multimodal support for text, images, audio, video, and documents",
+      "1,000,000-token context window for long-form processing",
+      "High-speed inference with low latency for real-time applications",
+      "Iterative improvements over the August 2024 experimental version",
+      "Free access during experimental phase via Google AI Studio and Gemini API"
+    ],
+    "limitations": [
+      "Experimental status with no production guarantees or SLA",
+      "Limited official documentation and potential undocumented features",
+      "Subject to change, removal, or discontinuation without notice",
+      "Not recommended for commercial/production use",
+      "Potential instability and variable performance"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-8b-exp-0924",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:16:08.386411"
+}

@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Grok-3 Fast Latest is a speed-optimized variant of xAI's Grok-3 model, dynamically updated with the latest features and improvements while maintaining fast response times. It offers a 131,072-token context window, sub-second latency, and automatic updates to the newest fast release. The model prioritizes cutting-edge capabilities and experimental features, with a knowledge cutoff updated to November 2024.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Innovation-focused projects requiring cutting-edge AI capabilities",
+      "Experimental applications needing access to new features",
+      "Dynamic systems that benefit from continuous performance improvements",
+      "Research and development environments testing AI advancements"
+    ],
+    "strengths": [
+      "Automatically receives the latest improvements and features without manual updates",
+      "Maintains sub-second response latency for most queries",
+      "Provides access to experimental capabilities and performance optimizations",
+      "Ensures API compatibility across updates with backward compatibility",
+      "Supports large context windows (131,072 tokens) for complex tasks"
+    ],
+    "limitations": [
+      "Potential instability from automatic updates and experimental features",
+      "Documentation may lag behind rapid feature additions",
+      "Requires testing after updates due to possible behavior changes",
+      "Less predictable performance compared to stable versions like Grok-3 Fast Beta"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-3-fast-latest",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:52:44.513296"
+}

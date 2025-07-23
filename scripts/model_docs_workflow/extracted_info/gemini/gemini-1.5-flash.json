@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "description": "Gemini 1.5 Flash is a legacy multimodal model developed by Google, optimized for high-volume, low-latency applications. It supports text, images, audio, video, and PDF processing with a 1 million token context window and 9.5 hours of audio capacity. Available in two versions (001 and 002), it offers improved multilingual support and parameter handling in version 002 but is now deprecated in favor of newer Gemini 2.x models.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and virtual assistants",
+      "Document summarization and media transcription",
+      "Code generation and API integration tools",
+      "E-commerce product description generation",
+      "Healthcare document processing and patient communication",
+      "Educational content creation and personalized learning"
+    ],
+    "strengths": [
+      "Fast and efficient for low-latency, high-volume applications",
+      "Supports 140+ languages with enhanced multilingual capabilities in version 002",
+      "Multimodal processing of text, images, audio, video, and PDFs",
+      "99.8% recall accuracy for videos up to 2M tokens and 98.7% success rate in audio-haystack evaluations",
+      "Cost-effective with optimized resource utilization for production workloads",
+      "1 million token context window with maintained coherence and information retention"
+    ],
+    "limitations": [
+      "Legacy model with April 29, 2025 deprecation deadline for new projects",
+      "1 million token context limit may restrict complex tasks",
+      "No native image generation or thinking mode capabilities",
+      "Limited to 9.5 hours of audio processing per request",
+      "Rate limits based on usage tiers",
+      "Fewer advanced features compared to newer Gemini 2.x models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Video Recall Accuracy",
+      "score": 99.8
+    },
+    {
+      "name": "Audio-Haystack Success Rate",
+      "score": 98.7
+    },
+    {
+      "name": "1M Token Context Accuracy",
+      "score": 75
+    }
+  ],
+  "model_name": "gemini-1.5-flash",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:20:23.914817"
+}

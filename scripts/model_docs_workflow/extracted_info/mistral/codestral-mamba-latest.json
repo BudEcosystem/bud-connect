@@ -1,0 +1,45 @@
+{
+  "model_info": {
+    "description": "Codestral Mamba is a 7.3B parameter code generation model developed by Mistral AI using the Mamba2 architecture. Specialized for code tasks, it supports 80+ programming languages and features a 256,000 token context window. The model is licensed under Apache 2.0 and optimized for efficiency with long sequences through linear time inference.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code completion and generation across multiple programming languages",
+      "Code review and analysis of large codebases",
+      "Documentation generation for software projects",
+      "Automated bug detection and fixing",
+      "Code translation between different programming languages",
+      "Test case generation for software testing",
+      "API implementation from specifications in development workflows"
+    ],
+    "strengths": [
+      "Mamba2 architecture enables linear time inference for improved efficiency with long sequences",
+      "Supports 80+ programming languages including Python, JavaScript, C++, and Fortran",
+      "Achieves 75.0% on HumanEval benchmark (outperforming CodeGemma-1.1 7B and DeepSeek v1.5 7B)",
+      "68.5% performance on MBPP benchmark for basic programming problems",
+      "Apache 2.0 license allows commercial use without attribution requirements",
+      "Capable of handling up to 256,000 token context windows for large code analysis"
+    ],
+    "limitations": [
+      "Performance may degrade with extremely long input sequences despite 256k token context",
+      "Specialized for code generation; may not perform as well on general text tasks",
+      "Requires high-end GPUs (A100/H100) for efficient self-hosting",
+      "No explicit mention of multilingual text support beyond code generation",
+      "In-context retrieval benchmark (256k tokens) lacks standardized scoring metrics"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "HumanEval",
+      "score": 75.0
+    },
+    {
+      "name": "MBPP",
+      "score": 68.5
+    }
+  ],
+  "model_name": "codestral-mamba-latest",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:49:08.569946"
+}

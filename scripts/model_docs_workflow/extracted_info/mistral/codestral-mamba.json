@@ -1,0 +1,30 @@
+{
+  "model_info": {
+    "description": "Codestral Mamba is a Mamba2-based language model specialized in code generation, developed by Mistral AI. It features 7.3B parameters, a non-transformer architecture with linear scaling for long contexts (up to 256K tokens), and is optimized for code understanding and reasoning tasks. Released under Apache 2.0 license, it offers competitive performance comparable to state-of-the-art transformer models.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code generation for functions, classes, and algorithms",
+      "Code review assistance and documentation generation",
+      "Multi-file project analysis and repository-level code understanding",
+      "Debugging support and performance optimization suggestions",
+      "IDE integration for real-time code completion and refactoring"
+    ],
+    "strengths": [
+      "Mamba2 architecture enables linear scaling with sequence length for efficient long-context handling (up to 256K tokens)",
+      "Specialized code generation capabilities with advanced syntax-aware processing and semantic analysis",
+      "Apache 2.0 license allows free open-source use and self-hosting without licensing fees",
+      "Strong performance on code-specific tasks like multi-file comprehension, bug detection, and code completion",
+      "Optimized for code reasoning with pattern recognition and language-specific understanding"
+    ],
+    "limitations": [
+      "Specialized for code tasks, potentially limited versatility for general language processing",
+      "No explicit mention of multilingual support beyond code-specific contexts"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "codestral-mamba",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:49:55.160902"
+}

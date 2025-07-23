@@ -1,0 +1,47 @@
+{
+  "model_info": {
+    "description": "OpenAI o4-mini is a cost-efficient, smaller model optimized for fast reasoning in math, coding, and visual tasks. It features a 200,000-token context window, 100,000-token output limit, and native multimodal support for text and images. The model integrates Python interpreter access and web browsing, achieving 99.5% pass@1 on AIME 2025 and state-of-the-art performance on Codeforces and SWE-bench. It offers 10x cost reduction compared to o3 models while maintaining strong performance across STEM and visual domains.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume STEM tutoring and educational platforms",
+      "Visual document analysis and chart interpretation",
+      "Code generation and software engineering assistance",
+      "Scientific computing with Python integration",
+      "Interactive applications requiring cost-effective reasoning",
+      "Enterprise document processing with visual content"
+    ],
+    "strengths": [
+      "Multimodal by default with native text and image processing capabilities",
+      "99.5% pass@1 accuracy on AIME 2025 with Python interpreter integration",
+      "Sets new state-of-the-art performance on Codeforces and SWE-bench benchmarks",
+      "Cost-efficient with 10x lower pricing than o3 models ($1.10/$4.40 per 1M input/output tokens)",
+      "High throughput for cost-sensitive applications with 122.6 tokens/second output speed",
+      "Strong visual reasoning for charts, diagrams, and low-quality images"
+    ],
+    "limitations": [
+      "Higher latency (39.43 seconds to first token) due to reasoning processes",
+      "More computationally intensive than non-reasoning models",
+      "Best suited for reasoning tasks rather than simple queries",
+      "Output tokens cost 4x more than input tokens ($4.40 vs $1.10 per 1M tokens)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025 pass@1",
+      "score": 99.5
+    },
+    {
+      "name": "MMLU",
+      "score": 0.832
+    },
+    {
+      "name": "Intelligence Index",
+      "score": 70
+    }
+  ],
+  "model_name": "o4-mini",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:19:19.728844"
+}

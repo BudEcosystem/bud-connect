@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Azure OpenAI GPT-3.5 Turbo models are cost-effective, fast language models optimized for chat and traditional completion tasks. They include two variants: gpt-35-turbo (4,096 token context window) and gpt-35-turbo-16k (16,384 token context window), with the latter designed for longer conversations and documents. These models balance performance and cost, supporting regional deployments for compliance and data residency requirements.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Chatbots and conversational AI applications",
+      "Customer service automation and support systems",
+      "Content generation and text completion tasks",
+      "Document analysis and processing with extended context requirements",
+      "Enterprise applications requiring data residency compliance (e.g., EU/US data zones)"
+    ],
+    "strengths": [
+      "Cost-effective and fast for chat and completion tasks",
+      "Extended context window (16,384 tokens) in gpt-35-turbo-16k variant for handling longer documents",
+      "Regional deployment options for data residency compliance and lower latency",
+      "Integration with Azure services and enterprise security features (e.g., VNet, encryption)",
+      "Support for batch processing with up to 50% cost savings for non-urgent tasks"
+    ],
+    "limitations": [
+      "Limited to the GPT-3.5 architecture, which is less advanced than newer models like GPT-4",
+      "Requires Azure infrastructure setup and management for deployment",
+      "Pricing complexity with pay-as-you-go and provisioned throughput units (PTU) models",
+      "Regional availability restrictions may require multi-region strategies for global applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "azure-gpt-35-turbo-models",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:35:19.622090"
+}

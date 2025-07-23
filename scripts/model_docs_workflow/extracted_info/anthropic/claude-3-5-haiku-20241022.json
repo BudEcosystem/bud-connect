@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Haiku (20241022) is a speed-optimized multimodal large language model developed by Anthropic, released on October 22, 2024. It surpasses Claude 3 Opus on many intelligence benchmarks while maintaining sub-second response times, with a 200,000 token context window and 8,192 token output limit. The model supports text and vision inputs and excels in coding tasks with a 40.6% success rate on SWE-bench Verified.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code autocomplete and IDE integration for instant suggestions",
+      "Real-time customer service chatbots with no perceptible delay",
+      "High-volume content moderation and data classification",
+      "Edge computing applications for mobile/IoT devices",
+      "Rapid document processing and summarization",
+      "Automated code review and test case generation"
+    ],
+    "strengths": [
+      "Surpasses Claude 3 Opus on intelligence benchmarks while maintaining exceptional speed",
+      "Sub-second response times with minimal first-token latency for real-time applications",
+      "40.6% success rate on SWE-bench Verified, outperforming many larger models in coding tasks",
+      "Multimodal capabilities for text and image processing",
+      "Lowest cost per token in the Claude family with aggressive prompt caching (up to 90% cost reduction)",
+      "3x intelligence improvement over Claude 3 Haiku with same speed characteristics"
+    ],
+    "limitations": [
+      "200,000 token context window and 8,192 token output limit may restrict complex tasks",
+      "July 2024 knowledge cutoff limits access to newer information",
+      "Less suitable for complex multi-step reasoning or deep research analysis",
+      "40.6% SWE-bench Verified score indicates moderate coding capabilities compared to specialized models",
+      "Not optimal for highly nuanced tasks requiring deep contextual understanding"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 40.6
+    }
+  ],
+  "model_name": "claude-3-5-haiku-20241022",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:16:19.788203"
+}

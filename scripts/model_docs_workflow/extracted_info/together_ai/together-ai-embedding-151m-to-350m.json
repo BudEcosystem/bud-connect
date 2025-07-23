@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Together AI's 151M-350M parameter embedding models are mid-tier solutions designed for enhanced semantic understanding and cost-effectiveness. These transformer-based models generate high-quality vector representations (768-1536 dimensions) with a context window of up to 8,192 tokens. They support 40+ languages and are optimized for search, recommendation, and similarity tasks across technical, legal, and creative domains.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise search and knowledge management systems",
+      "E-commerce product recommendation engines",
+      "Legal document analysis and case law retrieval",
+      "Healthcare research and clinical trial matching",
+      "Content clustering and topic modeling for large document collections"
+    ],
+    "strengths": [
+      "High-quality semantic representations with nuanced understanding for complex content matching",
+      "Supports 40+ languages with consistent multilingual and cross-lingual alignment capabilities",
+      "Long document handling (8K tokens) with efficient batch processing (100-500 docs/second)",
+      "Cost-effective pricing with 50% introductory discount for batch operations ($0.008 per 1M tokens)",
+      "Domain adaptability across technical, legal, and creative content with competitive performance vs. larger models"
+    ],
+    "limitations": [
+      "Parameter range (151M-350M) is lower than top-tier models, offering 90% of their quality at 50% lower cost",
+      "No specific numerical benchmarks for standard metrics like MMLU or GSM8K provided in documentation",
+      "Pricing comparison notes 40-60% higher cost than 150M models despite improved quality"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "together-ai-embedding-151m-to-350m",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:26:33.451331"
+}

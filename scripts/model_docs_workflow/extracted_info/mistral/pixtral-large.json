@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "Pixtral Large is a 124B open-weights multimodal model developed by Mistral AI, built on the Mistral Large 2 architecture. It excels in frontier-level image understanding and seamless text-vision integration, released in November 2024 as the second model in Mistral's multimodal family. The model supports tasks like visual question answering, OCR, and document analysis, with open-source availability for self-hosting or API access.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document analysis (PDFs, forms, charts, handwriting)",
+      "Visual question answering and scene description",
+      "Content moderation and safety checks",
+      "Creative applications (art analysis, visual storytelling)",
+      "Scientific and medical image interpretation",
+      "OCR and data visualization analysis"
+    ],
+    "strengths": [
+      "124B parameter count for large-scale multimodal reasoning",
+      "Frontier-level image understanding capabilities competitive with proprietary models",
+      "Seamless integration of text and vision modalities for unified context comprehension",
+      "Open-weights architecture with options for self-hosting or API deployment",
+      "High-resolution image processing and advanced scene understanding",
+      "Supports complex tasks like medical image interpretation and scientific diagram analysis"
+    ],
+    "limitations": [
+      "Requires significant computational resources (8+ A100 80GB GPUs, 1TB+ RAM)",
+      "High hardware and infrastructure costs for deployment",
+      "Specific license terms apply to open weights (terms not detailed in description)",
+      "Edge deployment requires optimization techniques like quantization"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "pixtral-large",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:07:38.071003"
+}

@@ -1,0 +1,46 @@
+{
+  "model_info": {
+    "description": "The `omni-moderation-2024-09-26` is OpenAI's multimodal content moderation model, released on September 26, 2024. Built on GPT-4o, it supports text and image inputs across 40+ languages, with 13 text categories and 6 image categories for content classification. Key features include enhanced multilingual accuracy (42% improvement) and calibrated probability scores (0-1 range).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated content moderation for social media platforms",
+      "User-generated content screening in gaming and educational platforms",
+      "Product description and image review in e-commerce",
+      "Internal content compliance monitoring in corporate communications",
+      "Real-time moderation of chat and community forums",
+      "Content filtering for creative platforms and marketplaces"
+    ],
+    "strengths": [
+      "Multimodal capability to process text and images together or separately",
+      "42% accuracy improvement across 40+ languages for text moderation",
+      "98% of tested languages show performance improvements over previous models",
+      "Supports 13 text categories and 6 image categories for comprehensive content classification",
+      "Calibrated scoring system with 0-1 probability range for precise moderation decisions",
+      "Low-latency processing suitable for real-time and batch moderation tasks",
+      "Free for OpenAI API users with no additional costs beyond standard API limits"
+    ],
+    "limitations": [
+      "Image moderation supports only 6 out of 13 available categories",
+      "Higher sensitivity may lead to increased false positive rates",
+      "Struggles with context-dependent content like satire or educational material",
+      "Cultural nuances may not be fully captured despite multilingual improvements",
+      "Rate limits vary by OpenAI tier, potentially limiting high-volume usage",
+      "Requires human review for edge cases and appeals processes"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Multilingual Accuracy Improvement",
+      "score": 42
+    },
+    {
+      "name": "Language Coverage Improvement",
+      "score": 98
+    }
+  ],
+  "model_name": "omni-moderation-2024-09-26",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:33:21.391351"
+}

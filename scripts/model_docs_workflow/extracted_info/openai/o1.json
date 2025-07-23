@@ -1,0 +1,63 @@
+{
+  "model_info": {
+    "description": "OpenAI o1 is a large language model that utilizes advanced reinforcement learning techniques to enhance reasoning capabilities, particularly excelling in complex mathematical, scientific, and coding tasks. It employs chain-of-thought reasoning with explicit reasoning steps and supports vision capabilities for image-based reasoning. The model is part of a new series developed by OpenAI, optimized for structured thinking and multi-step workflows.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical problem-solving and formula generation for physics and quantum optics",
+      "Healthcare research applications including cell sequencing data annotation",
+      "Complex code generation, debugging, and optimization across multiple programming languages",
+      "Scientific research workflows requiring multi-step reasoning and analysis",
+      "Advanced data analysis and structured thinking tasks in technical domains"
+    ],
+    "strengths": [
+      "Excels in mathematical reasoning with 83% score on International Mathematics Olympiad (IMO) and 78% on AIME benchmarks",
+      "Strong coding proficiency demonstrated by 89th percentile ranking on Codeforces competitions",
+      "Utilizes reinforcement learning-enhanced chain-of-thought (CoT) reasoning for complex problem-solving",
+      "Supports vision capabilities for image-based reasoning in scientific and technical applications",
+      "Enables structured outputs through JSON Schema compliance and function calling for API integration",
+      "Achieves leading performance on MMLU, HumanEval, and DROP F1 benchmarks"
+    ],
+    "limitations": [
+      "Slower response times due to internal reasoning process and token overhead",
+      "Higher computational cost and token pricing compared to standard models",
+      "Not all ChatGPT features are available depending on access method",
+      "Reasoning tokens consume context window space, limiting input/output capacity",
+      "Less cost-effective for simple, non-reasoning tasks compared to lighter models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "IMO",
+      "score": 83
+    },
+    {
+      "name": "AIME",
+      "score": 78
+    },
+    {
+      "name": "Codeforces",
+      "score": 89
+    },
+    {
+      "name": "MMLU",
+      "score": 95
+    },
+    {
+      "name": "HumanEval",
+      "score": 92
+    },
+    {
+      "name": "DROP F1",
+      "score": 88
+    },
+    {
+      "name": "MGSM",
+      "score": 85
+    }
+  ],
+  "model_name": "o1",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:27:33.233345"
+}

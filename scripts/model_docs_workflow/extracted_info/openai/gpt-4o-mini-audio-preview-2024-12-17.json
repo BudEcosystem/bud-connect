@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "GPT-4o Mini Audio Preview is a compact, cost-effective audio-enabled AI model developed by OpenAI, designed for asynchronous audio applications. It supports text and audio modalities with specialized audio processing capabilities, including speech analysis, sentiment detection, and text-to-speech synthesis. The model is optimized for cost efficiency, with a maximum audio file size limit of 20 MB and WAV output format, and is suitable for high-volume, cost-sensitive use cases.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Cost-effective spoken summaries and educational audio content generation.",
+      "High-volume batch audio processing for voice messaging and educational tools.",
+      "Audio sentiment analysis and content understanding for non-real-time applications.",
+      "MVP development and prototyping for audio AI features with budget constraints.",
+      "Large-scale asynchronous audio applications like voice-enabled interfaces and batch audio generation."
+    ],
+    "strengths": [
+      "Significantly lower cost compared to the full GPT-4o Audio Preview, ideal for budget-conscious applications.",
+      "Supports both text and audio modalities with specialized audio processing for speech analysis, sentiment detection, and speech synthesis.",
+      "Offers three distinct voice options (Alloy, Echo, Shimmer) for natural-sounding audio output.",
+      "Optimized for high-volume, asynchronous audio processing with batch handling capabilities.",
+      "Inherits cost-efficient GPT-4o Mini text pricing while adding audio functionality."
+    ],
+    "limitations": [
+      "Limited to 20 MB maximum audio file size and WAV output format.",
+      "Asynchronous processing only, unsuitable for real-time audio applications.",
+      "Higher latency compared to real-time audio models with potential quality trade-offs versus larger GPT-4o Audio variants.",
+      "Not recommended for applications requiring immediate audio responses or advanced real-time interaction."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-audio-preview-2024-12-17",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:20:16.347930"
+}

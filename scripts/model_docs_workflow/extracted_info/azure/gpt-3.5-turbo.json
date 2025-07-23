@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "GPT-3.5 Turbo is a fast, efficient, and cost-effective language model developed by OpenAI, designed for general-purpose tasks. It features a 16,385-token context window, supports function calling, JSON mode, and system messages, with versions like gpt-3.5-turbo-0125 offering improved features. The model's knowledge cutoff varies by version, typically up to September 2021, and it balances performance, speed, and affordability for a wide range of applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service chatbots and support automation",
+      "Content generation for blogs, social media, and marketing copy",
+      "Code completion and debugging assistance",
+      "Data extraction, transformation, and analysis",
+      "Educational tools for tutoring, explanations, and quiz generation",
+      "E-commerce product descriptions and customer query handling"
+    ],
+    "strengths": [
+      "90% cost reduction compared to initial GPT-3.5 models, with input/output pricing for better cost control",
+      "16,385-token context window (16K) for handling extended inputs and outputs",
+      "Advanced features like function calling, JSON mode, and system messages for structured outputs and better steerability",
+      "Enhanced instruction following and multilingual support for diverse use cases",
+      "Fast response times and lower latency than GPT-4 variants, ideal for real-time applications",
+      "Support for parallel function calling and reproducible outputs via seed parameters"
+    ],
+    "limitations": [
+      "Knowledge cutoff limits access to information post-September 2021 (varies by version)",
+      "Struggles with complex reasoning tasks compared to GPT-4",
+      "Context window smaller than newer models like GPT-4",
+      "Less capable than GPT-4 for specialized or professional tasks",
+      "Rate limits of 40,000 tokens per minute and 200 requests per minute may constrain high-volume applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-3.5-turbo",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:43:21.584177"
+}

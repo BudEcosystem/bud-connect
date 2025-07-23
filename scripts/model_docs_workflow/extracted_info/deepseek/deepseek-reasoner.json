@@ -1,0 +1,53 @@
+{
+  "model_info": {
+    "description": "DeepSeek-reasoner is an advanced reasoning model developed by DeepSeek, designed for complex reasoning, mathematical problem-solving, and code generation using Chain-of-Thought (CoT) reasoning. Built on the DeepSeek-V3 architecture with 671 billion total parameters and 37 billion activated per token, it features a 128,000-token context window and open-source MIT licensing. The model emphasizes transparency through detailed reasoning steps and achieves performance comparable to OpenAI's o1 model at 96% lower cost.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Mathematical problem-solving (AMC/AIME/IMO level)",
+      "Competitive programming and algorithm optimization",
+      "Scientific research and hypothesis generation",
+      "Educational tutoring with step-by-step explanations",
+      "Engineering design and technical documentation",
+      "Financial quantitative analysis and risk modeling"
+    ],
+    "strengths": [
+      "Excels in mathematical reasoning with 79.8% AIME 2024 accuracy and 97.3% MATH-500 performance",
+      "Achieves 96.3% Codeforces competitive programming accuracy, outperforming GPT-4",
+      "Offers 128,000-token context window with 8,000-token output capacity for complex problem-solving",
+      "Uses Reinforcement Learning (RL) optimization for reasoning capabilities",
+      "Provides transparent reasoning chains with full CoT visibility in API responses",
+      "Significantly cheaper than OpenAI o1 (96% cost reduction) while maintaining comparable performance"
+    ],
+    "limitations": [
+      "Slower response times due to reasoning generation process",
+      "Higher token consumption (37B activated parameters per token)",
+      "100% attack success rate in HarmBench tests with 11x higher harmful output risk",
+      "4x more likely to produce insecure code compared to Western models",
+      "Original R1 version lacks system prompt support (available in R1-0528 variant)",
+      "45-50% reduction in hallucinations but not fully eliminated"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2024",
+      "score": 79.8
+    },
+    {
+      "name": "Codeforces",
+      "score": 96.3
+    },
+    {
+      "name": "MATH-500",
+      "score": 97.3
+    },
+    {
+      "name": "Intelligence Index",
+      "score": 68
+    }
+  ],
+  "model_name": "deepseek-reasoner",
+  "provider": "deepseek",
+  "extraction_date": "2025-07-23T10:00:55.401271"
+}

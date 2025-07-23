@@ -1,0 +1,52 @@
+{
+  "model_info": {
+    "description": "Gemini 1.0 Pro is a mid-tier multimodal large language model developed by Google in December 2023 as part of the original Gemini family. It balances performance and efficiency for diverse tasks, featuring native support for text, images, audio, and video. Now considered a legacy model, it has been superseded by newer Gemini versions like 1.5, 2.0, and 2.5.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document summarization and content generation",
+      "Customer service automation and multilingual support",
+      "Educational content creation and technical documentation",
+      "Business intelligence reporting and data analysis",
+      "Multimodal reasoning tasks combining text and media inputs"
+    ],
+    "strengths": [
+      "Native multimodal processing for text, images, audio, and video with seamless cross-modal reasoning",
+      "Outperformed GPT-3.5 on MMLU and GSM8K benchmarks for language understanding and math reasoning",
+      "Efficient resource utilization optimized for production use and enterprise integration",
+      "Strong generalization capabilities across multiple languages and technical domains (code understanding, documentation processing)",
+      "Integrated with Google Cloud services like Vertex AI and BigQuery for enterprise deployment"
+    ],
+    "limitations": [
+      "Deprecated status with no active development or ongoing maintenance",
+      "Smaller context window compared to modern standards and newer Gemini models",
+      "Lacks advanced features like 'thinking mode' and enhanced function calling capabilities",
+      "Limited to basic multimodal capabilities compared to successor models",
+      "Users must migrate to newer Gemini versions for improved performance and support"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.0-pro",
+  "provider": "gemini",
+  "extraction_date": "2025-07-20T20:31:45.053694",
+  "model_metadata": {
+    "provider": "vertex_ai-gemini-models",
+    "provider_name": "Google Vertex AI Gemini",
+    "category": "gemini-1.0",
+    "max_tokens": 8192,
+    "max_input_tokens": 32760,
+    "max_output_tokens": 8192,
+    "input_cost_per_image": 0.0025,
+    "input_cost_per_video_per_second": 0.002,
+    "input_cost_per_token": 5e-07,
+    "input_cost_per_character": 1.25e-07,
+    "output_cost_per_token": 1.5e-06,
+    "output_cost_per_character": 3.75e-07,
+    "litellm_provider": "vertex_ai-gemini-models",
+    "mode": "chat",
+    "supports_function_calling": true,
+    "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing#google_models",
+    "supports_tool_choice": true
+  }
+}

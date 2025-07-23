@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Meta Llama 2 70B Chat is a 70-billion-parameter conversational AI model developed by Meta, optimized for complex dialogue and reasoning tasks. It uses an auto-regressive transformer architecture with supervised fine-tuning and reinforcement learning with human feedback (RLHF). The model supports a context window of approximately 8,000 tokens and is licensed for commercial and research use in English language tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Advanced dialogue systems for customer service or virtual assistants",
+      "High-quality content creation and long-form text generation",
+      "Medical, legal, and financial domain-specific applications",
+      "Research and development requiring complex reasoning and multi-domain knowledge",
+      "Enterprise solutions for mission-critical conversational interfaces"
+    ],
+    "strengths": [
+      "70 billion parameters for enhanced reasoning and complex dialogue handling",
+      "Dialogue-optimized with extensive fine-tuning and RLHF for improved safety and coherence",
+      "Trained on larger and more diverse datasets than the 13B variant",
+      "Integrated with AWS Bedrock for seamless API access, IAM security, and CloudWatch monitoring",
+      "Superior performance on long-form generation, multi-turn conversations, and nuanced instruction following"
+    ],
+    "limitations": [
+      "Higher computational costs and latency compared to smaller models like Llama 2 13B",
+      "Context window limited to ~8,000 tokens (smaller than newer models like Llama 3.1's 128K)",
+      "Primarily optimized for English language tasks",
+      "Older transformer architecture compared to newer Llama 3.x models",
+      "Requires provisioned throughput for consistent high-volume performance"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama2-70b-chat-v1",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:43:17.824129"
+}

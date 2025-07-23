@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "GPT-35-Turbo is Azure OpenAI's implementation of OpenAI's GPT-3.5-Turbo model, optimized for multi-turn conversations while supporting non-chat scenarios. It features version-specific context windows (4K to 16K tokens) and a training data cutoff of September 2021. The model uses Azure's deployment-based architecture with version-specific quotas and integrates with Azure AI services via the Chat Completion API.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multi-turn customer service chatbots",
+      "Virtual assistants for business and personal use",
+      "Interactive training and educational systems",
+      "Conversational knowledge base interfaces",
+      "Automated help desk and support functions"
+    ],
+    "strengths": [
+      "Optimized for multi-turn conversations with strong contextual understanding",
+      "Cost-effective compared to GPT-35-Turbo-16K variants (3x cheaper for input tokens)",
+      "Supports up to 16,385 tokens in the GPT-35-Turbo-1106 version",
+      "Native integration with Azure AI services and regional deployment flexibility",
+      "Efficient token usage for conversational applications with fast response times"
+    ],
+    "limitations": [
+      "Training data limited to September 2021, lacking recent knowledge",
+      "Context window limitations vary by version (4K-16K tokens)",
+      "Maximum 4,096 output tokens per response across all versions",
+      "Reported behavioral differences from OpenAI's equivalent model",
+      "Function calling reliability issues and version-specific performance variations",
+      "Legacy versions (e.g., gpt-35-turbo-0301) slated for retirement"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-35-turbo",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:46:32.944321"
+}

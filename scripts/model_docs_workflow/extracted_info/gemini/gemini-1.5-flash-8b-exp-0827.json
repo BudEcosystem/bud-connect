@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Google Gemini 1.5 Flash-8B-Exp-0827 is an experimental 8-billion-parameter multimodal model developed by Google, released on August 27, 2024. It is a compact, faster variant of Gemini 1.5 Flash, optimized for speed and efficiency with a 1,000,000-token context window. The model supports text, images, audio, video, and document processing, and is designed for developer feedback before its general availability release.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume multimodal content processing (text, images, audio, video).",
+      "Long-context document summarization and multi-document synthesis.",
+      "Real-time applications like live transcription, interactive chat systems, and streaming translations.",
+      "Testing and evaluating new AI capabilities and performance improvements.",
+      "Providing feedback for iterative model development and feature refinement."
+    ],
+    "strengths": [
+      "40% faster than competing models like GPT-4o, optimized for low-latency applications.",
+      "8-billion-parameter architecture balances efficiency and performance for multimodal tasks.",
+      "Supports up to 1,000,000 tokens for long-context document and multi-modal processing.",
+      "Free access during the experimental phase via Google AI Studio and Gemini API.",
+      "Serves as a testing ground for new optimizations and features with developer feedback integration."
+    ],
+    "limitations": [
+      "Experimental status limits availability to specific platforms (not supported on Vertex AI).",
+      "No service level agreements (SLA) or guaranteed stability during the experimental phase.",
+      "Rate limits and potential feature changes without notice due to its testing nature.",
+      "Not recommended for production-critical systems due to possible bugs and instability.",
+      "Some experimental features may not carry over to the general availability (GA) release."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-1.5-flash-8b-exp-0827",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:15:24.539790"
+}

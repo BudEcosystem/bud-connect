@@ -1,0 +1,74 @@
+{
+  "model_info": {
+    "description": "GPT-4 is a large multimodal model developed by OpenAI that accepts text and image inputs to produce text outputs. It features a 8,192 token (8K) or 32,768 token (32K) context window, with training data cutoff in September 2021. The model demonstrates human-level performance on professional and academic benchmarks, with enhanced reasoning, creativity, and safety alignment compared to previous versions. It includes multimodal capabilities for image analysis, document understanding, and function calling in 0613+ versions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Legal contract analysis and research",
+      "Medical research assistance and reasoning",
+      "Academic problem solving and essay writing",
+      "Business strategic planning and report generation",
+      "Creative writing, content creation, and education",
+      "Programming code generation and debugging",
+      "Data analysis and visualization planning"
+    ],
+    "strengths": [
+      "Demonstrates human-level performance on professional and academic benchmarks (e.g., 90th percentile on Uniform Bar Exam)",
+      "Multimodal capabilities for text, image analysis, and document understanding with visual reasoning",
+      "Enhanced safety measures, factual accuracy, and ethical alignment compared to GPT-3.5",
+      "Function calling support in 0613+ versions for structured outputs and API integration",
+      "Advanced reasoning capabilities with 86.4% on MMLU (5-shot) and 95.3% on HellaSwag (10-shot)",
+      "Strong coding performance with 67.0% on HumanEval (0-shot) for code generation and debugging"
+    ],
+    "limitations": [
+      "Knowledge cutoff limited to September 2021 (varies by model version)",
+      "Context window limitations of 8K or 32K tokens",
+      "Potential for generating plausible but incorrect information (hallucinations)",
+      "Higher cost compared to GPT-3.5 Turbo ($0.03-$0.12 per 1K tokens)",
+      "May struggle with complex multi-step reasoning tasks",
+      "Deprecation of older versions (e.g., gpt-4-0314) requiring migration"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "Uniform Bar Exam",
+      "score": 90
+    },
+    {
+      "name": "LSAT",
+      "score": 88
+    },
+    {
+      "name": "SAT Math",
+      "score": 89
+    },
+    {
+      "name": "SAT Evidence-Based Reading & Writing",
+      "score": 93
+    },
+    {
+      "name": "MMLU",
+      "score": 86.4
+    },
+    {
+      "name": "HellaSwag",
+      "score": 95.3
+    },
+    {
+      "name": "ARC",
+      "score": 96.3
+    },
+    {
+      "name": "WinoGrande",
+      "score": 87.5
+    },
+    {
+      "name": "HumanEval",
+      "score": 67.0
+    }
+  ],
+  "model_name": "gpt-4",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:30:37.998888"
+}

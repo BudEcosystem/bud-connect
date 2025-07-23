@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "Grok-2 Vision Latest is a continuously updated multimodal AI model developed by xAI, designed for advanced vision and text understanding. It features a 32,768 token context window, supports multiple image formats (JPG/PNG) up to 10MB, and excels in complex document analysis, technical diagrams, and cross-modal reasoning. The model integrates with the \ud835\udd4f platform and offers real-time data processing capabilities.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Automated document processing (invoices, contracts, forms)",
+      "Technical diagram and engineering drawing interpretation",
+      "Business intelligence from dashboard screenshots and market trend visualizations",
+      "Visual AI assistants for customer support and educational tools",
+      "UI/UX testing automation and accessibility compliance checking",
+      "Scientific data visualization analysis and medical imaging assistance (non-diagnostic)"
+    ],
+    "strengths": [
+      "State-of-the-art performance on vision benchmarks like MathVista (>69%) and DocVQA",
+      "32K token context window for handling long inputs and outputs",
+      "Supports multiple images (up to 10MB) in single requests with high-quality analysis",
+      "Advanced multimodal reasoning for cross-modal tasks requiring text and image understanding",
+      "Real-time integration with \ud835\udd4f platform data for up-to-date analysis",
+      "Enhanced multilingual capabilities and streaming response support"
+    ],
+    "limitations": [
+      "10MB image size limit with format restrictions to JPG/PNG only",
+      "No video processing capabilities or fine-tuning support for custom datasets",
+      "Beta status with potential geographic restrictions and evolving features",
+      "Rate-limited API calls (1 request/second standard tier)",
+      "May struggle with extremely specialized domains without contextual guidance"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MathVista",
+      "score": 69.0
+    }
+  ],
+  "model_name": "grok-2-vision-latest",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:48:30.018899"
+}

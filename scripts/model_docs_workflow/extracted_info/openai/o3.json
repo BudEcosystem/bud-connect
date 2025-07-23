@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "The OpenAI o3 model is a cutting-edge language model designed for advanced reasoning and complex problem-solving, particularly excelling in STEM fields. It features a 200,000-token context window and 100,000-token maximum output, with a knowledge cutoff in June 2024. The model outperforms competitors on benchmarks like AIME 2024 (mathematical reasoning) and GPQA Diamond (scientific understanding), and is optimized for technical and academic applications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Solving complex mathematical equations and AIME-level problems",
+      "PhD-level scientific research and analysis using GPQA benchmarks",
+      "Technical documentation and STEM academic research assistance",
+      "Scientific modeling, hypothesis testing, and advanced logical reasoning tasks",
+      "High-volume batch processing of technical and scientific queries"
+    ],
+    "strengths": [
+      "Outperforms leading models on AIME 2024 and GPQA Diamond benchmarks for mathematical and scientific reasoning",
+      "Supports large context (200,000 tokens) and output (100,000 tokens) for handling complex tasks",
+      "Comprehensive API integration including Chat Completions, Assistants API, and Batch API",
+      "80% reduced pricing as of June 2025, enhancing accessibility for high-volume processing",
+      "Optimized for STEM tasks with deep logical reasoning capabilities"
+    ],
+    "limitations": [
+      "Higher computational cost compared to smaller models like o3-mini",
+      "Slower response times due to advanced reasoning processes",
+      "More compute-intensive usage requiring careful cost-benefit evaluation",
+      "Best suited for deep reasoning tasks rather than quick-response applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T14:30:36.743015"
+}

@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Gemini Pro Vision is a multimodal large language model developed by Google, designed to process and understand both text and visual inputs. It extends the Gemini Pro architecture with advanced image analysis capabilities, enabling tasks like visual question answering, scene description, and multimodal reasoning. The model supports multiple image formats (JPEG, PNG, GIF, WebP) and can handle up to 20MB per request (or larger via File API).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Image captioning and accessibility descriptions",
+      "Visual question answering and diagram explanation",
+      "Document analysis and information extraction",
+      "Educational support for diagram interpretation",
+      "E-commerce product analysis and categorization"
+    ],
+    "strengths": [
+      "Excels in visual understanding with accurate object detection, scene interpretation, and fine detail analysis",
+      "Seamlessly integrates text and image processing for context-aware responses",
+      "Supports batch processing of multiple images in a single request",
+      "Handles high-resolution images and complex multimodal workflows",
+      "Offers versatile applications for education, accessibility, document analysis, and product categorization"
+    ],
+    "limitations": [
+      "Text-only output format (no image generation capability)",
+      "20MB file size limit per request without using the File API",
+      "No native video processing (requires frame extraction)",
+      "Not suitable for professional medical or legal analysis",
+      "No live stream processing capabilities"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-pro-vision",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:43:29.160777"
+}

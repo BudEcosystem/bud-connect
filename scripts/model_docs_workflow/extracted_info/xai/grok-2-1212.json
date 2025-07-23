@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Grok-2-1212 is a stable, multimodal AI model developed by xAI, released on December 12th. It supports text and image processing with a 131,072-token context window and OpenAI-compatible tokenization. The model serves as the production version for grok-2 and grok-2-latest aliases, offering real-time X platform data access and dual personality modes (professional/creative).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service with multimodal ticket processing",
+      "Content creation with current event integration",
+      "Business intelligence and market sentiment analysis",
+      "Code generation and technical documentation",
+      "Educational tools with visual learning support",
+      "API integration for natural language to code conversion"
+    ],
+    "strengths": [
+      "131,072-token context window for handling extensive inputs/outputs",
+      "Multimodal capabilities for text generation and image understanding",
+      "Real-time X platform data integration for current event awareness",
+      "Strong reasoning, coding, and creative writing performance",
+      "99.9% uptime SLA for production workloads",
+      "Supports multi-turn conversations with context retention"
+    ],
+    "limitations": [
+      "High token costs (15x GPT-4o input, 11x output pricing)",
+      "Fixed 131,072-token limit with no overflow handling",
+      "No audio/video processing capabilities",
+      "Dependence on X platform data for real-time information",
+      "Rate limiting and token-per-minute restrictions",
+      "Potential biases from training data"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "grok-2-1212",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:46:47.812282"
+}

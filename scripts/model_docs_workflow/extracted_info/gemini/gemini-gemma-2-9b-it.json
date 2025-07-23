@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Gemma 2 9B-IT is a mid-size, instruction-tuned language model from Google's second-generation Gemma family. With 9 billion parameters and a 8,192 token context window, it balances performance and resource efficiency. The model features sliding window attention, knowledge distillation from larger models, and safety mitigations, making it suitable for deployment on modest hardware.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Conversational AI assistants",
+      "Content creation and article generation",
+      "Code generation and explanation",
+      "Data analysis and interpretation",
+      "Domain-specific fine-tuning for specialized applications"
+    ],
+    "strengths": [
+      "Balances performance and resource efficiency with 9B parameters for deployment on modest hardware",
+      "8,192 token context window for handling long inputs",
+      "Sliding window attention with global attention for efficient processing",
+      "Knowledge distillation from larger models improves performance",
+      "Safety measures including content filtering and built-in mitigations",
+      "Available in multiple formats (PyTorch, JAX, GGUF, ONNX, TensorFlow) for flexible deployment",
+      "Optimized for instruction following with specialized chat templates",
+      "Outperforms many 13B models despite smaller size"
+    ],
+    "limitations": [
+      "Limited to 8,192 token context window",
+      "Text-only capabilities (no multimodal support)",
+      "No access to real-time information",
+      "May struggle with very complex logical problems",
+      "General-purpose model requires fine-tuning for domain-specific applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini-gemma-2-9b-it",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T10:42:04.321973"
+}

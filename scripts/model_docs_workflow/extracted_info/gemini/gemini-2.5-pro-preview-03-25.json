@@ -1,0 +1,44 @@
+{
+  "model_info": {
+    "description": "Gemini 2.5 Pro Preview 03-25 is Google's most advanced multimodal thinking model, released March 25, 2025. It features a 1,000,000-token context window (expandable to 2 million), 65,000-token output capacity, and native reasoning capabilities with configurable thinking budgets. The model excels in text, audio, image, video, and code processing, achieving #1 rankings on LMArena and WebDev Arena while supporting transparent reasoning steps.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise software development (code refactoring, architecture design)",
+      "Scientific research and multi-document analysis",
+      "Complex problem-solving in mathematics and science",
+      "Multimodal content analysis (video, code repositories, mixed media)",
+      "Web application development with visual design capabilities",
+      "Mission-critical decision support systems"
+    ],
+    "strengths": [
+      "1,000,000-token context window (expandable to 2 million) for handling vast datasets",
+      "Industry-leading reasoning performance without test-time techniques like majority voting",
+      "Multimodal input support (text, audio, images, video, code repositories) with integrated analysis",
+      "63.8% SWE-Bench Verified score for code generation and refactoring",
+      "Transparent thinking process with configurable budgets for cost/latency optimization",
+      "First-place rankings on LMArena and WebDev Arena benchmarks",
+      "Supports function calling for external tool integration"
+    ],
+    "limitations": [
+      "Preview version deprecated by June 19, 2025 with automatic migration to 05-06",
+      "Overkill for simple queries due to advanced reasoning capabilities",
+      "Thinking mode may introduce latency/cost trade-offs for basic tasks",
+      "No numerical scores provided for GPQA, AIME 2025, or WebDev Arena benchmarks"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-Bench Verified",
+      "score": 63.8
+    },
+    {
+      "name": "Humanity's Last Exam",
+      "score": 18.8
+    }
+  ],
+  "model_name": "gemini-2.5-pro-preview-03-25",
+  "provider": "gemini",
+  "extraction_date": "2025-07-23T13:02:38.658094"
+}

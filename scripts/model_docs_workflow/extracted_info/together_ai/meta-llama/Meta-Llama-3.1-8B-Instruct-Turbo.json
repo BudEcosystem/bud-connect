@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.1 8B Instruct Turbo is a large language model developed by Meta and hosted on Together AI. It features 8 billion parameters, a 128K token context length, and is optimized for speed and cost efficiency via Together AI's Turbo enhancements. The model excels in multilingual support, code generation, and conversational AI while maintaining a balance between performance and resource requirements.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service automation and support",
+      "Content creation for blogs, marketing, and professional writing",
+      "Educational tools and tutoring systems",
+      "Code generation and programming assistance",
+      "Business communication and email drafting",
+      "Startup MVP development and cost-effective AI integration"
+    ],
+    "strengths": [
+      "2-3x faster inference with Together AI's Turbo optimization while preserving quality",
+      "128K token context window for handling long documents and complex inputs",
+      "17x lower cost per token compared to GPT-4o, making it highly cost-effective",
+      "Comprehensive multilingual support and instruction-tuned for diverse tasks",
+      "OpenAI-compatible API for seamless integration into existing workflows",
+      "Efficient resource usage with lower computational requirements than larger models"
+    ],
+    "limitations": [
+      "8B parameter count may limit performance on highly complex reasoning tasks compared to larger models",
+      "128K context window may be insufficient for extremely large document processing",
+      "Requires domain-specific fine-tuning for specialized knowledge areas",
+      "May not match larger models in quality for the most demanding applications",
+      "Potential limitations in nuanced understanding of less common languages"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-23T11:17:23.960335"
+}

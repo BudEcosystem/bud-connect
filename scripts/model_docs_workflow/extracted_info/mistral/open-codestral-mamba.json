@@ -1,0 +1,47 @@
+{
+  "model_info": {
+    "description": "Open Codestral Mamba is a 7.3B-parameter Mamba2-based code generation model developed by Mistral AI, specializing in code generation, analysis, and long-context processing (up to 256k tokens). It uses State Space Models (SSMs) for linear-time inference and is available under the Apache 2.0 license for free commercial and non-commercial use. The model supports 80+ programming languages and offers features like code translation, bug detection, and documentation generation.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise code assistants and IDE integrations",
+      "CI/CD automation with code analysis and bug detection",
+      "Educational tools for code generation and translation",
+      "Offline code generation with privacy-sensitive applications",
+      "Research projects requiring long-context code analysis"
+    ],
+    "strengths": [
+      "Utilizes Mamba2 architecture with State Space Models (SSMs) for linear-time inference and memory efficiency in long sequences",
+      "Outperforms CodeGemma-1.1 7B (75% vs 61% on HumanEval) and DeepSeek v1.5 7B (75% vs 65.9% on HumanEval)",
+      "Supports 80+ programming languages including Python, Java, C++, and JavaScript",
+      "Handles up to 256k tokens of context for large codebase analysis",
+      "Apache 2.0 license permits unrestricted commercial use, modification, and redistribution",
+      "Optimized deployment options include TensorRT-LLM for NVIDIA GPUs and upcoming llama.cpp support for CPU/Metal"
+    ],
+    "limitations": [
+      "Smaller parameter count (7.3B) compared to Codestral 22B, potentially limiting performance on complex tasks",
+      "Requires significant GPU memory (minimum 24GB VRAM) for full-precision deployment",
+      "Quantization recommended for consumer hardware to reduce resource demands",
+      "May require domain-specific fine-tuning for specialized codebases",
+      "Initial setup complexity for self-hosting compared to API usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "HumanEval",
+      "score": 75.0
+    },
+    {
+      "name": "MBPP",
+      "score": 68.5
+    },
+    {
+      "name": "Long Context",
+      "score": 256000
+    }
+  ],
+  "model_name": "open-codestral-mamba",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:02:45.673052"
+}

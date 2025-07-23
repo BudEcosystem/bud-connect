@@ -1,0 +1,49 @@
+{
+  "model_info": {
+    "description": "GPT-4.1-2025-04-14 is a production-ready large language model deployed on Azure OpenAI Service, released on April 14, 2025. It features a 1,047,576-token context window, multimodal input support (text and images), and enhanced coding capabilities. The model is optimized for enterprise applications with Azure-specific integrations, security features, and compliance certifications.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise software development and codebase analysis",
+      "Complex multi-step task automation in business workflows",
+      "Long-document processing (legal contracts, research papers)",
+      "Multimodal analysis of technical diagrams and code architecture",
+      "Global customer support with regional compliance requirements",
+      "Scientific research and market intelligence analysis"
+    ],
+    "strengths": [
+      "1,047,576-token context window for processing extremely long inputs (54.6% success rate on SWE-bench Verified coding benchmark)",
+      "54.6% improvement in software engineering performance over GPT-4o with enhanced multi-language code generation",
+      "38.3% score on Scale's MultiChallenge instruction-following benchmark for complex task execution",
+      "72.0% performance on Video-MME for long-context video understanding",
+      "83% cost reduction compared to GPT-4o with 50% faster response times",
+      "Native Azure integration with SOC 2, ISO 27001, GDPR, and HIPAA compliance"
+    ],
+    "limitations": [
+      "Knowledge cutoff at May 31, 2024 training data with no real-time internet access",
+      "Maximum 1M input tokens and 32K output tokens per request",
+      "Cannot execute code or perform external API calls",
+      "Potential for hallucinations in generated content",
+      "High costs for extended context usage (1M tokens at premium rates)",
+      "Regional deployment limitations requiring careful latency planning"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 54.6
+    },
+    {
+      "name": "MultiChallenge",
+      "score": 38.3
+    },
+    {
+      "name": "Video-MME",
+      "score": 72.0
+    }
+  ],
+  "model_name": "gpt-4.1-2025-04-14",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T08:49:59.951866"
+}

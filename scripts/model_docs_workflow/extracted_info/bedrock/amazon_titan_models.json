@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Amazon Titan is a family of foundation models developed by Amazon for AWS Bedrock, designed for enterprise use cases with capabilities in text generation, embeddings, and multimodal processing. The Titan Text models include Premier (32,000-token context window), Express (8,192 tokens), and Lite (cost-effective variant), while embeddings models support semantic search and cross-modal tasks. The models integrate with AWS services like RAG, agents, and IAM, with regional availability across multiple AWS regions.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise search and RAG with knowledge base integration",
+      "Content generation for marketing copy and technical documentation",
+      "Code generation and API documentation creation",
+      "Cross-modal search and image-text similarity analysis",
+      "Data processing tasks like table creation and unstructured data formatting"
+    ],
+    "strengths": [
+      "Large context window (32,000 tokens) in Titan Text Premier for handling complex tasks",
+      "Multilingual support (100+ languages) in Titan Text Express for global applications",
+      "Native integration with AWS services like RAG, agents, and IAM for enterprise workflows",
+      "Model customization options (preview) for Titan Text Premier and Lite for domain-specific fine-tuning",
+      "Multimodal capabilities in Titan Multimodal Embeddings for cross-modal search and image-text similarity"
+    ],
+    "limitations": [
+      "Multilingual support in Titan Text Express is in preview and may have limited maturity",
+      "Titan Text Lite has restricted capabilities (e.g., only summarization and copywriting)",
+      "Regional availability limitations in some AWS regions (e.g., Asia Pacific and Europe)",
+      "Multimodal embeddings only support text and images, not other modalities like audio"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "amazon_titan_models",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:30:14.469479"
+}

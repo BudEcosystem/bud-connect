@@ -1,0 +1,50 @@
+{
+  "model_info": {
+    "description": "Grok-3 Fast Beta is a speed-optimized variant of xAI's Grok-3 model, offering identical quality with significantly reduced latency. It features a 131k token context window, 0.71-second time to first token, and 67ms average response latency. The model supports code interpretation, internet access, tool calling, and multi-language capabilities but lacks vision features and fine-tuning support. Knowledge is current through November 2024.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time fraud detection and emergency response systems",
+      "Live trading algorithms and real-time data monitoring",
+      "Interactive customer support chatbots and gaming AI companions",
+      "Mobile voice assistants and on-device low-latency features",
+      "Time-critical decision support and streaming data interpretation"
+    ],
+    "strengths": [
+      "50-70% faster response times than standard Grok-3 with identical quality and reasoning capabilities",
+      "Maintains full benchmark scores of standard Grok-3 (AIME 2025: 93.3%, GPQA: 84.6%)",
+      "Low latency (67ms average) for real-time applications",
+      "131k token context window for handling long inputs",
+      "Optimized infrastructure with parallel processing for consistent performance"
+    ],
+    "limitations": [
+      "66.7% higher input/output costs compared to standard Grok-3",
+      "No vision capabilities or fine-tuning support",
+      "Limited availability during peak times due to premium infrastructure requirements",
+      "Not cost-effective for batch processing or non-time-sensitive tasks",
+      "Higher latency variance compared to specialized speed-optimized models"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "AIME 2025",
+      "score": 93.3
+    },
+    {
+      "name": "GPQA",
+      "score": 84.6
+    },
+    {
+      "name": "LiveCodeBench",
+      "score": 79.4
+    },
+    {
+      "name": "Chatbot Arena Elo",
+      "score": 1402
+    }
+  ],
+  "model_name": "grok-3-fast-beta",
+  "provider": "xai",
+  "extraction_date": "2025-07-23T11:52:11.059416"
+}

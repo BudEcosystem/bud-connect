@@ -1,0 +1,42 @@
+{
+  "model_info": {
+    "description": "Mistral Large 2407 (Mistral Large 2) is a 123-billion parameter transformer-based model released in July 2024 by Mistral AI. It features a 128,000-token context window, optimized for single-node deployment, and extensive training on code repositories, multilingual data, and reasoning tasks. The model supports over 80 programming languages and dozens of natural languages, with core strengths in code generation, mathematics, and multilingual reasoning.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Code review, generation, and debugging for software engineering",
+      "Statistical analysis and machine learning model development",
+      "Complex document analysis with long context requirements",
+      "Multilingual applications including real-time translation and cross-lingual information retrieval",
+      "Quantitative financial analysis and risk modeling",
+      "Clinical research and medical literature synthesis",
+      "Legal document analysis and contract drafting"
+    ],
+    "strengths": [
+      "128,000-token context window for complex document analysis and long-context applications",
+      "123 billion parameters with architectural improvements for better performance per parameter",
+      "Vastly superior code generation capabilities from extensive code repository training",
+      "84.0% accuracy on MMLU (pretrained) benchmark, matching GPT-4o, Claude 3 Opus, and Llama 3 405B",
+      "Advanced function calling capabilities for tool integration",
+      "Strong multilingual support across 40+ languages including Chinese, Arabic, and 80+ programming languages",
+      "Sets new performance/cost efficiency benchmarks for open models"
+    ],
+    "limitations": [
+      "Requires substantial GPU resources (123B parameters demand significant computational power)",
+      "Higher memory usage (VRAM requirements for self-hosting are significant)",
+      "Potential latency in real-time applications due to model size",
+      "Premium pricing tier reflects advanced capabilities",
+      "Resource-intensive fine-tuning process for custom applications"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU (Pretrained)",
+      "score": 84.0
+    }
+  ],
+  "model_name": "mistral-large-2407",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T10:54:26.476244"
+}

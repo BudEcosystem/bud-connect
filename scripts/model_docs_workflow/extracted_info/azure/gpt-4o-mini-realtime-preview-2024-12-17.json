@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "GPT-4o-mini-realtime-preview-2024-12-17 is a multimodal AI model developed by OpenAI, supporting text and audio inputs. Released on December 17, 2024, this preview version focuses on real-time audio interactions with enhanced voice quality, input reliability, and low-latency processing. It includes 8 voice options and is optimized for test/development environments with token-based rate limits.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Real-time customer service with voice-enabled support systems",
+      "Dynamic audio content generation and interactive media creation",
+      "Live cross-language translation with voice preservation",
+      "Corporate voice assistant implementations and training tools",
+      "Accessibility solutions with voice-controlled automation",
+      "Testing and development of real-time audio applications"
+    ],
+    "strengths": [
+      "Significant improvements in voice output quality and audio input reliability",
+      "Real-time processing with low-latency speech-to-speech capabilities",
+      "Supports 8 distinct voice personalities for personalized interactions",
+      "Prompt caching reduces costs and improves response times for repeated queries",
+      "Transition to token-based rate limiting enables more flexible usage patterns",
+      "Cost-optimized compared to GPT-4o-realtime-preview while maintaining quality"
+    ],
+    "limitations": [
+      "Preview status - not optimized for production traffic",
+      "Limited to text and audio modalities (no image support)",
+      "Does not support existing GPT-4o structured output features",
+      "Rate limits (100k TPM/1k RPM) suitable only for testing environments",
+      "Requires stable internet connection for optimal performance",
+      "May exhibit stability issues typical of preview releases"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gpt-4o-mini-realtime-preview-2024-12-17",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:04:19.651301"
+}

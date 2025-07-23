@@ -1,0 +1,32 @@
+{
+  "model_info": {
+    "description": "Cohere Command R v10 is an advanced enterprise language model developed by Cohere for AWS Bedrock, optimized for real-world business applications. It features a 128,000-token context window, multilingual support for 10 key business languages, and specialized capabilities in retrieval-augmented generation (RAG), long-context processing, and multi-step tool integration. The model balances performance and cost-effectiveness for enterprise deployment.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Enterprise knowledge management (document summarization, FAQ generation)",
+      "Customer service automation (multi-language support, escalation management)",
+      "Business intelligence reporting and data analysis",
+      "Marketing content creation and SEO optimization",
+      "Legal and compliance document analysis"
+    ],
+    "strengths": [
+      "128,000-token context window for comprehensive document analysis and long-context tasks",
+      "Multilingual support for 10 business languages (English, French, Spanish, etc.)",
+      "Advanced RAG capabilities with automatic citation generation and multi-document reasoning",
+      "Tool integration for multi-step workflows and external API connectivity",
+      "Enterprise-optimized efficiency and cost-effectiveness for production workloads"
+    ],
+    "limitations": [
+      "128,000-token context window may be insufficient for extremely long documents",
+      "Limited to 10 business languages (not full global language coverage)",
+      "Tool execution constrained to predefined function interfaces",
+      "Cost considerations for high-volume enterprise usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.command-r-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:36:46.947122"
+}

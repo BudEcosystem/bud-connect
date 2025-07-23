@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3 8B Instruct is a 8-billion-parameter language model developed by Meta, optimized for efficiency and performance. It features an 8K context window (double Llama 2's capacity), training on 15 trillion tokens (7x larger than Llama 2), and 4x more code data for enhanced programming capabilities. Designed for edge devices and resource-constrained environments, it excels in text processing, classification, and basic reasoning tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Edge computing applications (IoT devices, mobile apps, embedded systems)",
+      "Real-time text processing (chatbots, live assistance, content moderation)",
+      "Educational technology (learning tools, student assistance)",
+      "Small business AI integration (cost-effective solutions for SMBs)",
+      "Basic code generation and programming assistance",
+      "High-volume document analysis and categorization"
+    ],
+    "strengths": [
+      "Edge-optimized for low computational resource environments, including IoT and mobile devices.",
+      "8K context window enables handling longer documents and conversations compared to Llama 2 (4K).",
+      "Trained on 15 trillion tokens (7x larger dataset than Llama 2) with 4x more code data for improved programming capabilities.",
+      "Fast inference speeds and cost-effectiveness for real-time and high-volume applications.",
+      "Strong performance in text summarization, classification, sentiment analysis, and multilingual translation."
+    ],
+    "limitations": [
+      "Smaller parameter count (8B) may limit performance on highly complex or specialized tasks compared to larger models (e.g., 70B variants).",
+      "8K context window may be restrictive for extremely long documents or extended conversations.",
+      "Requires careful prompt engineering for optimal results in complex task sequences.",
+      "Limited performance on domain-specific expertise tasks requiring deep analytical reasoning."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-8b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:50:03.246042"
+}

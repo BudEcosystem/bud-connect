@@ -1,0 +1,63 @@
+{
+  "model_info": {
+    "description": "Text-embedding-3-small is OpenAI's cost-efficient embedding model that outperforms text-embedding-ada-002 while being 5x cheaper. It provides 1,536-dimensional embeddings (adjustable via the dimensions parameter) with a maximum input of 8,191 tokens. The model excels in semantic search, document clustering, and classification tasks, offering multilingual improvements and flexible dimensionality for cost optimization.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Large-scale semantic search systems",
+      "E-commerce product similarity matching",
+      "Content recommendation engines",
+      "Budget-constrained academic research",
+      "Real-time chatbot semantic matching",
+      "Cross-lingual document clustering"
+    ],
+    "strengths": [
+      "5x cheaper than text-embedding-ada-002 ($0.00002 per 1K tokens)",
+      "Outperforms ada-002 on MIRACL (44.0% vs 31.4%) and MTEB (62.3% vs 61.0%) benchmarks",
+      "Flexible dimensionality (512-1536) with minimal performance loss at reduced sizes",
+      "Supports multilingual tasks with significant improvements over previous models",
+      "Optimized for high-volume applications with fast processing and low memory usage"
+    ],
+    "limitations": [
+      "Maximum input limit of 8,191 tokens",
+      "No fine-tuning capability (fixed model architecture)",
+      "Normalized output vectors only (no raw scores)",
+      "Slightly lower accuracy than text-embedding-3-large (2.3% MTEB difference)",
+      "Performance degrades with dimension reduction (88% at 256 dimensions)"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 62.3
+    },
+    {
+      "name": "MIRACL",
+      "score": 44.0
+    },
+    {
+      "name": "Dimension Performance (1536)",
+      "score": 100
+    },
+    {
+      "name": "Dimension Performance (1024)",
+      "score": 98
+    },
+    {
+      "name": "Dimension Performance (768)",
+      "score": 96
+    },
+    {
+      "name": "Dimension Performance (512)",
+      "score": 93
+    },
+    {
+      "name": "Dimension Performance (256)",
+      "score": 88
+    }
+  ],
+  "model_name": "text-embedding-3-small",
+  "provider": "azure",
+  "extraction_date": "2025-07-23T09:20:48.428877"
+}

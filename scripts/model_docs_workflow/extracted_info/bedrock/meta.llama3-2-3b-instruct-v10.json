@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "description": "Meta Llama 3.2 3B Instruct is a lightweight text-only language model developed by Meta, optimized for efficiency and low-latency inference. With 3 billion parameters and a 128K token context window, it balances computational resource requirements with strong performance in text processing tasks like summarization, classification, and translation. The model supports eight languages and is designed for cost-effective deployment on AWS Bedrock.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Document summarization and analysis for business intelligence",
+      "Automated customer service response generation and ticket routing",
+      "Educational content creation and analysis for learning platforms",
+      "Multilingual translation and content localization",
+      "Content moderation and automated filtering",
+      "Medical document processing with appropriate oversight"
+    ],
+    "strengths": [
+      "128K token context window for processing extended documents and maintaining conversation history",
+      "Low-latency inference optimized for real-time applications and high throughput",
+      "Cost-effective pricing with a strong price-to-performance ratio for medium-scale deployments",
+      "Multilingual support for eight languages including English, Spanish, and Hindi",
+      "Efficient resource utilization with moderate computational requirements",
+      "Specialized for text tasks like summarization, classification, and translation with proven accuracy"
+    ],
+    "limitations": [
+      "Limited to text-only inputs without multimodal capabilities",
+      "Geofencing restrictions limit deployment to specific AWS regions",
+      "Less sophisticated for complex reasoning tasks compared to larger models",
+      "May struggle with highly specialized domain knowledge or advanced creative writing",
+      "Performance variability in extremely complex analytical tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "meta.llama3-2-3b-instruct-v10",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:48:33.940110"
+}

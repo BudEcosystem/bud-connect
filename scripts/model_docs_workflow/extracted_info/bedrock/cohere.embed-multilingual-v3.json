@@ -1,0 +1,36 @@
+{
+  "model_info": {
+    "description": "Cohere Embed Multilingual v3 is a multilingual embedding model developed by Cohere and available on AWS Bedrock. It generates 1,024-dimensional vector representations for text and images across 100+ languages, supporting semantic search, text classification, and retrieval-augmented generation (RAG). The model emphasizes cross-lingual understanding, cultural context awareness, and code-switching capabilities, with a maximum input length of 2,048 characters and batch processing up to 96 texts per request.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Global enterprise knowledge management and multilingual customer support systems.",
+      "Cross-lingual semantic search and document retrieval across multilingual content repositories.",
+      "Multilingual text classification for content moderation and categorization.",
+      "International e-commerce product discovery and recommendation systems.",
+      "Cross-cultural content localization and SEO optimization for global markets.",
+      "Multimodal applications like image-text matching and visual commerce across language barriers."
+    ],
+    "strengths": [
+      "Supports 100+ languages including major business languages like English, Chinese, and Arabic, enabling global multilingual applications.",
+      "Provides cross-lingual semantic similarity and cultural context understanding for consistent performance across language variations.",
+      "Offers multimodal capabilities for text and image embeddings, enabling tasks like cross-lingual image search and content moderation.",
+      "Optimized for efficient inference with batch processing and multiple embedding formats (float, int8, binary).",
+      "Integrates seamlessly with AWS services like Amazon Kendra, Translate, and Comprehend for enterprise-scale multilingual workflows.",
+      "Supports code-switching and regional language variants for mixed-language content processing."
+    ],
+    "limitations": [
+      "Performance may vary across languages, with lower accuracy for low-resource languages and regional variants.",
+      "Limited input length (2,048 characters) and token count (512 tokens) may truncate complex or lengthy content.",
+      "Higher computational and storage requirements due to multilingual processing complexity.",
+      "Potential cultural biases in embeddings derived from training data, requiring additional validation.",
+      "No streaming support for embedding generation, limiting real-time application scenarios.",
+      "Regional deployment considerations for compliance with data residency and regulatory requirements."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "cohere.embed-multilingual-v3",
+  "provider": "bedrock",
+  "extraction_date": "2025-07-23T09:39:27.658221"
+}

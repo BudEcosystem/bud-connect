@@ -1,0 +1,61 @@
+{
+  "model_info": {
+    "description": "DeepSeek-chat is a state-of-the-art Mixture-of-Experts (MoE) language model developed by DeepSeek, trained on 14.8 trillion tokens. It features 671 billion total parameters with 37 billion activated per token, designed for tasks like text generation, conversation, coding, and complex reasoning. The model achieves performance comparable to leading proprietary models at significantly lower training costs ($2.664M in H800 GPU hours).",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "General conversation and customer support chatbots",
+      "Code generation, debugging, and competitive programming",
+      "Content creation including articles, translations, and summarization",
+      "Educational tutoring and problem-solving assistance",
+      "Business applications like data analysis and report generation",
+      "Multi-language programming support across various industries"
+    ],
+    "strengths": [
+      "Supports 64,000-token API context window with 8,000-token maximum output per response",
+      "Achieves 88.5% on MMLU benchmark for multi-task language understanding",
+      "Excels in code generation with 82.6% HumanEval score and 51.6% Codeforces performance",
+      "Streaming responses 3x faster than GPT-4 with OpenAI API compatibility",
+      "95% cheaper than GPT-4 and 78% cheaper than Claude 3.5 Sonnet in API pricing",
+      "Includes advanced features like multi-token prediction training and MLA architecture"
+    ],
+    "limitations": [
+      "API context limit (64K tokens) is half the training context (128K tokens)",
+      "Maximum output limited to 8,000 tokens per response",
+      "No image processing capabilities (text-only model)",
+      "Restricted discussion of Chinese political topics and sensitive historical events",
+      "Content filters may refuse certain requests based on 'Core Socialist Values'",
+      "Rate limits apply to API usage"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MMLU",
+      "score": 88.5
+    },
+    {
+      "name": "HumanEval",
+      "score": 82.6
+    },
+    {
+      "name": "Codeforces",
+      "score": 51.6
+    },
+    {
+      "name": "DROP",
+      "score": 91.6
+    },
+    {
+      "name": "IF-Eval",
+      "score": 86.1
+    },
+    {
+      "name": "AIME 2024",
+      "score": 39.2
+    }
+  ],
+  "model_name": "deepseek-chat",
+  "provider": "deepseek",
+  "extraction_date": "2025-07-23T09:58:24.102572"
+}

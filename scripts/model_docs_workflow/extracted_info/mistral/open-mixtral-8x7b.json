@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Open Mixtral 8x7B is a sparse Mixture of Experts (SMoE) model developed by Mistral AI, offering GPT-3.5 level performance with significantly faster inference. It features a 32K token context window, supports English, French, Italian, German, and Spanish, and is released under the Apache 2.0 license. The model uses 8 experts with selective routing to activate only a subset of parameters per token, optimizing efficiency.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Multilingual chatbots and translation services",
+      "Code generation and programming assistance",
+      "High-throughput content generation and summarization",
+      "Real-time AI applications in resource-constrained environments",
+      "Cross-lingual understanding and localization tasks"
+    ],
+    "strengths": [
+      "Outperforms Llama 2 70B on most benchmarks while being 6x faster in inference",
+      "Matches or exceeds GPT-3.5 performance on standard benchmarks with a sparse architecture",
+      "Strong code generation capabilities and multilingual support for 5 major languages",
+      "Efficient deployment with lower computational costs and reduced memory footprint",
+      "Supports edge computing and real-time inference with optimized hardware requirements"
+    ],
+    "limitations": [
+      "Limited to 5 supported languages (English, French, Italian, German, Spanish)",
+      "Requires modern GPU (e.g., NVIDIA A100) for optimal performance",
+      "Higher minimum hardware specifications compared to smaller models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "open-mixtral-8x7b",
+  "provider": "mistral",
+  "extraction_date": "2025-07-23T11:06:04.642035"
+}

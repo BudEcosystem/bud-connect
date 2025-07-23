@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "Together AI is a cloud platform offering fast inference, fine-tuning, and training for over 200 open-source models. It leverages NVIDIA Blackwell and Hopper GPUs with serverless pay-per-token pricing, supporting models from providers like Meta, Mistral, Qwen, and DeepSeek. The platform provides multilingual, multimodal (text, code, image, audio), and specialized model options with transparent pricing and global infrastructure.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer support automation and content generation",
+      "Code review and programming assistance",
+      "Document analysis for legal/medical/technical fields",
+      "Multilingual translation and language learning",
+      "RAG systems and semantic search implementations",
+      "Scientific computing and academic research",
+      "Enterprise chatbots and conversational AI"
+    ],
+    "strengths": [
+      "70-90% cost savings compared to closed model providers with transparent token-based pricing",
+      "High-performance infrastructure using NVLink/InfiniBand and latest NVIDIA GPUs",
+      "Supports 200+ open-source models across chat, code, embedding, image, and audio domains",
+      "OpenAI-compatible API for seamless migration and integration",
+      "Global low-latency infrastructure with automatic scaling and serverless architecture",
+      "Specialized pricing tiers for different model sizes and MoE architectures",
+      "Multimodal capabilities including vision, audio, and code generation"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "00_together_ai_overview",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:11:03.774008"
+}

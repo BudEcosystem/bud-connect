@@ -1,0 +1,66 @@
+{
+  "model_info": {
+    "description": "Text-embedding-3-small is OpenAI's cost-effective text embedding model that outperforms text-embedding-ada-002 on most benchmarks while being 5x cheaper. It provides 1,536-dimensional normalized vector embeddings (with flexible dimensionality reduction) and supports up to 8,191 tokens using the cl100k_base tokenizer. The model excels in semantic search, document clustering, classification, and content deduplication tasks.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "High-volume semantic search systems",
+      "E-commerce product similarity matching",
+      "Social media content recommendation",
+      "Email categorization and spam detection",
+      "Budget-constrained academic research",
+      "Real-time chatbot semantic matching",
+      "Cross-lingual document clustering",
+      "Content deduplication in large corpora"
+    ],
+    "strengths": [
+      "5x cheaper than text-embedding-ada-002 ($0.00002 per 1K tokens)",
+      "Outperforms ada-002 on MIRACL (44.0% vs 31.4%) and MTEB (62.3% vs 61.0%) benchmarks",
+      "Supports flexible dimensionality reduction (512-1536) without retraining",
+      "Maintains 93-100% performance across dimension reductions",
+      "Improved multilingual capabilities compared to previous models",
+      "Faster processing with lower memory footprint than large models"
+    ],
+    "limitations": [
+      "Maximum input limit of 8,191 tokens",
+      "Slightly lower accuracy than text-embedding-3-large (2.3% difference on MTEB)",
+      "Performance degrades with extreme dimension reduction (88% at 256 dimensions)",
+      "Not ideal for highly specialized domains requiring domain-specific fine-tuning",
+      "Fixed model architecture with no fine-tuning options"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "MTEB",
+      "score": 62.3
+    },
+    {
+      "name": "MIRACL",
+      "score": 44.0
+    },
+    {
+      "name": "1536-dim performance",
+      "score": 100
+    },
+    {
+      "name": "1024-dim performance",
+      "score": 98
+    },
+    {
+      "name": "768-dim performance",
+      "score": 96
+    },
+    {
+      "name": "512-dim performance",
+      "score": 93
+    },
+    {
+      "name": "256-dim performance",
+      "score": 88
+    }
+  ],
+  "model_name": "text-embedding-3-small",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:50:41.628086"
+}

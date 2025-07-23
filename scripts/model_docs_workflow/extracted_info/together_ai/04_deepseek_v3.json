@@ -1,0 +1,31 @@
+{
+  "model_info": {
+    "description": "DeepSeek-V3-0324 is an open Mixture-of-Experts (MoE) large language model developed by DeepSeek, offering competitive performance with 671 billion parameters and a 131,072 token context length. It uses FP8 quantization for efficient inference and is available via Together AI's serverless platform at $1.25 per 1M tokens, providing 70-90% cost savings over similar closed models.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Software development (code generation, debugging, code review)",
+      "Research document analysis and data interpretation",
+      "Educational tutoring and explanation generation",
+      "Technical content creation and documentation",
+      "Mathematical problem solving and logical reasoning",
+      "Enterprise code review automation",
+      "Customer support for technical question answering",
+      "Data analysis report generation"
+    ],
+    "strengths": [
+      "Mixture-of-Experts (MoE) architecture enables efficient sparse expert activation for resource optimization",
+      "131,072 token context length supports long-form document analysis and extended conversations",
+      "FP8 quantization balances fast inference speed with high-quality outputs",
+      "70-90% lower cost per token compared to leading closed models",
+      "Excels in code generation, mathematical reasoning, and logical problem-solving tasks",
+      "Serverless deployment with pay-per-use pricing and batch processing discounts"
+    ],
+    "limitations": [],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "04_deepseek_v3",
+  "provider": "together_ai",
+  "extraction_date": "2025-07-20T21:14:20.178423"
+}

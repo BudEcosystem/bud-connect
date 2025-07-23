@@ -1,0 +1,40 @@
+{
+  "model_info": {
+    "description": "Vertex AI Native Gemini Models are Google's enterprise-grade AI models designed for deployment on Google Cloud infrastructure. The latest Gemini 2.5 series includes variants like Pro (advanced reasoning), Flash (balanced performance), and Flash-Lite (speed-optimized), with multimodal capabilities (text, images, video, audio) and long context windows (up to 2M tokens). These models integrate with Google Cloud services and offer enterprise security features like VPC-SC and CMEK.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex enterprise analysis and research tasks",
+      "Multimodal content understanding (images, video, audio analysis)",
+      "Code generation and software development assistance",
+      "High-volume production applications with real-time requirements",
+      "Domain-specific fine-tuning for specialized industries",
+      "Image generation and manipulation (preview capabilities)",
+      "Cost-sensitive deployments with Flash/Flash-Lite models",
+      "Global-scale applications requiring data residency compliance"
+    ],
+    "strengths": [
+      "Advanced multimodal understanding of text, images, video, and audio",
+      "Long context window support (up to 2M tokens in Gemini 1.5 Pro)",
+      "Enhanced reasoning capabilities for complex analysis and research tasks",
+      "Code generation and analysis features for development workflows",
+      "Enterprise-grade security with VPC Service Controls and Customer-Managed Encryption Keys",
+      "Regional endpoint options for data sovereignty and latency optimization",
+      "Fine-tuning support for domain-specific customization (Gemini 2.0 Flash)",
+      "Cost optimization options through model tier selection (Pro/Flash/Flash-Lite)"
+    ],
+    "limitations": [
+      "Gemini 1.5 models restricted to existing projects (not available for new projects after April 29, 2025)",
+      "Token-based pricing model may incur high costs for high-volume applications",
+      "Flash-Lite models in preview status with limited availability",
+      "Regional availability constraints for certain model variants",
+      "Learning curve for optimizing token usage and cost management",
+      "Deprecation timelines require proactive migration planning for legacy models"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "gemini_native_models",
+  "provider": "vertex_ai",
+  "extraction_date": "2025-07-23T11:44:03.371962"
+}

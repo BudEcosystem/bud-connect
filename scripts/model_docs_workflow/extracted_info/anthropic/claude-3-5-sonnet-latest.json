@@ -1,0 +1,48 @@
+{
+  "model_info": {
+    "description": "Claude 3.5 Sonnet is Anthropic's flagship model that outperforms competitors and Claude 3 Opus on a wide range of evaluations. It features a 200,000-token context window, 8,192-token output limit, and multimodal capabilities (text and vision). The model ID is `claude-3-5-sonnet-latest`, with training data cutoff varying by version updates.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Complex document analysis and processing for enterprises",
+      "Code generation, debugging, and software engineering tasks",
+      "Data analysis and visualization interpretation from charts/graphs",
+      "Customer service automation with natural language understanding",
+      "Scientific literature analysis and technical documentation generation",
+      "High-quality content writing, creative storytelling, and marketing copy generation",
+      "Real-time computer interaction for automation workflows",
+      "Data extraction from images in retail, logistics, and financial services"
+    ],
+    "strengths": [
+      "Superior comprehension of nuance, humor, and complex instructions for high-quality content generation",
+      "64% success rate on internal agentic coding evaluations with exceptional code generation capabilities",
+      "Strongest vision model in the Claude family for interpreting charts, graphs, and imperfect images",
+      "Accurate text extraction from images critical for retail, logistics, and financial services",
+      "Graduate-level reasoning capabilities leading the GPQA benchmark",
+      "Twice the speed of Claude 3 Opus with prompt caching reducing latency by up to 80%",
+      "Interactive content generation via Artifacts with real-time editing capabilities",
+      "First frontier AI model capable of computer use (screen interaction, cursor movement, clicking, typing)"
+    ],
+    "limitations": [
+      "200,000 token context window limit restricts handling of extremely long inputs",
+      "8,192 token output limit (standard) may require multiple calls for extended outputs",
+      "Cannot browse the internet or access real-time information",
+      "Knowledge cutoff varies with version updates, potentially affecting timeliness",
+      "SWE-bench Verified score of 49.0% indicates moderate success in software engineering tasks"
+    ],
+    "languages": []
+  },
+  "model_evals": [
+    {
+      "name": "SWE-bench Verified",
+      "score": 49.0
+    },
+    {
+      "name": "Internal Agentic Coding",
+      "score": 64
+    }
+  ],
+  "model_name": "claude-3-5-sonnet-latest",
+  "provider": "anthropic",
+  "extraction_date": "2025-07-23T08:21:07.008514"
+}

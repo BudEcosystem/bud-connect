@@ -1,0 +1,33 @@
+{
+  "model_info": {
+    "description": "OpenAI o3-pro, released on June 10, 2025, is an enhanced version of the o3 model designed for complex problem-solving with improved reasoning capabilities and reduced costs. It replaces o1-pro for Pro and Team users, featuring the same architecture as o3 but optimized for reliability, reduced hallucinations, and access to tools like web search, code execution, and multi-tool orchestration. The model's knowledge cutoff is October 2023.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Scientific research and hypothesis generation",
+      "Software architecture design and code review",
+      "Business strategy development and market analysis",
+      "Legal contract review and regulatory compliance",
+      "Medical data analysis and literature synthesis"
+    ],
+    "strengths": [
+      "Uses enhanced computing power for better responses to complex reasoning tasks with fewer hallucinations.",
+      "87% cheaper than o1-pro, making advanced reasoning more accessible while maintaining high accuracy.",
+      "Outperforms competitors like Google's Gemini 2.5 Pro in mathematics and Anthropic's Claude 4 Opus in science benchmarks.",
+      "Supports multi-tool workflows, visual reasoning, and long-form analysis for comprehensive problem-solving.",
+      "Improved reliability and consistency across domains like research, programming, and business analysis."
+    ],
+    "limitations": [
+      "Longer response times compared to o1-pro due to increased computational requirements.",
+      "4x higher input and 10x higher output costs than base o3, making it less cost-effective for simpler tasks.",
+      "Knowledge cutoff remains at October 2023, limiting access to post-2023 data.",
+      "Initial launch limitations included disabled chats, no image generation, and missing Canvas features.",
+      "May be overkill for standard reasoning tasks where base o3 suffices."
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3-pro_o3-pro-2025-06-10",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:44:49.792155"
+}

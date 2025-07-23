@@ -1,0 +1,34 @@
+{
+  "model_info": {
+    "description": "OpenAI o3-deep-research-2025-06-26 is a flagship deep research model developed by OpenAI with a 5/5 reasoning rating. It specializes in advanced analysis, information synthesis, and automated research workflows, supporting web search, document analysis, code execution, and multi-tool orchestration. The model has a knowledge cutoff of October 2023 and is optimized for high-quality, structured research outputs.",
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Comprehensive market analysis and competitive intelligence",
+      "Academic literature reviews and grant writing",
+      "Technical architecture design and security vulnerability research",
+      "Investment due diligence and regulatory compliance analysis",
+      "Scientific meta-analysis and hypothesis development"
+    ],
+    "strengths": [
+      "Highest reasoning capability rating (5/5) for complex, multi-step research tasks",
+      "Integrates web search, document analysis, code execution, and multi-tool orchestration for comprehensive research",
+      "Generates structured, cited reports with professional formatting and evidence-based conclusions",
+      "Optimized for deep analysis in financial, scientific, technical, and market research domains",
+      "Supports automated workflows with direct API access for research automation"
+    ],
+    "limitations": [
+      "Only available via Deep Research API (not standard Chat Completions API)",
+      "Premium pricing with input/output token costs up to $10.00/$40.00 per million tokens",
+      "Limited regional availability (West US and Norway East regions)",
+      "Knowledge cutoff at October 2023 restricts access to newer information",
+      "Higher latency for complex queries and potential timeouts on extremely demanding tasks",
+      "Requires specific API integration and tool configuration for use"
+    ],
+    "languages": []
+  },
+  "model_evals": [],
+  "model_name": "o3-deep-research-2025-06-26",
+  "provider": "openai",
+  "extraction_date": "2025-07-22T11:42:58.261205"
+}
