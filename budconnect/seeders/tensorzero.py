@@ -537,7 +537,40 @@ class TensorZeroSeeder(BaseSeeder):
                 predefined_providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
                 logger.debug("Predefined providers: %s", len(predefined_providers))
 
-                # NOTE: Removed huggingface provider creation as it's not needed
+                # NOTE: Adding default huggingface and bud_sentinel providers
+                hf_provider_type = "huggingface"
+                hf_provider_data = ProviderCreate(
+                    name=predefined_providers[hf_provider_type]["name"],
+                    provider_type=hf_provider_type,
+                    icon=predefined_providers[hf_provider_type]["icon"],
+                    description=predefined_providers[hf_provider_type]["description"],
+                    credentials=predefined_providers[hf_provider_type]["credentials"],
+                )
+
+                # Upsert provider
+                with ProviderCRUD() as hf_provider_crud:
+                    db_provider_id = hf_provider_crud.upsert(
+                        data=hf_provider_data.model_dump(), conflict_target=["provider_type"]
+                    )
+                    logger.debug("Upserted provider: %s", db_provider_id)
+                    hf_provider_crud.add_engine_version(db_provider_id, version_config.id)
+
+                bud_sentinel_provider_type = "bud_sentinel"
+                bud_sentinel_provider_data = ProviderCreate(
+                    name=predefined_providers[bud_sentinel_provider_type]["name"],
+                    provider_type=bud_sentinel_provider_type,
+                    icon=predefined_providers[bud_sentinel_provider_type]["icon"],
+                    description=predefined_providers[bud_sentinel_provider_type]["description"],
+                    credentials=predefined_providers[bud_sentinel_provider_type]["credentials"],
+                )
+
+                # Upsert provider
+                with ProviderCRUD() as bud_sentinel_provider_crud:
+                    db_provider_id = bud_sentinel_provider_crud.upsert(
+                        data=bud_sentinel_provider_data.model_dump(), conflict_target=["provider_type"]
+                    )
+                    logger.debug("Upserted provider: %s", db_provider_id)
+                    bud_sentinel_provider_crud.add_engine_version(db_provider_id, version_config.id)
 
                 # Prepare data for database insertion
                 for provider, supported_models in model_data.items():

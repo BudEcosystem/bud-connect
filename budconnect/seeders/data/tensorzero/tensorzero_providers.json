@@ -413,5 +413,34 @@
                 "order": 1
             }
         ]
+    },
+    "huggingface": {
+        "name": "Huggingface",
+        "description": "Provides Meta-Llama, Falcon, MPT, CodeLlama, WizardCoder, and Phind models, along with custom models.",
+        "icon": "icons/providers/huggingface.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your Hugging Face API key",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "api_base",
+                "label": "API Base URL",
+                "type": "url",
+                "description": "Custom base URL for API requests (optional)",
+                "required": false,
+                "order": 2
+            }
+        ]
+    },
+    "bud_sentinel": {
+        "name": "Bud Sentinel",
+        "description": "A multi-tiered Guardrail framework for LLM safety and compliance, from the Bud Team",
+        "icon": "icons/providers/bud.png",
+        "credentials": []
     }
 }

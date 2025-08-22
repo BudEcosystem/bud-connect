@@ -84,14 +84,24 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             if conflict_target:
                 stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
 
-            stmt = stmt.returning(self.model)
+            stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
             row = result.first()
-            if row and hasattr(row[0], "id"):
-                return UUID(str(row[0].id))  # Ensure we return a UUID
+            if row:
+                # row[0] is the ID directly when using returning(self.model.id)
+                return UUID(str(row[0]))  # Ensure we return a UUID
+            
+            # If no row returned (shouldn't happen but handle gracefully)
+            # Try to fetch the existing row using conflict target
+            if conflict_target and len(conflict_target) > 0:
+                filter_dict = {key: obj.get(key) for key in conflict_target if key in obj}
+                existing = _session.query(self.model).filter_by(**filter_dict).first()
+                if existing and hasattr(existing, "id"):
+                    return UUID(str(existing.id))
+            
             raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()
@@ -247,14 +257,24 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
             if conflict_target:
                 stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
 
-            stmt = stmt.returning(self.model)
+            stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
             _session.commit()
             logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
             row = result.first()
-            if row and hasattr(row[0], "id"):
-                return UUID(str(row[0].id))  # Ensure we return a UUID
+            if row:
+                # row[0] is the ID directly when using returning(self.model.id)
+                return UUID(str(row[0]))  # Ensure we return a UUID
+            
+            # If no row returned (shouldn't happen but handle gracefully)
+            # Try to fetch the existing row using conflict target
+            if conflict_target and len(conflict_target) > 0:
+                filter_dict = {key: obj.get(key) for key in conflict_target if key in obj}
+                existing = _session.query(self.model).filter_by(**filter_dict).first()
+                if existing and hasattr(existing, "id"):
+                    return UUID(str(existing.id))
+            
             raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()

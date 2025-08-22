@@ -23,7 +23,7 @@ from fastapi import status
 
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
 from .crud import ModelDetailsCRUD, ProviderCRUD
-from .schemas import CompatibleModelsResponse, CompatibleProviders, ModelDetailsResponse
+from .schemas import CompatibleModelsResponse, CompatibleProviders, ModelDetailsResponse, ModelInfoResponse
 
 
 logger = logging.get_logger(__name__)
@@ -92,29 +92,66 @@ class ModelService:
 
         logger.info(f"Engine version {db_engine_version} found")
 
-        # Get compatible providers from database
+        # Get compatible providers from database and create response within session
         total_providers = 0
-        provider_details = []
+        compatible_providers = {}
+        
         with ProviderCRUD() as provider_crud:
             total_providers, provider_details = provider_crud.get_compatible_providers(
                 db_engine_version.id, offset, limit
             )
-
-        # Create compatible providers response
-        compatible_providers = {}
-        for db_provider, db_model in provider_details:
-            if str(db_provider.id) not in compatible_providers:
-                compatible_providers[str(db_provider.id)] = CompatibleProviders(
-                    id=db_provider.id,
-                    name=db_provider.name,
-                    provider_type=db_provider.provider_type,
-                    icon=db_provider.icon,
-                    description=db_provider.description,
-                    credentials=db_provider.credentials,
-                    models=[db_model] if db_model else [],
-                )
-            else:
-                compatible_providers[str(db_provider.id)].models.append(db_model)
+            
+            # Create compatible providers response while session is still active
+            for db_provider, db_model in provider_details:
+                if str(db_provider.id) not in compatible_providers:
+                    # Convert db_model to dict if it exists to avoid lazy loading issues
+                    model_data = None
+                    if db_model:
+                        model_data = {
+                            "id": db_model.id,
+                            "uri": db_model.uri,
+                            "modality": db_model.modality,
+                            "provider_id": db_model.provider_id,
+                            "input_cost": db_model.input_cost,
+                            "output_cost": db_model.output_cost,
+                            "cache_cost": db_model.cache_cost,
+                            "search_context_cost_per_query": db_model.search_context_cost_per_query,
+                            "tokens": db_model.tokens,
+                            "rate_limits": db_model.rate_limits,
+                            "media_limits": db_model.media_limits,
+                            "features": db_model.features,
+                            "endpoints": db_model.endpoints,
+                            "deprecation_date": db_model.deprecation_date,
+                        }
+                    
+                    compatible_providers[str(db_provider.id)] = CompatibleProviders(
+                        id=db_provider.id,
+                        name=db_provider.name,
+                        provider_type=db_provider.provider_type,
+                        icon=db_provider.icon,
+                        description=db_provider.description,
+                        credentials=db_provider.credentials,
+                        models=[ModelInfoResponse(**model_data)] if model_data else [],
+                    )
+                else:
+                    if db_model:
+                        model_data = {
+                            "id": db_model.id,
+                            "uri": db_model.uri,
+                            "modality": db_model.modality,
+                            "provider_id": db_model.provider_id,
+                            "input_cost": db_model.input_cost,
+                            "output_cost": db_model.output_cost,
+                            "cache_cost": db_model.cache_cost,
+                            "search_context_cost_per_query": db_model.search_context_cost_per_query,
+                            "tokens": db_model.tokens,
+                            "rate_limits": db_model.rate_limits,
+                            "media_limits": db_model.media_limits,
+                            "features": db_model.features,
+                            "endpoints": db_model.endpoints,
+                            "deprecation_date": db_model.deprecation_date,
+                        }
+                        compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
         return CompatibleModelsResponse(
             object="model.compatible",
