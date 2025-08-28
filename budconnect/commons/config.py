@@ -17,9 +17,10 @@
 """Manages application and secret configurations, utilizing environment variables and Dapr's configuration store for syncing."""
 
 from pathlib import Path
+from typing import Optional
 
 from budmicroframe.commons.config import BaseAppConfig, BaseSecretsConfig, register_settings
-from pydantic import DirectoryPath
+from pydantic import DirectoryPath, Field
 
 from ..__about__ import __version__
 
@@ -32,6 +33,25 @@ class AppConfig(BaseAppConfig):
 
     # Base Directory
     base_dir: DirectoryPath = Path(__file__).parent.parent.parent.resolve()
+
+    # LLM Configuration for License Extraction
+    llm_base_url: str = Field(
+        default="https://api.openai.com/v1",
+        alias="BUD_LLM_BASE_URL",
+        description="Base URL for LLM API (OpenAI-compatible)",
+    )
+    llm_model: str = Field(default="gpt-4", alias="BUD_LLM_MODEL", description="LLM model name for license extraction")
+    llm_api_key: Optional[str] = Field(
+        default=None, alias="BUD_LLM_API_KEY", description="API key for LLM service (required for license extraction)"
+    )
+    llm_timeout: int = Field(default=120, alias="BUD_LLM_TIMEOUT", description="Timeout in seconds for LLM API calls")
+
+    # Seeder Configuration
+    run_seeders_on_startup: bool = Field(
+        default=True,
+        alias="RUN_SEEDERS_ON_STARTUP",
+        description="Whether to run database seeders on application startup",
+    )
 
 
 class SecretsConfig(BaseSecretsConfig):

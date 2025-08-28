@@ -25,6 +25,42 @@ from pydantic import UUID4, BaseModel, ConfigDict, Field
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 
 
+class LicenseFAQ(BaseModel):
+    """Schema for license FAQ item."""
+
+    question: str
+    answer: str
+    reason: List[str]
+    impact: str
+
+
+class LicenseCreate(BaseModel):
+    """Schema for creating a license."""
+
+    key: str
+    name: str
+    type: str
+    type_description: str
+    type_suitability: str
+    faqs: List[LicenseFAQ]
+
+
+class LicenseResponse(BaseModel):
+    """Schema for license response."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID4
+    key: str
+    name: str
+    type: str
+    type_description: str
+    type_suitability: str
+    faqs: List[LicenseFAQ]
+    created_at: datetime
+    modified_at: datetime
+
+
 class LiteLLMModelInfo(BaseModel):
     """Schema for LiteLLM model seeder."""
 
@@ -206,6 +242,7 @@ class ModelInfoCreate(BaseModel):
     features: Optional[Features] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
+    license_id: Optional[UUID4] = None
 
     def model_dump(self, **kwargs: Any) -> Dict[str, Any]:
         """Implement custom model_dump to convert nested Pydantic models to None."""
@@ -256,6 +293,7 @@ class ModelInfoResponse(BaseModel):
     features: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
+    license: Optional[LicenseResponse] = None
 
 
 class CompatibleProviders(ProviderCreate):
@@ -331,6 +369,7 @@ class ModelDetailsResponse(BaseModel):
     features: Optional[Dict[str, Any]] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
+    license: Optional[LicenseResponse] = None
 
     # Provider fields
     provider_name: str

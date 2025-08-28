@@ -27,6 +27,7 @@ from fastapi import FastAPI
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
 from .engine.routes import engine_router
+from .license.routes import license_router
 from .model.routes import model_router
 from .seeders import seeders
 
@@ -51,14 +52,19 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     """
     # task = asyncio.create_task(schedule_secrets_and_config_sync())
 
-    for seeder_name, seeder in seeders.items():
-        try:
-            await seeder().seed()  # type: ignore[abstract]
-            logger.info(f"Seeded {seeder_name} seeder successfully.")
-        except SeederException as e:
-            logger.error("Failed to seed %s. Error: %s", seeder_name, e.message)
-        except Exception as e:
-            logger.error(f"Failed to seed {seeder_name}. Error: {e}")
+    # Only run seeders if enabled via environment variable
+    if app_settings.run_seeders_on_startup:
+        logger.info("Running database seeders on startup...")
+        for seeder_name, seeder in seeders.items():
+            try:
+                await seeder().seed()  # type: ignore[abstract]
+                logger.info(f"Seeded {seeder_name} seeder successfully.")
+            except SeederException as e:
+                logger.error("Failed to seed %s. Error: %s", seeder_name, e.message)
+            except Exception as e:
+                logger.error(f"Failed to seed {seeder_name}. Error: {e}")
+    else:
+        logger.info("Skipping database seeders (RUN_SEEDERS_ON_STARTUP=false)")
 
     yield
 
@@ -75,4 +81,5 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 app = configure_app(app_settings, secrets_settings, lifespan=lifespan)
 
 app.include_router(engine_router)
+app.include_router(license_router)
 app.include_router(model_router)

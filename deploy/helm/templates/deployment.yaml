@@ -30,26 +30,35 @@ spec:
               name: bud-global-config
         resources:
           limits:
-            memory: 1024Mi
+            memory: 2048Mi
             cpu: 1
           requests:
             memory: 1024Mi
             cpu: 1
-        livenessProbe:
+        startupProbe:
           httpGet:
             path: /health
             port: {{ .Values.env.APP_PORT }}
           initialDelaySeconds: 30
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 10
+          failureThreshold: 12  # Allow up to 120 seconds for startup
+          successThreshold: 1
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.env.APP_PORT }}
+          initialDelaySeconds: 0  # Startup probe handles initial delay
+          periodSeconds: 10
+          timeoutSeconds: 10
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /health
             port: {{ .Values.env.APP_PORT }}
-          initialDelaySeconds: 30
+          initialDelaySeconds: 0  # Startup probe handles initial delay
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 10
           failureThreshold: 3
 
 ---

@@ -9,7 +9,8 @@
     "mode": "moderation",
     "metadata": {
       "original_key": "omni-moderation-latest"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/omni-moderation-latest-intents": {
     "max_tokens": 32768,
@@ -21,7 +22,8 @@
     "mode": "moderation",
     "metadata": {
       "original_key": "omni-moderation-latest-intents"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/omni-moderation-2024-09-26": {
     "max_tokens": 32768,
@@ -33,7 +35,8 @@
     "mode": "moderation",
     "metadata": {
       "original_key": "omni-moderation-2024-09-26"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4": {
     "max_tokens": 4096,
@@ -49,7 +52,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1": {
     "max_tokens": 32768,
@@ -90,7 +94,8 @@
     },
     "metadata": {
       "original_key": "gpt-4.1"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-2025-04-14": {
     "max_tokens": 32768,
@@ -131,7 +136,8 @@
     },
     "metadata": {
       "original_key": "gpt-4.1-2025-04-14"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-mini": {
     "max_tokens": 32768,
@@ -172,7 +178,8 @@
     },
     "metadata": {
       "original_key": "gpt-4.1-mini"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-mini-2025-04-14": {
     "max_tokens": 32768,
@@ -213,7 +220,8 @@
     },
     "metadata": {
       "original_key": "gpt-4.1-mini-2025-04-14"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-nano": {
     "max_tokens": 32768,
@@ -248,7 +256,8 @@
     "supports_native_streaming": true,
     "metadata": {
       "original_key": "gpt-4.1-nano"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-nano-2025-04-14": {
     "max_tokens": 32768,
@@ -283,7 +292,8 @@
     "supports_native_streaming": true,
     "metadata": {
       "original_key": "gpt-4.1-nano-2025-04-14"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o": {
     "max_tokens": 16384,
@@ -311,7 +321,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-search-preview-2025-03-11": {
     "max_tokens": 16384,
@@ -339,7 +350,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-search-preview-2025-03-11"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-search-preview": {
     "max_tokens": 16384,
@@ -367,7 +379,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-search-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.5-preview": {
     "max_tokens": 16384,
@@ -389,7 +402,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4.5-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4.5-preview-2025-02-27": {
     "max_tokens": 16384,
@@ -412,7 +426,8 @@
     "deprecation_date": "2025-07-14",
     "metadata": {
       "original_key": "gpt-4.5-preview-2025-02-27"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview": {
     "max_tokens": 16384,
@@ -432,7 +447,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-audio-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview-2024-12-17": {
     "max_tokens": 16384,
@@ -452,7 +468,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-audio-preview-2024-12-17"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview-2024-10-01": {
     "max_tokens": 16384,
@@ -472,7 +489,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-audio-preview-2024-10-01"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-audio-preview-2024-12-17": {
     "max_tokens": 16384,
@@ -492,7 +510,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-mini-audio-preview-2024-12-17"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini": {
     "max_tokens": 16384,
@@ -520,7 +539,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-mini"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-search-preview-2025-03-11": {
     "max_tokens": 16384,
@@ -548,7 +568,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-mini-search-preview-2025-03-11"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-search-preview": {
     "max_tokens": 16384,
@@ -576,7 +597,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-mini-search-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-2024-07-18": {
     "max_tokens": 16384,
@@ -603,7 +625,8 @@
     },
     "metadata": {
       "original_key": "gpt-4o-mini-2024-07-18"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1-pro": {
     "max_tokens": 100000,
@@ -637,7 +660,8 @@
     ],
     "metadata": {
       "original_key": "o1-pro"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1-pro-2025-03-19": {
     "max_tokens": 100000,
@@ -671,7 +695,8 @@
     ],
     "metadata": {
       "original_key": "o1-pro-2025-03-19"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1": {
     "max_tokens": 100000,
@@ -692,7 +717,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o1"
-    }
+    },
+    "license_id": "openai-api"
   },
   "azure/computer-use-preview": {
     "max_tokens": 1024,
@@ -739,7 +765,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o3-2025-04-16": {
     "max_tokens": 100000,
@@ -759,7 +786,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3-2025-04-16"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o3-mini": {
     "max_tokens": 100000,
@@ -779,7 +807,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3-mini"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o3-mini-2025-01-31": {
     "max_tokens": 100000,
@@ -799,7 +828,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3-mini-2025-01-31"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o3-pro-2025-06-10": {
     "max_tokens": 100000,
@@ -819,7 +849,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3-pro-2025-06-10"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o3-deep-research-2025-06-26": {
     "max_tokens": 100000,
@@ -839,7 +870,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o3-deep-research-2025-06-26"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o4-mini": {
     "max_tokens": 100000,
@@ -859,7 +891,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o4-mini"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o4-mini-2025-04-16": {
     "max_tokens": 100000,
@@ -879,7 +912,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o4-mini-2025-04-16"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o4-mini-deep-research-2025-06-26": {
     "max_tokens": 100000,
@@ -899,7 +933,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o4-mini-deep-research-2025-06-26"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1-preview": {
     "max_tokens": 32768,
@@ -915,7 +950,8 @@
     "supports_prompt_caching": true,
     "metadata": {
       "original_key": "o1-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1-preview-2024-09-12": {
     "max_tokens": 32768,
@@ -931,7 +967,8 @@
     "supports_prompt_caching": true,
     "metadata": {
       "original_key": "o1-preview-2024-09-12"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/o1-2024-12-17": {
     "max_tokens": 100000,
@@ -952,7 +989,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "o1-2024-12-17"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/chatgpt-4o-latest": {
     "max_tokens": 4096,
@@ -970,7 +1008,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "chatgpt-4o-latest"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-realtime-preview": {
     "max_tokens": 4096,
@@ -991,7 +1030,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-realtime-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-realtime-preview-2024-12-17": {
     "max_tokens": 4096,
@@ -1012,7 +1052,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-realtime-preview-2024-12-17"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-realtime-preview": {
     "max_tokens": 4096,
@@ -1034,7 +1075,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-mini-realtime-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-realtime-preview-2024-12-17": {
     "max_tokens": 4096,
@@ -1056,7 +1098,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4o-mini-realtime-preview-2024-12-17"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-turbo-preview": {
     "max_tokens": 4096,
@@ -1073,7 +1116,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-turbo-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-0314": {
     "max_tokens": 4096,
@@ -1088,7 +1132,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-0314"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-0613": {
     "max_tokens": 4096,
@@ -1105,7 +1150,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-0613"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k": {
     "max_tokens": 4096,
@@ -1120,7 +1166,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-32k"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k-0314": {
     "max_tokens": 4096,
@@ -1135,7 +1182,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-32k-0314"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k-0613": {
     "max_tokens": 4096,
@@ -1150,7 +1198,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-32k-0613"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-turbo": {
     "max_tokens": 4096,
@@ -1168,7 +1217,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-turbo"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4-vision-preview": {
     "max_tokens": 4096,
@@ -1185,7 +1235,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-4-vision-preview"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-3.5-turbo": {
     "max_tokens": 4097,
@@ -1201,7 +1252,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-3.5-turbo"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-3.5-turbo-16k": {
     "max_tokens": 16385,
@@ -1216,7 +1268,8 @@
     "supports_tool_choice": true,
     "metadata": {
       "original_key": "gpt-3.5-turbo-16k"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/text-embedding-3-large": {
     "max_tokens": 8191,
@@ -1230,7 +1283,8 @@
     "mode": "embedding",
     "metadata": {
       "original_key": "text-embedding-3-large"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/text-embedding-3-small": {
     "max_tokens": 8191,
@@ -1244,7 +1298,8 @@
     "mode": "embedding",
     "metadata": {
       "original_key": "text-embedding-3-small"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/text-embedding-ada-002": {
     "max_tokens": 8191,
@@ -1256,7 +1311,8 @@
     "mode": "embedding",
     "metadata": {
       "original_key": "text-embedding-ada-002"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/dall-e-2": {
     "mode": "image_generation",
@@ -1265,7 +1321,8 @@
     "litellm_provider": "openai",
     "metadata": {
       "original_key": "dall-e-2"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/dall-e-3": {
     "mode": "image_generation",
@@ -1274,7 +1331,8 @@
     "litellm_provider": "openai",
     "metadata": {
       "original_key": "dall-e-3"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-image-1": {
     "mode": "image_generation",
@@ -1286,7 +1344,8 @@
     ],
     "metadata": {
       "original_key": "gpt-image-1"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-transcribe": {
     "mode": "audio_transcription",
@@ -1301,7 +1360,8 @@
     ],
     "metadata": {
       "original_key": "gpt-4o-transcribe"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-transcribe": {
     "mode": "audio_transcription",
@@ -1316,7 +1376,8 @@
     ],
     "metadata": {
       "original_key": "gpt-4o-mini-transcribe"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/whisper-1": {
     "mode": "audio_transcription",
@@ -1328,7 +1389,8 @@
     ],
     "metadata": {
       "original_key": "whisper-1"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/tts-1": {
     "mode": "audio_speech",
@@ -1339,7 +1401,8 @@
     ],
     "metadata": {
       "original_key": "tts-1"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/tts-1-hd": {
     "mode": "audio_speech",
@@ -1350,7 +1413,8 @@
     ],
     "metadata": {
       "original_key": "tts-1-hd"
-    }
+    },
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-tts": {
     "mode": "audio_speech",
@@ -1371,7 +1435,8 @@
     ],
     "metadata": {
       "original_key": "gpt-4o-mini-tts"
-    }
+    },
+    "license_id": "openai-api"
   },
   "azure/gpt-4o-audio-preview-2024-12-17": {
     "max_tokens": 16384,
@@ -2389,7 +2454,8 @@
     "supports_assistant_prefill": true,
     "supports_tool_choice": true,
     "supports_reasoning": true,
-    "supports_prompt_caching": true
+    "supports_prompt_caching": true,
+    "license_id": "deepseek-custom"
   },
   "deepseek/deepseek-chat": {
     "max_tokens": 8192,
@@ -2405,7 +2471,8 @@
     "supports_function_calling": true,
     "supports_assistant_prefill": true,
     "supports_tool_choice": true,
-    "supports_prompt_caching": true
+    "supports_prompt_caching": true,
+    "license_id": "deepseek-custom"
   },
   "xai/grok-beta": {
     "max_tokens": 131072,
@@ -2573,7 +2640,8 @@
     "supports_function_calling": true,
     "supports_assistant_prefill": true,
     "supports_tool_choice": true,
-    "supports_prompt_caching": true
+    "supports_prompt_caching": true,
+    "license_id": "deepseek-custom"
   },
   "anthropic/claude-3-5-haiku-20241022": {
     "max_tokens": 8192,

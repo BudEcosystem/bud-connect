@@ -21,6 +21,14 @@ env:
   SECRETSTORE_SECRET_NAME: "bud-connect-secret"
   SECRETSTORE_NAME: "budconnect-secret-store"
 
+  BUD_LLM_BASE_URL: ""
+  BUD_LLM_MODEL: "qwen3-32b"
+  BUD_LLM_API_KEY: "123"
+  BUD_LLM_TIMEOUT: "120"  # Timeout in seconds for LLM API calls
+  
+  # Control whether to run database seeders on startup
+  RUN_SEEDERS_ON_STARTUP: "true"
+
 redis:
   storage_size: 1Gi
   host_path: /datadisk/pvc/budconnect/redis

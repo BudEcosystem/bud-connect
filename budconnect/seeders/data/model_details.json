@@ -5082,7 +5082,8 @@
       "Business applications like data analysis and report generation",
       "Multi-language programming support across various industries"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "deepseek-custom"
   },
   "deepseek/deepseek-coder": {
     "advantages": [
@@ -5127,7 +5128,8 @@
       "Code translation between programming languages",
       "Project-level code analysis and refactoring"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "deepseek-custom"
   },
   "deepseek/deepseek-reasoner": {
     "advantages": [
@@ -5186,7 +5188,8 @@
       "Engineering design and technical documentation",
       "Financial quantitative analysis and risk modeling"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "deepseek-custom"
   },
   "fireworks_ai/WhereIsAI-UAE-Large-V1": {
     "advantages": [
@@ -7119,7 +7122,8 @@
       "Educational use for programming exercises and concept explanations",
       "Database schema generation from requirements"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/codestral-latest": {
     "advantages": [
@@ -7162,7 +7166,8 @@
       "DevOps script creation and API endpoint development",
       "Code review and documentation generation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/codestral-mamba": {
     "advantages": [
@@ -7198,7 +7203,8 @@
       "Debugging support and performance optimization suggestions",
       "IDE integration for real-time code completion and refactoring"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/codestral-mamba-latest": {
     "advantages": [
@@ -7249,7 +7255,8 @@
       "Test case generation for software testing",
       "API implementation from specifications in development workflows"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/ministral-3b-2410": {
     "advantages": [
@@ -7288,7 +7295,8 @@
       "Healthcare device intelligence and predictive maintenance",
       "Custom domain fine-tuning for sentiment analysis, content moderation, and anomaly detection"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/ministral-3b-latest": {
     "advantages": [
@@ -7328,7 +7336,8 @@
       "Content moderation and fraud detection",
       "Custom classification tasks in edge environments"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/ministral-8b-2410": {
     "advantages": [
@@ -7369,7 +7378,8 @@
       "Industry-specific fine-tuning for vertical markets",
       "Language specialization and domain expertise adaptation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/ministral-8b-latest": {
     "advantages": [
@@ -7409,7 +7419,8 @@
       "Healthcare edge applications for patient monitoring",
       "Retail analytics for real-time customer behavior insights"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-embed": {
     "advantages": [
@@ -7442,7 +7453,8 @@
       "Text clustering and content organization",
       "Duplicate detection and paraphrase identification"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-large-2407": {
     "advantages": [
@@ -7490,7 +7502,8 @@
       "Clinical research and medical literature synthesis",
       "Legal document analysis and contract drafting"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-large-2411": {
     "advantages": [
@@ -7539,7 +7552,8 @@
       "Financial risk assessment and market analysis",
       "Multilingual translation and cross-cultural communication"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-large-latest": {
     "advantages": [
@@ -7583,7 +7597,8 @@
       "Advanced mathematical problem solving and statistical analysis",
       "Long document analysis for contracts and research papers"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-medium": {
     "advantages": [
@@ -7618,7 +7633,8 @@
       "Cloud or self-hosted deployments for scalable AI integration",
       "Multimodal applications combining text and other data types"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-medium-latest": {
     "advantages": [
@@ -7668,7 +7684,8 @@
       "Adaptive workflows requiring integration with enterprise knowledge bases.",
       "Production-ready deployments optimized for cost and speed in large-scale operations."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-small": {
     "advantages": [
@@ -7737,7 +7754,8 @@
       "On-device image processing for mobile applications",
       "Mathematical reasoning and problem-solving tasks"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-small-2409": {
     "advantages": [
@@ -7777,7 +7795,8 @@
       "Educational tools for tutoring and explanation generation",
       "Workflow automation with function/tool integration"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-small-latest": {
     "advantages": [
@@ -7826,7 +7845,8 @@
       "High-volume processing tasks",
       "Multimodal image-text understanding tasks"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/mistral-tiny": {
     "advantages": [
@@ -7863,7 +7883,8 @@
       "General-purpose language understanding tasks",
       "Edge deployments on resource-constrained hardware"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/open-codestral-mamba": {
     "advantages": [
@@ -7916,7 +7937,8 @@
       "Offline code generation with privacy-sensitive applications",
       "Research projects requiring long-context code analysis"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/open-mistral-7b": {
     "advantages": [
@@ -7951,7 +7973,8 @@
       "Translation tasks across multiple languages",
       "Edge deployments requiring low-latency inference"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/open-mistral-nemo": {
     "advantages": [
@@ -7994,7 +8017,8 @@
       "Research literature review and analysis",
       "Technical documentation and specification writing"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/open-mixtral-8x22b": {
     "advantages": [
@@ -8032,7 +8056,8 @@
       "Multilingual content generation and cross-language translation.",
       "Automated workflows via native function calling and API integration."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/open-mixtral-8x7b": {
     "advantages": [
@@ -8069,7 +8094,8 @@
       "Real-time AI applications in resource-constrained environments",
       "Cross-lingual understanding and localization tasks"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/pixtral-large": {
     "advantages": [
@@ -8109,7 +8135,8 @@
       "Scientific and medical image interpretation",
       "OCR and data visualization analysis"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "mistral/pixtral-large-latest": {
     "advantages": [
@@ -8164,7 +8191,8 @@
       "Complex visual reasoning tasks",
       "Presentation understanding and visual quality control"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "apache-2.0"
   },
   "openai/chatgpt-4o-latest": {
     "advantages": [
@@ -8206,7 +8234,8 @@
       "Visual question answering and image captioning",
       "Audio transcription and synthesis applications"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/dall-e-2": {
     "advantages": [
@@ -8246,7 +8275,8 @@
       "Game asset creation and concept art",
       "Custom image editing and variation generation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/dall-e-3": {
     "advantages": [
@@ -8290,7 +8320,8 @@
       "Product visualization",
       "Architectural renders"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-3.5-turbo": {
     "advantages": [
@@ -8330,7 +8361,8 @@
       "Educational tools (tutoring, quiz generation)",
       "Real-time conversational interfaces"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-3.5-turbo-16k": {
     "advantages": [
@@ -8369,7 +8401,8 @@
       "Multi-document synthesis and research paper analysis",
       "Legal document processing and long-form content generation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4": {
     "advantages": [
@@ -8449,7 +8482,8 @@
       "Programming code generation and debugging",
       "Data analysis and visualization planning"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-0314": {
     "advantages": [
@@ -8497,7 +8531,8 @@
       "General knowledge tasks leveraging high MMLU benchmark performance (86.4)",
       "Translation and code generation for developers needing reliable outputs"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-0613": {
     "advantages": [
@@ -8539,7 +8574,8 @@
       "Code generation and programming assistance",
       "Budget-conscious projects needing cost-effective LLM solutions"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k": {
     "advantages": [
@@ -8575,7 +8611,8 @@
       "Legal document review and academic paper processing",
       "Large codebase analysis and multi-page content evaluation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k-0314": {
     "advantages": [
@@ -8612,7 +8649,8 @@
       "Code generation and analysis for software development",
       "Text-based conversation and content generation in chat formats"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-32k-0613": {
     "advantages": [
@@ -8650,7 +8688,8 @@
       "Academic and professional research with context-dependent tasks",
       "API integration for structured data outputs via function calling"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-turbo": {
     "advantages": [
@@ -8689,7 +8728,8 @@
       "Creative writing, script development, and content refinement",
       "Visual question answering and image content extraction"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-turbo-preview": {
     "advantages": [
@@ -8729,7 +8769,8 @@
       "Business intelligence and data analysis with extensive context",
       "Applications needing knowledge up to April 2023"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4-vision-preview": {
     "advantages": [
@@ -8771,7 +8812,8 @@
       "Manufacturing quality control defect detection",
       "Social media image content moderation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1": {
     "advantages": [
@@ -8819,7 +8861,8 @@
       "Tasks requiring extensive context processing",
       "Replacing GPT-4o in applications needing better performance and lower cost"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-mini": {
     "advantages": [
@@ -8860,7 +8903,8 @@
       "Document analysis and summarization",
       "Replacing GPT-4o in applications needing cost reduction"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4.1-nano": {
     "advantages": [
@@ -8913,7 +8957,8 @@
       "Real-time chat preprocessing and translation hints",
       "Structured data pattern matching"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4.5-preview": {
     "advantages": [
@@ -8947,7 +8992,8 @@
       "Research and experimentation with large-scale language models",
       "Complex language understanding tasks with emphasis on creativity"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4.5-preview-2025-02-27": {
     "advantages": [
@@ -8986,7 +9032,8 @@
       "Applications needing high 'EQ' to interpret subtle human cues and expectations",
       "Tasks prioritizing reliability over speed with reduced hallucination risks"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o": {
     "advantages": [
@@ -9056,7 +9103,8 @@
       "Real-time applications with streaming responses (e.g., chatbots)",
       "Visual question answering, document processing, and diagram interpretation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview": {
     "advantages": [
@@ -9102,7 +9150,8 @@
       "Healthcare voice-based patient interaction systems",
       "Entertainment applications with interactive storytelling"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview-2024-10-01": {
     "advantages": [
@@ -9144,7 +9193,8 @@
       "Language learning platforms with real-time pronunciation feedback",
       "Automated multi-language support systems for international businesses"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-audio-preview-2024-12-17": {
     "advantages": [
@@ -9183,7 +9233,8 @@
       "Conversational voice assistants with asynchronous responses",
       "Multimedia production combining text and audio elements"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini": {
     "advantages": [
@@ -9231,7 +9282,8 @@
       "Document summarization and knowledge base querying with 128K-token context.",
       "Receipt data extraction and structured information processing (e.g., Superhuman integration)."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-2024-07-18": {
     "advantages": [
@@ -9278,7 +9330,8 @@
       "Educational applications such as tutoring systems and learning platforms.",
       "Prototyping and development of AI applications with low-latency requirements."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-audio-preview-2024-12-17": {
     "advantages": [
@@ -9316,7 +9369,8 @@
       "MVP development and prototyping for audio AI features with budget constraints.",
       "Large-scale asynchronous audio applications like voice-enabled interfaces and batch audio generation."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-realtime-preview": {
     "advantages": [
@@ -9380,7 +9434,8 @@
       "Interactive content generation with voice-based interfaces",
       "Function-driven applications integrating external APIs and services"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-realtime-preview-2024-12-17": {
     "advantages": [
@@ -9424,7 +9479,8 @@
       "Accessibility solutions with voice-controlled automation",
       "Multilingual customer interactions with context retention"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-search-preview": {
     "advantages": [
@@ -9464,7 +9520,8 @@
       "Quick fact-checking systems",
       "Mobile and edge applications with cost and speed constraints"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-search-preview-2025-03-11": {
     "advantages": [
@@ -9506,7 +9563,8 @@
       "Travel and local business information with geolocation-based search",
       "Automated data collection and synthesis from multiple authoritative sources"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-transcribe": {
     "advantages": [
@@ -9546,7 +9604,8 @@
       "Accessibility features and language learning apps",
       "High-volume consumer services with cost-sensitive deployments"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-mini-tts": {
     "advantages": [
@@ -9588,7 +9647,8 @@
       "Interactive storytelling with emotion-controlled delivery",
       "Customized screen readers for accessibility"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-realtime-preview": {
     "advantages": [
@@ -9634,7 +9694,8 @@
       "Entertainment applications like AI performers",
       "Real-time voice translation services"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-realtime-preview-2024-12-17": {
     "advantages": [
@@ -9676,7 +9737,8 @@
       "Healthcare patient communication and voice-to-text documentation",
       "Voice assistant implementations for business process automation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-search-preview": {
     "advantages": [
@@ -9720,7 +9782,8 @@
       "Competitive intelligence gathering",
       "Time-sensitive decision support systems"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-search-preview-2025-03-11": {
     "advantages": [
@@ -9759,7 +9822,8 @@
       "Educational applications requiring up-to-date information and critical thinking training",
       "Technical documentation and policy analysis with current standards and regulations"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-4o-transcribe": {
     "advantages": [
@@ -9808,7 +9872,8 @@
       "Multi-language customer support and compliance recording",
       "Journalism and academic research documentation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/gpt-image-1": {
     "advantages": [
@@ -9850,7 +9915,8 @@
       "Concept art generation for games, films, and creative projects",
       "UI/UX design mockups and book/album cover design"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1": {
     "advantages": [
@@ -9919,7 +9985,8 @@
       "Scientific research workflows requiring multi-step reasoning and analysis",
       "Advanced data analysis and structured thinking tasks in technical domains"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1-2024-12-17": {
     "advantages": [
@@ -9959,7 +10026,8 @@
       "Advanced mathematical problem-solving and proof verification",
       "Engineering system design and technical troubleshooting"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1-preview": {
     "advantages": [
@@ -10011,7 +10079,8 @@
       "Educational tools requiring step-by-step reasoning explanations.",
       "High-accuracy workflows where reasoning depth outweighs latency concerns."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1-preview-2024-09-12": {
     "advantages": [
@@ -10075,7 +10144,8 @@
       "Data science and statistical modeling",
       "Strategic business planning and multi-step reasoning tasks"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1-pro": {
     "advantages": [
@@ -10135,7 +10205,8 @@
       "Advanced mathematical problem-solving and proof generation",
       "Synthetic data generation for specialized domains"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o1-pro-2025-03-19": {
     "advantages": [
@@ -10175,7 +10246,8 @@
       "Legal contract review and regulatory compliance analysis",
       "High-stakes business strategy and market analysis"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3": {
     "advantages": [
@@ -10213,7 +10285,8 @@
       "Scientific modeling, hypothesis testing, and advanced logical reasoning tasks",
       "High-volume batch processing of technical and scientific queries"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-2025-04-16": {
     "advantages": [
@@ -10280,7 +10353,8 @@
       "Complex multi-step problem solving requiring tool orchestration",
       "Educational support for multi-modal learning"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-deep-research-2025-06-26": {
     "advantages": [
@@ -10320,7 +10394,8 @@
       "Investment due diligence and regulatory compliance analysis",
       "Scientific meta-analysis and hypothesis development"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-mini": {
     "advantages": [
@@ -10381,7 +10456,8 @@
       "Scientific data analysis and interpretation",
       "Interactive learning platforms with reasoning capabilities"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-mini-2025-01-31": {
     "advantages": [
@@ -10447,7 +10523,8 @@
       "Automated technical documentation and reporting",
       "STEM education tutoring and interactive learning"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-pro": {
     "advantages": [
@@ -10486,7 +10563,8 @@
       "Enterprise strategic planning and technical innovation",
       "Cutting-edge R&D projects demanding deep analytical capabilities"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o3-pro-2025-06-10": {
     "advantages": [
@@ -10525,7 +10603,8 @@
       "Legal contract review and regulatory compliance",
       "Medical data analysis and literature synthesis"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o4-mini": {
     "advantages": [
@@ -10576,7 +10655,8 @@
       "Code generation and debugging across multiple programming languages.",
       "Scientific computing with real-time web search and Python execution."
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o4-mini-2025-04-16": {
     "advantages": [
@@ -10644,7 +10724,8 @@
       "Business applications like financial modeling with chart interpretation",
       "Educational test preparation with multi-subject support and visual reasoning"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o4-mini-deep-research": {
     "advantages": [
@@ -10688,7 +10769,8 @@
       "Strategic planning and due diligence",
       "Regulatory compliance research"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/o4-mini-deep-research_o4-mini-deep-research-2025-06-26": {
     "advantages": [
@@ -10733,7 +10815,8 @@
       "Product comparisons and real-time industry trend tracking",
       "Scalable enterprise research workflows and grant opportunity analysis"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/omni-moderation": {
     "advantages": [
@@ -10778,7 +10861,8 @@
       "Dating app profile and message screening",
       "Customer service request filtering"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/omni-moderation-2024-09-26": {
     "advantages": [
@@ -10830,7 +10914,8 @@
       "Real-time moderation of chat and community forums",
       "Content filtering for creative platforms and marketplaces"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/omni-moderation-latest": {
     "advantages": [
@@ -10890,7 +10975,8 @@
       "Educational platform content safety",
       "Brand safety for advertisement placement"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/omni-moderation-latest-intents": {
     "advantages": [
@@ -10928,7 +11014,8 @@
       "Extremism prevention through radicalization intent analysis",
       "Mental health platform monitoring for self-harm escalation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/text-embedding-3-large": {
     "advantages": [
@@ -10982,7 +11069,8 @@
       "Machine learning feature engineering for text data",
       "Personalized content recommendation across languages"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/text-embedding-3-small": {
     "advantages": [
@@ -11054,7 +11142,8 @@
       "Cross-lingual document clustering",
       "Content deduplication in large corpora"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/text-embedding-ada-002": {
     "advantages": [
@@ -11103,7 +11192,8 @@
       "Knowledge base organization and information retrieval pipelines",
       "Recommendation engines with pre-existing vector database integrations"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/tts-1": {
     "advantages": [
@@ -11148,7 +11238,8 @@
       "Interactive voice response (IVR) systems",
       "Gaming and entertainment narration"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/tts-1-hd": {
     "advantages": [
@@ -11192,7 +11283,8 @@
       "Museum audio guides and wellness app narration",
       "Luxury brand voice assistants and marketing videos"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "openai/whisper-1": {
     "advantages": [
@@ -11235,7 +11327,8 @@
       "Language learning applications",
       "Subtitle generation"
     ],
-    "website_url": null
+    "website_url": null,
+    "license_id": "openai-api"
   },
   "together_ai/00_together_ai_overview": {
     "advantages": [

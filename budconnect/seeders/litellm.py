@@ -26,7 +26,7 @@ from budmicroframe.commons import logging
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
-from ..model.crud import ModelInfoCRUD, ProviderCRUD
+from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
 from ..model.schemas import (
     CacheCost,
     Features,
@@ -49,6 +49,7 @@ logger = logging.get_logger(__name__)
 SEEDER_DIR = os.path.dirname(os.path.abspath(__file__))
 LITELLM_DATA_DIR = os.path.join(SEEDER_DIR, "data", "litellm")
 LITELLM_PROVIDERS_PATH = os.path.join(LITELLM_DATA_DIR, "litellm_providers.json")
+LICENSES_PATH = os.path.join(SEEDER_DIR, "data", "licenses.json")
 
 
 def read_json_file(file_path: str) -> Dict[str, Any]:
@@ -69,6 +70,21 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
 
     with open(file_path, "r") as f:
         return json.load(f)
+
+
+def get_license_key_for_model(model_uri: str, provider_type: str) -> str | None:
+    """Get license key for a model based on its URI and provider.
+
+    Args:
+        model_uri: The model URI
+        provider_type: The provider type
+
+    Returns:
+        License key if found, None otherwise
+    """
+    # This function is now mainly a fallback - most license_id should come directly from model data
+    # Return None if we don't have specific knowledge about the license
+    return None
 
 
 class LiteLLMParser:
@@ -131,7 +147,9 @@ class LiteLLMParser:
 
         return parsed_model_data
 
-    async def create_model_info(self, model_data: LiteLLMModelInfo, provider_id: UUID) -> ModelInfoCreate:
+    async def create_model_info(
+        self, model_data: LiteLLMModelInfo, provider_id: UUID, provider_type: str, license_id: UUID | None
+    ) -> ModelInfoCreate:
         """Create a model info from the model data.
 
         Args:
@@ -269,6 +287,7 @@ class LiteLLMParser:
             media_limits=MediaLimits(**categorized_data["media_limits"]) if categorized_data["media_limits"] else None,
             features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
             deprecation_date=model_data.config.get("deprecation_date"),
+            license_id=license_id,
         )
 
     @staticmethod
@@ -483,19 +502,49 @@ class LiteLLMSeeder(BaseSeeder):
         else:
             raise ValueError(f"Unsupported LiteLLM version: {version}")
 
+    async def get_license_id_map(self) -> Dict[str, UUID]:
+        """Get mapping of license keys to IDs from the database.
+
+        Returns:
+            Dict mapping license keys to their database IDs
+        """
+        license_id_map = {}
+
+        with LicenseCRUD() as license_crud:
+            session = license_crud.get_session()
+            try:
+                # Fetch all licenses from database using direct query
+                from ..model.models import License
+
+                licenses = session.query(License).all()
+                for license in licenses:
+                    license_id_map[license.key] = license.id
+                logger.debug("Loaded %d licenses from database", len(license_id_map))
+            except Exception as e:
+                logger.warning("Failed to load licenses from database: %s", e)
+                logger.info("Continuing with empty license mapping - models will have null license_id")
+
+        return license_id_map
+
     async def seed(self) -> None:
         """Seed the database with LiteLLM model data.
 
         This method:
-        1. Loads the engine configuration
-        2. Identifies LiteLLM engine versions
-        3. Processes each version's model data
-        4. Prepares data for database insertion
+        1. Seeds license records
+        2. Loads the engine configuration
+        3. Identifies LiteLLM engine versions
+        4. Processes each version's model data
+        5. Prepares data for database insertion
 
         Raises:
             SeederException: If there is an error during the seeding process
         """
         try:
+            # Get license ID mapping from database (assumes LicenseSeeder has already run)
+            license_id_map = await self.get_license_id_map()
+            if not license_id_map:
+                logger.warning("No licenses found in database. Run LicenseSeeder first.")
+                # Continue anyway - models will have null license_id
             # Load LiteLLM engine configuration from database
             engine_crud = EngineCRUD()
             with engine_crud as crud, crud.get_session() as session:
@@ -569,7 +618,15 @@ class LiteLLMSeeder(BaseSeeder):
 
                     # Parse model info
                     for model in supported_models:
-                        model_info_data = await litellm_parser.create_model_info(model, db_provider_id)
+                        # Get license ID from model data directly, or fall back to mapping
+                        license_key = model.config.get("license_id")
+                        if not license_key:
+                            license_key = get_license_key_for_model(model.uri, provider)
+                        license_id = license_id_map.get(license_key) if license_key else None
+
+                        model_info_data = await litellm_parser.create_model_info(
+                            model, db_provider_id, provider, license_id
+                        )
 
                         # Upsert model info
                         with ModelInfoCRUD() as model_info_crud:

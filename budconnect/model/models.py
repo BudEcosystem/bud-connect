@@ -11,6 +11,43 @@ from sqlalchemy.schema import Table
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 
 
+class License(PSQLBase, TimestampMixin):
+    """Represents license information for AI models in the system.
+
+    This class stores comprehensive license details including the license type,
+    terms, and frequently asked questions about usage rights. Each license can
+    be associated with multiple models, allowing for efficient reuse of common
+    license terms.
+
+    Attributes:
+        id (UUID): Unique identifier for the license.
+        key (str): Unique key identifier for the license (e.g., 'apache-2.0', 'openai-api').
+        name (str): Human-readable name of the license.
+        type (str): Classification of the license type (e.g., 'Permissive Open Source').
+        type_description (str): Detailed description of the license type.
+        type_suitability (str): Suitability rating (MOST, GOOD, LOW, WORST).
+        faqs (List[Dict]): JSON array of frequently asked questions with answers,
+            reasons, and impact assessments.
+        models (List[ModelInfo]): Relationship to models using this license.
+
+    Note:
+        The license key should be unique and is used as the primary identifier
+        for referencing licenses in seeders and other parts of the system.
+    """
+
+    __tablename__ = "license"
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
+    key: Mapped[str] = mapped_column(String, nullable=False, unique=True)
+    name: Mapped[str] = mapped_column(String, nullable=False)
+    type: Mapped[str] = mapped_column(String, nullable=False)
+    type_description: Mapped[str] = mapped_column(Text, nullable=False)
+    type_suitability: Mapped[str] = mapped_column(String, nullable=False)
+    faqs: Mapped[List[Dict[str, Any]]] = mapped_column(JSONB, nullable=False)
+
+    models: Mapped[List["ModelInfo"]] = relationship(back_populates="license")
+
+
 class Provider(PSQLBase, TimestampMixin):
     """Represents an AI model provider organization or service in the system.
 
@@ -86,8 +123,10 @@ class ModelInfo(PSQLBase, TimestampMixin):
     provider_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("provider.id"), nullable=False)
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)
+    license_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("license.id"), nullable=True)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
+    license: Mapped[License] = relationship(back_populates="models")
     details: Mapped["ModelDetails"] = relationship(back_populates="model_info", uselist=False)
 
 

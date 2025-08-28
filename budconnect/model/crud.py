@@ -26,7 +26,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from .models import ModelDetails, ModelInfo, Provider, engine_version_model_info, engine_version_provider
+from .models import License, ModelDetails, ModelInfo, Provider, engine_version_model_info, engine_version_provider
 
 
 logger = logging.get_logger(__name__)
@@ -93,7 +93,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
             if row:
                 # row[0] is the ID directly when using returning(self.model.id)
                 return UUID(str(row[0]))  # Ensure we return a UUID
-            
+
             # If no row returned (shouldn't happen but handle gracefully)
             # Try to fetch the existing row using conflict target
             if conflict_target and len(conflict_target) > 0:
@@ -101,7 +101,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
                 existing = _session.query(self.model).filter_by(**filter_dict).first()
                 if existing and hasattr(existing, "id"):
                     return UUID(str(existing.id))
-            
+
             raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()
@@ -205,6 +205,96 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         return total_providers, results
 
 
+class LicenseCRUD(CRUDMixin[License, None, None]):
+    __model__ = License
+
+    def __init__(self) -> None:
+        """Initialize the LicenseCRUD class.
+
+        This constructor initializes the LicenseCRUD class by calling the parent
+        CRUDMixin constructor with the License model. The LicenseCRUD class provides
+        database operations for the License model.
+        """
+        super().__init__(self.__model__)
+
+    def upsert(
+        self,
+        data: Union[DBCreateSchemaType, ModelType, Dict[str, Any]],
+        conflict_target: Optional[List[str]] = None,
+        session: Optional[Session] = None,
+        raise_on_error: bool = True,
+    ) -> UUID:
+        """Create or update a license.
+
+        This method creates a new license or updates an existing license if a conflict
+        occurs on the specified columns. The upsert operation is atomic and ensures
+        data consistency.
+
+        Args:
+            data: The data to upsert. Can be a Pydantic schema, model instance, or dictionary.
+            conflict_target: List of column names to check for conflicts. Defaults to ["key"].
+            session: Optional database session. If None, a new session will be created.
+            raise_on_error: Whether to raise an exception on error. Defaults to True.
+
+        Returns:
+            UUID: The ID of the created or updated license.
+
+        Raises:
+            ValueError: If the data type is invalid or the operation fails.
+            SQLAlchemyError: If a database error occurs and raise_on_error is True.
+        """
+        # Default to conflict on 'key' column for licenses
+        if conflict_target is None:
+            conflict_target = ["key"]
+
+        _session = session or self.get_session()
+        try:
+            if isinstance(data, dict):
+                obj = data
+            elif hasattr(data, "model_dump"):
+                obj = data.model_dump()
+            elif hasattr(data, "__dict__"):
+                obj = {k: v for k, v in data.__dict__.items() if not k.startswith("_")}
+            else:
+                raise ValueError("Invalid data type for upsert")
+
+            stmt = insert(self.model.__table__).values(obj)
+            if conflict_target:
+                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+
+            stmt = stmt.returning(self.model)
+            result = _session.execute(stmt)
+            _session.commit()
+            logger.debug("Upsert operation successful on %s", self.model.__tablename__)
+
+            row = result.first()
+            if row:
+                # Handle both ORM model instances and Row objects
+                if hasattr(row, "id"):
+                    # Direct model instance
+                    return UUID(str(row.id))
+                elif hasattr(row, "_mapping") and "id" in row._mapping:
+                    # SQLAlchemy Row object
+                    return UUID(str(row._mapping["id"]))
+                elif len(row) > 0 and hasattr(row[0], "id"):
+                    # Tuple with model instance
+                    return UUID(str(row[0].id))
+
+            # For upserts, try to fetch the record if returning didn't work
+            if conflict_target and "id" in obj:
+                return UUID(str(obj["id"]))
+
+            raise ValueError("No result returned from upsert operation")
+        except SQLAlchemyError as e:
+            _session.rollback()
+            logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
+            if raise_on_error:
+                raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+            return UUID("00000000-0000-0000-0000-000000000000")
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+
 class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
     __model__ = ModelInfo
 
@@ -266,7 +356,7 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
             if row:
                 # row[0] is the ID directly when using returning(self.model.id)
                 return UUID(str(row[0]))  # Ensure we return a UUID
-            
+
             # If no row returned (shouldn't happen but handle gracefully)
             # Try to fetch the existing row using conflict target
             if conflict_target and len(conflict_target) > 0:
@@ -274,7 +364,7 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
                 existing = _session.query(self.model).filter_by(**filter_dict).first()
                 if existing and hasattr(existing, "id"):
                     return UUID(str(existing.id))
-            
+
             raise ValueError("No result returned from upsert operation")
         except SQLAlchemyError as e:
             _session.rollback()
