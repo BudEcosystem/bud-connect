@@ -1,5 +1,4 @@
 {
-    
     "together_ai": {
         "name": "Together AI",
         "description": "Offers Llama, Falcon, Alpaca, and other Chat and Code LLMs, along with language/instruction models.",
@@ -13,6 +12,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "vertex_ai-gemini-models": {
@@ -44,6 +46,9 @@
                 "required": true,
                 "order": 3
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "vertex_ai-anthropic_models": {
@@ -75,6 +80,9 @@
                 "required": true,
                 "order": 3
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "gemini": {
@@ -90,6 +98,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "deepseek": {
@@ -105,6 +116,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "mistral": {
@@ -120,6 +134,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "bedrock": {
@@ -191,6 +208,9 @@
                 "required": false,
                 "order": 8
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "fireworks_ai-embedding-models": {
@@ -206,6 +226,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "azure": {
@@ -281,6 +304,9 @@
                     "client_id"
                 ]
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "openai": {
@@ -296,6 +322,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "sagemaker": {
@@ -367,6 +396,9 @@
                 "required": false,
                 "order": 8
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "xai": {
@@ -382,6 +414,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "anthropic": {
@@ -397,6 +432,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "hyperbolicai": {
@@ -412,6 +450,9 @@
                 "required": true,
                 "order": 1
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "huggingface": {
@@ -435,12 +476,18 @@
                 "required": false,
                 "order": 2
             }
+        ],
+        "capabilities": [
+            "model"
         ]
     },
     "bud_sentinel": {
         "name": "Bud Sentinel",
         "description": "A multi-tiered Guardrail framework for LLM safety and compliance, from the Bud Team",
         "icon": "icons/providers/bud.png",
-        "credentials": []
+        "credentials": [],
+        "capabilities": [
+            "moderation"
+        ]
     }
 }

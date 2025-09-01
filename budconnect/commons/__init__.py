@@ -28,6 +28,8 @@ from ..engine.models import (
 from ..engine.models import (
     EngineVersion as EngineVersion,
 )
+from ..guardrails.models import GuardrailProbe as GuardrailProbe
+from ..guardrails.models import GuardrailRule as GuardrailRule
 from ..model.models import (
     ModelInfo as ModelInfo,
 )
