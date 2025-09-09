@@ -53,8 +53,8 @@ def upgrade() -> None:
     )
     op.create_index(op.f('ix_guardrail_rules_probe_id'), 'guardrail_rules', ['probe_id'], unique=False)
 
-    sa.Enum('model', 'moderation', name='providercapabilityenum').create(op.get_bind())
-    op.add_column('provider', sa.Column('capabilities', postgresql.ARRAY(postgresql.ENUM('model', 'moderation', name='providercapabilityenum', create_type=False)), nullable=True))
+    sa.Enum('MODEL', 'MODERATION', name='providercapabilityenum').create(op.get_bind())
+    op.add_column('provider', sa.Column('capabilities', postgresql.ARRAY(postgresql.ENUM('MODEL', 'MODERATION', name='providercapabilityenum', create_type=False)), nullable=True))
 
     # ### end Alembic commands ###
 
@@ -66,5 +66,5 @@ def downgrade() -> None:
     op.drop_table('guardrail_probes')
 
     op.drop_column('provider', 'capabilities')
-    sa.Enum('model', 'moderation', name='providercapabilityenum').drop(op.get_bind())
+    sa.Enum('MODEL', 'MODERATION', name='providercapabilityenum').drop(op.get_bind())
     # ### end Alembic commands ###
