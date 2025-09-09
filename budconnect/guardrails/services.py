@@ -49,6 +49,8 @@ class GuardrailService:
         Returns:
             CompatibleProbesResponse: The compatible probes with their providers.
         """
+        page = (offset // limit) + 1
+
         # Get engine from database
         db_engine = None
         with EngineCRUD() as engine_crud:
@@ -62,7 +64,7 @@ class GuardrailService:
                 engine_version=engine_version,
                 items=[],
                 total_items=0,
-                page=offset,
+                page=page,
                 limit=limit,
             )
 
@@ -85,7 +87,7 @@ class GuardrailService:
                 engine_version=engine_version,
                 items=[],
                 total_items=0,
-                page=offset,
+                page=page,
                 limit=limit,
             )
 
@@ -150,7 +152,7 @@ class GuardrailService:
             engine_version=db_engine_version.version,
             items=compatible_providers,
             total_items=total_providers_with_guardrails,
-            page=(offset // limit) + 1,
+            page=page,
             limit=limit,
         )
 

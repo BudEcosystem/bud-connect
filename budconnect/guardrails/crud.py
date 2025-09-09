@@ -24,7 +24,7 @@ from budmicroframe.shared.psql_service import CRUDMixin, DBCreateSchemaType, Mod
 from sqlalchemy import func
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from ..model.models import Provider
 from .models import GuardrailProbe, GuardrailRule
@@ -308,6 +308,7 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
                 )
                 .join(Provider, GuardrailProbe.provider_id == Provider.id)
                 .filter(GuardrailProbe.id == probe_id)
+                .options(selectinload(GuardrailProbe.rules))  # Eagerly load rules
                 .first()
             )
 

@@ -60,7 +60,7 @@ async def get_compatible_guardrails(
         return error_response.to_http_response()
 
 
-@guardrail_router.get("/probes/{probe_id:path}/rules")
+@guardrail_router.get("/probes/{probe_id}/rules")
 async def get_guardrail_details(
     probe_id: UUID4, page: int = Query(1, ge=1), limit: int = Query(5, ge=0)
 ) -> JSONResponse:
