@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.schema import Table
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
 
 
 class License(PSQLBase, TimestampMixin):
@@ -79,8 +79,10 @@ class Provider(PSQLBase, TimestampMixin):
     icon: Mapped[str] = mapped_column(String, nullable=False)
     description: Mapped[str] = mapped_column(String, nullable=False)
     credentials: Mapped[List[Dict[str, Any]]] = mapped_column(JSONB, nullable=False)
+    capabilities: Mapped[List[str]] = mapped_column(ARRAY(Enum(ProviderCapabilityEnum)), nullable=True)
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="provider")
+    probes: Mapped[List["GuardrailProbe"]] = relationship(back_populates="provider")
     supported_versions: Mapped[List["EngineVersion"]] = relationship(  # noqa: F821
         "EngineVersion", secondary="engine_version_provider", back_populates="supported_providers"
     )

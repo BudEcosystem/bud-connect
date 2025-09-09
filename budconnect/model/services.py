@@ -95,12 +95,12 @@ class ModelService:
         # Get compatible providers from database and create response within session
         total_providers = 0
         compatible_providers = {}
-        
+
         with ProviderCRUD() as provider_crud:
             total_providers, provider_details = provider_crud.get_compatible_providers(
                 db_engine_version.id, offset, limit
             )
-            
+
             # Create compatible providers response while session is still active
             for db_provider, db_model in provider_details:
                 if str(db_provider.id) not in compatible_providers:
@@ -123,7 +123,7 @@ class ModelService:
                             "endpoints": db_model.endpoints,
                             "deprecation_date": db_model.deprecation_date,
                         }
-                    
+
                     compatible_providers[str(db_provider.id)] = CompatibleProviders(
                         id=db_provider.id,
                         name=db_provider.name,
@@ -131,6 +131,7 @@ class ModelService:
                         icon=db_provider.icon,
                         description=db_provider.description,
                         credentials=db_provider.credentials,
+                        capabilities=db_provider.capabilities,
                         models=[ModelInfoResponse(**model_data)] if model_data else [],
                     )
                 else:

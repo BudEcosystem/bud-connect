@@ -27,6 +27,7 @@ from fastapi import FastAPI
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
 from .engine.routes import engine_router
+from .guardrails.routes import guardrail_router
 from .license.routes import license_router
 from .model.routes import model_router
 from .seeders import seeders
@@ -83,3 +84,4 @@ app = configure_app(app_settings, secrets_settings, lifespan=lifespan)
 app.include_router(engine_router)
 app.include_router(license_router)
 app.include_router(model_router)
+app.include_router(guardrail_router)

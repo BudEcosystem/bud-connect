@@ -594,6 +594,7 @@ class TensorZeroSeeder(BaseSeeder):
                     icon=predefined_providers[hf_provider_type]["icon"],
                     description=predefined_providers[hf_provider_type]["description"],
                     credentials=predefined_providers[hf_provider_type]["credentials"],
+                    capabilities=predefined_providers[hf_provider_type]["capabilities"],
                 )
 
                 # Upsert provider
@@ -611,6 +612,7 @@ class TensorZeroSeeder(BaseSeeder):
                     icon=predefined_providers[bud_sentinel_provider_type]["icon"],
                     description=predefined_providers[bud_sentinel_provider_type]["description"],
                     credentials=predefined_providers[bud_sentinel_provider_type]["credentials"],
+                    capabilities=predefined_providers[bud_sentinel_provider_type]["capabilities"],
                 )
 
                 # Upsert provider
@@ -629,6 +631,7 @@ class TensorZeroSeeder(BaseSeeder):
                         icon=predefined_providers[provider]["icon"],
                         description=predefined_providers[provider]["description"],
                         credentials=predefined_providers[provider]["credentials"],
+                        capabilities=predefined_providers[provider]["capabilities"],
                     )
 
                     # Upsert provider

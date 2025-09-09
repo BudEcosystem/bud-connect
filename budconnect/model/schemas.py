@@ -22,7 +22,7 @@ from typing import Any, Dict, List, Optional
 from budmicroframe.commons.schemas import PaginatedResponse
 from pydantic import UUID4, BaseModel, ConfigDict, Field
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
 
 
 class LicenseFAQ(BaseModel):
@@ -76,6 +76,7 @@ class ProviderCreate(BaseModel):
     icon: str
     description: str
     credentials: List[Dict[str, Any]]
+    capabilities: list[ProviderCapabilityEnum]
 
 
 class InputCost(BaseModel):

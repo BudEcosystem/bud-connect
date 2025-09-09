@@ -68,3 +68,21 @@ class ModelEndpointEnum(Enum):
     RESPONSE = "/v1/responses"
     RERANK = "/v1/rerank"  # https://docs.litellm.ai/docs/rerank
     MODERATION = "/v1/moderations"  # https://docs.litellm.ai/docs/moderation
+
+
+class ProviderCapabilityEnum(Enum):
+    """Enumeration for identifying provider capabilities.
+
+    This enum categorizes providers like OpenAI, Azure, and AWS Bedrock based on
+    the specific services they offer, allowing for clear differentiation between
+    their core functionalities.
+
+    Attributes:
+        MODEL: Represents providers that support model hubs or offer direct access
+               to model inference endpoints.
+        MODERATION: Represents providers that offer content moderation, safety, or
+                    guardrail endpoints.
+    """
+
+    MODEL = "model"
+    MODERATION = "moderation"
