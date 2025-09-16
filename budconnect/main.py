@@ -23,13 +23,16 @@ from typing import AsyncIterator
 from budmicroframe.main import configure_app
 from budmicroframe.shared.dapr_workflow import DaprWorkflow
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
+from .auth.routes import auth_router
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
 from .engine.routes import engine_router
 from .guardrails.routes import guardrail_router
 from .license.routes import license_router
 from .model.routes import model_router
+from .provider.routes import provider_router
 from .seeders import seeders
 
 
@@ -81,7 +84,18 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 # mypy: ignore-errors
 app = configure_app(app_settings, secrets_settings, lifespan=lifespan)
 
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3004", "http://localhost:3000", "http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth_router)
 app.include_router(engine_router)
 app.include_router(license_router)
 app.include_router(model_router)
 app.include_router(guardrail_router)
+app.include_router(provider_router)

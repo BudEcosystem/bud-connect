@@ -1,0 +1,65 @@
+{{- if .Values.admin.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}-admin
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.admin.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: "{{ .Values.name }}-admin"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.name }}-admin"
+    spec:
+      containers:
+      - name: "{{ .Values.name }}-admin"
+        image: {{ .Values.admin.image }}
+        imagePullPolicy: {{ .Values.admin.imagePullPolicy | default "IfNotPresent" }}
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: API_BASE_URL
+          value: "http://{{ .Values.name }}:{{ .Values.env.APP_PORT }}"
+        resources:
+          limits:
+            memory: {{ .Values.admin.resources.limits.memory | default "256Mi" }}
+            cpu: {{ .Values.admin.resources.limits.cpu | default "200m" }}
+          requests:
+            memory: {{ .Values.admin.resources.requests.memory | default "128Mi" }}
+            cpu: {{ .Values.admin.resources.requests.cpu | default "100m" }}
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}-admin
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    name: http
+  selector:
+    app: {{ .Values.name }}-admin
+  type: ClusterIP
+{{- end }}

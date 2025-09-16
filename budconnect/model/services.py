@@ -16,14 +16,26 @@
 
 """This module contains the services for the model API."""
 
-from typing import Optional
+from typing import List, Optional, Tuple
+from uuid import UUID
 
 from budmicroframe.commons import logging
+from budmicroframe.commons.exceptions import ClientException
 from fastapi import status
+from sqlalchemy.exc import IntegrityError
 
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
-from .crud import ModelDetailsCRUD, ProviderCRUD
-from .schemas import CompatibleModelsResponse, CompatibleProviders, ModelDetailsResponse, ModelInfoResponse
+from .crud import ModelDetailsCRUD, ModelInfoCRUD, ProviderCRUD
+from .models import ModelInfo, Provider
+from .schemas import (
+    CompatibleModelsResponse,
+    CompatibleProviders,
+    ModelDetailsResponse,
+    ModelDetailsUpdate,
+    ModelInfoCreate,
+    ModelInfoResponse,
+    ModelInfoUpdate,
+)
 
 
 logger = logging.get_logger(__name__)
@@ -180,3 +192,429 @@ class ModelService:
             if combined_data:
                 return ModelDetailsResponse(**combined_data)
             return None
+
+    @staticmethod
+    def get_all_models(
+        page: int = 1, page_size: int = 100, search: Optional[str] = None, provider_id: Optional[UUID] = None
+    ) -> Tuple[List[ModelInfoResponse], int]:
+        """Get all models with pagination and optional filtering.
+
+        Args:
+            page: Page number (1-indexed)
+            page_size: Number of items per page
+            search: Optional search term to filter by URI
+            provider_id: Optional provider ID to filter by
+
+        Returns:
+            Tuple of (list of models, total count)
+        """
+        with ModelInfoCRUD() as crud:
+            session = crud.get_session()
+            try:
+                # Build base query with provider and license info
+                from .models import License
+
+                query = (
+                    session.query(
+                        ModelInfo,
+                        Provider.name.label("provider_name"),
+                        Provider.provider_type.label("provider_type"),
+                        License,
+                    )
+                    .join(Provider, ModelInfo.provider_id == Provider.id)
+                    .outerjoin(License, ModelInfo.license_id == License.id)
+                )
+
+                # Apply filters
+                if search:
+                    search_pattern = f"%{search}%"
+                    query = query.filter(ModelInfo.uri.ilike(search_pattern))
+
+                if provider_id:
+                    query = query.filter(ModelInfo.provider_id == provider_id)
+
+                # Get total count
+                total = query.count()
+
+                # Sort by created_at date (newest first)
+                query = query.order_by(ModelInfo.created_at.desc())
+
+                # Apply pagination
+                offset = (page - 1) * page_size
+                results = query.offset(offset).limit(page_size).all()
+
+                # Convert to response format
+                models = []
+                for model, provider_name, provider_type, license in results:
+                    model_dict = {
+                        "id": model.id,
+                        "uri": model.uri,
+                        "modality": model.modality or [],
+                        "provider_id": model.provider_id,
+                        "provider_name": provider_name,
+                        "provider_type": provider_type,
+                        "input_cost": model.input_cost,
+                        "output_cost": model.output_cost,
+                        "cache_cost": model.cache_cost,
+                        "search_context_cost_per_query": model.search_context_cost_per_query,
+                        "tokens": model.tokens,
+                        "rate_limits": model.rate_limits,
+                        "media_limits": model.media_limits,
+                        "features": model.features,
+                        "endpoints": model.endpoints or [],
+                        "deprecation_date": model.deprecation_date,
+                        "license": license,
+                        "created_at": model.created_at,
+                        "modified_at": model.modified_at,
+                    }
+                    models.append(ModelInfoResponse(**model_dict))
+
+                return models, total
+            finally:
+                crud.cleanup_session(session)
+
+    @staticmethod
+    def get_model_by_id(model_id: UUID) -> ModelInfoResponse:
+        """Get a model by its ID.
+
+        Args:
+            model_id: UUID of the model
+
+        Returns:
+            Model object
+
+        Raises:
+            ClientException: If model not found
+        """
+        with ModelInfoCRUD() as crud:
+            session = crud.get_session()
+            try:
+                # Query model with provider and license info
+                from .models import License
+
+                result = (
+                    session.query(
+                        ModelInfo,
+                        Provider.name.label("provider_name"),
+                        Provider.provider_type.label("provider_type"),
+                        License,
+                    )
+                    .join(Provider, ModelInfo.provider_id == Provider.id)
+                    .outerjoin(License, ModelInfo.license_id == License.id)
+                    .filter(ModelInfo.id == model_id)
+                    .first()
+                )
+
+                if not result:
+                    raise ClientException(message=f"Model with ID {model_id} not found", status_code=404)
+
+                model, provider_name, provider_type, license = result
+                model_dict = {
+                    "id": model.id,
+                    "uri": model.uri,
+                    "modality": model.modality or [],
+                    "provider_id": model.provider_id,
+                    "provider_name": provider_name,
+                    "provider_type": provider_type,
+                    "input_cost": model.input_cost,
+                    "output_cost": model.output_cost,
+                    "cache_cost": model.cache_cost,
+                    "search_context_cost_per_query": model.search_context_cost_per_query,
+                    "tokens": model.tokens,
+                    "rate_limits": model.rate_limits,
+                    "media_limits": model.media_limits,
+                    "features": model.features,
+                    "endpoints": model.endpoints or [],
+                    "deprecation_date": model.deprecation_date,
+                    "license": license,
+                    "created_at": model.created_at,
+                    "modified_at": model.modified_at,
+                }
+                return ModelInfoResponse(**model_dict)
+            finally:
+                crud.cleanup_session(session)
+
+    @staticmethod
+    def create_model(model_data: ModelInfoCreate) -> ModelInfoResponse:
+        """Create a new model.
+
+        Args:
+            model_data: Model creation data
+
+        Returns:
+            Created model object
+
+        Raises:
+            ClientException: If URI already exists or provider not found
+        """
+        with ModelInfoCRUD() as crud:
+            # Check if URI already exists
+            existing = crud.fetch_one({"uri": model_data.uri})
+            if existing:
+                raise ClientException(message=f"Model with URI '{model_data.uri}' already exists", status_code=400)
+
+            # Verify provider exists
+            with ProviderCRUD() as provider_crud:
+                provider = provider_crud.fetch_one({"id": model_data.provider_id})
+                if not provider:
+                    raise ClientException(
+                        message=f"Provider with ID {model_data.provider_id} not found", status_code=404
+                    )
+
+            try:
+                # Create the model
+                model_dict = model_data.model_dump()
+                created_model_id = crud.upsert(model_dict)
+
+                # Return with provider info
+                return ModelService.get_model_by_id(created_model_id)
+            except IntegrityError as e:
+                logger.error(f"Integrity error creating model: {e}")
+                raise ClientException(message="Failed to create model due to data conflict", status_code=400) from e
+
+    @staticmethod
+    def update_model(model_id: UUID, model_data: ModelInfoUpdate) -> ModelInfoResponse:
+        """Update a model.
+
+        Args:
+            model_id: UUID of the model to update
+            model_data: Update data
+
+        Returns:
+            Updated model object
+
+        Raises:
+            ClientException: If model not found
+        """
+        with ModelInfoCRUD() as crud:
+            model = crud.fetch_one({"id": model_id})
+            if not model:
+                raise ClientException(message=f"Model with ID {model_id} not found", status_code=404)
+
+            # If updating provider, verify it exists
+            if model_data.provider_id:
+                with ProviderCRUD() as provider_crud:
+                    provider = provider_crud.fetch_one({"id": model_data.provider_id})
+                    if not provider:
+                        raise ClientException(
+                            message=f"Provider with ID {model_data.provider_id} not found", status_code=404
+                        )
+
+            # If updating URI, check it's not taken
+            if model_data.uri and model_data.uri != model.uri:
+                existing = crud.fetch_one({"uri": model_data.uri})
+                if existing:
+                    raise ClientException(message=f"Model with URI '{model_data.uri}' already exists", status_code=400)
+
+            # Update the model
+            update_dict = model_data.model_dump(exclude_unset=True)
+            if update_dict:
+                session = crud.get_session()
+                try:
+                    # Update the model attributes
+                    for key, value in update_dict.items():
+                        setattr(model, key, value)
+                    session.add(model)
+                    session.commit()
+                finally:
+                    crud.cleanup_session(session)
+
+            return ModelService.get_model_by_id(model_id)
+
+    @staticmethod
+    def delete_model(model_id: UUID) -> None:
+        """Delete a model.
+
+        Args:
+            model_id: UUID of the model to delete
+
+        Raises:
+            ClientException: If model not found or has dependencies
+        """
+        from sqlalchemy import text
+
+        from ..model.models import ModelDetails
+
+        with ModelInfoCRUD() as crud:
+            session = crud.get_session()
+            try:
+                # Check if model exists
+                model = session.query(ModelInfo).filter(ModelInfo.id == model_id).first()
+                if not model:
+                    raise ClientException(message=f"Model with ID {model_id} not found", status_code=404)
+
+                # Delete engine compatibility entries (cascade delete)
+                engine_compat_deleted = session.execute(
+                    text("DELETE FROM engine_version_model_info WHERE model_info_id = :model_id"),
+                    {"model_id": model_id},
+                ).rowcount
+
+                if engine_compat_deleted > 0:
+                    logger.info(f"Deleted {engine_compat_deleted} engine compatibility entries for model {model_id}")
+
+                # Delete associated model_details
+                details_deleted = session.query(ModelDetails).filter(ModelDetails.model_info_id == model_id).delete()
+                if details_deleted > 0:
+                    logger.info(f"Deleted {details_deleted} model_details entries for model {model_id}")
+
+                # Delete the model itself
+                session.delete(model)
+                session.commit()
+                logger.info(f"Successfully deleted model {model_id} ({model.uri})")
+
+            except ClientException:
+                session.rollback()
+                raise
+            except Exception as e:
+                session.rollback()
+                logger.error(f"Error deleting model {model_id}: {e}")
+                # Check if it's a foreign key constraint error
+                error_msg = str(e)
+                if "foreign" in error_msg.lower() or "constraint" in error_msg.lower():
+                    # Try to extract table name from error message
+                    if "table" in error_msg:
+                        raise ClientException(
+                            message=f"Cannot delete model because it has dependencies. Database error: {error_msg}",
+                            status_code=400,
+                        ) from e
+                    raise ClientException(
+                        message="Cannot delete model because it has dependencies in other tables", status_code=400
+                    ) from e
+                raise ClientException(message=f"Failed to delete model: {str(e)}", status_code=500) from e
+            finally:
+                crud.cleanup_session(session)
+
+    @staticmethod
+    def update_model_details(model_id: UUID, details_data: ModelDetailsUpdate) -> ModelDetailsResponse:
+        """Update model details including description, features, and pricing.
+
+        Args:
+            model_id: UUID of the model
+            details_data: Details update data
+
+        Returns:
+            Updated model details
+
+        Raises:
+            ClientException: If model not found
+        """
+        from .models import License, ModelDetails
+
+        with ModelInfoCRUD() as crud:
+            session = crud.get_session()
+            try:
+                # Check if model exists
+                model = session.query(ModelInfo).filter(ModelInfo.id == model_id).first()
+                if not model:
+                    raise ClientException(message=f"Model with ID {model_id} not found", status_code=404)
+
+                # Check if details already exist
+                details = session.query(ModelDetails).filter(ModelDetails.model_info_id == model_id).first()
+
+                # Update or create details
+                if details:
+                    # Update existing details fields
+                    if details_data.description is not None:
+                        details.description = details_data.description
+                    if details_data.advantages is not None:
+                        details.advantages = details_data.advantages
+                    if details_data.disadvantages is not None:
+                        details.disadvantages = details_data.disadvantages
+                    if details_data.use_cases is not None:
+                        details.use_cases = details_data.use_cases
+                    if details_data.tags is not None:
+                        details.tags = details_data.tags
+                else:
+                    # Create new details entry
+                    details = ModelDetails(
+                        model_info_id=model_id,
+                        description=details_data.description,
+                        advantages=details_data.advantages,
+                        disadvantages=details_data.disadvantages,
+                        use_cases=details_data.use_cases,
+                        tags=details_data.tags,
+                    )
+                    session.add(details)
+
+                # Update model pricing and features
+                update_dict = {}
+                if details_data.input_cost is not None:
+                    update_dict["input_cost"] = details_data.input_cost.model_dump(exclude_none=True) or None
+                if details_data.output_cost is not None:
+                    update_dict["output_cost"] = details_data.output_cost.model_dump(exclude_none=True) or None
+                if details_data.cache_cost is not None:
+                    update_dict["cache_cost"] = details_data.cache_cost.model_dump(exclude_none=True) or None
+                if details_data.search_context_cost_per_query is not None:
+                    update_dict["search_context_cost_per_query"] = (
+                        details_data.search_context_cost_per_query.model_dump(exclude_none=True) or None
+                    )
+                if details_data.tokens is not None:
+                    update_dict["tokens"] = details_data.tokens.model_dump(exclude_none=True) or None
+                if details_data.rate_limits is not None:
+                    update_dict["rate_limits"] = details_data.rate_limits.model_dump(exclude_none=True) or None
+                if details_data.media_limits is not None:
+                    update_dict["media_limits"] = details_data.media_limits.model_dump(exclude_none=True) or None
+                if details_data.features is not None:
+                    update_dict["features"] = details_data.features.model_dump(exclude_none=True) or None
+
+                # Update model fields
+                for key, value in update_dict.items():
+                    setattr(model, key, value)
+
+                session.commit()
+
+                # Get provider and license info for response
+                provider = session.query(Provider).filter(Provider.id == model.provider_id).first()
+                license = (
+                    session.query(License).filter(License.id == model.license_id).first() if model.license_id else None
+                )
+
+                # Prepare response
+                response_dict = {
+                    "id": details.id if details else None,
+                    "model_info_id": model_id,
+                    "description": details.description if details else None,
+                    "advantages": details.advantages if details else None,
+                    "disadvantages": details.disadvantages if details else None,
+                    "use_cases": details.use_cases if details else None,
+                    "evaluations": details.evaluations if details else None,
+                    "languages": details.languages if details else None,
+                    "tags": details.tags if details else None,
+                    "tasks": details.tasks if details else None,
+                    "papers": details.papers if details else None,
+                    "github_url": details.github_url if details else None,
+                    "website_url": details.website_url if details else None,
+                    "logo_url": details.logo_url if details else None,
+                    "architecture": details.architecture if details else None,
+                    "model_tree": details.model_tree if details else None,
+                    "extraction_metadata": details.extraction_metadata if details else None,
+                    "created_at": details.created_at if details else model.created_at,
+                    "modified_at": details.modified_at if details else model.modified_at,
+                    "uri": model.uri,
+                    "modality": model.modality or [],
+                    "input_cost": model.input_cost,
+                    "output_cost": model.output_cost,
+                    "cache_cost": model.cache_cost,
+                    "search_context_cost_per_query": model.search_context_cost_per_query,
+                    "tokens": model.tokens,
+                    "rate_limits": model.rate_limits,
+                    "media_limits": model.media_limits,
+                    "features": model.features,
+                    "endpoints": model.endpoints or [],
+                    "deprecation_date": model.deprecation_date,
+                    "license": license,
+                    "provider_name": provider.name if provider else None,
+                    "provider_type": provider.provider_type if provider else None,
+                }
+
+                return ModelDetailsResponse(**response_dict)
+
+            except ClientException:
+                session.rollback()
+                raise
+            except Exception as e:
+                session.rollback()
+                logger.error(f"Error updating model details for {model_id}: {e}")
+                raise ClientException(message=f"Failed to update model details: {str(e)}", status_code=500) from e
+            finally:
+                crud.cleanup_session(session)

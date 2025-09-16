@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, field_validator
 class LicenseFAQ(BaseModel):
     question: str
     answer: str
-    reason: Optional[List[str]] = Field(default_factory=list, description="Reasoning for the answer")
+    reason: Optional[List[str]] = Field(default=None, description="Reasoning for the answer")
     impact: Optional[str] = Field(default="NEUTRAL", description="Impact assessment: POSITIVE, NEGATIVE, or NEUTRAL")
 
 
@@ -37,6 +37,8 @@ class LicenseResponse(LicenseBase):
     id: UUID = Field(..., description="Unique identifier for the license")
 
     class Config:
+        """Pydantic model configuration."""
+
         from_attributes = True
 
 
@@ -55,7 +57,8 @@ class LicenseExtractRequest(BaseModel):
     key: Optional[str] = Field(None, description="Optional custom key for the license")
 
     @field_validator("source")
-    def validate_source(cls, v, values):
+    def validate_source(cls, v: str, values: Optional[Dict[str, Any]] = None) -> str:
+        """Validate that source is not empty."""
         if not v or v.strip() == "":
             raise ValueError("Source cannot be empty")
         return v

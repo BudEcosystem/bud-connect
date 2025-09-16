@@ -106,7 +106,7 @@ class InputCost(BaseModel):
     input_dbu_cost_per_token: Optional[float] = Field(None)
 
     class Config:
-        """Config for input cost."""
+        """Configuration for input cost validation."""
 
         extra = "forbid"
 
@@ -129,7 +129,7 @@ class OutputCost(BaseModel):
     output_db_cost_per_token: Optional[float] = Field(None)
 
     class Config:
-        """Config for output cost."""
+        """Configuration for output cost validation."""
 
         extra = "forbid"
 
@@ -143,7 +143,7 @@ class CacheCost(BaseModel):
     cache_creation_input_token_cost: Optional[float] = Field(None)
 
     class Config:
-        """Config for cache cost."""
+        """Configuration for cache cost validation."""
 
         extra = "forbid"
 
@@ -156,7 +156,7 @@ class SearchContextCost(BaseModel):
     search_context_size_high: Optional[float] = Field(None)
 
     class Config:
-        """Config for search context cost."""
+        """Configuration for search context cost validation."""
 
         extra = "forbid"
 
@@ -172,7 +172,7 @@ class Tokens(BaseModel):
     tool_use_system_prompt_tokens: Optional[int] = Field(None)
 
     class Config:
-        """Config for tokens."""
+        """Configuration for token limits validation."""
 
         extra = "forbid"
 
@@ -185,7 +185,7 @@ class RateLimits(BaseModel):
     rpm: Optional[int] = Field(None)
 
     class Config:
-        """Config for rate limits."""
+        """Configuration for rate limits validation."""
 
         extra = "forbid"
 
@@ -202,7 +202,7 @@ class MediaLimits(BaseModel):
     max_video_length: Optional[float] = Field(None)
 
     class Config:
-        """Config for media limits."""
+        """Configuration for media limits validation."""
 
         extra = "forbid"
 
@@ -222,7 +222,7 @@ class Features(BaseModel):
     supports_prompt_caching: Optional[bool] = Field(None)
 
     class Config:
-        """Config for features."""
+        """Configuration for features validation."""
 
         extra = "forbid"
 
@@ -272,6 +272,25 @@ class ModelInfoCreate(BaseModel):
         return data
 
 
+class ModelInfoUpdate(BaseModel):
+    """Schema for updating model info."""
+
+    uri: Optional[str] = None
+    modality: Optional[List[ModalityEnum]] = None
+    provider_id: Optional[UUID4] = None
+    input_cost: Optional[InputCost] = None
+    output_cost: Optional[OutputCost] = None
+    cache_cost: Optional[CacheCost] = None
+    search_context_cost_per_query: Optional[SearchContextCost] = None
+    tokens: Optional[Tokens] = None
+    rate_limits: Optional[RateLimits] = None
+    media_limits: Optional[MediaLimits] = None
+    features: Optional[Features] = None
+    endpoints: Optional[List[ModelEndpointEnum]] = None
+    deprecation_date: Optional[datetime] = None
+    license_id: Optional[UUID4] = None
+
+
 # Api Schemas
 
 
@@ -284,6 +303,8 @@ class ModelInfoResponse(BaseModel):
     uri: str
     modality: List[ModalityEnum]
     provider_id: UUID4
+    provider_name: Optional[str] = None
+    provider_type: Optional[str] = None
     input_cost: Optional[Dict[str, Any]] = None
     output_cost: Optional[Dict[str, Any]] = None
     cache_cost: Optional[Dict[str, Any]] = None
@@ -295,6 +316,17 @@ class ModelInfoResponse(BaseModel):
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
+    created_at: Optional[datetime] = None
+    modified_at: Optional[datetime] = None
+
+
+class ModelListResponse(BaseModel):
+    """Response schema for model list with pagination."""
+
+    models: List[ModelInfoResponse]
+    total: int
+    page: int
+    page_size: int
 
 
 class CompatibleProviders(ProviderCreate):
@@ -306,7 +338,7 @@ class CompatibleProviders(ProviderCreate):
     models: List[ModelInfoResponse] = []
 
 
-class CompatibleModelsResponse(PaginatedResponse):
+class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
     """Schema for compatible models response."""
 
     model_config = ConfigDict(from_attributes=True)
@@ -329,6 +361,28 @@ class ModelPaper(BaseModel):
     title: str = Field(..., description="Title of the paper")
     authors: List[str] = Field(default_factory=list, description="List of authors")
     url: Optional[str] = Field(None, description="URL to the paper")
+
+
+class ModelDetailsUpdate(BaseModel):
+    """Schema for updating model details."""
+
+    description: Optional[str] = None
+    advantages: Optional[List[str]] = None
+    disadvantages: Optional[List[str]] = None
+    use_cases: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+
+    # Pricing & Limits
+    input_cost: Optional[InputCost] = None
+    output_cost: Optional[OutputCost] = None
+    cache_cost: Optional[CacheCost] = None
+    search_context_cost_per_query: Optional[SearchContextCost] = None
+    tokens: Optional[Tokens] = None
+    rate_limits: Optional[RateLimits] = None
+    media_limits: Optional[MediaLimits] = None
+
+    # Features
+    features: Optional[Features] = None
 
 
 class ModelDetailsResponse(BaseModel):

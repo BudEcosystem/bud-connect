@@ -9,7 +9,7 @@ env:
   PSQL_PORT: "5432"
   PSQL_USER: ""
   PSQL_PASSWORD: ""
-  PSQL_DB: "budconnect"
+  PSQL_DB_NAME: "budconnect"
   REDIS_URI: "redis-service.bud-connect:6379"
   REDIS_PASSWORD: ""
 
@@ -29,6 +29,10 @@ env:
   # Control whether to run database seeders on startup
   RUN_SEEDERS_ON_STARTUP: "true"
 
+  INITIAL_ADMIN_PASSWORD: ""
+  INITIAL_ADMIN_EMAIL: ""
+  INITIAL_ADMIN_USERNAME: ""
+
 redis:
   storage_size: 1Gi
   host_path: /datadisk/pvc/budconnect/redis
@@ -36,3 +40,17 @@ redis:
 postgres:
   storage_size: 10Gi
   host_path: /datadisk/pvc/budconnect/postgres
+
+# Admin Frontend Configuration
+admin:
+  enabled: true
+  image: "budstudio/budconnect-admin:latest"
+  imagePullPolicy: IfNotPresent
+  replicas: 1
+  resources:
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+    requests:
+      memory: "128Mi"
+      cpu: "100m"

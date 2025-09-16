@@ -18,7 +18,7 @@
 
 import json
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -73,7 +73,7 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
         return data
 
 
-def get_license_key_for_model(model_uri: str, provider_type: str) -> str | None:
+def get_license_key_for_model(model_uri: str, provider_type: str) -> Optional[str]:
     """Get license key for a model based on its URI and provider.
 
     Args:
@@ -149,7 +149,7 @@ class TensorZeroParser:
         return parsed_model_data
 
     async def create_model_info(
-        self, model_data: LiteLLMModelInfo, provider_id: UUID, provider_type: str, license_id: UUID | None
+        self, model_data: LiteLLMModelInfo, provider_id: UUID, provider_type: str, license_id: Optional[UUID]
     ) -> ModelInfoCreate:
         """Create a model info from the model data.
 
@@ -555,7 +555,7 @@ class TensorZeroSeeder(BaseSeeder):
             # Load TensorZero engine configuration from database
             engine_crud = EngineCRUD()
             with engine_crud as crud, crud.get_session() as session:
-                db_engine = engine_crud.fetch_one(conditions={"name": "tensorzero"}, session=session)
+                db_engine = engine_crud.fetch_one(conditions={"name": "TensorZero"}, session=session)
                 if not db_engine:
                     logger.warning("No TensorZero engine found")
                     return
