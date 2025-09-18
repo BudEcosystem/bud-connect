@@ -317,6 +317,42 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         finally:
             self.cleanup_session(_session if session is None else None)
 
+    def get_all_providers_with_models(
+        self, offset: int, limit: int, session: Optional[Session] = None
+    ) -> Tuple[int, List[Tuple[Provider, Optional[ModelInfo]]]]:
+        """Get all providers with their models without engine filtering.
+
+        Args:
+            offset: The offset to start the pagination from.
+            limit: The number of providers to return.
+            session: The session to use for the query.
+
+        Returns:
+            A tuple of (total_providers, list of (provider, model) tuples).
+        """
+        _session = session or self.get_session()
+
+        # Get total count of providers
+        total_providers = _session.query(func.count(distinct(Provider.id))).scalar()
+
+        # Get all providers and their models in a single query
+        query = (
+            _session.query(Provider, ModelInfo)
+            .outerjoin(ModelInfo, ModelInfo.provider_id == Provider.id)
+            .order_by(Provider.provider_type, ModelInfo.uri)
+        )
+
+        # Get distinct providers for pagination
+        provider_ids = [p.id for p in _session.query(Provider.id).order_by(Provider.name).offset(offset).limit(limit)]
+
+        # Filter the main query by paginated provider IDs
+        query = query.filter(Provider.id.in_(provider_ids))
+
+        # Execute query
+        results = query.all()
+
+        return total_providers, results
+
 
 class LicenseCRUD(CRUDMixin[License, None, None]):
     __model__ = License

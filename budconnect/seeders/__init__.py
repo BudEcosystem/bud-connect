@@ -11,7 +11,7 @@ seeders = {
     "user": UserSeeder,  # This should run first to create initial admin
     "engine": EngineSeeder,
     "license": LicenseSeeder,  # This should run before litellm and tensorzero
-    "litellm": LiteLLMSeeder,
+    # "litellm": LiteLLMSeeder,
     "tensorzero": TensorZeroSeeder,
     "model_details": ModelDetailsSeeder,  # This should run after litellm and tensorzero
     "guardrails": GuardrailsSeeder,  # This should run after tensorzero to ensure providers exist

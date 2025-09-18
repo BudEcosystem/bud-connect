@@ -16,7 +16,7 @@
 
 """This module contains the routes for the model API."""
 
-from typing import Literal, Optional
+from typing import Optional
 from uuid import UUID
 
 from budmicroframe.commons import logging

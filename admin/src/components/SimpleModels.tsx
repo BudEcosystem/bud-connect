@@ -3,7 +3,22 @@ import { modelApi, licenseApi, providerApi } from '../api'
 import { Model, ModelCreate, ModelUpdate, License, Provider, ModalityEnum, ModelEndpointEnum } from '../types'
 
 const MODALITY_OPTIONS: ModalityEnum[] = ['text_input', 'text_output', 'image_input', 'image_output', 'audio_input', 'audio_output']
-const ENDPOINT_OPTIONS: ModelEndpointEnum[] = ['/v1/chat/completions', '/v1/completions', '/v1/images/generations', '/v1/audio/transcriptions', '/v1/audio/speech', '/v1/embeddings', '/v1/batch', '/v1/responses', '/v1/rerank', '/v1/moderations']
+const ENDPOINT_OPTIONS: ModelEndpointEnum[] = [
+  '/v1/chat/completions',
+  '/v1/completions',
+  '/v1/images/generations',
+  '/v1/images/edits',
+  '/v1/images/variations',
+  '/v1/audio/transcriptions',
+  '/v1/audio/translations',
+  '/v1/audio/speech',
+  '/v1/embeddings',
+  '/v1/batch',
+  '/v1/responses',
+  '/v1/documents',
+  '/v1/rerank',
+  '/v1/moderations'
+]
 
 export function SimpleModels() {
   const [models, setModels] = useState<Model[]>([])
