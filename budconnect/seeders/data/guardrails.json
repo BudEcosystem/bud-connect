@@ -6034,7 +6034,7 @@
         ]
     },
     {
-        "provider_type": "azure",
+        "provider_type": "azure_content_safety",
         "probes": [
             {
                 "id": "prompt-shields",
@@ -6082,7 +6082,7 @@
                 "total_rules": 4,
                 "rules": [
                     {
-                        "id": "MEDICAL/QnA",
+                        "id": "Medical/QnA",
                         "title": "Medical Question Answering",
                         "description": "Content related to medical questions and answers, including symptoms, treatments, and general health inquiries.",
                         "examples": [
@@ -6100,7 +6100,7 @@
                         ]
                     },
                     {
-                        "id": "GENERIC/QnA",
+                        "id": "Generic/QnA",
                         "title": "Generic Question Answering",
                         "description": "Content that involves general knowledge questions and answers on a wide range of non-specific topics.",
                         "examples": [
@@ -6118,7 +6118,7 @@
                         ]
                     },
                     {
-                        "id": "MEDICAL/Summarization",
+                        "id": "Medical/Summarization",
                         "title": "Medical Text Summarization",
                         "description": "Content that involves summarizing medical documents, patient notes, or research articles into a concise format.",
                         "examples": [
@@ -6136,7 +6136,7 @@
                         ]
                     },
                     {
-                        "id": "GENERIC/Summarization",
+                        "id": "Generic/Summarization",
                         "title": "Generic Text Summarization",
                         "description": "Content that requires summarizing general articles, news reports, or documents on non-specific topics.",
                         "examples": [
@@ -6211,8 +6211,8 @@
                 ]
             },
             {
-                "id": "text-moderation",
-                "title": "Text Moderation",
+                "id": "moderation",
+                "title": "Content Moderation",
                 "description": "Azure AI Content Safety uses harm categories to flag and rate objectionable content in both text and images.",
                 "total_scanners": 1,
                 "total_rules": 4,
@@ -6313,7 +6313,7 @@
         ]
     },
     {
-        "provider_type": "sagemaker",
+        "provider_type": "aws_comprehend",
         "probes": [
             {
                 "id": "toxicity-detection",

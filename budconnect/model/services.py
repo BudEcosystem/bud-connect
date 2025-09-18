@@ -21,6 +21,7 @@ from typing import Optional
 from budmicroframe.commons import logging
 from fastapi import status
 
+from ..commons.constants import ProviderCapabilityEnum
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
 from .crud import ModelDetailsCRUD, ProviderCRUD
 from .schemas import CompatibleModelsResponse, CompatibleProviders, ModelDetailsResponse, ModelInfoResponse
@@ -97,8 +98,8 @@ class ModelService:
         compatible_providers = {}
 
         with ProviderCRUD() as provider_crud:
-            total_providers, provider_details = provider_crud.get_compatible_providers(
-                db_engine_version.id, offset, limit
+            total_providers, provider_details = provider_crud.get_compatible_providers_with_capability(
+                db_engine_version.id, ProviderCapabilityEnum.MODEL, offset, limit
             )
 
             # Create compatible providers response while session is still active
