@@ -361,13 +361,18 @@ class EngineService:
             # Explicitly load the compatibilities relationship before the session closes
             compatibilities = []
             for compatibility in engine_version.compatibilities:
-                compatibilities.append(
-                    {
-                        "engine_version_id": str(compatibility.engine_version_id),
-                        "architectures": compatibility.architectures,
-                        "features": compatibility.features,
-                    }
-                )
+                compat_dict = {
+                    "id": str(compatibility.id),
+                    "engine_version_id": str(compatibility.engine_version_id),
+                    "architectures": compatibility.architectures,
+                    "features": compatibility.features,
+                }
+                # Add optional timestamp fields if they exist
+                if hasattr(compatibility, "created_at") and compatibility.created_at:
+                    compat_dict["created_at"] = str(compatibility.created_at)
+                if hasattr(compatibility, "updated_at") and compatibility.updated_at:
+                    compat_dict["updated_at"] = str(compatibility.updated_at)
+                compatibilities.append(compat_dict)
 
             # Create a response object with all the data we need
             response = LatestEngineVersion(version=engine_version.version, compatibilities=compatibilities)

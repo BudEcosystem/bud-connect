@@ -16,7 +16,7 @@
 
 """This module contains the routes for the model API."""
 
-from typing import Literal, Optional
+from typing import Optional
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -44,12 +44,12 @@ model_router = APIRouter(prefix="/model", tags=["Model"])
 
 @model_router.get("/get-compatible-models")
 async def get_compatible_models(
-    engine: Literal["litellm", "tensorzero"],
+    engine: Optional[str] = None,
     engine_version: Optional[str] = None,
     page: int = Query(1, ge=1),
     limit: int = Query(5, ge=0),
 ) -> JSONResponse:
-    """Get the compatible models for a given engine version."""
+    """Get compatible models for a given engine version, or all models if no engine specified."""
     # Calculate offset
     offset = (page - 1) * limit
 

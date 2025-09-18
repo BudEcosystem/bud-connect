@@ -77,7 +77,7 @@ export interface ProviderUpdate {
 
 // Model Types
 export type ModalityEnum = 'text_input' | 'text_output' | 'image_input' | 'image_output' | 'audio_input' | 'audio_output'
-export type ModelEndpointEnum = '/v1/chat/completions' | '/v1/completions' | '/v1/images/generations' | '/v1/audio/transcriptions' | '/v1/audio/speech' | '/v1/embeddings' | '/v1/batch' | '/v1/responses' | '/v1/rerank' | '/v1/moderations'
+export type ModelEndpointEnum = '/v1/chat/completions' | '/v1/completions' | '/v1/images/generations' | '/v1/images/edits' | '/v1/images/variations' | '/v1/audio/transcriptions' | '/v1/audio/translations' | '/v1/audio/speech' | '/v1/embeddings' | '/v1/batch' | '/v1/responses' | '/v1/documents' | '/v1/rerank' | '/v1/moderations'
 
 export interface InputCost {
   input_cost_per_token?: number
@@ -199,7 +199,7 @@ export interface ModelListResponse {
 
 // Model Types
 export type Modality = 'LLM' | 'IMAGE' | 'AUDIO' | 'VIDEO' | 'EMBEDDING'
-export type ModelEndpoint = 'CHAT' | 'COMPLETION' | 'EMBEDDING' | 'IMAGE_GENERATION'
+export type ModelEndpoint = 'CHAT' | 'COMPLETION' | 'EMBEDDING' | 'IMAGE_GENERATION' | 'IMAGE_EDIT' | 'IMAGE_VARIATION' | 'AUDIO_TRANSCRIPTION' | 'AUDIO_TRANSLATION' | 'AUDIO_SPEECH' | 'BATCH' | 'RESPONSE' | 'DOCUMENT' | 'RERANK' | 'MODERATION'
 
 export interface ModelInfo {
   id: string

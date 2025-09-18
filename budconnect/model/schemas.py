@@ -343,7 +343,7 @@ class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
 
     model_config = ConfigDict(from_attributes=True)
 
-    engine_name: str
+    engine_name: Optional[str] = None
     engine_version: Optional[str] = None
     items: List[CompatibleProviders]
 

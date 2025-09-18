@@ -51,21 +51,31 @@ class ModelEndpointEnum(Enum):
         CHAT (str): Chat completion endpoint for conversational AI.
         COMPLETION (str): Text completion endpoint for non-conversational AI.
         IMAGE_GENERATION (str): Image creation endpoint.
+        IMAGE_EDIT (str): Image editing endpoint.
+        IMAGE_VARIATION (str): Image variation generation endpoint.
         AUDIO_TRANSCRIPTION (str): Speech-to-text conversion endpoint.
+        AUDIO_TRANSLATION (str): Audio translation endpoint.
         AUDIO_SPEECH (str): Text-to-speech synthesis endpoint.
         EMBEDDING (str): Vector embedding generation endpoint.
         BATCH (str): Batch processing endpoint for multiple requests.
         RESPONSE (str): Response retrieval endpoint for asynchronous operations.
+        DOCUMENT (str): Document processing endpoint.
+        RERANK (str): Reranking endpoint for search results.
+        MODERATION (str): Content moderation endpoint.
     """
 
     CHAT = "/v1/chat/completions"
     COMPLETION = "/v1/completions"
     IMAGE_GENERATION = "/v1/images/generations"
+    IMAGE_EDIT = "/v1/images/edits"
+    IMAGE_VARIATION = "/v1/images/variations"
     AUDIO_TRANSCRIPTION = "/v1/audio/transcriptions"
+    AUDIO_TRANSLATION = "/v1/audio/translations"
     AUDIO_SPEECH = "/v1/audio/speech"
     EMBEDDING = "/v1/embeddings"
     BATCH = "/v1/batch"
     RESPONSE = "/v1/responses"
+    DOCUMENT = "/v1/documents"
     RERANK = "/v1/rerank"  # https://docs.litellm.ai/docs/rerank
     MODERATION = "/v1/moderations"  # https://docs.litellm.ai/docs/moderation
 

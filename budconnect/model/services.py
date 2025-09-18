@@ -46,7 +46,7 @@ class ModelService:
 
     @staticmethod
     def get_compatible_models(
-        engine: str,
+        engine: Optional[str],
         offset: int,
         limit: int,
         engine_version: Optional[str] = None,
@@ -54,7 +54,7 @@ class ModelService:
         """Get the compatible models for a given model architecture and device architecture.
 
         Args:
-            engine (str): The name of the engine.
+            engine (Optional[str]): The name of the engine. If None, returns all providers with models.
             offset (int): The offset of the models.
             limit (int): The limit of the models.
             engine_version (str): The version of the engine.
@@ -62,6 +62,78 @@ class ModelService:
         Returns:
             CompatibleModelsResponse: The compatible models.
         """
+        # If no engine is specified, return all providers with their models
+        if engine is None:
+            total_providers = 0
+            compatible_providers = {}
+
+            with ProviderCRUD() as provider_crud:
+                total_providers, provider_details = provider_crud.get_all_providers_with_models(offset, limit)
+
+                # Create compatible providers response while session is still active
+                for db_provider, db_model in provider_details:
+                    if str(db_provider.id) not in compatible_providers:
+                        # Convert db_model to dict if it exists to avoid lazy loading issues
+                        model_data = None
+                        if db_model:
+                            model_data = {
+                                "id": db_model.id,
+                                "uri": db_model.uri,
+                                "modality": db_model.modality,
+                                "provider_id": db_model.provider_id,
+                                "input_cost": db_model.input_cost,
+                                "output_cost": db_model.output_cost,
+                                "cache_cost": db_model.cache_cost,
+                                "search_context_cost_per_query": db_model.search_context_cost_per_query,
+                                "tokens": db_model.tokens,
+                                "rate_limits": db_model.rate_limits,
+                                "media_limits": db_model.media_limits,
+                                "features": db_model.features,
+                                "endpoints": db_model.endpoints,
+                                "deprecation_date": db_model.deprecation_date,
+                            }
+
+                        compatible_providers[str(db_provider.id)] = CompatibleProviders(
+                            id=db_provider.id,
+                            name=db_provider.name,
+                            provider_type=db_provider.provider_type,
+                            icon=db_provider.icon,
+                            description=db_provider.description,
+                            credentials=db_provider.credentials,
+                            capabilities=db_provider.capabilities,
+                            models=[ModelInfoResponse(**model_data)] if model_data else [],
+                        )
+                    else:
+                        if db_model:
+                            model_data = {
+                                "id": db_model.id,
+                                "uri": db_model.uri,
+                                "modality": db_model.modality,
+                                "provider_id": db_model.provider_id,
+                                "input_cost": db_model.input_cost,
+                                "output_cost": db_model.output_cost,
+                                "cache_cost": db_model.cache_cost,
+                                "search_context_cost_per_query": db_model.search_context_cost_per_query,
+                                "tokens": db_model.tokens,
+                                "rate_limits": db_model.rate_limits,
+                                "media_limits": db_model.media_limits,
+                                "features": db_model.features,
+                                "endpoints": db_model.endpoints,
+                                "deprecation_date": db_model.deprecation_date,
+                            }
+                            compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
+
+            return CompatibleModelsResponse(
+                object="model.compatible",
+                code=status.HTTP_200_OK,
+                engine_name=None,
+                engine_version=None,
+                items=compatible_providers.values(),
+                total_items=total_providers,
+                page=(offset // limit) + 1,
+                limit=limit,
+            )
+
         # Get engine from database
         db_engine = None
         with EngineCRUD() as engine_crud:
