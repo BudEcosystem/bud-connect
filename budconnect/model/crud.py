@@ -26,6 +26,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from ..commons.constants import ProviderCapabilityEnum
 from .models import License, ModelDetails, ModelInfo, Provider, engine_version_model_info, engine_version_provider
 
 
@@ -204,41 +205,117 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
 
         return total_providers, results
 
-    def get_all_providers_with_models(
-        self, offset: int, limit: int, session: Optional[Session] = None
-    ) -> Tuple[int, List[Tuple[Provider, Optional[ModelInfo]]]]:
-        """Get all providers with their models without engine filtering.
+    def get_providers_by_capability(
+        self,
+        version_id: UUID,
+        capability: ProviderCapabilityEnum,
+        offset: int,
+        limit: int,
+        session: Optional[Session] = None,
+    ) -> Tuple[int, List[Provider]]:
+        """Get providers that have a specific capability and are compatible with the engine version.
 
         Args:
+            version_id: The ID of the engine version to get compatible providers for.
+            capability: The capability to filter providers by.
             offset: The offset to start the pagination from.
             limit: The number of providers to return.
             session: The session to use for the query.
 
         Returns:
-            A tuple of (total_providers, list of (provider, model) tuples).
+            A tuple containing the total count and list of providers with the specified capability.
         """
         _session = session or self.get_session()
+        try:
+            # Base query for providers with the specified capability that are compatible with the engine version
+            base_query = (
+                _session.query(Provider)
+                .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+                .filter(engine_version_provider.c.engine_version_id == version_id)
+                .filter(func.array_to_string(Provider.capabilities, ",").contains(capability.name))
+                .distinct()
+            )
 
-        # Get total count of providers
-        total_providers = _session.query(func.count(distinct(Provider.id))).scalar()
+            # Get total count
+            total_count = base_query.count()
 
-        # Get all providers and their models in a single query
-        query = (
-            _session.query(Provider, ModelInfo)
-            .outerjoin(ModelInfo, ModelInfo.provider_id == Provider.id)
-            .order_by(Provider.provider_type, ModelInfo.uri)
-        )
+            # Get paginated results
+            providers = base_query.order_by(Provider.name).offset(offset).limit(limit).all()
 
-        # Get distinct providers for pagination
-        provider_ids = [p.id for p in _session.query(Provider.id).order_by(Provider.name).offset(offset).limit(limit)]
+            return total_count, providers
+        finally:
+            self.cleanup_session(_session if session is None else None)
 
-        # Filter the main query by paginated provider IDs
-        query = query.filter(Provider.id.in_(provider_ids))
+    def get_compatible_providers_with_capability(
+        self,
+        version_id: UUID,
+        capability: ProviderCapabilityEnum,
+        offset: int,
+        limit: int,
+        session: Optional[Session] = None,
+    ) -> Tuple[int, List[Tuple[Provider, Optional[ModelInfo]]]]:
+        """Get providers with a specific capability and their models for a given engine version.
 
-        # Execute query
-        results = query.all()
+        Args:
+            version_id: The ID of the engine version to get compatible providers for.
+            capability: The capability to filter providers by.
+            offset: The offset to start the pagination from.
+            limit: The number of providers to return.
+            session: The session to use for the query.
 
-        return total_providers, results
+        Returns:
+            A tuple of (total_count, list of (provider, model) tuples).
+        """
+        _session = session or self.get_session()
+        try:
+            # Get total count of providers with the capability
+            total_providers = (
+                _session.query(func.count(distinct(Provider.id)))
+                .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+                .filter(engine_version_provider.c.engine_version_id == version_id)
+                .filter(func.array_to_string(Provider.capabilities, ",").contains(capability.name))
+                .scalar()
+            )
+
+            # Get all providers and their models in a single query
+            query = (
+                _session.query(Provider, ModelInfo)
+                .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+                .filter(func.array_to_string(Provider.capabilities, ",").contains(capability.name))
+                .outerjoin(  # Use outerjoin to include providers with no models
+                    engine_version_model_info, engine_version_model_info.c.engine_version_id == version_id
+                )
+                .outerjoin(
+                    ModelInfo,
+                    and_(
+                        ModelInfo.id == engine_version_model_info.c.model_info_id, ModelInfo.provider_id == Provider.id
+                    ),
+                )
+                .filter(engine_version_provider.c.engine_version_id == version_id)
+                .order_by(Provider.provider_type)
+            )
+
+            # Get distinct providers for pagination
+            provider_ids = [
+                p.id
+                for p in _session.query(Provider.id)
+                .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+                .filter(engine_version_provider.c.engine_version_id == version_id)
+                .filter(func.array_to_string(Provider.capabilities, ",").contains(capability.name))
+                .order_by(Provider.name)
+                .offset(offset)
+                .limit(limit)
+            ]
+
+            # Filter the main query by paginated provider IDs
+            query = query.filter(Provider.id.in_(provider_ids))
+
+            # Execute query
+            results = query.all()
+
+            return total_providers, results
+        finally:
+            self.cleanup_session(_session if session is None else None)
 
 
 class LicenseCRUD(CRUDMixin[License, None, None]):

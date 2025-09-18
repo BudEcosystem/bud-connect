@@ -88,7 +88,7 @@ class GuardrailProbeCRUD(CRUDMixin[GuardrailProbe, None, None]):
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
             _session.commit()
-            logger.debug("Upsert operation successful on %s", self.model.__tablename__)
+            # logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
             row = result.first()
             if row:
@@ -255,7 +255,7 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
             _session.commit()
-            logger.debug("Upsert operation successful on %s", self.model.__tablename__)
+            # logger.debug("Upsert operation successful on %s", self.model.__tablename__)
 
             row = result.first()
             if row:

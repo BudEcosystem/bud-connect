@@ -22,7 +22,9 @@ from budmicroframe.commons import logging
 from fastapi import status
 from pydantic import UUID4
 
+from ..commons.constants import ProviderCapabilityEnum
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
+from ..model.crud import ProviderCRUD
 from .crud import GuardrailProbeCRUD, GuardrailRuleCRUD
 from .schemas import CompatibleProbesResponse, CompatibleProviders, GuardrailProbeResponse, GuardrailRuleResponse
 
@@ -93,20 +95,21 @@ class GuardrailService:
 
         logger.info(f"Engine version {db_engine_version} found")
 
-        # Get providers that have guardrail probes
+        # Get providers that have moderation capability
         compatible_providers = []
-        total_providers_with_guardrails = 0
+        total_providers_with_moderation = 0
+
+        with ProviderCRUD() as provider_crud:
+            # Get providers that have moderation capability and are compatible with the engine version
+            total_providers_with_moderation, providers_with_moderation = provider_crud.get_providers_by_capability(
+                db_engine_version.id, ProviderCapabilityEnum.MODERATION, offset, limit
+            )
 
         with GuardrailProbeCRUD() as probe_crud:
             session = probe_crud.get_session()
             try:
-                # Get providers that have guardrails and are compatible with the engine version
-                total_providers_with_guardrails, providers_with_guardrails = probe_crud.get_providers_with_guardrails(
-                    db_engine_version.id, offset, limit, session=session
-                )
-
                 # For each provider, get their guardrail probes
-                for db_provider in providers_with_guardrails:
+                for db_provider in providers_with_moderation:
                     # Get all guardrail probes for this provider with correct pagination
                     total_probes, probes_with_details = probe_crud.get_compatible_providers(
                         db_provider.id, 0, 1000, session=session
@@ -151,7 +154,7 @@ class GuardrailService:
             engine_name=engine,
             engine_version=db_engine_version.version,
             items=compatible_providers,
-            total_items=total_providers_with_guardrails,
+            total_items=total_providers_with_moderation,
             page=page,
             limit=limit,
         )
