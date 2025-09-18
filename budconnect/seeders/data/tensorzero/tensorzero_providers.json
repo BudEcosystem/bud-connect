@@ -479,7 +479,7 @@
             }
         ],
         "capabilities": [
-            "model"
+            "local"
         ]
     },
     "bud_sentinel": {
