@@ -77,6 +77,10 @@ class GuardrailsSeeder(BaseSeeder):
             SeederException: If there is an error during the seeding process
         """
         try:
+            # Initialize counters
+            probe_upserts = 0
+            rule_upserts = 0
+
             # Load guardrails data
             guardrails_data = read_json_file(GUARDRAILS_DATA_PATH)
             logger.info("Loaded %d provider guardrail sets from data file", len(guardrails_data))
@@ -103,6 +107,10 @@ class GuardrailsSeeder(BaseSeeder):
             for provider_guardrails in guardrails_data:
                 provider_type = provider_guardrails["provider_type"]
                 probes = provider_guardrails.get("probes", [])
+
+                # Initialize per-provider counters
+                provider_probe_upserts = 0
+                provider_rule_upserts = 0
 
                 logger.info("Processing %d probes for provider %s", len(probes), provider_type)
 
@@ -132,7 +140,8 @@ class GuardrailsSeeder(BaseSeeder):
                     # Upsert probe
                     with GuardrailProbeCRUD() as probe_crud:
                         db_probe_id = probe_crud.upsert(data=probe_create_data, conflict_target=["uri"])
-                        logger.debug("Upserted probe: %s (ID: %s)", probe_data["title"], db_probe_id)
+                        probe_upserts += 1
+                        provider_probe_upserts += 1
 
                     # Process rules for this probe
                     rules = probe_data.get("rules", [])
@@ -140,7 +149,9 @@ class GuardrailsSeeder(BaseSeeder):
                         rule_id = rule_data["id"]
                         # Create rule URI based on the pattern: scanners[0]/rule_id
                         scanners = rule_data.get("scanners", [])
-                        rule_uri = f"{scanners[0]}/{rule_id}" if scanners else rule_id
+                        rule_uri = (
+                            f"{scanners[0]}/{rule_id}" if scanners and provider_type == "bud_sentinel" else rule_id
+                        )
 
                         # Create rule data
                         rule_create_data = {
@@ -157,10 +168,24 @@ class GuardrailsSeeder(BaseSeeder):
 
                         # Upsert rule
                         with GuardrailRuleCRUD() as rule_crud:
-                            db_rule_id = rule_crud.upsert(data=rule_create_data, conflict_target=["uri"])
-                            logger.debug("Upserted rule: %s (ID: %s)", rule_data["title"], db_rule_id)
+                            rule_crud.upsert(data=rule_create_data, conflict_target=["uri"])
+                            rule_upserts += 1
+                            provider_rule_upserts += 1
 
-                logger.info("Completed seeding guardrails for provider %s", provider_type)
+                # Log summary for this provider
+                logger.info(
+                    "Completed seeding guardrails for provider %s - Probes upserted: %d, Rules upserted: %d",
+                    provider_type,
+                    provider_probe_upserts,
+                    provider_rule_upserts,
+                )
+
+            # Log overall summary
+            logger.info(
+                "Guardrails seeding completed - Total probes upserted: %d, Total rules upserted: %d",
+                probe_upserts,
+                rule_upserts,
+            )
 
         except FileNotFoundError as e:
             logger.exception("File not found during Guardrails seeding: %s", e)
