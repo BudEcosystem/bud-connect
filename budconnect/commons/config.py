@@ -53,6 +53,42 @@ class AppConfig(BaseAppConfig):
         description="Whether to run database seeders on application startup",
     )
 
+    # JWT Configuration
+    jwt_secret_key: str = Field(
+        default="your-secret-key-change-this-in-production",
+        alias="JWT_SECRET_KEY",
+        description="Secret key for JWT token signing",
+    )
+    jwt_algorithm: str = Field(
+        default="HS256",
+        alias="JWT_ALGORITHM",
+        description="Algorithm for JWT token signing",
+    )
+    jwt_access_token_expire_minutes: int = Field(
+        default=30,
+        alias="JWT_ACCESS_TOKEN_EXPIRE_MINUTES",
+        description="Access token expiration time in minutes",
+    )
+    jwt_refresh_token_expire_days: int = Field(
+        default=7,
+        alias="JWT_REFRESH_TOKEN_EXPIRE_DAYS",
+        description="Refresh token expiration time in days",
+    )
+
+    # Initial Admin User Configuration
+    initial_admin_username: str = Field(
+        alias="INITIAL_ADMIN_USERNAME",
+        description="Username for initial admin user",
+    )
+    initial_admin_email: str = Field(
+        alias="INITIAL_ADMIN_EMAIL",
+        description="Email for initial admin user",
+    )
+    initial_admin_password: str = Field(
+        alias="INITIAL_ADMIN_PASSWORD",
+        description="Password for initial admin user (change in production)",
+    )
+
 
 class SecretsConfig(BaseSecretsConfig):
     name: str = __version__.split("@")[0]

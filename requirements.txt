@@ -25,3 +25,9 @@ openai>=1.0.0
 beautifulsoup4>=4.9.0
 PyPDF2>=3.0.0
 json-repair>=0.1.0
+
+# Authentication
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.5
+email-validator>=2.0.0

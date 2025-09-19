@@ -4,7 +4,7 @@
         "versions": [
             {
                 "version": "0.4.0",
-                "device_architecture": "cuda",
+                "device_architecture": "CUDA",
                 "container_image": "budstudio/vllm-cuda:0.4.0",
                 "compatibilities": [
                     {
@@ -15,7 +15,7 @@
             },
             {
                 "version": "0.1.0",
-                "device_architecture": "cpu",
+                "device_architecture": "CPU",
                 "container_image": "budstudio/vllm-cpu:0.1.0",
                 "compatibilities": [
                     {
@@ -27,22 +27,22 @@
         ]
     },
     {
-        "name": "litellm",
+        "name": "LiteLLM",
         "versions": [
             {
                 "version": "0.1.0",
-                "device_architecture": "cpu",
+                "device_architecture": "CPU",
                 "container_image": "budstudio/litellm-cpu:0.1.0",
                 "compatibilities": []
             }
         ]
     },
     {
-        "name": "tensorzero",
+        "name": "TensorZero",
         "versions": [
             {
                 "version": "0.1.0",
-                "device_architecture": "cpu",
+                "device_architecture": "CPU",
                 "container_image": "budstudio/budproxy:0.4.0",
                 "compatibilities": []
             }

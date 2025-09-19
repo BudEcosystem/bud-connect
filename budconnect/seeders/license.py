@@ -53,7 +53,8 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
         raise FileNotFoundError(f"File not found at {file_path}")
 
     with open(file_path, "r") as f:
-        return json.load(f)
+        data: Dict[str, Any] = json.load(f)
+        return data
 
 
 class LicenseSeeder(BaseSeeder):
@@ -104,6 +105,8 @@ class LicenseSeeder(BaseSeeder):
             # Convert to dictionary format
             licenses = {}
             for lic in raw_licenses:
+                if not isinstance(lic, dict):
+                    continue
                 converted = self.convert_license_format(lic)
                 key = converted.get("key")
                 if key:
@@ -141,9 +144,9 @@ class LicenseSeeder(BaseSeeder):
             license_create = LicenseCreate(
                 key=license_key,
                 name=license_info["name"],
-                type=license_info.get("type", "Unknown"),
-                type_description=license_info.get("type_description", ""),
-                type_suitability=license_info.get("type_suitability", "UNKNOWN"),
+                type=license_info.get("type") or "Unknown",
+                type_description=license_info.get("type_description") or "",
+                type_suitability=license_info.get("type_suitability") or "UNKNOWN",
                 faqs=license_info.get("faqs", []),
             )
             valid_licenses.append((license_key, license_create))

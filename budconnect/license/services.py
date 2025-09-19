@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from uuid import UUID
 
 from budmicroframe.commons.exceptions import ClientException
@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 class LicenseService:
     @staticmethod
-    def get_all_licenses(page: int = 1, page_size: int = 100) -> tuple[List[License], int]:
+    def get_all_licenses(page: int = 1, page_size: int = 100) -> Tuple[List[License], int]:
         """Get all licenses with pagination.
 
         Args:
@@ -70,10 +70,10 @@ class LicenseService:
             ClientException: If license not found
         """
         with LicenseCRUD() as crud:
-            license = crud.fetch_by_id(license_id)
+            license = crud.fetch_one(conditions={"id": license_id})
             if not license:
                 raise ClientException(f"License with ID {license_id} not found")
-            return license
+            return license  # type: ignore
 
     @staticmethod
     def get_license_by_key(key: str) -> License:
@@ -100,7 +100,7 @@ class LicenseService:
             # Find license by key
             for license in licenses:
                 if license.key == key:
-                    return license
+                    return license  # type: ignore
 
             raise ClientException(f"License with key '{key}' not found")
 
@@ -136,7 +136,8 @@ class LicenseService:
 
             license_dict["id"] = uuid4()
             license_id = crud.upsert(license_dict)
-            return crud.fetch_by_id(license_id)
+            result = crud.fetch_one(conditions={"id": license_id})
+            return result  # type: ignore
 
     @staticmethod
     def update_license(license_id: UUID, license_data: LicenseUpdate) -> License:
@@ -155,7 +156,7 @@ class LicenseService:
         """
         with LicenseCRUD() as crud:
             # Check if license exists
-            existing = crud.fetch_by_id(license_id)
+            existing = crud.fetch_one(conditions={"id": license_id})
             if not existing:
                 raise ClientException(f"License with ID {license_id} not found")
 
@@ -175,7 +176,7 @@ class LicenseService:
 
             # Update the license using upsert
             # Merge existing data with updates
-            license_data = {
+            merged_data = {
                 "id": license_id,
                 "key": existing.key,
                 "name": existing.name,
@@ -184,9 +185,10 @@ class LicenseService:
                 "type_suitability": existing.type_suitability,
                 "faqs": existing.faqs,
             }
-            license_data.update(update_dict)
-            crud.upsert(license_data, conflict_target=["id"])
-            return crud.fetch_by_id(license_id)
+            merged_data.update(update_dict)
+            crud.upsert(merged_data, conflict_target=["id"])
+            result = crud.fetch_one(conditions={"id": license_id})
+            return result  # type: ignore
 
     @staticmethod
     def delete_license(license_id: UUID) -> bool:
@@ -203,7 +205,7 @@ class LicenseService:
         """
         with LicenseCRUD() as crud:
             # Check if license exists
-            existing = crud.fetch_by_id(license_id)
+            existing = crud.fetch_one(conditions={"id": license_id})
             if not existing:
                 raise ClientException(f"License with ID {license_id} not found")
 
@@ -236,13 +238,18 @@ class LicenseService:
             List of matching licenses
         """
         with LicenseCRUD() as crud:
-            filters = {}
+            conditions = {}
             if license_type:
-                filters["type"] = license_type
+                conditions["type"] = license_type
             if suitability:
-                filters["type_suitability"] = suitability
+                conditions["type_suitability"] = suitability
 
-            licenses = crud.fetch_many(filters=filters)
+            licenses_result = crud.fetch_many(conditions=conditions)
+            # Handle tuple return from fetch_many
+            if isinstance(licenses_result, tuple):
+                licenses = licenses_result[0] if licenses_result else []
+            else:
+                licenses = licenses_result if licenses_result else []
 
             # Filter by search term if provided
             if search_term:
@@ -334,13 +341,13 @@ class LicenseService:
 
         except LicenseExtractionException as e:
             logger.error(f"License extraction failed: {e}")
-            raise ClientException(f"Failed to extract license: {str(e)}")
+            raise ClientException(f"Failed to extract license: {str(e)}") from e
         except TimeoutError as e:
             logger.error(f"License extraction timed out after {app_settings.llm_timeout}s: {e}")
             raise ClientException(
                 f"License extraction timed out after {app_settings.llm_timeout} seconds. "
                 f"The LLM service may be slow. Please try again later or increase BUD_LLM_TIMEOUT."
-            )
+            ) from e
         except Exception as e:
             logger.error(f"Unexpected error during license extraction: {e}")
             # Check if it's a timeout-related error from httpx or openai
@@ -350,8 +357,8 @@ class LicenseService:
                 raise ClientException(
                     f"License extraction timed out after {app_settings.llm_timeout} seconds. "
                     f"The LLM service may be slow. Please try again later or increase BUD_LLM_TIMEOUT."
-                )
-            raise ClientException(f"Unexpected error during license extraction: {str(e)}")
+                ) from e
+            raise ClientException(f"Unexpected error during license extraction: {str(e)}") from e
 
     @staticmethod
     async def extract_and_create_license(request: LicenseExtractRequest) -> License:
@@ -396,4 +403,5 @@ class LicenseService:
             license_dict = license_data.model_dump()
             license_dict["id"] = uuid4()
             license_id = crud.upsert(license_dict)
-            return crud.fetch_by_id(license_id)
+            result = crud.fetch_one(conditions={"id": license_id})
+            return result  # type: ignore

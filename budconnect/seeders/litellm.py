@@ -18,7 +18,7 @@
 
 import json
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional, cast
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -69,10 +69,11 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
         raise FileNotFoundError(f"file not found at {file_path}")
 
     with open(file_path, "r") as f:
-        return json.load(f)
+        data: Dict[str, Any] = json.load(f)
+        return data
 
 
-def get_license_key_for_model(model_uri: str, provider_type: str) -> str | None:
+def get_license_key_for_model(model_uri: str, provider_type: str) -> Optional[str]:
     """Get license key for a model based on its URI and provider.
 
     Args:
@@ -135,7 +136,7 @@ class LiteLLMParser:
             raise SeederException("New providers found in LiteLLM data")
 
         # Parse models to a common schema
-        parsed_model_data = {}
+        parsed_model_data: Dict[str, List[LiteLLMModelInfo]] = {}
         for provider, models in provider_model_map.items():
             for model_uri, model_details in models.items():
                 if provider not in parsed_model_data:
@@ -148,7 +149,7 @@ class LiteLLMParser:
         return parsed_model_data
 
     async def create_model_info(
-        self, model_data: LiteLLMModelInfo, provider_id: UUID, provider_type: str, license_id: UUID | None
+        self, model_data: LiteLLMModelInfo, provider_id: UUID, provider_type: str, license_id: Optional[UUID]
     ) -> ModelInfoCreate:
         """Create a model info from the model data.
 
@@ -233,7 +234,7 @@ class LiteLLMParser:
         }
 
         # Initialize category dictionaries
-        categorized_data = {
+        categorized_data: Dict[str, Dict[str, Any]] = {
             "input_cost": {},
             "output_cost": {},
             "cache_cost": {},
@@ -322,6 +323,12 @@ class LiteLLMParser:
                 "modalities": [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT],
                 "endpoints": [ModelEndpointEnum.EMBEDDING],
             }
+
+        # Default fallback for unknown URIs
+        return {
+            "modalities": [ModalityEnum.TEXT_INPUT, ModalityEnum.TEXT_OUTPUT],
+            "endpoints": [ModelEndpointEnum.CHAT],
+        }
 
     @staticmethod
     async def derive_model_specs(model_data: LiteLLMModelInfo) -> Dict[str, Any]:
@@ -548,7 +555,7 @@ class LiteLLMSeeder(BaseSeeder):
             # Load LiteLLM engine configuration from database
             engine_crud = EngineCRUD()
             with engine_crud as crud, crud.get_session() as session:
-                db_engine = engine_crud.fetch_one(conditions={"name": "litellm"}, session=session)
+                db_engine = engine_crud.fetch_one(conditions={"name": "LiteLLM"}, session=session)
                 if not db_engine:
                     logger.warning("No LiteLLM engine found")
                     return
@@ -600,6 +607,8 @@ class LiteLLMSeeder(BaseSeeder):
 
                 # Prepare data for database insertion
                 for provider, supported_models in model_data.items():
+                    # Type assertion for mypy
+                    supported_models = cast(List[LiteLLMModelInfo], supported_models)
                     provider_data = ProviderCreate(
                         name=predefined_providers[provider]["name"],
                         provider_type=provider,

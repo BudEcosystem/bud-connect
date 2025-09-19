@@ -1,0 +1,24 @@
+{{- if .Values.admin.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.name }}-admin
+  namespace: {{ .Values.namespace }}
+  annotations:
+    # Admin routes have higher priority
+    traefik.ingress.kubernetes.io/router.priority: "100"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: {{ .Values.host | quote }}
+    http:
+      paths:
+      - path: "/admin"
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.name }}-admin
+            port:
+              number: 80
+{{- end }}

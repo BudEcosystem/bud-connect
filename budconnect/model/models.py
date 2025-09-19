@@ -5,13 +5,13 @@ from uuid import uuid4
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
 from sqlalchemy import Column, DateTime, Enum, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column, relationship  # type: ignore
 from sqlalchemy.schema import Table
 
 from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
 
 
-class License(PSQLBase, TimestampMixin):
+class License(PSQLBase, TimestampMixin):  # type: ignore
     """Represents license information for AI models in the system.
 
     This class stores comprehensive license details including the license type,
@@ -48,7 +48,7 @@ class License(PSQLBase, TimestampMixin):
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="license")
 
 
-class Provider(PSQLBase, TimestampMixin):
+class Provider(PSQLBase, TimestampMixin):  # type: ignore
     """Represents an AI model provider organization or service in the system.
 
     This class stores information about entities that provide AI models, such as
@@ -83,12 +83,12 @@ class Provider(PSQLBase, TimestampMixin):
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="provider")
     probes: Mapped[List["GuardrailProbe"]] = relationship(back_populates="provider")
-    supported_versions: Mapped[List["EngineVersion"]] = relationship(  # noqa: F821
+    supported_versions: Mapped[List["EngineVersion"]] = relationship(  # type: ignore  # noqa: F821
         "EngineVersion", secondary="engine_version_provider", back_populates="supported_providers"
     )
 
 
-class ModelInfo(PSQLBase, TimestampMixin):
+class ModelInfo(PSQLBase, TimestampMixin):  # type: ignore
     """Represents information about an AI model in the system.
 
     This class stores metadata about AI models, including their URI, modality type,
@@ -132,7 +132,7 @@ class ModelInfo(PSQLBase, TimestampMixin):
     details: Mapped["ModelDetails"] = relationship(back_populates="model_info", uselist=False)
 
 
-class ModelDetails(PSQLBase, TimestampMixin):
+class ModelDetails(PSQLBase, TimestampMixin):  # type: ignore
     """Stores enriched details about AI models extracted from documentation.
 
     This class contains detailed information about models including descriptions,

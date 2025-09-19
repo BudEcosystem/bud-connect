@@ -254,24 +254,27 @@ async def generate_license_details(
             timeout=float(timeout),
         )
 
-        llm_response = response.choices[0].message.content
+        llm_response_text = response.choices[0].message.content
         logger.debug("LLM response received")
 
+        if not llm_response_text:
+            raise LicenseExtractionException("Empty response from LLM")
+
         # Extract JSON from response
-        json_str = extract_json_from_string(llm_response)
+        json_str = extract_json_from_string(llm_response_text)
 
         # Parse and repair JSON if needed
         try:
-            llm_response = json.loads(json_str)
+            llm_data = json.loads(json_str)
         except json.JSONDecodeError:
             logger.warning("Initial JSON parsing failed, attempting repair...")
             repaired_json = repair_json(json_str)
-            llm_response = json.loads(repaired_json)
+            llm_data = json.loads(repaired_json)
 
         # Process the response
         answers = {}
-        answers["name"] = llm_response.get("name", "Unknown")
-        answers["type"] = llm_response.get("type", "Unknown")
+        answers["name"] = llm_data.get("name", "Unknown")
+        answers["type"] = llm_data.get("type", "Unknown")
         answers["type_description"] = ""
         answers["type_suitability"] = ""
         answers["faqs"] = []
@@ -284,7 +287,7 @@ async def generate_license_details(
                 break
 
         # Process FAQ answers
-        for k, v in llm_response.items():
+        for k, v in llm_data.items():
             if k.upper() in LICENSE_QUESTIONS:
                 faq_item = {}
 

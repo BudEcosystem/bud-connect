@@ -4,11 +4,16 @@ kind: Ingress
 metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
+  annotations:
+    # Backend has lower priority than admin
+    traefik.ingress.kubernetes.io/router.priority: "1"
 spec:
+  ingressClassName: traefik
   rules:
   - host: {{ .Values.host | quote }}
     http:
       paths:
+      # Backend API - catch all
       - path: "/"
         pathType: Prefix
         backend:

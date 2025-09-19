@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -8,6 +8,7 @@ from fastapi import APIRouter, HTTPException, Query, status
 from .schemas import (
     LicenseCreate,
     LicenseExtractRequest,
+    LicenseExtractResponse,
     LicenseListResponse,
     LicenseResponse,
     LicenseUpdate,
@@ -27,7 +28,7 @@ async def get_licenses(
     license_type: Optional[str] = Query(None, description="Filter by license type"),
     suitability: Optional[str] = Query(None, description="Filter by suitability rating"),
     search: Optional[str] = Query(None, description="Search in license name and key"),
-):
+) -> LicenseListResponse:
     """Get all licenses with optional filtering and pagination.
 
     Args:
@@ -59,7 +60,7 @@ async def get_licenses(
 
         license_responses = []
         for license in paginated_licenses:
-            license_dict = {
+            license_dict: Dict[str, Any] = {
                 "id": license.id,
                 "key": license.key,
                 "name": license.name,
@@ -73,11 +74,11 @@ async def get_licenses(
         return LicenseListResponse(licenses=license_responses, total=total, page=page, page_size=page_size)
     except Exception as e:
         logger.error(f"Error fetching licenses: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.get("/{license_id}")
-async def get_license(license_id: UUID):
+async def get_license(license_id: UUID) -> LicenseResponse:
     """Get a specific license by ID.
 
     Args:
@@ -99,15 +100,15 @@ async def get_license(license_id: UUID):
         )
     except ClientException as e:
         if "not found" in str(e).lower():
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Error fetching license {license_id}: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.get("/key/{key}")
-async def get_license_by_key(key: str):
+async def get_license_by_key(key: str) -> LicenseResponse:
     """Get a specific license by its key identifier.
 
     Args:
@@ -129,15 +130,15 @@ async def get_license_by_key(key: str):
         )
     except ClientException as e:
         if "not found" in str(e).lower():
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Error fetching license with key {key}: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_license(license_data: LicenseCreate):
+async def create_license(license_data: LicenseCreate) -> LicenseResponse:
     """Create a new license.
 
     Args:
@@ -158,14 +159,14 @@ async def create_license(license_data: LicenseCreate):
             faqs=license.faqs if license.faqs else [],
         )
     except ClientException as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Error creating license: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.patch("/{license_id}")
-async def update_license(license_id: UUID, license_data: LicenseUpdate):
+async def update_license(license_id: UUID, license_data: LicenseUpdate) -> LicenseResponse:
     """Update an existing license.
 
     Args:
@@ -188,17 +189,15 @@ async def update_license(license_id: UUID, license_data: LicenseUpdate):
         )
     except ClientException as e:
         if "not found" in str(e).lower():
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-    except ClientException as e:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Error updating license {license_id}: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.delete("/{license_id}")
-async def delete_license(license_id: UUID):
+async def delete_license(license_id: UUID) -> Dict[str, str]:
     """Delete a license.
 
     Args:
@@ -212,15 +211,15 @@ async def delete_license(license_id: UUID):
         return {"message": "License deleted successfully"}
     except ClientException as e:
         if "not found" in str(e).lower():
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Error deleting license {license_id}: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.post("/extract")
-async def extract_license(request: LicenseExtractRequest):
+async def extract_license(request: LicenseExtractRequest) -> LicenseExtractResponse:
     """Extract license information from a source without creating a record.
 
     This endpoint analyzes license content from various sources (URL, text, PDF)
@@ -238,14 +237,14 @@ async def extract_license(request: LicenseExtractRequest):
         return extracted
     except ClientException as e:
         logger.error(f"License extraction failed: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Unexpected error during license extraction: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
 
 
 @license_router.post("/extract-and-create", status_code=status.HTTP_201_CREATED)
-async def extract_and_create_license(request: LicenseExtractRequest):
+async def extract_and_create_license(request: LicenseExtractRequest) -> LicenseResponse:
     """Extract license information from a source and create a new license record.
 
     This endpoint combines extraction and creation in a single operation.
@@ -271,7 +270,7 @@ async def extract_and_create_license(request: LicenseExtractRequest):
         )
     except ClientException as e:
         logger.error(f"License extraction and creation failed: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)) from e
     except Exception as e:
         logger.error(f"Unexpected error during license extraction and creation: {str(e)}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e

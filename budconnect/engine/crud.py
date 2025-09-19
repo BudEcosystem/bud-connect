@@ -101,7 +101,11 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             .select_from(EngineCompatibility)
             .join(EngineVersion, EngineCompatibility.engine_version_id == EngineVersion.id)
             .join(Engine, EngineVersion.engine_id == Engine.id)
-            .filter(EngineCompatibility.architectures.contains([{"name": model_architecture}]))
+            .filter(
+                func.jsonb_extract_path_text(EngineCompatibility.architectures, "architectures").like(
+                    f'%"{model_architecture}"%'
+                )
+            )
         )
 
         # Apply optional filters

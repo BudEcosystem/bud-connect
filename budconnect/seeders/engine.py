@@ -1,10 +1,13 @@
 import json
 import logging
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from ..engine.crud import EngineCompatibilityCRUD, EngineCRUD, EngineVersionCRUD
-from ..engine.schemas import DeviceArchitecture, Engine, EngineCompatibility, EngineVersion
+from ..engine.schemas import (
+    EngineCompatibilityCreate,
+    EngineCreate,
+)
 from .base import BaseSeeder
 
 
@@ -50,7 +53,7 @@ class EngineSeeder(BaseSeeder):
                 logger.debug(f"Using existing engine: {engine_name} with ID {engine_id}")
             else:
                 # Create new engine
-                new_engine = Engine(name=engine_name)
+                new_engine = EngineCreate(name=engine_name)
                 with engine_crud as engine_crud:
                     created_engine = engine_crud.insert(new_engine.model_dump(exclude_unset=True))
                     engine_id = created_engine.id
@@ -65,7 +68,7 @@ class EngineSeeder(BaseSeeder):
                             {
                                 "engine_id": engine_id,
                                 "version": version_data["version"],  # type: ignore
-                                "device_architecture": DeviceArchitecture(version_data["device_architecture"]),  # type: ignore
+                                "device_architecture": version_data["device_architecture"],  # type: ignore
                             }
                         )
 
@@ -74,40 +77,42 @@ class EngineSeeder(BaseSeeder):
                         version_id = existing_versions[0].id
                     else:
                         # Create new version
-                        new_version = EngineVersion(
-                            engine_id=str(engine_id),
-                            version=version_data["version"],  # type: ignore
-                            device_architecture=version_data["device_architecture"],  # type: ignore
-                            container_image=version_data["container_image"],  # type: ignore
-                        )
+                        new_version_data = {
+                            "engine_id": str(engine_id),
+                            "version": version_data["version"],  # type: ignore
+                            "device_architecture": version_data["device_architecture"],  # type: ignore
+                            "container_image": version_data["container_image"],  # type: ignore
+                        }
                         with engine_version_crud as engine_version_crud:
-                            created_version = engine_version_crud.insert(new_version.model_dump(exclude_unset=True))
+                            created_version = engine_version_crud.insert(new_version_data)
                         version_id = created_version.id
                         logger.info(f"Created new version: {version_data['version']} with ID {version_id}")  # type: ignore
 
                     # Process compatibilities for this version
                     if "compatibilities" in version_data:
                         # Merge all architectures and features from all compatibilities
-                        all_architectures = []
-                        all_features = []
+                        all_architectures: List[str] = []
+                        all_features: List[str] = []
 
                         for compat_data in version_data["compatibilities"]:  # type: ignore
-                            # Convert architecture strings to dictionaries
-                            all_architectures.extend([{"name": arch} for arch in compat_data["architecture"]])  # type: ignore
+                            # Collect all architectures
+                            all_architectures.extend(compat_data["architecture"])  # type: ignore
 
-                            # Convert feature strings to dictionaries
-                            all_features.extend([{"name": feature} for feature in compat_data["features"]])  # type: ignore
+                            # Collect all features
+                            all_features.extend(compat_data["features"])  # type: ignore
+
+                        # Convert to dictionary format expected by the schema
+                        architectures_dict = {"architectures": all_architectures}
+                        features_dict = {"features": all_features}
 
                         # Check if compatibility already exists for this version
                         existing_compat = engine_compatibility_crud.fetch_one({"engine_version_id": version_id})
 
                         if existing_compat:
-                            # Use dot notation to access object attributes
+                            # Update existing compatibility
                             update_data = {
-                                "engine_version_id": existing_compat.engine_version_id,
-                                "architectures": existing_compat.architectures,
-                                "features": existing_compat.features,
-                                # Other fields as needed
+                                "architectures": architectures_dict,
+                                "features": features_dict,
                             }
 
                             # Update with the existing ID
@@ -115,10 +120,10 @@ class EngineSeeder(BaseSeeder):
                             logger.info(f"Updated compatibility for version {version_id}")
                         else:
                             # Create new compatibility
-                            new_compat = EngineCompatibility(
+                            new_compat = EngineCompatibilityCreate(
                                 engine_version_id=str(version_id),
-                                architectures=all_architectures,
-                                features=all_features,
+                                architectures=architectures_dict,
+                                features=features_dict,
                             )
                             engine_compatibility_crud.insert(new_compat.model_dump(exclude_unset=True))
                             logger.info(f"Created new compatibility for version {version_id}")
