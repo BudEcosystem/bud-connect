@@ -317,6 +317,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         finally:
             self.cleanup_session(_session if session is None else None)
 
+
     def get_all_providers_with_models(
         self, offset: int, limit: int, session: Optional[Session] = None
     ) -> Tuple[int, List[Tuple[Provider, Optional[ModelInfo]]]]:
