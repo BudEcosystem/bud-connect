@@ -20,7 +20,7 @@ from budconnect.eval.manifest_builder import EvalManifestBuilder
 async def main():
     """Build the manifest."""
     # Configuration
-    ENABLE_ANALYSIS = False  # Set to True to enable question analysis
+    ENABLE_ANALYSIS = True  # Set to True to enable question analysis
     OUTPUT_FILE = "eval_manifest.json"
 
     print("=" * 80)
@@ -43,7 +43,7 @@ async def main():
         )
 
         print("\nFetching data from OpenCompass API...")
-        result = await builder.build_manifest()
+        result = await builder.run()
 
         # Show results
         print("\n" + "=" * 80)

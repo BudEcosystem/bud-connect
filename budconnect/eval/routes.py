@@ -16,11 +16,11 @@
 
 """Eval API routes."""
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 
-from .schemas import EvalManifestBuildRequest, EvalManifestBuildResponse
+from .schemas import AvailableVersionsResponse, EvalManifestBuildRequest, EvalManifestBuildResponse
 from .services import EvalService
 
 
@@ -68,3 +68,46 @@ async def build_eval_manifest(request: EvalManifestBuildRequest) -> EvalManifest
     )
 
     return EvalManifestBuildResponse(**result)
+
+
+@eval_router.get("/manifest", response_model=Dict[str, Any])
+async def get_manifest(
+    version: Optional[str] = Query(
+        default=None,
+        description="Manifest version (e.g., '1.0.5'). If not provided, returns latest version.",
+        example="1.0.5"
+    )
+) -> Dict[str, Any]:
+    """Get eval manifest by version.
+
+    Returns the eval manifest JSON file. If version is specified, returns that specific version.
+    If no version is provided, returns the latest version (follows symlink).
+
+    Args:
+        version: Optional version number (semantic versioning format: MAJOR.MINOR.PATCH)
+
+    Returns:
+        dict: Complete manifest JSON with traits and datasets
+
+    Raises:
+        404: Version not found or no manifest exists
+        500: Failed to read or parse manifest file
+    """
+    service = EvalService()
+    manifest_data = service.get_manifest(version=version)
+    return manifest_data
+
+
+@eval_router.get("/manifest/versions", response_model=AvailableVersionsResponse)
+async def list_manifest_versions() -> AvailableVersionsResponse:
+    """List all available manifest versions.
+
+    Returns a list of all available manifest versions sorted in ascending order,
+    along with the latest version identifier.
+
+    Returns:
+        AvailableVersionsResponse: Latest version, list of all versions, and total count
+    """
+    service = EvalService()
+    result = service.list_available_versions()
+    return AvailableVersionsResponse(**result)

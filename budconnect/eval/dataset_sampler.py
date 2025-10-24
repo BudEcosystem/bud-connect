@@ -21,8 +21,9 @@ def get_dataset_sample(
     sample_size: int = 100,
     split: str = 'test',
     seed: Optional[int] = 42,
-    shuffle: bool = True
-) -> List[Dict]:
+    shuffle: bool = True,
+    return_total_count: bool = False
+) -> Union[List[Dict], tuple[List[Dict], int]]:
     """
     Download dataset if needed and retrieve a sample of questions.
 
@@ -41,10 +42,14 @@ def get_dataset_sample(
             Set to None for no seeding.
         shuffle (bool): Whether to shuffle before sampling. If False, takes the
             first sample_size items. Defaults to True.
+        return_total_count (bool): If True, returns a tuple of (samples, total_count).
+            Defaults to False for backward compatibility.
 
     Returns:
-        List[Dict]: A list of dictionaries, each representing a question/sample
-            from the dataset.
+        List[Dict] or tuple[List[Dict], int]: A list of dictionaries, each representing
+            a question/sample from the dataset. If return_total_count is True, returns
+            a tuple of (samples, total_count) where total_count is the total number of
+            items in the dataset.
 
     Raises:
         ValueError: If the dataset_name is not found or split doesn't exist.
@@ -233,6 +238,8 @@ def get_dataset_sample(
 
     logger.info(f"Successfully sampled {len(samples)} items from dataset")
 
+    if return_total_count:
+        return samples, total_samples
     return samples
 
 

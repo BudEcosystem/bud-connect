@@ -16,7 +16,7 @@
 
 """Eval Pydantic schemas for API validation and serialization."""
 
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -53,3 +53,21 @@ class EvalManifestBuildResponse(BaseModel):
     version: Optional[str] = Field(default=None, description="Manifest version (semantic versioning)")
     message: Optional[str] = Field(default=None, description="Human-readable status message")
     error: Optional[str] = None
+
+
+class AvailableVersionsResponse(BaseModel):
+    """Schema for listing available manifest versions."""
+
+    latest_version: str = Field(description="Latest manifest version")
+    available_versions: List[str] = Field(description="List of all available versions")
+    total_count: int = Field(description="Total number of available versions")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "latest_version": "1.0.5",
+                "available_versions": ["1.0.0", "1.0.1", "1.0.2", "1.0.3", "1.0.4", "1.0.5"],
+                "total_count": 6
+            }
+        }
+    }
