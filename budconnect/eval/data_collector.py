@@ -108,7 +108,7 @@ class EvalDataCollector:
         """
         output_path = self.output_dir / filename
         try:
-            with open(output_path, "w") as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2, sort_keys=True)
             logger.info(f"Successfully saved data to: {output_path}")
             return output_path

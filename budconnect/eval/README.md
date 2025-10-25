@@ -70,7 +70,7 @@ The manifest is built from two OpenCompass API endpoints:
 
 All generated manifest files are saved to: `budconnect/eval/data/`
 
-The full path will be: `/home/accubits/PycharmProjects/bud-connect/budconnect/eval/data/eval_manifest.json`
+The full path will be relative to your project root: `budconnect/eval/data/eval_manifest.json`
 
 ## Usage
 
@@ -97,7 +97,7 @@ curl -X POST http://localhost:9088/eval/build \
 ```json
 {
   "status": "success",
-  "output_file": "/home/accubits/PycharmProjects/bud-connect/budconnect/eval/data/eval_manifest.json",
+  "output_file": "budconnect/eval/data/eval_manifest.json",
   "traits_count": 17,
   "datasets_count": 324,
   "last_updated": "2025-10-08T20:10:00Z"
@@ -164,6 +164,54 @@ When `enable_analysis=True` (via API or standalone script), the system will:
 5. Add summary to manifest under each dataset's `analysis_file` and `analysis_summary` fields
 
 **Note**: Analysis can take significant time as it processes multiple questions per dataset via LLM API calls.
+
+## Configuration
+
+The eval module can be configured via environment variables in the `.env` file:
+
+### Eval LLM Configuration (for Dataset Analysis)
+
+```bash
+# LLM endpoint for dataset question analysis
+EVAL_LLM_ENDPOINT=http://20.66.97.208/v1/chat/completions
+
+# Model name to use for analysis
+EVAL_LLM_MODEL=qwen3-32b
+
+# Timeout in seconds for LLM API calls (default: 120)
+EVAL_LLM_TIMEOUT=120
+```
+
+These settings control the LLM used when `enable_analysis=True` is set during manifest building.
+
+**Configuration in Code:**
+
+The settings are defined in `budconnect/commons/config.py` and can be accessed via:
+
+```python
+from budconnect.commons.config import app_settings
+
+# Access eval LLM configuration
+endpoint = app_settings.eval_llm_endpoint
+model = app_settings.eval_llm_model
+timeout = app_settings.eval_llm_timeout
+```
+
+The `DatasetAnalyzer` class automatically uses these settings by default, but they can be overridden:
+
+```python
+from budconnect.eval.dataset_analyzer import DatasetAnalyzer
+
+# Use default config from environment
+analyzer = DatasetAnalyzer()
+
+# Override specific settings
+analyzer = DatasetAnalyzer(
+    llm_endpoint="http://custom-endpoint.com/v1/chat/completions",
+    model="custom-model",
+    timeout=180
+)
+```
 
 ## Data Transformation
 

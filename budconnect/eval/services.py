@@ -97,7 +97,7 @@ class EvalService:
         logger.info(f"Reading manifest from: {manifest_file}")
 
         try:
-            with open(manifest_file, 'r') as f:
+            with open(manifest_file, 'r', encoding='utf-8') as f:
                 manifest_data = json.load(f)
             return manifest_data
         except json.JSONDecodeError as e:

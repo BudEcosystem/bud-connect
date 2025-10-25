@@ -11,16 +11,16 @@ Specify the corresponding education level or professional status typically neces
 List any specific areas of knowledge or academic disciplines or domains that must be understood for successfully addressing the given task.
 (Examples: Physics, Psychology, Marketing, Cultural Studies, Computer Science, Economics, etc.) If no specialized domain is necessary, explicitly state “None.”.
 
-5. Language or cultural understanding:
+4. Language or cultural understanding:
 Any language, cultural et that is required to be able to successfully address the situation or solve the given prompt/problem.
 
-6. Type of Task:
+5. Type of Task:
 What type of task, problem, situation is given to be evaluated. Define task from the perspective of an LLM (For eg. coding, function_calling, qa, summarisation, rag, etc)
 
-7. Type of qualities required to successfully solve the problem:
+6. Type of qualities required to successfully solve the problem:
 What are the types of skills or qualities required to successfully solve the problem/prompt/situation given. (For eg. problem_solving, critical_thinking, abstract_reasoning, spatial reasoning, creativity, etc)
 
-8. Difficulty level:
+7. Difficulty level:
 For a person with the pre-requisite age, domain understanding, with the right skills to solve the problem & Educational or Professional qualifications, how difficult is this problem to solve?
 
 Ensure the information provided is realistic, representative of the general population, and takes into account average cognitive development and typical educational and experiential milestones.

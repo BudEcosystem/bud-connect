@@ -69,7 +69,7 @@ async def build_manifest(output_filename: str = "eval_manifest.json", enable_ana
 
         # Build the manifest
         logger.info("Building manifest...")
-        result = await builder.build_manifest()
+        result = await builder.run()
 
         # Display results
         logger.info("=" * 80)
@@ -95,7 +95,7 @@ async def build_manifest(output_filename: str = "eval_manifest.json", enable_ana
                 manifest = json.load(f)
 
             datasets_with_analysis = [
-                d for d in manifest.get('datasets', {}).get('entries', [])
+                d for d in manifest.get('datasets', {}).get('opencompass', {}).get('datasets', [])
                 if 'analysis_file' in d
             ]
 

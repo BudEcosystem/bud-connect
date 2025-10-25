@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
+from budconnect.commons.config import app_settings
+
 
 logger = logging.getLogger(__name__)
 
@@ -32,20 +34,23 @@ class DatasetAnalyzer:
 
     def __init__(
         self,
-        llm_endpoint: str = "http://20.66.97.208/v1/chat/completions",
-        model: str = "qwen3-32b",
+        llm_endpoint: Optional[str] = None,
+        model: Optional[str] = None,
+        timeout: Optional[int] = None,
         output_dir: Optional[str] = None,
     ) -> None:
         """Initialize the dataset analyzer.
 
         Args:
-            llm_endpoint: LLM API endpoint URL
-            model: Model name to use
+            llm_endpoint: LLM API endpoint URL (defaults to EVAL_LLM_ENDPOINT from config)
+            model: Model name to use (defaults to EVAL_LLM_MODEL from config)
+            timeout: Timeout in seconds for API calls (defaults to EVAL_LLM_TIMEOUT from config)
             output_dir: Directory to save analysis results (defaults to budconnect/eval/data/analysis/)
         """
-        self.llm_endpoint = llm_endpoint
-        self.model = model
-        self.client = httpx.AsyncClient(timeout=120.0, follow_redirects=True)
+        self.llm_endpoint = llm_endpoint or app_settings.eval_llm_endpoint
+        self.model = model or app_settings.eval_llm_model
+        timeout_seconds = timeout or app_settings.eval_llm_timeout
+        self.client = httpx.AsyncClient(timeout=float(timeout_seconds), follow_redirects=True)
 
         # Set up output directory
         if output_dir:

@@ -27,6 +27,11 @@ from typing import Any, Dict, List, Optional, cast
 import httpx
 from openai.helpers.local_audio_player import SAMPLE_RATE
 
+from budconnect.eval.dataset_analyzer import DatasetAnalyzer
+from budconnect.eval.dataset_sampler import get_dataset_sample
+
+
+logger = logging.getLogger(__name__)
 try:
     import tiktoken
     TIKTOKEN_AVAILABLE = True
@@ -34,11 +39,6 @@ except ImportError:
     TIKTOKEN_AVAILABLE = False
     logger.warning("tiktoken not available - token estimation will use default values")
 
-from budconnect.eval.dataset_analyzer import DatasetAnalyzer
-from budconnect.eval.dataset_sampler import get_dataset_sample
-
-
-logger = logging.getLogger(__name__)
 SAMPLE_SIZE = 5
 
 class EvalManifestBuilder:
@@ -79,7 +79,7 @@ class EvalManifestBuilder:
         mapping_file = Path(__file__).parent / "data" / "eval_type_mapping.json"
         try:
             if mapping_file.exists():
-                with open(mapping_file, 'r') as f:
+                with open(mapping_file, 'r', encoding='utf-8') as f:
                     mapping = json.load(f)
                 logger.info(f"Loaded eval type mapping for {len(mapping)} datasets")
                 return mapping
