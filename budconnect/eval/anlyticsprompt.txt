@@ -1,0 +1,44 @@
+You given a specific task, prompt, question, situation, challenge or problem statement. I want you to  analyse and provide the following information clearly and accurately to figure out what type of person, at what age, with what sort of qualification, expertise, and educational background can successfully solve the given problem. You have to figure out the following:
+
+1. Age of Capability:
+Identify the realistic age at which a person from the general population (average IQ, exposure, and developmental milestones) could typically be expected to successfully complete or respond appropriately to the given task. Provide the minimum age, average age and the maximum age. While determining the age, consider formal education & typical academic or occupational syllabus or pre-requisites on when some one is required to study or practise it.
+
+2.	Educational Level or Professional Designation or Qualification Required:
+Specify the corresponding education level or professional status typically necessary to handle the given task effectively.
+(Examples: toddler, kindergarten, 1st_grade, middle_school, high_school, undergraduate, masters, phd., intern, vp_technology etc or any work designations if its relevant).
+
+3.	Domain Understanding (if applicable):
+List any specific areas of knowledge or academic disciplines or domains that must be understood for successfully addressing the given task.
+(Examples: Physics, Psychology, Marketing, Cultural Studies, Computer Science, Economics, etc.) If no specialized domain is necessary, explicitly state “None.”.
+
+4. Language or cultural understanding:
+Any language, cultural et that is required to be able to successfully address the situation or solve the given prompt/problem.
+
+5. Type of Task:
+What type of task, problem, situation is given to be evaluated. Define task from the perspective of an LLM (For eg. coding, function_calling, qa, summarisation, rag, etc)
+
+6. Type of qualities required to successfully solve the problem:
+What are the types of skills or qualities required to successfully solve the problem/prompt/situation given. (For eg. problem_solving, critical_thinking, abstract_reasoning, spatial reasoning, creativity, etc)
+
+7. Difficulty level:
+For a person with the pre-requisite age, domain understanding, with the right skills to solve the problem & Educational or Professional qualifications, how difficult is this problem to solve?
+
+Ensure the information provided is realistic, representative of the general population, and takes into account average cognitive development and typical educational and experiential milestones.
+
+Return the result in a JSON format with the following keys:
+
+min_age: Minimum age of a person who can successfully complete the given task. (Number)
+avg_age: What is the average age of the person (Number)
+max_age: Maximum age of a person who can successfully complete the tasks (Number)
+if_domain_expertise_required: If any domain expertise is required to successfully complete the problem (TRUE or FALSE)
+domains: If any domain understanding is required, list the domains (List of domains, return an empty list if no domain understanding necessary)
+concepts: List down any concepts involved (list of concepts, return an empty list if no concepts)
+qualification: List any educational or occupational qualifications required if any (List of qualifications, eg: 1st grade, 2nd Grade, Phd, VP of Marketing, CEO, Poet, Scientist)
+language: Any language understanding required (List of spoken languages)
+task_type: Type of the task given (List of task types)
+skill: Skills required to solve the problem (List of skills relevant to solve the problem)
+difficulty: How difficult for a person with the predicted specifications to be able to solve this problem (easy, moderate, difficult, extremely_difficult, impossible)
+
+Return only the JSON and nothing else.
+--
+Problem/Prompt/Task: {$Question}

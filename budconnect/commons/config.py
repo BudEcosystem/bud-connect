@@ -46,6 +46,23 @@ class AppConfig(BaseAppConfig):
     )
     llm_timeout: int = Field(default=120, alias="BUD_LLM_TIMEOUT", description="Timeout in seconds for LLM API calls")
 
+    # LLM Configuration for Eval Dataset Analysis
+    eval_llm_endpoint: str = Field(
+        default="http://20.66.97.208/v1/chat/completions",
+        alias="EVAL_LLM_ENDPOINT",
+        description="LLM API endpoint for eval dataset question analysis (OpenAI-compatible)",
+    )
+    eval_llm_model: str = Field(
+        default="qwen3-32b",
+        alias="EVAL_LLM_MODEL",
+        description="LLM model name for eval dataset analysis",
+    )
+    eval_llm_timeout: int = Field(
+        default=120,
+        alias="EVAL_LLM_TIMEOUT",
+        description="Timeout in seconds for eval LLM API calls",
+    )
+
     # Seeder Configuration
     run_seeders_on_startup: bool = Field(
         default=True,

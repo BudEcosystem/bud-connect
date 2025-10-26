@@ -29,6 +29,7 @@ from .auth.routes import auth_router
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
 from .engine.routes import engine_router
+from .eval.routes import eval_router
 from .guardrails.routes import guardrail_router
 from .license.routes import license_router
 from .model.routes import model_router
@@ -95,6 +96,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(engine_router)
+app.include_router(eval_router)
 app.include_router(license_router)
 app.include_router(model_router)
 app.include_router(guardrail_router)
