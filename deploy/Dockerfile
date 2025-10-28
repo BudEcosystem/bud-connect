@@ -8,5 +8,7 @@ COPY . .
 
 
 RUN pip install --upgrade pip
+# Install opencompass without dependencies to avoid pyext compatibility issues with Python 3.11
+RUN pip install opencompass==0.5.1 --no-deps
 RUN pip install -r ./requirements.txt
 # RUN pip install .
