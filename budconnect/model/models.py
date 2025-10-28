@@ -1,17 +1,22 @@
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List
 from uuid import uuid4
 
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
 from sqlalchemy import Column, DateTime, Enum, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship  # type: ignore
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.schema import Table
 
 from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
 
 
-class License(PSQLBase, TimestampMixin):  # type: ignore
+if TYPE_CHECKING:
+    from ..engine.models import EngineVersion
+    from ..guardrails.models import GuardrailProbe
+
+
+class License(PSQLBase, TimestampMixin):
     """Represents license information for AI models in the system.
 
     This class stores comprehensive license details including the license type,
@@ -48,7 +53,7 @@ class License(PSQLBase, TimestampMixin):  # type: ignore
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="license")
 
 
-class Provider(PSQLBase, TimestampMixin):  # type: ignore
+class Provider(PSQLBase, TimestampMixin):
     """Represents an AI model provider organization or service in the system.
 
     This class stores information about entities that provide AI models, such as
@@ -83,12 +88,12 @@ class Provider(PSQLBase, TimestampMixin):  # type: ignore
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="provider")
     probes: Mapped[List["GuardrailProbe"]] = relationship(back_populates="provider")
-    supported_versions: Mapped[List["EngineVersion"]] = relationship(  # type: ignore  # noqa: F821
+    supported_versions: Mapped[List["EngineVersion"]] = relationship(
         "EngineVersion", secondary="engine_version_provider", back_populates="supported_providers"
     )
 
 
-class ModelInfo(PSQLBase, TimestampMixin):  # type: ignore
+class ModelInfo(PSQLBase, TimestampMixin):
     """Represents information about an AI model in the system.
 
     This class stores metadata about AI models, including their URI, modality type,
@@ -126,13 +131,83 @@ class ModelInfo(PSQLBase, TimestampMixin):  # type: ignore
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)
     license_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("license.id"), nullable=True)
+    model_architecture_class_id: Mapped[UUID] = mapped_column(
+        UUID, ForeignKey("model_architecture_class.id"), nullable=True
+    )
+    chat_template: Mapped[str] = mapped_column(Text, nullable=True)
+    tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
     license: Mapped[License] = relationship(back_populates="models")
     details: Mapped["ModelDetails"] = relationship(back_populates="model_info", uselist=False)
+    capabilities: Mapped[List["ModelCapability"]] = relationship(back_populates="model_info")
+    architecture_class: Mapped["ModelArchitectureClass"] = relationship(back_populates="models")
 
 
-class ModelDetails(PSQLBase, TimestampMixin):  # type: ignore
+class ModelArchitectureClass(PSQLBase, TimestampMixin):
+    """Maps model architecture classes to their families and capabilities.
+
+    This table stores the mapping between specific model architecture classes
+    (e.g., 'LlamaForCausalLM') and their family names, along with their
+    tool calling and reasoning capabilities.
+
+    Attributes:
+        id (UUID): Unique identifier for the architecture class.
+        class_name (str): The model architecture class name (e.g., 'LlamaForCausalLM').
+        architecture_family (str): The family this architecture belongs to (e.g., 'llama').
+        tool_calling_template (str): The tool calling template type if supported.
+        reasoning_parser_type (str): The reasoning parser type if supported.
+        created_at (datetime): Timestamp when the record was created.
+        updated_at (datetime): Timestamp when the record was last updated.
+    """
+
+    __tablename__ = "model_architecture_class"
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
+    class_name: Mapped[str] = mapped_column(String, nullable=False, unique=True)
+    architecture_family: Mapped[str] = mapped_column(String, nullable=False)
+    tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    reasoning_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+
+    models: Mapped[List["ModelInfo"]] = relationship(back_populates="architecture_class")
+
+
+class ModelCapability(PSQLBase, TimestampMixin):
+    """Stores model capabilities for specific model-engine version combinations.
+
+    This table tracks which capabilities (tool calling, reasoning) are supported
+    for specific models when used with specific engine versions.
+
+    Attributes:
+        id (UUID): Unique identifier for the capability record.
+        model_info_id (UUID): Foreign key to the model_info table.
+        engine_version_id (UUID): Foreign key to the engine_version table.
+        tool_calling_enabled (bool): Whether tool calling is enabled.
+        tool_calling_template (str): The specific tool calling template to use.
+        reasoning_parser_enabled (bool): Whether reasoning parser is enabled.
+        reasoning_parser_type (str): The specific reasoning parser type to use.
+        compatibility_notes (Dict): Additional compatibility information.
+        model_info (ModelInfo): Relationship to the associated model.
+        engine_version (EngineVersion): Relationship to the associated engine version.
+    """
+
+    __tablename__ = "model_capability"
+    __table_args__ = {"extend_existing": True}
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
+    model_info_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("model_info.id"), nullable=False)
+    engine_version_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine_version.id"), nullable=False)
+    tool_calling_enabled: Mapped[bool] = mapped_column(nullable=False, default=False)
+    tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    reasoning_parser_enabled: Mapped[bool] = mapped_column(nullable=False, default=False)
+    reasoning_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    compatibility_notes: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+
+    model_info: Mapped[ModelInfo] = relationship("ModelInfo", back_populates="capabilities")
+    engine_version: Mapped["EngineVersion"] = relationship("EngineVersion", back_populates="model_capabilities")
+
+
+class ModelDetails(PSQLBase, TimestampMixin):
     """Stores enriched details about AI models extracted from documentation.
 
     This class contains detailed information about models including descriptions,

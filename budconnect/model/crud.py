@@ -27,7 +27,15 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from ..commons.constants import ProviderCapabilityEnum
-from .models import License, ModelDetails, ModelInfo, Provider, engine_version_model_info, engine_version_provider
+from .models import (
+    License,
+    ModelArchitectureClass,
+    ModelDetails,
+    ModelInfo,
+    Provider,
+    engine_version_model_info,
+    engine_version_provider,
+)
 
 
 logger = logging.get_logger(__name__)
@@ -317,7 +325,6 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         finally:
             self.cleanup_session(_session if session is None else None)
 
-
     def get_all_providers_with_models(
         self, offset: int, limit: int, session: Optional[Session] = None
     ) -> Tuple[int, List[Tuple[Provider, Optional[ModelInfo]]]]:
@@ -559,6 +566,30 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
         finally:
             self.cleanup_session(_session if session is None else None)
 
+    def get_by_uri_with_architecture(
+        self, uri: str, session: Optional[Session] = None
+    ) -> Optional[Tuple[ModelInfo, ModelArchitectureClass]]:
+        """Get model by URI with its architecture class information.
+
+        Args:
+            uri: The URI of the model to fetch
+            session: Optional database session
+
+        Returns:
+            Tuple of (ModelInfo, ModelArchitectureClass) or None if not found
+        """
+        _session = session or self.get_session()
+        try:
+            result = (
+                _session.query(ModelInfo, ModelArchitectureClass)
+                .outerjoin(ModelArchitectureClass, ModelInfo.model_architecture_class_id == ModelArchitectureClass.id)
+                .filter(ModelInfo.uri == uri)
+                .first()
+            )
+            return result
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
 
 class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
     __model__ = ModelDetails
@@ -584,22 +615,26 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
         """
         _session = session or self.get_session()
         try:
-            # Join with ModelInfo and Provider to get all data
+            # Join with ModelInfo, Provider, ModelArchitectureClass, and License to get all data
             result = (
                 _session.query(
                     self.model,
                     ModelInfo,
                     Provider.name.label("provider_name"),
                     Provider.provider_type.label("provider_type"),
+                    ModelArchitectureClass,
+                    License,
                 )
                 .join(ModelInfo, self.model.model_info_id == ModelInfo.id)
                 .join(Provider, ModelInfo.provider_id == Provider.id)
+                .outerjoin(ModelArchitectureClass, ModelInfo.model_architecture_class_id == ModelArchitectureClass.id)
+                .outerjoin(License, ModelInfo.license_id == License.id)
                 .filter(ModelInfo.uri == model_uri)
                 .first()
             )
 
             if result:
-                model_details, model_info, provider_name, provider_type = result
+                model_details, model_info, provider_name, provider_type, architecture_class, license_obj = result
 
                 # Combine all data into a single dictionary
                 combined_data = {
@@ -636,9 +671,36 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
                     "features": model_info.features,
                     "endpoints": model_info.endpoints,
                     "deprecation_date": model_info.deprecation_date,
+                    "tool_calling_parser_type": model_info.tool_calling_parser_type,
                     # Provider fields
                     "provider_name": provider_name,
                     "provider_type": provider_type,
+                    # Architecture class fields (if available)
+                    "architecture_class": {
+                        "id": architecture_class.id,
+                        "class_name": architecture_class.class_name,
+                        "architecture_family": architecture_class.architecture_family,
+                        "tool_calling_parser_type": architecture_class.tool_calling_parser_type,
+                        "reasoning_parser_type": architecture_class.reasoning_parser_type,
+                        "created_at": architecture_class.created_at,
+                        "modified_at": architecture_class.modified_at,
+                    }
+                    if architecture_class
+                    else None,
+                    # License fields (if available)
+                    "license": {
+                        "id": license_obj.id,
+                        "key": license_obj.key,
+                        "name": license_obj.name,
+                        "type": license_obj.type,
+                        "type_description": license_obj.type_description,
+                        "type_suitability": license_obj.type_suitability,
+                        "faqs": license_obj.faqs,
+                        "created_at": license_obj.created_at,
+                        "modified_at": license_obj.modified_at,
+                    }
+                    if license_obj
+                    else None,
                 }
 
                 return combined_data
@@ -646,3 +708,98 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
             return None
         finally:
             self.cleanup_session(_session if session is None else None)
+
+
+class ModelArchitectureClassCRUD(CRUDMixin[ModelArchitectureClass, None, None]):
+    """CRUD operations for ModelArchitectureClass."""
+
+    __model__ = ModelArchitectureClass
+
+    def __init__(self) -> None:
+        """Initialize the ModelArchitectureClassCRUD class."""
+        super().__init__(self.__model__)
+
+    def get_all_with_model_count(
+        self,
+        offset: int = 0,
+        limit: int = 100,
+        search: Optional[str] = None,
+        session: Optional[Session] = None,
+    ) -> Tuple[List[Dict[str, Any]], int]:
+        """Get all architectures with model count.
+
+        Args:
+            offset: Number of items to skip
+            limit: Maximum number of items to return
+            search: Optional search term for class_name or architecture_family
+            session: Optional database session
+
+        Returns:
+            Tuple of (list of architectures with model count, total count)
+        """
+        _session = session if session else self.get_session()
+
+        try:
+            # Build base query with model count
+            query = (
+                _session.query(ModelArchitectureClass, func.count(distinct(ModelInfo.id)).label("model_count"))
+                .outerjoin(ModelInfo, ModelArchitectureClass.id == ModelInfo.model_architecture_class_id)
+                .group_by(ModelArchitectureClass.id)
+            )
+
+            # Apply search filter if provided
+            if search:
+                search_term = f"%{search}%"
+                query = query.filter(
+                    (ModelArchitectureClass.class_name.ilike(search_term))
+                    | (ModelArchitectureClass.architecture_family.ilike(search_term))
+                )
+
+            # Get total count
+            total_query = _session.query(func.count(distinct(ModelArchitectureClass.id)))
+            if search:
+                total_query = total_query.filter(
+                    (ModelArchitectureClass.class_name.ilike(search_term))
+                    | (ModelArchitectureClass.architecture_family.ilike(search_term))
+                )
+            total = total_query.scalar() or 0
+
+            # Apply pagination and get results
+            results = query.offset(offset).limit(limit).all()
+
+            # Format results
+            architectures = []
+            for arch, model_count in results:
+                arch_dict = {
+                    "id": str(arch.id),
+                    "class_name": arch.class_name,
+                    "architecture_family": arch.architecture_family,
+                    "tool_calling_parser_type": arch.tool_calling_parser_type,
+                    "reasoning_parser_type": arch.reasoning_parser_type,
+                    "model_count": model_count,
+                    "created_at": arch.created_at,
+                    "modified_at": arch.modified_at,
+                }
+                architectures.append(arch_dict)
+
+            return architectures, total
+
+        except SQLAlchemyError as e:
+            logger.error(f"Error fetching architectures: {e}")
+            raise
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
+    def get_by_class_name(
+        self, class_name: str, session: Optional[Session] = None
+    ) -> Optional[ModelArchitectureClass]:
+        """Get architecture class by class_name.
+
+        Args:
+            class_name: The class name to search for (e.g., 'LlamaForCausalLM')
+            session: Optional database session
+
+        Returns:
+            ModelArchitectureClass object or None if not found
+        """
+        return self.fetch_one(conditions={"class_name": class_name}, session=session)

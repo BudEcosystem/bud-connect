@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { modelApi, licenseApi, providerApi } from '../api'
-import { Model, ModelCreate, ModelUpdate, License, Provider, ModalityEnum, ModelEndpointEnum } from '../types'
+import { modelApi, licenseApi, providerApi, architectureApi } from '../api'
+import { Model, ModelCreate, ModelUpdate, License, Provider, ModalityEnum, ModelEndpointEnum, ModelArchitecture } from '../types'
 
 const MODALITY_OPTIONS: ModalityEnum[] = ['text_input', 'text_output', 'image_input', 'image_output', 'audio_input', 'audio_output']
 const ENDPOINT_OPTIONS: ModelEndpointEnum[] = [
@@ -24,6 +24,7 @@ export function SimpleModels() {
   const [models, setModels] = useState<Model[]>([])
   const [licenses, setLicenses] = useState<License[]>([])
   const [providers, setProviders] = useState<Provider[]>([])
+  const [architectures, setArchitectures] = useState<ModelArchitecture[]>([])
   const [loading, setLoading] = useState(true)
   const [showEditModal, setShowEditModal] = useState(false)
   const [editingModel, setEditingModel] = useState<Model | null>(null)
@@ -35,6 +36,9 @@ export function SimpleModels() {
   const [activeTab, setActiveTab] = useState<'basic' | 'details' | 'pricing' | 'features'>('basic')
   
   const [formData, setFormData] = useState<ModelCreate & {
+    model_architecture_class_id?: string
+    chat_template?: string
+    tool_calling_parser_type?: string
     description?: string
     advantages?: string[]
     disadvantages?: string[]
@@ -51,6 +55,9 @@ export function SimpleModels() {
     provider_id: '',
     endpoints: [],
     license_id: undefined,
+    model_architecture_class_id: undefined,
+    chat_template: undefined,
+    tool_calling_parser_type: undefined,
     input_cost: {},
     output_cost: {},
     cache_cost: {},
@@ -74,6 +81,7 @@ export function SimpleModels() {
     fetchModels()
     fetchLicenses()
     fetchProviders()
+    fetchArchitectures()
   }, [currentPage, searchTerm, filterProvider])
 
   const fetchModels = async () => {
@@ -115,12 +123,25 @@ export function SimpleModels() {
     try {
       const response = await providerApi.getAll({ page: 1, page_size: 500 })
       // Sort providers alphabetically by name (create a copy to avoid mutation)
-      const sortedProviders = [...response.providers].sort((a, b) => 
+      const sortedProviders = [...response.providers].sort((a, b) =>
         a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
       )
       setProviders(sortedProviders)
     } catch (error) {
       console.error('Failed to fetch providers:', error)
+    }
+  }
+
+  const fetchArchitectures = async () => {
+    try {
+      const response = await architectureApi.getAll({ page: 1, page_size: 500 })
+      // Sort architectures alphabetically by class name
+      const sortedArchitectures = [...response.architectures].sort((a, b) =>
+        a.class_name.localeCompare(b.class_name, undefined, { sensitivity: 'base' })
+      )
+      setArchitectures(sortedArchitectures)
+    } catch (error) {
+      console.error('Failed to fetch architectures:', error)
     }
   }
 
@@ -134,6 +155,9 @@ export function SimpleModels() {
         provider_id: formData.provider_id,
         endpoints: formData.endpoints,
         license_id: formData.license_id || undefined,
+        model_architecture_class_id: formData.model_architecture_class_id || undefined,
+        chat_template: formData.chat_template || undefined,
+        tool_calling_parser_type: formData.tool_calling_parser_type || undefined,
         input_cost: Object.keys(formData.input_cost || {}).length > 0 ? formData.input_cost : undefined,
         output_cost: Object.keys(formData.output_cost || {}).length > 0 ? formData.output_cost : undefined,
         cache_cost: Object.keys(formData.cache_cost || {}).length > 0 ? formData.cache_cost : undefined,
@@ -198,6 +222,9 @@ export function SimpleModels() {
       provider_id: model.provider_id,
       endpoints: model.endpoints || [],
       license_id: model.license?.id,
+      model_architecture_class_id: model.architecture_class?.id,
+      chat_template: model.chat_template,
+      tool_calling_parser_type: model.tool_calling_parser_type || undefined,
       input_cost: model.input_cost || {},
       output_cost: model.output_cost || {},
       cache_cost: model.cache_cost || {},
@@ -232,7 +259,8 @@ export function SimpleModels() {
           tasks: details.tasks || [],
           github_url: details.github_url || '',
           website_url: details.website_url || '',
-          logo_url: details.logo_url || ''
+          logo_url: details.logo_url || '',
+          tool_calling_parser_type: details.tool_calling_parser_type ?? prev.tool_calling_parser_type
         }))
       }
     } catch (error) {
@@ -260,6 +288,9 @@ export function SimpleModels() {
       provider_id: '',
       endpoints: [],
       license_id: undefined,
+      model_architecture_class_id: undefined,
+      chat_template: undefined,
+      tool_calling_parser_type: undefined,
       input_cost: {},
       output_cost: {},
       cache_cost: {},
@@ -418,8 +449,9 @@ export function SimpleModels() {
                     )}
                   </div>
                   <div style={{ fontSize: '14px', color: '#666' }}>
-                    <strong>Provider:</strong> {model.provider_name || 'Unknown'} | 
-                    <strong> Modality:</strong> {model.modality?.join(', ') || 'N/A'} | 
+                    <strong>Provider:</strong> {model.provider_name || 'Unknown'} |
+                    <strong> Modality:</strong> {model.modality?.join(', ') || 'N/A'} |
+                    <strong> Architecture:</strong> {model.architecture_class?.architecture_family || 'N/A'} |
                     <strong> Added:</strong> {model.created_at ? new Date(model.created_at).toLocaleDateString() : 'N/A'}
                   </div>
                 </div>
@@ -466,8 +498,38 @@ export function SimpleModels() {
                       <h4>Model Information:</h4>
                       <p><strong>ID:</strong> {model.id}</p>
                       <p><strong>Provider Type:</strong> {model.provider_type || 'N/A'}</p>
+                      {model.tool_calling_parser_type && (
+                        <p><strong>Tool Calling Parser (Model):</strong> {model.tool_calling_parser_type}</p>
+                      )}
+                      {model.architecture_class && (
+                        <>
+                          <p><strong>Architecture Class:</strong> {model.architecture_class.class_name}</p>
+                          <p><strong>Architecture Family:</strong> {model.architecture_class.architecture_family}</p>
+                          {model.architecture_class.tool_calling_parser_type && (
+                            <p><strong>Tool Calling (Architecture):</strong> {model.architecture_class.tool_calling_parser_type}</p>
+                          )}
+                          {model.architecture_class.reasoning_parser_type && (
+                            <p><strong>Reasoning Parser:</strong> {model.architecture_class.reasoning_parser_type}</p>
+                          )}
+                        </>
+                      )}
                       {model.deprecation_date && (
                         <p><strong>Deprecation Date:</strong> {new Date(model.deprecation_date).toLocaleDateString()}</p>
+                      )}
+                      {model.chat_template && (
+                        <div>
+                          <p><strong>Chat Template:</strong></p>
+                          <pre style={{
+                            backgroundColor: '#f4f4f4',
+                            padding: '8px',
+                            borderRadius: '4px',
+                            fontSize: '11px',
+                            overflow: 'auto',
+                            maxHeight: '150px'
+                          }}>
+                            {model.chat_template}
+                          </pre>
+                        </div>
                       )}
                     </div>
                     <div>
@@ -710,6 +772,48 @@ export function SimpleModels() {
                     </select>
                   </div>
 
+                  <div>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>
+                      Architecture Class
+                    </label>
+                    <select
+                      value={formData.model_architecture_class_id || ''}
+                      onChange={(e) => setFormData({ ...formData, model_architecture_class_id: e.target.value || undefined })}
+                      style={{
+                        width: '100%',
+                        padding: '8px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px'
+                      }}
+                    >
+                      <option value="">Select Architecture</option>
+                      {architectures.map(arch => (
+                        <option key={arch.id} value={arch.id}>
+                          {arch.class_name} ({arch.architecture_family})
+                        </option>
+                      ))}
+                    </select>
+                    {formData.model_architecture_class_id && (() => {
+                      const selectedArch = architectures.find(a => a.id === formData.model_architecture_class_id)
+                      return selectedArch ? (
+                        <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
+                          {selectedArch.tool_calling_parser_type && (
+                            <div>Tool Calling: {selectedArch.tool_calling_parser_type}</div>
+                          )}
+                          {selectedArch.reasoning_parser_type && (
+                            <div>Reasoning: {selectedArch.reasoning_parser_type}</div>
+                          )}
+                          {formData.tool_calling_parser_type && (
+                            <div>Model Override: {formData.tool_calling_parser_type}</div>
+                          )}
+                          {!selectedArch.tool_calling_parser_type && !selectedArch.reasoning_parser_type && (
+                            <div>No special capabilities</div>
+                          )}
+                        </div>
+                      ) : null
+                    })()}
+                  </div>
+
                   <div style={{ gridColumn: 'span 2' }}>
                     <label style={{ display: 'block', marginBottom: '5px' }}>
                       Modality * (select multiple)
@@ -758,6 +862,43 @@ export function SimpleModels() {
                         </label>
                       ))}
                     </div>
+                  </div>
+
+                  <div style={{ gridColumn: 'span 2' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>
+                      Chat Template (Jinja2 format)
+                    </label>
+                    <textarea
+                      value={formData.chat_template || ''}
+                      onChange={(e) => setFormData({ ...formData, chat_template: e.target.value || undefined })}
+                      placeholder="Enter chat template in Jinja2 format..."
+                      style={{
+                        width: '100%',
+                        padding: '8px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px',
+                        minHeight: '100px',
+                        fontFamily: 'monospace',
+                        fontSize: '12px'
+                      }}
+                    />
+                  </div>
+                  <div style={{ gridColumn: 'span 2' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>
+                      Tool Calling Parser Type
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.tool_calling_parser_type || ''}
+                      onChange={(e) => setFormData({ ...formData, tool_calling_parser_type: e.target.value || undefined })}
+                      placeholder="Enter parser type override (optional)"
+                      style={{
+                        width: '100%',
+                        padding: '8px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px'
+                      }}
+                    />
                   </div>
                 </div>
               )}

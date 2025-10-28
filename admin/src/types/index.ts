@@ -75,6 +75,38 @@ export interface ProviderUpdate {
   credentials?: CredentialField[]
 }
 
+// Model Architecture Types
+export interface ModelArchitecture {
+  id: string
+  class_name: string
+  architecture_family: string
+  tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
+  model_count?: number
+  created_at: string
+  modified_at: string
+}
+
+export interface ModelArchitectureCreate {
+  class_name: string
+  architecture_family: string
+  tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
+}
+
+export interface ModelArchitectureUpdate {
+  architecture_family?: string
+  tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
+}
+
+export interface ArchitectureListResponse {
+  architectures: ModelArchitecture[]
+  total: number
+  page: number
+  page_size: number
+}
+
 // Model Types
 export type ModalityEnum = 'text_input' | 'text_output' | 'image_input' | 'image_output' | 'audio_input' | 'audio_output'
 export type ModelEndpointEnum = '/v1/chat/completions' | '/v1/completions' | '/v1/images/generations' | '/v1/images/edits' | '/v1/images/variations' | '/v1/audio/transcriptions' | '/v1/audio/translations' | '/v1/audio/speech' | '/v1/embeddings' | '/v1/batch' | '/v1/responses' | '/v1/documents' | '/v1/rerank' | '/v1/moderations'
@@ -141,6 +173,8 @@ export interface Model {
   provider_id: string
   provider_name?: string
   provider_type?: string
+  model_architecture_class_id?: string
+  architecture_class?: ModelArchitecture
   input_cost?: InputCost
   output_cost?: OutputCost
   cache_cost?: CacheCost
@@ -152,6 +186,8 @@ export interface Model {
   endpoints: ModelEndpointEnum[]
   deprecation_date?: string
   license?: License
+  chat_template?: string
+  tool_calling_parser_type?: string | null
   created_at?: string
   modified_at?: string
 }
@@ -160,6 +196,7 @@ export interface ModelCreate {
   uri: string
   modality: ModalityEnum[]
   provider_id: string
+  model_architecture_class_id?: string
   input_cost?: InputCost
   output_cost?: OutputCost
   cache_cost?: CacheCost
@@ -171,12 +208,15 @@ export interface ModelCreate {
   endpoints: ModelEndpointEnum[]
   deprecation_date?: string
   license_id?: string
+  chat_template?: string
+  tool_calling_parser_type?: string | null
 }
 
 export interface ModelUpdate {
   uri?: string
   modality?: ModalityEnum[]
   provider_id?: string
+  model_architecture_class_id?: string
   input_cost?: InputCost
   output_cost?: OutputCost
   cache_cost?: CacheCost
@@ -188,6 +228,8 @@ export interface ModelUpdate {
   endpoints?: ModelEndpointEnum[]
   deprecation_date?: string
   license_id?: string
+  chat_template?: string
+  tool_calling_parser_type?: string | null
 }
 
 export interface ModelListResponse {
@@ -217,9 +259,13 @@ export interface ModelInfo {
   provider?: Provider
   license_id?: string
   license?: License
+  model_architecture_class_id?: string
+  architecture_class?: ModelArchitecture
   deprecation_date?: string
   endpoints?: ModelEndpoint[]
   details?: ModelDetails
+  chat_template?: string
+  tool_calling_parser_type?: string | null
   created_at?: string
   updated_at?: string
 }
@@ -250,6 +296,7 @@ export interface ModelDetails {
   architecture?: Record<string, any>
   model_tree?: Record<string, any>
   extraction_metadata?: Record<string, any>
+  tool_calling_parser_type?: string | null
 }
 
 // Engine Types
@@ -305,6 +352,57 @@ export interface EngineCompatibility {
   engine_version?: EngineVersion
   created_at?: string
   updated_at?: string
+}
+
+export type ParserMatchType = 'exact' | 'prefix' | 'regex'
+
+export interface EngineToolParserRule {
+  id: string
+  engine_version_id: string
+  parser_type: string | null
+  match_type: ParserMatchType
+  pattern: string
+  priority: number
+  enabled: boolean
+  notes?: string | null
+  chat_template?: string | null
+  created_at?: string
+  modified_at?: string
+}
+
+export interface EngineToolParserRuleCreate {
+  engine_version_id: string
+  parser_type?: string | null
+  match_type: ParserMatchType
+  pattern: string
+  priority?: number
+  enabled?: boolean
+  notes?: string | null
+  chat_template?: string | null
+}
+
+export interface EngineToolParserRuleUpdate {
+  parser_type?: string | null
+  match_type?: ParserMatchType
+  pattern?: string
+  priority?: number
+  enabled?: boolean
+  notes?: string | null
+  chat_template?: string | null
+}
+
+export interface CompatibleEngine {
+  engine: string
+  device_architecture: DeviceArchitecture
+  version: string
+  container_image: string
+  engine_version_id?: string
+  tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
+  architecture_family?: string | null
+  chat_template?: string | null
+  parser_source?: string | null
+  parser_notes?: string | null
 }
 
 export interface EngineCompatibilityCreate {

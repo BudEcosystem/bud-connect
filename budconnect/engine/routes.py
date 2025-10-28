@@ -22,7 +22,7 @@ from budmicroframe.commons.exceptions import ClientException
 from budmicroframe.commons.schemas import ErrorResponse
 from fastapi import APIRouter, Query, status
 
-from . import schemas
+from . import models, schemas
 from .schemas import (
     CompatibleEnginesResponse,
     DeviceArchitecture,
@@ -32,6 +32,10 @@ from .schemas import (
     EngineCreate,
     EngineListResponse,
     EngineResponse,
+    EngineToolParserRuleCreate,
+    EngineToolParserRuleListResponse,
+    EngineToolParserRuleResponse,
+    EngineToolParserRuleUpdate,
     EngineUpdate,
     EngineVersionCreate,
     EngineVersionListResponse,
@@ -45,6 +49,22 @@ from .services import EngineService
 logger = logging.get_logger(__name__)
 
 engine_router = APIRouter(prefix="/engine", tags=["Engine"])
+
+
+def _build_parser_rule_schema(rule: models.EngineToolParserRule) -> schemas.EngineToolParserRule:
+    return schemas.EngineToolParserRule(
+        id=rule.id,
+        engine_version_id=rule.engine_version_id,
+        parser_type=rule.parser_type,
+        match_type=rule.match_type,
+        pattern=rule.pattern,
+        priority=rule.priority,
+        enabled=rule.enabled,
+        notes=rule.notes,
+        chat_template=rule.chat_template,
+        created_at=str(rule.created_at) if hasattr(rule, "created_at") and rule.created_at else None,
+        modified_at=str(rule.modified_at) if hasattr(rule, "modified_at") and rule.modified_at else None,
+    )
 
 
 # Engine CRUD endpoints
@@ -102,6 +122,7 @@ async def get_compatible_engines(
     device_architecture: Union[DeviceArchitecture, None] = None,
     engine_version: Union[str, None] = None,
     engine: Union[str, None] = None,
+    model_uri: Union[str, None] = None,
 ) -> Union[CompatibleEnginesResponse, ErrorResponse]:
     """Check if a model architecture is compatible with a device architecture and engine version.
 
@@ -109,9 +130,11 @@ async def get_compatible_engines(
         model_architecture: The architecture of the model to check compatibility for
         device_architecture: The architecture of the device (CUDA, ROCM, CPU, HPU)
         engine_version: The version of the engine to check compatibility against
+        engine: The engine name (e.g., "vllm")
+        model_uri: Optional model URI for precise capability lookup (e.g., "meta-llama/Llama-3.2-1B")
 
     Returns:
-        HTTP response with compatibility check results or error information
+        HTTP response with compatibility check results including tool calling and reasoning capabilities
     """
     try:
         # Cast Optional types to their required types as expected by the service
@@ -120,6 +143,7 @@ async def get_compatible_engines(
             device_architecture=device_architecture,  # type: ignore
             engine_version=engine_version,  # type: ignore
             engine=engine,  # type: ignore
+            model_uri=model_uri,  # Pass new parameter
         )
         response = CompatibleEnginesResponse(
             message="Model architecture is compatible with the given device architecture and engine version",
@@ -450,4 +474,96 @@ async def delete_engine_compatibility(compatibility_id: UUID) -> Union[EngineCom
     except Exception as e:
         logger.error(f"Error deleting engine compatibility: {e}")
         response = ErrorResponse(message="Error deleting engine compatibility", code=500)
+    return response.to_http_response()
+
+
+@engine_router.get("/parser-rules/{engine_version_id}")
+async def list_parser_rules(
+    engine_version_id: UUID,
+) -> Union[EngineToolParserRuleListResponse, ErrorResponse]:
+    """List parser rules for a specific engine version."""
+    try:
+        rules = EngineService.list_tool_parser_rules(engine_version_id)
+        rule_schemas = [_build_parser_rule_schema(rule) for rule in rules]
+
+        response = EngineToolParserRuleListResponse(
+            message="Parser rules retrieved successfully",
+            code=status.HTTP_200_OK,
+            object="engine.parser_rule.list",
+            rules=rule_schemas,
+        )
+    except ClientException as e:
+        logger.error(f"Client exception: {e}")
+        response = ErrorResponse(message=e.message, code=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error(f"Error retrieving parser rules: {e}")
+        response = ErrorResponse(message="Error retrieving parser rules", code=500)
+
+    return response.to_http_response()
+
+
+@engine_router.post("/parser-rules")
+async def create_parser_rule(
+    rule_data: EngineToolParserRuleCreate,
+) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
+    """Create a new parser rule for an engine version."""
+    try:
+        rule = EngineService.create_tool_parser_rule(rule_data)
+        response = EngineToolParserRuleResponse(
+            message="Parser rule created successfully",
+            code=status.HTTP_201_CREATED,
+            object="engine.parser_rule",
+            rule=_build_parser_rule_schema(rule),
+        )
+    except ClientException as e:
+        logger.error(f"Client exception: {e}")
+        response = ErrorResponse(message=e.message, code=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error(f"Error creating parser rule: {e}")
+        response = ErrorResponse(message="Error creating parser rule", code=500)
+
+    return response.to_http_response()
+
+
+@engine_router.put("/parser-rules/{rule_id}")
+async def update_parser_rule(
+    rule_id: UUID, rule_data: EngineToolParserRuleUpdate
+) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
+    """Update an existing parser rule."""
+    try:
+        rule = EngineService.update_tool_parser_rule(rule_id, rule_data)
+        response = EngineToolParserRuleResponse(
+            message="Parser rule updated successfully",
+            code=status.HTTP_200_OK,
+            object="engine.parser_rule",
+            rule=_build_parser_rule_schema(rule),
+        )
+    except ClientException as e:
+        logger.error(f"Client exception: {e}")
+        response = ErrorResponse(message=e.message, code=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error(f"Error updating parser rule: {e}")
+        response = ErrorResponse(message="Error updating parser rule", code=500)
+
+    return response.to_http_response()
+
+
+@engine_router.delete("/parser-rules/{rule_id}")
+async def delete_parser_rule(rule_id: UUID) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
+    """Delete a parser rule."""
+    try:
+        EngineService.delete_tool_parser_rule(rule_id)
+        response = EngineToolParserRuleResponse(
+            message="Parser rule deleted successfully",
+            code=status.HTTP_200_OK,
+            object="engine.parser_rule",
+            rule=None,
+        )
+    except ClientException as e:
+        logger.error(f"Client exception: {e}")
+        response = ErrorResponse(message=e.message, code=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error(f"Error deleting parser rule: {e}")
+        response = ErrorResponse(message="Error deleting parser rule", code=500)
+
     return response.to_http_response()

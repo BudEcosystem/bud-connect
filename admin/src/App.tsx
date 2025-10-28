@@ -5,6 +5,7 @@ import { SimpleLicenses } from './components/SimpleLicenses'
 import { SimpleProviders } from './components/SimpleProviders'
 import { SimpleModels } from './components/SimpleModels'
 import { SimpleEngines } from './components/SimpleEngines'
+import { SimpleArchitectures } from './components/SimpleArchitectures'
 import Login from './components/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
@@ -91,7 +92,7 @@ function AppContent() {
           }}>
             🏢 Providers
           </Link>
-          <Link to="/engines" style={{ 
+          <Link to="/engines" style={{
             padding: '10px',
             textDecoration: 'none',
             color: '#333',
@@ -99,6 +100,15 @@ function AppContent() {
             backgroundColor: 'white'
           }}>
             ⚙️ Engines
+          </Link>
+          <Link to="/architectures" style={{
+            padding: '10px',
+            textDecoration: 'none',
+            color: '#333',
+            borderRadius: '4px',
+            backgroundColor: 'white'
+          }}>
+            🏛️ Architectures
           </Link>
         </nav>
         <button
@@ -131,6 +141,7 @@ function AppContent() {
           <Route path="/models" element={<SimpleModels />} />
           <Route path="/providers" element={<SimpleProviders />} />
           <Route path="/engines" element={<SimpleEngines />} />
+          <Route path="/architectures" element={<SimpleArchitectures />} />
         </Routes>
       </div>
     </div>

@@ -1,0 +1,248 @@
+{
+  "architectures": [
+    {
+      "class_name": "LlamaForCausalLM",
+      "architecture_family": "llama",
+      "tool_calling_parser_type": "llama3_json",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "LLaMAForCausalLM",
+      "architecture_family": "llama",
+      "tool_calling_parser_type": "llama3_json",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Fairseq2LlamaForCausalLM",
+      "architecture_family": "llama",
+      "tool_calling_parser_type": "llama3_json",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "MistralForCausalLM",
+      "architecture_family": "mistral",
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": "mistral"
+    },
+    {
+      "class_name": "MixtralForCausalLM",
+      "architecture_family": "mistral",
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "QuantMixtralForCausalLM",
+      "architecture_family": "mistral",
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Mistral3ForConditionalGeneration",
+      "architecture_family": "mistral",
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": "mistral"
+    },
+    {
+      "class_name": "QWenLMHeadModel",
+      "architecture_family": "qwen",
+      "tool_calling_parser_type": "qwen",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Qwen2ForCausalLM",
+      "architecture_family": "qwen",
+      "tool_calling_parser_type": "qwen",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Qwen2MoeForCausalLM",
+      "architecture_family": "qwen",
+      "tool_calling_parser_type": "qwen",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Qwen3ForCausalLM",
+      "architecture_family": "qwen",
+      "tool_calling_parser_type": "qwen",
+      "reasoning_parser_type": "qwen3"
+    },
+    {
+      "class_name": "Qwen3MoeForCausalLM",
+      "architecture_family": "qwen",
+      "tool_calling_parser_type": "qwen",
+      "reasoning_parser_type": "qwen3"
+    },
+    {
+      "class_name": "DeepseekForCausalLM",
+      "architecture_family": "deepseek",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "DeepseekV2ForCausalLM",
+      "architecture_family": "deepseek",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "DeepseekV3ForCausalLM",
+      "architecture_family": "deepseek",
+      "tool_calling_parser_type": "deepseek",
+      "reasoning_parser_type": "deepseek_r1"
+    },
+    {
+      "class_name": "InternLMForCausalLM",
+      "architecture_family": "internlm",
+      "tool_calling_parser_type": "internlm",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "InternLM2ForCausalLM",
+      "architecture_family": "internlm",
+      "tool_calling_parser_type": "internlm",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "InternLM2VEForCausalLM",
+      "architecture_family": "internlm",
+      "tool_calling_parser_type": "internlm",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "InternLM3ForCausalLM",
+      "architecture_family": "internlm",
+      "tool_calling_parser_type": "internlm",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "JambaForCausalLM",
+      "architecture_family": "jamba",
+      "tool_calling_parser_type": "jamba",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "GlmForCausalLM",
+      "architecture_family": "glm",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Glm4ForCausalLM",
+      "architecture_family": "glm",
+      "tool_calling_parser_type": "glm4",
+      "reasoning_parser_type": "glm4_moe"
+    },
+    {
+      "class_name": "ChatGLMModel",
+      "architecture_family": "glm",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "ChatGLMForConditionalGeneration",
+      "architecture_family": "glm",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "GLM4VForCausalLM",
+      "architecture_family": "glm",
+      "tool_calling_parser_type": "glm4",
+      "reasoning_parser_type": "glm4_moe"
+    },
+    {
+      "class_name": "MiniMaxText01ForCausalLM",
+      "architecture_family": "minimax",
+      "tool_calling_parser_type": "minimax",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "MiniMaxVL01ForConditionalGeneration",
+      "architecture_family": "minimax",
+      "tool_calling_parser_type": "minimax",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "HermesCausalLM",
+      "architecture_family": "hermes",
+      "tool_calling_parser_type": "hermes",
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "GraniteForCausalLM",
+      "architecture_family": "granite",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": "granite"
+    },
+    {
+      "class_name": "GraniteMoeForCausalLM",
+      "architecture_family": "granite",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": "granite"
+    },
+    {
+      "class_name": "GemmaForCausalLM",
+      "architecture_family": "gemma",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Gemma2ForCausalLM",
+      "architecture_family": "gemma",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Gemma3ForCausalLM",
+      "architecture_family": "gemma",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "PhiForCausalLM",
+      "architecture_family": "phi",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Phi3ForCausalLM",
+      "architecture_family": "phi",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "CohereForCausalLM",
+      "architecture_family": "cohere",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    },
+    {
+      "class_name": "Cohere2ForCausalLM",
+      "architecture_family": "cohere",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null
+    }
+  ],
+  "tool_calling_templates": [
+    "hermes",
+    "mistral",
+    "llama3_json",
+    "internlm",
+    "jamba",
+    "xlam",
+    "qwen",
+    "minimax",
+    "deepseek",
+    "glm4",
+    "pythonic"
+  ],
+  "reasoning_parser_types": [
+    "qwen3",
+    "mistral",
+    "glm4_moe",
+    "granite",
+    "step3",
+    "hunyuan_a13b",
+    "deepseek_r1"
+  ]
+}

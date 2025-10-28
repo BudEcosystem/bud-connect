@@ -1,13 +1,13 @@
-from typing import List
+from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from budmicroframe.commons import logging
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
-from sqlalchemy import Enum, ForeignKey, String
+from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from budconnect.engine.schemas import DeviceArchitecture
+from budconnect.engine.schemas import DeviceArchitecture, ParserMatchType
 from budconnect.model.models import engine_version_provider
 
 
@@ -64,11 +64,19 @@ class EngineVersion(PSQLBase, TimestampMixin):
 
     engine = relationship("Engine", back_populates="versions")
     compatibilities = relationship("EngineCompatibility", back_populates="engine_version")
+    parser_rules: Mapped[List["EngineToolParserRule"]] = relationship(
+        "EngineToolParserRule",
+        back_populates="engine_version",
+        cascade="all, delete-orphan",
+    )
     supported_providers: Mapped[List["Provider"]] = relationship(  # noqa: F821
         "Provider",
         secondary=engine_version_provider,
         back_populates="supported_versions",
         cascade="all, delete",
+    )
+    model_capabilities: Mapped[List["ModelCapability"]] = relationship(  # noqa: F821
+        "ModelCapability", back_populates="engine_version"
     )
 
     def __repr__(self) -> str:
@@ -99,9 +107,44 @@ class EngineCompatibility(PSQLBase, TimestampMixin):
     engine_version_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine_version.id"), nullable=False, unique=True)
     architectures: Mapped[JSONB] = mapped_column(JSONB, nullable=False)
     features: Mapped[JSONB] = mapped_column(JSONB, nullable=False)
+    supported_tool_calling_parser_types: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    supported_reasoning_parsers: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
 
     engine_version = relationship("EngineVersion", back_populates="compatibilities", uselist=False)
 
     def __repr__(self) -> str:
         """Return a string representation of the EngineCompatibility object."""
         return f"<EngineCompatibility(id={self.id}, engine_version_id={self.engine_version_id})>"
+
+
+class EngineToolParserRule(PSQLBase, TimestampMixin):
+    """Rule for selecting a tool parser based on model metadata for a specific engine version."""
+
+    __tablename__ = "engine_tool_parser_rule"
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
+    engine_version_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine_version.id"), nullable=False)
+    parser_type: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    match_type: Mapped[ParserMatchType] = mapped_column(
+        Enum(
+            ParserMatchType,
+            name="engine_tool_parser_match_type",
+            create_type=False,
+            values_callable=lambda x: [e.value for e in x],
+        ),
+        nullable=False,
+    )
+    pattern: Mapped[str] = mapped_column(String, nullable=False)
+    priority: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    enabled: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    notes: Mapped[str] = mapped_column(Text, nullable=True)
+    chat_template: Mapped[str] = mapped_column(Text, nullable=True)
+
+    engine_version: Mapped["EngineVersion"] = relationship("EngineVersion", back_populates="parser_rules")
+
+    def __repr__(self) -> str:
+        """Return string representation of EngineToolParserRule."""
+        return (
+            f"<EngineToolParserRule(id={self.id}, engine_version_id={self.engine_version_id}, "
+            f"parser_type={self.parser_type}, match_type={self.match_type}, pattern={self.pattern})>"
+        )

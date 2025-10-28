@@ -9,14 +9,18 @@ import {
   EngineCompatibility,
   EngineCompatibilityCreate,
   EngineCompatibilityUpdate,
-  DeviceArchitecture 
+  DeviceArchitecture,
+  EngineToolParserRule,
+  EngineToolParserRuleCreate,
+  EngineToolParserRuleUpdate,
+  CompatibleEngine,
 } from '@/types'
 
 interface CompatibleEnginesResponse {
   message: string
   code: number
   object: string
-  compatible_engines: Engine[]
+  compatible_engines: CompatibleEngine[]
 }
 
 interface LatestEngineVersionResponse {
@@ -63,6 +67,20 @@ interface EngineVersionResponse {
 
 interface EngineCompatibilityResponse {
   compatibility: EngineCompatibility
+  message: string
+  code: number
+  object: string
+}
+
+interface ParserRuleListResponse {
+  rules: EngineToolParserRule[]
+  message: string
+  code: number
+  object: string
+}
+
+interface ParserRuleResponse {
+  rule: EngineToolParserRule
   message: string
   code: number
   object: string
@@ -132,6 +150,26 @@ export const engineApi = {
 
   deleteCompatibility: async (id: string) => {
     await apiClient.delete(`/engine/compatibility/${id}`)
+  },
+
+  // Engine parser rules
+  getParserRules: async (engineVersionId: string) => {
+    const { data } = await apiClient.get<ParserRuleListResponse>(`/engine/parser-rules/${engineVersionId}`)
+    return data
+  },
+
+  createParserRule: async (data: EngineToolParserRuleCreate) => {
+    const response = await apiClient.post<ParserRuleResponse>('/engine/parser-rules', data)
+    return response.data.rule
+  },
+
+  updateParserRule: async (ruleId: string, data: EngineToolParserRuleUpdate) => {
+    const response = await apiClient.put<ParserRuleResponse>(`/engine/parser-rules/${ruleId}`, data)
+    return response.data.rule
+  },
+
+  deleteParserRule: async (ruleId: string) => {
+    await apiClient.delete(`/engine/parser-rules/${ruleId}`)
   },
 
   // Legacy endpoints

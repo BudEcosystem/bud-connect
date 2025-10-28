@@ -3,10 +3,16 @@ import logging
 import os
 from typing import Any, Dict, List
 
-from ..engine.crud import EngineCompatibilityCRUD, EngineCRUD, EngineVersionCRUD
+from ..engine.crud import (
+    EngineCompatibilityCRUD,
+    EngineCRUD,
+    EngineToolParserRuleCRUD,
+    EngineVersionCRUD,
+)
 from ..engine.schemas import (
     EngineCompatibilityCreate,
     EngineCreate,
+    ParserMatchType,
 )
 from .base import BaseSeeder
 
@@ -36,6 +42,7 @@ class EngineSeeder(BaseSeeder):
         engine_crud = EngineCRUD()
         engine_version_crud = EngineVersionCRUD()
         engine_compatibility_crud = EngineCompatibilityCRUD()
+        engine_parser_rule_crud = EngineToolParserRuleCRUD()
         with engine_crud as engine_crud:
             existing_engines, _ = engine_crud.fetch_many()
         engines_data = EngineSeeder._get_engines_data()
@@ -105,6 +112,37 @@ class EngineSeeder(BaseSeeder):
                         architectures_dict = {"architectures": all_architectures}
                         features_dict = {"features": all_features}
 
+                        # Determine supported tool calling templates and reasoning parsers based on engine
+                        supported_tool_calling = []
+                        supported_reasoning = []
+
+                        # For vLLM engines, determine capabilities based on version
+                        if engine_name.lower() == "vllm":
+                            # vLLM supports various tool calling templates
+                            supported_tool_calling = [
+                                "hermes",
+                                "mistral",
+                                "llama3_json",
+                                "internlm",
+                                "jamba",
+                                "xlam",
+                                "qwen",
+                                "minimax",
+                                "deepseek",
+                                "glm4",
+                                "pythonic",
+                            ]
+                            # vLLM supports various reasoning parsers
+                            supported_reasoning = [
+                                "qwen3",
+                                "mistral",
+                                "glm4_moe",
+                                "granite",
+                                "step3",
+                                "hunyuan_a13b",
+                                "deepseek_r1",
+                            ]
+
                         # Check if compatibility already exists for this version
                         existing_compat = engine_compatibility_crud.fetch_one({"engine_version_id": version_id})
 
@@ -113,6 +151,10 @@ class EngineSeeder(BaseSeeder):
                             update_data = {
                                 "architectures": architectures_dict,
                                 "features": features_dict,
+                                "supported_tool_calling_parser_types": supported_tool_calling
+                                if supported_tool_calling
+                                else None,
+                                "supported_reasoning_parsers": supported_reasoning if supported_reasoning else None,
                             }
 
                             # Update with the existing ID
@@ -124,9 +166,73 @@ class EngineSeeder(BaseSeeder):
                                 engine_version_id=str(version_id),
                                 architectures=architectures_dict,
                                 features=features_dict,
+                                supported_tool_calling_parser_types=supported_tool_calling
+                                if supported_tool_calling
+                                else None,
+                                supported_reasoning_parsers=supported_reasoning if supported_reasoning else None,
                             )
                             engine_compatibility_crud.insert(new_compat.model_dump(exclude_unset=True))
                             logger.info(f"Created new compatibility for version {version_id}")
+
+                    # Process tool parser rules for this version if provided
+                    if "parser_rules" in version_data:
+                        parser_rules = version_data.get("parser_rules", [])  # type: ignore
+                        with engine_parser_rule_crud as parser_rule_crud:
+                            parser_rule_crud.delete(
+                                {"engine_version_id": version_id},
+                                session=parser_rule_crud.session,
+                                raise_on_error=False,
+                            )
+
+                            for rule in parser_rules:
+                                parser_type = rule.get("parser_type")
+                                if isinstance(parser_type, str):
+                                    parser_type = parser_type.strip()
+                                chat_template = rule.get("chat_template")
+                                if isinstance(chat_template, str):
+                                    chat_template = chat_template.strip()
+                                rule_payload = {
+                                    "engine_version_id": str(version_id),
+                                    "parser_type": parser_type or None,
+                                    "match_type": (rule.get("match_type") or "exact"),
+                                    "pattern": rule.get("pattern"),
+                                    "priority": rule.get("priority", 0),
+                                    "enabled": rule.get("enabled", True),
+                                    "notes": rule.get("notes"),
+                                    "chat_template": chat_template or None,
+                                }
+
+                                match_type = rule_payload.get("match_type")
+                                if isinstance(match_type, str):
+                                    # Normalise to lowercase to match enum values
+                                    normalized = match_type.lower()
+                                    try:
+                                        rule_payload["match_type"] = ParserMatchType(normalized).value
+                                    except ValueError:
+                                        logger.warning(
+                                            "Skipping parser rule for engine version %s due to invalid match_type '%s'",
+                                            version_id,
+                                            match_type,
+                                        )
+                                        continue
+                                elif isinstance(match_type, ParserMatchType):
+                                    rule_payload["match_type"] = match_type.value
+
+                                if (
+                                    not rule_payload.get("parser_type") and not rule_payload.get("chat_template")
+                                ) or not rule_payload.get("pattern"):
+                                    logger.warning(
+                                        "Skipping parser rule for engine version %s due to missing required fields",
+                                        version_id,
+                                    )
+                                    continue
+
+                                parser_rule_crud.insert(rule_payload, session=parser_rule_crud.session)
+                                logger.info(
+                                    "Added parser rule %s for engine version %s",
+                                    rule_payload["parser_type"],
+                                    version_id,
+                                )
 
     @staticmethod
     def _get_engines_data() -> Dict[str, Any]:

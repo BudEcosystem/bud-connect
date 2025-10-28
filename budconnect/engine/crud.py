@@ -1,5 +1,5 @@
 import logging
-from typing import List, Optional
+from typing import Dict, List, Optional
 from uuid import UUID
 
 from budmicroframe.shared.psql_service import CRUDMixin
@@ -7,7 +7,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from .models import Engine, EngineCompatibility, EngineVersion
+from .models import Engine, EngineCompatibility, EngineToolParserRule, EngineVersion
 from .schemas import CompatibleEngine, DeviceArchitecture
 
 
@@ -93,6 +93,7 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
         query = (
             session.query(
                 Engine.name.label("engine"),
+                EngineVersion.id.label("engine_version_id"),
                 EngineVersion.device_architecture.label("device_architecture"),
                 EngineVersion.version.label("version"),
                 EngineVersion.engine_id.label("engine_id"),
@@ -146,9 +147,44 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
                     device_architecture=row.device_architecture,
                     version=row.version,
                     container_image=row.container_image,
+                    engine_version_id=row.engine_version_id,
                 )
             )
         return compatible_engines
+
+
+class EngineToolParserRuleCRUD(CRUDMixin[EngineToolParserRule, None, None]):
+    __model__ = EngineToolParserRule
+
+    def __init__(self) -> None:
+        """Initialize the EngineToolParserRuleCRUD class."""
+        super().__init__(self.__model__)
+
+    def get_rules_for_versions(
+        self,
+        engine_version_ids: List[UUID],
+        session: Optional[Session] = None,
+    ) -> Dict[UUID, List[EngineToolParserRule]]:
+        """Get parser rules for multiple engine versions grouped by version ID."""
+        if not engine_version_ids:
+            return {}
+
+        _session = session or self.get_session()
+        try:
+            query = (
+                _session.query(EngineToolParserRule)
+                .filter(EngineToolParserRule.engine_version_id.in_(engine_version_ids))
+                .order_by(EngineToolParserRule.engine_version_id, EngineToolParserRule.priority.asc())
+            )
+            results = query.all()
+
+            grouped: Dict[UUID, List[EngineToolParserRule]] = {}
+            for rule in results:
+                grouped.setdefault(rule.engine_version_id, []).append(rule)
+            return grouped
+        finally:
+            if session is None:
+                self.cleanup_session(_session)
 
 
 class EngineVersionCRUD(CRUDMixin[EngineVersion, None, None]):
@@ -196,10 +232,11 @@ class EngineVersionCRUD(CRUDMixin[EngineVersion, None, None]):
             result = _session.execute(stmt)
             return result.scalar_one_or_none()
         except SQLAlchemyError as e:
-            session.rollback()
+            _session.rollback()
             logger.exception(f"Error getting latest engine version for {engine_id}: {e}")
             if raise_on_error:
                 raise e
+            return None
         finally:
             self.cleanup_session(_session if session is None else None)
 

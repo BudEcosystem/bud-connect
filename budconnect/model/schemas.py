@@ -76,7 +76,7 @@ class ProviderCreate(BaseModel):
     icon: str
     description: str
     credentials: List[Dict[str, Any]]
-    capabilities: list[ProviderCapabilityEnum]
+    capabilities: List[ProviderCapabilityEnum]
 
 
 class InputCost(BaseModel):
@@ -244,6 +244,9 @@ class ModelInfoCreate(BaseModel):
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
+    model_architecture_class_id: Optional[UUID4] = None
+    chat_template: Optional[str] = None
+    tool_calling_parser_type: Optional[str] = None
 
     def model_dump(self, **kwargs: Any) -> Dict[str, Any]:
         """Implement custom model_dump to convert nested Pydantic models to None."""
@@ -289,9 +292,45 @@ class ModelInfoUpdate(BaseModel):
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
+    model_architecture_class_id: Optional[UUID4] = None
+    chat_template: Optional[str] = None
+    tool_calling_parser_type: Optional[str] = None
 
 
 # Api Schemas
+
+
+class ModelArchitectureClassBase(BaseModel):
+    """Base schema for model architecture class."""
+
+    class_name: str
+    architecture_family: str
+    tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
+
+
+class ModelArchitectureClassCreate(ModelArchitectureClassBase):
+    """Schema for creating a model architecture class."""
+
+    pass
+
+
+class ModelArchitectureClassUpdate(BaseModel):
+    """Schema for updating a model architecture class."""
+
+    architecture_family: Optional[str] = None
+    tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
+
+
+class ModelArchitectureClassResponse(ModelArchitectureClassBase):
+    """Schema for model architecture class response."""
+
+    id: UUID4
+    created_at: datetime
+    modified_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ModelInfoResponse(BaseModel):
@@ -316,6 +355,9 @@ class ModelInfoResponse(BaseModel):
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
+    architecture_class: Optional[ModelArchitectureClassResponse] = None
+    chat_template: Optional[str] = None
+    tool_calling_parser_type: Optional[str] = None
     created_at: Optional[datetime] = None
     modified_at: Optional[datetime] = None
 
@@ -425,7 +467,47 @@ class ModelDetailsResponse(BaseModel):
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
+    architecture_class: Optional[ModelArchitectureClassResponse] = None
+    tool_calling_parser_type: Optional[str] = None
 
     # Provider fields
     provider_name: str
     provider_type: str
+
+
+class ModelCapabilityBase(BaseModel):
+    """Base schema for model capability."""
+
+    model_info_id: UUID4
+    engine_version_id: UUID4
+    tool_calling_enabled: bool = False
+    tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_enabled: bool = False
+    reasoning_parser_type: Optional[str] = None
+    compatibility_notes: Optional[Dict[str, Any]] = None
+
+
+class ModelCapabilityCreate(ModelCapabilityBase):
+    """Schema for creating a model capability."""
+
+    pass
+
+
+class ModelCapabilityUpdate(BaseModel):
+    """Schema for updating a model capability."""
+
+    tool_calling_enabled: Optional[bool] = None
+    tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_enabled: Optional[bool] = None
+    reasoning_parser_type: Optional[str] = None
+    compatibility_notes: Optional[Dict[str, Any]] = None
+
+
+class ModelCapabilityResponse(ModelCapabilityBase):
+    """Schema for model capability response."""
+
+    id: UUID4
+    created_at: datetime
+    modified_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)

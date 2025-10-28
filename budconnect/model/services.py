@@ -16,7 +16,7 @@
 
 """This module contains the services for the model API."""
 
-from typing import List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -26,11 +26,14 @@ from sqlalchemy.exc import IntegrityError
 
 from ..commons.constants import ProviderCapabilityEnum
 from ..engine.crud import EngineCRUD, EngineVersionCRUD
-from .crud import ModelDetailsCRUD, ModelInfoCRUD, ProviderCRUD
+from .crud import ModelArchitectureClassCRUD, ModelDetailsCRUD, ModelInfoCRUD, ProviderCRUD
 from .models import ModelInfo, Provider
 from .schemas import (
     CompatibleModelsResponse,
     CompatibleProviders,
+    ModelArchitectureClassCreate,
+    ModelArchitectureClassResponse,
+    ModelArchitectureClassUpdate,
     ModelDetailsResponse,
     ModelDetailsUpdate,
     ModelInfoCreate,
@@ -92,6 +95,8 @@ class ModelService:
                                 "features": db_model.features,
                                 "endpoints": db_model.endpoints,
                                 "deprecation_date": db_model.deprecation_date,
+                                "chat_template": db_model.chat_template,
+                                "tool_calling_parser_type": db_model.tool_calling_parser_type,
                             }
 
                         compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -121,6 +126,8 @@ class ModelService:
                                 "features": db_model.features,
                                 "endpoints": db_model.endpoints,
                                 "deprecation_date": db_model.deprecation_date,
+                                "chat_template": db_model.chat_template,
+                                "tool_calling_parser_type": db_model.tool_calling_parser_type,
                             }
                             compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
@@ -207,6 +214,7 @@ class ModelService:
                             "features": db_model.features,
                             "endpoints": db_model.endpoints,
                             "deprecation_date": db_model.deprecation_date,
+                            "chat_template": db_model.chat_template,
                         }
 
                     compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -236,6 +244,7 @@ class ModelService:
                             "features": db_model.features,
                             "endpoints": db_model.endpoints,
                             "deprecation_date": db_model.deprecation_date,
+                            "chat_template": db_model.chat_template,
                         }
                         compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
@@ -337,6 +346,8 @@ class ModelService:
                         "endpoints": model.endpoints or [],
                         "deprecation_date": model.deprecation_date,
                         "license": license,
+                        "chat_template": model.chat_template,
+                        "tool_calling_parser_type": model.tool_calling_parser_type,
                         "created_at": model.created_at,
                         "modified_at": model.modified_at,
                     }
@@ -400,6 +411,8 @@ class ModelService:
                     "endpoints": model.endpoints or [],
                     "deprecation_date": model.deprecation_date,
                     "license": license,
+                    "chat_template": model.chat_template,
+                    "tool_calling_parser_type": model.tool_calling_parser_type,
                     "created_at": model.created_at,
                     "modified_at": model.modified_at,
                 }
@@ -676,6 +689,7 @@ class ModelService:
                     "endpoints": model.endpoints or [],
                     "deprecation_date": model.deprecation_date,
                     "license": license,
+                    "tool_calling_parser_type": model.tool_calling_parser_type,
                     "provider_name": provider.name if provider else None,
                     "provider_type": provider.provider_type if provider else None,
                 }
@@ -691,3 +705,178 @@ class ModelService:
                 raise ClientException(message=f"Failed to update model details: {str(e)}", status_code=500) from e
             finally:
                 crud.cleanup_session(session)
+
+    # Architecture methods
+    @staticmethod
+    def get_all_architectures(
+        page: int = 1,
+        page_size: int = 100,
+        search: Optional[str] = None,
+    ) -> Tuple[List[Dict[str, Any]], int]:
+        """Get all architectures with pagination and search.
+
+        Args:
+            page: Page number (starts from 1)
+            page_size: Number of items per page
+            search: Optional search term
+
+        Returns:
+            Tuple of (architectures list, total count)
+        """
+        crud = ModelArchitectureClassCRUD()
+        offset = (page - 1) * page_size
+
+        try:
+            architectures, total = crud.get_all_with_model_count(
+                offset=offset,
+                limit=page_size,
+                search=search,
+            )
+            return architectures, total
+        except Exception as e:
+            logger.error(f"Error fetching architectures: {e}")
+            raise ClientException(message=f"Failed to fetch architectures: {str(e)}", status_code=500) from e
+
+    @staticmethod
+    def get_architecture_by_id(architecture_id: UUID) -> Optional[ModelArchitectureClassResponse]:
+        """Get architecture by ID.
+
+        Args:
+            architecture_id: UUID of the architecture
+
+        Returns:
+            Architecture or None if not found
+        """
+        crud = ModelArchitectureClassCRUD()
+
+        try:
+            architecture = crud.fetch_one({"id": architecture_id})
+            if architecture:
+                return ModelArchitectureClassResponse(
+                    id=architecture.id,
+                    class_name=architecture.class_name,
+                    architecture_family=architecture.architecture_family,
+                    tool_calling_parser_type=architecture.tool_calling_parser_type,
+                    reasoning_parser_type=architecture.reasoning_parser_type,
+                    created_at=architecture.created_at,
+                    modified_at=architecture.modified_at,
+                )
+            return None
+        except Exception as e:
+            logger.error(f"Error fetching architecture {architecture_id}: {e}")
+            raise ClientException(message=f"Failed to fetch architecture: {str(e)}", status_code=500) from e
+
+    @staticmethod
+    def create_architecture(
+        architecture_data: ModelArchitectureClassCreate,
+    ) -> ModelArchitectureClassResponse:
+        """Create a new architecture.
+
+        Args:
+            architecture_data: Architecture creation data
+
+        Returns:
+            Created architecture
+        """
+        crud = ModelArchitectureClassCRUD()
+
+        try:
+            architecture = crud.insert(architecture_data.model_dump())
+            return ModelArchitectureClassResponse(
+                id=architecture.id,
+                class_name=architecture.class_name,
+                architecture_family=architecture.architecture_family,
+                tool_calling_parser_type=architecture.tool_calling_parser_type,
+                reasoning_parser_type=architecture.reasoning_parser_type,
+                created_at=architecture.created_at,
+                modified_at=architecture.modified_at,
+            )
+        except IntegrityError as e:
+            if "unique constraint" in str(e).lower():
+                raise ClientException(
+                    message=f"Architecture with class_name '{architecture_data.class_name}' already exists",
+                    status_code=status.HTTP_409_CONFLICT,
+                ) from e
+            raise ClientException(message=f"Failed to create architecture: {str(e)}", status_code=500) from e
+        except Exception as e:
+            logger.error(f"Error creating architecture: {e}")
+            raise ClientException(message=f"Failed to create architecture: {str(e)}", status_code=500) from e
+
+    @staticmethod
+    def update_architecture(
+        architecture_id: UUID,
+        architecture_data: ModelArchitectureClassUpdate,
+    ) -> Optional[ModelArchitectureClassResponse]:
+        """Update an architecture.
+
+        Args:
+            architecture_id: UUID of the architecture to update
+            architecture_data: Update data
+
+        Returns:
+            Updated architecture or None if not found
+        """
+        crud = ModelArchitectureClassCRUD()
+
+        try:
+            # Check if architecture exists
+            existing = crud.fetch_one({"id": architecture_id})
+            if not existing:
+                return None
+
+            # Update architecture
+            update_count = crud.update(architecture_data.model_dump(exclude_unset=True), {"id": architecture_id})
+
+            if update_count > 0:
+                # Fetch the updated architecture
+                updated = crud.fetch_one({"id": architecture_id})
+                if updated:
+                    return ModelArchitectureClassResponse(
+                        id=updated.id,
+                        class_name=updated.class_name,
+                        architecture_family=updated.architecture_family,
+                        tool_calling_parser_type=updated.tool_calling_parser_type,
+                        reasoning_parser_type=updated.reasoning_parser_type,
+                        created_at=updated.created_at,
+                        modified_at=updated.modified_at,
+                    )
+            return None
+        except Exception as e:
+            logger.error(f"Error updating architecture {architecture_id}: {e}")
+            raise ClientException(message=f"Failed to update architecture: {str(e)}", status_code=500) from e
+
+    @staticmethod
+    def delete_architecture(architecture_id: UUID) -> bool:
+        """Delete an architecture.
+
+        Args:
+            architecture_id: UUID of the architecture to delete
+
+        Returns:
+            True if deleted, False if not found
+        """
+        crud = ModelArchitectureClassCRUD()
+
+        try:
+            # Check if architecture exists
+            existing = crud.fetch_one({"id": architecture_id})
+            if not existing:
+                return False
+
+            # Check if any models are using this architecture
+            model_crud = ModelInfoCRUD()
+            models_using = model_crud.fetch_many({"model_architecture_class_id": architecture_id})[0]
+            if models_using:
+                raise ClientException(
+                    message=f"Cannot delete architecture: {len(models_using)} models are using it",
+                    status_code=status.HTTP_409_CONFLICT,
+                )
+
+            # Delete architecture
+            crud.delete({"id": architecture_id})
+            return True
+        except ClientException:
+            raise
+        except Exception as e:
+            logger.error(f"Error deleting architecture {architecture_id}: {e}")
+            raise ClientException(message=f"Failed to delete architecture: {str(e)}", status_code=500) from e

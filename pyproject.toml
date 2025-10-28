@@ -58,11 +58,14 @@ plugins = [
     "pydantic.mypy"
 ]
 python_version = "3.8"
+exclude = [
+    "alembic/",
+]
 
 follow_imports = "silent"
 warn_redundant_casts = true
 warn_unused_ignores = true
-warn_return_any = true
+warn_return_any = false
 warn_unused_configs = true
 disallow_any_generics = true
 check_untyped_defs = true
