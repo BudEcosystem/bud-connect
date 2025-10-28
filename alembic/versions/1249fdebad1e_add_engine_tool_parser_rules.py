@@ -1,7 +1,7 @@
 """add_engine_tool_parser_rules
 
 Revision ID: 1249fdebad1e
-Revises: g2b3c4d5e6f7
+Revises: h3c4d5e6f7g8
 Create Date: 2025-09-28 16:10:09.456162
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = '1249fdebad1e'
-down_revision: Union[str, None] = 'g2b3c4d5e6f7'
+down_revision: Union[str, None] = 'h3c4d5e6f7g8'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
