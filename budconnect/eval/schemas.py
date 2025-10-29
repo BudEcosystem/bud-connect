@@ -26,16 +26,25 @@ class EvalManifestBuildRequest(BaseModel):
 
     output_filename: str = Field(
         default="eval_manifest.json",
-        description="Filename for the eval manifest (will be saved in budconnect/eval/data/)",
+        description="Filename for the eval manifest (will be saved in configured EVAL_OUTPUT_DIR)",
     )
     enable_analysis: bool = Field(
         default=False,
-        description="Enable LLM-based analysis of dataset questions (samples 200 questions per dataset)",
+        description="Enable LLM-based analysis of dataset questions",
+    )
+    sample_size: Optional[int] = Field(
+        default=None,
+        description="Number of samples to extract per dataset (overrides EVAL_SAMPLE_SIZE env var if provided)",
+        gt=0,
     )
 
     model_config = {
         "json_schema_extra": {
-            "example": {"output_filename": "eval_manifest.json", "enable_analysis": False}
+            "example": {
+                "output_filename": "eval_manifest.json",
+                "enable_analysis": False,
+                "sample_size": 200
+            }
         }
     }
 

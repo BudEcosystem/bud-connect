@@ -29,6 +29,7 @@ project_root = Path(__file__).parent.parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
+from budconnect.commons.config import app_settings
 from budconnect.eval.manifest_builder import EvalManifestBuilder
 
 
@@ -44,15 +45,20 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def build_manifest(output_filename: str = "eval_manifest.json", enable_analysis: bool = False):
+async def build_manifest(
+    output_filename: str = "eval_manifest.json",
+    enable_analysis: bool = False,
+    sample_size: Optional[int] = None
+):
     """Build the eval manifest file.
 
     Args:
         output_filename: Name of the output file
         enable_analysis: Whether to enable LLM-based question analysis
+        sample_size: Number of samples per dataset (overrides EVAL_SAMPLE_SIZE if provided)
     """
-    # Determine output path
-    data_dir = Path(__file__).parent / "data"
+    # Get output directory from config
+    data_dir = app_settings.base_dir / app_settings.eval_output_dir
     data_dir.mkdir(parents=True, exist_ok=True)
     output_path = data_dir / output_filename
 
@@ -61,11 +67,16 @@ async def build_manifest(output_filename: str = "eval_manifest.json", enable_ana
     logger.info("=" * 80)
     logger.info(f"Output file: {output_path}")
     logger.info(f"Analysis enabled: {enable_analysis}")
+    logger.info(f"Sample size: {sample_size or app_settings.eval_sample_size}")
     logger.info("=" * 80)
 
     try:
         # Create builder instance
-        builder = EvalManifestBuilder(output_path=str(output_path), enable_analysis=enable_analysis)
+        builder = EvalManifestBuilder(
+            output_path=str(output_path),
+            enable_analysis=enable_analysis,
+            sample_size=sample_size
+        )
 
         # Build the manifest
         logger.info("Building manifest...")
@@ -142,6 +153,9 @@ Examples:
   # Custom output filename
   %(prog)s --output custom_manifest.json
 
+  # Custom sample size (overrides EVAL_SAMPLE_SIZE env var)
+  %(prog)s --sample-size 100
+
   # Enable debug logging
   %(prog)s --debug
         """
@@ -160,6 +174,13 @@ Examples:
     )
 
     parser.add_argument(
+        '--sample-size', '-s',
+        type=int,
+        default=None,
+        help='Number of samples to extract per dataset (overrides EVAL_SAMPLE_SIZE env var)'
+    )
+
+    parser.add_argument(
         '--debug', '-d',
         action='store_true',
         help='Enable debug logging'
@@ -175,7 +196,8 @@ Examples:
     # Run the async build function
     exit_code = asyncio.run(build_manifest(
         output_filename=args.output,
-        enable_analysis=args.enable_analysis
+        enable_analysis=args.enable_analysis,
+        sample_size=args.sample_size
     ))
 
     sys.exit(exit_code)
