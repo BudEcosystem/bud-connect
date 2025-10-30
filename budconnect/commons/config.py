@@ -63,6 +63,18 @@ class AppConfig(BaseAppConfig):
         description="Timeout in seconds for eval LLM API calls",
     )
 
+    # Eval Module Output Configuration
+    eval_output_dir: str = Field(
+        default="budconnect/eval/data",
+        alias="EVAL_OUTPUT_DIR",
+        description="Directory path for eval manifest and analysis output files (relative to project root)",
+    )
+    eval_sample_size: int = Field(
+        default=200,
+        alias="EVAL_SAMPLE_SIZE",
+        description="Number of sample questions to extract from each dataset for analysis",
+    )
+
     # Seeder Configuration
     run_seeders_on_startup: bool = Field(
         default=True,

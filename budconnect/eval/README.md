@@ -68,27 +68,41 @@ The manifest is built from two OpenCompass API endpoints:
 
 ## Output Location
 
-All generated manifest files are saved to: `budconnect/eval/data/`
+All generated manifest files are saved to the directory configured in `EVAL_OUTPUT_DIR` (default: `budconnect/eval/data/`).
 
-The full path will be relative to your project root: `budconnect/eval/data/eval_manifest.json`
+The output path is relative to your project root. For example, with the default configuration:
+- Manifest files: `budconnect/eval/data/eval_manifest.json`
+- Analysis results: `budconnect/eval/data/analysis/<dataset_id>_analysis.json`
+
+You can customize the output directory by setting the `EVAL_OUTPUT_DIR` environment variable in your `.env` file.
 
 ## Usage
 
 ### Trigger via API
 
 ```bash
-# Build with default filename (eval_manifest.json)
+# Build with default settings
 curl -X POST http://localhost:9088/eval/build \
   -H "Content-Type: application/json" \
   -d '{
     "output_filename": "eval_manifest.json"
   }'
 
-# Or build with custom filename
+# Build with custom sample size (overrides EVAL_SAMPLE_SIZE env var)
 curl -X POST http://localhost:9088/eval/build \
   -H "Content-Type: application/json" \
   -d '{
-    "output_filename": "eval_manifest_v2.json"
+    "output_filename": "eval_manifest.json",
+    "sample_size": 100
+  }'
+
+# Build with analysis enabled and custom sample size
+curl -X POST http://localhost:9088/eval/build \
+  -H "Content-Type: application/json" \
+  -d '{
+    "output_filename": "eval_manifest_analyzed.json",
+    "enable_analysis": true,
+    "sample_size": 50
   }'
 ```
 
@@ -120,6 +134,7 @@ You can build the manifest without starting the full application using the stand
 # Edit quick_build.py to configure:
 # - ENABLE_ANALYSIS = True/False
 # - OUTPUT_FILE = "filename.json"
+# - SAMPLE_SIZE = None (use env var) or number (e.g., 100)
 
 python budconnect/eval/quick_build.py
 ```
@@ -136,8 +151,14 @@ python budconnect/eval/build_manifest_standalone.py --enable-analysis
 # Custom output filename
 python budconnect/eval/build_manifest_standalone.py --output custom_manifest.json
 
-# With analysis and custom filename
-python budconnect/eval/build_manifest_standalone.py --output analyzed.json --enable-analysis
+# Custom sample size (overrides EVAL_SAMPLE_SIZE env var)
+python budconnect/eval/build_manifest_standalone.py --sample-size 100
+
+# Combination: custom output, analysis, and sample size
+python budconnect/eval/build_manifest_standalone.py \
+  --output analyzed.json \
+  --enable-analysis \
+  --sample-size 50
 
 # Enable debug logging
 python budconnect/eval/build_manifest_standalone.py --debug
@@ -169,6 +190,26 @@ When `enable_analysis=True` (via API or standalone script), the system will:
 
 The eval module can be configured via environment variables in the `.env` file:
 
+### Eval Output Directory
+
+```bash
+# Directory path for eval manifest and analysis output files (relative to project root)
+# Default: budconnect/eval/data
+EVAL_OUTPUT_DIR=budconnect/eval/data
+
+# Number of sample questions to extract from each dataset
+# Default: 200
+EVAL_SAMPLE_SIZE=200
+```
+
+This controls where manifest files and analysis results are saved, and how many sample questions to extract from each dataset.
+
+**Sample Size Precedence:**
+The sample size can be configured at multiple levels with the following precedence (highest to lowest):
+1. **API/Function Argument** - Passed directly via `sample_size` parameter
+2. **Environment Variable** - Set via `EVAL_SAMPLE_SIZE` in `.env`
+3. **Default Value** - 200 (if not specified anywhere)
+
 ### Eval LLM Configuration (for Dataset Analysis)
 
 ```bash
@@ -190,6 +231,10 @@ The settings are defined in `budconnect/commons/config.py` and can be accessed v
 
 ```python
 from budconnect.commons.config import app_settings
+
+# Access eval output directory and sample size
+output_dir = app_settings.eval_output_dir  # e.g., "budconnect/eval/data"
+sample_size = app_settings.eval_sample_size  # e.g., 200
 
 # Access eval LLM configuration
 endpoint = app_settings.eval_llm_endpoint

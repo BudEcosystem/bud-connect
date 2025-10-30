@@ -24,6 +24,8 @@ from typing import Any, Dict, List, Optional
 
 from budmicroframe.commons.exceptions import ClientException
 
+from budconnect.commons.config import app_settings
+
 from .manifest_builder import EvalManifestBuilder
 
 
@@ -35,27 +37,39 @@ class EvalService:
 
     def __init__(self):
         """Initialize the eval service."""
-        self.data_dir = Path(__file__).parent / "data"
+        # Use configured output directory, relative to project root (base_dir)
+        self.data_dir = app_settings.base_dir / app_settings.eval_output_dir
 
     async def build_manifest(
-        self, output_filename: str = "eval_manifest.json", enable_analysis: bool = False
+        self,
+        output_filename: str = "eval_manifest.json",
+        enable_analysis: bool = False,
+        sample_size: Optional[int] = None
     ) -> Dict[str, Any]:
         """Build the eval manifest file.
 
         Args:
             output_filename: Name of the output file
             enable_analysis: Whether to enable LLM-based dataset analysis
+            sample_size: Number of samples to extract per dataset (overrides EVAL_SAMPLE_SIZE env var)
 
         Returns:
             dict: Result of the build process with status, file path, counts
         """
-        logger.info(f"Building eval manifest: {output_filename} (analysis={enable_analysis})")
+        logger.info(
+            f"Building eval manifest: {output_filename} "
+            f"(analysis={enable_analysis}, sample_size={sample_size or app_settings.eval_sample_size})"
+        )
 
         # Construct output path
         output_path = str(self.data_dir / output_filename)
 
         # Build the manifest
-        builder = EvalManifestBuilder(output_path=output_path, enable_analysis=enable_analysis)
+        builder = EvalManifestBuilder(
+            output_path=output_path,
+            enable_analysis=enable_analysis,
+            sample_size=sample_size
+        )
         result = await builder.run()
 
         logger.info(f"Manifest build completed: {result}")

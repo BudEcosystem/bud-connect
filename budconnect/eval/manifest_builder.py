@@ -25,8 +25,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, cast
 
 import httpx
-from openai.helpers.local_audio_player import SAMPLE_RATE
 
+from budconnect.commons.config import app_settings
 from budconnect.eval.dataset_analyzer import DatasetAnalyzer
 from budconnect.eval.dataset_sampler import get_dataset_sample
 
@@ -39,25 +39,31 @@ except ImportError:
     TIKTOKEN_AVAILABLE = False
     logger.warning("tiktoken not available - token estimation will use default values")
 
-SAMPLE_SIZE = 5
-
 class EvalManifestBuilder:
     """Builds eval_manifest.json from OpenCompass API data."""
 
     TRAITS_API_URL = "https://hub.opencompass.org.cn/gw/opencompass-be/api/v1/bench/listTopicDimensionTag"
     DATASETS_API_URL = "https://hub.opencompass.org.cn/gw/opencompass-be/api/v1/bench/listIndexCards"
 
-    def __init__(self, output_path: str, enable_analysis: bool = False) -> None:
+    def __init__(
+        self,
+        output_path: str,
+        enable_analysis: bool = False,
+        sample_size: Optional[int] = None
+    ) -> None:
         """Initialize the manifest builder.
 
         Args:
             output_path: Path to save the eval_manifest.json file
             enable_analysis: Whether to analyze datasets with LLM (default: False)
+            sample_size: Number of samples to extract per dataset (overrides EVAL_SAMPLE_SIZE env var)
         """
         self.output_path = Path(output_path)
         self.output_path.parent.mkdir(parents=True, exist_ok=True)
         self.client = httpx.AsyncClient(timeout=60.0, follow_redirects=True)
         self.enable_analysis = enable_analysis
+        # Use provided sample_size or fall back to config
+        self.sample_size = sample_size if sample_size is not None else app_settings.eval_sample_size
 
         # Load eval type mapping
         self.eval_type_mapping = self._load_eval_type_mapping()
@@ -628,7 +634,7 @@ class EvalManifestBuilder:
                         try:
                             # Get sample questions and total count
                             samples, total_count = get_dataset_sample(
-                                dataset_name=dataset_name, sample_size=SAMPLE_SIZE, split="test", seed=42, return_total_count=True
+                                dataset_name=dataset_name, sample_size=self.sample_size, split="test", seed=42, return_total_count=True
                             )
 
                             logger.info(f"Successfully sampled {len(samples)} questions for {name} (total: {total_count})")
@@ -643,7 +649,7 @@ class EvalManifestBuilder:
 
                             # Analyze the samples
                             analysis_data = await self.analyzer.analyze_dataset(
-                                dataset_id=f"opencompass_{dataset_id}", samples=samples, max_questions=SAMPLE_SIZE
+                                dataset_id=f"opencompass_{dataset_id}", samples=samples, max_questions=self.sample_size
                             )
 
                             # Save analysis to file
@@ -689,7 +695,7 @@ class EvalManifestBuilder:
                     try:
                         # Sample just a few rows for token estimation
                         samples, total_count = get_dataset_sample(
-                            dataset_name=dataset_name, sample_size=5, split="test", seed=42, return_total_count=True
+                            dataset_name=dataset_name, sample_size=self.sample_size, split="test", seed=42, return_total_count=True
                         )
 
                         # Update dataset entry with actual sample count

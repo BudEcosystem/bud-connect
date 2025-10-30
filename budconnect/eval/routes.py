@@ -54,7 +54,7 @@ async def build_eval_manifest(request: EvalManifestBuildRequest) -> EvalManifest
     2. Fetch datasets data from OpenCompass API (listIndexCards)
     3. Transform and combine the data into eval_manifest.json format
     4. Optionally analyze datasets with LLM (if enable_analysis=True)
-    5. Save to budconnect/eval/data/ directory
+    5. Save to configured output directory (EVAL_OUTPUT_DIR environment variable)
 
     Args:
         request: Build configuration with output filename and analysis options
@@ -64,7 +64,9 @@ async def build_eval_manifest(request: EvalManifestBuildRequest) -> EvalManifest
     """
     service = EvalService()
     result = await service.build_manifest(
-        output_filename=request.output_filename, enable_analysis=request.enable_analysis
+        output_filename=request.output_filename,
+        enable_analysis=request.enable_analysis,
+        sample_size=request.sample_size
     )
 
     return EvalManifestBuildResponse(**result)
