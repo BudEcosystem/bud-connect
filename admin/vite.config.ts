@@ -39,11 +39,11 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3000,
       proxy: shouldUseProxy ? {
-        '/api': {
+        // Proxy backend API routes directly (no /api prefix)
+        '^/(auth|engine|model|eval|provider|guardrail|license)': {
           target: proxyTarget,
           changeOrigin: true,
-          secure: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          secure: false,
           followRedirects: true,
           configure: (proxy, _options) => {
             proxy.on('error', (err, _req, _res) => {

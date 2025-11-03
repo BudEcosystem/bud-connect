@@ -14,8 +14,8 @@ COPY . .
 
 # Build the application with base path
 ENV VITE_BASE_PATH=/admin
-# Use /admin/api for production API calls (will be proxied by nginx)
-ENV VITE_API_BASE_URL=/admin/api
+# Empty VITE_API_BASE_URL means same-origin calls (Traefik handles routing to backend)
+ENV VITE_API_BASE_URL=
 # Enable debug mode to see what's happening
 ENV VITE_DEBUG_MODE=true
 RUN npm run build

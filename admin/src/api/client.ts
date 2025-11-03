@@ -1,10 +1,11 @@
 import axios, { AxiosError } from 'axios'
 import { ErrorResponse } from '@/types'
 
-// Create axios instance with hardcoded base URL for production
+// Create axios instance for backend API calls
+// Development: Vite proxy intercepts backend routes and forwards to Kubernetes backend
+// Production: Traefik routes backend paths directly to backend service
 const apiClient = axios.create({
-  // ALWAYS use the proxy path to ensure HTTPS
-  baseURL: '/admin/api',
+  baseURL: '', // Empty string for same-origin requests
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -52,7 +53,8 @@ apiClient.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh_token')
       if (refreshToken && !error.config.url?.includes('/auth/')) {
         try {
-          const response = await axios.post('/admin/api/auth/refresh', {
+          // Use apiClient to ensure proper baseURL and proxy routing in development
+          const response = await apiClient.post('/auth/refresh', {
             refresh_token: refreshToken
           })
           
