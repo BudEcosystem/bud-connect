@@ -77,6 +77,10 @@ async def get_models(
     page_size: int = Query(100, ge=1, le=500, description="Number of items per page"),
     search: Optional[str] = Query(None, description="Search in model URI"),
     provider_id: Annotated[Optional[UUID], Query(description="Filter by provider ID")] = None,
+    supports_lora: Annotated[Optional[bool], Query(description="Filter by LoRA support")] = None,
+    supports_pipeline_parallelism: Annotated[
+        Optional[bool], Query(description="Filter by pipeline parallelism support")
+    ] = None,
 ) -> ModelListResponse:
     """Get all models with optional search and pagination.
 
@@ -85,12 +89,16 @@ async def get_models(
         page_size: Number of items per page
         search: Optional search term to filter by URI
         provider_id: Optional provider ID to filter by
+        supports_lora: Optional filter for LoRA support
+        supports_pipeline_parallelism: Optional filter for pipeline parallelism support
 
     Returns:
         List of models with pagination info
     """
     try:
-        models, total = ModelService.get_all_models(page, page_size, search, provider_id)
+        models, total = ModelService.get_all_models(
+            page, page_size, search, provider_id, supports_lora, supports_pipeline_parallelism
+        )
         return ModelListResponse(models=models, total=total, page=page, page_size=page_size)
     except Exception as e:
         logger.error(f"Error fetching models: {str(e)}")

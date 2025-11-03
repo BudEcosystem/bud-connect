@@ -220,6 +220,8 @@ class Features(BaseModel):
     supports_function_calling: Optional[bool] = Field(None)
     supports_native_streaming: Optional[bool] = Field(None)
     supports_prompt_caching: Optional[bool] = Field(None)
+    supports_lora: Optional[bool] = Field(None)
+    supports_pipeline_parallelism: Optional[bool] = Field(None)
 
     class Config:
         """Configuration for features validation."""

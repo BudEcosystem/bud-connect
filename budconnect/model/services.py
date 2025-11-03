@@ -22,6 +22,7 @@ from uuid import UUID
 from budmicroframe.commons import logging
 from budmicroframe.commons.exceptions import ClientException
 from fastapi import status
+from sqlalchemy import Boolean
 from sqlalchemy.exc import IntegrityError
 
 from ..commons.constants import ProviderCapabilityEnum
@@ -277,7 +278,12 @@ class ModelService:
 
     @staticmethod
     def get_all_models(
-        page: int = 1, page_size: int = 100, search: Optional[str] = None, provider_id: Optional[UUID] = None
+        page: int = 1,
+        page_size: int = 100,
+        search: Optional[str] = None,
+        provider_id: Optional[UUID] = None,
+        supports_lora: Optional[bool] = None,
+        supports_pipeline_parallelism: Optional[bool] = None,
     ) -> Tuple[List[ModelInfoResponse], int]:
         """Get all models with pagination and optional filtering.
 
@@ -286,6 +292,8 @@ class ModelService:
             page_size: Number of items per page
             search: Optional search term to filter by URI
             provider_id: Optional provider ID to filter by
+            supports_lora: Optional filter for LoRA support
+            supports_pipeline_parallelism: Optional filter for pipeline parallelism support
 
         Returns:
             Tuple of (list of models, total count)
@@ -314,6 +322,16 @@ class ModelService:
 
                 if provider_id:
                     query = query.filter(ModelInfo.provider_id == provider_id)
+
+                # Apply JSONB feature filters
+                if supports_lora is not None:
+                    query = query.filter(ModelInfo.features["supports_lora"].astext.cast(Boolean) == supports_lora)
+
+                if supports_pipeline_parallelism is not None:
+                    query = query.filter(
+                        ModelInfo.features["supports_pipeline_parallelism"].astext.cast(Boolean)
+                        == supports_pipeline_parallelism
+                    )
 
                 # Get total count
                 total = query.count()
