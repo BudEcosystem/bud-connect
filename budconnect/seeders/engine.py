@@ -178,10 +178,10 @@ class EngineSeeder(BaseSeeder):
                     if "parser_rules" in version_data:
                         parser_rules = version_data.get("parser_rules", [])  # type: ignore
                         with engine_parser_rule_crud as parser_rule_crud:
-                            parser_rule_crud.delete(
+                            # Fetch existing parser rules for this version
+                            existing_rules, _ = parser_rule_crud.fetch_many(
                                 {"engine_version_id": version_id},
                                 session=parser_rule_crud.session,
-                                raise_on_error=False,
                             )
 
                             for rule in parser_rules:
@@ -227,12 +227,39 @@ class EngineSeeder(BaseSeeder):
                                     )
                                     continue
 
-                                parser_rule_crud.insert(rule_payload, session=parser_rule_crud.session)
-                                logger.info(
-                                    "Added parser rule %s for engine version %s",
-                                    rule_payload["parser_type"],
-                                    version_id,
+                                # Check if this rule already exists (match by pattern and match_type)
+                                existing_rule = next(
+                                    (
+                                        r
+                                        for r in existing_rules
+                                        if r.pattern == rule_payload["pattern"]
+                                        and r.match_type == rule_payload["match_type"]
+                                    ),
+                                    None,
                                 )
+
+                                if existing_rule:
+                                    # Update existing rule
+                                    parser_rule_crud.update(
+                                        rule_payload,
+                                        {"id": existing_rule.id},
+                                        session=parser_rule_crud.session,
+                                    )
+                                    logger.info(
+                                        "Updated parser rule %s (pattern: %s) for engine version %s",
+                                        rule_payload["parser_type"],
+                                        rule_payload["pattern"],
+                                        version_id,
+                                    )
+                                else:
+                                    # Insert new rule
+                                    parser_rule_crud.insert(rule_payload, session=parser_rule_crud.session)
+                                    logger.info(
+                                        "Added parser rule %s (pattern: %s) for engine version %s",
+                                        rule_payload["parser_type"],
+                                        rule_payload["pattern"],
+                                        version_id,
+                                    )
 
     @staticmethod
     def _get_engines_data() -> Dict[str, Any]:

@@ -1,4 +1,4 @@
-# from .engine import EngineSeeder
+from .engine import EngineSeeder
 from .guardrails import GuardrailsSeeder
 from .license import LicenseSeeder
 
@@ -10,7 +10,7 @@ from .user import UserSeeder
 
 seeders = {
     "user": UserSeeder,  # This should run first to create initial admin
-    # "engine": EngineSeeder,
+    "engine": EngineSeeder,
     "license": LicenseSeeder,  # This should run before litellm and tensorzero
     # "litellm": LiteLLMSeeder,
     # "tensorzero": TensorZeroSeeder,
