@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertCircle, LogIn } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { apiClient } from '../api/client';
 
 interface LoginForm {
   username: string;
@@ -21,19 +22,9 @@ const Login: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.detail || 'Login failed');
-      }
+      // Use apiClient for consistent API calls
+      const response = await apiClient.post('/auth/login', form);
+      const data = response.data;
 
       // Use AuthContext to handle login
       login(data.access_token, data.refresh_token);

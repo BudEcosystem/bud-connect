@@ -28,7 +28,7 @@ spec:
           value: {{ .Values.env.PSQL_DB_NAME }}
         volumeMounts:
         - name: postgresql-data
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/postgresql/data/pgdata
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:

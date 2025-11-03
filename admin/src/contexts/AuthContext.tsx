@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiClient } from '../api/client';
 
 interface User {
   id: string;
@@ -91,19 +92,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/refresh`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ refresh_token: refresh }),
-      });
+      // Use apiClient for consistent API calls
+      const response = await apiClient.post('/auth/refresh', { refresh_token: refresh });
+      const data = response.data;
 
-      if (!response.ok) {
-        throw new Error('Token refresh failed');
-      }
-
-      const data = await response.json();
       login(data.access_token, data.refresh_token);
     } catch (error) {
       console.error('Token refresh failed:', error);
