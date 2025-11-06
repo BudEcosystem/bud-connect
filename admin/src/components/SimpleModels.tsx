@@ -31,6 +31,8 @@ export function SimpleModels() {
   const [expandedModels, setExpandedModels] = useState<Set<string>>(new Set())
   const [searchTerm, setSearchTerm] = useState('')
   const [filterProvider, setFilterProvider] = useState<string>('')
+  const [filterLoRA, setFilterLoRA] = useState<string>('')
+  const [filterPipelineParallelism, setFilterPipelineParallelism] = useState<string>('')
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [activeTab, setActiveTab] = useState<'basic' | 'details' | 'pricing' | 'features'>('basic')
@@ -82,19 +84,21 @@ export function SimpleModels() {
     fetchLicenses()
     fetchProviders()
     fetchArchitectures()
-  }, [currentPage, searchTerm, filterProvider])
+  }, [currentPage, searchTerm, filterProvider, filterLoRA, filterPipelineParallelism])
 
   const fetchModels = async () => {
     try {
       setLoading(true)
-      const params: any = { 
-        page: currentPage, 
+      const params: any = {
+        page: currentPage,
         page_size: 20
       }
-      
+
       if (searchTerm) params.search = searchTerm
       if (filterProvider) params.provider_id = filterProvider
-      
+      if (filterLoRA !== '') params.supports_lora = filterLoRA === 'true'
+      if (filterPipelineParallelism !== '') params.supports_pipeline_parallelism = filterPipelineParallelism === 'true'
+
       const response = await modelApi.getAll(params)
       // Models are now sorted by created_at on the backend (newest first)
       setModels(response.models)
@@ -402,6 +406,38 @@ export function SimpleModels() {
             <option key={provider.id} value={provider.id}>{provider.name}</option>
           ))}
         </select>
+        <select
+          value={filterLoRA}
+          onChange={(e) => {
+            setFilterLoRA(e.target.value)
+            setCurrentPage(1)
+          }}
+          style={{
+            padding: '8px',
+            border: '1px solid #ddd',
+            borderRadius: '4px'
+          }}
+        >
+          <option value="">LoRA Support: All</option>
+          <option value="true">Supports LoRA</option>
+          <option value="false">No LoRA Support</option>
+        </select>
+        <select
+          value={filterPipelineParallelism}
+          onChange={(e) => {
+            setFilterPipelineParallelism(e.target.value)
+            setCurrentPage(1)
+          }}
+          style={{
+            padding: '8px',
+            border: '1px solid #ddd',
+            borderRadius: '4px'
+          }}
+        >
+          <option value="">Pipeline Parallelism: All</option>
+          <option value="true">Supports Pipeline Parallelism</option>
+          <option value="false">No Pipeline Parallelism</option>
+        </select>
       </div>
 
       {/* Model List */}
@@ -511,6 +547,8 @@ export function SimpleModels() {
                           {model.architecture_class.reasoning_parser_type && (
                             <p><strong>Reasoning Parser:</strong> {model.architecture_class.reasoning_parser_type}</p>
                           )}
+                          <p><strong>Supports LoRA:</strong> {model.architecture_class.supports_lora ? 'Yes' : 'No'}</p>
+                          <p><strong>Supports Pipeline Parallelism:</strong> {model.architecture_class.supports_pipeline_parallelism ? 'Yes' : 'No'}</p>
                         </>
                       )}
                       {model.deprecation_date && (

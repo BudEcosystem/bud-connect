@@ -776,6 +776,8 @@ class ModelArchitectureClassCRUD(CRUDMixin[ModelArchitectureClass, None, None]):
                     "architecture_family": arch.architecture_family,
                     "tool_calling_parser_type": arch.tool_calling_parser_type,
                     "reasoning_parser_type": arch.reasoning_parser_type,
+                    "supports_lora": arch.supports_lora,
+                    "supports_pipeline_parallelism": arch.supports_pipeline_parallelism,
                     "model_count": model_count,
                     "created_at": arch.created_at,
                     "modified_at": arch.modified_at,

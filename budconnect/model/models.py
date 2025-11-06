@@ -149,14 +149,16 @@ class ModelArchitectureClass(PSQLBase, TimestampMixin):
 
     This table stores the mapping between specific model architecture classes
     (e.g., 'LlamaForCausalLM') and their family names, along with their
-    tool calling and reasoning capabilities.
+    tool calling, reasoning, LoRA, and parallelism capabilities.
 
     Attributes:
         id (UUID): Unique identifier for the architecture class.
         class_name (str): The model architecture class name (e.g., 'LlamaForCausalLM').
         architecture_family (str): The family this architecture belongs to (e.g., 'llama').
-        tool_calling_template (str): The tool calling template type if supported.
+        tool_calling_parser_type (str): The tool calling parser type if supported.
         reasoning_parser_type (str): The reasoning parser type if supported.
+        supports_lora (bool): Whether this architecture supports LoRA fine-tuning.
+        supports_pipeline_parallelism (bool): Whether this architecture supports pipeline parallelism.
         created_at (datetime): Timestamp when the record was created.
         updated_at (datetime): Timestamp when the record was last updated.
     """
@@ -168,6 +170,8 @@ class ModelArchitectureClass(PSQLBase, TimestampMixin):
     architecture_family: Mapped[str] = mapped_column(String, nullable=False)
     tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
     reasoning_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    supports_lora: Mapped[bool] = mapped_column(nullable=False, default=False)
+    supports_pipeline_parallelism: Mapped[bool] = mapped_column(nullable=False, default=False)
 
     models: Mapped[List["ModelInfo"]] = relationship(back_populates="architecture_class")
 

@@ -220,8 +220,6 @@ class Features(BaseModel):
     supports_function_calling: Optional[bool] = Field(None)
     supports_native_streaming: Optional[bool] = Field(None)
     supports_prompt_caching: Optional[bool] = Field(None)
-    supports_lora: Optional[bool] = Field(None)
-    supports_pipeline_parallelism: Optional[bool] = Field(None)
 
     class Config:
         """Configuration for features validation."""
@@ -309,6 +307,8 @@ class ModelArchitectureClassBase(BaseModel):
     architecture_family: str
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    supports_lora: bool = False
+    supports_pipeline_parallelism: bool = False
 
 
 class ModelArchitectureClassCreate(ModelArchitectureClassBase):
@@ -323,6 +323,8 @@ class ModelArchitectureClassUpdate(BaseModel):
     architecture_family: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    supports_lora: Optional[bool] = None
+    supports_pipeline_parallelism: Optional[bool] = None
 
 
 class ModelArchitectureClassResponse(ModelArchitectureClassBase):

@@ -22,7 +22,6 @@ from uuid import UUID
 from budmicroframe.commons import logging
 from budmicroframe.commons.exceptions import ClientException
 from fastapi import status
-from sqlalchemy import Boolean
 from sqlalchemy.exc import IntegrityError
 
 from ..commons.constants import ProviderCapabilityEnum
@@ -302,7 +301,9 @@ class ModelService:
             session = crud.get_session()
             try:
                 # Build base query with provider and license info
-                from .models import License
+                from sqlalchemy import func
+
+                from .models import License, ModelArchitectureClass
 
                 query = (
                     session.query(
@@ -313,6 +314,9 @@ class ModelService:
                     )
                     .join(Provider, ModelInfo.provider_id == Provider.id)
                     .outerjoin(License, ModelInfo.license_id == License.id)
+                    .outerjoin(
+                        ModelArchitectureClass, ModelInfo.model_architecture_class_id == ModelArchitectureClass.id
+                    )
                 )
 
                 # Apply filters
@@ -323,13 +327,14 @@ class ModelService:
                 if provider_id:
                     query = query.filter(ModelInfo.provider_id == provider_id)
 
-                # Apply JSONB feature filters
+                # Apply architecture-level feature filters
+                # Use COALESCE to treat NULL architecture as unsupported (False)
                 if supports_lora is not None:
-                    query = query.filter(ModelInfo.features["supports_lora"].astext.cast(Boolean) == supports_lora)
+                    query = query.filter(func.coalesce(ModelArchitectureClass.supports_lora, False) == supports_lora)
 
                 if supports_pipeline_parallelism is not None:
                     query = query.filter(
-                        ModelInfo.features["supports_pipeline_parallelism"].astext.cast(Boolean)
+                        func.coalesce(ModelArchitectureClass.supports_pipeline_parallelism, False)
                         == supports_pipeline_parallelism
                     )
 
