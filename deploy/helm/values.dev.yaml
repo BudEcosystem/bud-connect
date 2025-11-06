@@ -1,0 +1,26 @@
+namespace: bud-connect
+name: bud-connect
+image: "budstudio/budconnect:nightly"
+
+host: "connect.dev.bud.studio"
+
+env:
+  PSQL_USER: "budconnect"
+  PSQL_PASSWORD: "budconnect"
+
+  INITIAL_ADMIN_PASSWORD: "changeme"
+  INITIAL_ADMIN_EMAIL: "admin@budconnect.local"
+  INITIAL_ADMIN_USERNAME: "admin"
+
+redis:
+  storage_size: 1Gi
+  host_path: /datadisk/pvc/budconnect/redis
+
+postgres:
+  storage_size: 10Gi
+  host_path: /datadisk/pvc/budconnect/postgres
+
+# Admin Frontend Configuration
+admin:
+  image: "budstudio/budconnect-admin:nightly"
+  imagePullPolicy: IfNotPresent
