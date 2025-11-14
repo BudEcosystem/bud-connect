@@ -338,15 +338,9 @@ class EvalManifestBuilder:
                 bucket = "60"
             else:
                 # Round to nearest even number
-                if age % 2 == 0:
-                    bucket = str(int(age))
-                else:
-                    # For odd ages, round down to nearest even
-                    bucket = str(int(age) - 1)
-
+                bucket = str(int(age) // 2 * 2)
             # Increment the bucket count
-            if bucket in age_counts:
-                age_counts[bucket] += 1
+            age_counts[bucket] += 1
 
         # Convert to the required format
         data = [age_counts[cat] for cat in categories]
@@ -402,6 +396,7 @@ class EvalManifestBuilder:
         domains_all = set()
         skills_all = set()
         concepts_all = set()
+        qualifications = set()
 
         for q in questions:
             analysis = q.get("analysis", {})
@@ -444,6 +439,11 @@ class EvalManifestBuilder:
             concepts = analysis.get("concepts", [])
             if isinstance(concepts, list):
                 concepts_all.update(concepts)
+
+            # Collect qualifications
+            quals = analysis.get("qualification", [])
+            if isinstance(quals, list):
+                qualifications.update(quals)
 
         # Format question format from task types
         question_format = ", ".join(sorted(task_types)) if task_types else "Various formats"
@@ -518,28 +518,16 @@ class EvalManifestBuilder:
         if domains_all:
             what_to_expect_parts.append(f"requiring {', '.join(list(domains_all)[:2])} knowledge")
 
-        # Add qualification expectation
-        qualifications = set()
-        for q in questions:
-            analysis = q.get("analysis", {})
-            if "error" not in analysis:
-                quals = analysis.get("qualification", [])
-                if isinstance(quals, list):
-                    qualifications.update(quals)
-
+        # Add qualification expectation (already collected in first loop)
         if qualifications:
             qual_list = list(qualifications)[:2]
             what_to_expect_parts.append(f"suitable for {', '.join(qual_list)} level")
 
         if what_to_expect_parts:
-            what_to_expect = f"Expect {what_to_expect_parts[0]}"
-            if len(what_to_expect_parts) > 1:
-                what_to_expect += f", {', '.join(what_to_expect_parts[1:])}."
-            else:
-                what_to_expect += "."
+            what_to_expect = f"Expect {', '.join(what_to_expect_parts)}."
         else:
             what_to_expect = f"Expect a comprehensive evaluation with {dataset_total} questions."
-
+        
         return {
             "sample_questions_answers": {
                 "examples": examples,
