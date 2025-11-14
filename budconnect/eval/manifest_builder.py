@@ -49,7 +49,8 @@ class EvalManifestBuilder:
         self,
         output_path: str,
         enable_analysis: bool = False,
-        sample_size: Optional[int] = None
+        sample_size: Optional[int] = None,
+        skip_cache: bool = False
     ) -> None:
         """Initialize the manifest builder.
 
@@ -57,6 +58,7 @@ class EvalManifestBuilder:
             output_path: Path to save the eval_manifest.json file
             enable_analysis: Whether to analyze datasets with LLM (default: False)
             sample_size: Number of samples to extract per dataset (overrides EVAL_SAMPLE_SIZE env var)
+            skip_cache: Whether to skip cache and regenerate all data (default: False)
         """
         self.output_path = Path(output_path)
         self.output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -64,6 +66,10 @@ class EvalManifestBuilder:
         self.enable_analysis = enable_analysis
         # Use provided sample_size or fall back to config
         self.sample_size = sample_size if sample_size is not None else app_settings.eval_sample_size
+        self.skip_cache = skip_cache
+
+        if skip_cache:
+            logger.info("Cache skipping enabled - will regenerate all data")
 
         # Load eval type mapping
         self.eval_type_mapping = self._load_eval_type_mapping()
@@ -293,6 +299,63 @@ class EvalManifestBuilder:
             logger.error(f"Failed to fetch datasets data: {e}")
             return all_datasets  # Return what we got so far
 
+    def calculate_age_distribution(self, analysis_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Calculate age distribution from analyzed questions.
+
+        Args:
+            analysis_data: Analysis results from DatasetAnalyzer
+
+        Returns:
+            Dictionary with age distribution data and categories (even numbers from 10 to 60)
+        """
+        questions = analysis_data.get("questions", [])
+
+        # Define age categories as even numbers from 10 to 60
+        # Categories: 10, 12, 14, 16, ..., 58, 60
+        categories = [str(i) for i in range(10, 62, 2)]
+
+        # Initialize counters for each category
+        age_counts = {cat: 0 for cat in categories}
+
+        for q in questions:
+            analysis = q.get("analysis", {})
+
+            # Skip if there's an error or no age data
+            if "error" in analysis:
+                continue
+
+            # Use avg_age if available, otherwise fall back to min_age
+            age = analysis.get("avg_age") or analysis.get("min_age")
+
+            if age is None:
+                continue
+
+            # Map age to nearest even number bucket
+            # Ages below 10 map to "10", ages above 60 map to "60"
+            if age < 10:
+                bucket = "10"
+            elif age > 60:
+                bucket = "60"
+            else:
+                # Round to nearest even number
+                if age % 2 == 0:
+                    bucket = str(int(age))
+                else:
+                    # For odd ages, round down to nearest even
+                    bucket = str(int(age) - 1)
+
+            # Increment the bucket count
+            if bucket in age_counts:
+                age_counts[bucket] += 1
+
+        # Convert to the required format
+        data = [age_counts[cat] for cat in categories]
+
+        return {
+            "data": data,
+            "categories": categories
+        }
+
     def aggregate_analysis(self, analysis_data: Dict[str, Any], total_questions: Optional[int] = None) -> Dict[str, Any]:
         """Aggregate analysis data to extract useful metadata.
 
@@ -309,6 +372,10 @@ class EvalManifestBuilder:
         dataset_total = total_questions if total_questions is not None else analysis_data.get("total_samples", 0)
 
         if not questions:
+            # Generate empty age distribution with even numbers from 10 to 60
+            categories = [str(i) for i in range(10, 62, 2)]
+            data = [0] * len(categories)
+
             return {
                 "sample_questions_answers": {
                     "examples": [],
@@ -319,7 +386,13 @@ class EvalManifestBuilder:
                 "advantages_disadvantages": {
                     "advantages": [],
                     "disadvantages": []
-                }
+                },
+                "age_distribution": {
+                    "data": data,
+                    "categories": categories
+                },
+                "why_run_this_eval": "Run this evaluation to assess general model capabilities.",
+                "what_to_expect": f"Expect a comprehensive evaluation with {dataset_total} questions."
             }
 
         # Extract examples (first 3 successful analyses)
@@ -405,6 +478,68 @@ class EvalManifestBuilder:
         if analysis_data.get("failed", 0) > 0:
             disadvantages.append(f"Analysis failed for {analysis_data.get('failed', 0)} questions")
 
+        # Calculate age distribution
+        age_distribution = self.calculate_age_distribution(analysis_data)
+
+        # Generate "why_run_this_eval"
+        why_run_parts = []
+        if skills_all:
+            skill_list = ', '.join(list(skills_all)[:3])
+            why_run_parts.append(f"to evaluate {skill_list} capabilities")
+        if domains_all:
+            domain_list = ', '.join(list(domains_all)[:2])
+            why_run_parts.append(f"to assess domain knowledge in {domain_list}")
+        if task_types:
+            task_list = ', '.join(list(task_types)[:2])
+            why_run_parts.append(f"to test {task_list} performance")
+
+        if why_run_parts:
+            why_run_this_eval = f"Run this evaluation {', '.join(why_run_parts)}."
+        else:
+            why_run_this_eval = "Run this evaluation to assess general model capabilities."
+
+        # Generate "what_to_expect"
+        what_to_expect_parts = []
+
+        # Add difficulty expectation
+        if difficulty_levels:
+            difficulty_str = ', '.join(difficulty_levels)
+            what_to_expect_parts.append(f"questions at {difficulty_str} level{'s' if len(difficulty_levels) > 1 else ''}")
+
+        # Add task type expectation
+        if task_types:
+            task_count = len(task_types)
+            if task_count == 1:
+                what_to_expect_parts.append(f"{list(task_types)[0]} tasks")
+            else:
+                what_to_expect_parts.append(f"diverse tasks including {', '.join(list(task_types)[:2])}")
+
+        # Add domain expectation
+        if domains_all:
+            what_to_expect_parts.append(f"requiring {', '.join(list(domains_all)[:2])} knowledge")
+
+        # Add qualification expectation
+        qualifications = set()
+        for q in questions:
+            analysis = q.get("analysis", {})
+            if "error" not in analysis:
+                quals = analysis.get("qualification", [])
+                if isinstance(quals, list):
+                    qualifications.update(quals)
+
+        if qualifications:
+            qual_list = list(qualifications)[:2]
+            what_to_expect_parts.append(f"suitable for {', '.join(qual_list)} level")
+
+        if what_to_expect_parts:
+            what_to_expect = f"Expect {what_to_expect_parts[0]}"
+            if len(what_to_expect_parts) > 1:
+                what_to_expect += f", {', '.join(what_to_expect_parts[1:])}."
+            else:
+                what_to_expect += "."
+        else:
+            what_to_expect = f"Expect a comprehensive evaluation with {dataset_total} questions."
+
         return {
             "sample_questions_answers": {
                 "examples": examples,
@@ -415,7 +550,10 @@ class EvalManifestBuilder:
             "advantages_disadvantages": {
                 "advantages": advantages,
                 "disadvantages": disadvantages
-            }
+            },
+            "age_distribution": age_distribution,
+            "why_run_this_eval": why_run_this_eval,
+            "what_to_expect": what_to_expect
         }
 
     def transform_traits(self, api_traits: List[Any]) -> Dict[str, Any]:
@@ -580,7 +718,11 @@ class EvalManifestBuilder:
             existing_entry = existing_datasets_map.get(f"opencompass_{dataset_id}")
             dataset_updated = True  # Assume updated by default
 
-            if existing_entry:
+            # If skip_cache is enabled, always treat as updated (skip cache)
+            if self.skip_cache:
+                dataset_updated = True
+                logger.info(f"🔄 CACHE SKIPPED: {name} - Regenerating all data (skip_cache=True)")
+            elif existing_entry:
                 # Compare updateDate to check if dataset has changed
                 old_update_date = existing_entry.get("original_data", {}).get("updateDate")
                 new_update_date = dataset.get("updateDate")
@@ -599,11 +741,17 @@ class EvalManifestBuilder:
                     if "analysis_summary" in existing_entry:
                         dataset_entry["analysis_summary"] = existing_entry.get("analysis_summary")
 
-                    # Reuse sample_questions_answers and advantages_disadvantages
+                    # Reuse all aggregated analysis fields
                     if "sample_questions_answers" in existing_entry.get("original_data", {}):
                         dataset_entry["original_data"]["sample_questions_answers"] = existing_entry["original_data"]["sample_questions_answers"]
                     if "advantages_disadvantages" in existing_entry.get("original_data", {}):
                         dataset_entry["original_data"]["advantages_disadvantages"] = existing_entry["original_data"]["advantages_disadvantages"]
+                    if "age_distribution" in existing_entry.get("original_data", {}):
+                        dataset_entry["original_data"]["age_distribution"] = existing_entry["original_data"]["age_distribution"]
+                    if "why_run_this_eval" in existing_entry.get("original_data", {}):
+                        dataset_entry["original_data"]["why_run_this_eval"] = existing_entry["original_data"]["why_run_this_eval"]
+                    if "what_to_expect" in existing_entry.get("original_data", {}):
+                        dataset_entry["original_data"]["what_to_expect"] = existing_entry["original_data"]["what_to_expect"]
 
                     # Enhanced logging
                     cache_type = "with analysis" if has_analysis else "without analysis"
@@ -657,12 +805,15 @@ class EvalManifestBuilder:
                                 dataset_id=f"opencompass_{dataset_id}", analysis_data=analysis_data
                             )
 
-                            # Aggregate analysis data for sample_questions_answers and advantages_disadvantages
+                            # Aggregate analysis data for all derived fields
                             aggregated_data = self.aggregate_analysis(analysis_data, total_questions=total_count)
 
                             # Update dataset entry with aggregated data
                             dataset_entry["original_data"]["sample_questions_answers"] = aggregated_data["sample_questions_answers"]
                             dataset_entry["original_data"]["advantages_disadvantages"] = aggregated_data["advantages_disadvantages"]
+                            dataset_entry["original_data"]["age_distribution"] = aggregated_data["age_distribution"]
+                            dataset_entry["original_data"]["why_run_this_eval"] = aggregated_data["why_run_this_eval"]
+                            dataset_entry["original_data"]["what_to_expect"] = aggregated_data["what_to_expect"]
 
                             # Add analysis file path to dataset entry
                             dataset_entry["analysis_file"] = str(analysis_file.relative_to(self.output_path.parent))

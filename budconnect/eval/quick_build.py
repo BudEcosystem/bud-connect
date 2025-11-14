@@ -22,6 +22,7 @@ async def main():
     """Build the manifest."""
     # Configuration
     ENABLE_ANALYSIS = False  # Set to True to enable question analysis
+    SKIP_CACHE = True  # Set to True to skip cache and regenerate all data
     OUTPUT_FILE = "eval_manifest.json"
     SAMPLE_SIZE = None  # Set to override env var (e.g., 100), or None to use EVAL_SAMPLE_SIZE
 
@@ -36,6 +37,7 @@ async def main():
     print(f"Output: {output_path}")
     print(f"Analysis: {'ENABLED' if ENABLE_ANALYSIS else 'DISABLED'}")
     print(f"Sample Size: {SAMPLE_SIZE or app_settings.eval_sample_size}")
+    print(f"Skip Cache: {'YES' if SKIP_CACHE else 'NO'}")
     print("=" * 80)
 
     try:
@@ -43,7 +45,8 @@ async def main():
         builder = EvalManifestBuilder(
             output_path=str(output_path),
             enable_analysis=ENABLE_ANALYSIS,
-            sample_size=SAMPLE_SIZE
+            sample_size=SAMPLE_SIZE,
+            skip_cache=SKIP_CACHE
         )
 
         print("\nFetching data from OpenCompass API...")
