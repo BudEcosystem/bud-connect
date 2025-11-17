@@ -160,6 +160,8 @@ export function SimpleArchitectures() {
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Family</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Tool Calling</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Reasoning</th>
+              <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>LoRA</th>
+              <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Pipeline Parallel</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Models</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Actions</th>
             </tr>
@@ -209,6 +211,30 @@ export function SimpleArchitectures() {
                   ) : (
                     <span style={{ color: '#999' }}>-</span>
                   )}
+                </td>
+                <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+                  <span style={{
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    backgroundColor: arch.supports_lora ? '#d4edda' : '#f8d7da',
+                    color: arch.supports_lora ? '#155724' : '#721c24'
+                  }}>
+                    {arch.supports_lora ? '✓ Yes' : '✗ No'}
+                  </span>
+                </td>
+                <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+                  <span style={{
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    backgroundColor: arch.supports_pipeline_parallelism ? '#d4edda' : '#f8d7da',
+                    color: arch.supports_pipeline_parallelism ? '#155724' : '#721c24'
+                  }}>
+                    {arch.supports_pipeline_parallelism ? '✓ Yes' : '✗ No'}
+                  </span>
                 </td>
                 <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
                   <span style={{

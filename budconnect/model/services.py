@@ -781,6 +781,8 @@ class ModelService:
                     architecture_family=architecture.architecture_family,
                     tool_calling_parser_type=architecture.tool_calling_parser_type,
                     reasoning_parser_type=architecture.reasoning_parser_type,
+                    supports_lora=architecture.supports_lora,
+                    supports_pipeline_parallelism=architecture.supports_pipeline_parallelism,
                     created_at=architecture.created_at,
                     modified_at=architecture.modified_at,
                 )
@@ -860,6 +862,8 @@ class ModelService:
                         architecture_family=updated.architecture_family,
                         tool_calling_parser_type=updated.tool_calling_parser_type,
                         reasoning_parser_type=updated.reasoning_parser_type,
+                        supports_lora=updated.supports_lora,
+                        supports_pipeline_parallelism=updated.supports_pipeline_parallelism,
                         created_at=updated.created_at,
                         modified_at=updated.modified_at,
                     )
