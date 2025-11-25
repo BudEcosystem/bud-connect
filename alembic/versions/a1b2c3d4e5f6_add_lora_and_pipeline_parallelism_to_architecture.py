@@ -26,7 +26,7 @@ def upgrade() -> None:
             'supports_lora',
             sa.Boolean(),
             nullable=False,
-            server_default=sa.text('false')
+            server_default=sa.false()
         )
     )
 
@@ -37,7 +37,7 @@ def upgrade() -> None:
             'supports_pipeline_parallelism',
             sa.Boolean(),
             nullable=False,
-            server_default=sa.text('false')
+            server_default=sa.false()
         )
     )
 

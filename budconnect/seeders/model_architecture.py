@@ -70,7 +70,8 @@ class ModelArchitectureSeeder(BaseSeeder):
 
             # Use CRUD to manage the session
             crud = ModelArchitectureClassCRUD()
-            with crud as crud, crud.get_session() as session:
+            with crud as crud:
+                session = crud.get_session()
                 # Use PostgreSQL's ON CONFLICT to handle updates
                 stmt = insert(ModelArchitectureClass).values(architecture_records)
                 stmt = stmt.on_conflict_do_update(
