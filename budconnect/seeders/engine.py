@@ -31,10 +31,13 @@ class EngineSeeder(BaseSeeder):
 
     async def seed(self) -> None:
         """Seed the database."""
+        logger.info("Starting engine seeder...")
         try:
             await self._seed_engine()
+            logger.info("Engine seeder completed successfully.")
         except Exception as e:
             logger.exception(f"Failed to seed engine: {e}")
+            raise
 
     @staticmethod
     async def _seed_engine() -> None:
@@ -57,7 +60,7 @@ class EngineSeeder(BaseSeeder):
             if existing_engine:
                 # Engine exists, use its ID
                 engine_id = existing_engine.id
-                logger.debug(f"Using existing engine: {engine_name} with ID {engine_id}")
+                logger.info(f"Using existing engine: {engine_name} with ID {engine_id}")
             else:
                 # Create new engine
                 new_engine = EngineCreate(name=engine_name)
@@ -143,6 +146,14 @@ class EngineSeeder(BaseSeeder):
                                 "deepseek_r1",
                             ]
 
+                        # Wrap parser lists in dictionaries for consistency with architectures/features
+                        supported_tool_calling_dict = (
+                            {"parser_types": supported_tool_calling} if supported_tool_calling else None
+                        )
+                        supported_reasoning_dict = (
+                            {"parser_types": supported_reasoning} if supported_reasoning else None
+                        )
+
                         # Check if compatibility already exists for this version
                         existing_compat = engine_compatibility_crud.fetch_one({"engine_version_id": version_id})
 
@@ -151,10 +162,8 @@ class EngineSeeder(BaseSeeder):
                             update_data = {
                                 "architectures": architectures_dict,
                                 "features": features_dict,
-                                "supported_tool_calling_parser_types": supported_tool_calling
-                                if supported_tool_calling
-                                else None,
-                                "supported_reasoning_parsers": supported_reasoning if supported_reasoning else None,
+                                "supported_tool_calling_parser_types": supported_tool_calling_dict,
+                                "supported_reasoning_parsers": supported_reasoning_dict,
                             }
 
                             # Update with the existing ID
@@ -166,10 +175,8 @@ class EngineSeeder(BaseSeeder):
                                 engine_version_id=str(version_id),
                                 architectures=architectures_dict,
                                 features=features_dict,
-                                supported_tool_calling_parser_types=supported_tool_calling
-                                if supported_tool_calling
-                                else None,
-                                supported_reasoning_parsers=supported_reasoning if supported_reasoning else None,
+                                supported_tool_calling_parser_types=supported_tool_calling_dict,
+                                supported_reasoning_parsers=supported_reasoning_dict,
                             )
                             engine_compatibility_crud.insert(new_compat.model_dump(exclude_unset=True))
                             logger.info(f"Created new compatibility for version {version_id}")

@@ -82,6 +82,8 @@ export interface ModelArchitecture {
   architecture_family: string
   tool_calling_parser_type?: string | null
   reasoning_parser_type?: string | null
+  supports_lora: boolean
+  supports_pipeline_parallelism: boolean
   model_count?: number
   created_at: string
   modified_at: string
@@ -92,12 +94,16 @@ export interface ModelArchitectureCreate {
   architecture_family: string
   tool_calling_parser_type?: string | null
   reasoning_parser_type?: string | null
+  supports_lora?: boolean
+  supports_pipeline_parallelism?: boolean
 }
 
 export interface ModelArchitectureUpdate {
   architecture_family?: string
   tool_calling_parser_type?: string | null
   reasoning_parser_type?: string | null
+  supports_lora?: boolean
+  supports_pipeline_parallelism?: boolean
 }
 
 export interface ArchitectureListResponse {

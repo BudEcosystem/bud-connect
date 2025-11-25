@@ -1,6 +1,7 @@
 from .engine import EngineSeeder
 from .guardrails import GuardrailsSeeder
 from .license import LicenseSeeder
+from .model_architecture import ModelArchitectureSeeder
 
 # from .litellm import LiteLLMSeeder as LiteLLMSeeder
 # from .model_details import ModelDetailsSeeder
@@ -16,4 +17,5 @@ seeders = {
     # "tensorzero": TensorZeroSeeder,
     # "model_details": ModelDetailsSeeder,  # This should run after litellm and tensorzero
     "guardrails": GuardrailsSeeder,  # This should run after tensorzero to ensure providers exist
+    "model_architecture": ModelArchitectureSeeder,
 }

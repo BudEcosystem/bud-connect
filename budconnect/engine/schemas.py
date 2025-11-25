@@ -127,6 +127,8 @@ class CompatibleEngine(BaseModel):
     chat_template: Optional[str] = None
     parser_source: Optional[str] = None
     parser_notes: Optional[str] = None
+    supports_lora: Optional[bool] = None
+    supports_pipeline_parallelism: Optional[bool] = None
 
 
 class CompatibleEnginesResponse(SuccessResponse):

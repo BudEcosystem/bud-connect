@@ -16,6 +16,8 @@ export function SimpleArchitectures() {
     architecture_family: '',
     tool_calling_parser_type: null,
     reasoning_parser_type: null,
+    supports_lora: false,
+    supports_pipeline_parallelism: false,
   })
 
   useEffect(() => {
@@ -50,6 +52,8 @@ export function SimpleArchitectures() {
           architecture_family: formData.architecture_family,
           tool_calling_parser_type: formData.tool_calling_parser_type,
           reasoning_parser_type: formData.reasoning_parser_type,
+          supports_lora: formData.supports_lora,
+          supports_pipeline_parallelism: formData.supports_pipeline_parallelism,
         }
         await architectureApi.update(editingArchitecture.id, updateData)
       } else {
@@ -84,6 +88,8 @@ export function SimpleArchitectures() {
       architecture_family: architecture.architecture_family,
       tool_calling_parser_type: architecture.tool_calling_parser_type,
       reasoning_parser_type: architecture.reasoning_parser_type,
+      supports_lora: architecture.supports_lora,
+      supports_pipeline_parallelism: architecture.supports_pipeline_parallelism,
     })
     setShowEditModal(true)
   }
@@ -94,6 +100,8 @@ export function SimpleArchitectures() {
       architecture_family: '',
       tool_calling_parser_type: null,
       reasoning_parser_type: null,
+      supports_lora: false,
+      supports_pipeline_parallelism: false,
     })
   }
 
@@ -152,6 +160,8 @@ export function SimpleArchitectures() {
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Family</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Tool Calling</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Reasoning</th>
+              <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>LoRA</th>
+              <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Pipeline Parallel</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Models</th>
               <th style={{ padding: '10px', textAlign: 'left', borderBottom: '1px solid #dee2e6' }}>Actions</th>
             </tr>
@@ -201,6 +211,30 @@ export function SimpleArchitectures() {
                   ) : (
                     <span style={{ color: '#999' }}>-</span>
                   )}
+                </td>
+                <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+                  <span style={{
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    backgroundColor: arch.supports_lora ? '#d4edda' : '#f8d7da',
+                    color: arch.supports_lora ? '#155724' : '#721c24'
+                  }}>
+                    {arch.supports_lora ? '✓ Yes' : '✗ No'}
+                  </span>
+                </td>
+                <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+                  <span style={{
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    backgroundColor: arch.supports_pipeline_parallelism ? '#d4edda' : '#f8d7da',
+                    color: arch.supports_pipeline_parallelism ? '#155724' : '#721c24'
+                  }}>
+                    {arch.supports_pipeline_parallelism ? '✓ Yes' : '✗ No'}
+                  </span>
                 </td>
                 <td style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
                   <span style={{
@@ -390,6 +424,36 @@ export function SimpleArchitectures() {
                 />
                 <small style={{ color: '#666' }}>
                   Leave empty if this architecture doesn't support reasoning outputs
+                </small>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={formData.supports_lora || false}
+                    onChange={(e) => setFormData({ ...formData, supports_lora: e.target.checked })}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <span>Supports LoRA</span>
+                </label>
+                <small style={{ color: '#666', marginLeft: '28px' }}>
+                  Check if this architecture supports LoRA fine-tuning
+                </small>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={formData.supports_pipeline_parallelism || false}
+                    onChange={(e) => setFormData({ ...formData, supports_pipeline_parallelism: e.target.checked })}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <span>Supports Pipeline Parallelism</span>
+                </label>
+                <small style={{ color: '#666', marginLeft: '28px' }}>
+                  Check if this architecture supports pipeline parallelism
                 </small>
               </div>
 

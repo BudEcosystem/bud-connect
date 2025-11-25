@@ -514,6 +514,8 @@ class EngineService:
                     engine_item.parser_source = engine_item.parser_source or "architecture_default"
                 engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
                 engine_item.architecture_family = architecture_info.architecture_family
+                engine_item.supports_lora = architecture_info.supports_lora
+                engine_item.supports_pipeline_parallelism = architecture_info.supports_pipeline_parallelism
 
             if matched_rule:
                 if matched_rule.chat_template is not None:

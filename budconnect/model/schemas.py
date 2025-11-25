@@ -307,6 +307,8 @@ class ModelArchitectureClassBase(BaseModel):
     architecture_family: str
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    supports_lora: bool = False
+    supports_pipeline_parallelism: bool = False
 
 
 class ModelArchitectureClassCreate(ModelArchitectureClassBase):
@@ -321,6 +323,8 @@ class ModelArchitectureClassUpdate(BaseModel):
     architecture_family: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    supports_lora: Optional[bool] = None
+    supports_pipeline_parallelism: Optional[bool] = None
 
 
 class ModelArchitectureClassResponse(ModelArchitectureClassBase):

@@ -277,7 +277,12 @@ class ModelService:
 
     @staticmethod
     def get_all_models(
-        page: int = 1, page_size: int = 100, search: Optional[str] = None, provider_id: Optional[UUID] = None
+        page: int = 1,
+        page_size: int = 100,
+        search: Optional[str] = None,
+        provider_id: Optional[UUID] = None,
+        supports_lora: Optional[bool] = None,
+        supports_pipeline_parallelism: Optional[bool] = None,
     ) -> Tuple[List[ModelInfoResponse], int]:
         """Get all models with pagination and optional filtering.
 
@@ -286,6 +291,8 @@ class ModelService:
             page_size: Number of items per page
             search: Optional search term to filter by URI
             provider_id: Optional provider ID to filter by
+            supports_lora: Optional filter for LoRA support
+            supports_pipeline_parallelism: Optional filter for pipeline parallelism support
 
         Returns:
             Tuple of (list of models, total count)
@@ -294,7 +301,9 @@ class ModelService:
             session = crud.get_session()
             try:
                 # Build base query with provider and license info
-                from .models import License
+                from sqlalchemy import func
+
+                from .models import License, ModelArchitectureClass
 
                 query = (
                     session.query(
@@ -305,6 +314,9 @@ class ModelService:
                     )
                     .join(Provider, ModelInfo.provider_id == Provider.id)
                     .outerjoin(License, ModelInfo.license_id == License.id)
+                    .outerjoin(
+                        ModelArchitectureClass, ModelInfo.model_architecture_class_id == ModelArchitectureClass.id
+                    )
                 )
 
                 # Apply filters
@@ -314,6 +326,17 @@ class ModelService:
 
                 if provider_id:
                     query = query.filter(ModelInfo.provider_id == provider_id)
+
+                # Apply architecture-level feature filters
+                # Use COALESCE to treat NULL architecture as unsupported (False)
+                if supports_lora is not None:
+                    query = query.filter(func.coalesce(ModelArchitectureClass.supports_lora, False) == supports_lora)
+
+                if supports_pipeline_parallelism is not None:
+                    query = query.filter(
+                        func.coalesce(ModelArchitectureClass.supports_pipeline_parallelism, False)
+                        == supports_pipeline_parallelism
+                    )
 
                 # Get total count
                 total = query.count()
@@ -758,6 +781,8 @@ class ModelService:
                     architecture_family=architecture.architecture_family,
                     tool_calling_parser_type=architecture.tool_calling_parser_type,
                     reasoning_parser_type=architecture.reasoning_parser_type,
+                    supports_lora=architecture.supports_lora,
+                    supports_pipeline_parallelism=architecture.supports_pipeline_parallelism,
                     created_at=architecture.created_at,
                     modified_at=architecture.modified_at,
                 )
@@ -837,6 +862,8 @@ class ModelService:
                         architecture_family=updated.architecture_family,
                         tool_calling_parser_type=updated.tool_calling_parser_type,
                         reasoning_parser_type=updated.reasoning_parser_type,
+                        supports_lora=updated.supports_lora,
+                        supports_pipeline_parallelism=updated.supports_pipeline_parallelism,
                         created_at=updated.created_at,
                         modified_at=updated.modified_at,
                     )

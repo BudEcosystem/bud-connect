@@ -10,3 +10,7 @@ README.md
 dapr-*.yaml
 *.log
 .env
+.venv
+
+admin
+node_modules
