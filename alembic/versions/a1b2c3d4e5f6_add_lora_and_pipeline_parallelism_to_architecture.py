@@ -19,32 +19,48 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # Add supports_lora column to model_architecture_class table
-    op.add_column(
-        'model_architecture_class',
-        sa.Column(
-            'supports_lora',
-            sa.Boolean(),
-            nullable=False,
-            server_default=sa.false()
-        )
-    )
+    # Get database connection and inspect existing columns
+    from sqlalchemy import inspect
+    conn = op.get_bind()
+    inspector = inspect(conn)
+    existing_columns = [col['name'] for col in inspector.get_columns('model_architecture_class')]
 
-    # Add supports_pipeline_parallelism column to model_architecture_class table
-    op.add_column(
-        'model_architecture_class',
-        sa.Column(
-            'supports_pipeline_parallelism',
-            sa.Boolean(),
-            nullable=False,
-            server_default=sa.false()
+    # Add supports_lora column only if it doesn't exist
+    if 'supports_lora' not in existing_columns:
+        op.add_column(
+            'model_architecture_class',
+            sa.Column(
+                'supports_lora',
+                sa.Boolean(),
+                nullable=False,
+                server_default=sa.text('false')
+            )
         )
-    )
+
+    # Add supports_pipeline_parallelism column only if it doesn't exist
+    if 'supports_pipeline_parallelism' not in existing_columns:
+        op.add_column(
+            'model_architecture_class',
+            sa.Column(
+                'supports_pipeline_parallelism',
+                sa.Boolean(),
+                nullable=False,
+                server_default=sa.text('false')
+            )
+        )
 
 
 def downgrade() -> None:
-    # Remove supports_pipeline_parallelism column
-    op.drop_column('model_architecture_class', 'supports_pipeline_parallelism')
+    # Get database connection and inspect existing columns
+    from sqlalchemy import inspect
+    conn = op.get_bind()
+    inspector = inspect(conn)
+    existing_columns = [col['name'] for col in inspector.get_columns('model_architecture_class')]
 
-    # Remove supports_lora column
-    op.drop_column('model_architecture_class', 'supports_lora')
+    # Remove supports_pipeline_parallelism column only if it exists
+    if 'supports_pipeline_parallelism' in existing_columns:
+        op.drop_column('model_architecture_class', 'supports_pipeline_parallelism')
+
+    # Remove supports_lora column only if it exists
+    if 'supports_lora' in existing_columns:
+        op.drop_column('model_architecture_class', 'supports_lora')

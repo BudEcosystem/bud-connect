@@ -833,14 +833,6 @@
       "supports_pipeline_parallelism": true
     },
     {
-      "class_name": "GritLM",
-      "architecture_family": "gritlm",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
-      "supports_lora": true,
-      "supports_pipeline_parallelism": true
-    },
-    {
       "class_name": "GteModel",
       "architecture_family": "bert_with_rope",
       "tool_calling_parser_type": null,
@@ -898,7 +890,7 @@
     },
     {
       "class_name": "Qwen3Model",
-      "architecture_family": null,
+      "architecture_family": "qwen3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -946,7 +938,7 @@
     },
     {
       "class_name": "GemmaForSequenceClassification",
-      "architecture_family": null,
+      "architecture_family": "gemma",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -970,7 +962,7 @@
     },
     {
       "class_name": "Qwen3ForSequenceClassification",
-      "architecture_family": null,
+      "architecture_family": "qwen3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -1074,7 +1066,7 @@
     },
     {
       "class_name": "DeepseekVLV2ForCausalLM",
-      "architecture_family": null,
+      "architecture_family": "deepseek_v2",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
@@ -1106,7 +1098,7 @@
     },
     {
       "class_name": "GLM4VForCausalLM",
-      "architecture_family": null,
+      "architecture_family": "glm4v",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -1306,7 +1298,7 @@
     },
     {
       "class_name": "NVLM_D_Model",
-      "architecture_family": null,
+      "architecture_family": "NVLM_D",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
@@ -1362,7 +1354,7 @@
     },
     {
       "class_name": "QwenVLForConditionalGeneration",
-      "architecture_family": null,
+      "architecture_family": "qwen_vl",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -1394,7 +1386,7 @@
     },
     {
       "class_name": "Qwen2_5OmniThinkerForConditionalGeneration",
-      "architecture_family": null,
+      "architecture_family": "qwen2_5_omni",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -1418,7 +1410,7 @@
     },
     {
       "class_name": "Qwen3OmniMoeThinkerForConditionalGeneration",
-      "architecture_family": null,
+      "architecture_family": "qwen3_omni_moe",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -1466,7 +1458,7 @@
     },
     {
       "class_name": "Tarsier2ForConditionalGeneration",
-      "architecture_family": null,
+      "architecture_family": "llava",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
@@ -1489,14 +1481,6 @@
       "supports_pipeline_parallelism": true
     },
     {
-      "class_name": "Gemma3nForConditionalGeneration",
-      "architecture_family": "gemma3n_mm",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
-    },
-    {
       "class_name": "CLIPModel",
       "architecture_family": "clip",
       "tool_calling_parser_type": null,
@@ -1505,24 +1489,8 @@
       "supports_pipeline_parallelism": false
     },
     {
-      "class_name": "LlavaNextForConditionalGeneration",
-      "architecture_family": null,
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": true
-    },
-    {
-      "class_name": "Phi3VForCausalLM",
-      "architecture_family": null,
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": true
-    },
-    {
       "class_name": "JinaVLForSequenceClassification",
-      "architecture_family": null,
+      "architecture_family": "jina_vl",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,

@@ -31,10 +31,13 @@ class EngineSeeder(BaseSeeder):
 
     async def seed(self) -> None:
         """Seed the database."""
+        logger.info("Starting engine seeder...")
         try:
             await self._seed_engine()
+            logger.info("Engine seeder completed successfully.")
         except Exception as e:
             logger.exception(f"Failed to seed engine: {e}")
+            raise
 
     @staticmethod
     async def _seed_engine() -> None:
@@ -57,7 +60,7 @@ class EngineSeeder(BaseSeeder):
             if existing_engine:
                 # Engine exists, use its ID
                 engine_id = existing_engine.id
-                logger.debug(f"Using existing engine: {engine_name} with ID {engine_id}")
+                logger.info(f"Using existing engine: {engine_name} with ID {engine_id}")
             else:
                 # Create new engine
                 new_engine = EngineCreate(name=engine_name)
