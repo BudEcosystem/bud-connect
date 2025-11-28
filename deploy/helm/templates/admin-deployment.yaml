@@ -22,7 +22,7 @@ spec:
         - containerPort: 80
           name: http
         env:
-        - name: API_BASE_URL
+        - name: VITE_API_BASE_URL
           value: "http://{{ .Values.name }}:{{ .Values.env.APP_PORT }}"
         resources:
           limits:

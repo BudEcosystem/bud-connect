@@ -1,6 +1,6 @@
 namespace: bud-connect
 name: bud-connect
-image: "budstudio/budconnect:latest"
+image: "budstudio/budconnect:0.2.0"
 
 host: "budconnect.bud.studio"
 
@@ -44,8 +44,8 @@ postgres:
 # Admin Frontend Configuration
 admin:
   enabled: true
-  image: "budstudio/budconnect-admin:latest"
-  imagePullPolicy: IfNotPresent
+  image: "budstudio/budconnect-admin:0.2.0"
+  imagePullPolicy: Always
   replicas: 1
   resources:
     limits:

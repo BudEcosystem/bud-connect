@@ -592,7 +592,6 @@ class TensorZeroSeeder(BaseSeeder):
                     "bud_sentinel",
                     "openai",
                     "azure_content_safety",
-                    "aws_comprehend",
                 ]:
                     provider_data = ProviderCreate(
                         name=predefined_providers[provider_type]["name"],
