@@ -8,8 +8,17 @@ metadata:
   annotations:
     # Admin routes have higher priority
     traefik.ingress.kubernetes.io/router.priority: "100"
+    {{- if .Values.tls.enabled }}
+    cert-manager.io/cluster-issuer: {{ .Values.tls.clusterIssuer | quote }}
+    {{- end }}
 spec:
   ingressClassName: traefik
+  {{- if .Values.tls.enabled }}
+  tls:
+  - hosts:
+    - {{ .Values.host | quote }}
+    secretName: {{ .Values.tls.secretName }}
+  {{- end }}
   rules:
   - host: {{ .Values.host | quote }}
     http:

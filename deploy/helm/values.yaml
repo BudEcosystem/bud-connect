@@ -4,6 +4,11 @@ image: "budstudio/budconnect:0.2.0"
 
 host: "budconnect.bud.studio"
 
+tls:
+  enabled: false
+  clusterIssuer: "letsencrypt-prod"
+  secretName: "budconnect-tls"
+
 env:
   PSQL_HOST: "postgresql-service.bud-connect"
   PSQL_PORT: "5432"

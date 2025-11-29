@@ -7,8 +7,17 @@ metadata:
   annotations:
     # Backend has lower priority than admin
     traefik.ingress.kubernetes.io/router.priority: "1"
+    {{- if .Values.tls.enabled }}
+    cert-manager.io/cluster-issuer: {{ .Values.tls.clusterIssuer | quote }}
+    {{- end }}
 spec:
   ingressClassName: traefik
+  {{- if .Values.tls.enabled }}
+  tls:
+  - hosts:
+    - {{ .Values.host | quote }}
+    secretName: {{ .Values.tls.secretName }}
+  {{- end }}
   rules:
   - host: {{ .Values.host | quote }}
     http:
@@ -20,4 +29,4 @@ spec:
           service:
             name: {{ .Values.name }}
             port:
-              number: {{ .Values.env.APP_PORT }}  # Removed | quote here
+              number: {{ .Values.env.APP_PORT }}
