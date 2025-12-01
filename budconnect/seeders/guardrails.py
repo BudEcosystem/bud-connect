@@ -89,7 +89,7 @@ class GuardrailsSeeder(BaseSeeder):
             engine_crud = EngineCRUD()
             with engine_crud as crud, crud.get_session() as session:
                 # Try both tensorzero and bud_sentinel engines
-                db_engine = engine_crud.fetch_one(conditions={"name": "tensorzero"}, session=session)
+                db_engine = engine_crud.fetch_one(conditions={"name": "TensorZero"}, session=session)
                 if db_engine:
                     logger.info("Found %s engine", "tensorzero")
                 elif not db_engine:
