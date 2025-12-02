@@ -148,6 +148,7 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
                     version=row.version,
                     container_image=row.container_image,
                     engine_version_id=row.engine_version_id,
+                    engine_id=row.engine_id,
                 )
             )
         return compatible_engines
@@ -160,27 +161,27 @@ class EngineToolParserRuleCRUD(CRUDMixin[EngineToolParserRule, None, None]):
         """Initialize the EngineToolParserRuleCRUD class."""
         super().__init__(self.__model__)
 
-    def get_rules_for_versions(
+    def get_rules_for_engines(
         self,
-        engine_version_ids: List[UUID],
+        engine_ids: List[UUID],
         session: Optional[Session] = None,
     ) -> Dict[UUID, List[EngineToolParserRule]]:
-        """Get parser rules for multiple engine versions grouped by version ID."""
-        if not engine_version_ids:
+        """Get parser rules for multiple engines grouped by engine ID."""
+        if not engine_ids:
             return {}
 
         _session = session or self.get_session()
         try:
             query = (
                 _session.query(EngineToolParserRule)
-                .filter(EngineToolParserRule.engine_version_id.in_(engine_version_ids))
-                .order_by(EngineToolParserRule.engine_version_id, EngineToolParserRule.priority.asc())
+                .filter(EngineToolParserRule.engine_id.in_(engine_ids))
+                .order_by(EngineToolParserRule.engine_id, EngineToolParserRule.priority.asc())
             )
             results = query.all()
 
             grouped: Dict[UUID, List[EngineToolParserRule]] = {}
             for rule in results:
-                grouped.setdefault(rule.engine_version_id, []).append(rule)
+                grouped.setdefault(rule.engine_id, []).append(rule)
             return grouped
         finally:
             if session is None:

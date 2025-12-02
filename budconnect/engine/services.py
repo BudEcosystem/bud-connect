@@ -318,12 +318,12 @@ class EngineService:
 
     @staticmethod
     def list_tool_parser_rules(
-        engine_version_id: UUID, session: Optional[Session] = None
+        engine_id: UUID, session: Optional[Session] = None
     ) -> List[EngineToolParserRule]:
-        """List parser rules for an engine version ordered by priority."""
+        """List parser rules for an engine ordered by priority."""
         with EngineToolParserRuleCRUD() as parser_rule_crud:
             rules, _ = parser_rule_crud.fetch_many(
-                {"engine_version_id": engine_version_id},
+                {"engine_id": engine_id},
                 session=parser_rule_crud.session,
                 order_by=[("priority", "asc")],
             )
@@ -341,9 +341,9 @@ class EngineService:
     def create_tool_parser_rule(
         rule_data: EngineToolParserRuleCreate, session: Optional[Session] = None
     ) -> EngineToolParserRule:
-        """Create a new tool parser rule for an engine version."""
-        # Ensure referenced engine version exists
-        EngineService.get_engine_version(rule_data.engine_version_id, session=session)
+        """Create a new tool parser rule for an engine."""
+        # Ensure referenced engine exists
+        EngineService.get_engine(rule_data.engine_id, session=session)
         logger.info(f"Before dump {rule_data}")
         try:
             payload = rule_data.model_dump()
@@ -484,24 +484,24 @@ class EngineService:
                 message="Model architecture is not compatible with the given device architecture and engine version"
             )
 
-        parser_rules_by_version: Dict[UUID, List[EngineToolParserRule]] = {}
+        parser_rules_by_engine: Dict[UUID, List[EngineToolParserRule]] = {}
         if model_uri:
-            version_ids = {
-                engine_item.engine_version_id
+            engine_ids = {
+                engine_item.engine_id
                 for engine_item in compatible_engines
-                if engine_item.engine_version_id is not None
+                if engine_item.engine_id is not None
             }
-            if version_ids:
+            if engine_ids:
                 with EngineToolParserRuleCRUD() as parser_rule_crud:
-                    parser_rules_by_version = parser_rule_crud.get_rules_for_versions(
-                        list(version_ids), session=parser_rule_crud.session
+                    parser_rules_by_engine = parser_rule_crud.get_rules_for_engines(
+                        list(engine_ids), session=parser_rule_crud.session
                     )
 
         # Enhance response with architecture capabilities and chat template
         for engine_item in compatible_engines:
             matched_rule = None
-            if model_uri and engine_item.engine_version_id:
-                rules = parser_rules_by_version.get(engine_item.engine_version_id, [])
+            if model_uri and engine_item.engine_id:
+                rules = parser_rules_by_engine.get(engine_item.engine_id, [])
                 matched_rule = EngineService._match_parser_rule(model_uri, rules)
 
             if model_info and model_info.tool_calling_parser_type:

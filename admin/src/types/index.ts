@@ -364,7 +364,7 @@ export type ParserMatchType = 'exact' | 'prefix' | 'regex'
 
 export interface EngineToolParserRule {
   id: string
-  engine_version_id: string
+  engine_id: string
   parser_type: string | null
   match_type: ParserMatchType
   pattern: string
@@ -377,7 +377,7 @@ export interface EngineToolParserRule {
 }
 
 export interface EngineToolParserRuleCreate {
-  engine_version_id: string
+  engine_id: string
   parser_type?: string | null
   match_type: ParserMatchType
   pattern: string
@@ -403,6 +403,7 @@ export interface CompatibleEngine {
   version: string
   container_image: string
   engine_version_id?: string
+  engine_id?: string
   tool_calling_parser_type?: string | null
   reasoning_parser_type?: string | null
   architecture_family?: string | null

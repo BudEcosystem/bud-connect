@@ -121,6 +121,7 @@ class CompatibleEngine(BaseModel):
     version: str
     container_image: str
     engine_version_id: Optional[UUID] = None
+    engine_id: Optional[UUID] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
     architecture_family: Optional[str] = None
@@ -136,7 +137,7 @@ class CompatibleEnginesResponse(SuccessResponse):
 
 
 class EngineToolParserRuleBase(BaseModel):
-    engine_version_id: UUID
+    engine_id: UUID
     parser_type: Optional[str] = None
     match_type: ParserMatchType
     pattern: str
@@ -172,7 +173,7 @@ class EngineToolParserRuleUpdate(BaseModel):
 
 class EngineToolParserRule(BaseModel):
     id: UUID
-    engine_version_id: UUID
+    engine_id: UUID
     parser_type: Optional[str] = None
     match_type: ParserMatchType
     pattern: str

@@ -153,8 +153,8 @@ export const engineApi = {
   },
 
   // Engine parser rules
-  getParserRules: async (engineVersionId: string) => {
-    const { data } = await apiClient.get<ParserRuleListResponse>(`/engine/parser-rules/${engineVersionId}`)
+  getParserRules: async (engineId: string) => {
+    const { data } = await apiClient.get<ParserRuleListResponse>(`/engine/parser-rules/${engineId}`)
     return data
   },
 

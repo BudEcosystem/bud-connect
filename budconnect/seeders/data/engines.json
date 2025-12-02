@@ -1,6 +1,59 @@
 [
     {
         "name": "vllm",
+        "parser_rules": [
+            {
+                "parser_type": "hermes",
+                "match_type": "prefix",
+                "pattern": "NousResearch/Hermes-2-Pro-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "Theta variants may produce lower-quality tool calls"
+            },
+            {
+                "parser_type": "hermes",
+                "match_type": "prefix",
+                "pattern": "NousResearch/Hermes-2-Theta-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "Theta variants may produce lower-quality tool calls"
+            },
+            {
+                "parser_type": "hermes",
+                "match_type": "prefix",
+                "pattern": "NousResearch/Hermes-3-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "Theta variants may produce lower-quality tool calls"
+            },
+            {
+                "parser_type": "llama3_json",
+                "match_type": "prefix",
+                "pattern": "meta-llama/Llama-3.1-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "",
+                "chat_template": "examples/tool_chat_template_llama3.1_json.jinja"
+            },
+            {
+                "parser_type": "llama3_json",
+                "match_type": "prefix",
+                "pattern": "meta-llama/Llama-3.2-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "",
+                "chat_template": "examples/tool_chat_template_llama3.2_json.jinja"
+            },
+            {
+                "parser_type": "llama4_pythonic",
+                "match_type": "prefix",
+                "pattern": "meta-llama/Llama-4-",
+                "priority": 0,
+                "enabled": true,
+                "notes": "",
+                "chat_template": "examples/tool_chat_template_llama4_pythonic.jinja"
+            }
+        ],
         "versions": [
             {
                 "version": "0.5.0",
@@ -238,59 +291,6 @@
                             "TransformersMultiModalForSequenceClassification"
                         ],
                         "features": []
-                    }
-                ],
-                "parser_rules": [
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-2-Pro-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-2-Theta-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-3-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "llama3_json",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-3.1-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama3.1_json.jinja"
-                    },
-                    {
-                        "parser_type": "llama3_json",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-3.2-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama3.2_json.jinja"
-                    },
-                    {
-                        "parser_type": "llama4_pythonic",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-4-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama4_pythonic.jinja"
                     }
                 ]
             },
@@ -530,59 +530,6 @@
                             "TransformersMultiModalForSequenceClassification"
                         ],
                         "features": []
-                    }
-                ],
-                "parser_rules": [
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-2-Pro-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-2-Theta-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "hermes",
-                        "match_type": "prefix",
-                        "pattern": "NousResearch/Hermes-3-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "Theta variants may produce lower-quality tool calls"
-                    },
-                    {
-                        "parser_type": "llama3_json",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-3.1-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama3.1_json.jinja"
-                    },
-                    {
-                        "parser_type": "llama3_json",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-3.2-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama3.2_json.jinja"
-                    },
-                    {
-                        "parser_type": "llama4_pythonic",
-                        "match_type": "prefix",
-                        "pattern": "meta-llama/Llama-4-",
-                        "priority": 0,
-                        "enabled": true,
-                        "notes": "",
-                        "chat_template": "examples/tool_chat_template_llama4_pythonic.jinja"
                     }
                 ]
             }

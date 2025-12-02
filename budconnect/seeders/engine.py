@@ -181,92 +181,92 @@ class EngineSeeder(BaseSeeder):
                             engine_compatibility_crud.insert(new_compat.model_dump(exclude_unset=True))
                             logger.info(f"Created new compatibility for version {version_id}")
 
-                    # Process tool parser rules for this version if provided
-                    if "parser_rules" in version_data:
-                        parser_rules = version_data.get("parser_rules", [])  # type: ignore
-                        with engine_parser_rule_crud as parser_rule_crud:
-                            # Fetch existing parser rules for this version
-                            existing_rules, _ = parser_rule_crud.fetch_many(
-                                {"engine_version_id": version_id},
+            # Process tool parser rules at engine level (not per version)
+            if "parser_rules" in engine_data:
+                parser_rules = engine_data.get("parser_rules", [])  # type: ignore
+                with engine_parser_rule_crud as parser_rule_crud:
+                    # Fetch existing parser rules for this engine
+                    existing_rules, _ = parser_rule_crud.fetch_many(
+                        {"engine_id": engine_id},
+                        session=parser_rule_crud.session,
+                    )
+
+                    for rule in parser_rules:
+                        parser_type = rule.get("parser_type")
+                        if isinstance(parser_type, str):
+                            parser_type = parser_type.strip()
+                        chat_template = rule.get("chat_template")
+                        if isinstance(chat_template, str):
+                            chat_template = chat_template.strip()
+                        rule_payload = {
+                            "engine_id": str(engine_id),
+                            "parser_type": parser_type or None,
+                            "match_type": (rule.get("match_type") or "exact"),
+                            "pattern": rule.get("pattern"),
+                            "priority": rule.get("priority", 0),
+                            "enabled": rule.get("enabled", True),
+                            "notes": rule.get("notes"),
+                            "chat_template": chat_template or None,
+                        }
+
+                        match_type = rule_payload.get("match_type")
+                        if isinstance(match_type, str):
+                            # Normalise to lowercase to match enum values
+                            normalized = match_type.lower()
+                            try:
+                                rule_payload["match_type"] = ParserMatchType(normalized).value
+                            except ValueError:
+                                logger.warning(
+                                    "Skipping parser rule for engine %s due to invalid match_type '%s'",
+                                    engine_id,
+                                    match_type,
+                                )
+                                continue
+                        elif isinstance(match_type, ParserMatchType):
+                            rule_payload["match_type"] = match_type.value
+
+                        if (
+                            not rule_payload.get("parser_type") and not rule_payload.get("chat_template")
+                        ) or not rule_payload.get("pattern"):
+                            logger.warning(
+                                "Skipping parser rule for engine %s due to missing required fields",
+                                engine_id,
+                            )
+                            continue
+
+                        # Check if this rule already exists (match by pattern and match_type)
+                        existing_rule = next(
+                            (
+                                r
+                                for r in existing_rules
+                                if r.pattern == rule_payload["pattern"]
+                                and r.match_type == rule_payload["match_type"]
+                            ),
+                            None,
+                        )
+
+                        if existing_rule:
+                            # Update existing rule
+                            parser_rule_crud.update(
+                                rule_payload,
+                                {"id": existing_rule.id},
                                 session=parser_rule_crud.session,
                             )
-
-                            for rule in parser_rules:
-                                parser_type = rule.get("parser_type")
-                                if isinstance(parser_type, str):
-                                    parser_type = parser_type.strip()
-                                chat_template = rule.get("chat_template")
-                                if isinstance(chat_template, str):
-                                    chat_template = chat_template.strip()
-                                rule_payload = {
-                                    "engine_version_id": str(version_id),
-                                    "parser_type": parser_type or None,
-                                    "match_type": (rule.get("match_type") or "exact"),
-                                    "pattern": rule.get("pattern"),
-                                    "priority": rule.get("priority", 0),
-                                    "enabled": rule.get("enabled", True),
-                                    "notes": rule.get("notes"),
-                                    "chat_template": chat_template or None,
-                                }
-
-                                match_type = rule_payload.get("match_type")
-                                if isinstance(match_type, str):
-                                    # Normalise to lowercase to match enum values
-                                    normalized = match_type.lower()
-                                    try:
-                                        rule_payload["match_type"] = ParserMatchType(normalized).value
-                                    except ValueError:
-                                        logger.warning(
-                                            "Skipping parser rule for engine version %s due to invalid match_type '%s'",
-                                            version_id,
-                                            match_type,
-                                        )
-                                        continue
-                                elif isinstance(match_type, ParserMatchType):
-                                    rule_payload["match_type"] = match_type.value
-
-                                if (
-                                    not rule_payload.get("parser_type") and not rule_payload.get("chat_template")
-                                ) or not rule_payload.get("pattern"):
-                                    logger.warning(
-                                        "Skipping parser rule for engine version %s due to missing required fields",
-                                        version_id,
-                                    )
-                                    continue
-
-                                # Check if this rule already exists (match by pattern and match_type)
-                                existing_rule = next(
-                                    (
-                                        r
-                                        for r in existing_rules
-                                        if r.pattern == rule_payload["pattern"]
-                                        and r.match_type == rule_payload["match_type"]
-                                    ),
-                                    None,
-                                )
-
-                                if existing_rule:
-                                    # Update existing rule
-                                    parser_rule_crud.update(
-                                        rule_payload,
-                                        {"id": existing_rule.id},
-                                        session=parser_rule_crud.session,
-                                    )
-                                    logger.info(
-                                        "Updated parser rule %s (pattern: %s) for engine version %s",
-                                        rule_payload["parser_type"],
-                                        rule_payload["pattern"],
-                                        version_id,
-                                    )
-                                else:
-                                    # Insert new rule
-                                    parser_rule_crud.insert(rule_payload, session=parser_rule_crud.session)
-                                    logger.info(
-                                        "Added parser rule %s (pattern: %s) for engine version %s",
-                                        rule_payload["parser_type"],
-                                        rule_payload["pattern"],
-                                        version_id,
-                                    )
+                            logger.info(
+                                "Updated parser rule %s (pattern: %s) for engine %s",
+                                rule_payload["parser_type"],
+                                rule_payload["pattern"],
+                                engine_id,
+                            )
+                        else:
+                            # Insert new rule
+                            parser_rule_crud.insert(rule_payload, session=parser_rule_crud.session)
+                            logger.info(
+                                "Added parser rule %s (pattern: %s) for engine %s",
+                                rule_payload["parser_type"],
+                                rule_payload["pattern"],
+                                engine_id,
+                            )
 
     @staticmethod
     def _get_engines_data() -> Dict[str, Any]:

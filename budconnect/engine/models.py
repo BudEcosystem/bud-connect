@@ -21,6 +21,7 @@ class Engine(PSQLBase, TimestampMixin):
         id: Unique identifier for the engine
         name: Name of the engine
         versions: List of versions associated with this engine.
+        parser_rules: List of parser rules associated with this engine.
     """
 
     __tablename__ = "engine"
@@ -29,6 +30,11 @@ class Engine(PSQLBase, TimestampMixin):
     name: Mapped[str] = mapped_column(String, nullable=False)
 
     versions: Mapped[List["EngineVersion"]] = relationship("EngineVersion", back_populates="engine")
+    parser_rules: Mapped[List["EngineToolParserRule"]] = relationship(
+        "EngineToolParserRule",
+        back_populates="engine",
+        cascade="all, delete-orphan",
+    )
 
     def __repr__(self) -> str:
         """Return a string representation of the Engine object.
@@ -64,11 +70,6 @@ class EngineVersion(PSQLBase, TimestampMixin):
 
     engine = relationship("Engine", back_populates="versions")
     compatibilities = relationship("EngineCompatibility", back_populates="engine_version")
-    parser_rules: Mapped[List["EngineToolParserRule"]] = relationship(
-        "EngineToolParserRule",
-        back_populates="engine_version",
-        cascade="all, delete-orphan",
-    )
     supported_providers: Mapped[List["Provider"]] = relationship(  # noqa: F821
         "Provider",
         secondary=engine_version_provider,
@@ -118,12 +119,12 @@ class EngineCompatibility(PSQLBase, TimestampMixin):
 
 
 class EngineToolParserRule(PSQLBase, TimestampMixin):
-    """Rule for selecting a tool parser based on model metadata for a specific engine version."""
+    """Rule for selecting a tool parser based on model metadata for a specific engine."""
 
     __tablename__ = "engine_tool_parser_rule"
 
     id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
-    engine_version_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine_version.id"), nullable=False)
+    engine_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine.id"), nullable=False)
     parser_type: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     match_type: Mapped[ParserMatchType] = mapped_column(
         Enum(
@@ -140,11 +141,11 @@ class EngineToolParserRule(PSQLBase, TimestampMixin):
     notes: Mapped[str] = mapped_column(Text, nullable=True)
     chat_template: Mapped[str] = mapped_column(Text, nullable=True)
 
-    engine_version: Mapped["EngineVersion"] = relationship("EngineVersion", back_populates="parser_rules")
+    engine: Mapped["Engine"] = relationship("Engine", back_populates="parser_rules")
 
     def __repr__(self) -> str:
         """Return string representation of EngineToolParserRule."""
         return (
-            f"<EngineToolParserRule(id={self.id}, engine_version_id={self.engine_version_id}, "
+            f"<EngineToolParserRule(id={self.id}, engine_id={self.engine_id}, "
             f"parser_type={self.parser_type}, match_type={self.match_type}, pattern={self.pattern})>"
         )

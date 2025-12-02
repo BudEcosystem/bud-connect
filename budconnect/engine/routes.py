@@ -54,7 +54,7 @@ engine_router = APIRouter(prefix="/engine", tags=["Engine"])
 def _build_parser_rule_schema(rule: models.EngineToolParserRule) -> schemas.EngineToolParserRule:
     return schemas.EngineToolParserRule(
         id=rule.id,
-        engine_version_id=rule.engine_version_id,
+        engine_id=rule.engine_id,
         parser_type=rule.parser_type,
         match_type=rule.match_type,
         pattern=rule.pattern,
@@ -477,13 +477,13 @@ async def delete_engine_compatibility(compatibility_id: UUID) -> Union[EngineCom
     return response.to_http_response()
 
 
-@engine_router.get("/parser-rules/{engine_version_id}")
+@engine_router.get("/parser-rules/{engine_id}")
 async def list_parser_rules(
-    engine_version_id: UUID,
+    engine_id: UUID,
 ) -> Union[EngineToolParserRuleListResponse, ErrorResponse]:
-    """List parser rules for a specific engine version."""
+    """List parser rules for a specific engine."""
     try:
-        rules = EngineService.list_tool_parser_rules(engine_version_id)
+        rules = EngineService.list_tool_parser_rules(engine_id)
         rule_schemas = [_build_parser_rule_schema(rule) for rule in rules]
 
         response = EngineToolParserRuleListResponse(
