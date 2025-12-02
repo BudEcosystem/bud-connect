@@ -247,6 +247,7 @@ class ModelInfoCreate(BaseModel):
     model_architecture_class_id: Optional[UUID4] = None
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
 
     def model_dump(self, **kwargs: Any) -> Dict[str, Any]:
         """Implement custom model_dump to convert nested Pydantic models to None."""
@@ -295,6 +296,7 @@ class ModelInfoUpdate(BaseModel):
     model_architecture_class_id: Optional[UUID4] = None
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
 
 
 # Api Schemas
@@ -362,6 +364,7 @@ class ModelInfoResponse(BaseModel):
     architecture_class: Optional[ModelArchitectureClassResponse] = None
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
     created_at: Optional[datetime] = None
     modified_at: Optional[datetime] = None
 
@@ -473,6 +476,7 @@ class ModelDetailsResponse(BaseModel):
     license: Optional[LicenseResponse] = None
     architecture_class: Optional[ModelArchitectureClassResponse] = None
     tool_calling_parser_type: Optional[str] = None
+    reasoning_parser_type: Optional[str] = None
 
     # Provider fields
     provider_name: str

@@ -41,6 +41,7 @@ export function SimpleModels() {
     model_architecture_class_id?: string
     chat_template?: string
     tool_calling_parser_type?: string
+    reasoning_parser_type?: string
     description?: string
     advantages?: string[]
     disadvantages?: string[]
@@ -60,6 +61,7 @@ export function SimpleModels() {
     model_architecture_class_id: undefined,
     chat_template: undefined,
     tool_calling_parser_type: undefined,
+    reasoning_parser_type: undefined,
     input_cost: {},
     output_cost: {},
     cache_cost: {},
@@ -162,6 +164,7 @@ export function SimpleModels() {
         model_architecture_class_id: formData.model_architecture_class_id || undefined,
         chat_template: formData.chat_template || undefined,
         tool_calling_parser_type: formData.tool_calling_parser_type || undefined,
+        reasoning_parser_type: formData.reasoning_parser_type || undefined,
         input_cost: Object.keys(formData.input_cost || {}).length > 0 ? formData.input_cost : undefined,
         output_cost: Object.keys(formData.output_cost || {}).length > 0 ? formData.output_cost : undefined,
         cache_cost: Object.keys(formData.cache_cost || {}).length > 0 ? formData.cache_cost : undefined,
@@ -229,6 +232,7 @@ export function SimpleModels() {
       model_architecture_class_id: model.architecture_class?.id,
       chat_template: model.chat_template,
       tool_calling_parser_type: model.tool_calling_parser_type || undefined,
+      reasoning_parser_type: model.reasoning_parser_type || undefined,
       input_cost: model.input_cost || {},
       output_cost: model.output_cost || {},
       cache_cost: model.cache_cost || {},
@@ -295,6 +299,7 @@ export function SimpleModels() {
       model_architecture_class_id: undefined,
       chat_template: undefined,
       tool_calling_parser_type: undefined,
+      reasoning_parser_type: undefined,
       input_cost: {},
       output_cost: {},
       cache_cost: {},
@@ -536,6 +541,9 @@ export function SimpleModels() {
                       <p><strong>Provider Type:</strong> {model.provider_type || 'N/A'}</p>
                       {model.tool_calling_parser_type && (
                         <p><strong>Tool Calling Parser (Model):</strong> {model.tool_calling_parser_type}</p>
+                      )}
+                      {model.reasoning_parser_type && (
+                        <p><strong>Reasoning Parser (Model):</strong> {model.reasoning_parser_type}</p>
                       )}
                       {model.architecture_class && (
                         <>
@@ -836,15 +844,18 @@ export function SimpleModels() {
                       return selectedArch ? (
                         <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
                           {selectedArch.tool_calling_parser_type && (
-                            <div>Tool Calling: {selectedArch.tool_calling_parser_type}</div>
+                            <div>Tool Calling (Arch): {selectedArch.tool_calling_parser_type}</div>
                           )}
                           {selectedArch.reasoning_parser_type && (
-                            <div>Reasoning: {selectedArch.reasoning_parser_type}</div>
+                            <div>Reasoning (Arch): {selectedArch.reasoning_parser_type}</div>
                           )}
                           {formData.tool_calling_parser_type && (
-                            <div>Model Override: {formData.tool_calling_parser_type}</div>
+                            <div style={{ color: '#007bff' }}>Tool Calling Override: {formData.tool_calling_parser_type}</div>
                           )}
-                          {!selectedArch.tool_calling_parser_type && !selectedArch.reasoning_parser_type && (
+                          {formData.reasoning_parser_type && (
+                            <div style={{ color: '#007bff' }}>Reasoning Override: {formData.reasoning_parser_type}</div>
+                          )}
+                          {!selectedArch.tool_calling_parser_type && !selectedArch.reasoning_parser_type && !formData.tool_calling_parser_type && !formData.reasoning_parser_type && (
                             <div>No special capabilities</div>
                           )}
                         </div>
@@ -921,7 +932,7 @@ export function SimpleModels() {
                       }}
                     />
                   </div>
-                  <div style={{ gridColumn: 'span 2' }}>
+                  <div>
                     <label style={{ display: 'block', marginBottom: '5px' }}>
                       Tool Calling Parser Type
                     </label>
@@ -930,6 +941,23 @@ export function SimpleModels() {
                       value={formData.tool_calling_parser_type || ''}
                       onChange={(e) => setFormData({ ...formData, tool_calling_parser_type: e.target.value || undefined })}
                       placeholder="Enter parser type override (optional)"
+                      style={{
+                        width: '100%',
+                        padding: '8px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>
+                      Reasoning Parser Type
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.reasoning_parser_type || ''}
+                      onChange={(e) => setFormData({ ...formData, reasoning_parser_type: e.target.value || undefined })}
+                      placeholder="Enter reasoning parser type (optional)"
                       style={{
                         width: '100%',
                         padding: '8px',

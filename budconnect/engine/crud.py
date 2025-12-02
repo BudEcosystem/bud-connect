@@ -7,8 +7,8 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from .models import Engine, EngineCompatibility, EngineToolParserRule, EngineVersion
-from .schemas import CompatibleEngine, DeviceArchitecture
+from .models import Engine, EngineCompatibility, EngineParserRule, EngineVersion
+from .schemas import CompatibleEngine, DeviceArchitecture, ParserRuleType
 
 
 logger = logging.getLogger(__name__)
@@ -154,32 +154,46 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
         return compatible_engines
 
 
-class EngineToolParserRuleCRUD(CRUDMixin[EngineToolParserRule, None, None]):
-    __model__ = EngineToolParserRule
+class EngineParserRuleCRUD(CRUDMixin[EngineParserRule, None, None]):
+    __model__ = EngineParserRule
 
     def __init__(self) -> None:
-        """Initialize the EngineToolParserRuleCRUD class."""
+        """Initialize the EngineParserRuleCRUD class."""
         super().__init__(self.__model__)
 
     def get_rules_for_engines(
         self,
         engine_ids: List[UUID],
+        rule_type: Optional[ParserRuleType] = None,
         session: Optional[Session] = None,
-    ) -> Dict[UUID, List[EngineToolParserRule]]:
-        """Get parser rules for multiple engines grouped by engine ID."""
+    ) -> Dict[UUID, List[EngineParserRule]]:
+        """Get parser rules for multiple engines grouped by engine ID.
+
+        Args:
+            engine_ids: List of engine IDs to fetch rules for.
+            rule_type: Optional filter for rule type (TOOL or REASONING).
+            session: Optional SQLAlchemy session.
+
+        Returns:
+            Dictionary mapping engine IDs to their parser rules.
+        """
         if not engine_ids:
             return {}
 
         _session = session or self.get_session()
         try:
             query = (
-                _session.query(EngineToolParserRule)
-                .filter(EngineToolParserRule.engine_id.in_(engine_ids))
-                .order_by(EngineToolParserRule.engine_id, EngineToolParserRule.priority.asc())
+                _session.query(EngineParserRule)
+                .filter(EngineParserRule.engine_id.in_(engine_ids))
             )
+
+            if rule_type is not None:
+                query = query.filter(EngineParserRule.rule_type == rule_type)
+
+            query = query.order_by(EngineParserRule.engine_id, EngineParserRule.priority.asc())
             results = query.all()
 
-            grouped: Dict[UUID, List[EngineToolParserRule]] = {}
+            grouped: Dict[UUID, List[EngineParserRule]] = {}
             for rule in results:
                 grouped.setdefault(rule.engine_id, []).append(rule)
             return grouped

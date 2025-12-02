@@ -1,18 +1,19 @@
 import { apiClient } from './client'
-import { 
-  Engine, 
-  EngineCreate, 
+import {
+  Engine,
+  EngineCreate,
   EngineUpdate,
-  EngineVersion, 
+  EngineVersion,
   EngineVersionCreate,
   EngineVersionUpdate,
   EngineCompatibility,
   EngineCompatibilityCreate,
   EngineCompatibilityUpdate,
   DeviceArchitecture,
-  EngineToolParserRule,
-  EngineToolParserRuleCreate,
-  EngineToolParserRuleUpdate,
+  EngineParserRule,
+  EngineParserRuleCreate,
+  EngineParserRuleUpdate,
+  ParserRuleType,
   CompatibleEngine,
 } from '@/types'
 
@@ -73,14 +74,14 @@ interface EngineCompatibilityResponse {
 }
 
 interface ParserRuleListResponse {
-  rules: EngineToolParserRule[]
+  rules: EngineParserRule[]
   message: string
   code: number
   object: string
 }
 
 interface ParserRuleResponse {
-  rule: EngineToolParserRule
+  rule: EngineParserRule
   message: string
   code: number
   object: string
@@ -153,17 +154,18 @@ export const engineApi = {
   },
 
   // Engine parser rules
-  getParserRules: async (engineId: string) => {
-    const { data } = await apiClient.get<ParserRuleListResponse>(`/engine/parser-rules/${engineId}`)
+  getParserRules: async (engineId: string, ruleType?: ParserRuleType) => {
+    const params = ruleType ? { rule_type: ruleType } : undefined
+    const { data } = await apiClient.get<ParserRuleListResponse>(`/engine/parser-rules/${engineId}`, { params })
     return data
   },
 
-  createParserRule: async (data: EngineToolParserRuleCreate) => {
+  createParserRule: async (data: EngineParserRuleCreate) => {
     const response = await apiClient.post<ParserRuleResponse>('/engine/parser-rules', data)
     return response.data.rule
   },
 
-  updateParserRule: async (ruleId: string, data: EngineToolParserRuleUpdate) => {
+  updateParserRule: async (ruleId: string, data: EngineParserRuleUpdate) => {
     const response = await apiClient.put<ParserRuleResponse>(`/engine/parser-rules/${ruleId}`, data)
     return response.data.rule
   },
