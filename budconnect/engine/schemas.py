@@ -19,6 +19,11 @@ class ParserMatchType(Enum):
     REGEX = "regex"
 
 
+class ParserRuleType(Enum):
+    TOOL = "tool"
+    REASONING = "reasoning"
+
+
 class Engine(BaseModel):
     id: UUID
     name: str
@@ -121,6 +126,7 @@ class CompatibleEngine(BaseModel):
     version: str
     container_image: str
     engine_version_id: Optional[UUID] = None
+    engine_id: Optional[UUID] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
     architecture_family: Optional[str] = None
@@ -135,8 +141,9 @@ class CompatibleEnginesResponse(SuccessResponse):
     compatible_engines: List[CompatibleEngine]
 
 
-class EngineToolParserRuleBase(BaseModel):
-    engine_version_id: UUID
+class EngineParserRuleBase(BaseModel):
+    engine_id: UUID
+    rule_type: ParserRuleType = ParserRuleType.TOOL
     parser_type: Optional[str] = None
     match_type: ParserMatchType
     pattern: str
@@ -146,21 +153,28 @@ class EngineToolParserRuleBase(BaseModel):
     chat_template: Optional[str] = None
 
 
-class EngineToolParserRuleCreate(EngineToolParserRuleBase):
+class EngineParserRuleCreate(EngineParserRuleBase):
     @model_validator(mode="after")
-    def _validate_parser_or_template(self) -> "EngineToolParserRuleCreate":
+    def _validate_rule_type_constraints(self) -> "EngineParserRuleCreate":
         parser_type = self.parser_type.strip() if isinstance(self.parser_type, str) else self.parser_type
         chat_template = self.chat_template.strip() if isinstance(self.chat_template, str) else self.chat_template
 
-        if not parser_type and not chat_template:
-            raise ValueError("Either parser_type or chat_template must be provided")
+        if self.rule_type == ParserRuleType.TOOL:
+            if not parser_type and not chat_template:
+                raise ValueError("Either parser_type or chat_template must be provided for tool rules")
+        elif self.rule_type == ParserRuleType.REASONING:
+            if not parser_type:
+                raise ValueError("parser_type is required for reasoning rules")
+            if chat_template:
+                raise ValueError("chat_template is not allowed for reasoning rules")
 
         self.parser_type = parser_type or None
         self.chat_template = chat_template or None
         return self
 
 
-class EngineToolParserRuleUpdate(BaseModel):
+class EngineParserRuleUpdate(BaseModel):
+    rule_type: Optional[ParserRuleType] = None
     parser_type: Optional[str] = None
     match_type: Optional[ParserMatchType] = None
     pattern: Optional[str] = None
@@ -170,9 +184,10 @@ class EngineToolParserRuleUpdate(BaseModel):
     chat_template: Optional[str] = None
 
 
-class EngineToolParserRule(BaseModel):
+class EngineParserRule(BaseModel):
     id: UUID
-    engine_version_id: UUID
+    engine_id: UUID
+    rule_type: ParserRuleType
     parser_type: Optional[str] = None
     match_type: ParserMatchType
     pattern: str
@@ -189,12 +204,12 @@ class EngineToolParserRule(BaseModel):
         from_attributes = True
 
 
-class EngineToolParserRuleResponse(SuccessResponse):
-    rule: Optional[EngineToolParserRule] = None
+class EngineParserRuleResponse(SuccessResponse):
+    rule: Optional[EngineParserRule] = None
 
 
-class EngineToolParserRuleListResponse(SuccessResponse):
-    rules: List[EngineToolParserRule]
+class EngineParserRuleListResponse(SuccessResponse):
+    rules: List[EngineParserRule]
 
 
 class EngineListResponse(SuccessResponse):

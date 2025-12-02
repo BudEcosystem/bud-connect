@@ -136,6 +136,7 @@ class ModelInfo(PSQLBase, TimestampMixin):
     )
     chat_template: Mapped[str] = mapped_column(Text, nullable=True)
     tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    reasoning_parser_type: Mapped[str] = mapped_column(String, nullable=True)
 
     provider: Mapped[Provider] = relationship(back_populates="models")
     license: Mapped[License] = relationship(back_populates="models")

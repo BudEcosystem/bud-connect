@@ -97,6 +97,7 @@ class ModelService:
                                 "deprecation_date": db_model.deprecation_date,
                                 "chat_template": db_model.chat_template,
                                 "tool_calling_parser_type": db_model.tool_calling_parser_type,
+                                "reasoning_parser_type": db_model.reasoning_parser_type,
                             }
 
                         compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -128,6 +129,7 @@ class ModelService:
                                 "deprecation_date": db_model.deprecation_date,
                                 "chat_template": db_model.chat_template,
                                 "tool_calling_parser_type": db_model.tool_calling_parser_type,
+                                "reasoning_parser_type": db_model.reasoning_parser_type,
                             }
                             compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
@@ -215,6 +217,8 @@ class ModelService:
                             "endpoints": db_model.endpoints,
                             "deprecation_date": db_model.deprecation_date,
                             "chat_template": db_model.chat_template,
+                            "tool_calling_parser_type": db_model.tool_calling_parser_type,
+                            "reasoning_parser_type": db_model.reasoning_parser_type,
                         }
 
                     compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -245,6 +249,8 @@ class ModelService:
                             "endpoints": db_model.endpoints,
                             "deprecation_date": db_model.deprecation_date,
                             "chat_template": db_model.chat_template,
+                            "tool_calling_parser_type": db_model.tool_calling_parser_type,
+                            "reasoning_parser_type": db_model.reasoning_parser_type,
                         }
                         compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
@@ -371,6 +377,7 @@ class ModelService:
                         "license": license,
                         "chat_template": model.chat_template,
                         "tool_calling_parser_type": model.tool_calling_parser_type,
+                        "reasoning_parser_type": model.reasoning_parser_type,
                         "created_at": model.created_at,
                         "modified_at": model.modified_at,
                     }
@@ -436,6 +443,7 @@ class ModelService:
                     "license": license,
                     "chat_template": model.chat_template,
                     "tool_calling_parser_type": model.tool_calling_parser_type,
+                    "reasoning_parser_type": model.reasoning_parser_type,
                     "created_at": model.created_at,
                     "modified_at": model.modified_at,
                 }
@@ -713,6 +721,7 @@ class ModelService:
                     "deprecation_date": model.deprecation_date,
                     "license": license,
                     "tool_calling_parser_type": model.tool_calling_parser_type,
+                    "reasoning_parser_type": model.reasoning_parser_type,
                     "provider_name": provider.name if provider else None,
                     "provider_type": provider.provider_type if provider else None,
                 }

@@ -31,17 +31,18 @@ from .schemas import (
     EngineCompatibilityUpdate,
     EngineCreate,
     EngineListResponse,
+    EngineParserRuleCreate,
+    EngineParserRuleListResponse,
+    EngineParserRuleResponse,
+    EngineParserRuleUpdate,
     EngineResponse,
-    EngineToolParserRuleCreate,
-    EngineToolParserRuleListResponse,
-    EngineToolParserRuleResponse,
-    EngineToolParserRuleUpdate,
     EngineUpdate,
     EngineVersionCreate,
     EngineVersionListResponse,
     EngineVersionResponse,
     EngineVersionUpdate,
     LatestEngineVersionResponse,
+    ParserRuleType,
 )
 from .services import EngineService
 
@@ -51,10 +52,11 @@ logger = logging.get_logger(__name__)
 engine_router = APIRouter(prefix="/engine", tags=["Engine"])
 
 
-def _build_parser_rule_schema(rule: models.EngineToolParserRule) -> schemas.EngineToolParserRule:
-    return schemas.EngineToolParserRule(
+def _build_parser_rule_schema(rule: models.EngineParserRule) -> schemas.EngineParserRule:
+    return schemas.EngineParserRule(
         id=rule.id,
-        engine_version_id=rule.engine_version_id,
+        engine_id=rule.engine_id,
+        rule_type=rule.rule_type,
         parser_type=rule.parser_type,
         match_type=rule.match_type,
         pattern=rule.pattern,
@@ -477,16 +479,22 @@ async def delete_engine_compatibility(compatibility_id: UUID) -> Union[EngineCom
     return response.to_http_response()
 
 
-@engine_router.get("/parser-rules/{engine_version_id}")
+@engine_router.get("/parser-rules/{engine_id}")
 async def list_parser_rules(
-    engine_version_id: UUID,
-) -> Union[EngineToolParserRuleListResponse, ErrorResponse]:
-    """List parser rules for a specific engine version."""
+    engine_id: UUID,
+    rule_type: Optional[ParserRuleType] = None,
+) -> Union[EngineParserRuleListResponse, ErrorResponse]:
+    """List parser rules for a specific engine.
+
+    Args:
+        engine_id: The engine ID to list rules for.
+        rule_type: Optional filter for rule type (tool or reasoning).
+    """
     try:
-        rules = EngineService.list_tool_parser_rules(engine_version_id)
+        rules = EngineService.list_parser_rules(engine_id, rule_type=rule_type)
         rule_schemas = [_build_parser_rule_schema(rule) for rule in rules]
 
-        response = EngineToolParserRuleListResponse(
+        response = EngineParserRuleListResponse(
             message="Parser rules retrieved successfully",
             code=status.HTTP_200_OK,
             object="engine.parser_rule.list",
@@ -504,12 +512,17 @@ async def list_parser_rules(
 
 @engine_router.post("/parser-rules")
 async def create_parser_rule(
-    rule_data: EngineToolParserRuleCreate,
-) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
-    """Create a new parser rule for an engine version."""
+    rule_data: EngineParserRuleCreate,
+) -> Union[EngineParserRuleResponse, ErrorResponse]:
+    """Create a new parser rule for an engine.
+
+    The rule_type field determines whether this is a tool calling or reasoning parser rule.
+    - tool: Requires parser_type OR chat_template
+    - reasoning: Requires parser_type, chat_template NOT allowed
+    """
     try:
-        rule = EngineService.create_tool_parser_rule(rule_data)
-        response = EngineToolParserRuleResponse(
+        rule = EngineService.create_parser_rule(rule_data)
+        response = EngineParserRuleResponse(
             message="Parser rule created successfully",
             code=status.HTTP_201_CREATED,
             object="engine.parser_rule",
@@ -527,12 +540,12 @@ async def create_parser_rule(
 
 @engine_router.put("/parser-rules/{rule_id}")
 async def update_parser_rule(
-    rule_id: UUID, rule_data: EngineToolParserRuleUpdate
-) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
+    rule_id: UUID, rule_data: EngineParserRuleUpdate
+) -> Union[EngineParserRuleResponse, ErrorResponse]:
     """Update an existing parser rule."""
     try:
-        rule = EngineService.update_tool_parser_rule(rule_id, rule_data)
-        response = EngineToolParserRuleResponse(
+        rule = EngineService.update_parser_rule(rule_id, rule_data)
+        response = EngineParserRuleResponse(
             message="Parser rule updated successfully",
             code=status.HTTP_200_OK,
             object="engine.parser_rule",
@@ -549,11 +562,11 @@ async def update_parser_rule(
 
 
 @engine_router.delete("/parser-rules/{rule_id}")
-async def delete_parser_rule(rule_id: UUID) -> Union[EngineToolParserRuleResponse, ErrorResponse]:
+async def delete_parser_rule(rule_id: UUID) -> Union[EngineParserRuleResponse, ErrorResponse]:
     """Delete a parser rule."""
     try:
-        EngineService.delete_tool_parser_rule(rule_id)
-        response = EngineToolParserRuleResponse(
+        EngineService.delete_parser_rule(rule_id)
+        response = EngineParserRuleResponse(
             message="Parser rule deleted successfully",
             code=status.HTTP_200_OK,
             object="engine.parser_rule",

@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from budconnect.engine.schemas import DeviceArchitecture, ParserMatchType
+from budconnect.engine.schemas import DeviceArchitecture, ParserMatchType, ParserRuleType
 from budconnect.model.models import engine_version_provider
 
 
@@ -21,6 +21,7 @@ class Engine(PSQLBase, TimestampMixin):
         id: Unique identifier for the engine
         name: Name of the engine
         versions: List of versions associated with this engine.
+        parser_rules: List of parser rules associated with this engine.
     """
 
     __tablename__ = "engine"
@@ -29,6 +30,11 @@ class Engine(PSQLBase, TimestampMixin):
     name: Mapped[str] = mapped_column(String, nullable=False)
 
     versions: Mapped[List["EngineVersion"]] = relationship("EngineVersion", back_populates="engine")
+    parser_rules: Mapped[List["EngineParserRule"]] = relationship(
+        "EngineParserRule",
+        back_populates="engine",
+        cascade="all, delete-orphan",
+    )
 
     def __repr__(self) -> str:
         """Return a string representation of the Engine object.
@@ -64,11 +70,6 @@ class EngineVersion(PSQLBase, TimestampMixin):
 
     engine = relationship("Engine", back_populates="versions")
     compatibilities = relationship("EngineCompatibility", back_populates="engine_version")
-    parser_rules: Mapped[List["EngineToolParserRule"]] = relationship(
-        "EngineToolParserRule",
-        back_populates="engine_version",
-        cascade="all, delete-orphan",
-    )
     supported_providers: Mapped[List["Provider"]] = relationship(  # noqa: F821
         "Provider",
         secondary=engine_version_provider,
@@ -117,13 +118,26 @@ class EngineCompatibility(PSQLBase, TimestampMixin):
         return f"<EngineCompatibility(id={self.id}, engine_version_id={self.engine_version_id})>"
 
 
-class EngineToolParserRule(PSQLBase, TimestampMixin):
-    """Rule for selecting a tool parser based on model metadata for a specific engine version."""
+class EngineParserRule(PSQLBase, TimestampMixin):
+    """Rule for selecting a parser based on model metadata for a specific engine.
 
-    __tablename__ = "engine_tool_parser_rule"
+    Supports both tool calling and reasoning parser rules via the rule_type field.
+    """
+
+    __tablename__ = "engine_parser_rule"
 
     id: Mapped[UUID] = mapped_column(UUID, primary_key=True, default=uuid4, nullable=False)
-    engine_version_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine_version.id"), nullable=False)
+    engine_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("engine.id"), nullable=False)
+    rule_type: Mapped[ParserRuleType] = mapped_column(
+        Enum(
+            ParserRuleType,
+            name="parser_rule_type",
+            create_type=False,
+            values_callable=lambda x: [e.value for e in x],
+        ),
+        nullable=False,
+        default=ParserRuleType.TOOL,
+    )
     parser_type: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     match_type: Mapped[ParserMatchType] = mapped_column(
         Enum(
@@ -140,11 +154,12 @@ class EngineToolParserRule(PSQLBase, TimestampMixin):
     notes: Mapped[str] = mapped_column(Text, nullable=True)
     chat_template: Mapped[str] = mapped_column(Text, nullable=True)
 
-    engine_version: Mapped["EngineVersion"] = relationship("EngineVersion", back_populates="parser_rules")
+    engine: Mapped["Engine"] = relationship("Engine", back_populates="parser_rules")
 
     def __repr__(self) -> str:
-        """Return string representation of EngineToolParserRule."""
+        """Return string representation of EngineParserRule."""
         return (
-            f"<EngineToolParserRule(id={self.id}, engine_version_id={self.engine_version_id}, "
-            f"parser_type={self.parser_type}, match_type={self.match_type}, pattern={self.pattern})>"
+            f"<EngineParserRule(id={self.id}, engine_id={self.engine_id}, "
+            f"rule_type={self.rule_type}, parser_type={self.parser_type}, "
+            f"match_type={self.match_type}, pattern={self.pattern})>"
         )

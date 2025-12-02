@@ -9,10 +9,10 @@ from sqlalchemy.orm import Session
 from budconnect.engine.crud import (
     EngineCompatibilityCRUD,
     EngineCRUD,
-    EngineToolParserRuleCRUD,
+    EngineParserRuleCRUD,
     EngineVersionCRUD,
 )
-from budconnect.engine.models import Engine, EngineCompatibility, EngineToolParserRule, EngineVersion
+from budconnect.engine.models import Engine, EngineCompatibility, EngineParserRule, EngineVersion
 from budconnect.model.crud import ModelArchitectureClassCRUD, ModelInfoCRUD
 from budconnect.model.models import engine_version_model_info, engine_version_provider
 
@@ -21,13 +21,14 @@ from .schemas import (
     EngineCompatibilityCreate,
     EngineCompatibilityUpdate,
     EngineCreate,
-    EngineToolParserRuleCreate,
-    EngineToolParserRuleUpdate,
+    EngineParserRuleCreate,
+    EngineParserRuleUpdate,
     EngineUpdate,
     EngineVersionCreate,
     EngineVersionUpdate,
     LatestEngineVersion,
     ParserMatchType,
+    ParserRuleType,
 )
 from .schemas import (
     Engine as EngineSchema,
@@ -317,40 +318,68 @@ class EngineService:
         return True
 
     @staticmethod
-    def list_tool_parser_rules(
-        engine_version_id: UUID, session: Optional[Session] = None
-    ) -> List[EngineToolParserRule]:
-        """List parser rules for an engine version ordered by priority."""
-        with EngineToolParserRuleCRUD() as parser_rule_crud:
+    def list_parser_rules(
+        engine_id: UUID,
+        rule_type: Optional[ParserRuleType] = None,
+        session: Optional[Session] = None,
+    ) -> List[EngineParserRule]:
+        """List parser rules for an engine ordered by priority.
+
+        Args:
+            engine_id: The engine ID to list rules for.
+            rule_type: Optional filter for rule type (TOOL or REASONING).
+            session: Optional SQLAlchemy session.
+
+        Returns:
+            List of parser rules ordered by priority.
+        """
+        with EngineParserRuleCRUD() as parser_rule_crud:
+            conditions = {"engine_id": engine_id}
+            if rule_type is not None:
+                conditions["rule_type"] = rule_type
             rules, _ = parser_rule_crud.fetch_many(
-                {"engine_version_id": engine_version_id},
+                conditions,
                 session=parser_rule_crud.session,
                 order_by=[("priority", "asc")],
             )
             return rules or []
 
     @staticmethod
-    def get_tool_parser_rule(rule_id: UUID, session: Optional[Session] = None) -> EngineToolParserRule:
-        """Get a tool parser rule by ID."""
-        rule = EngineToolParserRuleCRUD().fetch_one({"id": rule_id}, session=session)
+    def get_parser_rule(rule_id: UUID, session: Optional[Session] = None) -> EngineParserRule:
+        """Get a parser rule by ID."""
+        rule = EngineParserRuleCRUD().fetch_one({"id": rule_id}, session=session)
         if not rule:
             raise ClientException(f"Parser rule with ID {rule_id} not found")
         return rule
 
     @staticmethod
-    def create_tool_parser_rule(
-        rule_data: EngineToolParserRuleCreate, session: Optional[Session] = None
-    ) -> EngineToolParserRule:
-        """Create a new tool parser rule for an engine version."""
-        # Ensure referenced engine version exists
-        EngineService.get_engine_version(rule_data.engine_version_id, session=session)
+    def create_parser_rule(
+        rule_data: EngineParserRuleCreate, session: Optional[Session] = None
+    ) -> EngineParserRule:
+        """Create a new parser rule for an engine.
+
+        Args:
+            rule_data: The parser rule data including rule_type (TOOL or REASONING).
+            session: Optional SQLAlchemy session.
+
+        Returns:
+            The created parser rule.
+
+        Raises:
+            ClientException: If validation fails or engine doesn't exist.
+        """
+        # Ensure referenced engine exists
+        EngineService.get_engine(rule_data.engine_id, session=session)
         logger.info(f"Before dump {rule_data}")
         try:
             payload = rule_data.model_dump()
             logger.info(f"Rule payload {payload}")
-            # Convert enum to its value for database insertion
+
+            # Convert enums to their values for database insertion
             if "match_type" in payload and hasattr(payload["match_type"], "value"):
                 payload["match_type"] = payload["match_type"].value
+            if "rule_type" in payload and hasattr(payload["rule_type"], "value"):
+                payload["rule_type"] = payload["rule_type"].value
 
             parser_type = payload.get("parser_type")
             if isinstance(parser_type, str):
@@ -362,31 +391,57 @@ class EngineService:
                 chat_template = chat_template.strip()
             payload["chat_template"] = chat_template or None
 
-            if not payload.get("parser_type") and not payload.get("chat_template"):
-                raise ClientException("Either parser_type or chat_template must be provided")
+            # Validate based on rule_type
+            rule_type = payload.get("rule_type", "tool")
+            if rule_type == "tool":
+                if not payload.get("parser_type") and not payload.get("chat_template"):
+                    raise ClientException("Either parser_type or chat_template must be provided for tool rules")
+            elif rule_type == "reasoning":
+                if not payload.get("parser_type"):
+                    raise ClientException("parser_type is required for reasoning rules")
+                if payload.get("chat_template"):
+                    raise ClientException("chat_template is not allowed for reasoning rules")
+
             logger.info(f"Final Rule payload {payload}")
-            return EngineToolParserRuleCRUD().insert(payload, session=session)
+            return EngineParserRuleCRUD().insert(payload, session=session)
+        except ClientException:
+            raise
         except Exception as e:
             raise ClientException(f"Failed to create parser rule: {str(e)}") from e
 
     @staticmethod
-    def update_tool_parser_rule(
-        rule_id: UUID, rule_data: EngineToolParserRuleUpdate, session: Optional[Session] = None
-    ) -> EngineToolParserRule:
-        """Update an existing tool parser rule."""
-        existing_rule = EngineService.get_tool_parser_rule(rule_id, session=session)
+    def update_parser_rule(
+        rule_id: UUID, rule_data: EngineParserRuleUpdate, session: Optional[Session] = None
+    ) -> EngineParserRule:
+        """Update an existing parser rule.
+
+        Args:
+            rule_id: The ID of the rule to update.
+            rule_data: The updated rule data.
+            session: Optional SQLAlchemy session.
+
+        Returns:
+            The updated parser rule.
+
+        Raises:
+            ClientException: If validation fails or rule doesn't exist.
+        """
+        existing_rule = EngineService.get_parser_rule(rule_id, session=session)
 
         update_payload = rule_data.model_dump(exclude_unset=True)
+
         if "parser_type" in update_payload:
             parser_type_value = update_payload.get("parser_type")
             if isinstance(parser_type_value, str):
                 parser_type_value = parser_type_value.strip()
             update_payload["parser_type"] = parser_type_value or None
+
         if "chat_template" in update_payload:
             chat_template_value = update_payload.get("chat_template")
             if isinstance(chat_template_value, str):
                 chat_template_value = chat_template_value.strip()
             update_payload["chat_template"] = chat_template_value or None
+
         if update_payload:
             if "match_type" in update_payload:
                 match_type_value = update_payload.get("match_type")
@@ -394,6 +449,18 @@ class EngineService:
                     update_payload["match_type"] = match_type_value.value
                 else:
                     update_payload["match_type"] = ParserMatchType(match_type_value).value
+
+            if "rule_type" in update_payload:
+                rule_type_value = update_payload.get("rule_type")
+                if isinstance(rule_type_value, ParserRuleType):
+                    update_payload["rule_type"] = rule_type_value.value
+                else:
+                    update_payload["rule_type"] = ParserRuleType(rule_type_value).value
+
+            # Determine final values for validation
+            final_rule_type = update_payload.get("rule_type") if "rule_type" in update_payload else existing_rule.rule_type
+            if hasattr(final_rule_type, "value"):
+                final_rule_type = final_rule_type.value
 
             final_parser_type = (
                 update_payload.get("parser_type") if "parser_type" in update_payload else existing_rule.parser_type
@@ -404,19 +471,27 @@ class EngineService:
                 else existing_rule.chat_template
             )
 
-            if not final_parser_type and not final_chat_template:
-                raise ClientException("Either parser_type or chat_template must be provided")
+            # Validate based on rule_type
+            if final_rule_type == "tool":
+                if not final_parser_type and not final_chat_template:
+                    raise ClientException("Either parser_type or chat_template must be provided for tool rules")
+            elif final_rule_type == "reasoning":
+                if not final_parser_type:
+                    raise ClientException("parser_type is required for reasoning rules")
+                if final_chat_template:
+                    raise ClientException("chat_template is not allowed for reasoning rules")
+
             try:
-                EngineToolParserRuleCRUD().update(update_payload, {"id": rule_id}, session=session)
+                EngineParserRuleCRUD().update(update_payload, {"id": rule_id}, session=session)
             except Exception as e:
                 raise ClientException(f"Failed to update parser rule: {str(e)}") from e
 
-        return EngineService.get_tool_parser_rule(rule_id, session=session)
+        return EngineService.get_parser_rule(rule_id, session=session)
 
     @staticmethod
-    def delete_tool_parser_rule(rule_id: UUID, session: Optional[Session] = None) -> bool:
-        """Delete a tool parser rule."""
-        EngineToolParserRuleCRUD().delete({"id": rule_id}, session=session)
+    def delete_parser_rule(rule_id: UUID, session: Optional[Session] = None) -> bool:
+        """Delete a parser rule."""
+        EngineParserRuleCRUD().delete({"id": rule_id}, session=session)
         return True
 
     @staticmethod
@@ -484,25 +559,29 @@ class EngineService:
                 message="Model architecture is not compatible with the given device architecture and engine version"
             )
 
-        parser_rules_by_version: Dict[UUID, List[EngineToolParserRule]] = {}
+        parser_rules_by_engine: Dict[UUID, List[EngineParserRule]] = {}
         if model_uri:
-            version_ids = {
-                engine_item.engine_version_id
+            engine_ids = {
+                engine_item.engine_id
                 for engine_item in compatible_engines
-                if engine_item.engine_version_id is not None
+                if engine_item.engine_id is not None
             }
-            if version_ids:
-                with EngineToolParserRuleCRUD() as parser_rule_crud:
-                    parser_rules_by_version = parser_rule_crud.get_rules_for_versions(
-                        list(version_ids), session=parser_rule_crud.session
+            if engine_ids:
+                with EngineParserRuleCRUD() as parser_rule_crud:
+                    parser_rules_by_engine = parser_rule_crud.get_rules_for_engines(
+                        list(engine_ids), session=parser_rule_crud.session
                     )
 
         # Enhance response with architecture capabilities and chat template
         for engine_item in compatible_engines:
-            matched_rule = None
-            if model_uri and engine_item.engine_version_id:
-                rules = parser_rules_by_version.get(engine_item.engine_version_id, [])
-                matched_rule = EngineService._match_parser_rule(model_uri, rules)
+            tool_rule = None
+            reasoning_rule = None
+            if model_uri and engine_item.engine_id:
+                rules = parser_rules_by_engine.get(engine_item.engine_id, [])
+                # Match tool parser rule
+                tool_rule = EngineService._match_parser_rule(model_uri, rules, ParserRuleType.TOOL)
+                # Match reasoning parser rule
+                reasoning_rule = EngineService._match_parser_rule(model_uri, rules, ParserRuleType.REASONING)
 
             if model_info and model_info.tool_calling_parser_type:
                 engine_item.tool_calling_parser_type = model_info.tool_calling_parser_type
@@ -512,19 +591,25 @@ class EngineService:
                 if not engine_item.tool_calling_parser_type and architecture_info.tool_calling_parser_type:
                     engine_item.tool_calling_parser_type = architecture_info.tool_calling_parser_type
                     engine_item.parser_source = engine_item.parser_source or "architecture_default"
-                engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
+                if not engine_item.reasoning_parser_type:
+                    engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
                 engine_item.architecture_family = architecture_info.architecture_family
                 engine_item.supports_lora = architecture_info.supports_lora
                 engine_item.supports_pipeline_parallelism = architecture_info.supports_pipeline_parallelism
 
-            if matched_rule:
-                if matched_rule.chat_template is not None:
-                    engine_item.chat_template = matched_rule.chat_template
-                if matched_rule.notes:
-                    engine_item.parser_notes = matched_rule.notes
-                if matched_rule.parser_type and not engine_item.tool_calling_parser_type:
-                    engine_item.tool_calling_parser_type = matched_rule.parser_type
+            # Apply tool parser rule
+            if tool_rule:
+                if tool_rule.chat_template is not None:
+                    engine_item.chat_template = tool_rule.chat_template
+                if tool_rule.notes:
+                    engine_item.parser_notes = tool_rule.notes
+                if tool_rule.parser_type and not engine_item.tool_calling_parser_type:
+                    engine_item.tool_calling_parser_type = tool_rule.parser_type
                     engine_item.parser_source = engine_item.parser_source or "engine_parser_rule"
+
+            # Apply reasoning parser rule
+            if reasoning_rule and reasoning_rule.parser_type and not engine_item.reasoning_parser_type:
+                engine_item.reasoning_parser_type = reasoning_rule.parser_type
 
             # Add chat_template if model_info is available
             if model_info and engine_item.chat_template is None:
@@ -533,8 +618,28 @@ class EngineService:
         return compatible_engines
 
     @staticmethod
-    def _match_parser_rule(model_identifier: str, rules: List[EngineToolParserRule]) -> Optional[EngineToolParserRule]:
-        """Select the first enabled parser rule that matches the provided model identifier."""
+    def _match_parser_rule(
+        model_identifier: str,
+        rules: List[EngineParserRule],
+        rule_type: Optional[ParserRuleType] = None,
+    ) -> Optional[EngineParserRule]:
+        """Select the first enabled parser rule that matches the provided model identifier.
+
+        Args:
+            model_identifier: The model URI to match against patterns.
+            rules: List of parser rules to evaluate.
+            rule_type: Optional filter for rule type (TOOL or REASONING).
+
+        Returns:
+            The first matching enabled rule, or None if no match.
+        """
+        if not rules:
+            return None
+
+        # Filter by rule_type if specified
+        if rule_type is not None:
+            rules = [r for r in rules if r.rule_type == rule_type]
+
         if not rules:
             return None
 

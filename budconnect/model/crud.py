@@ -672,6 +672,7 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
                     "endpoints": model_info.endpoints,
                     "deprecation_date": model_info.deprecation_date,
                     "tool_calling_parser_type": model_info.tool_calling_parser_type,
+                    "reasoning_parser_type": model_info.reasoning_parser_type,
                     # Provider fields
                     "provider_name": provider_name,
                     "provider_type": provider_type,

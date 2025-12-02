@@ -194,6 +194,7 @@ export interface Model {
   license?: License
   chat_template?: string
   tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
   created_at?: string
   modified_at?: string
 }
@@ -216,6 +217,7 @@ export interface ModelCreate {
   license_id?: string
   chat_template?: string
   tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
 }
 
 export interface ModelUpdate {
@@ -236,6 +238,7 @@ export interface ModelUpdate {
   license_id?: string
   chat_template?: string
   tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
 }
 
 export interface ModelListResponse {
@@ -272,6 +275,7 @@ export interface ModelInfo {
   details?: ModelDetails
   chat_template?: string
   tool_calling_parser_type?: string | null
+  reasoning_parser_type?: string | null
   created_at?: string
   updated_at?: string
 }
@@ -362,9 +366,12 @@ export interface EngineCompatibility {
 
 export type ParserMatchType = 'exact' | 'prefix' | 'regex'
 
-export interface EngineToolParserRule {
+export type ParserRuleType = 'tool' | 'reasoning'
+
+export interface EngineParserRule {
   id: string
-  engine_version_id: string
+  engine_id: string
+  rule_type: ParserRuleType
   parser_type: string | null
   match_type: ParserMatchType
   pattern: string
@@ -376,8 +383,9 @@ export interface EngineToolParserRule {
   modified_at?: string
 }
 
-export interface EngineToolParserRuleCreate {
-  engine_version_id: string
+export interface EngineParserRuleCreate {
+  engine_id: string
+  rule_type?: ParserRuleType
   parser_type?: string | null
   match_type: ParserMatchType
   pattern: string
@@ -387,7 +395,8 @@ export interface EngineToolParserRuleCreate {
   chat_template?: string | null
 }
 
-export interface EngineToolParserRuleUpdate {
+export interface EngineParserRuleUpdate {
+  rule_type?: ParserRuleType
   parser_type?: string | null
   match_type?: ParserMatchType
   pattern?: string
@@ -403,6 +412,7 @@ export interface CompatibleEngine {
   version: string
   container_image: string
   engine_version_id?: string
+  engine_id?: string
   tool_calling_parser_type?: string | null
   reasoning_parser_type?: string | null
   architecture_family?: string | null

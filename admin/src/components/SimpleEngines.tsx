@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { engineApi } from '../api'
-import { 
-  Engine, 
-  EngineCreate, 
+import {
+  Engine,
+  EngineCreate,
   EngineUpdate,
   EngineVersion,
   EngineVersionCreate,
@@ -10,15 +10,17 @@ import {
   EngineCompatibility,
   EngineCompatibilityCreate,
   EngineCompatibilityUpdate,
-  EngineToolParserRule,
-  EngineToolParserRuleCreate,
-  EngineToolParserRuleUpdate,
+  EngineParserRule,
+  EngineParserRuleCreate,
+  EngineParserRuleUpdate,
   ParserMatchType,
-  DeviceArchitecture 
+  ParserRuleType,
+  DeviceArchitecture
 } from '../types'
 
 const DEVICE_ARCHITECTURES: DeviceArchitecture[] = ['CUDA', 'CPU', 'ROCM', 'HPU']
 const MATCH_TYPES: ParserMatchType[] = ['exact', 'prefix', 'regex']
+const RULE_TYPES: ParserRuleType[] = ['tool', 'reasoning']
 
 export function SimpleEngines() {
   const [engines, setEngines] = useState<Engine[]>([])
@@ -32,7 +34,7 @@ export function SimpleEngines() {
   const [searchTerm, setSearchTerm] = useState('')
   const [expandedEngines, setExpandedEngines] = useState<Set<string>>(new Set())
   const [engineVersions, setEngineVersions] = useState<Record<string, EngineVersion[]>>({})
-  const [parserRules, setParserRules] = useState<Record<string, EngineToolParserRule[]>>({})
+  const [parserRules, setParserRules] = useState<Record<string, EngineParserRule[]>>({})
   
   const [formData, setFormData] = useState<EngineCreate>({
     name: ''
@@ -51,8 +53,9 @@ export function SimpleEngines() {
     features: {}
   })
 
-  const [parserRuleFormData, setParserRuleFormData] = useState<EngineToolParserRuleCreate>({
-    engine_version_id: '',
+  const [parserRuleFormData, setParserRuleFormData] = useState<EngineParserRuleCreate>({
+    engine_id: '',
+    rule_type: 'tool',
     parser_type: '',
     match_type: 'exact',
     pattern: '',
@@ -62,7 +65,7 @@ export function SimpleEngines() {
     chat_template: ''
   })
   const [showParserRuleModal, setShowParserRuleModal] = useState(false)
-  const [editingParserRule, setEditingParserRule] = useState<EngineToolParserRule | null>(null)
+  const [editingParserRule, setEditingParserRule] = useState<EngineParserRule | null>(null)
 
   useEffect(() => {
     fetchEngines()
@@ -87,19 +90,19 @@ export function SimpleEngines() {
     try {
       const response = await engineApi.getVersions({ engine_id: engineId, page: 1, page_size: 100 })
       setEngineVersions(prev => ({ ...prev, [engineId]: response.versions }))
-      await Promise.all(response.versions.map(version => fetchParserRulesForVersion(version.id)))
+      await fetchParserRulesForEngine(engineId)
     } catch (error) {
       console.error('Failed to fetch engine versions:', error)
     }
   }
 
-  const fetchParserRulesForVersion = async (engineVersionId: string) => {
+  const fetchParserRulesForEngine = async (engineId: string) => {
     try {
-      const response = await engineApi.getParserRules(engineVersionId)
-      setParserRules(prev => ({ ...prev, [engineVersionId]: response.rules }))
+      const response = await engineApi.getParserRules(engineId)
+      setParserRules(prev => ({ ...prev, [engineId]: response.rules }))
     } catch (error) {
       console.error('Failed to fetch parser rules:', error)
-      setParserRules(prev => ({ ...prev, [engineVersionId]: prev[engineVersionId] || [] }))
+      setParserRules(prev => ({ ...prev, [engineId]: prev[engineId] || [] }))
     }
   }
 
@@ -155,6 +158,7 @@ export function SimpleEngines() {
     e.preventDefault()
 
     try {
+      const ruleType = parserRuleFormData.rule_type || 'tool'
       const parserTypeValue = typeof parserRuleFormData.parser_type === 'string'
         ? parserRuleFormData.parser_type.trim()
         : ''
@@ -162,43 +166,57 @@ export function SimpleEngines() {
         ? parserRuleFormData.chat_template.trim()
         : ''
 
-      if (!parserTypeValue && !chatTemplateValue) {
-        alert('Provide either a parser type or a chat template override.')
-        return
+      // Validation based on rule_type
+      if (ruleType === 'tool') {
+        if (!parserTypeValue && !chatTemplateValue) {
+          alert('Tool rules require either a parser type or a chat template override.')
+          return
+        }
+      } else if (ruleType === 'reasoning') {
+        if (!parserTypeValue) {
+          alert('Reasoning rules require a parser type.')
+          return
+        }
+        if (chatTemplateValue) {
+          alert('Reasoning rules cannot have a chat template.')
+          return
+        }
       }
 
       if (editingParserRule) {
-        const updatePayload: EngineToolParserRuleUpdate = {
+        const updatePayload: EngineParserRuleUpdate = {
+          rule_type: ruleType,
           parser_type: parserTypeValue === '' ? null : parserTypeValue,
           match_type: parserRuleFormData.match_type,
           pattern: parserRuleFormData.pattern,
           priority: parserRuleFormData.priority,
           enabled: parserRuleFormData.enabled,
           notes: parserRuleFormData.notes || undefined,
-          chat_template: chatTemplateValue === '' ? null : chatTemplateValue
+          chat_template: ruleType === 'tool' ? (chatTemplateValue === '' ? null : chatTemplateValue) : null
         }
         await engineApi.updateParserRule(editingParserRule.id, updatePayload)
       } else {
-        const createPayload: EngineToolParserRuleCreate = {
-          engine_version_id: parserRuleFormData.engine_version_id,
+        const createPayload: EngineParserRuleCreate = {
+          engine_id: parserRuleFormData.engine_id,
+          rule_type: ruleType,
           parser_type: parserTypeValue || undefined,
           match_type: parserRuleFormData.match_type,
           pattern: parserRuleFormData.pattern,
           priority: parserRuleFormData.priority,
           enabled: parserRuleFormData.enabled,
           notes: parserRuleFormData.notes || undefined,
-          chat_template: chatTemplateValue || undefined
+          chat_template: ruleType === 'tool' ? (chatTemplateValue || undefined) : undefined
         }
         await engineApi.createParserRule(createPayload)
       }
 
-      if (selectedVersion) {
-        await fetchParserRulesForVersion(selectedVersion.id)
+      if (selectedEngine) {
+        await fetchParserRulesForEngine(selectedEngine.id)
       }
 
       setShowParserRuleModal(false)
       setEditingParserRule(null)
-      setSelectedVersion(null)
+      setSelectedEngine(null)
       resetParserRuleForm()
     } catch (error) {
       console.error('Failed to save parser rule:', error)
@@ -286,15 +304,16 @@ export function SimpleEngines() {
     setShowCompatibilityModal(true)
   }
 
-  const handleAddParserRule = (version: EngineVersion) => {
-    setSelectedVersion(version)
+  const handleAddParserRule = (engine: Engine) => {
+    setSelectedEngine(engine)
     setEditingParserRule(null)
     setParserRuleFormData({
-      engine_version_id: version.id,
+      engine_id: engine.id,
+      rule_type: 'tool',
       parser_type: '',
       match_type: 'exact',
       pattern: '',
-      priority: (parserRules[version.id]?.length || 0),
+      priority: (parserRules[engine.id]?.length || 0),
       enabled: true,
       notes: '',
       chat_template: ''
@@ -302,11 +321,12 @@ export function SimpleEngines() {
     setShowParserRuleModal(true)
   }
 
-  const handleEditParserRule = (version: EngineVersion, rule: EngineToolParserRule) => {
-    setSelectedVersion(version)
+  const handleEditParserRule = (engine: Engine, rule: EngineParserRule) => {
+    setSelectedEngine(engine)
     setEditingParserRule(rule)
     setParserRuleFormData({
-      engine_version_id: version.id,
+      engine_id: engine.id,
+      rule_type: rule.rule_type,
       parser_type: rule.parser_type || '',
       match_type: rule.match_type,
       pattern: rule.pattern,
@@ -318,14 +338,14 @@ export function SimpleEngines() {
     setShowParserRuleModal(true)
   }
 
-  const handleDeleteParserRule = async (version: EngineVersion, rule: EngineToolParserRule) => {
+  const handleDeleteParserRule = async (engine: Engine, rule: EngineParserRule) => {
     if (!window.confirm('Are you sure you want to delete this parser rule?')) {
       return
     }
 
     try {
       await engineApi.deleteParserRule(rule.id)
-      await fetchParserRulesForVersion(version.id)
+      await fetchParserRulesForEngine(engine.id)
     } catch (error) {
       console.error('Failed to delete parser rule:', error)
       alert('Failed to delete parser rule')
@@ -357,7 +377,8 @@ export function SimpleEngines() {
 
   const resetParserRuleForm = () => {
     setParserRuleFormData({
-      engine_version_id: '',
+      engine_id: '',
+      rule_type: 'tool',
       parser_type: '',
       match_type: 'exact',
       pattern: '',
@@ -520,20 +541,6 @@ export function SimpleEngines() {
                               Add Compatibility
                             </button>
                             <button
-                              onClick={() => handleAddParserRule(version)}
-                              style={{
-                                padding: '3px 8px',
-                                backgroundColor: '#007bff',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '4px',
-                                cursor: 'pointer',
-                                fontSize: '12px'
-                              }}
-                            >
-                              Add Parser Rule
-                            </button>
-                            <button
                               onClick={() => handleDeleteVersion(version.id, engine.id)}
                               style={{
                                 padding: '3px 8px',
@@ -549,14 +556,115 @@ export function SimpleEngines() {
                             </button>
                           </div>
                         </div>
-                        <div style={{ marginTop: '10px' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h5 style={{ margin: 0 }}>Parser Rules</h5>
+                      </div>
+                    ))
+                  )}
+
+                  {/* Parser Rules Section - at Engine Level */}
+                  <div style={{ marginTop: '20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                      <h4 style={{ margin: 0 }}>Parser Rules</h4>
+                      <div style={{ display: 'flex', gap: '5px' }}>
+                        <button
+                          onClick={() => fetchParserRulesForEngine(engine.id)}
+                          style={{
+                            padding: '5px 10px',
+                            backgroundColor: '#6c757d',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '12px'
+                          }}
+                        >
+                          Refresh
+                        </button>
+                        <button
+                          onClick={() => handleAddParserRule(engine)}
+                          style={{
+                            padding: '5px 10px',
+                            backgroundColor: '#007bff',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '12px'
+                          }}
+                        >
+                          Add Parser Rule
+                        </button>
+                      </div>
+                    </div>
+                    {parserRules[engine.id] === undefined ? (
+                      <div style={{ padding: '10px', color: '#666' }}>Loading parser rules...</div>
+                    ) : parserRules[engine.id].length === 0 ? (
+                      <div style={{ padding: '10px', color: '#666' }}>No parser rules configured</div>
+                    ) : (
+                      parserRules[engine.id].map((rule) => (
+                        <div
+                          key={rule.id}
+                          style={{
+                            marginBottom: '10px',
+                            padding: '10px',
+                            borderRadius: '4px',
+                            border: '1px solid #e9ecef',
+                            backgroundColor: '#f8f9fa'
+                          }}
+                        >
+                          <div style={{ fontSize: '13px' }}>
+                            <strong>Type:</strong> <span style={{
+                              padding: '2px 6px',
+                              backgroundColor: rule.rule_type === 'reasoning' ? '#6f42c1' : '#007bff',
+                              color: 'white',
+                              borderRadius: '3px',
+                              fontSize: '11px',
+                              textTransform: 'uppercase'
+                            }}>{rule.rule_type}</span> {rule.enabled ? '' : '(disabled)'}<br />
+                            <strong>Parser:</strong> {rule.parser_type || 'Chat template only'}<br />
+                            <strong>Match:</strong> {rule.match_type.toUpperCase()} → {rule.pattern}<br />
+                            <strong>Priority:</strong> {rule.priority}
+                            {rule.notes && (
+                              <div><strong>Notes:</strong> {rule.notes}</div>
+                            )}
+                            {rule.chat_template && (
+                              <div>
+                                <strong>Chat Template:</strong>
+                                <pre
+                                  style={{
+                                    marginTop: '4px',
+                                    backgroundColor: '#ffffff',
+                                    padding: '6px',
+                                    borderRadius: '4px',
+                                    whiteSpace: 'pre-wrap',
+                                    wordBreak: 'break-word',
+                                    fontSize: '12px'
+                                  }}
+                                >
+                                  {rule.chat_template}
+                                </pre>
+                              </div>
+                            )}
+                          </div>
+                          <div style={{ marginTop: '6px', display: 'flex', gap: '5px' }}>
                             <button
-                              onClick={() => fetchParserRulesForVersion(version.id)}
+                              onClick={() => handleEditParserRule(engine, rule)}
                               style={{
                                 padding: '3px 8px',
-                                backgroundColor: '#6c757d',
+                                backgroundColor: '#ffc107',
+                                color: 'black',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '12px'
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteParserRule(engine, rule)}
+                              style={{
+                                padding: '3px 8px',
+                                backgroundColor: '#dc3545',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '4px',
@@ -564,88 +672,13 @@ export function SimpleEngines() {
                                 fontSize: '12px'
                               }}
                             >
-                              Refresh
+                              Delete
                             </button>
                           </div>
-                          {parserRules[version.id] === undefined ? (
-                            <div style={{ marginTop: '8px', color: '#666' }}>Loading parser rules...</div>
-                          ) : parserRules[version.id].length === 0 ? (
-                            <div style={{ marginTop: '8px', color: '#666' }}>No parser rules configured</div>
-                          ) : (
-                            parserRules[version.id].map((rule) => (
-                              <div
-                                key={rule.id}
-                                style={{
-                                  marginTop: '8px',
-                                  padding: '8px',
-                                  borderRadius: '4px',
-                                  border: '1px solid #dfe2e6',
-                                  backgroundColor: '#ffffff'
-                                }}
-                              >
-                                <div style={{ fontSize: '13px' }}>
-                                  <strong>Parser:</strong> {rule.parser_type || 'Chat template only'} {rule.enabled ? '' : '(disabled)'}<br />
-                                  <strong>Match:</strong> {rule.match_type.toUpperCase()} → {rule.pattern}<br />
-                                  <strong>Priority:</strong> {rule.priority}
-                                  {rule.notes && (
-                                    <div><strong>Notes:</strong> {rule.notes}</div>
-                                  )}
-                                  {rule.chat_template && (
-                                    <div>
-                                      <strong>Chat Template:</strong>
-                                      <pre
-                                        style={{
-                                          marginTop: '4px',
-                                          backgroundColor: '#f8f9fa',
-                                          padding: '6px',
-                                          borderRadius: '4px',
-                                          whiteSpace: 'pre-wrap',
-                                          wordBreak: 'break-word',
-                                          fontSize: '12px'
-                                        }}
-                                      >
-                                        {rule.chat_template}
-                                      </pre>
-                                    </div>
-                                  )}
-                                </div>
-                                <div style={{ marginTop: '6px', display: 'flex', gap: '5px' }}>
-                                  <button
-                                    onClick={() => handleEditParserRule(version, rule)}
-                                    style={{
-                                      padding: '3px 8px',
-                                      backgroundColor: '#ffc107',
-                                      color: 'black',
-                                      border: 'none',
-                                      borderRadius: '4px',
-                                      cursor: 'pointer',
-                                      fontSize: '12px'
-                                    }}
-                                  >
-                                    Edit
-                                  </button>
-                                  <button
-                                    onClick={() => handleDeleteParserRule(version, rule)}
-                                    style={{
-                                      padding: '3px 8px',
-                                      backgroundColor: '#dc3545',
-                                      color: 'white',
-                                      border: 'none',
-                                      borderRadius: '4px',
-                                      cursor: 'pointer',
-                                      fontSize: '12px'
-                                    }}
-                                  >
-                                    Delete
-                                  </button>
-                                </div>
-                              </div>
-                            ))
-                          )}
                         </div>
-                      </div>
-                    ))
-                  )}
+                      ))
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -997,23 +1030,55 @@ export function SimpleEngines() {
             overflow: 'auto'
           }}>
             <h2>{editingParserRule ? 'Edit Parser Rule' : 'Add Parser Rule'}</h2>
-            <p>For version: <strong>{selectedVersion?.version}</strong></p>
+            <p>For engine: <strong>{selectedEngine?.name}</strong></p>
             <form onSubmit={handleParserRuleSubmit}>
               <div style={{ marginBottom: '15px' }}>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Parser Type (optional when chat template provided)
+                  Rule Type *
                 </label>
-                <input
-                  type="text"
-                  value={parserRuleFormData.parser_type ?? ''}
-                  onChange={(e) => setParserRuleFormData({ ...parserRuleFormData, parser_type: e.target.value })}
+                <select
+                  value={parserRuleFormData.rule_type}
+                  onChange={(e) => setParserRuleFormData({
+                    ...parserRuleFormData,
+                    rule_type: e.target.value as ParserRuleType,
+                    // Clear chat_template when switching to reasoning
+                    chat_template: e.target.value === 'reasoning' ? '' : parserRuleFormData.chat_template
+                  })}
+                  required
                   style={{
                     width: '100%',
                     padding: '8px',
                     border: '1px solid #ddd',
                     borderRadius: '4px'
                   }}
-                  placeholder="Leave blank to use chat template only"
+                >
+                  {RULE_TYPES.map(type => (
+                    <option key={type} value={type}>{type.toUpperCase()}</option>
+                  ))}
+                </select>
+                <small style={{ color: '#666', display: 'block', marginTop: '4px' }}>
+                  {parserRuleFormData.rule_type === 'tool'
+                    ? 'Tool rules require parser_type or chat_template'
+                    : 'Reasoning rules require parser_type (no chat_template)'}
+                </small>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>
+                  Parser Type {parserRuleFormData.rule_type === 'reasoning' ? '*' : '(optional when chat template provided)'}
+                </label>
+                <input
+                  type="text"
+                  value={parserRuleFormData.parser_type ?? ''}
+                  onChange={(e) => setParserRuleFormData({ ...parserRuleFormData, parser_type: e.target.value })}
+                  required={parserRuleFormData.rule_type === 'reasoning'}
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    border: '1px solid #ddd',
+                    borderRadius: '4px'
+                  }}
+                  placeholder={parserRuleFormData.rule_type === 'reasoning' ? 'Required for reasoning rules' : 'Leave blank to use chat template only'}
                 />
               </div>
 
@@ -1085,25 +1150,27 @@ export function SimpleEngines() {
                 </div>
               </div>
 
-              <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Chat Template Override
-                </label>
-                <textarea
-                  value={parserRuleFormData.chat_template || ''}
-                  onChange={(e) => setParserRuleFormData({ ...parserRuleFormData, chat_template: e.target.value })}
-                  placeholder="Optional Jinja2 template to override the model's chat template"
-                  style={{
-                    width: '100%',
-                    padding: '8px',
-                    border: '1px solid #ddd',
-                    borderRadius: '4px',
-                    minHeight: '100px',
-                    fontFamily: 'monospace',
-                    fontSize: '12px'
-                  }}
-                />
-              </div>
+              {parserRuleFormData.rule_type === 'tool' && (
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{ display: 'block', marginBottom: '5px' }}>
+                    Chat Template Override
+                  </label>
+                  <textarea
+                    value={parserRuleFormData.chat_template || ''}
+                    onChange={(e) => setParserRuleFormData({ ...parserRuleFormData, chat_template: e.target.value })}
+                    placeholder="Optional Jinja2 template to override the model's chat template"
+                    style={{
+                      width: '100%',
+                      padding: '8px',
+                      border: '1px solid #ddd',
+                      borderRadius: '4px',
+                      minHeight: '100px',
+                      fontFamily: 'monospace',
+                      fontSize: '12px'
+                    }}
+                  />
+                </div>
+              )}
 
               <div style={{ marginBottom: '15px' }}>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
@@ -1129,7 +1196,7 @@ export function SimpleEngines() {
                   onClick={() => {
                     setShowParserRuleModal(false)
                     setEditingParserRule(null)
-                    setSelectedVersion(null)
+                    setSelectedEngine(null)
                     resetParserRuleForm()
                   }}
                   style={{
