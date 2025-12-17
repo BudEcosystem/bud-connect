@@ -18,15 +18,18 @@
 
 import json
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 from uuid import UUID
 
 from budmicroframe.commons import logging
+
+from sqlalchemy import delete
 
 from ..commons.constants import ModalityEnum, ModelEndpointEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
+from ..model.models import ModelInfo, engine_version_model_info
 from ..model.schemas import (
     CacheCost,
     Features,
@@ -448,7 +451,10 @@ class TensorZeroParser:
             logger.debug("Found supported endpoints in config")
             supported_model_endpoints = []
             for endpoint in config.get("supported_endpoints", []):
-                supported_model_endpoints.append(ModelEndpointEnum(endpoint))
+                try:
+                    supported_model_endpoints.append(ModelEndpointEnum(endpoint))
+                except ValueError:
+                    logger.debug("Skipping unsupported endpoint: %s", endpoint)
 
         return {
             "modalities": list(set(supported_modalities)),
@@ -533,6 +539,88 @@ class TensorZeroSeeder(BaseSeeder):
 
         return license_id_map
 
+    def get_existing_model_uris(self, engine_version_id: UUID) -> Dict[str, UUID]:
+        """Get all existing model URIs associated with an engine version.
+
+        Args:
+            engine_version_id: The ID of the engine version
+
+        Returns:
+            Dict mapping model URIs to their database IDs
+        """
+        uri_to_id_map: Dict[str, UUID] = {}
+
+        with ModelInfoCRUD() as model_info_crud:
+            session = model_info_crud.get_session()
+            try:
+                # Query models associated with this engine version
+                results = (
+                    session.query(ModelInfo.uri, ModelInfo.id)
+                    .join(
+                        engine_version_model_info,
+                        ModelInfo.id == engine_version_model_info.c.model_info_id,
+                    )
+                    .filter(engine_version_model_info.c.engine_version_id == engine_version_id)
+                    .all()
+                )
+                for uri, model_id in results:
+                    uri_to_id_map[uri] = model_id
+                logger.debug("Found %d existing models for engine version %s", len(uri_to_id_map), engine_version_id)
+            except Exception as e:
+                logger.warning("Failed to get existing model URIs: %s", e)
+
+        return uri_to_id_map
+
+    def delete_stale_models(self, engine_version_id: UUID, stale_model_ids: List[UUID]) -> int:
+        """Delete models that are no longer in the new model list.
+
+        This method removes the association between models and the engine version,
+        and deletes the model if it has no other engine version associations.
+
+        Args:
+            engine_version_id: The ID of the engine version
+            stale_model_ids: List of model IDs to remove
+
+        Returns:
+            Number of models deleted
+        """
+        if not stale_model_ids:
+            return 0
+
+        deleted_count = 0
+
+        with ModelInfoCRUD() as model_info_crud:
+            session = model_info_crud.get_session()
+            try:
+                # First, remove the association from engine_version_model_info
+                delete_assoc_stmt = delete(engine_version_model_info).where(
+                    engine_version_model_info.c.engine_version_id == engine_version_id,
+                    engine_version_model_info.c.model_info_id.in_(stale_model_ids),
+                )
+                session.execute(delete_assoc_stmt)
+
+                # Then, delete models that have no other engine version associations
+                for model_id in stale_model_ids:
+                    # Check if model has other associations
+                    other_assoc = (
+                        session.query(engine_version_model_info)
+                        .filter(engine_version_model_info.c.model_info_id == model_id)
+                        .first()
+                    )
+                    if not other_assoc:
+                        # No other associations, safe to delete the model
+                        session.query(ModelInfo).filter(ModelInfo.id == model_id).delete()
+                        deleted_count += 1
+
+                session.commit()
+                logger.info("Deleted %d stale models, removed %d associations", deleted_count, len(stale_model_ids))
+            except Exception as e:
+                session.rollback()
+                logger.error("Failed to delete stale models: %s", e)
+                raise
+
+        return deleted_count
+
     async def seed(self) -> None:
         """Seed the database with TensorZero model data.
 
@@ -572,6 +660,13 @@ class TensorZeroSeeder(BaseSeeder):
                     continue
 
                 logger.debug("Processing TensorZero version: %s", version)
+
+                # Get existing model URIs for this engine version (for cleanup later)
+                existing_models = self.get_existing_model_uris(version_config.id)
+                logger.debug("Found %d existing models for version %s", len(existing_models), version)
+
+                # Track all new URIs being processed
+                processed_uris: Set[str] = set()
 
                 # Get and validate data file path
                 data_file_path = await self.get_version_file_path(version)
@@ -641,6 +736,9 @@ class TensorZeroSeeder(BaseSeeder):
                             model, db_provider_id, provider, license_id
                         )
 
+                        # Track the URI being processed
+                        processed_uris.add(model_info_data.uri)
+
                         # Upsert model info
                         with ModelInfoCRUD() as model_info_crud:
                             db_model_info_id = model_info_crud.upsert(
@@ -649,6 +747,15 @@ class TensorZeroSeeder(BaseSeeder):
                             )
                             logger.debug("Upserted model info: %s", db_model_info_id)
                             model_info_crud.add_engine_version(db_model_info_id, version_config.id)
+
+                # After processing all models, delete stale models
+                stale_uris = set(existing_models.keys()) - processed_uris
+                if stale_uris:
+                    stale_model_ids = [existing_models[uri] for uri in stale_uris]
+                    logger.info("Found %d stale models to delete for version %s", len(stale_model_ids), version)
+                    self.delete_stale_models(version_config.id, stale_model_ids)
+                else:
+                    logger.debug("No stale models to delete for version %s", version)
 
         except FileNotFoundError as e:
             logger.exception("File not found during TensorZero seeding: %s", e)

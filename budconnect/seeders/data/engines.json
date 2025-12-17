@@ -560,17 +560,6 @@
         ]
     },
     {
-        "name": "LiteLLM",
-        "versions": [
-            {
-                "version": "0.1.0",
-                "device_architecture": "CPU",
-                "container_image": "budstudio/litellm-cpu:0.1.0",
-                "compatibilities": []
-            }
-        ]
-    },
-    {
         "name": "TensorZero",
         "versions": [
             {
