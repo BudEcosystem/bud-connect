@@ -125,6 +125,7 @@ async def get_compatible_engines(
     engine_version: Union[str, None] = None,
     engine: Union[str, None] = None,
     model_uri: Union[str, None] = None,
+    model_endpoints: Union[str, None] = None,
 ) -> Union[CompatibleEnginesResponse, ErrorResponse]:
     """Check if a model architecture is compatible with a device architecture and engine version.
 
@@ -134,18 +135,25 @@ async def get_compatible_engines(
         engine_version: The version of the engine to check compatibility against
         engine: The engine name (e.g., "vllm")
         model_uri: Optional model URI for precise capability lookup (e.g., "meta-llama/Llama-3.2-1B")
+        model_endpoints: Comma-separated list of model endpoint types (e.g., "EMBEDDING,CHAT")
 
     Returns:
         HTTP response with compatibility check results including tool calling and reasoning capabilities
     """
     try:
+        # Parse model_endpoints from comma-separated string to list
+        endpoints_list = None
+        if model_endpoints:
+            endpoints_list = [ep.strip() for ep in model_endpoints.split(",")]
+
         # Cast Optional types to their required types as expected by the service
         compatible_engines = EngineService.get_compatible_engines(
             model_architecture=model_architecture,
             device_architecture=device_architecture,  # type: ignore
             engine_version=engine_version,  # type: ignore
             engine=engine,  # type: ignore
-            model_uri=model_uri,  # Pass new parameter
+            model_uri=model_uri,
+            model_endpoints=endpoints_list,
         )
         response = CompatibleEnginesResponse(
             message="Model architecture is compatible with the given device architecture and engine version",

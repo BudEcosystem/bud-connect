@@ -87,6 +87,7 @@ class EngineCompatibility(BaseModel):
     features: Dict[str, Any]
     supported_tool_calling_parser_types: Optional[Dict[str, Any]] = None
     supported_reasoning_parsers: Optional[Dict[str, Any]] = None
+    supported_endpoints: Optional[Dict[str, Any]] = None
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
 
@@ -102,6 +103,7 @@ class EngineCompatibilityCreate(BaseModel):
     features: Dict[str, Any]
     supported_tool_calling_parser_types: Optional[Dict[str, Any]] = None
     supported_reasoning_parsers: Optional[Dict[str, Any]] = None
+    supported_endpoints: Optional[Dict[str, Any]] = None
 
 
 class EngineCompatibilityUpdate(BaseModel):
@@ -109,6 +111,7 @@ class EngineCompatibilityUpdate(BaseModel):
     features: Optional[Dict[str, Any]] = None
     supported_tool_calling_parser_types: Optional[Dict[str, Any]] = None
     supported_reasoning_parsers: Optional[Dict[str, Any]] = None
+    supported_endpoints: Optional[Dict[str, Any]] = None
 
 
 class LatestEngineVersion(BaseModel):

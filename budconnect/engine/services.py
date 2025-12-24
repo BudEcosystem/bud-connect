@@ -501,6 +501,7 @@ class EngineService:
         engine_version: str,
         engine: str,
         model_uri: Optional[str] = None,
+        model_endpoints: Optional[List[str]] = None,
     ) -> EngineCompatibility:
         """Check if a model architecture is compatible with a specific engine version and device architecture.
 
@@ -512,6 +513,7 @@ class EngineService:
             engine_version (str): The version of the engine.
             engine (str): The name of the engine.
             model_uri (Optional[str]): The model URI for precise capability lookup.
+            model_endpoints (Optional[List[str]]): List of model endpoint types (e.g., ["EMBEDDING", "CHAT"]).
 
         Returns:
             Any: The compatibility information if compatible with tool calling and reasoning capabilities.
@@ -543,13 +545,25 @@ class EngineService:
                 if architecture_info:
                     logger.info(f"Found architecture info for class {model_architecture}")
 
+        # Get model endpoints for endpoint-based matching
+        # Start with passed model_endpoints, then merge with endpoints from model_info
+        final_endpoints = list(model_endpoints) if model_endpoints else []
+        if model_info and model_info.endpoints:
+            model_info_endpoints = [ep.name for ep in model_info.endpoints]
+            # Merge without duplicates
+            for ep in model_info_endpoints:
+                if ep not in final_endpoints:
+                    final_endpoints.append(ep)
+        if final_endpoints:
+            logger.info(f"Model endpoints for compatibility check: {final_endpoints}")
+
         # Get compatible engines
         with EngineCRUD() as engine_crud:
             logger.info(
                 f"Checking model compatibility for {model_architecture} on {device_architecture} with {engine} version {engine_version}"
             )
             compatible_engines = engine_crud.get_compatible_engines(
-                model_architecture, device_architecture, engine_version, engine
+                model_architecture, device_architecture, engine_version, engine, final_endpoints or None
             )
 
             logger.info(f"Compatible engines: {compatible_engines}")
