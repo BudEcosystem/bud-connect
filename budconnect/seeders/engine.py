@@ -101,20 +101,28 @@ class EngineSeeder(BaseSeeder):
 
                     # Process compatibilities for this version
                     if "compatibilities" in version_data:
-                        # Merge all architectures and features from all compatibilities
+                        # Merge all architectures, features, and supported_endpoints from all compatibilities
                         all_architectures: List[str] = []
                         all_features: List[str] = []
+                        all_supported_endpoints: List[str] = []
 
                         for compat_data in version_data["compatibilities"]:  # type: ignore
                             # Collect all architectures
-                            all_architectures.extend(compat_data["architecture"])  # type: ignore
+                            all_architectures.extend(compat_data.get("architecture", []))  # type: ignore
 
                             # Collect all features
-                            all_features.extend(compat_data["features"])  # type: ignore
+                            all_features.extend(compat_data.get("features", []))  # type: ignore
+
+                            # Collect all supported_endpoints
+                            if "supported_endpoints" in compat_data:
+                                all_supported_endpoints.extend(compat_data["supported_endpoints"])  # type: ignore
 
                         # Convert to dictionary format expected by the schema
                         architectures_dict = {"architectures": all_architectures}
                         features_dict = {"features": all_features}
+                        supported_endpoints_dict = (
+                            {"endpoints": all_supported_endpoints} if all_supported_endpoints else None
+                        )
 
                         # Determine supported tool calling templates and reasoning parsers based on engine
                         supported_tool_calling = []
@@ -165,6 +173,7 @@ class EngineSeeder(BaseSeeder):
                                 "features": features_dict,
                                 "supported_tool_calling_parser_types": supported_tool_calling_dict,
                                 "supported_reasoning_parsers": supported_reasoning_dict,
+                                "supported_endpoints": supported_endpoints_dict,
                             }
 
                             # Update with the existing ID
@@ -178,6 +187,7 @@ class EngineSeeder(BaseSeeder):
                                 features=features_dict,
                                 supported_tool_calling_parser_types=supported_tool_calling_dict,
                                 supported_reasoning_parsers=supported_reasoning_dict,
+                                supported_endpoints=supported_endpoints_dict,
                             )
                             engine_compatibility_crud.insert(new_compat.model_dump(exclude_unset=True))
                             logger.info(f"Created new compatibility for version {version_id}")
