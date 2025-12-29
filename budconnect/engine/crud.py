@@ -3,7 +3,8 @@ from typing import Dict, List, Optional
 from uuid import UUID
 
 from budmicroframe.shared.psql_service import CRUDMixin
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -67,12 +68,17 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
         device_architecture: Optional[DeviceArchitecture] = None,
         engine_version: Optional[str] = None,
         engine: Optional[str] = None,
+        model_endpoints: Optional[List[str]] = None,
         session: Optional[Session] = None,
     ) -> List[CompatibleEngine]:
         """Get compatible engines for a given model architecture, device architecture, and engine version.
 
         This method retrieves compatible engines for a given model architecture, device architecture, and engine version.
         It performs a database query with joins to efficiently retrieve the compatibility information.
+
+        Compatibility matching logic:
+        - If an engine has a non-empty architectures list, match by architecture
+        - If an engine has an empty architectures list, match by model endpoints (supported_endpoints)
 
         If engine, engine_version, or device_architecture are not provided, the method will find the latest
         compatible version for each engine and device architecture combination.
@@ -82,6 +88,7 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             device_architecture (Optional[DeviceArchitecture], optional): The architecture of the device. If None, all architectures are considered.
             engine_version (Optional[str], optional): The version of the engine. If None, the latest version for each engine will be used.
             engine (Optional[str], optional): The name of the engine. If None, all engines are considered.
+            model_endpoints (Optional[List[str]], optional): List of model endpoint types (e.g., ["EMBEDDING", "CHAT"]).
             session (Optional[Session], optional): SQLAlchemy session to use. If None, a new session will be created.
 
         Returns:
@@ -90,18 +97,26 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
         session = session or self.get_session()
 
         # Build base query with the columns we need
-        query = (
-            session.query(
-                Engine.name.label("engine"),
-                EngineVersion.id.label("engine_version_id"),
-                EngineVersion.device_architecture.label("device_architecture"),
-                EngineVersion.version.label("version"),
-                EngineVersion.engine_id.label("engine_id"),
-                EngineVersion.container_image.label("container_image"),
-            )
+        base_columns = [
+            Engine.name.label("engine"),
+            EngineVersion.id.label("engine_version_id"),
+            EngineVersion.device_architecture.label("device_architecture"),
+            EngineVersion.version.label("version"),
+            EngineVersion.engine_id.label("engine_id"),
+            EngineVersion.container_image.label("container_image"),
+        ]
+
+        # Query 1: Architecture-based matching (engines with non-empty architectures list)
+        arch_query = (
+            session.query(*base_columns)
             .select_from(EngineCompatibility)
             .join(EngineVersion, EngineCompatibility.engine_version_id == EngineVersion.id)
             .join(Engine, EngineVersion.engine_id == Engine.id)
+            .filter(
+                func.jsonb_array_length(
+                    func.cast(EngineCompatibility.architectures["architectures"], JSONB)
+                ) > 0
+            )
             .filter(
                 func.jsonb_extract_path_text(EngineCompatibility.architectures, "architectures").like(
                     f'%"{model_architecture}"%'
@@ -109,15 +124,48 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             )
         )
 
-        # Apply optional filters
+        # Query 2: Endpoint-based matching (engines with empty architectures list)
+        endpoint_query = None
+        if model_endpoints:
+            endpoint_conditions = [
+                func.jsonb_extract_path_text(EngineCompatibility.supported_endpoints, "endpoints").like(
+                    f'%"{ep}"%'
+                )
+                for ep in model_endpoints
+            ]
+
+            endpoint_query = (
+                session.query(*base_columns)
+                .select_from(EngineCompatibility)
+                .join(EngineVersion, EngineCompatibility.engine_version_id == EngineVersion.id)
+                .join(Engine, EngineVersion.engine_id == Engine.id)
+                .filter(
+                    or_(
+                        func.jsonb_array_length(
+                            func.cast(EngineCompatibility.architectures["architectures"], JSONB)
+                        ) == 0,
+                        EngineCompatibility.architectures["architectures"].is_(None),
+                    )
+                )
+                .filter(EngineCompatibility.supported_endpoints.isnot(None))
+                .filter(or_(*endpoint_conditions))
+            )
+
+        # Apply optional filters to both queries
         if engine:
-            query = query.filter(Engine.name == engine)
+            arch_query = arch_query.filter(Engine.name == engine)
+            if endpoint_query is not None:
+                endpoint_query = endpoint_query.filter(Engine.name == engine)
 
         if engine_version:
-            query = query.filter(EngineVersion.version == engine_version)
+            arch_query = arch_query.filter(EngineVersion.version == engine_version)
+            if endpoint_query is not None:
+                endpoint_query = endpoint_query.filter(EngineVersion.version == engine_version)
 
         if device_architecture:
-            query = query.filter(EngineVersion.device_architecture == device_architecture)
+            arch_query = arch_query.filter(EngineVersion.device_architecture == device_architecture)
+            if endpoint_query is not None:
+                endpoint_query = endpoint_query.filter(EngineVersion.device_architecture == device_architecture)
 
         # If no specific version is requested, get the latest for each engine/device combination
         if not engine_version:
@@ -133,9 +181,16 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             ).subquery()
 
             # Only include the top-ranked version for each combination
-            query = query.join(
+            arch_query = arch_query.join(
                 latest_versions, (EngineVersion.id == latest_versions.c.id) & (latest_versions.c.rn == 1)
             )
+            if endpoint_query is not None:
+                endpoint_query = endpoint_query.join(
+                    latest_versions, (EngineVersion.id == latest_versions.c.id) & (latest_versions.c.rn == 1)
+                )
+
+        # Combine queries with UNION if endpoint query exists
+        query = arch_query.union(endpoint_query) if endpoint_query is not None else arch_query
 
         # Execute query and convert results to dictionaries
         results = query.all()

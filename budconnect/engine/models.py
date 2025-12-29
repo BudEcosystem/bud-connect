@@ -110,6 +110,7 @@ class EngineCompatibility(PSQLBase, TimestampMixin):
     features: Mapped[JSONB] = mapped_column(JSONB, nullable=False)
     supported_tool_calling_parser_types: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     supported_reasoning_parsers: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    supported_endpoints: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
 
     engine_version = relationship("EngineVersion", back_populates="compatibilities", uselist=False)
 

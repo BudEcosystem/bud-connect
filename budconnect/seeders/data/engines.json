@@ -569,5 +569,22 @@
                 "compatibilities": []
             }
         ]
+    },
+    {
+        "name": "latentbud",
+        "versions": [
+            {
+                "version": "0.1.0",
+                "device_architecture": "CUDA",
+                "container_image": "budstudio/latentbud-cuda:0.1.0",
+                "compatibilities": [
+                    {
+                        "architecture": [],
+                        "supported_endpoints": ["EMBEDDING"],
+                        "features": []
+                    }
+                ]
+            }
+        ]
     }
 ]
