@@ -95,6 +95,7 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             list[dict]: A list of dictionaries containing engine name, device architecture, and version for compatible combinations.
         """
         session = session or self.get_session()
+        model_architecture_lower = model_architecture.lower()
 
         # Build base query with the columns we need
         base_columns = [
@@ -118,8 +119,10 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
                 ) > 0
             )
             .filter(
-                func.jsonb_extract_path_text(EngineCompatibility.architectures, "architectures").like(
-                    f'%"{model_architecture}"%'
+                func.lower(
+                    func.jsonb_extract_path_text(EngineCompatibility.architectures, "architectures")
+                ).like(
+                    f'%"{model_architecture_lower}"%'
                 )
             )
         )
@@ -127,11 +130,14 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
         # Query 2: Endpoint-based matching (engines with empty architectures list)
         endpoint_query = None
         if model_endpoints:
+            model_endpoints_lower = [ep.lower() for ep in model_endpoints]
             endpoint_conditions = [
-                func.jsonb_extract_path_text(EngineCompatibility.supported_endpoints, "endpoints").like(
+                func.lower(
+                    func.jsonb_extract_path_text(EngineCompatibility.supported_endpoints, "endpoints")
+                ).like(
                     f'%"{ep}"%'
                 )
-                for ep in model_endpoints
+                for ep in model_endpoints_lower
             ]
 
             endpoint_query = (

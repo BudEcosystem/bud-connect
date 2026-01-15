@@ -78,6 +78,8 @@ class ModelArchitectureSeeder(BaseSeeder):
                     index_elements=["class_name"],
                     set_={
                         "architecture_family": stmt.excluded.architecture_family,
+                        "tool_calling_parser_type": stmt.excluded.tool_calling_parser_type,
+                        "reasoning_parser_type": stmt.excluded.reasoning_parser_type,
                         "supports_lora": stmt.excluded.supports_lora,
                         "supports_pipeline_parallelism": stmt.excluded.supports_pipeline_parallelism,
                     },

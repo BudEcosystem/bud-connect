@@ -419,21 +419,23 @@ _VLLM_MODELS = {
     **_TRANSFORMERS_BACKEND_MODELS,
 }
 
-model_list = []
-for model in _VLLM_MODELS:
-    model_list.append(model)
+def build_arch_list() -> list:
+    return list(_VLLM_MODELS.keys())
 
-print(model_list)
 
-output_data = {
-    "architectures": model_list
-}
+def write_arch_json(output_file: str) -> None:
+    model_list = build_arch_list()
+    print(model_list)
+    output_data = {"architectures": model_list}
+    output_json = json.dumps(output_data, indent=2, ensure_ascii=False)
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(output_json)
+    print(f"Output written to: {output_file}", file=sys.stderr)
 
-# Write output
-output_json = json.dumps(output_data, indent=2, ensure_ascii=False)
 
-output_file = "arch.json"
+def main() -> None:
+    write_arch_json("arch.json")
 
-with open(output_file, "w", encoding="utf-8") as f:
-    f.write(output_json)
-print(f"Output written to: {output_file}", file=sys.stderr)
+
+if __name__ == "__main__":
+    main()

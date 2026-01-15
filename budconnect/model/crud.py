@@ -805,4 +805,12 @@ class ModelArchitectureClassCRUD(CRUDMixin[ModelArchitectureClass, None, None]):
         Returns:
             ModelArchitectureClass object or None if not found
         """
-        return self.fetch_one(conditions={"class_name": class_name}, session=session)
+        _session = session or self.get_session()
+        try:
+            return (
+                _session.query(ModelArchitectureClass)
+                .filter(func.lower(ModelArchitectureClass.class_name) == class_name.lower())
+                .first()
+            )
+        finally:
+            self.cleanup_session(_session if session is None else None)
