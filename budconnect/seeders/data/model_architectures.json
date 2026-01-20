@@ -251,7 +251,7 @@
     {
       "class_name": "Gemma3ForCausalLM",
       "architecture_family": "gemma3",
-      "tool_calling_parser_type": null,
+      "tool_calling_parser_type": "functiongemma",
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -283,8 +283,8 @@
     {
       "class_name": "Glm4MoeForCausalLM",
       "architecture_family": "glm4_moe",
-      "tool_calling_parser_type": "glm4",
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "glm45",
+      "reasoning_parser_type": "glm45",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
@@ -411,7 +411,7 @@
     {
       "class_name": "InternLM2ForCausalLM",
       "architecture_family": "internlm2",
-      "tool_calling_parser_type": null,
+      "tool_calling_parser_type": "internlm",
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -467,7 +467,7 @@
     {
       "class_name": "LlamaForCausalLM",
       "architecture_family": "llama",
-      "tool_calling_parser_type": null,
+      "tool_calling_parser_type": "llama3_json",
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -523,16 +523,16 @@
     {
       "class_name": "MistralForCausalLM",
       "architecture_family": "llama",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": "mistral",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
       "class_name": "MixtralForCausalLM",
       "architecture_family": "mixtral",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": "mistral",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
@@ -683,7 +683,7 @@
     {
       "class_name": "Qwen2ForCausalLM",
       "architecture_family": "qwen2",
-      "tool_calling_parser_type": null,
+      "tool_calling_parser_type": "hermes",
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -691,7 +691,7 @@
     {
       "class_name": "Qwen2MoeForCausalLM",
       "architecture_family": "qwen2_moe",
-      "tool_calling_parser_type": null,
+      "tool_calling_parser_type": "hermes",
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -699,16 +699,16 @@
     {
       "class_name": "Qwen3ForCausalLM",
       "architecture_family": "qwen3",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "hermes",
+      "reasoning_parser_type": "qwen3",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Qwen3MoeForCausalLM",
       "architecture_family": "qwen3_moe",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "hermes",
+      "reasoning_parser_type": "qwen3",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
@@ -1507,7 +1507,7 @@
     {
       "class_name": "CwmForCausalLM",
       "architecture_family": "llama",
-      "tool_calling_parser_type": "llama3_json",
+      "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
       "supports_pipeline_parallelism": true
@@ -1523,7 +1523,7 @@
     {
       "class_name": "InternLM2VEForCausalLM",
       "architecture_family": "internlm2_ve",
-      "tool_calling_parser_type": "internlm",
+      "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
       "supports_pipeline_parallelism": true
