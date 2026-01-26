@@ -366,8 +366,11 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
                         "examples": rule.examples,
                         "deprecation_date": rule.deprecation_date,
                         "guard_types": rule.guard_types,
-                        "scanner_types": rule.scanner_types,
+                        "scanner_type": rule.scanner_type,
                         "modality_types": rule.modality_types,
+                        "model_id": rule.model_id,
+                        "model_provider_type": rule.model_provider_type,
+                        "is_gated": rule.is_gated,
                         "created_at": rule.created_at,
                         "modified_at": rule.modified_at,
                     }

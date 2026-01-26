@@ -3,10 +3,12 @@ from typing import List, Optional
 from uuid import UUID, uuid4
 
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
-from sqlalchemy import DateTime, ForeignKey, String, Uuid, func, select
+from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, String, Uuid, func, select
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from ..commons.constants import ModelProviderTypeEnum, ScannerTypeEnum
 
 
 class GuardrailProbe(PSQLBase, TimestampMixin):
@@ -51,26 +53,6 @@ class GuardrailProbe(PSQLBase, TimestampMixin):
         )
         return subquery.as_scalar()
 
-    # You can apply the exact same pattern for scanner_types and modality_types
-    @hybrid_property
-    def scanner_types(self) -> List[str]:
-        if not self.rules:
-            return []
-        all_types = set()
-        for rule in self.rules:
-            if rule.scanner_types:
-                all_types.update(rule.scanner_types)
-        return sorted(all_types)
-
-    @scanner_types.expression
-    def scanner_types(cls):
-        subquery = (
-            select(func.array_agg(func.distinct(func.unnest(GuardrailRule.scanner_types))))
-            .where(GuardrailRule.probe_id == cls.id)
-            .label("aggregated_scanner_types")
-        )
-        return subquery.as_scalar()
-
     @hybrid_property
     def modality_types(self) -> List[str]:
         if not self.rules:
@@ -87,6 +69,27 @@ class GuardrailProbe(PSQLBase, TimestampMixin):
             select(func.array_agg(func.distinct(func.unnest(GuardrailRule.modality_types))))
             .where(GuardrailRule.probe_id == cls.id)
             .label("aggregated_modality_types")
+        )
+        return subquery.as_scalar()
+
+    @hybrid_property
+    def scanner_types(self) -> List[str]:
+        """Aggregates unique scanner_type values from all rules."""
+        if not self.rules:
+            return []
+        all_types = set()
+        for rule in self.rules:
+            if rule.scanner_type:
+                all_types.add(rule.scanner_type.value if hasattr(rule.scanner_type, "value") else str(rule.scanner_type))
+        return sorted(all_types)
+
+    @scanner_types.expression
+    def scanner_types(cls):
+        subquery = (
+            select(func.array_agg(func.distinct(GuardrailRule.scanner_type)))
+            .where(GuardrailRule.probe_id == cls.id)
+            .where(GuardrailRule.scanner_type.isnot(None))
+            .label("aggregated_scanner_types")
         )
         return subquery.as_scalar()
 
@@ -137,9 +140,20 @@ class GuardrailRule(PSQLBase, TimestampMixin):
     description: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     examples: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
     guard_types: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
-    scanner_types: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
+    scanner_type: Mapped[Optional[ScannerTypeEnum]] = mapped_column(
+        Enum(ScannerTypeEnum, name="scanner_type_enum", values_callable=lambda x: [e.value for e in x]),
+        nullable=True,
+    )
     modality_types: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    # Model-related fields (optional, but mandatory when model_id is present)
+    model_id: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    model_provider_type: Mapped[Optional[ModelProviderTypeEnum]] = mapped_column(
+        Enum(ModelProviderTypeEnum, name="model_provider_type_enum", values_callable=lambda x: [e.value for e in x]),
+        nullable=True,
+    )
+    is_gated: Mapped[Optional[bool]] = mapped_column(Boolean, nullable=True)
 
     # Relationships
     probe: Mapped["GuardrailProbe"] = relationship("GuardrailProbe", back_populates="rules")
