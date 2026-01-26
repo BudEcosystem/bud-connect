@@ -98,3 +98,37 @@ class ProviderCapabilityEnum(Enum):
     MODEL = "model"
     MODERATION = "moderation"
     LOCAL = "local"
+
+
+class ModelProviderTypeEnum(str, Enum):
+    """Enumeration of model provider types.
+
+    This enum represents different types of model providers or sources.
+
+    Attributes:
+        CLOUD_MODEL (str): Represents cloud-based model providers.
+        HUGGING_FACE (str): Represents models from the Hugging Face platform.
+        URL (str): Represents models accessible via a URL.
+        DISK (str): Represents locally stored models on disk.
+    """
+
+    CLOUD_MODEL = "cloud_model"
+    HUGGING_FACE = "hugging_face"
+    URL = "url"
+    DISK = "disk"
+
+
+class ScannerTypeEnum(str, Enum):
+    """Type of model scanner for guardrail rules.
+
+    Attributes:
+        CLASSIFIER: Classification model (e.g., Arch-Guard).
+        LLM: LLM-based policy scanner.
+        PATTERN: Pattern-based detection (regex, keywords).
+        STATIC_CLASSIFIER: Static/rule-based classifier.
+    """
+
+    CLASSIFIER = "classifier"
+    LLM = "llm"
+    PATTERN = "pattern"
+    STATIC_CLASSIFIER = "static_classifier"

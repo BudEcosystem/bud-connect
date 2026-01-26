@@ -20,9 +20,9 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict
+from pydantic import UUID4, BaseModel, ConfigDict, model_validator
 
-from ..commons.constants import ProviderCapabilityEnum
+from ..commons.constants import ModelProviderTypeEnum, ProviderCapabilityEnum, ScannerTypeEnum
 
 
 class ProviderCreate(BaseModel):
@@ -52,9 +52,22 @@ class GuardrailRuleCreate(BaseModel):
     description: Optional[str] = None
     deprecation_date: Optional[datetime] = None
     examples: Optional[List[str]] = None
-    scanner_types: Optional[List[str]] = None
+    scanner_type: Optional[ScannerTypeEnum] = None
     modality_types: Optional[List[str]] = None
     guard_types: Optional[List[str]] = None
+    model_id: Optional[str] = None
+    model_provider_type: Optional[ModelProviderTypeEnum] = None
+    is_gated: Optional[bool] = None
+
+    @model_validator(mode="after")
+    def validate_model_fields(self) -> "GuardrailRuleCreate":
+        """Validate that model_provider_type and is_gated are present when model_id is set."""
+        if self.model_id is not None:
+            if self.model_provider_type is None:
+                raise ValueError("model_provider_type is required when model_id is present")
+            if self.is_gated is None:
+                raise ValueError("is_gated is required when model_id is present")
+        return self
 
 
 class GuardrailProbeResponse(GuardrailProbeCreate):
@@ -97,8 +110,11 @@ class RuleDetail(BaseModel):
     examples: Optional[List[str]] = None
     deprecation_date: Optional[datetime] = None
     guard_types: Optional[List[str]] = None
-    scanner_types: Optional[List[str]] = None
+    scanner_type: Optional[ScannerTypeEnum] = None
     modality_types: Optional[List[str]] = None
+    model_id: Optional[str] = None
+    model_provider_type: Optional[ModelProviderTypeEnum] = None
+    is_gated: Optional[bool] = None
     created_at: datetime
     modified_at: datetime
 

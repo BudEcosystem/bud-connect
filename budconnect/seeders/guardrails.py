@@ -22,6 +22,7 @@ from typing import Any, Dict, List
 
 from budmicroframe.commons import logging
 
+from ..commons.constants import ModelProviderTypeEnum, ScannerTypeEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..guardrails.crud import GuardrailProbeCRUD, GuardrailRuleCRUD
@@ -147,11 +148,34 @@ class GuardrailsSeeder(BaseSeeder):
                     rules = probe_data.get("rules", [])
                     for rule_data in rules:
                         rule_id = rule_data["id"]
-                        # Create rule URI based on the pattern: scanners[0]/rule_id
-                        scanners = rule_data.get("scanners", [])
+                        # Create rule URI based on the pattern: scanner/rule_id
+                        scanner_raw = rule_data.get("scanner")
                         rule_uri = (
-                            f"{scanners[0]}/{rule_id}" if scanners and provider_type == "bud_sentinel" else rule_id
+                            f"{scanner_raw}/{rule_id}" if scanner_raw and provider_type == "bud_sentinel" else rule_id
                         )
+
+                        # Convert scanner_type string to lowercase for PostgreSQL enum
+                        scanner_type_value = None
+                        if scanner_raw:
+                            scanner_type_lower = scanner_raw.lower()
+                            # Validate it's a known scanner type
+                            valid_scanner_types = {e.value for e in ScannerTypeEnum}
+                            if scanner_type_lower in valid_scanner_types:
+                                scanner_type_value = scanner_type_lower
+                            else:
+                                logger.warning("Unknown scanner_type: %s", scanner_raw)
+
+                        # Convert model_provider_type string to lowercase for PostgreSQL enum
+                        model_provider_type_raw = rule_data.get("model_provider_type")
+                        model_provider_type_value = None
+                        if model_provider_type_raw:
+                            model_provider_type_lower = model_provider_type_raw.lower()
+                            # Validate it's a known model provider type
+                            valid_provider_types = {e.value for e in ModelProviderTypeEnum}
+                            if model_provider_type_lower in valid_provider_types:
+                                model_provider_type_value = model_provider_type_lower
+                            else:
+                                logger.warning("Unknown model_provider_type: %s", model_provider_type_raw)
 
                         # Create rule data
                         rule_create_data = {
@@ -161,9 +185,12 @@ class GuardrailsSeeder(BaseSeeder):
                             "description": rule_data.get("description"),
                             "examples": rule_data.get("examples", []),
                             "guard_types": rule_data.get("guard_types", []),
-                            "scanner_types": rule_data.get("scanners", []),
+                            "scanner_type": scanner_type_value,
                             "modality_types": rule_data.get("modalities", []),
                             "deprecation_date": rule_data.get("deprecation_date"),
+                            "model_id": rule_data.get("model_id"),
+                            "model_provider_type": model_provider_type_value,
+                            "is_gated": rule_data.get("is_gated"),
                         }
 
                         # Upsert rule
