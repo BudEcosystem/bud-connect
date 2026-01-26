@@ -36,7 +36,7 @@ guardrail_router = APIRouter(prefix="/guardrail", tags=["Guardrail"])
 
 @guardrail_router.get("/get-compatible-guardrails")
 async def get_compatible_guardrails(
-    engine: Literal["TensorZero"] = "TensorZero",
+    engine: Optional[str] = "tensorzero",
     engine_version: Optional[str] = None,
     page: int = Query(1, ge=1),
     limit: int = Query(5, ge=0),

@@ -643,7 +643,7 @@ class TensorZeroSeeder(BaseSeeder):
             # Load TensorZero engine configuration from database
             engine_crud = EngineCRUD()
             with engine_crud as crud, crud.get_session() as session:
-                db_engine = engine_crud.fetch_one(conditions={"name": "TensorZero"}, session=session)
+                db_engine = engine_crud.fetch_one(conditions={"name": "tensorzero"}, session=session)
                 if not db_engine:
                     logger.warning("No TensorZero engine found")
                     return

@@ -610,7 +610,7 @@
         ]
     },
     {
-        "name": "TensorZero",
+        "name": "tensorzero",
         "versions": [
             {
                 "version": "0.1.0",
@@ -630,7 +630,9 @@
                 "compatibilities": [
                     {
                         "architecture": [],
-                        "supported_endpoints": ["EMBEDDING"],
+                        "supported_endpoints": [
+                            "EMBEDDING"
+                        ],
                         "features": []
                     }
                 ]
@@ -647,7 +649,9 @@
                 "compatibilities": [
                     {
                         "architecture": [],
-                        "supported_endpoints": ["EMBEDDING"],
+                        "supported_endpoints": [
+                            "EMBEDDING"
+                        ],
                         "features": []
                     }
                 ]

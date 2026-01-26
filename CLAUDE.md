@@ -84,7 +84,7 @@ The project follows a modular microservices architecture:
 - **Model Module** (`budconnect/modules/model/`): Handles model information, licenses, and resources
 - **Hardware Module** (`budconnect/modules/hardware/`): Manages hardware information and costs
 - **Leaderboard Module** (`budconnect/modules/leaderboard/`): Manages performance leaderboards
-- **Provider Module** (`budconnect/modules/provider/`): Handles external providers (LiteLLM, TensorZero)
+- **Provider Module** (`budconnect/modules/provider/`): Handles external providers (litellm, tensorzero)
 
 ### Key Components
 - **Seeders** (`budconnect/seeders/`): Automated data population for engines, models, and providers
@@ -118,7 +118,7 @@ All SQLAlchemy models are in `budconnect/models/` with relationships between:
 
 The `feature/tensorzero` branch is adding support for TensorZero provider with:
 - New seeder data in `budconnect/seeders/data/tensorzero/`
-- TensorZero seeder implementation in `budconnect/seeders/tensorzero.py`
+- tensorzero seeder implementation in `budconnect/seeders/tensorzero.py`
 - Updated engine configurations in `budconnect/seeders/data/engines.json`
 
 ## Important Notes
