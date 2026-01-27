@@ -637,12 +637,7 @@
                         "features": []
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "name": "latentbud",
-        "versions": [
+            },
             {
                 "version": "0.2.0",
                 "device_architecture": "CPU",
