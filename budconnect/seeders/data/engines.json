@@ -631,7 +631,8 @@
                     {
                         "architecture": [],
                         "supported_endpoints": [
-                            "EMBEDDING"
+                            "EMBEDDING",
+                            "CLASSIFY"
                         ],
                         "features": []
                     }
@@ -650,7 +651,8 @@
                     {
                         "architecture": [],
                         "supported_endpoints": [
-                            "EMBEDDING"
+                            "EMBEDDING",
+                            "CLASSIFY"
                         ],
                         "features": []
                     }
