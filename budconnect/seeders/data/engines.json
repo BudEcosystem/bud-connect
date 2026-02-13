@@ -631,17 +631,13 @@
                     {
                         "architecture": [],
                         "supported_endpoints": [
-                            "EMBEDDING"
+                            "EMBEDDING",
+                            "CLASSIFY"
                         ],
                         "features": []
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "name": "latentbud",
-        "versions": [
+            },
             {
                 "version": "0.2.0",
                 "device_architecture": "CPU",
@@ -650,7 +646,8 @@
                     {
                         "architecture": [],
                         "supported_endpoints": [
-                            "EMBEDDING"
+                            "EMBEDDING",
+                            "CLASSIFY"
                         ],
                         "features": []
                     }
