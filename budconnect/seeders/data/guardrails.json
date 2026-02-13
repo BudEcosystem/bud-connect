@@ -348,7 +348,7 @@
                 "id": "illegal",
                 "title": "Illegal Activity Detection",
                 "description": "Detects content related to illegal activities including drug trafficking, weapons, and fraud.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -407,7 +407,7 @@
                 "id": "jailbreak_injection",
                 "title": "Jailbreak & Injection Detection",
                 "description": "Detects jailbreak and prompt injection attempts. Ideal for first-pass screening of user inputs.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -497,7 +497,7 @@
                 "id": "pii.au",
                 "title": "Australian PII",
                 "description": "Detects Australian personal identifiers (Medicare, ABN, TFN, ACN)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 4,
                 "rules": [
@@ -579,7 +579,7 @@
                 "id": "pii.es",
                 "title": "Spanish PII",
                 "description": "Detects Spanish personal identifiers (NIF, NIE)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 2,
                 "rules": [
@@ -625,7 +625,7 @@
                 "id": "pii.fi",
                 "title": "Finnish PII",
                 "description": "Detects Finnish personal identifiers (Personal Identity Code)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -653,7 +653,7 @@
                 "id": "pii.general",
                 "title": "General PII",
                 "description": "Detects universal PII (email, IP, URL, crypto wallet, credit card, IBAN, dates, medical license)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 6,
                 "rules": [
@@ -774,7 +774,7 @@
                 "id": "pii.in",
                 "title": "Indian PII",
                 "description": "Detects Indian personal identifiers (Aadhaar, PAN, Voter ID, Passport, Vehicle Registration)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 3,
                 "rules": [
@@ -838,7 +838,7 @@
                 "id": "pii.it",
                 "title": "Italian PII",
                 "description": "Detects Italian personal identifiers (Identity Card, Fiscal Code, VAT, Driver's License, Passport)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 4,
                 "rules": [
@@ -920,7 +920,7 @@
                 "id": "pii.kr",
                 "title": "Korean PII",
                 "description": "Detects Korean personal identifiers (Resident Registration Number)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -948,7 +948,7 @@
                 "id": "pii.pl",
                 "title": "Polish PII",
                 "description": "Detects Polish personal identifiers (PESEL)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -976,7 +976,7 @@
                 "id": "pii.sg",
                 "title": "Singaporean PII",
                 "description": "Detects Singaporean personal identifiers (UEN, FIN/NRIC)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 2,
                 "rules": [
@@ -1024,7 +1024,7 @@
                 "id": "pii.uk",
                 "title": "UK PII",
                 "description": "Detects UK personal identifiers (NHS Number, National Insurance Number)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -1052,7 +1052,7 @@
                 "id": "pii.us",
                 "title": "US PII",
                 "description": "Detects US personal identifiers (SSN, Driver's License, ITIN, Bank Account, Passport)",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 5,
                 "rules": [
@@ -1308,7 +1308,7 @@
                 "id": "regulated_advice",
                 "title": "Regulated Advice Detection",
                 "description": "Detects unqualified medical, legal, or financial advice.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -1336,7 +1336,7 @@
                 "id": "secrets",
                 "title": "Secrets",
                 "description": "Detects authentication tokens, API keys, and other secrets",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 206,
                 "rules": [
@@ -4230,7 +4230,7 @@
                 "id": "self_harm",
                 "title": "Self-Harm Detection",
                 "description": "Detects self-harm, suicide, and eating disorder content.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -4258,7 +4258,7 @@
                 "id": "toxicity",
                 "title": "Toxicity Detection",
                 "description": "Detects toxic content including hate speech, harassment, and profanity. Best suited for high-throughput screening.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -4317,7 +4317,7 @@
                 "id": "violence",
                 "title": "Violence Detection",
                 "description": "Detects violent content including threats, graphic violence, and harm instructions.",
-                "icon": "icons/hf_authors/bud.png",
+                "icon": "icons/providers/bud.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
