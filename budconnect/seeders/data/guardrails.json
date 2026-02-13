@@ -68,7 +68,7 @@
                 "id": "gpt_safeguard_asylum_seeker_assistance",
                 "title": "Asylum Seeker Assistance Quality",
                 "description": "Evaluates AI responses for asylum seeker support quality across actionability, factuality, safety, tone, non-discrimination, and access. Classifies severity from moderate to critical.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -99,7 +99,7 @@
                 "id": "gpt_safeguard_content_moderation",
                 "title": "Content Moderation",
                 "description": "Multi-category content moderation covering sexual content, hate speech, violence, harassment, self-harm, and graphic violence.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -130,7 +130,7 @@
                 "id": "gpt_safeguard_drug_enablement",
                 "title": "Drug Enablement Detection",
                 "description": "Detects drug-related policy violations including distribution enablement, illegal drug promotion, acquisition facilitation, and endangerment. Classifies severity from promotion to endangerment.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -161,7 +161,7 @@
                 "id": "gpt_safeguard_prompt_injection",
                 "title": "Prompt Injection Detection",
                 "description": "Detects prompt injection attacks including direct injection, obfuscation techniques, and exploitation attempts. Classifies severity from moderate to critical.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -194,7 +194,7 @@
                 "id": "gpt_safeguard_social_media_toxicity",
                 "title": "Social Media Toxicity Detection",
                 "description": "Classifies social media authors as safe or toxic based on their posting behavior across multiple posts.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -224,7 +224,7 @@
                 "id": "gpt_safeguard_spam",
                 "title": "Spam Detection",
                 "description": "Detects spam including unsolicited promotions, phishing, and malicious content. Classifies severity from likely spam to malicious.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -255,7 +255,7 @@
                 "id": "gpt_safeguard_suicide_self_harm",
                 "title": "Suicide & Self-Harm Detection",
                 "description": "Detects content expressing suicidal ideation, self-harm, or suicidal intent. Prioritizes avoiding false negatives for safety-critical detection.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -286,7 +286,7 @@
                 "id": "gpt_safeguard_toxic_conversation",
                 "title": "Toxic Conversation Detection",
                 "description": "Detects toxic content in conversations including combative, belittling, dismissive, insulting, patronizing, passive-aggressive, threatening, or violence-endorsing language.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -466,7 +466,7 @@
                 "id": "piguard",
                 "title": "Prompt Injection Detection",
                 "description": "Detects prompt injection attempts, identifying malicious prompt manipulation.",
-                "icon": "icons/hf_authors/huggingface.png",
+                "icon": "icons/providers/huggingface.png",
                 "total_scanners": 1,
                 "total_rules": 1,
                 "rules": [
@@ -4350,7 +4350,7 @@
                 "id": "omni-moderation-latest",
                 "title": "Omni Moderation (latest)",
                 "description": "This is an unified model supporting detection of many categories including but not limited to hate, harassment, illicit, sexual & violence.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 13,
                 "rules": [
@@ -4591,7 +4591,7 @@
                 "id": "text-moderation-latest",
                 "title": "Text Moderation (legacy)",
                 "description": "This is an older model that supports only text inputs and fewer input categorizations. The newer omni-moderation models will be the best choice for new applications.",
-                "icon": "icons/hf_authors/openai.png",
+                "icon": "icons/providers/openai.png",
                 "total_scanners": 1,
                 "total_rules": 11,
                 "rules": [
