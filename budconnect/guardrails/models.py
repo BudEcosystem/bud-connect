@@ -20,6 +20,7 @@ class GuardrailProbe(PSQLBase, TimestampMixin):
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     uri: Mapped[Optional[str]] = mapped_column(String(255), unique=True, nullable=False)
     description: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    icon: Mapped[Optional[str]] = mapped_column(String(512), nullable=True)
     tags: Mapped[List[str]] = mapped_column(JSONB, nullable=True)
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
 
@@ -138,6 +139,7 @@ class GuardrailRule(PSQLBase, TimestampMixin):
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     uri: Mapped[Optional[str]] = mapped_column(String(255), unique=True, nullable=False)
     description: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    icon: Mapped[Optional[str]] = mapped_column(String(512), nullable=True)
     examples: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
     guard_types: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String), nullable=True)
     scanner_type: Mapped[Optional[ScannerTypeEnum]] = mapped_column(

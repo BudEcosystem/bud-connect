@@ -340,6 +340,7 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
                 "uri": probe.uri,
                 "name": probe.name,
                 "description": probe.description,
+                "icon": probe.icon,
                 "tags": probe.tags,
                 "examples": probe.examples,  # This will use the hybrid property
                 "deprecation_date": probe.deprecation_date,
@@ -363,6 +364,7 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
                         "uri": rule.uri,
                         "name": rule.name,
                         "description": rule.description,
+                        "icon": rule.icon,
                         "examples": rule.examples,
                         "deprecation_date": rule.deprecation_date,
                         "guard_types": rule.guard_types,
