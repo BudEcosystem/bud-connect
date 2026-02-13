@@ -41,6 +41,7 @@ class GuardrailProbeCreate(BaseModel):
     uri: str
     provider_id: UUID4
     description: Optional[str] = None
+    icon: Optional[str] = None
     tags: Optional[list[str]] = None
     deprecation_date: Optional[datetime] = None
 
@@ -50,6 +51,7 @@ class GuardrailRuleCreate(BaseModel):
     uri: str
     probe_id: UUID4
     description: Optional[str] = None
+    icon: Optional[str] = None
     deprecation_date: Optional[datetime] = None
     examples: Optional[List[str]] = None
     scanner_type: Optional[ScannerTypeEnum] = None
@@ -71,6 +73,8 @@ class GuardrailRuleCreate(BaseModel):
 
 
 class GuardrailProbeResponse(GuardrailProbeCreate):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID4
     examples: Optional[list[str]] = None
     guard_types: Optional[List[str]] = None
@@ -107,6 +111,7 @@ class RuleDetail(BaseModel):
     name: str
     uri: str
     description: Optional[str] = None
+    icon: Optional[str] = None
     examples: Optional[List[str]] = None
     deprecation_date: Optional[datetime] = None
     guard_types: Optional[List[str]] = None
@@ -129,6 +134,7 @@ class GuardrailRuleResponse(PaginatedResponse):
     name: str
     uri: str
     description: Optional[str] = None
+    icon: Optional[str] = None
     tags: Optional[list[str]] = None
     examples: Optional[List[str]] = None
     deprecation_date: Optional[datetime] = None

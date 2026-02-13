@@ -124,6 +124,7 @@ class GuardrailService:
                             uri=probe.uri,
                             provider_id=probe.provider_id,
                             description=probe.description,
+                            icon=probe.icon,
                             tags=probe.tags,
                             deprecation_date=probe.deprecation_date,
                             examples=probe.examples,

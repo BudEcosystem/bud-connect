@@ -133,6 +133,7 @@ class GuardrailsSeeder(BaseSeeder):
                         "name": probe_data["title"],
                         "uri": probe_uri,
                         "description": probe_data.get("description"),
+                        "icon": probe_data.get("icon"),
                         "tags": probe_data.get("tags", []),
                         "provider_id": provider_id,
                         "deprecation_date": probe_data.get("deprecation_date"),
@@ -183,6 +184,7 @@ class GuardrailsSeeder(BaseSeeder):
                             "name": rule_data["title"],
                             "uri": rule_uri,
                             "description": rule_data.get("description"),
+                            "icon": rule_data.get("icon"),  # Optional, will be None if not present
                             "examples": rule_data.get("examples", []),
                             "guard_types": rule_data.get("guard_types", []),
                             "scanner_type": scanner_type_value,
