@@ -99,11 +99,8 @@ class TensorZeroParser:
     """
 
     @staticmethod
-    async def parse_model_data(source_path: str) -> Dict[str, List[LiteLLMModelInfo]]:
-        """Parse TensorZero model data from a source file and organize by provider.
-
-        Args:
-            source_path: Path to the JSON file containing model data
+    async def parse_model_data() -> Dict[str, List[LiteLLMModelInfo]]:
+        """Fetch TensorZero model data from the catalog SDK and organize by provider.
 
         Returns:
             Dict mapping providers to their models with model details
@@ -111,9 +108,21 @@ class TensorZeroParser:
         Raises:
             SeederException: If there is an error parsing the model data
         """
-        # Load raw model data
-        model_data = read_json_file(str(source_path))
-        logger.debug("Loaded %d models from TensorZero data file", len(model_data))
+        # TODO: (Remove it after testing) Old file-based loading (replaced by catalog SDK):
+        # model_data = read_json_file(str(source_path))
+        # logger.debug("Loaded %d models from TensorZero data file", len(model_data))
+
+        # Fetch model data from the catalog SDK
+        from bud_model_catalog import CatalogClient
+
+        result = CatalogClient().fetch_catalog_sync()
+        model_data = result.models
+        logger.info(
+            "Fetched %d models from catalog SDK (matched=%d, unmatched=%d)",
+            len(model_data),
+            result.stats.matched,
+            result.stats.unmatched,
+        )
 
         # Get unique providers
         providers = {item["litellm_provider"] for item in model_data.values()}
@@ -469,6 +478,7 @@ class TensorZeroSeeder(BaseSeeder):
     and preparing it for database insertion.
     """
 
+    # TODO: Remove after confirming SDK-based fetching is stable
     @staticmethod
     async def get_version_file_path(version: str) -> str:
         """Generate a file path for the TensorZero model data file for a specific version.
@@ -668,14 +678,14 @@ class TensorZeroSeeder(BaseSeeder):
                 # Track all new URIs being processed
                 processed_uris: Set[str] = set()
 
-                # Get and validate data file path
+                # TODO: (Remove it after testing) Old file-based path validation (replaced by catalog SDK):
                 data_file_path = await self.get_version_file_path(version)
                 if not os.path.exists(data_file_path):
                     raise SeederException(f"TensorZero data file not found for version {version}: {data_file_path}")
 
-                # Parse model data
+                # Parse model data from catalog SDK
                 tensorzero_parser = await self.get_parser_by_version(version)
-                model_data = await tensorzero_parser.parse_model_data(data_file_path)
+                model_data = await tensorzero_parser.parse_model_data()
 
                 # Read providers data
                 predefined_providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
