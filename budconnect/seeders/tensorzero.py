@@ -22,10 +22,9 @@ from typing import Any, Dict, List, Optional, Set
 from uuid import UUID
 
 from budmicroframe.commons import logging
-
 from sqlalchemy import delete
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
@@ -99,11 +98,8 @@ class TensorZeroParser:
     """
 
     @staticmethod
-    async def parse_model_data(source_path: str) -> Dict[str, List[LiteLLMModelInfo]]:
-        """Parse TensorZero model data from a source file and organize by provider.
-
-        Args:
-            source_path: Path to the JSON file containing model data
+    async def parse_model_data() -> Dict[str, List[LiteLLMModelInfo]]:
+        """Fetch TensorZero model data from the catalog SDK and organize by provider.
 
         Returns:
             Dict mapping providers to their models with model details
@@ -111,9 +107,21 @@ class TensorZeroParser:
         Raises:
             SeederException: If there is an error parsing the model data
         """
-        # Load raw model data
-        model_data = read_json_file(str(source_path))
-        logger.debug("Loaded %d models from TensorZero data file", len(model_data))
+        # TODO: (Remove it after testing) Old file-based loading (replaced by catalog SDK):
+        # model_data = read_json_file(str(source_path))
+        # logger.debug("Loaded %d models from TensorZero data file", len(model_data))
+
+        # Fetch model data from the catalog SDK
+        from bud_model_catalog import CatalogClient
+
+        result = CatalogClient().fetch_catalog_sync()
+        model_data = result.models
+        logger.info(
+            "Fetched %d models from catalog SDK (matched=%d, unmatched=%d)",
+            len(model_data),
+            result.stats.matched,
+            result.stats.unmatched,
+        )
 
         # Get unique providers
         providers = {item["litellm_provider"] for item in model_data.values()}
@@ -292,6 +300,7 @@ class TensorZeroParser:
             features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
             deprecation_date=model_data.config.get("deprecation_date"),
             license_id=license_id,
+            status=ModelStatusEnum.ACTIVE,
         )
 
     @staticmethod
@@ -469,6 +478,7 @@ class TensorZeroSeeder(BaseSeeder):
     and preparing it for database insertion.
     """
 
+    # TODO: Remove after confirming SDK-based fetching is stable
     @staticmethod
     async def get_version_file_path(version: str) -> str:
         """Generate a file path for the TensorZero model data file for a specific version.
@@ -571,23 +581,23 @@ class TensorZeroSeeder(BaseSeeder):
 
         return uri_to_id_map
 
-    def delete_stale_models(self, engine_version_id: UUID, stale_model_ids: List[UUID]) -> int:
-        """Delete models that are no longer in the new model list.
+    def deactivate_stale_models(self, engine_version_id: UUID, stale_model_ids: List[UUID]) -> int:
+        """Deactivate models that are no longer in the new model list.
 
         This method removes the association between models and the engine version,
-        and deletes the model if it has no other engine version associations.
+        and marks the model as inactive if it has no other engine version associations.
 
         Args:
             engine_version_id: The ID of the engine version
-            stale_model_ids: List of model IDs to remove
+            stale_model_ids: List of model IDs to deactivate
 
         Returns:
-            Number of models deleted
+            Number of models deactivated
         """
         if not stale_model_ids:
             return 0
 
-        deleted_count = 0
+        deactivated_count = 0
 
         with ModelInfoCRUD() as model_info_crud:
             session = model_info_crud.get_session()
@@ -599,27 +609,31 @@ class TensorZeroSeeder(BaseSeeder):
                 )
                 session.execute(delete_assoc_stmt)
 
-                # Then, delete models that have no other engine version associations
+                # Then, mark models with no remaining associations as inactive
                 for model_id in stale_model_ids:
-                    # Check if model has other associations
                     other_assoc = (
                         session.query(engine_version_model_info)
                         .filter(engine_version_model_info.c.model_info_id == model_id)
                         .first()
                     )
                     if not other_assoc:
-                        # No other associations, safe to delete the model
-                        session.query(ModelInfo).filter(ModelInfo.id == model_id).delete()
-                        deleted_count += 1
+                        session.query(ModelInfo).filter(ModelInfo.id == model_id).update(
+                            {"status": ModelStatusEnum.INACTIVE}
+                        )
+                        deactivated_count += 1
 
                 session.commit()
-                logger.info("Deleted %d stale models, removed %d associations", deleted_count, len(stale_model_ids))
+                logger.info(
+                    "Deactivated %d stale models, removed %d associations",
+                    deactivated_count,
+                    len(stale_model_ids),
+                )
             except Exception as e:
                 session.rollback()
-                logger.error("Failed to delete stale models: %s", e)
+                logger.error("Failed to deactivate stale models: %s", e)
                 raise
 
-        return deleted_count
+        return deactivated_count
 
     async def seed(self) -> None:
         """Seed the database with TensorZero model data.
@@ -668,14 +682,14 @@ class TensorZeroSeeder(BaseSeeder):
                 # Track all new URIs being processed
                 processed_uris: Set[str] = set()
 
-                # Get and validate data file path
+                # TODO: (Remove it after testing) Old file-based path validation (replaced by catalog SDK):
                 data_file_path = await self.get_version_file_path(version)
                 if not os.path.exists(data_file_path):
                     raise SeederException(f"TensorZero data file not found for version {version}: {data_file_path}")
 
-                # Parse model data
+                # Parse model data from catalog SDK
                 tensorzero_parser = await self.get_parser_by_version(version)
-                model_data = await tensorzero_parser.parse_model_data(data_file_path)
+                model_data = await tensorzero_parser.parse_model_data()
 
                 # Read providers data
                 predefined_providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
@@ -748,14 +762,14 @@ class TensorZeroSeeder(BaseSeeder):
                             logger.debug("Upserted model info: %s", db_model_info_id)
                             model_info_crud.add_engine_version(db_model_info_id, version_config.id)
 
-                # After processing all models, delete stale models
+                # After processing all models, deactivate stale models
                 stale_uris = set(existing_models.keys()) - processed_uris
                 if stale_uris:
                     stale_model_ids = [existing_models[uri] for uri in stale_uris]
-                    logger.info("Found %d stale models to delete for version %s", len(stale_model_ids), version)
-                    self.delete_stale_models(version_config.id, stale_model_ids)
+                    logger.info("Found %d stale models to deactivate for version %s", len(stale_model_ids), version)
+                    self.deactivate_stale_models(version_config.id, stale_model_ids)
                 else:
-                    logger.debug("No stale models to delete for version %s", version)
+                    logger.debug("No stale models to deactivate for version %s", version)
 
         except FileNotFoundError as e:
             logger.exception("File not found during TensorZero seeding: %s", e)

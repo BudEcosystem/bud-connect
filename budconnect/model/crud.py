@@ -21,12 +21,12 @@ from uuid import UUID
 
 from budmicroframe.commons import logging
 from budmicroframe.shared.psql_service import CRUDMixin, DBCreateSchemaType, ModelType
-from sqlalchemy import and_, distinct, func
+from sqlalchemy import and_, distinct, func, or_
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from ..commons.constants import ProviderCapabilityEnum
+from ..commons.constants import ModelStatusEnum, ProviderCapabilityEnum
 from .models import (
     License,
     ModelArchitectureClass,
@@ -300,6 +300,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
                     ),
                 )
                 .filter(engine_version_provider.c.engine_version_id == version_id)
+                .filter(or_(ModelInfo.id.is_(None), ModelInfo.status == ModelStatusEnum.ACTIVE))
                 .order_by(Provider.provider_type)
             )
 
@@ -347,6 +348,7 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
         query = (
             _session.query(Provider, ModelInfo)
             .outerjoin(ModelInfo, ModelInfo.provider_id == Provider.id)
+            .filter(or_(ModelInfo.id.is_(None), ModelInfo.status == ModelStatusEnum.ACTIVE))
             .order_by(Provider.provider_type, ModelInfo.uri)
         )
 

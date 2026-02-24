@@ -1,6 +1,7 @@
 # Service/Clients
 dapr >= 1.14.0
 budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
+bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git
 
 # API
 fastapi >= 0.111.1

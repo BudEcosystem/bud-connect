@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.schema import Table
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum, ProviderCapabilityEnum
 
 
 if TYPE_CHECKING:
@@ -137,6 +137,9 @@ class ModelInfo(PSQLBase, TimestampMixin):
     chat_template: Mapped[str] = mapped_column(Text, nullable=True)
     tool_calling_parser_type: Mapped[str] = mapped_column(String, nullable=True)
     reasoning_parser_type: Mapped[str] = mapped_column(String, nullable=True)
+    status: Mapped[ModelStatusEnum] = mapped_column(
+        Enum(ModelStatusEnum), nullable=False, default=ModelStatusEnum.ACTIVE
+    )
 
     provider: Mapped[Provider] = relationship(back_populates="models")
     license: Mapped[License] = relationship(back_populates="models")

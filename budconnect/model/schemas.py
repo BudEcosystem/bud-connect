@@ -22,7 +22,7 @@ from typing import Any, Dict, List, Optional
 from budmicroframe.commons.schemas import PaginatedResponse
 from pydantic import UUID4, BaseModel, ConfigDict, Field
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum, ProviderCapabilityEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum, ProviderCapabilityEnum
 
 
 class LicenseFAQ(BaseModel):
@@ -248,6 +248,7 @@ class ModelInfoCreate(BaseModel):
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    status: Optional[ModelStatusEnum] = None
 
     def model_dump(self, **kwargs: Any) -> Dict[str, Any]:
         """Implement custom model_dump to convert nested Pydantic models to None."""
@@ -297,6 +298,7 @@ class ModelInfoUpdate(BaseModel):
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    status: Optional[ModelStatusEnum] = None
 
 
 # Api Schemas
@@ -365,6 +367,7 @@ class ModelInfoResponse(BaseModel):
     chat_template: Optional[str] = None
     tool_calling_parser_type: Optional[str] = None
     reasoning_parser_type: Optional[str] = None
+    status: Optional[ModelStatusEnum] = None
     created_at: Optional[datetime] = None
     modified_at: Optional[datetime] = None
 

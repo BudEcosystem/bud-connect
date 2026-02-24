@@ -118,6 +118,13 @@ class ModelProviderTypeEnum(str, Enum):
     DISK = "disk"
 
 
+class ModelStatusEnum(str, Enum):
+    """Status of a model in the system."""
+
+    ACTIVE = "active"
+    INACTIVE = "inactive"
+
+
 class ScannerTypeEnum(str, Enum):
     """Type of model scanner for guardrail rules.
 

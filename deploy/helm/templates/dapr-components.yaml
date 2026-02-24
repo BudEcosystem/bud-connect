@@ -67,7 +67,26 @@ spec:
   deadLetterTopic: poisonMessages
 scopes:
   - {{.Values.name}}
-  
+
+---
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cron-tensorzero-sync
+  namespace: {{ .Values.namespace }}
+spec:
+  type: bindings.cron
+  version: v1
+  metadata:
+    - name: schedule
+      value: "@every 24h"
+    - name: direction
+      value: "input"
+    - name: route
+      value: "/model/cron-tensorzero-sync"
+scopes:
+  - {{ .Values.name }}
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole

@@ -1,0 +1,18 @@
+# Dapr cron binding — triggers TensorZero model catalog sync on schedule.
+# The endpoint POST /model/cron-tensorzero-sync is handled in budconnect/model/routes.py.
+# Schedule uses standard cron syntax: second minute hour day month day-of-week
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cron-tensorzero-sync
+  namespace: development
+spec:
+  type: bindings.cron
+  version: v1
+  metadata:
+    - name: schedule
+      value: "@every 24h"      # Every 24 hours from app start
+    - name: direction
+      value: "input"
+    - name: route
+      value: "/model/cron-tensorzero-sync"
