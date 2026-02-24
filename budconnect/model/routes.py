@@ -16,6 +16,8 @@
 
 """This module contains the routes for the model API."""
 
+import asyncio
+import time
 from typing import Any, Dict, Optional
 from uuid import UUID
 
@@ -26,6 +28,8 @@ from fastapi import APIRouter, HTTPException, Query, status
 from fastapi.responses import JSONResponse
 from typing_extensions import Annotated
 
+from ..commons.exceptions import SeederException
+from ..seeders.tensorzero import TensorZeroSeeder
 from .schemas import (
     ModelArchitectureClassCreate,
     ModelArchitectureClassResponse,
@@ -362,3 +366,34 @@ async def update_model_details(model_id: UUID, details_data: ModelDetailsUpdate)
     except Exception as e:
         logger.error(f"Error updating model details {model_id}: {str(e)}")
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e
+
+
+_tensorzero_sync_lock = asyncio.Lock()
+
+
+@model_router.post("/cron-tensorzero-sync")
+async def handle_tensorzero_sync():
+    """Dapr cron binding endpoint — triggers periodic TensorZero model catalog sync.
+
+    Protected by asyncio.Lock to prevent overlapping runs.
+    """
+    if _tensorzero_sync_lock.locked():
+        logger.warning("TensorZero sync already in progress, skipping this trigger")
+        return {"status": "skipped", "reason": "already_running"}
+
+    async with _tensorzero_sync_lock:
+        start_time = time.monotonic()
+        logger.info("Starting periodic TensorZero model catalog sync...")
+        try:
+            await TensorZeroSeeder().seed()
+            elapsed = time.monotonic() - start_time
+            logger.info("TensorZero periodic sync completed successfully in %.1f seconds", elapsed)
+            return {"status": "success", "duration_seconds": round(elapsed, 1)}
+        except SeederException as e:
+            elapsed = time.monotonic() - start_time
+            logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e.message)
+            return {"status": "error", "message": e.message, "duration_seconds": round(elapsed, 1)}
+        except Exception as e:
+            elapsed = time.monotonic() - start_time
+            logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e)
+            return {"status": "error", "message": str(e), "duration_seconds": round(elapsed, 1)}

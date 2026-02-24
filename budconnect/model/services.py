@@ -98,6 +98,7 @@ class ModelService:
                                 "chat_template": db_model.chat_template,
                                 "tool_calling_parser_type": db_model.tool_calling_parser_type,
                                 "reasoning_parser_type": db_model.reasoning_parser_type,
+                                "status": db_model.status,
                             }
 
                         compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -130,6 +131,7 @@ class ModelService:
                                 "chat_template": db_model.chat_template,
                                 "tool_calling_parser_type": db_model.tool_calling_parser_type,
                                 "reasoning_parser_type": db_model.reasoning_parser_type,
+                                "status": db_model.status,
                             }
                             compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
@@ -219,6 +221,7 @@ class ModelService:
                             "chat_template": db_model.chat_template,
                             "tool_calling_parser_type": db_model.tool_calling_parser_type,
                             "reasoning_parser_type": db_model.reasoning_parser_type,
+                            "status": db_model.status,
                         }
 
                     compatible_providers[str(db_provider.id)] = CompatibleProviders(
@@ -251,6 +254,7 @@ class ModelService:
                             "chat_template": db_model.chat_template,
                             "tool_calling_parser_type": db_model.tool_calling_parser_type,
                             "reasoning_parser_type": db_model.reasoning_parser_type,
+                            "status": db_model.status,
                         }
                         compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
 
