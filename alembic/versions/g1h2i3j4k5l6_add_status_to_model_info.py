@@ -1,7 +1,7 @@
 """Add status field to model_info.
 
 Revision ID: g1h2i3j4k5l6
-Revises: f1g2h3i4j5k6
+Revises: g2h3i4j5k6l7
 Create Date: 2026-02-23 00:00:00.000000
 
 This migration adds a status column to model_info table to support
@@ -18,7 +18,7 @@ from alembic import op
 
 # revision identifiers, used by Alembic.
 revision: str = 'g1h2i3j4k5l6'
-down_revision: Union[str, None] = 'f1g2h3i4j5k6'
+down_revision: Union[str, None] = 'g2h3i4j5k6l7'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
