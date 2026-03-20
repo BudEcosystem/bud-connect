@@ -397,9 +397,9 @@ class LiteLLMParser:
         # supports_vision
         if config.get("supports_vision", False):
             supported_modalities.append(ModalityEnum.TEXT_INPUT)
+            supported_modalities.append(ModalityEnum.TEXT_OUTPUT)
             supported_modalities.append(ModalityEnum.IMAGE_INPUT)
-            supported_modalities.append(ModalityEnum.IMAGE_OUTPUT)
-            supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION, ModelEndpointEnum.CHAT])
+            supported_model_endpoints.extend([ModelEndpointEnum.CHAT])
 
         # supports_image_input
         if config.get("supports_image_input", False):
