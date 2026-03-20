@@ -491,6 +491,24 @@
             "moderation"
         ]
     },
+    "moonshot": {
+        "name": "MoonshotAI",
+        "description": "MoonshotAI provides the Kimi series of large language models, optimized for long-context understanding, reasoning, and multilingual tasks.",
+        "icon": "icons/providers/moonshotai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Your MoonshotAI API key",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
     "azure_content_safety": {
         "name": "Azure Content Safety",
         "description": "Azure AI Content Safety is an AI service that detects harmful user-generated and AI-generated content in applications and services.",
