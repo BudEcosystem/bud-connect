@@ -491,7 +491,7 @@
             "moderation"
         ]
     },
-    "moonshot": {
+    "moonshotai": {
         "name": "MoonshotAI",
         "description": "MoonshotAI provides the Kimi series of large language models, optimized for long-context understanding, reasoning, and multilingual tasks.",
         "icon": "icons/providers/moonshotai.png",
