@@ -64,9 +64,10 @@ class A2ARegistryAgentCRUD(CRUDMixin[A2ARegistryAgent, None, None]):
             )
             stmt = stmt.returning(self.__model__.id)
             result = _session.execute(stmt)
-            _session.commit()
-
             row = result.first()
+            if session is None:
+                _session.commit()
+
             if row:
                 return UUID(str(row[0]))
 
@@ -127,8 +128,9 @@ class A2ARegistryAgentCRUD(CRUDMixin[A2ARegistryAgent, None, None]):
         try:
             stmt = delete(self.__model__).where(self.__model__.base_url.notin_(current_base_urls))
             result = _session.execute(stmt)
-            _session.commit()
             deleted = result.rowcount
+            if session is None:
+                _session.commit()
             if deleted > 0:
                 logger.info("Deleted %d absent A2A registry agents", deleted)
             return deleted

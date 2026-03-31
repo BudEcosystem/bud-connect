@@ -143,9 +143,8 @@ class A2ARegistryService:
                     }
                     async with session.get(A2A_REGISTRY_URL, params=params) as resp:
                         if resp.status != 200:
-                            logger.error("A2A registry returned status %d", resp.status)
                             cls._record_failure()
-                            return all_agents
+                            raise RuntimeError(f"A2A registry returned status {resp.status}")
 
                         data = await resp.json()
                         agents = data.get("agents", [])
@@ -165,7 +164,7 @@ class A2ARegistryService:
         except Exception as e:
             cls._record_failure()
             logger.error("Failed to fetch from A2A registry: %s", e)
-            return all_agents
+            raise
 
     @staticmethod
     async def sync() -> Dict[str, int]:
@@ -193,12 +192,14 @@ class A2ARegistryService:
                     upserted += 1
                 except Exception as e:
                     logger.warning("Failed to upsert agent %s: %s", agent_data.get("base_url", "?"), e)
+            session.commit()
 
         deleted = 0
         if current_base_urls:
             with crud as crud_ctx:
                 session = crud_ctx.get_session()
                 deleted = crud.delete_absent(current_base_urls, session=session)
+                session.commit()
 
         summary = {"fetched": len(agents), "upserted": upserted, "deleted": deleted}
         logger.info("A2A registry sync complete: %s", summary)
