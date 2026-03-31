@@ -88,6 +88,25 @@ scopes:
   - {{ .Values.name }}
 
 ---
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cron-a2a-registry-sync
+  namespace: {{ .Values.namespace }}
+spec:
+  type: bindings.cron
+  version: v1
+  metadata:
+    - name: schedule
+      value: "@every 12h"
+    - name: direction
+      value: "input"
+    - name: route
+      value: "/a2a-registry/cron-sync"
+scopes:
+  - {{ .Values.name }}
+
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:

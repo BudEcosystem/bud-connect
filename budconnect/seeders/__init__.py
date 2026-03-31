@@ -1,3 +1,4 @@
+from .a2a_registry import A2ARegistrySeeder
 from .engine import EngineSeeder
 from .guardrails import GuardrailsSeeder
 from .license import LicenseSeeder
@@ -18,4 +19,5 @@ seeders = {
     "model_details": ModelDetailsSeeder,  # This should run after litellm and tensorzero
     "guardrails": GuardrailsSeeder,  # This should run after tensorzero to ensure providers exist
     "model_architecture": ModelArchitectureSeeder,
+    "a2a_registry": A2ARegistrySeeder,  # Fetches A2A agents from a2aregistry.org
 }

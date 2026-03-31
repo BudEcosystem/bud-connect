@@ -25,6 +25,7 @@ from budmicroframe.shared.dapr_workflow import DaprWorkflow
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from .a2a_registry.routes import a2a_registry_router
 from .auth.routes import auth_router
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
@@ -101,3 +102,4 @@ app.include_router(license_router)
 app.include_router(model_router)
 app.include_router(guardrail_router)
 app.include_router(provider_router)
+app.include_router(a2a_registry_router)
