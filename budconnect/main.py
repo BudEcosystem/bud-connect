@@ -33,6 +33,7 @@ from .eval.routes import eval_router
 from .guardrails.routes import guardrail_router
 from .license.routes import license_router
 from .model.routes import model_router
+from .a2a_registry.routes import a2a_registry_router
 from .provider.routes import provider_router
 from .seeders import seeders
 
@@ -101,3 +102,4 @@ app.include_router(license_router)
 app.include_router(model_router)
 app.include_router(guardrail_router)
 app.include_router(provider_router)
+app.include_router(a2a_registry_router)
