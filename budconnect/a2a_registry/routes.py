@@ -27,6 +27,7 @@ from fastapi import APIRouter, HTTPException, Query, status
 from .schemas import A2ARegistryAgentListResponse, A2ARegistrySyncResponse
 from .services import A2ARegistryService
 
+
 logger = logging.get_logger(__name__)
 
 a2a_registry_router = APIRouter(prefix="/a2a-registry", tags=["A2A Registry"])
@@ -90,6 +91,4 @@ async def handle_a2a_registry_sync() -> A2ARegistrySyncResponse:
         except Exception as e:
             elapsed = time.monotonic() - start_time
             logger.error("A2A registry sync failed after %.1f seconds: %s", elapsed, e)
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-            ) from e
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)) from e

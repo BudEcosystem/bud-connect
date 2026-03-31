@@ -28,6 +28,7 @@ from sqlalchemy.orm import Session
 
 from .models import A2ARegistryAgent
 
+
 logger = logging.get_logger(__name__)
 
 
@@ -124,9 +125,7 @@ class A2ARegistryAgentCRUD(CRUDMixin[A2ARegistryAgent, None, None]):
 
         _session = session or self.get_session()
         try:
-            stmt = delete(self.__model__).where(
-                self.__model__.base_url.notin_(current_base_urls)
-            )
+            stmt = delete(self.__model__).where(self.__model__.base_url.notin_(current_base_urls))
             result = _session.execute(stmt)
             _session.commit()
             deleted = result.rowcount

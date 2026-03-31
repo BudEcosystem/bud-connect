@@ -16,7 +16,6 @@
 
 """Service layer for A2A registry agent sync and retrieval."""
 
-import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -25,6 +24,7 @@ from budmicroframe.commons import logging
 
 from .crud import A2ARegistryAgentCRUD
 from .schemas import A2ARegistryAgentCreate, A2ARegistryAgentListResponse, A2ARegistryAgentResponse
+
 
 logger = logging.get_logger(__name__)
 

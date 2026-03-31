@@ -5,6 +5,7 @@ import logging
 from ..a2a_registry.services import A2ARegistryService
 from .base import BaseSeeder
 
+
 logger = logging.getLogger(__name__)
 
 

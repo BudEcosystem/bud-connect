@@ -25,6 +25,7 @@ from budmicroframe.shared.dapr_workflow import DaprWorkflow
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from .a2a_registry.routes import a2a_registry_router
 from .auth.routes import auth_router
 from .commons.config import app_settings, secrets_settings
 from .commons.exceptions import SeederException
@@ -33,7 +34,6 @@ from .eval.routes import eval_router
 from .guardrails.routes import guardrail_router
 from .license.routes import license_router
 from .model.routes import model_router
-from .a2a_registry.routes import a2a_registry_router
 from .provider.routes import provider_router
 from .seeders import seeders
 
