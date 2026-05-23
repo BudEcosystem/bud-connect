@@ -189,7 +189,7 @@
       "architecture_family": "blip2",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -301,7 +301,7 @@
       "architecture_family": "llama",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -363,7 +363,7 @@
     {
       "class_name": "DeepseekV32ForCausalLM",
       "architecture_family": "deepseek_v2",
-      "tool_calling_parser_type": "deepseek_v3",
+      "tool_calling_parser_type": "deepseek_v32",
       "reasoning_parser_type": "deepseek_v3",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
@@ -389,7 +389,7 @@
       "architecture_family": "dots1",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -429,16 +429,16 @@
       "architecture_family": "llama_eagle3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Eagle3Qwen2_5vlForCausalLM",
       "architecture_family": "llama_eagle3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Eagle3Qwen3vlForCausalLM",
@@ -453,32 +453,32 @@
       "architecture_family": "deepseek_eagle",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "EagleLlama4ForCausalLM",
       "architecture_family": "llama4_eagle",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "EagleLlamaForCausalLM",
       "architecture_family": "llama_eagle",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "EagleMiniCPMForCausalLM",
       "architecture_family": "minicpm_eagle",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "EagleMistralLarge3ForCausalLM",
@@ -493,8 +493,8 @@
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Ernie4_5ForCausalLM",
@@ -517,7 +517,7 @@
       "architecture_family": "ernie45_vl",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": "ernie45",
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -637,7 +637,7 @@
       "architecture_family": "flex_olmo",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -709,7 +709,7 @@
       "architecture_family": "gpt_neox",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": true,
+      "supports_lora": false,
       "supports_pipeline_parallelism": true
     },
     {
@@ -749,8 +749,8 @@
       "architecture_family": "gemma3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": true,
-      "supports_pipeline_parallelism": true
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
     },
     {
       "class_name": "Gemma3nForCausalLM",
@@ -973,7 +973,7 @@
       "architecture_family": "h2ovl",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -982,7 +982,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "HCXVisionV2ForCausalLM",
@@ -1213,7 +1213,7 @@
       "architecture_family": "kimi_linear",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": true,
+      "supports_lora": false,
       "supports_pipeline_parallelism": true
     },
     {
@@ -1277,7 +1277,7 @@
       "architecture_family": "mllama4",
       "tool_calling_parser_type": "llama4_pythonic",
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -1309,8 +1309,8 @@
       "architecture_family": "llama_eagle3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "LlamaModel",
@@ -1349,7 +1349,7 @@
       "architecture_family": "llava",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -1405,8 +1405,8 @@
       "architecture_family": "mamba2",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": true,
-      "supports_pipeline_parallelism": true
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
     },
     {
       "class_name": "MambaForCausalLM",
@@ -1494,12 +1494,12 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
-      "supports_pipeline_parallelism": false
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "MiniMaxForCausalLM",
       "architecture_family": "minimax_text_01",
-      "tool_calling_parser_type": "minimax_m1",
+      "tool_calling_parser_type": "minimax",
       "reasoning_parser_type": null,
       "supports_lora": false,
       "supports_pipeline_parallelism": false
@@ -1523,7 +1523,7 @@
     {
       "class_name": "MiniMaxText01ForCausalLM",
       "architecture_family": "minimax_text_01",
-      "tool_calling_parser_type": "minimax_m1",
+      "tool_calling_parser_type": "minimax",
       "reasoning_parser_type": null,
       "supports_lora": false,
       "supports_pipeline_parallelism": false
@@ -1645,8 +1645,8 @@
       "architecture_family": "nvlm_d",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "NemotronForCausalLM",
@@ -1685,8 +1685,8 @@
       "architecture_family": "nano_nemotron_vl",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": true,
-      "supports_pipeline_parallelism": true
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
     },
     {
       "class_name": "NemotronParseForConditionalGeneration",
@@ -1798,7 +1798,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
-      "supports_pipeline_parallelism": true
+      "supports_pipeline_parallelism": false
     },
     {
       "class_name": "Ovis",
@@ -1814,7 +1814,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Ovis2_6ForCausalLM",
@@ -1902,7 +1902,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
-      "supports_pipeline_parallelism": true
+      "supports_pipeline_parallelism": false
     },
     {
       "class_name": "PhiForCausalLM",
@@ -1933,7 +1933,7 @@
       "architecture_family": "plamo2",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2021,16 +2021,16 @@
       "architecture_family": "qwen2_5_omni_thinker",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Qwen2_5OmniModel",
       "architecture_family": "qwen2_5_omni_thinker",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Qwen2_5_VLForConditionalGeneration",
@@ -2045,7 +2045,7 @@
       "architecture_family": "qwen3_asr",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2053,7 +2053,7 @@
       "architecture_family": "qwen3_asr_realtime",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2094,7 +2094,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Qwen3VLForConditionalGeneration",
@@ -2245,8 +2245,8 @@
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "SmolVLMForConditionalGeneration",
@@ -2278,7 +2278,7 @@
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "Starcoder2ForCausalLM",
@@ -2341,7 +2341,7 @@
       "architecture_family": "llava",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2389,88 +2389,88 @@
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersForCausalLM",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersForSequenceClassification",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMoEEmbeddingModel",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMoEForCausalLM",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMoEForSequenceClassification",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMultiModalEmbeddingModel",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMultiModalForCausalLM",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMultiModalForSequenceClassification",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "TransformersMultiModalMoEForCausalLM",
       "architecture_family": "transformers",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "UltravoxModel",
       "architecture_family": "ultravox",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "VoxtralForConditionalGeneration",
@@ -2501,7 +2501,7 @@
       "architecture_family": "whisper",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": false
     },
     {
@@ -2531,6 +2531,358 @@
     {
       "class_name": "Zamba2ForCausalLM",
       "architecture_family": "zamba2",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "Cohere2MoeForCausalLM",
+      "architecture_family": "cohere2_moe",
+      "tool_calling_parser_type": "cohere_command3",
+      "reasoning_parser_type": "cohere_command3",
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "DeepseekV4ForCausalLM",
+      "architecture_family": "vllm.models.deepseek_v4",
+      "tool_calling_parser_type": "deepseek_v4",
+      "reasoning_parser_type": "deepseek_v4",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Rnj1ForCausalLM",
+      "architecture_family": "rnj1",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Gemma4ForCausalLM",
+      "architecture_family": "gemma4",
+      "tool_calling_parser_type": "gemma4",
+      "reasoning_parser_type": "gemma4",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "HYV3ForCausalLM",
+      "architecture_family": "hy_v3",
+      "tool_calling_parser_type": "hy_v3",
+      "reasoning_parser_type": "hy_v3",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "LagunaForCausalLM",
+      "architecture_family": "laguna",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Ministral3ForCausalLM",
+      "architecture_family": "mistral",
+      "tool_calling_parser_type": "mistral",
+      "reasoning_parser_type": "mistral",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "MiMoV2ForCausalLM",
+      "architecture_family": "mimo_v2",
+      "tool_calling_parser_type": "mimo",
+      "reasoning_parser_type": "mimo",
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Param2MoEForCausalLM",
+      "architecture_family": "param2moe",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "TeleChat3ForCausalLM",
+      "architecture_family": "llama",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "JinaEmbeddingsV5Model",
+      "architecture_family": "jina",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "ColBERTLfm2Model",
+      "architecture_family": "colbert",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "JinaForRanking",
+      "architecture_family": "jina",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "ColQwen3_5",
+      "architecture_family": "colqwen3_5",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Qwen3ASRForcedAlignerForTokenClassification",
+      "architecture_family": "qwen3_asr_forced_aligner",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Cheers",
+      "architecture_family": "cheers",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "CheersForConditionalGeneration",
+      "architecture_family": "cheers",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Exaone4_5_ForConditionalGeneration",
+      "architecture_family": "exaone4_5",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "FireRedLIDForConditionalGeneration",
+      "architecture_family": "fireredlid",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "Gemma4ForConditionalGeneration",
+      "architecture_family": "gemma4_mm",
+      "tool_calling_parser_type": "gemma4",
+      "reasoning_parser_type": "gemma4",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Granite4VisionForConditionalGeneration",
+      "architecture_family": "granite4_vision",
+      "tool_calling_parser_type": "granite4",
+      "reasoning_parser_type": "granite",
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "InternS2PreviewForConditionalGeneration",
+      "architecture_family": "interns2_preview",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "MiMoV2OmniForCausalLM",
+      "architecture_family": "mimo_v2_omni",
+      "tool_calling_parser_type": "mimo",
+      "reasoning_parser_type": "mimo",
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "MiniCPMV4_6ForConditionalGeneration",
+      "architecture_family": "minicpmv4_6",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Moondream3ForCausalLM",
+      "architecture_family": "moondream3",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "HfMoondream",
+      "architecture_family": "moondream3",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "NemotronH_Nano_Omni_Reasoning_V3",
+      "architecture_family": "nano_nemotron_vl",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": "nemotron_v3",
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "NemotronH_Super_Omni_Reasoning_V3",
+      "architecture_family": "nano_nemotron_vl",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": "nemotron_v3",
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "OpenVLAForActionPrediction",
+      "architecture_family": "openvla",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Phi4ForCausalLMV",
+      "architecture_family": "phi4siglip",
+      "tool_calling_parser_type": "phi4_mini_json",
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "QianfanOCRForConditionalGeneration",
+      "architecture_family": "qianfan_ocr",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "CohereAsrForConditionalGeneration",
+      "architecture_family": "cohere_asr",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "MiMoV2MTPModel",
+      "architecture_family": "mimo_v2_mtp",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "MiMoV2OmniMTPModel",
+      "architecture_family": "mimo_v2_mtp",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "EagleCohereForCausalLM",
+      "architecture_family": "cohere_eagle",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "DFlashDraftModel",
+      "architecture_family": "qwen3_dflash",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "PEagleDraftModel",
+      "architecture_family": "llama_eagle3",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "PeagleLlamaForCausalLM",
+      "architecture_family": "llama_eagle3",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Eagle3MiniMaxM2ForCausalLM",
+      "architecture_family": "llama_eagle3",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "EagleMistralForCausalLM",
+      "architecture_family": "mistral_eagle",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "DeepSeekV4MTPModel",
+      "architecture_family": "vllm.models.deepseek_v4",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
+    },
+    {
+      "class_name": "Gemma4MTPModel",
+      "architecture_family": "gemma4_mtp",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "Exaone4_5_MTP",
+      "architecture_family": "exaone4_5_mtp",
+      "tool_calling_parser_type": null,
+      "reasoning_parser_type": null,
+      "supports_lora": false,
+      "supports_pipeline_parallelism": false
+    },
+    {
+      "class_name": "HYV3MTPModel",
+      "architecture_family": "hy_v3_mtp",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
