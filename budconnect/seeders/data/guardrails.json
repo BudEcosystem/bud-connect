@@ -65,6 +65,102 @@
                 ]
             },
             {
+                "id": "governance.content_safety",
+                "title": "Content Safety",
+                "description": "Detector-based governance pack: blocks illegal/prohibited content and routes harmful content (toxicity, violence, self-harm) to human review. The policy body lives on the rule (catalog/rules/governance/content_safety.yaml).",
+                "icon": null,
+                "total_scanners": 1,
+                "total_rules": 1,
+                "rules": [
+                    {
+                        "id": "governance.content_safety.policy",
+                        "title": "Content Safety",
+                        "description": "Blocks illegal/prohibited content and routes harmful content (toxicity, violence, self-harm) to human review. Compliance: EU AI Act Art.5 (prohibited practices) / Art.14 (human oversight); NIST AI RMF MAP-5; OWASP LLM (output-handling).",
+                        "examples": [],
+                        "scanner": "agentmesh_policy",
+                        "modalities": [
+                            "text"
+                        ],
+                        "guard_types": [
+                            "input",
+                            "output"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "governance.prompt_injection",
+                "title": "Prompt-Injection Defense",
+                "description": "Detector-based governance pack: blocks prompt-injection / jailbreak attempts on agent input using the BlazeEmb jailbreak classifier. The policy body lives on the rule (catalog/rules/governance/prompt_injection.yaml).",
+                "icon": null,
+                "total_scanners": 1,
+                "total_rules": 1,
+                "rules": [
+                    {
+                        "id": "governance.prompt_injection.policy",
+                        "title": "Prompt-Injection Defense",
+                        "description": "Blocks prompt-injection / jailbreak attempts on agent input. Compliance: OWASP LLM01 (Prompt Injection); OWASP ASI-01 (Agent Goal Hijack); EU AI Act Art.13/15(4); NIST AI RMF MAP-4; SOC2 CC6.8.",
+                        "examples": [],
+                        "scanner": "agentmesh_policy",
+                        "modalities": [
+                            "text"
+                        ],
+                        "guard_types": [
+                            "input",
+                            "output"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "governance.regulated_advice",
+                "title": "Regulated Advice Oversight",
+                "description": "Detector-based governance pack: routes regulated-domain advice (medical, legal, financial) to human review/disclaimer using the BlazeEmb regulated-advice classifier. The policy body lives on the rule (catalog/rules/governance/regulated_advice.yaml).",
+                "icon": null,
+                "total_scanners": 1,
+                "total_rules": 1,
+                "rules": [
+                    {
+                        "id": "governance.regulated_advice.policy",
+                        "title": "Regulated Advice Oversight",
+                        "description": "Routes regulated-domain advice (medical, legal, financial) in responses to human review/disclaimer. Compliance: EU AI Act Art.26 (deployer obligations); NIST AI RMF MANAGE-3.",
+                        "examples": [],
+                        "scanner": "agentmesh_policy",
+                        "modalities": [
+                            "text"
+                        ],
+                        "guard_types": [
+                            "input",
+                            "output"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "governance.sensitive_data",
+                "title": "Sensitive Data Protection",
+                "description": "Detector-based governance pack: redacts personal data (PII/PHI) and secrets/credentials in agent request and response content. The policy body lives on the rule (catalog/rules/governance/sensitive_data.yaml).",
+                "icon": null,
+                "total_scanners": 1,
+                "total_rules": 1,
+                "rules": [
+                    {
+                        "id": "governance.sensitive_data.policy",
+                        "title": "Sensitive Data Protection",
+                        "description": "Redacts PII/PHI and secrets/credentials in request and response content. Compliance: OWASP LLM06 (Sensitive Information Disclosure); OWASP ASI-03/ASI-06; EU AI Act Art.5/15(4)/26(4); GDPR Art.5/32; HIPAA; PCI-DSS; SOC2 C1.1/P6; NIST AI RMF MAP-5/GOVERN-4.",
+                        "examples": [],
+                        "scanner": "agentmesh_policy",
+                        "modalities": [
+                            "text"
+                        ],
+                        "guard_types": [
+                            "input",
+                            "output"
+                        ]
+                    }
+                ]
+            },
+            {
                 "id": "gpt_safeguard_asylum_seeker_assistance",
                 "title": "Asylum Seeker Assistance Quality",
                 "description": "Evaluates AI responses for asylum seeker support quality across actionability, factuality, safety, tone, non-discrimination, and access. Classifies severity from moderate to critical.",
