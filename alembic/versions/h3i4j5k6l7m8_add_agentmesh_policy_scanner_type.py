@@ -24,7 +24,11 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     # Add the agentmesh_policy value to scanner_type_enum.
-    op.execute("ALTER TYPE scanner_type_enum ADD VALUE IF NOT EXISTS 'agentmesh_policy'")
+    # ALTER TYPE ... ADD VALUE cannot run inside a transaction block on older
+    # PostgreSQL versions (and the value can't be used in the same transaction
+    # even on 12+), so run it in an autocommit block outside Alembic's transaction.
+    with op.get_context().autocommit_block():
+        op.execute("ALTER TYPE scanner_type_enum ADD VALUE IF NOT EXISTS 'agentmesh_policy'")
 
 
 def downgrade() -> None:
