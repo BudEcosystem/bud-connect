@@ -132,7 +132,7 @@ class ScannerTypeEnum(str, Enum):
         CLASSIFIER: Classification model (e.g., Arch-Guard).
         LLM: LLM-based policy scanner.
         PATTERN: Pattern-based detection (regex, keywords).
-        STATIC_CLASSIFIER: Static/rule-based classifier.
+        BUD_RAA_CLASSIFIER: Bud RAA (resource aware attention) classifier.
         AGENTMESH_POLICY: Agent-governance policy (bud-sentinel agentmesh engine);
             a model-less rule whose body is a governance policy, not a scanner model.
     """
@@ -140,5 +140,5 @@ class ScannerTypeEnum(str, Enum):
     CLASSIFIER = "classifier"
     LLM = "llm"
     PATTERN = "pattern"
-    STATIC_CLASSIFIER = "static_classifier"
+    BUD_RAA_CLASSIFIER = "bud_raa_classifier"
     AGENTMESH_POLICY = "agentmesh_policy"
