@@ -1347,9 +1347,9 @@
                 ]
             },
             {
-                "version": "0.2.0",
+                "version": "0.3.0",
                 "device_architecture": "CPU",
-                "container_image": "budstudio/latentbud-cpu:0.2.0",
+                "container_image": "registry.bud.studio/runtime/latentbud-cpu:0.3.0",
                 "compatibilities": [
                     {
                         "architecture": [],
