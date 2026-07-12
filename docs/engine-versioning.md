@@ -5,16 +5,16 @@ The engine versioning is a key component of the BudConnect service. It is respon
 
 For the vllm engine, the build will be done from the forked version of the vllm repo with required changes to support the bud stack. The versioning will not be same as the vllm repo. But the versoning will be done based on the releases of Bud. 
 
-The engine versions will be pushed to budstudio docker hub with respective tags.
+The engine versions will be pushed to the `registry.bud.studio/runtime` registry with respective tags.
 
 | Device Architecture | Image Name | Version |
 | ------------------- | ---------- | ------- |
-| cuda                | budstudio/vllm-cuda | 0.9.0   |
-| cpu                 | budstudio/vllm-cpu | 0.9.0   |
-| rocm                | budstudio/vllm-rocm | —       |
-| hpu                 | budstudio/vllm-hpu | —       |
+| cuda                | registry.bud.studio/runtime/vllm-cuda | 0.9.0   |
+| cpu                 | registry.bud.studio/runtime/vllm-cpu | 0.6.0   |
+| rocm                | registry.bud.studio/runtime/vllm-rocm | —       |
+| hpu                 | registry.bud.studio/runtime/vllm-hpu | —       |
 
-> Versions track Bud releases, not upstream vLLM. `0.9.0` was built from the vLLM fork at upstream commit `481e481be`. ROCM/HPU images are not currently published. When bumping the version, refresh the vLLM-derived data in the same pass: `budconnect/seeders/data/engines.json` (architecture lists + `container_image`), `budconnect/seeders/data/model_architectures.json`, the `_VLLM_MODELS` mirror in `scripts/arch_support_to_seeder.py`, and the hardcoded parser menus in `budconnect/seeders/engine.py`.
+> Versions track Bud releases, not upstream vLLM, and each device build has its own version lineage (CUDA `0.9.0`, CPU `0.6.0`). Both `0.9.0`/`0.6.0` were built from the vLLM fork at upstream commit `481e481be`. ROCM/HPU images are not currently published. When bumping the version, refresh the vLLM-derived data in the same pass: `budconnect/seeders/data/engines.json` (architecture lists + `container_image`), `budconnect/seeders/data/model_architectures.json`, the `_VLLM_MODELS` mirror in `scripts/arch_support_to_seeder.py`, and the hardcoded parser menus in `budconnect/seeders/engine.py`.
 
 ### Architecture support policy
 
