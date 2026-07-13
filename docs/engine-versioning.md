@@ -5,11 +5,11 @@ The engine versioning is a key component of the BudConnect service. It is respon
 
 For the vllm engine, the build will be done from the forked version of the vllm repo with required changes to support the bud stack. The versioning will not be same as the vllm repo. But the versoning will be done based on the releases of Bud. 
 
-The engine versions will be pushed to the `registry.bud.studio/runtime` registry with respective tags.
+The engine images are published with version tags; the registry/image per device is listed below (CUDA is still on Docker Hub, other builds use `registry.bud.studio/runtime`).
 
 | Device Architecture | Image Name | Version |
 | ------------------- | ---------- | ------- |
-| cuda                | registry.bud.studio/runtime/vllm-cuda | 0.9.0   |
+| cuda                | budstudio/vllm-cuda | 0.9.0   |
 | cpu                 | registry.bud.studio/runtime/vllm-cpu | 0.6.0   |
 | rocm                | registry.bud.studio/runtime/vllm-rocm | —       |
 | hpu                 | registry.bud.studio/runtime/vllm-hpu | —       |
