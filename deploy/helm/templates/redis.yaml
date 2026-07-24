@@ -42,6 +42,7 @@ spec:
   storageClassName: local-path
   hostPath:
     path: {{ .Values.redis.host_path }}
+    type: DirectoryOrCreate
 
 ---
 apiVersion: v1
