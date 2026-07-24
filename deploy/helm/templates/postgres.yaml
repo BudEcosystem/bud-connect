@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: postgresql
-        image: postgres:latest
+        image: postgres:16
         ports:
         - containerPort: 5432
         env:
@@ -26,6 +26,13 @@ spec:
           value: {{ .Values.env.PSQL_PASSWORD }}
         - name: POSTGRES_DB
           value: {{ .Values.env.PSQL_DB_NAME }}
+        # Pin PGDATA to the mounted volume. The official postgres:18 image
+        # changed its default data dir to /var/lib/postgresql/18/docker, which
+        # is NOT the mounted PVC path below, so data would land on ephemeral
+        # container storage and be lost on pod recreation. Setting PGDATA
+        # explicitly keeps the data on the PVC regardless of image version.
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         volumeMounts:
         - name: postgresql-data
           mountPath: /var/lib/postgresql/data/pgdata
@@ -59,8 +66,10 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: local-path
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: {{ .Values.postgres.host_path }}
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
