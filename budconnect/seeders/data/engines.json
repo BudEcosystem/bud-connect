@@ -1326,9 +1326,9 @@
         "name": "latentbud",
         "versions": [
             {
-                "version": "0.2.0",
+                "version": "0.3.1",
                 "device_architecture": "CUDA",
-                "container_image": "budstudio/latentbud-cuda:0.2.0",
+                "container_image": "registry.bud.studio/runtime/latentbud-cuda:0.3.1",
                 "compatibilities": [
                     {
                         "architecture": [],
@@ -1341,9 +1341,9 @@
                 ]
             },
             {
-                "version": "0.3.0",
+                "version": "0.3.1",
                 "device_architecture": "CPU",
-                "container_image": "registry.bud.studio/runtime/latentbud-cpu:0.3.0",
+                "container_image": "registry.bud.studio/runtime/latentbud-cpu:0.3.1",
                 "compatibilities": [
                     {
                         "architecture": [],
