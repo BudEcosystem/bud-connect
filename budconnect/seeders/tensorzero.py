@@ -695,12 +695,15 @@ class TensorZeroSeeder(BaseSeeder):
                 predefined_providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
                 logger.debug("Predefined providers: %s", len(predefined_providers))
 
-                # NOTE: Adding default huggingface and guardrail providers
+                # NOTE: Adding default huggingface and guardrail providers.
+                # Providers listed here carry no catalog models, so the model_data loop below
+                # never reaches them - without this list they would never be inserted at all.
                 for provider_type in [
                     "huggingface",
                     "bud_sentinel",
                     "openai",
                     "azure_content_safety",
+                    "openai_compatible",
                 ]:
                     provider_data = ProviderCreate(
                         name=predefined_providers[provider_type]["name"],
