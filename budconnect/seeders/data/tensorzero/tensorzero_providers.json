@@ -587,5 +587,31 @@
         "capabilities": [
             "moderation"
         ]
+    },
+    "openai_compatible": {
+        "name": "OpenAI-Compatible",
+        "description": "Any inference server that speaks the OpenAI API - llama.cpp, vLLM, Ollama, TGI, LM Studio, or a self-hosted gateway.",
+        "icon": "icons/providers/openai_compatible.png",
+        "credentials": [
+            {
+                "field": "api_base",
+                "label": "Base URL",
+                "type": "url",
+                "description": "Root of the OpenAI-compatible API, including the version segment. Example: http://llama.internal:8080/v1 - do not include /chat/completions.",
+                "required": true,
+                "order": 1
+            },
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Sent as a Bearer token. Leave blank for servers that do not require authentication.",
+                "required": false,
+                "order": 2
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
     }
 }
