@@ -28,6 +28,7 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS_JSON_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "tensorzero" / "tensorzero_providers.json"
 SEEDER_SOURCE_PATH = REPO_ROOT / "budconnect" / "seeders" / "tensorzero.py"
+CONSTANTS_SOURCE_PATH = SEEDER_SOURCE_PATH.parent / "constants.py"
 
 PROVIDER_KEY = "openai_compatible"
 EXPECTED_NAME = "OpenAI-Compatible"
@@ -83,34 +84,30 @@ def _no_model_provider_list() -> List[str]:
 
     Parsed out of the source with :mod:`ast` - importing the seeder would drag in the
     database and settings stack.
+
+    FRD-018 moved this list out of the ``for provider_type in [...]`` literal in the seeder and
+    into ``budconnect/seeders/constants.py`` as ``NO_MODEL_PROVIDERS``, so that the voice
+    providers could be added alongside a test guarding the omission. The extraction follows it;
+    the guarantee this helper provides is unchanged.
     """
-    tree = ast.parse(SEEDER_SOURCE_PATH.read_text(), filename=str(SEEDER_SOURCE_PATH))
+    tree = ast.parse(CONSTANTS_SOURCE_PATH.read_text(), filename=str(CONSTANTS_SOURCE_PATH))
 
-    matches: List[List[str]] = []
-    for node in ast.walk(tree):
-        if not isinstance(node, (ast.For, ast.AsyncFor)):
+    for node in tree.body:
+        if not isinstance(node, ast.Assign):
             continue
-        target = node.target
-        if not (isinstance(target, ast.Name) and target.id == "provider_type"):
+        if not any(isinstance(t, ast.Name) and t.id == "NO_MODEL_PROVIDERS" for t in node.targets):
             continue
-        if not isinstance(node.iter, ast.List):
+        try:
+            values = ast.literal_eval(node.value)
+        except ValueError:
             continue
-        elements = node.iter.elts
-        values = [el.value for el in elements if isinstance(el, ast.Constant) and isinstance(el.value, str)]
-        if len(values) == len(elements):
-            matches.append(values)
+        if isinstance(values, list) and all(isinstance(v, str) for v in values):
+            return values
 
-    if not matches:
-        pytest.fail(
-            "Could not locate the `for provider_type in [...]` literal list in "
-            f"{SEEDER_SOURCE_PATH}. If the seeder was refactored, update this test."
-        )
-    if len(matches) > 1:
-        pytest.fail(
-            f"Found {len(matches)} `for provider_type in [...]` literal lists in "
-            f"{SEEDER_SOURCE_PATH}; the test cannot tell which one seeds catalog-less providers."
-        )
-    return matches[0]
+    pytest.fail(
+        "Could not locate the `NO_MODEL_PROVIDERS` string list in "
+        f"{CONSTANTS_SOURCE_PATH}. If the seeder was refactored again, update this test."
+    )
 
 
 def _normalise_credentials(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
