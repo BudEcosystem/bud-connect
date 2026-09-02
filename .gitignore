@@ -63,4 +63,4 @@ secrets.json
 
 # Helm
 values-local.yaml
-*.lock
+*.lock.claude/worktrees/

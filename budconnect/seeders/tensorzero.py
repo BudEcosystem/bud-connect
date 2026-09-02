@@ -45,7 +45,12 @@ from ..model.schemas import (
 from .base import BaseSeeder
 
 
+from budconnect.seeders.constants import NO_MODEL_PROVIDERS
+
+
 logger = logging.get_logger(__name__)
+
+
 
 # Pre-defined paths
 SEEDER_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -698,13 +703,14 @@ class TensorZeroSeeder(BaseSeeder):
                 # NOTE: Adding default huggingface and guardrail providers.
                 # Providers listed here carry no catalog models, so the model_data loop below
                 # never reaches them - without this list they would never be inserted at all.
-                for provider_type in [
-                    "huggingface",
-                    "bud_sentinel",
-                    "openai",
-                    "azure_content_safety",
-                    "openai_compatible",
-                ]:
+                #
+                # The voice providers (FRD-018) are in exactly that position: they have no
+                # LiteLLM catalog models because WaaV, not TensorZero, serves them. Omitting one
+                # here is a SILENT no-op - the entry sits in tensorzero_providers.json, the
+                # seeder runs green, and the provider simply never appears in budadmin.
+                # `tests/test_voice_providers.py::test_every_no_model_provider_is_seeded` is the
+                # guard.
+                for provider_type in NO_MODEL_PROVIDERS:
                     provider_data = ProviderCreate(
                         name=predefined_providers[provider_type]["name"],
                         provider_type=provider_type,
