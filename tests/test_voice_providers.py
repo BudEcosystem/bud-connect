@@ -49,7 +49,12 @@ PROVIDERS_PATH = (
     / "tensorzero_providers.json"
 )
 
-VOICE_PROVIDERS = ["deepgram", "elevenlabs", "cartesia", "waav_self_hosted"]
+VOICE_PROVIDERS = ["deepgram", "elevenlabs", "cartesia", "waav_self_hosted", "fireworks", "together"]
+
+#: The M8 vendors WaaV has no native provider for. budapp maps both onto
+#: `openai_compatible`, WaaV's self-hosted path, which has no endpoint of its own — so
+#: unlike a native vendor these MUST offer an api_base field or the endpoint can never serve.
+OPENAI_COMPATIBLE_VOICE_PROVIDERS = ["fireworks", "together"]
 
 
 @pytest.fixture(scope="module")
@@ -152,3 +157,38 @@ def test_capabilities_are_recognised(providers, provider):
     at insert.
     """
     assert set(providers[provider]["capabilities"]) <= {"model", "moderation", "local"}
+
+
+@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
+def test_an_openai_compatible_vendor_requires_an_api_base(providers, provider):
+    """WaaV's self-hosted provider is REFUSED at construction without api_base, and budapp now
+    refuses to publish without one. If the catalog offers no field for it, the operator has no
+    way to supply it and the endpoint cannot be created at all — a dead end reached only after
+    they have filled in a key.
+    """
+    fields = {c["field"]: c for c in providers[provider]["credentials"]}
+    assert "api_base" in fields, (
+        f"{provider} is served through openai_compatible, which has no endpoint of its own; "
+        "without an api_base field the operator cannot supply one"
+    )
+    assert fields["api_base"]["required"] is True
+    assert fields["api_base"]["type"] == "url"
+
+
+@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
+def test_an_openai_compatible_vendor_still_requires_a_key(providers, provider):
+    """Unlike a self-hosted deployment behind network policy, these are public paid APIs: a
+    blank key is never correct, so the field is required rather than optional.
+    """
+    fields = {c["field"]: c for c in providers[provider]["credentials"]}
+    assert fields["api_key"]["required"] is True
+    assert fields["api_key"]["type"] == "password"
+
+
+@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
+def test_the_api_base_description_warns_against_the_full_path(providers, provider):
+    """Same trap as the self-hosted entry: pasting the full /audio/transcriptions URL yields
+    .../audio/transcriptions/audio/transcriptions, which 404s and reads as a bad credential.
+    """
+    fields = {c["field"]: c for c in providers[provider]["credentials"]}
+    assert "do not include" in fields["api_base"]["description"].lower()
