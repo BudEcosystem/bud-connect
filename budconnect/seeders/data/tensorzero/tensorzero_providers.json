@@ -697,7 +697,7 @@
     "fireworks": {
         "name": "Fireworks AI",
         "description": "Speech-to-text on Fireworks' OpenAI-compatible audio API, served through WaaV. Migrated off budgateway's own Fireworks audio provider (FRD-018 M8).",
-        "icon": "icons/providers/fireworks.png",
+        "icon": "icons/providers/fireworks_ai.png",
         "credentials": [
             {
                 "field": "api_base",
@@ -723,7 +723,7 @@
     "together": {
         "name": "Together AI",
         "description": "Speech-to-text on Together's OpenAI-compatible audio API, served through WaaV. Migrated off budgateway's own Together audio provider (FRD-018 M8).",
-        "icon": "icons/providers/together.png",
+        "icon": "icons/providers/together_ai.png",
         "credentials": [
             {
                 "field": "api_base",
