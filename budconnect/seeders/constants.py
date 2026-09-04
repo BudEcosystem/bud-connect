@@ -30,5 +30,5 @@ NO_MODEL_PROVIDERS = [
     # the OpenAI audio API, so budapp maps them onto `openai_compatible` rather than duplicating
     # that path twice. Neither has models in the catalog, so both must be listed here.
     "fireworks",
-    "together",
+    "together_ai",
 ]
