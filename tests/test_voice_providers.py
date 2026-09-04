@@ -49,12 +49,12 @@ PROVIDERS_PATH = (
     / "tensorzero_providers.json"
 )
 
-VOICE_PROVIDERS = ["deepgram", "elevenlabs", "cartesia", "waav_self_hosted", "fireworks", "together"]
+VOICE_PROVIDERS = ["deepgram", "elevenlabs", "cartesia", "waav_self_hosted", "fireworks", "together_ai"]
 
 #: The M8 vendors WaaV has no native provider for. budapp maps both onto
 #: `openai_compatible`, WaaV's self-hosted path, which has no endpoint of its own — so
 #: unlike a native vendor these MUST offer an api_base field or the endpoint can never serve.
-OPENAI_COMPATIBLE_VOICE_PROVIDERS = ["fireworks", "together"]
+OPENAI_COMPATIBLE_VOICE_PROVIDERS = ["fireworks", "together_ai"]
 
 
 @pytest.fixture(scope="module")
@@ -192,3 +192,31 @@ def test_the_api_base_description_warns_against_the_full_path(providers, provide
     """
     fields = {c["field"]: c for c in providers[provider]["credentials"]}
     assert "do not include" in fields["api_base"]["description"].lower()
+
+
+def test_no_provider_duplicates_another_vendor():
+    """Two entries for one vendor show up twice in the picker.
+
+    `together` was added for FRD-018 M8 while `together_ai` already existed for the same
+    vendor — identical name, identical icon — so Together AI rendered twice in the provider
+    list, one of them with a broken image. The catalog is keyed by provider_type, so nothing
+    upstream can notice that two keys describe the same company.
+
+    Compares on the display NAME, which is what a user actually sees duplicated.
+    """
+    import collections
+    import json
+    import pathlib
+
+    catalog = json.loads(
+        (
+            pathlib.Path(__file__).resolve().parents[1]
+            / "budconnect/seeders/data/tensorzero/tensorzero_providers.json"
+        ).read_text()
+    )
+    by_name = collections.defaultdict(list)
+    for key, entry in catalog.items():
+        by_name[entry["name"].strip().casefold()].append(key)
+
+    dupes = {name: keys for name, keys in by_name.items() if len(keys) > 1}
+    assert not dupes, f"these vendors have more than one provider entry: {dupes}"

@@ -1,7 +1,7 @@
 {
     "together_ai": {
         "name": "Together AI",
-        "description": "Offers Llama, Falcon, Alpaca, and other Chat and Code LLMs, along with language/instruction models.",
+        "description": "Speech-to-text on Together's OpenAI-compatible audio API, served through WaaV. Migrated off budgateway's own Together audio provider (FRD-018 M8).",
         "icon": "icons/providers/together_ai.png",
         "credentials": [
             {
@@ -11,6 +11,14 @@
                 "description": "Your Together AI API key",
                 "required": true,
                 "order": 1
+            },
+            {
+                "field": "api_base",
+                "label": "Audio API URL",
+                "type": "url",
+                "description": "Root of the audio API, including the version segment. Usually https://api.together.xyz/v1 — do not include /audio/transcriptions.",
+                "required": true,
+                "order": 2
             }
         ],
         "capabilities": [
@@ -712,32 +720,6 @@
                 "label": "API Key",
                 "type": "password",
                 "description": "Fireworks API key. Sent as a Bearer token.",
-                "required": true,
-                "order": 2
-            }
-        ],
-        "capabilities": [
-            "model"
-        ]
-    },
-    "together": {
-        "name": "Together AI",
-        "description": "Speech-to-text on Together's OpenAI-compatible audio API, served through WaaV. Migrated off budgateway's own Together audio provider (FRD-018 M8).",
-        "icon": "icons/providers/together_ai.png",
-        "credentials": [
-            {
-                "field": "api_base",
-                "label": "Audio API URL",
-                "type": "url",
-                "description": "Root of the audio API, including the version segment. Usually https://api.together.xyz/v1 — do not include /audio/transcriptions.",
-                "required": true,
-                "order": 1
-            },
-            {
-                "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Together API key. Sent as a Bearer token.",
                 "required": true,
                 "order": 2
             }
