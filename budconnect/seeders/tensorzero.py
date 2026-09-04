@@ -24,11 +24,13 @@ from uuid import UUID
 from budmicroframe.commons import logging
 from sqlalchemy import delete
 
+from budconnect.seeders.constants import NO_MODEL_PROVIDERS
+
 from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
-from ..model.models import ModelInfo, engine_version_model_info
+from ..model.models import ModelInfo, Provider, engine_version_model_info, engine_version_provider
 from ..model.schemas import (
     CacheCost,
     Features,
@@ -45,11 +47,7 @@ from ..model.schemas import (
 from .base import BaseSeeder
 
 
-from budconnect.seeders.constants import NO_MODEL_PROVIDERS
-
-
 logger = logging.get_logger(__name__)
-
 
 
 # Pre-defined paths
@@ -586,6 +584,69 @@ class TensorZeroSeeder(BaseSeeder):
 
         return uri_to_id_map
 
+    def get_existing_provider_types(self, engine_version_id: UUID) -> Dict[str, UUID]:
+        """provider_type -> id for every provider currently linked to this engine version.
+
+        The "before" side of retirement: anything here that the catalog no longer defines has
+        left, and its association should go.
+        """
+        with ProviderCRUD() as provider_crud:
+            session = provider_crud.get_session()
+            rows = (
+                session.query(Provider.provider_type, Provider.id)
+                .join(engine_version_provider, Provider.id == engine_version_provider.c.provider_id)
+                .filter(engine_version_provider.c.engine_version_id == engine_version_id)
+                .all()
+            )
+            return dict(rows)
+
+    def deactivate_stale_providers(self, engine_version_id: UUID, stale_provider_ids: List[UUID]) -> int:
+        """Stop serving providers that have left the catalog.
+
+        The counterpart to `deactivate_stale_models`, which providers never had. Without it the
+        seeder only ever ADDS: removing an entry from tensorzero_providers.json left the row in
+        place, still associated with the engine version, still returned by the API. That is how
+        `together` went on being served after it was deleted from the catalog, showing Together
+        AI twice in the picker.
+
+        Only the ASSOCIATION is removed, never the provider row. Three foreign keys point at
+        `provider` — engine_version_provider, model_info.provider_id and
+        guardrail_probe.provider_id (RESTRICT) — so a delete fails whenever anything still
+        references it, which is exactly what the API's own delete endpoint runs into. Dropping
+        the association is enough: the catalog is served per engine version, so an unassociated
+        provider disappears from the response while its history stays intact.
+
+        Args:
+            engine_version_id: The engine version to unlink them from
+            stale_provider_ids: Providers no longer present in the catalog
+
+        Returns:
+            Number of associations removed
+        """
+        if not stale_provider_ids:
+            return 0
+
+        with ProviderCRUD() as provider_crud:
+            session = provider_crud.get_session()
+            try:
+                delete_assoc_stmt = delete(engine_version_provider).where(
+                    engine_version_provider.c.engine_version_id == engine_version_id,
+                    engine_version_provider.c.provider_id.in_(stale_provider_ids),
+                )
+                result = session.execute(delete_assoc_stmt)
+                session.commit()
+                removed = result.rowcount or 0
+                logger.info(
+                    "Retired %d stale provider association(s) from engine version %s",
+                    removed,
+                    engine_version_id,
+                )
+                return removed
+            except Exception as e:
+                session.rollback()
+                logger.error("Failed to retire stale providers: %s", e)
+                raise
+
     def deactivate_stale_models(self, engine_version_id: UUID, stale_model_ids: List[UUID]) -> int:
         """Deactivate models that are no longer in the new model list.
 
@@ -680,6 +741,11 @@ class TensorZeroSeeder(BaseSeeder):
 
                 logger.debug("Processing TensorZero version: %s", version)
 
+                # Providers linked to this version BEFORE this run, and the ones this run
+                # upserts. The difference is what has left the catalog.
+                existing_providers = self.get_existing_provider_types(version_config.id)
+                seeded_provider_types: Set[str] = set()
+
                 # Get existing model URIs for this engine version (for cleanup later)
                 existing_models = self.get_existing_model_uris(version_config.id)
                 logger.debug("Found %d existing models for version %s", len(existing_models), version)
@@ -727,6 +793,7 @@ class TensorZeroSeeder(BaseSeeder):
                         )
                         logger.debug("Upserted provider: %s", db_provider_id)
                         provider_crud.add_engine_version(db_provider_id, version_config.id)
+                        seeded_provider_types.add(provider_type)
 
                 # Prepare data for database insertion
                 for provider, supported_models in model_data.items():
@@ -746,6 +813,7 @@ class TensorZeroSeeder(BaseSeeder):
                         )
                         logger.debug("Upserted provider: %s", db_provider_id)
                         provider_crud.add_engine_version(db_provider_id, version_config.id)
+                        seeded_provider_types.add(provider)
 
                     # Parse model info
                     for model in supported_models:
@@ -770,6 +838,20 @@ class TensorZeroSeeder(BaseSeeder):
                             )
                             logger.debug("Upserted model info: %s", db_model_info_id)
                             model_info_crud.add_engine_version(db_model_info_id, version_config.id)
+
+                # Providers that were in the catalog on a previous run and are not now.
+                # Collected from the same two loops that upsert them, so the set cannot drift
+                # from what was actually seeded.
+                stale_provider_ids = [
+                    pid for ptype, pid in existing_providers.items() if ptype not in seeded_provider_types
+                ]
+                if stale_provider_ids:
+                    logger.info(
+                        "Found %d provider(s) no longer in the catalog for version %s",
+                        len(stale_provider_ids),
+                        version,
+                    )
+                    self.deactivate_stale_providers(version_config.id, stale_provider_ids)
 
                 # After processing all models, deactivate stale models
                 stale_uris = set(existing_models.keys()) - processed_uris

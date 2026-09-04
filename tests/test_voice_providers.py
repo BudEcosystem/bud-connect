@@ -220,3 +220,77 @@ def test_no_provider_duplicates_another_vendor():
 
     dupes = {name: keys for name, keys in by_name.items() if len(keys) > 1}
     assert not dupes, f"these vendors have more than one provider entry: {dupes}"
+
+
+class TestStaleProviderRetirement:
+    """A provider removed from the catalog must stop being served.
+
+    Removing `together` from tensorzero_providers.json did nothing to the running system: the
+    seeder only ever upserts providers, so the row stayed, kept its engine_version_provider
+    association, and Together AI went on appearing twice in the picker. Deleting it through the
+    API fails too — three foreign keys point at `provider` and none cascades, so the
+    association blocks the delete.
+
+    Models already have this: `deactivate_stale_models` drops their association when they leave
+    the catalog. Providers had no counterpart, which made every provider ever added permanent.
+
+    Parsed with `ast` rather than imported: importing the seeder module hits a circular import
+    through budconnect.commons. Parsing also means these assertions cannot be satisfied by a
+    comment that merely mentions the name.
+    """
+
+    @staticmethod
+    def _seeder_class():
+        import ast
+        import pathlib
+
+        src = (pathlib.Path(__file__).resolve().parents[1] / "budconnect/seeders/tensorzero.py").read_text()
+        tree = ast.parse(src)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ClassDef) and node.name == "TensorZeroSeeder":
+                return node
+        raise AssertionError("TensorZeroSeeder class not found")
+
+    def _method(self, name):
+        import ast
+
+        for node in self._seeder_class().body:
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name:
+                return node
+        return None
+
+    def test_the_seeder_can_retire_a_provider(self):
+        assert self._method("deactivate_stale_providers") is not None, (
+            "the seeder cannot retire a provider; anything removed from the catalog is served "
+            "forever and cannot be deleted through the API either"
+        )
+
+    def test_retirement_is_actually_called(self):
+        # A method nothing calls leaves the defect exactly as it was. Looks for a real Call
+        # node, so a mention in a docstring or comment cannot satisfy it.
+        import ast
+
+        seed = self._method("seed")
+        assert seed is not None, "seed() not found"
+        called = {n.func.attr for n in ast.walk(seed) if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)}
+        assert "deactivate_stale_providers" in called, "deactivate_stale_providers exists but seed() never calls it"
+
+    def test_it_mirrors_the_model_signature(self):
+        # Same shape as deactivate_stale_models, so the two read as one pattern.
+        m = self._method("deactivate_stale_providers")
+        assert m is not None
+        args = [a.arg for a in m.args.args]
+        assert args == ["self", "engine_version_id", "stale_provider_ids"], args
+
+    def test_it_removes_the_association_not_the_provider_row(self):
+        # Deleting the provider itself is what the API already fails at: model_info and
+        # guardrail_probe (RESTRICT) also point at it. Dropping the association is both
+        # sufficient and safe, and this pins that choice.
+        import ast
+
+        m = self._method("deactivate_stale_providers")
+        names = {n.id for n in ast.walk(m) if isinstance(n, ast.Name)}
+        assert "engine_version_provider" in names, "must delete from the association table"
+        assert "Provider" not in names, (
+            "must NOT delete the provider row — three foreign keys reference it and none cascade"
+        )
