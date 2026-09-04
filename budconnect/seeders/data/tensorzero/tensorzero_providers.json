@@ -727,5 +727,725 @@
         "capabilities": [
             "model"
         ]
+    },
+    "acapela": {
+        "name": "Acapela",
+        "description": "Acapela Cloud text-to-speech with a large multilingual voice catalogue, served through WaaV.",
+        "icon": "icons/providers/acapela.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Acapela API key. Sent as `Authorization: Token <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "alibaba_cloud": {
+        "name": "Alibaba Cloud",
+        "description": "Alibaba Cloud DashScope speech (阿里云) — Mandarin-first transcription and synthesis, served through WaaV.",
+        "icon": "icons/providers/alibaba_cloud.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Alibaba Cloud API key. DashScope API key, sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "amivoice": {
+        "name": "AmiVoice",
+        "description": "Advanced Media AmiVoice (アミボイス) — Japanese transcription with domain-specific engines, served through WaaV.",
+        "icon": "icons/providers/amivoice.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "AmiVoice API key. AmiVoice Cloud Platform APPKEY.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "assemblyai": {
+        "name": "AssemblyAI",
+        "description": "AssemblyAI Universal transcription with speaker labels and word timestamps, served through WaaV.",
+        "icon": "icons/providers/assembly_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "AssemblyAI API key. Sent as the `Authorization` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "aws_polly": {
+        "name": "Amazon Polly",
+        "description": "Amazon Polly neural text-to-speech, served through WaaV.",
+        "icon": "icons/providers/aws_polly.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Amazon Polly API key. This vendor also needs AWS access key, secret and region, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "aws_transcribe": {
+        "name": "Amazon Transcribe",
+        "description": "Amazon Transcribe streaming and batch speech-to-text, served through WaaV.",
+        "icon": "icons/providers/aws_transcribe.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Amazon Transcribe API key. This vendor also needs AWS access key, secret and region, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "baidu": {
+        "name": "Baidu AI Cloud",
+        "description": "Baidu AI Cloud Speech (百度语音) — Mandarin transcription and synthesis, served through WaaV.",
+        "icon": "icons/providers/baidu.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Baidu AI Cloud API key. This vendor also needs API key and secret key, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "bhashini": {
+        "name": "Bhashini",
+        "description": "Bhashini ULCA — India's national speech stack across 22 scheduled languages, served through WaaV.",
+        "icon": "icons/providers/bhashini.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Bhashini API key. This vendor also needs ULCA user id and API key, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "cereproc": {
+        "name": "CereProc",
+        "description": "CereProc CereVoice Cloud text-to-speech, including regional and custom voices, served through WaaV.",
+        "icon": "icons/providers/cereproc.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "CereProc API key. CereVoice Cloud credentials, sent as HTTP Basic auth.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "fpt_ai": {
+        "name": "FPT.AI",
+        "description": "FPT.AI Vietnamese speech-to-text and text-to-speech, served through WaaV.",
+        "icon": "icons/providers/fpt_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "FPT.AI API key. FPT.AI API key.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "gladia": {
+        "name": "Gladia",
+        "description": "Gladia live transcription with diarization and translation, served through WaaV.",
+        "icon": "icons/providers/gladia.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Gladia API key. Sent as the `X-Gladia-Key` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "gnani": {
+        "name": "Gnani.ai",
+        "description": "Gnani.ai Vachana — Indic speech-to-text and text-to-speech, served through WaaV.",
+        "icon": "icons/providers/gnani.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Gnani.ai API key. This vendor also needs access key and token, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "google_speech": {
+        "name": "Google Cloud Speech",
+        "description": "Google Cloud Speech-to-Text v2 and Text-to-Speech, including Chirp and Studio voices, served through WaaV.",
+        "icon": "icons/providers/google_speech.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Google Cloud Speech API key. This vendor also needs a Google Cloud service account, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "groq": {
+        "name": "Groq",
+        "description": "Groq-hosted Whisper transcription at very low latency, served through WaaV.",
+        "icon": "icons/providers/groq.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Groq API key. Groq API key, sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "huawei_cloud": {
+        "name": "Huawei Cloud",
+        "description": "Huawei Cloud SIS (华为云语音) — Mandarin, dialects and minority languages, served through WaaV.",
+        "icon": "icons/providers/huawei_cloud.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Huawei Cloud API key. This vendor also needs project id, region and token, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "hume": {
+        "name": "Hume AI",
+        "description": "Hume AI Octave — emotionally expressive text-to-speech, served through WaaV.",
+        "icon": "icons/providers/hume.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Hume AI API key. Hume AI API key.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "ibm_watson": {
+        "name": "IBM Watson Speech",
+        "description": "IBM Watson Speech-to-Text and Text-to-Speech, served through WaaV.",
+        "icon": "icons/providers/ibm_watsonx.ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "IBM Watson Speech API key. This vendor also needs service instance id and region, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "iflytek": {
+        "name": "iFlytek",
+        "description": "iFlytek (科大讯飞) speech recognition and synthesis, served through WaaV.",
+        "icon": "icons/providers/iflytek.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "iFlytek API key. This vendor also needs app id, API key and API secret, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "lmnt": {
+        "name": "LMNT",
+        "description": "LMNT low-latency text-to-speech with voice cloning, served through WaaV.",
+        "icon": "icons/providers/lmnt.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "LMNT API key. Sent as the `X-API-Key` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "murf": {
+        "name": "Murf.ai",
+        "description": "Murf.ai studio-quality text-to-speech voices, served through WaaV.",
+        "icon": "icons/providers/murf.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Murf.ai API key. Sent as the `api-key` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "naver_clova": {
+        "name": "NAVER CLOVA",
+        "description": "NAVER CLOVA (네이버 클로바) Korean speech recognition and CLOVA Voice synthesis, served through WaaV.",
+        "icon": "icons/providers/naver_clova.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "NAVER CLOVA API key. This vendor also needs client id and client secret, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "nectec": {
+        "name": "NECTEC AI for Thai",
+        "description": "NECTEC Partii — Thai speech-to-text and text-to-speech from AI for Thai, served through WaaV.",
+        "icon": "icons/providers/nectec.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "NECTEC AI for Thai API key. AI for Thai API key.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "phonexia": {
+        "name": "Phonexia",
+        "description": "Phonexia on-premises speech-to-text with speaker identification, served through WaaV.",
+        "icon": "icons/providers/phonexia.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Phonexia API key. Phonexia Speech Platform token, sent as HTTP Basic auth.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "playht": {
+        "name": "Play.ht",
+        "description": "Play.ht text-to-speech with instant voice cloning, served through WaaV.",
+        "icon": "icons/providers/playht.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Play.ht API key. This vendor also needs user id and API key, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "prosa_ai": {
+        "name": "Prosa.ai",
+        "description": "Prosa.ai Indonesian speech-to-text and text-to-speech, served through WaaV.",
+        "icon": "icons/providers/prosa_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Prosa.ai API key. Sent as the `x-api-key` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "resemble": {
+        "name": "Resemble AI",
+        "description": "Resemble AI text-to-speech with real-time voice cloning, served through WaaV.",
+        "icon": "icons/providers/resemble.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Resemble AI API key. Sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "revai": {
+        "name": "Rev AI",
+        "description": "Rev AI streaming and asynchronous transcription, served through WaaV.",
+        "icon": "icons/providers/revai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Rev AI API key. Rev AI access token.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "reverie": {
+        "name": "Reverie",
+        "description": "Reverie Language Technologies — Indic speech-to-text and text-to-speech, served through WaaV.",
+        "icon": "icons/providers/reverie.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Reverie API key. This vendor also needs API key and app id, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "sarvam": {
+        "name": "Sarvam AI",
+        "description": "Sarvam AI Saarika — Indic transcription across 11 languages, served through WaaV.",
+        "icon": "icons/providers/sarvam.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Sarvam AI API key. Sarvam AI subscription key.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "sberdevices": {
+        "name": "SberDevices",
+        "description": "SberDevices SaluteSpeech — Russian speech recognition and synthesis, served through WaaV.",
+        "icon": "icons/providers/sberdevices.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "SberDevices API key. SaluteSpeech client secret, exchanged for an access token by WaaV.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "smallest": {
+        "name": "Smallest.ai",
+        "description": "Smallest.ai Waves — low-latency text-to-speech, served through WaaV.",
+        "icon": "icons/providers/smallest.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Smallest.ai API key. Sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "speechify": {
+        "name": "Speechify",
+        "description": "Speechify text-to-speech voices, served through WaaV.",
+        "icon": "icons/providers/speechify.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Speechify API key. Sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "speechmatics": {
+        "name": "Speechmatics",
+        "description": "Speechmatics real-time transcription with automatic language identification, served through WaaV.",
+        "icon": "icons/providers/speechmatics.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Speechmatics API key. Sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "tencent": {
+        "name": "Tencent Cloud",
+        "description": "Tencent Cloud ASR/TTS (腾讯云语音) — Mandarin and dialect speech, served through WaaV.",
+        "icon": "icons/providers/tencent.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Tencent Cloud API key. This vendor also needs secret id, secret key and app id, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "tinkoff": {
+        "name": "Tinkoff VoiceKit",
+        "description": "Tinkoff VoiceKit — Russian speech recognition and synthesis, served through WaaV.",
+        "icon": "icons/providers/tinkoff.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Tinkoff VoiceKit API key. This vendor also needs API key and secret key, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "unrealspeech": {
+        "name": "Unreal Speech",
+        "description": "Unreal Speech low-cost text-to-speech, served through WaaV.",
+        "icon": "icons/providers/unrealspeech.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Unreal Speech API key. Sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "viettel_ai": {
+        "name": "Viettel AI",
+        "description": "Viettel AI Vietnamese speech-to-text and text-to-speech, served through WaaV.",
+        "icon": "icons/providers/viettel_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Viettel AI API key. Viettel AI API key.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "wellsaid": {
+        "name": "WellSaid Labs",
+        "description": "WellSaid Labs studio voice avatars for text-to-speech, served through WaaV.",
+        "icon": "icons/providers/wellsaid.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "WellSaid Labs API key. Sent as the `X-Api-Key` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "yandex": {
+        "name": "Yandex SpeechKit",
+        "description": "Yandex SpeechKit — Russian-first speech recognition and synthesis, served through WaaV.",
+        "icon": "icons/providers/yandex.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Yandex SpeechKit API key. Yandex Cloud API key, sent as `Authorization: Bearer <key>`.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
+    },
+    "zalo_ai": {
+        "name": "Zalo AI",
+        "description": "Zalo AI (VNG) Vietnamese text-to-speech, served through WaaV.",
+        "icon": "icons/providers/zalo_ai.png",
+        "credentials": [
+            {
+                "field": "api_key",
+                "label": "API Key",
+                "type": "password",
+                "description": "Zalo AI API key. Sent as the `apikey` header.",
+                "required": true,
+                "order": 1
+            }
+        ],
+        "capabilities": [
+            "model"
+        ]
     }
 }
