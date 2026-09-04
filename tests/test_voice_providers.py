@@ -49,7 +49,57 @@ PROVIDERS_PATH = (
     / "tensorzero_providers.json"
 )
 
-VOICE_PROVIDERS = ["deepgram", "elevenlabs", "cartesia", "waav_self_hosted", "fireworks", "together_ai"]
+#: Every provider that exists for WaaV's sake. Written out rather than derived from
+#: NO_MODEL_PROVIDERS: deriving it would make `test_every_no_model_provider_is_seeded`
+#: assert that a list contains itself.
+VOICE_PROVIDERS = [
+    "deepgram",
+    "elevenlabs",
+    "cartesia",
+    "waav_self_hosted",
+    "fireworks",
+    "together_ai",
+    "acapela",
+    "alibaba_cloud",
+    "amivoice",
+    "assemblyai",
+    "aws_polly",
+    "aws_transcribe",
+    "baidu",
+    "bhashini",
+    "cereproc",
+    "fpt_ai",
+    "gladia",
+    "gnani",
+    "google_speech",
+    "groq",
+    "huawei_cloud",
+    "hume",
+    "ibm_watson",
+    "iflytek",
+    "lmnt",
+    "murf",
+    "naver_clova",
+    "nectec",
+    "phonexia",
+    "playht",
+    "prosa_ai",
+    "resemble",
+    "revai",
+    "reverie",
+    "sarvam",
+    "sberdevices",
+    "smallest",
+    "speechify",
+    "speechmatics",
+    "tencent",
+    "tinkoff",
+    "unrealspeech",
+    "viettel_ai",
+    "wellsaid",
+    "yandex",
+    "zalo_ai",
+]
 
 #: The M8 vendors WaaV has no native provider for. budapp maps both onto
 #: `openai_compatible`, WaaV's self-hosted path, which has no endpoint of its own — so
