@@ -93,11 +93,27 @@ class ProviderCapabilityEnum(Enum):
         MODERATION: Represents providers that offer content moderation, safety, or
                     guardrail endpoints.
         LOCAL: Represents providers that expose local or user-managed runtimes.
+        TEXT_TO_SPEECH: The provider can synthesise speech through the audio gateway.
+        AUDIO_TRANSCRIPTION: The provider can transcribe audio through the audio gateway.
+        AUDIO_TRANSLATION: The provider can translate audio to English text.
+
+    The first three say what KIND of provider this is; the audio three say what it can serve.
+    They share one array on purpose -- "what can this provider do" is one question, and budapp
+    already filters providers on this field. A voice vendor keeps ``MODEL`` alongside them:
+    ``/model/get-compatible-models`` only returns providers carrying MODEL, and budadmin's
+    provider picker filters on ``capabilities=model``.
+
+    Values must stay identical to budapp's ``ProviderCapabilityEnum`` -- the wire carries the
+    lowercase ``.value``, and budapp validates every incoming string against its own enum,
+    aborting the entire catalog sync on one it does not know.
     """
 
     MODEL = "model"
     MODERATION = "moderation"
     LOCAL = "local"
+    TEXT_TO_SPEECH = "text_to_speech"
+    AUDIO_TRANSCRIPTION = "audio_transcription"
+    AUDIO_TRANSLATION = "audio_translation"
 
 
 class ModelProviderTypeEnum(str, Enum):

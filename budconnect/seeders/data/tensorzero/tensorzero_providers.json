@@ -22,7 +22,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "vertex_ai-gemini-models": {
@@ -262,7 +264,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "openai": {
@@ -281,7 +286,10 @@
         ],
         "capabilities": [
             "model",
-            "moderation"
+            "moderation",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "sagemaker": {
@@ -585,7 +593,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "elevenlabs": {
@@ -603,7 +614,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "cartesia": {
@@ -621,7 +635,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "waav_self_hosted": {
@@ -647,7 +664,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "fireworks": {
@@ -673,7 +693,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "acapela": {
@@ -691,7 +713,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "alibaba_cloud": {
@@ -709,7 +732,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "amivoice": {
@@ -727,7 +753,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "assemblyai": {
@@ -745,7 +773,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "aws_polly": {
@@ -763,7 +793,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "aws_transcribe": {
@@ -781,7 +812,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "baidu": {
@@ -799,7 +832,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "bhashini": {
@@ -817,7 +853,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "cereproc": {
@@ -835,7 +874,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "fpt_ai": {
@@ -853,7 +893,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "gladia": {
@@ -871,7 +914,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "gnani": {
@@ -889,7 +934,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "google_speech": {
@@ -907,7 +955,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "groq": {
@@ -925,7 +976,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "huawei_cloud": {
@@ -943,7 +996,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "hume": {
@@ -961,7 +1017,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "ibm_watson": {
@@ -979,7 +1036,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "iflytek": {
@@ -997,7 +1057,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "lmnt": {
@@ -1015,7 +1078,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "murf": {
@@ -1033,7 +1097,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "naver_clova": {
@@ -1051,7 +1116,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "nectec": {
@@ -1069,7 +1137,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "phonexia": {
@@ -1087,7 +1158,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "playht": {
@@ -1105,7 +1178,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "prosa_ai": {
@@ -1123,7 +1197,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "resemble": {
@@ -1141,7 +1218,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "revai": {
@@ -1159,7 +1237,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "reverie": {
@@ -1177,7 +1257,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "sarvam": {
@@ -1195,7 +1278,9 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation"
         ]
     },
     "sberdevices": {
@@ -1213,7 +1298,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "smallest": {
@@ -1231,7 +1319,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "speechify": {
@@ -1249,7 +1338,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "speechmatics": {
@@ -1267,7 +1357,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "tencent": {
@@ -1285,7 +1378,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "tinkoff": {
@@ -1303,7 +1399,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "unrealspeech": {
@@ -1321,7 +1420,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "viettel_ai": {
@@ -1339,7 +1439,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "wellsaid": {
@@ -1357,7 +1460,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     },
     "yandex": {
@@ -1375,7 +1479,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "zalo_ai": {
@@ -1393,7 +1500,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "text_to_speech"
         ]
     }
 }
