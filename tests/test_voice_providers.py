@@ -201,12 +201,28 @@ def test_self_hosted_description_warns_against_the_full_path():
     assert "do not include" in api_base["description"].lower()
 
 
+#: Everything ``ProviderCapabilityEnum`` accepts, on BOTH sides of the wire. A value outside
+#: this set is rejected at insert here, and — worse — aborts budapp's whole provider sync,
+#: because it validates each incoming string inside an unguarded loop.
+KNOWN_CAPABILITIES = {
+    "model",
+    "moderation",
+    "local",
+    "text_to_speech",
+    "audio_transcription",
+    "audio_translation",
+}
+
+
 @pytest.mark.parametrize("provider", VOICE_PROVIDERS)
 def test_capabilities_are_recognised(providers, provider):
-    """``ProviderCapabilityEnum`` is model | moderation | local. A value outside it is rejected
-    at insert.
+    """Every value must be one both catalogs know.
+
+    The vocabulary gained the three audio capabilities when the TTS/STT split moved out of a
+    hand-written map in budapp and into this catalog; before that it was model | moderation |
+    local.
     """
-    assert set(providers[provider]["capabilities"]) <= {"model", "moderation", "local"}
+    assert set(providers[provider]["capabilities"]) <= KNOWN_CAPABILITIES
 
 
 @pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
@@ -344,3 +360,105 @@ class TestStaleProviderRetirement:
         assert "Provider" not in names, (
             "must NOT delete the provider row — three foreign keys reference it and none cascade"
         )
+
+
+# --------------------------------------------------------------------------- #
+# What each voice provider can serve
+#
+# The catalog is now the source of truth for the TTS/STT split, replacing a
+# hand-written map inside budapp. That makes these entries load-bearing: the
+# add-model wizard decides which providers to offer a modality from this field.
+# --------------------------------------------------------------------------- #
+
+#: From WaaV's registry (gateway/src/plugin/builtin/mod.rs): a vendor registered only under
+#: ``ProviderMetadata::tts`` cannot transcribe, and one registered only under ``::stt``
+#: cannot speak. Written out rather than derived from the catalog under test — deriving the
+#: expectation from the data it checks proves nothing.
+SYNTHESIS_ONLY = {
+    "acapela", "aws_polly", "cereproc", "hume", "lmnt", "murf", "playht", "resemble",
+    "smallest", "speechify", "unrealspeech", "wellsaid", "zalo_ai",
+}
+TRANSCRIPTION_ONLY = {
+    "amivoice", "assemblyai", "aws_transcribe", "gladia", "groq", "phonexia", "revai",
+    "sarvam", "fireworks", "together_ai",
+}
+AUDIO_CAPABILITIES = {"text_to_speech", "audio_transcription", "audio_translation"}
+
+
+@pytest.mark.parametrize("provider", VOICE_PROVIDERS)
+def test_a_voice_provider_declares_at_least_one_audio_capability(providers, provider):
+    """Without this the provider is invisible in both audio modalities.
+
+    budapp offers a provider for a modality when its capabilities array names that
+    capability; a voice vendor carrying only ``model`` is a vendor nobody can select for the
+    thing it exists to do.
+    """
+    declared = set(providers[provider]["capabilities"])
+    assert declared & AUDIO_CAPABILITIES, (
+        f"{provider} declares {sorted(declared)} — no audio capability, so it will not appear "
+        "under Text to Speech or Speech to text"
+    )
+
+
+@pytest.mark.parametrize("provider", VOICE_PROVIDERS)
+def test_a_voice_provider_still_declares_model(providers, provider):
+    """`model` is what keeps it visible at all.
+
+    budconnect's /model/get-compatible-models only returns providers carrying MODEL, and
+    every budadmin provider fetch sends ``capabilities=model``. Replacing `model` with the
+    audio values — rather than adding them — removes the vendor from the picker entirely.
+    """
+    assert "model" in providers[provider]["capabilities"], f"{provider} lost its `model` capability"
+
+
+@pytest.mark.parametrize("provider", sorted(SYNTHESIS_ONLY))
+def test_a_synthesis_only_vendor_does_not_claim_transcription(providers, provider):
+    declared = set(providers[provider]["capabilities"])
+    assert "text_to_speech" in declared
+    assert not (declared & {"audio_transcription", "audio_translation"}), (
+        f"{provider} only synthesises; claiming transcription offers it for a modality it cannot serve"
+    )
+
+
+@pytest.mark.parametrize("provider", sorted(TRANSCRIPTION_ONLY))
+def test_a_transcription_only_vendor_does_not_claim_synthesis(providers, provider):
+    declared = set(providers[provider]["capabilities"])
+    assert "audio_transcription" in declared
+    assert "text_to_speech" not in declared, f"{provider} cannot speak; claiming synthesis is a dead end"
+
+
+def test_transcription_and_translation_travel_together(providers):
+    """WaaV routes both to the same provider; no vendor implements one without the other."""
+    for provider, entry in providers.items():
+        declared = set(entry["capabilities"])
+        assert ("audio_transcription" in declared) == ("audio_translation" in declared), (
+            f"{provider} declares only one half of transcription/translation: {sorted(declared)}"
+        )
+
+
+#: Providers that may declare audio capabilities: the ones that exist for WaaV's sake, plus
+#: the two general-purpose vendors WaaV also serves audio for natively. Anything else
+#: claiming speech would be offered for a modality it cannot serve.
+AUDIO_PROVIDERS = set(VOICE_PROVIDERS) | {"azure", "openai"}
+
+
+def test_only_voice_providers_declare_audio_capabilities(providers):
+    """A text provider claiming speech would be offered for a modality it cannot serve."""
+    for provider, entry in providers.items():
+        if provider in AUDIO_PROVIDERS:
+            continue
+        assert not (set(entry["capabilities"]) & AUDIO_CAPABILITIES), (
+            f"{provider} is not a voice provider but declares audio capabilities"
+        )
+
+
+def test_every_declared_capability_is_one_budapp_knows(providers):
+    """budapp validates each string against its own enum inside an unguarded loop.
+
+    A value it does not know raises mid-sync: providers already upserted are committed, the
+    rest stay stale, the cloud-model refresh never runs, and the Dapr activity swallows the
+    error so nothing retries for a week.
+    """
+    for provider, entry in providers.items():
+        unknown = set(entry["capabilities"]) - KNOWN_CAPABILITIES
+        assert not unknown, f"{provider} declares {sorted(unknown)}, which budapp's ProviderCapabilityEnum rejects"
