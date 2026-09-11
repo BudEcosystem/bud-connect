@@ -245,64 +245,12 @@
                 "order": 1
             },
             {
-                "field": "api_version",
-                "label": "API Version",
-                "type": "text",
-                "description": "Azure API version",
-                "required": true,
-                "order": 2
-            },
-            {
                 "field": "api_key",
                 "label": "API Key",
                 "type": "password",
                 "description": "Your Azure API key",
                 "required": true,
-                "order": 3
-            },
-            {
-                "field": "azure_ad_token",
-                "label": "Azure AD Token",
-                "type": "password",
-                "description": "Azure Active Directory token",
-                "required": false,
-                "order": 4
-            },
-            {
-                "field": "tenant_id",
-                "label": "Tenant ID",
-                "type": "text",
-                "description": "Your Azure tenant ID",
-                "required": false,
-                "order": 5,
-                "dependencies": [
-                    "client_id",
-                    "client_secret"
-                ]
-            },
-            {
-                "field": "client_id",
-                "label": "Client ID",
-                "type": "text",
-                "description": "Your Azure client ID",
-                "required": false,
-                "order": 6,
-                "dependencies": [
-                    "tenant_id",
-                    "client_secret"
-                ]
-            },
-            {
-                "field": "client_secret",
-                "label": "Client Secret",
-                "type": "password",
-                "description": "Your Azure client secret",
-                "required": false,
-                "order": 7,
-                "dependencies": [
-                    "tenant_id",
-                    "client_id"
-                ]
+                "order": 2
             }
         ],
         "capabilities": [
