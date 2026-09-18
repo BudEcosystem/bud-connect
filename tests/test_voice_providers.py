@@ -183,40 +183,41 @@ def test_vendor_secrets_are_password_fields(providers, provider):
 
 
 # --------------------------------------------------------------------------- #
-# FRD-019 M3 — one self-hosted provider, not two
+# FRD-019 M3 — the audio modalities offer VENDORS, and nothing else
 #
-# `waav_self_hosted` and `openai_compatible` were the same server described twice: identical
-# credential shape, identical icon, and WaaV resolves `self_hosted`, `self-hosted`,
-# `waav_self_hosted` and `openai_compatible` to ONE implementation (`SELF_HOSTED_NAMES`,
-# gateway/src/core/tts/self_hosted.rs). The second entry existed only so budapp could pick the
-# audio plane from the PROVIDER. It no longer does — the plane is decided by what the
-# deployment declares — so the entry has no job, and users stop seeing two rows that both mean
-# "my own server".
+# `waav_self_hosted` ("Self-hosted audio model") let a user point Bud at an audio server they
+# run. It is WITHDRAWN, and deliberately not merged into `openai_compatible`: there is no
+# standard audio API to point such an entry at. One wire format is near-universal for chat,
+# which is what makes `openai_compatible` an honest promise there; audio has no equivalent.
+# WaaV's self-hosted provider implements OpenAI `POST /v1/audio/speech` and has no
+# transcription side at all (`src/core/tts/self_hosted.rs` exists; there is no
+# `src/core/stt/self_hosted.rs` in the deployed binary), so an entry offering all three audio
+# capabilities would accept a URL, publish cleanly, and fail at REQUEST time for two of them.
 # --------------------------------------------------------------------------- #
 
-#: The entry that inherits the self-hosted audio job.
-MERGED_SELF_HOSTED = "openai_compatible"
-
-#: The entry it replaces. Retired here; budapp keeps the source mapped so deployments created
-#: before the merge still publish, and `proprietary_credential_type_enum` keeps the label
-#: forever because PostgreSQL cannot drop one.
+#: The withdrawn "bring your own audio server" entry. Gone from the catalog; budapp keeps the
+#: source mapped and its credential form so a deployment created before the withdrawal still
+#: publishes, and `proprietary_credential_type_enum` keeps the label forever because PostgreSQL
+#: cannot drop one.
 RETIRED_SELF_HOSTED = "waav_self_hosted"
 
+#: The general-purpose chat entry it must NOT be folded into.
+CHAT_SELF_HOSTED = "openai_compatible"
 
-def test_tc_merge_1_the_merged_provider_serves_audio_and_keeps_model(providers):
-    """TC-MERGE-1. It must gain the audio capabilities and KEEP ``model``.
 
-    ``model`` is what keeps it visible at all: /model/get-compatible-models only returns
-    providers carrying it, and every budadmin provider fetch sends ``capabilities=model``.
-    Replacing rather than adding would remove the most-used provider in the catalog from the
-    picker entirely.
+def test_the_chat_self_hosted_entry_claims_no_audio(providers):
+    """The withdrawal is only real if the audio capabilities do not reappear next door.
+
+    `openai_compatible` is the obvious place to put them — same credential shape, same icon,
+    and WaaV resolves both names to one implementation. That implementation speaks OpenAI
+    `/v1/audio/speech` and nothing on the transcription side, so declaring audio here offers
+    modalities the deployment cannot serve.
     """
-    declared = set(providers[MERGED_SELF_HOSTED]["capabilities"])
+    declared = set(providers[CHAT_SELF_HOSTED]["capabilities"])
 
-    assert "model" in declared, "openai_compatible must stay visible for LLM deployments"
-    assert declared >= AUDIO_CAPABILITIES, (
-        f"{MERGED_SELF_HOSTED} declares {sorted(declared)}; it serves a self-hosted audio "
-        "deployment in both directions, so it must offer all three audio capabilities"
+    assert declared == {"model"}, (
+        f"{CHAT_SELF_HOSTED} declares {sorted(declared)}; the audio modalities offer vendors "
+        "Bud can dispatch, and a user-supplied audio server is not one of them"
     )
 
 
@@ -242,41 +243,20 @@ def test_tc_merge_2_the_retired_entry_is_gone_from_no_model_providers():
     assert RETIRED_SELF_HOSTED not in NO_MODEL_PROVIDERS
 
 
-def test_the_merged_entry_requires_a_url_but_not_a_key(providers):
-    """FRD-018 §5.2, now asked of the entry that inherits the job.
+def test_the_chat_self_hosted_entry_keeps_its_own_credential_shape(providers):
+    """Withdrawing the audio entry must not disturb the chat one it sits next to.
 
-    A cluster deployment is reached by URL and frequently needs no credential at all —
-    requiring one would make the common case unconfigurable. This is the shape the retired
-    entry had, and losing it in the merge would be a silent regression for every self-hosted
-    Whisper.
+    `openai_compatible` is the most-used provider in the catalog: a URL the user chooses, and
+    a key that is optional because a server behind network policy often has none. Requiring a
+    key would make the common case unconfigurable.
     """
-    by_field = {f["field"]: f for f in providers[MERGED_SELF_HOSTED]["credentials"]}
+    by_field = {f["field"]: f for f in providers[CHAT_SELF_HOSTED]["credentials"]}
 
     assert by_field["api_base"]["required"] is True
     assert by_field["api_base"]["type"] == "url"
-    assert by_field["api_key"]["required"] is False, (
-        "a self-hosted Whisper on vLLM usually has no auth; requiring a key blocks the common case"
-    )
-
-
-def test_the_merged_entry_description_warns_against_the_full_path(providers):
-    """The most common misconfiguration for a base URL is pasting the full endpoint path,
-    which then double-appends and 404s in a way that reads as a bad credential.
-    """
-    api_base = next(f for f in providers[MERGED_SELF_HOSTED]["credentials"] if f["field"] == "api_base")
-    assert "do not include" in api_base["description"].lower()
-
-
-def test_the_merged_entry_says_it_serves_audio(providers):
-    """The description is the only place the picker explains what an entry is for.
-
-    After the merge this one row is offered under Text to Speech and Speech to text as well as
-    LLM. A description that still mentions only chat servers reads as the wrong entry, and the
-    user goes looking for the "audio" one that no longer exists.
-    """
-    description = providers[MERGED_SELF_HOSTED]["description"].lower()
-    assert "audio" in description, (
-        "openai_compatible is now offered for both audio modalities; its description must say so"
+    assert by_field["api_key"]["required"] is False
+    assert "do not include" in by_field["api_base"]["description"].lower(), (
+        "pasting the full endpoint path double-appends and 404s in a way that reads as a bad credential"
     )
 
 
@@ -535,11 +515,11 @@ def test_transcription_and_translation_travel_together(providers):
 
 
 #: Providers that may declare audio capabilities: the ones that exist for WaaV's sake, plus
-#: the general-purpose ones WaaV also serves audio for — `azure` and `openai` through its
-#: native providers of the same name, and `openai_compatible` through its self-hosted path
-#: (FRD-019 M3, which merged `waav_self_hosted` into it). Anything else claiming speech would
-#: be offered for a modality it cannot serve.
-AUDIO_PROVIDERS = set(VOICE_PROVIDERS) | {"azure", "openai", MERGED_SELF_HOSTED}
+#: the two general-purpose vendors WaaV also serves audio for through its native providers of
+#: the same name. `openai_compatible` is deliberately NOT here — a user-supplied audio server
+#: is not a vendor Bud can dispatch (FRD-019 M3). Anything else claiming speech would be
+#: offered for a modality it cannot serve.
+AUDIO_PROVIDERS = set(VOICE_PROVIDERS) | {"azure", "openai"}
 
 
 def test_only_voice_providers_declare_audio_capabilities(providers):

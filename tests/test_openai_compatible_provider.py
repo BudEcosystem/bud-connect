@@ -33,14 +33,12 @@ CONSTANTS_SOURCE_PATH = SEEDER_SOURCE_PATH.parent / "constants.py"
 PROVIDER_KEY = "openai_compatible"
 EXPECTED_NAME = "OpenAI-Compatible"
 EXPECTED_ICON = "icons/providers/openai_compatible.png"
-#: FRD-019 M3 merged `waav_self_hosted` into this entry: it is the same server, WaaV resolves
-#: both spellings to one implementation, and the plane a deployment publishes to is decided by
-#: what the deployment declares rather than by which provider entry the user clicked. So this
-#: one row is offered for LLM *and* both audio modalities. `model` stays present --
-#: /model/get-compatible-models only returns providers carrying it, and every budadmin provider
-#: fetch sends `capabilities=model`, so replacing rather than adding would delete the most-used
-#: provider in the catalog from the picker.
-EXPECTED_CAPABILITIES = ["model", "audio_transcription", "audio_translation", "text_to_speech"]
+#: Chat only, and deliberately. FRD-019 M3 withdrew `waav_self_hosted` ("Self-hosted audio
+#: model") rather than folding it in here: there is no standard audio API for a
+#: bring-your-own-server entry to promise. WaaV's self-hosted provider implements OpenAI
+#: `/v1/audio/speech` and has no transcription side, so audio capabilities on this row would be
+#: a modality the deployment cannot serve. The audio modalities list vendors Bud can dispatch.
+EXPECTED_CAPABILITIES = ["model"]
 
 # budapp keeps a bootstrap copy of the provider seed so a fresh install works before the
 # first bud-connect sync.  The sync overwrites it from this repo, so the two must agree.

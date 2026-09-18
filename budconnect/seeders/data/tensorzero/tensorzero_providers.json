@@ -554,14 +554,14 @@
     },
     "openai_compatible": {
         "name": "OpenAI-Compatible",
-        "description": "Any inference server that speaks the OpenAI API - llama.cpp, vLLM, Ollama, TGI, LM Studio, or a self-hosted gateway. Also serves a self-hosted audio model, such as Whisper on vLLM: chat goes to budgateway, audio to WaaV, chosen by what the deployment serves.",
+        "description": "Any inference server that speaks the OpenAI API - llama.cpp, vLLM, Ollama, TGI, LM Studio, or a self-hosted gateway.",
         "icon": "icons/providers/openai_compatible.png",
         "credentials": [
             {
                 "field": "api_base",
                 "label": "Base URL",
                 "type": "url",
-                "description": "Root of the OpenAI-compatible API, including the version segment. Example: http://llama.internal:8080/v1 - do not include /chat/completions or /audio/transcriptions.",
+                "description": "Root of the OpenAI-compatible API, including the version segment. Example: http://llama.internal:8080/v1 - do not include /chat/completions.",
                 "required": true,
                 "order": 1
             },
@@ -575,10 +575,7 @@
             }
         ],
         "capabilities": [
-            "model",
-            "audio_transcription",
-            "audio_translation",
-            "text_to_speech"
+            "model"
         ]
     },
     "deepgram": {
