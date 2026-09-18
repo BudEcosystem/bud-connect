@@ -61,8 +61,6 @@ VOICE_PROVIDERS = [
     "deepgram",
     "elevenlabs",
     "cartesia",
-    "fireworks",
-    "together_ai",
     "acapela",
     "alibaba_cloud",
     "amivoice",
@@ -105,10 +103,14 @@ VOICE_PROVIDERS = [
     "zalo_ai",
 ]
 
-#: The M8 vendors WaaV has no native provider for. budapp maps both onto
-#: `openai_compatible`, WaaV's self-hosted path, which has no endpoint of its own — so
-#: unlike a native vendor these MUST offer an api_base field or the endpoint can never serve.
-OPENAI_COMPATIBLE_VOICE_PROVIDERS = ["fireworks", "together_ai"]
+#: FRD-018 M8 added `fireworks` and `together_ai` as audio providers re-pointed onto
+#: `openai_compatible`, WaaV's self-hosted path. FRD-019 M3 WITHDREW both: WaaV has no module
+#: for either vendor, and the path they were aimed at implements `/v1/audio/speech` and nothing
+#: on the transcription side — the one direction the catalog declared them for.
+#:
+#: `fireworks` was created for that migration and is gone from the catalog; `together_ai`
+#: pre-dates it and is restored to the LLM provider it was.
+WITHDRAWN_AUDIO_VENDORS = ["fireworks", "together_ai"]
 
 
 @pytest.fixture(scope="module")
@@ -205,6 +207,27 @@ RETIRED_SELF_HOSTED = "waav_self_hosted"
 CHAT_SELF_HOSTED = "openai_compatible"
 
 
+def test_the_migration_vendors_claim_no_audio(providers):
+    """FRD-019 M3, the other half of the withdrawal.
+
+    `fireworks` and `together_ai` were never vendors WaaV serves: M8 aimed both at the
+    self-hosted path, which is the entry this spec withdrew. `fireworks` existed only for that
+    migration and is gone; `together_ai` is a real LLM provider whose entry M8 rewrote, so it
+    stays — as the LLM provider it was, with no audio capability and no audio api_base field.
+    """
+    assert "fireworks" not in providers, (
+        "the `fireworks` entry was created for the audio migration; the Fireworks LLM provider "
+        "is `fireworks_ai-embedding-models` and is untouched"
+    )
+
+    together = providers["together_ai"]
+    assert set(together["capabilities"]) == {"model"}
+    assert [c["field"] for c in together["credentials"]] == ["api_key"], (
+        "M8 added a required audio api_base to a chat provider; withdrawing the audio job must "
+        "take that field with it, or every Together deployment demands a URL it does not need"
+    )
+
+
 def test_the_chat_self_hosted_entry_claims_no_audio(providers):
     """The withdrawal is only real if the audio capabilities do not reappear next door.
 
@@ -284,39 +307,12 @@ def test_capabilities_are_recognised(providers, provider):
     assert set(providers[provider]["capabilities"]) <= KNOWN_CAPABILITIES
 
 
-@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
-def test_an_openai_compatible_vendor_requires_an_api_base(providers, provider):
-    """WaaV's self-hosted provider is REFUSED at construction without api_base, and budapp now
-    refuses to publish without one. If the catalog offers no field for it, the operator has no
-    way to supply it and the endpoint cannot be created at all — a dead end reached only after
-    they have filled in a key.
-    """
-    fields = {c["field"]: c for c in providers[provider]["credentials"]}
-    assert "api_base" in fields, (
-        f"{provider} is served through openai_compatible, which has no endpoint of its own; "
-        "without an api_base field the operator cannot supply one"
-    )
-    assert fields["api_base"]["required"] is True
-    assert fields["api_base"]["type"] == "url"
-
-
-@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
-def test_an_openai_compatible_vendor_still_requires_a_key(providers, provider):
-    """Unlike a self-hosted deployment behind network policy, these are public paid APIs: a
-    blank key is never correct, so the field is required rather than optional.
-    """
-    fields = {c["field"]: c for c in providers[provider]["credentials"]}
-    assert fields["api_key"]["required"] is True
-    assert fields["api_key"]["type"] == "password"
-
-
-@pytest.mark.parametrize("provider", OPENAI_COMPATIBLE_VOICE_PROVIDERS)
-def test_the_api_base_description_warns_against_the_full_path(providers, provider):
-    """Same trap as the self-hosted entry: pasting the full /audio/transcriptions URL yields
-    .../audio/transcriptions/audio/transcriptions, which 404s and reads as a bad credential.
-    """
-    fields = {c["field"]: c for c in providers[provider]["credentials"]}
-    assert "do not include" in fields["api_base"]["description"].lower()
+# The three tests that lived here pinned the credential shape of an audio vendor served
+# through `openai_compatible` — api_base required, api_key required, the "do not paste the full
+# path" warning. FRD-019 M3 withdrew the only two vendors in that position, so they had no
+# subject left; an empty `parametrize` would have kept them in the file as three permanent
+# skips, which reads as coverage and is not. What replaced them is
+# `test_the_migration_vendors_claim_no_audio`, which asserts the state that made them moot.
 
 
 def test_no_provider_duplicates_another_vendor():
@@ -457,8 +453,8 @@ TRANSCRIPTION_ONLY = {
     "phonexia",
     "revai",
     "sarvam",
-    "fireworks",
-    "together_ai",
+    # `fireworks` and `together_ai` were here. FRD-019 M3 withdrew both: WaaV has no module for
+    # either, so they were only ever the self-hosted path under a vendor's name.
 }
 AUDIO_CAPABILITIES = {"text_to_speech", "audio_transcription", "audio_translation"}
 

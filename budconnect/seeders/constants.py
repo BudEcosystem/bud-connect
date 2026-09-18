@@ -37,11 +37,18 @@ NO_MODEL_PROVIDERS = [
     "deepgram",
     "elevenlabs",
     "cartesia",
-    # FRD-018 M8: the two budgateway audio vendors WaaV has no native provider for. Both speak
-    # the OpenAI audio API, so budapp maps them onto `openai_compatible` rather than duplicating
-    # that path twice. Neither has models in the catalog, so both must be listed here.
-    "fireworks",
-    "together_ai",
+    # FRD-018 M8 added `fireworks` and `together_ai` here as AUDIO providers, and FRD-019 M3
+    # withdrew both. WaaV has no module for either -- no `stt/fireworks`, no `stt/together` in
+    # the gateway -- so M8 re-pointed them at the self-hosted path, which implements
+    # `/v1/audio/speech` and nothing on the transcription side while the catalog declared them
+    # transcription-only. That is the same empty promise as the self-hosted entry itself, with
+    # a vendor's name on it.
+    #
+    # `fireworks` is gone from the catalog entirely: it was created for that migration and has
+    # no models (the Fireworks LLM provider is the separate `fireworks_ai-embedding-models`).
+    # `together_ai` is NOT listed here any more because it never needed to be -- it carries 40
+    # catalog models, so the seeder's model walk reaches it -- and its entry is restored to the
+    # LLM provider it was before M8 rewrote it.
     # Every other vendor WaaV can dispatch. None of them has TensorZero catalog models -- WaaV
     # serves them directly -- so each one has to be named here or the seeder's catalog walk
     # never reaches it and it is skipped without a word. See tests/test_voice_providers.py.
