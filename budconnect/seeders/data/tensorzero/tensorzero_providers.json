@@ -606,14 +606,14 @@
     },
     "openai_compatible": {
         "name": "OpenAI-Compatible",
-        "description": "Any inference server that speaks the OpenAI API - llama.cpp, vLLM, Ollama, TGI, LM Studio, or a self-hosted gateway.",
+        "description": "Any inference server that speaks the OpenAI API - llama.cpp, vLLM, Ollama, TGI, LM Studio, or a self-hosted gateway. Also serves a self-hosted audio model, such as Whisper on vLLM: chat goes to budgateway, audio to WaaV, chosen by what the deployment serves.",
         "icon": "icons/providers/openai_compatible.png",
         "credentials": [
             {
                 "field": "api_base",
                 "label": "Base URL",
                 "type": "url",
-                "description": "Root of the OpenAI-compatible API, including the version segment. Example: http://llama.internal:8080/v1 - do not include /chat/completions.",
+                "description": "Root of the OpenAI-compatible API, including the version segment. Example: http://llama.internal:8080/v1 - do not include /chat/completions or /audio/transcriptions.",
                 "required": true,
                 "order": 1
             },
@@ -627,7 +627,10 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "audio_transcription",
+            "audio_translation",
+            "text_to_speech"
         ]
     },
     "deepgram": {
@@ -684,35 +687,6 @@
                 "description": "Cartesia API key from play.cartesia.ai. Sent as `X-API-Key`.",
                 "required": true,
                 "order": 1
-            }
-        ],
-        "capabilities": [
-            "model",
-            "audio_transcription",
-            "audio_translation",
-            "text_to_speech"
-        ]
-    },
-    "waav_self_hosted": {
-        "name": "Self-hosted audio model",
-        "description": "An audio model you already run — Whisper on vLLM, or any server speaking the OpenAI audio API. Reached through WaaV, which proxies to the deployment.",
-        "icon": "icons/providers/openai_compatible.png",
-        "credentials": [
-            {
-                "field": "api_base",
-                "label": "Deployment URL",
-                "type": "url",
-                "description": "Root of the audio API, including the version segment. Example: http://whisper.my-ns.svc:8000/v1 — do not include /audio/transcriptions.",
-                "required": true,
-                "order": 1
-            },
-            {
-                "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Sent as a Bearer token. Leave blank for a deployment that needs no authentication.",
-                "required": false,
-                "order": 2
             }
         ],
         "capabilities": [

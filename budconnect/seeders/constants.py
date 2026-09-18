@@ -20,12 +20,23 @@ NO_MODEL_PROVIDERS = [
     "bud_sentinel",
     "openai",
     "azure_content_safety",
+    # FRD-019 M3: `openai_compatible` also serves a self-hosted AUDIO deployment now. It is the
+    # same server either way -- WaaV resolves `self_hosted`, `self-hosted`, `waav_self_hosted`
+    # and `openai_compatible` to one implementation -- and the plane is chosen by what the
+    # deployment declares, not by which entry the user clicked.
     "openai_compatible",
     # FRD-018 voice providers.
+    #
+    # `waav_self_hosted` was here and is RETIRED (FRD-019 M3): it was `openai_compatible`
+    # described twice, and existed only so budapp could pick the audio plane from the PROVIDER.
+    # Removing it from THIS list is what retires it -- `deactivate_stale_providers` drops the
+    # engine-version association for anything seeded before and not seeded now, and this list is
+    # the only thing that seeds a provider with no catalog models. The provider ROW stays (three
+    # foreign keys reference it and none cascade), which is also why budapp keeps the source
+    # mapped: deployments created before the merge must still publish.
     "deepgram",
     "elevenlabs",
     "cartesia",
-    "waav_self_hosted",
     # FRD-018 M8: the two budgateway audio vendors WaaV has no native provider for. Both speak
     # the OpenAI audio API, so budapp maps them onto `openai_compatible` rather than duplicating
     # that path twice. Neither has models in the catalog, so both must be listed here.
