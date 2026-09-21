@@ -770,10 +770,15 @@ class TensorZeroSeeder(BaseSeeder):
                 # Providers listed here carry no catalog models, so the model_data loop below
                 # never reaches them - without this list they would never be inserted at all.
                 #
-                # The voice providers (FRD-018) are in exactly that position: they have no
+                # Most voice providers (FRD-018) are in exactly that position: they have no
                 # LiteLLM catalog models because WaaV, not TensorZero, serves them. Omitting one
                 # here is a SILENT no-op - the entry sits in tensorzero_providers.json, the
                 # seeder runs green, and the provider simply never appears in budadmin.
+                #
+                # A few of them do carry catalog models now and so are upserted twice, once here
+                # and once in the model_data loop below. That is harmless - upsert keys on
+                # `provider_type` - and `openai` has always worked that way. See
+                # `NO_MODEL_PROVIDERS` in seeders/constants.py for which, and why they stay.
                 # `tests/test_voice_providers.py::test_every_no_model_provider_is_seeded` is the
                 # guard.
                 for provider_type in NO_MODEL_PROVIDERS:

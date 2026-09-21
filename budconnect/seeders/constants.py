@@ -13,17 +13,21 @@ standalone.
 # ``tensorzero_providers.json``, seeding reports success, and the provider never appears in
 # budadmin with nothing in any log to explain it.
 #
-# The voice providers (FRD-018) are all in that position — WaaV serves them, so they have no
-# TensorZero models. ``tests/test_voice_providers.py`` guards the omission.
+# Most voice providers (FRD-018) are in that position — WaaV serves them, so they have no
+# TensorZero models. Five are no longer: see the note above the vendor block below.
+# ``tests/test_voice_providers.py`` guards the omission.
 NO_MODEL_PROVIDERS = [
     "huggingface",
     "bud_sentinel",
     "openai",
     "azure_content_safety",
-    # FRD-019 M3: `openai_compatible` also serves a self-hosted AUDIO deployment now. It is the
-    # same server either way -- WaaV resolves `self_hosted`, `self-hosted`, `waav_self_hosted`
-    # and `openai_compatible` to one implementation -- and the plane is chosen by what the
-    # deployment declares, not by which entry the user clicked.
+    # `openai_compatible` is whatever server the user points Bud at, so it has no catalog models
+    # of its own and has to be named here.
+    #
+    # It serves the CHAT plane only. FRD-019 M3 proposed folding the self-hosted audio entry into
+    # it and then withdrew that: one wire format is near-universal for chat, which is what makes
+    # this entry an honest promise there, and audio has no equivalent.
+    # `test_the_chat_self_hosted_entry_claims_no_audio` holds it to that.
     "openai_compatible",
     # FRD-018 voice providers.
     #
@@ -46,12 +50,23 @@ NO_MODEL_PROVIDERS = [
     #
     # `fireworks` is gone from the catalog entirely: it was created for that migration and has
     # no models (the Fireworks LLM provider is the separate `fireworks_ai-embedding-models`).
-    # `together_ai` is NOT listed here any more because it never needed to be -- it carries 40
+    # `together_ai` is NOT listed here any more because it never needed to be -- it carries
     # catalog models, so the seeder's model walk reaches it -- and its entry is restored to the
     # LLM provider it was before M8 rewrote it.
-    # Every other vendor WaaV can dispatch. None of them has TensorZero catalog models -- WaaV
-    # serves them directly -- so each one has to be named here or the seeder's catalog walk
-    # never reaches it and it is skipped without a word. See tests/test_voice_providers.py.
+    # Every other vendor WaaV can dispatch. Most have no TensorZero catalog models -- WaaV serves
+    # them directly -- so each one has to be named here or the seeder's catalog walk never reaches
+    # it and it is skipped without a word. See tests/test_voice_providers.py.
+    #
+    # Five are exceptions as of BudModelCatalog-SDK #5 (2026-09-21), which added them to the
+    # catalog: `deepgram`, `elevenlabs` (listed above) and `assemblyai`, `aws_polly`, `groq`
+    # (below). The model walk now reaches those five, so their entries here are redundant -- the
+    # same harmless double-upsert `openai` has always had, since upsert keys on `provider_type`.
+    #
+    # They stay listed on purpose. This list is the only thing that keeps a provider seeded if it
+    # leaves the catalog again, and leaving is as silent as never arriving:
+    # `deactivate_stale_providers` would drop the engine-version association and the vendor would
+    # vanish from budadmin with nothing in any log. Do not prune an entry just because the catalog
+    # covers it today.
     "acapela",
     "alibaba_cloud",
     "amivoice",

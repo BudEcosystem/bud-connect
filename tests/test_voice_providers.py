@@ -5,10 +5,15 @@ is a *data* failure that produces no error at all.
 
 **The trap.** ``TensorZeroSeeder`` inserts providers by walking the LiteLLM model catalog. A
 provider with no catalog models is never reached by that loop, so it is only inserted if it also
-appears in ``NO_MODEL_PROVIDERS``. Voice providers are all in that position: WaaV serves them, so
+appears in ``NO_MODEL_PROVIDERS``. Most voice providers are in that position: WaaV serves them, so
 they have no TensorZero models. Omit one and the seeder runs green, ``tensorzero_providers.json``
 still contains the entry, and the provider simply never appears in budadmin — with nothing in any
 log to say why.
+
+Five of them — ``deepgram``, ``elevenlabs``, ``assemblyai``, ``aws_polly`` and ``groq`` — gained
+catalog models in BudModelCatalog-SDK #5 and are reached by the model walk today. They stay in
+``NO_MODEL_PROVIDERS`` regardless, so these tests still require them there: leaving the catalog is
+as silent as never being in it. See ``budconnect/seeders/constants.py``.
 """
 
 import ast
