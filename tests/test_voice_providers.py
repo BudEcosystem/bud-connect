@@ -84,12 +84,10 @@ VOICE_PROVIDERS = [
     "hume",
     "ibm_watson",
     "iflytek",
-    "lmnt",
     "murf",
     "naver_clova",
     "nectec",
     "phonexia",
-    "playht",
     "prosa_ai",
     "resemble",
     "revai",
@@ -439,9 +437,7 @@ SYNTHESIS_ONLY = {
     "aws_polly",
     "cereproc",
     "hume",
-    "lmnt",
     "murf",
-    "playht",
     "resemble",
     "smallest",
     "speechify",
@@ -461,7 +457,41 @@ TRANSCRIPTION_ONLY = {
     # `fireworks` and `together_ai` were here. FRD-019 M3 withdrew both: WaaV has no module for
     # either, so they were only ever the self-hosted path under a vendor's name.
 }
+#: Vendors withdrawn because the COMPANY is gone, not because WaaV stopped dispatching them.
+#: Checked 2026-09-22:
+#:   * `lmnt`   -- docs.lmnt.com and app.lmnt.com serve "LMNT has shut down"; api.lmnt.com no
+#:                 longer completes a TLS handshake.
+#:   * `playht` -- Meta acquihired the team in July 2025, the API went offline that month and
+#:                 the service terminated 2025-12-31. play.ht has no DNS answer at all.
+#: Kept as a named list so a future catalog edit cannot quietly reinstate either one.
+DEAD_VENDORS = ("lmnt", "playht")
+
 AUDIO_CAPABILITIES = {"text_to_speech", "audio_transcription", "audio_translation"}
+
+
+@pytest.mark.parametrize("provider", DEAD_VENDORS)
+def test_a_dead_vendor_is_gone_from_the_catalog(providers, provider):
+    """An entry for a vendor that no longer exists is a credential form no key can reach.
+
+    The user fills it in, the deployment is created, and the failure surfaces as a runtime
+    error against a host that does not resolve.
+    """
+    assert provider not in providers, (
+        f"{provider} is back in tensorzero_providers.json; the vendor is gone -- an entry for "
+        "it offers a modality nothing can serve"
+    )
+
+
+@pytest.mark.parametrize("provider", DEAD_VENDORS)
+def test_a_dead_vendor_is_gone_from_no_model_providers(provider):
+    """The half that actually retires it.
+
+    ``deactivate_stale_providers`` computes the stale set as "seeded before, not seeded now",
+    and this list is the only thing that seeds a provider with no catalog models. Leaving the
+    name here while the JSON entry is gone is worse than doing nothing: the seeder indexes the
+    dict directly, so it would raise ``KeyError`` and abort the whole run.
+    """
+    assert provider not in NO_MODEL_PROVIDERS
 
 
 @pytest.mark.parametrize("provider", VOICE_PROVIDERS)

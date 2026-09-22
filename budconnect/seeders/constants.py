@@ -85,12 +85,21 @@ NO_MODEL_PROVIDERS = [
     "hume",
     "ibm_watson",
     "iflytek",
-    "lmnt",
+    # `lmnt` and `playht` were here and are WITHDRAWN: both vendors are gone, not merely
+    # unreachable. LMNT's docs and app both serve "LMNT has shut down" and api.lmnt.com no
+    # longer completes a TLS handshake. Play.ht was acquihired by Meta in July 2025, its API
+    # went offline that month, the service terminated on 2025-12-31, and play.ht does not
+    # resolve at all -- 1.1.1.1 has no answer for it.
+    #
+    # Offering either is the same empty promise the self-hosted entry was withdrawn for: a
+    # credential form for a vendor no key can reach. Removing the name from THIS list is what
+    # retires it; the entry is deleted from tensorzero_providers.json in the same change so no
+    # description, icon or credential form is left behind for a provider that can never be
+    # selected again. See `test_a_dead_vendor_is_gone_from_the_catalog`.
     "murf",
     "naver_clova",
     "nectec",
     "phonexia",
-    "playht",
     "prosa_ai",
     "resemble",
     "revai",
