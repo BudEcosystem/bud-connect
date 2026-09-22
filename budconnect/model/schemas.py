@@ -22,7 +22,14 @@ from typing import Any, Dict, List, Optional
 from budmicroframe.commons.schemas import PaginatedResponse
 from pydantic import UUID4, BaseModel, ConfigDict, Field
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum, ProviderCapabilityEnum
+from ..commons.constants import (
+    BillingUnitEnum,
+    ModalityEnum,
+    ModelEndpointEnum,
+    ModelStatusEnum,
+    PriceConfidenceEnum,
+    ProviderCapabilityEnum,
+)
 
 
 class LicenseFAQ(BaseModel):
@@ -227,6 +234,97 @@ class Features(BaseModel):
         extra = "forbid"
 
 
+class BillingTier(BaseModel):
+    """One step of a volume-tiered rate.
+
+    Tiers are ordered cheapest-threshold-first and the last one carries
+    ``up_to_units = None``, meaning "everything above the previous threshold". A consumer
+    walks them in order and stops at the first whose threshold the period's usage has not
+    passed.
+
+    The flat rate in ``input_cost``/``output_cost`` always equals the FIRST tier, so a
+    consumer that knows nothing about tiers bills the undiscounted rate rather than a
+    random one.
+    """
+
+    up_to_units: Optional[float] = Field(
+        None, description="Upper bound of this tier in `unit`s per billing period; None means unbounded."
+    )
+    rate: float = Field(..., description="Price per `unit` within this tier.")
+
+    class Config:
+        """Configuration for billing tier validation."""
+
+        extra = "forbid"
+
+
+class BillingSource(BaseModel):
+    """Where a rate came from and when it was last confirmed.
+
+    Without this a stale number is indistinguishable from a current one, and the only way
+    to re-check a hand-curated rate is to find the pricing page again from memory.
+    """
+
+    url: Optional[str] = Field(None, description="The price feed or pricing page the rate was read from.")
+    checked_on: Optional[str] = Field(None, description="ISO date the rate was last confirmed against `url`.")
+    published: Optional[str] = Field(
+        None, description="Vendor's own publication date for the feed, when it states one."
+    )
+    note: Optional[str] = Field(None, description="Anything a reader needs to reproduce or distrust the number.")
+
+    class Config:
+        """Configuration for billing source validation."""
+
+        extra = "forbid"
+
+
+class Billing(BaseModel):
+    """The rules a rate has to be applied under, and how far to trust it.
+
+    ``input_cost``/``output_cost`` carry a single float. Real metering is not a single
+    float: vendors bill in different units, discount by volume, round up, and impose
+    minimum charges. Billing from the float alone understates short calls -- a 3-second
+    clip against Rev AI's 15-second minimum is billed for 15 -- and overstates committed
+    volume, in opposite directions, so the errors do not even cancel.
+
+    Everything here is optional and additive. A model with no ``billing`` behaves exactly
+    as it did before this field existed, which is what keeps existing consumers correct.
+    """
+
+    unit: Optional[BillingUnitEnum] = Field(None, description="What the rate is quoted per.")
+    meter: Optional[str] = Field(
+        None,
+        description=(
+            "The quantity the gateway must report for this rate to be applicable, e.g. "
+            "`input_audio_seconds` or `output_characters`. A rate whose meter nothing measures "
+            "cannot be billed, however accurate it is."
+        ),
+    )
+    min_billable_units: Optional[float] = Field(
+        None, description="Vendor's minimum charge per request, in `unit`s. Rev AI bills a 15-second minimum."
+    )
+    rounding_increment: Optional[float] = Field(
+        None, description="Usage is rounded UP to a multiple of this many `unit`s before the rate is applied."
+    )
+    tiers: Optional[List[BillingTier]] = Field(
+        None, description="Volume tiers, cheapest threshold first. The flat rate equals the first tier."
+    )
+    region: Optional[str] = Field(
+        None, description="Vendor region the rate was read for; cloud speech prices vary by region."
+    )
+    currency: str = Field("USD", description="ISO 4217 code. Everything is normalised to USD today.")
+    confidence: PriceConfidenceEnum = Field(
+        PriceConfidenceEnum.UNKNOWN,
+        description="How much weight a consumer may put on the rate. UNKNOWN carries no number.",
+    )
+    source: Optional[BillingSource] = Field(None, description="Provenance of the rate.")
+
+    class Config:
+        """Configuration for billing validation."""
+
+        extra = "forbid"
+
+
 class ModelInfoCreate(BaseModel):
     """Schema for model info creation."""
 
@@ -241,6 +339,7 @@ class ModelInfoCreate(BaseModel):
     rate_limits: Optional[RateLimits] = None
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
+    billing: Optional[Billing] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -265,6 +364,7 @@ class ModelInfoCreate(BaseModel):
             "rate_limits",
             "media_limits",
             "features",
+            "billing",
         ]
 
         for field in nested_fields:
@@ -291,6 +391,7 @@ class ModelInfoUpdate(BaseModel):
     rate_limits: Optional[RateLimits] = None
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
+    billing: Optional[Billing] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -360,6 +461,7 @@ class ModelInfoResponse(BaseModel):
     rate_limits: Optional[Dict[str, Any]] = None
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
+    billing: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None

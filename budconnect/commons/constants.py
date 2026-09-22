@@ -158,3 +158,59 @@ class ScannerTypeEnum(str, Enum):
     PATTERN = "pattern"
     BUD_RAA_CLASSIFIER = "bud_raa_classifier"
     AGENTMESH_POLICY = "agentmesh_policy"
+
+
+class BillingUnitEnum(str, Enum):
+    """The unit a published rate is quoted per.
+
+    The rate alone does not say what to multiply it by. A vendor charging "$0.10 per 1K
+    characters" and one charging "$0.22 per hour" are both a single float in
+    ``input_cost``, and only this field distinguishes them.
+
+    Attributes:
+        SECOND: Per second of audio. The canonical unit for transcription.
+        CHARACTER: Per character of input text. The canonical unit for synthesis.
+        TOKEN: Per token, text or audio.
+        REQUEST: A flat charge per API call, regardless of size.
+        IMAGE: Per generated image.
+        PIXEL: Per output pixel.
+
+    Rates quoted per minute or per hour are normalised to ``SECOND``, and per-1K-character
+    rates to ``CHARACTER``, when the catalog is built. Storing the vendor's display unit
+    would make every consumer repeat the conversion, and they would not all repeat it the
+    same way.
+    """
+
+    SECOND = "second"
+    CHARACTER = "character"
+    TOKEN = "token"
+    REQUEST = "request"
+    IMAGE = "image"
+    PIXEL = "pixel"
+
+
+class PriceConfidenceEnum(str, Enum):
+    """How much weight a consumer may put on a rate.
+
+    This exists because "no price" and "free" are the same value in a nullable float
+    column, and billing a customer zero because nobody could find a price is a silent,
+    expensive failure.
+
+    Attributes:
+        AUTHORITATIVE: Read from the vendor's own machine-readable price feed (AWS Price
+            List, Azure Retail Prices, GCP Billing Catalog). Safe to bill from.
+        CURATED: Transcribed by hand from the vendor's published pricing page, with the
+            URL and the date it was read recorded in ``BillingSource``. Safe to bill from
+            until it goes stale; ``checked_on`` is what says whether it has.
+        DERIVED: Computed from something that is not a per-unit price -- a credit
+            allowance, a subscription tier, a bundled minute quota. The arithmetic is an
+            assumption about how the vendor converts, and it breaks whenever they reprice.
+            Show it, flag it, do not invoice from it unsupervised.
+        UNKNOWN: No rate could be obtained. Carries no number at all. A consumer MUST
+            surface this rather than treating the absent rate as zero.
+    """
+
+    AUTHORITATIVE = "authoritative"
+    CURATED = "curated"
+    DERIVED = "derived"
+    UNKNOWN = "unknown"

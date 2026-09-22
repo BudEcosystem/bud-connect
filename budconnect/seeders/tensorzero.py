@@ -26,12 +26,13 @@ from sqlalchemy import delete
 
 from budconnect.seeders.constants import NO_MODEL_PROVIDERS
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum
+from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum, PriceConfidenceEnum
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
 from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
 from ..model.models import ModelInfo, Provider, engine_version_model_info, engine_version_provider
 from ..model.schemas import (
+    Billing,
     CacheCost,
     Features,
     InputCost,
@@ -280,6 +281,8 @@ class TensorZeroParser:
         else:
             model_specs = await self.derive_model_specs(model_data)
 
+        billing = await self.derive_billing(model_data, categorized_data)
+
         if categorized_data["search_context_cost"]:
             search_context_cost_per_query = SearchContextCost(
                 **categorized_data["search_context_cost"]["search_context_cost_per_query"]
@@ -301,10 +304,55 @@ class TensorZeroParser:
             rate_limits=RateLimits(**categorized_data["rate_limits"]) if categorized_data["rate_limits"] else None,
             media_limits=MediaLimits(**categorized_data["media_limits"]) if categorized_data["media_limits"] else None,
             features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
+            billing=billing,
             deprecation_date=model_data.config.get("deprecation_date"),
             license_id=license_id,
             status=ModelStatusEnum.ACTIVE,
         )
+
+    @staticmethod
+    async def derive_billing(model_data: LiteLLMModelInfo, categorized_data: Dict[str, Any]) -> Optional[Billing]:
+        """Attach the rules a rate must be applied under, and say when there is no rate.
+
+        Two jobs, and the second is the important one.
+
+        Pass-through: a source that knows the vendor's billing rules -- volume tiers, a
+        minimum billable duration, which region the rate was read for -- emits them as a
+        ``billing`` block, which is validated and carried. The seeder does not invent these;
+        it has no way to know them.
+
+        The UNKNOWN marker: a model arriving with no cost fields at all gets an explicit
+        ``confidence=UNKNOWN`` rather than silence. ``input_cost`` is nullable, so "nobody
+        could find a price" and "this is free" are otherwise the same absent value, and a
+        consumer reading that absence as zero bills nothing and reports nothing. For audio
+        this is the common case, not an edge one: Cartesia sells credits and the regional
+        vendors quote on contract, so roughly 25 of the voice vendors have no obtainable
+        per-unit price.
+
+        Args:
+            model_data: The model, whose config may carry a `billing` block from the source.
+            categorized_data: Cost fields already sorted into input/output/cache buckets.
+
+        Returns:
+            A validated Billing, or None when the model is priced and the source said nothing
+            further about how the rate must be applied.
+        """
+        declared = model_data.config.get("billing")
+        if declared:
+            try:
+                return Billing(**declared)
+            except (TypeError, ValueError):
+                # One malformed block must not cost every provider its nightly price
+                # refresh. Downgrade to "we do not know", which is true, and say so loudly
+                # enough that someone fixes the source.
+                logger.warning("Discarding malformed billing block for %s: %r", model_data.uri, declared)
+                return Billing(confidence=PriceConfidenceEnum.UNKNOWN)
+
+        priced = bool(categorized_data["input_cost"] or categorized_data["output_cost"])
+        if not priced:
+            return Billing(confidence=PriceConfidenceEnum.UNKNOWN)
+
+        return None
 
     @staticmethod
     async def derive_predefined_model_specs(model_data: LiteLLMModelInfo) -> Dict[str, Any]:
