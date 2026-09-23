@@ -33,13 +33,14 @@ host: "connect.dev.bud.studio"
 ingress:
   enabled: true
 
-# TLS stays off until the DNS record exists: cert-manager's http01 challenge needs the name
-# to resolve publicly, and it would otherwise retry and fail on a loop.
+# Enabled once the DNS record existed -- http01 needs the name to resolve publicly, so
+# turning this on first would just retry and fail on a loop.
 #
-# When turning it on, do NOT use the chart default `letsencrypt-prod` -- that ClusterIssuer
-# does not exist in this cluster. The only one present is `letsencrypt-http01`.
+# NOT the chart default `letsencrypt-prod`: that ClusterIssuer does not exist in this
+# cluster. `letsencrypt-http01` is the only one present (production ACME, http01 solver on
+# ingressClassName traefik, which is what this Ingress uses).
 tls:
-  enabled: false
+  enabled: true
   clusterIssuer: "letsencrypt-http01"
   secretName: "budconnect-dev-tls"
 
