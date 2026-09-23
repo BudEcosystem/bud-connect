@@ -35,7 +35,19 @@ spec:
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:
         - name: postgresql-data
+{{- if .Values.postgres.dynamic }}
+          # Mount the volume one level ABOVE PGDATA. A dynamically provisioned volume is a
+          # real filesystem and arrives with a `lost+found`, and initdb refuses to
+          # initialise into a non-empty directory -- so PGDATA has to be a subdirectory of
+          # the mount, not the mount itself. hostPath volumes have no `lost+found`, which
+          # is why the static path below works and this was never needed before.
+          mountPath: /var/lib/postgresql/data
+{{- else }}
+          # Unchanged for static hostPath installs. Do NOT "fix" this to the parent
+          # directory: existing data sits directly in `host_path`, and moving the mount
+          # would put PGDATA in a new empty subdirectory and re-initdb over a live volume.
           mountPath: /var/lib/postgresql/data/pgdata
+{{- end }}
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:

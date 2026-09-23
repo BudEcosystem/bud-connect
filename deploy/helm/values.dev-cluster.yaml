@@ -10,6 +10,11 @@
 namespace: budconnect-dev
 name: bud-connect
 
+# Set per install -- a dev install is by definition a build of whatever branch is being
+# tested, so there is no sensible default to commit here:
+#   helm install ... --set image=dittops/budconnect:<branch>-<sha>
+image: "dittops/budconnect:nightly"
+
 # Nothing cluster-scoped: a namespaced Role granting get/list/watch on Secrets, which is
 # all Dapr's secretstores.kubernetes component uses.
 rbac:
