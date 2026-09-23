@@ -20,10 +20,28 @@ image: "dittops/budconnect:nightly"
 rbac:
   clusterScoped: false
 
-# No hostname claimed. Reach it with:
-#   kubectl -n budconnect-dev port-forward svc/bud-connect 9088:9088
+host: "connect.dev.bud.studio"
+
+# One namespaced Ingress. Nothing claims this host today, so there is no collision, and the
+# object is inert until DNS exists -- traefik simply holds a route nobody reaches.
+#
+# DNS: every ingress host in this cluster is a CNAME to `ingress.k8s.bud.studio`, which
+# carries the 3 A and 3 AAAA records of the ingress entrypoints. So the record to create is
+#   connect.dev.bud.studio.  CNAME  ingress.k8s.bud.studio.
+# There is no wildcard for *.bud.studio and no external-dns in the cluster, so it has to be
+# created by hand in whatever hosts the zone.
 ingress:
+  enabled: true
+
+# TLS stays off until the DNS record exists: cert-manager's http01 challenge needs the name
+# to resolve publicly, and it would otherwise retry and fail on a loop.
+#
+# When turning it on, do NOT use the chart default `letsencrypt-prod` -- that ClusterIssuer
+# does not exist in this cluster. The only one present is `letsencrypt-http01`.
+tls:
   enabled: false
+  clusterIssuer: "letsencrypt-http01"
+  secretName: "budconnect-dev-tls"
 
 # The admin frontend is a separate image and a second thing to pull; the API is what this
 # install exists to exercise.
