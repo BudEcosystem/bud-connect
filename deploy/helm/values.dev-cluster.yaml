@@ -1,0 +1,58 @@
+# Isolated dev install for a SHARED cluster.
+#
+# The difference from values.dev.yaml is footprint, not features. That file targets a
+# single-node dev box and is fine there; on a shared cluster it creates a ClusterRole
+# granting every verb on every resource in every namespace, two node-unpinned hostPath
+# PersistentVolumes (cluster-scoped), and two Ingresses claiming a hostname.
+#
+# With this file the install owns exactly one namespace and nothing outside it.
+
+namespace: budconnect-dev
+name: bud-connect
+
+# Nothing cluster-scoped: a namespaced Role granting get/list/watch on Secrets, which is
+# all Dapr's secretstores.kubernetes component uses.
+rbac:
+  clusterScoped: false
+
+# No hostname claimed. Reach it with:
+#   kubectl -n budconnect-dev port-forward svc/bud-connect 9088:9088
+ingress:
+  enabled: false
+
+# The admin frontend is a separate image and a second thing to pull; the API is what this
+# install exists to exercise.
+admin:
+  enabled: false
+
+env:
+  # values.yaml hardcodes the `bud-connect` namespace into these two. In any other
+  # namespace they resolve to nothing and the app fails to connect, with the DNS error
+  # buried in pod logs.
+  PSQL_HOST: "postgresql-service.budconnect-dev"
+  REDIS_URI: "redis-service.budconnect-dev:6379"
+
+  PSQL_USER: "budconnect"
+  PSQL_PASSWORD: "budconnect"
+  PSQL_DB_NAME: "budconnect"
+
+  INITIAL_ADMIN_USERNAME: "admin"
+  INITIAL_ADMIN_EMAIL: "admin@budconnect.local"
+  INITIAL_ADMIN_PASSWORD: "changeme"
+
+  LOG_LEVEL: "DEBUG"
+  RUN_SEEDERS_ON_STARTUP: "true"
+
+# Dynamic provisioning instead of static hostPath PVs: no cluster-scoped PersistentVolume,
+# and no chance of the pod landing on a node where the data directory is empty.
+# openebs-lvm is this cluster's default class (WaitForFirstConsumer, so the volume is
+# provisioned on whichever node the pod is scheduled to).
+redis:
+  dynamic: true
+  storageClassName: "openebs-lvm"
+  storage_size: 1Gi
+
+postgres:
+  dynamic: true
+  storageClassName: "openebs-lvm"
+  storage_size: 10Gi

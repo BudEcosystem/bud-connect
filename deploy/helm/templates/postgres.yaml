@@ -55,7 +55,12 @@ spec:
   type: ClusterIP
 ---
 ---
+{{- if not .Values.postgres.dynamic }}
 apiVersion: v1
+# Static hostPath PV. A PersistentVolume is CLUSTER-SCOPED, and this one carries no
+# nodeAffinity -- on a multi-node cluster the pod can be scheduled onto a node where
+# `host_path` is an empty directory, and Postgres comes up with no data and no error.
+# Set `postgres.dynamic: true` to let the cluster's StorageClass provision instead.
 kind: PersistentVolume
 metadata:
   name: "{{ .Values.name }}-postgresql-pv"
@@ -70,6 +75,7 @@ spec:
   hostPath:
     path: {{ .Values.postgres.host_path }}
     type: DirectoryOrCreate
+{{- end }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -82,4 +88,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.postgres.storage_size | default "10Gi" }}
-  storageClassName: "local-path"
+  storageClassName: {{ .Values.postgres.storageClassName | default "local-path" | quote }}

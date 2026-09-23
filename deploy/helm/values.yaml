@@ -41,10 +41,15 @@ env:
 redis:
   storage_size: 1Gi
   host_path: /datadisk/pvc/budconnect/redis
+  # true -> skip the cluster-scoped hostPath PV and let a StorageClass provision.
+  dynamic: false
+  storageClassName: "local-path"
 
 postgres:
   storage_size: 10Gi
   host_path: /datadisk/pvc/budconnect/postgres
+  dynamic: false
+  storageClassName: "local-path"
 
 # Admin Frontend Configuration
 admin:
@@ -59,3 +64,18 @@ admin:
     requests:
       memory: "128Mi"
       cpu: "100m"
+
+# Cluster footprint. Defaults preserve the behaviour every existing install already has;
+# both alternatives exist so a shared cluster can be given an install that touches nothing
+# outside its own namespace.
+rbac:
+  # true  -> ClusterRole granting ["*"]/["*"]/["*"] (cluster-admin) bound to this namespace's
+  #          default ServiceAccount. This is what the chart has always done.
+  # false -> a namespaced Role granting get/list/watch on Secrets, which is all Dapr's
+  #          `secretstores.kubernetes` component actually uses.
+  clusterScoped: true
+
+# Whether the two Ingresses are rendered. They are namespaced objects, but a hostname is
+# shared state: two Ingresses claiming one host is a collision wherever they live.
+ingress:
+  enabled: true
