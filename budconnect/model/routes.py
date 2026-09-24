@@ -411,8 +411,13 @@ async def handle_tensorzero_sync() -> Dict[str, Any]:
         except SeederException as e:
             elapsed = time.monotonic() - start_time
             logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e.message)
-            return {"status": "error", "message": e.message, "duration_seconds": round(elapsed, 1)}
+            failure = {"status": "error", "message": e.message, "duration_seconds": round(elapsed, 1)}
         except Exception as e:
             elapsed = time.monotonic() - start_time
             logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e)
-            return {"status": "error", "message": str(e), "duration_seconds": round(elapsed, 1)}
+            failure = {"status": "error", "message": str(e), "duration_seconds": round(elapsed, 1)}
+
+    # A failed sync answers 500, not 200 with "error" in the body. Dapr reads the status code:
+    # a 200 is a delivered event, so a sync that refused a truncated catalog, or crashed,
+    # looked identical to a good one everywhere but this process's own log.
+    raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=failure)

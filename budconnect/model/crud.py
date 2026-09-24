@@ -678,6 +678,7 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
                     "rate_limits": model_info.rate_limits,
                     "media_limits": model_info.media_limits,
                     "features": model_info.features,
+                    "billing": model_info.billing,
                     "endpoints": model_info.endpoints,
                     "deprecation_date": model_info.deprecation_date,
                     "tool_calling_parser_type": model_info.tool_calling_parser_type,

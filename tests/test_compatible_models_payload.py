@@ -108,3 +108,45 @@ def test_the_response_schema_declares_everything_the_payload_sends():
     for i, keys in enumerate(_model_data_dicts()):
         unknown = keys - declared
         assert not unknown, f"payload #{i} sends {sorted(unknown)}, which ModelInfoResponse does not declare"
+
+
+CRUD_PATH = SERVICES_PATH.parent / "crud.py"
+
+
+def _cost_bearing_dicts():
+    """Every dict literal in the model services AND crud that copies a model's prices.
+
+    Wider than ``_model_data_dicts``: the two model-DETAILS payloads (the CRUD join and the
+    service's by-id path) key on ``provider_name``, not ``provider_id``, so the check above
+    never saw them -- and both dropped ``billing`` while every list endpoint carried it.
+    """
+    found = []
+    for path in (SERVICES_PATH, CRUD_PATH):
+        for node in ast.walk(ast.parse(path.read_text())):
+            if not isinstance(node, ast.Dict):
+                continue
+            keys = {k.value for k in node.keys if isinstance(k, ast.Constant) and isinstance(k.value, str)}
+            if "uri" in keys and "input_cost" in keys:
+                found.append((path.name, node.lineno, keys))
+    return found
+
+
+def test_the_details_payloads_are_found():
+    """If the scan stops finding a file's payloads, the checks below are vacuous."""
+    names = {name for name, _, _ in _cost_bearing_dicts()}
+    assert names == {"services.py", "crud.py"}, names
+
+
+@pytest.mark.parametrize("field", sorted(JSONB_PAYLOAD))
+def test_every_payload_that_copies_prices_copies_every_jsonb_field(field):
+    """Both details payloads dropped `billing` while every list endpoint carried it."""
+    for name, line, keys in _cost_bearing_dicts():
+        assert field in keys, f"{name}:{line} copies prices but not {field!r}"
+
+
+@pytest.mark.parametrize("field", sorted(JSONB_PAYLOAD))
+def test_the_details_response_declares_every_jsonb_field(field):
+    """A key the schema does not declare is dropped by pydantic without a word."""
+    from budconnect.model.schemas import ModelDetailsResponse
+
+    assert field in ModelDetailsResponse.model_fields

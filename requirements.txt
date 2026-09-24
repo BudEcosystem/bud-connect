@@ -14,7 +14,7 @@ budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
 # file, so an unpinned git URL freezes at whatever HEAD was current when that layer was first
 # built. The nightly shipped a six-month-old catalog that way, and deepgram/elevenlabs seeded
 # with zero models. Bump this SHA deliberately when the SDK moves.
-bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@df65aa778b5e9b064af69c3eb99832587bbca7c0
+bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@583a24e4f8d283ef274fd07a45a032a1840b5e06
 
 # API
 fastapi >= 0.111.1

@@ -93,3 +93,47 @@ def test_the_overlap_lock_is_still_held_across_the_offload(tree):
     assert any("asyncio.to_thread" in _calls(w) for w in withs), (
         "the offload must sit inside the lock, otherwise two syncs can overlap"
     )
+
+
+def test_a_failed_sync_answers_an_error_status(tree):
+    """A 200 with "error" in the body is a delivered event to Dapr.
+
+    A sync that refused a truncated catalog, or crashed, looked identical to a good one
+    everywhere but this process's own log.
+    """
+    handler = _function(tree, "handle_tensorzero_sync")
+    raises = [ast.unparse(n.exc) for n in ast.walk(handler) if isinstance(n, ast.Raise) and n.exc is not None]
+    assert any("HTTPException" in r and "HTTP_500" in r for r in raises), raises
+    for node in ast.walk(handler):
+        if isinstance(node, ast.Return) and node.value is not None:
+            assert "'error'" not in ast.unparse(node.value), "a failure is returned as a 200"
+
+
+def test_the_error_is_raised_after_the_lock_is_released(tree):
+    """The failure is raised after the lock is released.
+
+    Raised inside `async with` it would still release, but a reader should not have to
+    reason about that.
+    """
+    handler = _function(tree, "handle_tensorzero_sync")
+    for w in (n for n in ast.walk(handler) if isinstance(n, ast.AsyncWith)):
+        assert not any(isinstance(n, ast.Raise) for n in ast.walk(w))
+
+
+SEEDER = ROUTES.parent.parent / "seeders" / "tensorzero.py"
+
+
+def test_the_seeder_keeps_its_own_failure_messages():
+    """A SeederException reaches the cron response with its own message.
+
+    `seed()` ends in `except Exception`, which re-wraps as "Unexpected error during
+    TensorZero seeding". SeederException is an Exception subclass, so without an earlier
+    `except SeederException: raise` every guard's explanation was replaced by that.
+    """
+    seed = next(
+        n for n in ast.walk(ast.parse(SEEDER.read_text())) if isinstance(n, ast.AsyncFunctionDef) and n.name == "seed"
+    )
+    handlers = next(n for n in ast.walk(seed) if isinstance(n, ast.Try)).handlers
+    names = [ast.unparse(h.type) for h in handlers]
+    assert names[0] == "SeederException", names
+    assert isinstance(handlers[0].body[-1], ast.Raise) and handlers[0].body[-1].exc is None

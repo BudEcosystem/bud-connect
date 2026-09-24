@@ -17,10 +17,10 @@
 """The model schemas, containing essential data structures for the model microservice."""
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict, Field
+from pydantic import UUID4, BaseModel, ConfigDict, Field, model_validator
 
 from ..commons.constants import (
     BillingUnitEnum,
@@ -86,6 +86,24 @@ class ProviderCreate(BaseModel):
     capabilities: List[ProviderCapabilityEnum]
 
 
+def _price_extras(model: BaseModel, prefixes: Tuple[str, ...]) -> BaseModel:
+    """Accept price fields the schema does not name, and nothing else.
+
+    LiteLLM adds price dimensions faster than this schema can list them -- long-context tiers
+    above 272k tokens, priority and flex service tiers, 1-hour cache writes, image-token
+    output. With `extra="forbid"` and a whitelist in the seeder, every one of them was
+    dropped on the floor: gpt-image output was stored as free, and OCR and video models were
+    marked "no price found" although one was published. An unnamed key is kept only if it is
+    shaped like a price and holds a number, so the schema still refuses anything else.
+    """
+    for key, value in (model.model_extra or {}).items():
+        if not key.startswith(prefixes) or "cost" not in key:
+            raise ValueError(f"{key!r} is not a price field for {type(model).__name__}")
+        if value is not None and (isinstance(value, bool) or not isinstance(value, (int, float))):
+            raise ValueError(f"{key!r} must be a number, got {value!r}")
+    return model
+
+
 class InputCost(BaseModel):
     """Validates input cost configuration for model pricing."""
 
@@ -112,10 +130,13 @@ class InputCost(BaseModel):
     input_cost_per_character_above_128k_tokens: Optional[float] = Field(None)
     input_dbu_cost_per_token: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for input cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "InputCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("input_", "ocr_", "annotation_", "google_maps_", "code_interpreter_"))
+        return self
 
 
 class OutputCost(BaseModel):
@@ -135,10 +156,13 @@ class OutputCost(BaseModel):
     output_cost_per_reasoning_token: Optional[float] = Field(None)
     output_db_cost_per_token: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for output cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "OutputCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("output_",))
+        return self
 
 
 class CacheCost(BaseModel):
@@ -149,10 +173,13 @@ class CacheCost(BaseModel):
     cache_creation_input_audio_token_cost: Optional[float] = Field(None)
     cache_creation_input_token_cost: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for cache cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "CacheCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("cache_",))
+        return self
 
 
 class SearchContextCost(BaseModel):
@@ -576,6 +603,7 @@ class ModelDetailsResponse(BaseModel):
     rate_limits: Optional[Dict[str, Any]] = None
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
+    billing: Optional[Billing] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
