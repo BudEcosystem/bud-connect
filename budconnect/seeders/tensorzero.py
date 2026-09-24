@@ -527,6 +527,11 @@ class TensorZeroParser:
                     # and advertising that route fails at request time. So the endpoint is
                     # dropped, but loudly: at DEBUG this hid 25 realtime models losing their
                     # only route, which left them in the catalog with none.
+                    #
+                    # Keeping them with an empty endpoint list is a decision, not a gap
+                    # (2026-09-24). budapp hides models whose `endpoints` is empty until it
+                    # implements realtime, and among active models an empty list is exactly
+                    # the realtime/live set -- so do not "fix" this with a fallback route.
                     logger.warning(
                         "Model %s is served at %s, which has no ModelEndpointEnum value; "
                         "no Bud route can serve it there",
