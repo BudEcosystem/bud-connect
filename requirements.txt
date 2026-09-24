@@ -3,7 +3,8 @@ dapr >= 1.14.0
 budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
 # Pinned to BudModelCatalog-SDK PR #6 (2026-09-24), which adds voice billing rules and the
 # pricing-page scrapers: authoritative AWS/Azure feeds, and adapters for speechmatics,
-# cartesia, revai, gladia and google_speech (TTS + STT).
+# cartesia, revai, gladia, google_speech (TTS + STT) and deepgram (Aura TTS). It also stops
+# publishing fifteen LiteLLM entries that are not models.
 #
 # NOTE: this is a commit on the PR branch, NOT on main -- PR #6 is open at time of writing.
 # Move it to the merge commit once that lands, or a later `git fetch` of main will not contain
@@ -13,7 +14,7 @@ budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
 # file, so an unpinned git URL freezes at whatever HEAD was current when that layer was first
 # built. The nightly shipped a six-month-old catalog that way, and deepgram/elevenlabs seeded
 # with zero models. Bump this SHA deliberately when the SDK moves.
-bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@9b496dfed7de5aa5eefc6f327bd7c42671df8d8f
+bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@df65aa778b5e9b064af69c3eb99832587bbca7c0
 
 # API
 fastapi >= 0.111.1

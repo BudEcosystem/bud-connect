@@ -492,6 +492,13 @@ class TensorZeroParser:
             elif mode == "image_generation":
                 supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.IMAGE_OUTPUT]
                 supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_GENERATION])
+            elif mode == "image_edit":
+                # An image in, an image out, with an optional prompt -- the shape of
+                # /v1/images/edits. Without this branch the thirteen Bedrock Stability edit and
+                # upscale models reached the catalog with no endpoint at all, even though
+                # IMAGE_EDIT exists here and budapp routes it.
+                supported_modalities = [ModalityEnum.TEXT_INPUT, ModalityEnum.IMAGE_INPUT, ModalityEnum.IMAGE_OUTPUT]
+                supported_model_endpoints.extend([ModelEndpointEnum.IMAGE_EDIT])
             elif mode == "audio_transcription":
                 supported_modalities = [ModalityEnum.AUDIO_INPUT, ModalityEnum.TEXT_OUTPUT]
                 supported_model_endpoints.extend([ModelEndpointEnum.AUDIO_TRANSCRIPTION])
@@ -514,11 +521,27 @@ class TensorZeroParser:
                 try:
                     supported_model_endpoints.append(ModelEndpointEnum(endpoint))
                 except ValueError:
-                    logger.debug("Skipping unsupported endpoint: %s", endpoint)
+                    # The explicit list is authoritative: it says where the model is SERVED.
+                    # Falling back to the mode-derived route here would be wrong -- a model
+                    # listed only at /v1/realtime cannot be called at /v1/chat/completions,
+                    # and advertising that route fails at request time. So the endpoint is
+                    # dropped, but loudly: at DEBUG this hid 25 realtime models losing their
+                    # only route, which left them in the catalog with none.
+                    logger.warning(
+                        "Model %s is served at %s, which has no ModelEndpointEnum value; "
+                        "no Bud route can serve it there",
+                        model_data.uri,
+                        endpoint,
+                    )
 
+        # Sorted, not list(set(...)). A set's iteration order follows string hashing, which
+        # Python randomises per process, and Postgres compares arrays by order -- so the same
+        # modalities written by two sync runs could compare as different. That made
+        # modified_at move on rows where nothing had changed: observed as 8 rows storing
+        # AUDIO_OUTPUT,TEXT_INPUT and 5 storing TEXT_INPUT,AUDIO_OUTPUT for the same set.
         return {
-            "modalities": list(set(supported_modalities)),
-            "endpoints": list(set(supported_model_endpoints)),
+            "modalities": sorted(set(supported_modalities), key=lambda m: m.value),
+            "endpoints": sorted(set(supported_model_endpoints), key=lambda e: e.value),
         }
 
 

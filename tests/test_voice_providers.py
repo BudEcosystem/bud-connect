@@ -436,6 +436,8 @@ SYNTHESIS_ONLY = {
     "acapela",
     "aws_polly",
     "cereproc",
+    # WaaV serves Huawei for text-to-speech only; it has no Huawei STT driver.
+    "huawei_cloud",
     "hume",
     "murf",
     "resemble",
@@ -536,13 +538,135 @@ def test_a_transcription_only_vendor_does_not_claim_synthesis(providers, provide
     assert "text_to_speech" not in declared, f"{provider} cannot speak; claiming synthesis is a dead end"
 
 
-def test_transcription_and_translation_travel_together(providers):
-    """WaaV routes both to the same provider; no vendor implements one without the other."""
+# --------------------------------------------------------------------------------- #
+# claims pinned to what WaaV can actually do
+# --------------------------------------------------------------------------------- #
+#
+# These are snapshots of WaaV's gateway at 77ff9c6 (2026-09-21), which is the component that
+# serves every one of these capabilities. A claim here that WaaV cannot honour is not merely
+# decorative: budapp offers the route, the user calls it, and the failure is at best an error
+# and at worst a plausible wrong answer. Update a set when WaaV changes, not to make a claim
+# pass.
+
+#: `TranslationConfig::warnings_for` in gateway/src/core/stt/standard.rs. Five of WaaV's 31
+#: STT vendors translate: speechmatics and gladia to arbitrary targets, assemblyai on batch
+#: only, openai and groq to English only. Every other vendor falls into its `other =>` arm:
+#: "translation not supported ... transcript only".
+WAAV_TRANSLATES = frozenset({"speechmatics", "gladia", "assemblyai", "openai", "groq"})
+
+#: STT_FEATURE_SUPPORT in gateway/src/core/capabilities.rs, the table behind
+#: GET /capabilities/features, with WaaV's names mapped to bud-connect's (hyphens to
+#: underscores, `google` to `google_speech`).
+WAAV_TRANSCRIBES = frozenset(
+    {
+        "alibaba_cloud",
+        "amivoice",
+        "assemblyai",
+        "aws_transcribe",
+        "azure",
+        "baidu",
+        "bhashini",
+        "cartesia",
+        "deepgram",
+        "elevenlabs",
+        "fpt_ai",
+        "gladia",
+        "gnani",
+        "google_speech",
+        "groq",
+        "ibm_watson",
+        "iflytek",
+        "naver_clova",
+        "nectec",
+        "openai",
+        "phonexia",
+        "prosa_ai",
+        "revai",
+        "reverie",
+        "sarvam",
+        "sberdevices",
+        "speechmatics",
+        "tencent",
+        "tinkoff",
+        "viettel_ai",
+        "yandex",
+    }
+)
+
+#: TTS_FEATURE_SUPPORT in the same file, mapped the same way.
+WAAV_SYNTHESISES = frozenset(
+    {
+        "acapela",
+        "alibaba_cloud",
+        "aws_polly",
+        "azure",
+        "baidu",
+        "bhashini",
+        "cartesia",
+        "cereproc",
+        "deepgram",
+        "elevenlabs",
+        "fpt_ai",
+        "gnani",
+        "google_speech",
+        "huawei_cloud",
+        "hume",
+        "ibm_watson",
+        "iflytek",
+        "lmnt",
+        "murf",
+        "naver_clova",
+        "nectec",
+        "openai",
+        "playht",
+        "prosa_ai",
+        "resemble",
+        "reverie",
+        "sberdevices",
+        "smallest",
+        "speechify",
+        "speechmatics",
+        "tencent",
+        "tinkoff",
+        "unrealspeech",
+        "viettel_ai",
+        "wellsaid",
+        "yandex",
+        "zalo_ai",
+    }
+)
+
+
+def test_only_vendors_waav_can_translate_through_declare_translation(providers):
+    """Replaces "transcription and translation travel together", whose premise was false.
+
+    That test asserted "no vendor implements one without the other" and so forced
+    `audio_translation` onto all 32 transcription vendors. 27 of them cannot translate. WaaV
+    passes a translation request through to the vendor rather than translating itself, and on
+    a vendor that cannot, the response is a transcript in the SOURCE language -- which until
+    recently was byte-identical to a successful translation, and is now distinguished only by
+    an advisory. So the claim steered users to a route returning plausible wrong output.
+    """
     for provider, entry in providers.items():
-        declared = set(entry["capabilities"])
-        assert ("audio_transcription" in declared) == ("audio_translation" in declared), (
-            f"{provider} declares only one half of transcription/translation: {sorted(declared)}"
+        declares = "audio_translation" in entry["capabilities"]
+        assert declares == (provider in WAAV_TRANSLATES), (
+            f"{provider} {'declares' if declares else 'omits'} audio_translation, but WaaV "
+            f"{'cannot' if declares else 'can'} translate through it"
         )
+
+
+def test_every_transcription_claim_is_one_waav_can_serve(providers):
+    """huawei_cloud claimed transcription; WaaV has no Huawei STT driver."""
+    for provider, entry in providers.items():
+        if "audio_transcription" in entry["capabilities"]:
+            assert provider in WAAV_TRANSCRIBES, f"{provider} claims transcription WaaV cannot serve"
+
+
+def test_every_synthesis_claim_is_one_waav_can_serve(providers):
+    """None fails today; kept so a new vendor cannot claim synthesis WaaV has no driver for."""
+    for provider, entry in providers.items():
+        if "text_to_speech" in entry["capabilities"]:
+            assert provider in WAAV_SYNTHESISES, f"{provider} claims synthesis WaaV cannot serve"
 
 
 #: Providers that may declare audio capabilities: the ones that exist for WaaV's sake, plus
