@@ -44,14 +44,24 @@ these tables today.
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional, Sequence
 
-from sqlalchemy import case, literal, or_
-from sqlalchemy.dialects.postgresql import Insert
+from sqlalchemy import Text, case, func, literal, or_
+from sqlalchemy.dialects.postgresql import ARRAY, Insert
 
 
 #: Columns that describe the row's own history rather than its data. Neither is compared,
 #: and ``created_at`` is never written on conflict: a conflict means the row already exists,
 #: so its creation time is by definition not something this statement can change.
 _BOOKKEEPING = frozenset({"id", "created_at", "modified_at"})
+
+#: Paths inside a JSONB column that record WHEN a value was read, not WHAT it is. They are
+#: still written -- the stored block stays current -- but a change to them alone is not a
+#: change to the row. `billing.source.checked_on` is stamped with the date of every catalog
+#: sync, so without this every billed row "changed" once a day and `modified_at` meant
+#: "last synced" for exactly the rows whose prices matter most. `published` is the date the
+#: vendor's price feed was regenerated, which happens with or without a price moving.
+_PROVENANCE_PATHS: Dict[str, Sequence[str]] = {
+    "billing": ("{source,checked_on}", "{source,published}"),
+}
 
 
 def conflict_set_clause(
@@ -85,7 +95,22 @@ def conflict_set_clause(
     if not compared:
         return clause
 
-    changed = or_(*(table.c[k].is_distinct_from(stmt.excluded[k]) for k in compared))
+    changed = or_(*(_comparable(table.c[k], k).is_distinct_from(_comparable(stmt.excluded[k], k)) for k in compared))
     now = literal(datetime.now(timezone.utc), type_=table.c.modified_at.type)
     clause["modified_at"] = case((changed, now), else_=table.c.modified_at)
     return clause
+
+
+def _comparable(column: Any, name: str) -> Any:
+    """Return the column as compared for change detection, provenance paths removed.
+
+    Only from an object. `#-` on a JSON scalar raises "cannot delete path in scalar", and
+    most rows store `billing` as JSON `null` -- stripping unconditionally failed every upsert.
+    """
+    paths = _PROVENANCE_PATHS.get(name, ())
+    if not paths:
+        return column
+    stripped = column
+    for path in paths:
+        stripped = stripped.op("#-")(literal(path).cast(ARRAY(Text)))
+    return case((func.jsonb_typeof(column) == "object", stripped), else_=column)

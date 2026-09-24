@@ -113,7 +113,6 @@ class ModelDetailsSeeder(BaseSeeder):
                                 "architecture": stmt.excluded.architecture,
                                 "model_tree": stmt.excluded.model_tree,
                                 "extraction_metadata": stmt.excluded.extraction_metadata,
-                                "modified_at": stmt.excluded.modified_at,
                             },
                             ["model_info_id"],
                         ),
