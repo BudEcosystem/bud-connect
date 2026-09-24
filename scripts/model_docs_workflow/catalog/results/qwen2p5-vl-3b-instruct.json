@@ -1,0 +1,43 @@
+{
+  "slug": "qwen2p5-vl-3b-instruct",
+  "canonical": "qwen2p5-vl-3b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-VL-3B-Instruct is the smallest, 3-billion-parameter member of Alibaba Qwen's Qwen2.5-VL vision-language family, released January 26, 2025 and positioned by Qwen for lighter-weight and edge deployment. Qwen's model card describes the same family capabilities as its larger siblings: document parsing into structured output, visual object localization by bounding boxes or points, long-video (over one hour) understanding with event/timestamp localization, and agentic computer- and phone-use with visual tool direction. Its published configuration gives a native 128,000-token context window, matching this catalog's limits. Bud's catalog records this route's modality as text input and output only, which does not include the image or video input Qwen documents for this model; see notes.",
+    "advantages": [
+      "Scores 93.9 on DocVQA (test) and 77.1 on InfoVQA (test), per Qwen's model card.",
+      "Scores 79.3 on TextVQA (val), per Qwen's model card.",
+      "Scores 90.8 (success rate) on AndroidWorld, an agentic mobile-control benchmark, per Qwen's model card.",
+      "Positioned by Qwen for edge and resource-constrained deployment, with quantized versions supported via llama.cpp, Ollama, and LM Studio, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Bud's catalog records this route's modality as text input and output only, without image or video input, unlike the vision-language capability the model is designed for (see notes).",
+      "As the smallest model in the Qwen2.5-VL family, it scores lower on vision benchmarks than the 32B and 72B siblings, e.g. 21.2% on MathVision-full versus higher scores reported for the larger sizes, per Qwen's model card.",
+      "Qwen's model card states that extending context beyond the native range via YaRN significantly reduces temporal and spatial localization accuracy, and that processing over 32K tokens is not recommended for localization tasks."
+    ],
+    "use_cases": [
+      "Lightweight document and image parsing into structured output for edge or resource-constrained deployment",
+      "Multi-image comparison and analysis",
+      "Long-video understanding and event/timestamp localization",
+      "Agentic mobile- and computer-use tasks with visual tool direction"
+    ],
+    "evaluations": [
+      {"name": "DocVQA", "score": 93.9, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"},
+      {"name": "InfoVQA", "score": 77.1, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"},
+      {"name": "TextVQA", "score": 79.3, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"},
+      {"name": "AndroidWorld", "score": 90.8, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct", "title": "Qwen/Qwen2.5-VL-3B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-vl/", "title": "Qwen2.5-VL! Qwen2.5-VL! Qwen2.5-VL!", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-VL", "title": "QwenLM/Qwen2.5-VL now redirects to QwenLM/Qwen3-VL · GitHub", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog records this route's modality as text_input/text_output only, but Qwen documents Qwen2.5-VL-3B-Instruct as a vision-language model that also takes image and video input; flagged above as a disadvantage per RESEARCH_PROMPT's guidance to note when facts show no image/video input (analogous to its 'no audio input' example). Catalog's 128,000-token max_input_tokens/max_output_tokens match the model's published config.json max_position_embeddings exactly, so no conflict there. Qwen's blog dates the Qwen2.5-VL family launch (3B/7B/72B) to January 26, 2025. Qwen's GitHub repository for the Qwen2.5-VL project (github.com/QwenLM/Qwen2.5-VL) now redirects (HTTP 301, confirmed by fetching) to the newer Qwen3-VL repository, so github_url was left null; this supersession signal is also reflected in the earlier note that Qwen3-VL is now Qwen's most capable vision-language line."
+}

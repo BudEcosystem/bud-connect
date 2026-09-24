@@ -1,0 +1,31 @@
+{
+  "slug": "moonshot-v1-128k-vision-preview",
+  "canonical": "moonshot-v1-128k-vision-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Moonshot-v1-128k-vision-preview was a preview vision variant of Moonshot AI's moonshot-v1-128k chat model, adding image input on top of the same 128,000-token context window, accepting images through the standard OpenAI-style content array with image_url blocks. Moonshot AI's current platform documentation states the moonshot-v1 series, including its vision-preview variants, was officially discontinued on August 31, 2026 and is no longer maintained or supported, with users directed to Kimi K3 instead.",
+    "advantages": [
+      "Added image input on top of moonshot-v1-128k's 128,000-token context window, accepting images via the standard OpenAI-style image_url content blocks, per LiteLLM's provider documentation."
+    ],
+    "disadvantages": [
+      "Officially discontinued on August 31, 2026 and no longer maintained or supported, per Moonshot AI's current platform documentation.",
+      "Was a preview release, per its model name, rather than a generally-available vision model.",
+      "Moonshot AI directs users to migrate to the newer Kimi K3 model, which has native visual understanding, for continued support."
+    ],
+    "use_cases": [
+      "Was used for image-input chat completion via Moonshot AI's OpenAI-compatible API"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://platform.kimi.ai/docs/models", "title": "Kimi Open Platform - Model List", "kind": "maker"},
+    {"url": "https://docs.litellm.ai/docs/providers/moonshot", "title": "Moonshot AI | liteLLM", "kind": "third_party"}
+  ],
+  "notes": "Moonshot AI has removed this model's own docs/model-card page since discontinuing it, so no maker page describes its original feature set beyond context length and image support; website_url left null. Catalog facts list no deprecation_date, but Moonshot AI's model list page explicitly states the vision-preview variants of moonshot-v1 (including this model) were discontinued 2026-08-31, which is worth reflecting in the catalog's deprecation_date."
+}

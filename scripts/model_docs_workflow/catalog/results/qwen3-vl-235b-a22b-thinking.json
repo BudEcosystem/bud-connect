@@ -1,0 +1,36 @@
+{
+  "slug": "qwen3-vl-235b-a22b-thinking",
+  "canonical": "qwen3-vl-235b-a22b-thinking",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3-VL-235B-A22B-Thinking is Alibaba's Qwen team's reasoning-enhanced vision-language Mixture-of-Experts model, with about 235 billion total parameters and roughly 22 billion active per token. It is the 'Thinking' edition of the Qwen3-VL family, released alongside a standard Instruct edition of the same size on September 23, 2025, and is aimed at STEM and math problems that benefit from causal, evidence-based reasoning. It accepts text and image input with a native 256K-token context window, expandable to 1M tokens via YaRN per Qwen's GitHub documentation, and adds Interleaved-MRoPE positional embeddings and DeepStack multi-level Vision Transformer feature fusion for visual grounding.",
+    "advantages": [
+      "Qwen documents this Thinking edition as adding reasoning ('causal analysis and logical, evidence-based answers') for STEM and math tasks, distinguishing it from the standard Instruct edition (Qwen model card).",
+      "Supports OCR in 32 languages, up from 19 in the prior Qwen VL generation, with improved handling of rare or ancient characters and jargon (Qwen model card).",
+      "Documented visual agent capability: recognizes on-screen elements and invokes tools to operate PC and mobile GUIs (Qwen model card).",
+      "Includes 2D and 3D spatial grounding for visual reasoning and embodied-AI tasks (Qwen model card).",
+      "Text-timestamp alignment gives more precise, timestamp-grounded event localization for video temporal reasoning (Qwen model card)."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "STEM and math problem-solving that benefits from step-by-step reasoning over visual input",
+      "Visual agent workflows that operate GUIs by recognizing on-screen elements",
+      "Document and OCR understanding across many languages",
+      "Long-context and video understanding with temporal grounding",
+      "Spatial and 3D visual grounding tasks"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Thinking",
+    "github_url": "https://github.com/QwenLM/Qwen3-VL"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Thinking", "title": "Qwen/Qwen3-VL-235B-A22B-Thinking · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-VL", "title": "QwenLM/Qwen3-VL", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-vl-235b-a22b-thinking", "title": "Qwen3 VL 235B A22B Thinking - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "The maker's model card and GitHub README present all multimodal and text benchmark tables as embedded images rather than text, so no numeric evaluation scores could be verified from the pages opened; evaluations is left empty rather than guessed. OCR language support is stated only as a count (32 languages), so languages is left empty per instructions. Catalog facts list max input/output tokens as 262144, matching Fireworks' host page and the maker's stated 256K native context. Catalog facts' modality for this slug is text_input+text_output only (no image_input), unlike the sibling 'qwen3-vl-235b-a22b' catalog entry; kept per instructions even though the maker's own page describes text-and-image input, and flagged here as required. No documented weaknesses specific to this edition were found beyond the general lack of published numeric benchmarks noted above, so disadvantages is left empty."
+}

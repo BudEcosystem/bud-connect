@@ -1,0 +1,73 @@
+{
+  "slug": "zai-glm-5-2",
+  "canonical": "zai-glm-5-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.2 is a flagship foundation model from Z.ai (Zhipu AI) built for long-horizon software engineering and agentic tasks, offered through Mistral's API as a third-party open-weight model 'served without Mistral modifications.' It has a 1M-token context window Z.ai describes as 'truly usable' for project-scale codebases, plus thinking (reasoning) modes, function calling, MCP tool integration, context caching and structured JSON output. On Mistral's platform the model is labeled Public Preview and is currently reachable through the global and EU endpoints only, not the US regional endpoint. Z.ai has since released GLM-5.3, which its own migration guide calls the 'latest flagship model,' making GLM-5.2 an earlier release in that lineup.",
+    "advantages": [
+      "Z.ai reports 81.0 on Terminal-Bench 2.1, up from 62.0 for GLM-5.1, landing within a few points of Claude Opus 4.8's 85.0 (Z.ai GLM-5.2 docs).",
+      "Z.ai reports 62.1 on SWE-bench Pro, up from 58.4 for GLM-5.1 (Z.ai GLM-5.2 docs).",
+      "Z.ai describes it as the highest-ranked open-source model on these coding benchmarks, ahead of Gemini 3.1 Pro (Z.ai GLM-5.2 docs).",
+      "Supports a 1M-token context window with 128K maximum output tokens (Z.ai GLM-5.2 docs; Mistral AI model page).",
+      "Open-weight model served by Mistral without modification (Mistral AI model page)."
+    ],
+    "disadvantages": [
+      "Listed as Public Preview rather than generally available on Mistral's platform (Mistral AI model page).",
+      "On Mistral, reachable only through the global and EU endpoints; not yet available on the US regional endpoint (Mistral AI model page).",
+      "Superseded as Z.ai's flagship release by GLM-5.3, which Z.ai's own migration guide calls the 'latest flagship model' (Z.ai migration guide).",
+      "Text-only model with no image or other multimodal input (Z.ai GLM-5.2 docs; Mistral AI model page)."
+    ],
+    "use_cases": [
+      "Project-scale codebase understanding and multi-file, long-horizon software engineering tasks (Z.ai GLM-5.2 docs).",
+      "Agentic workflows built on function calling and MCP tool integration (Z.ai GLM-5.2 docs).",
+      "Long-horizon refactoring and migration tasks run end-to-end (Z.ai GLM-5.2 docs).",
+      "General agentic coding through Mistral's Chat Completions API (Mistral AI model page)."
+    ],
+    "evaluations": [
+      {
+        "name": "Terminal-Bench 2.1",
+        "score": 81.0,
+        "source": "https://docs.z.ai/guides/llm/glm-5.2"
+      },
+      {
+        "name": "SWE-bench Pro",
+        "score": 62.1,
+        "source": "https://docs.z.ai/guides/llm/glm-5.2"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.2",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.2",
+      "title": "GLM-5.2 - Z.AI Developer Document",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/models/zai-glm-5-2",
+      "title": "Z.ai GLM 5.2 - Mistral AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.z.ai/guides/overview/migrate-to-glm-new",
+      "title": "Migrate to GLM-5.3 - Z.AI Developer Document",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.2",
+      "title": "zai-org/GLM-5.2 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/zai-org/GLM-5",
+      "title": "zai-org/GLM-5: GLM-5.3 & GLM-5.2 & GLM-5.1 & GLM-5",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (1,048,576 max input tokens, 131,072 max output tokens, text_input/text_output only) match both Z.ai's own docs and Mistral's model card exactly, so no conflict to flag. Z.ai's docs give Terminal-Bench 2.1 and SWE-bench Pro scores as GLM-5.2 vs GLM-5.1 comparisons (both are GLM-5.2's own scores, not GLM-5.1's, so they qualify as evaluations for this exact model). No explicit maker-stated language list found in prose (the Hugging Face card only carries categorical language tags), so 'languages' is left empty per the brief. A public GitHub repository does exist (github.com/zai-org/GLM-5, linked from the Hugging Face model card and covering GLM-5.2 by name), so github_url is set to it rather than null."
+}

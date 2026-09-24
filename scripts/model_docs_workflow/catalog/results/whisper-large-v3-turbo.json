@@ -1,0 +1,36 @@
+{
+  "slug": "whisper-large-v3-turbo",
+  "canonical": "whisper-large-v3-turbo",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Whisper large-v3-turbo is OpenAI's speed-optimized speech recognition model, a pruned version of large-v3 that reduces the decoder from 32 layers to 4 while keeping the same encoder. It has 809 million parameters and supports transcription across 99 languages, trading a small amount of accuracy for substantially faster inference than large-v3. On Groq it is offered for transcription only; unlike large-v3, Groq's docs state it does not support the speech translation task.",
+    "advantages": [
+      "Hugging Face's model card reports a mean word error rate of 7.83, close to large-v3's 7.44 despite an 8x reduction in decoder layers.",
+      "Groq reports a real-time processing speed factor of 216x, faster than the 189x it reports for whisper-large-v3.",
+      "Uses the same encoder as whisper-large-v3, retaining most of its multilingual transcription accuracy at a fraction of the decoding cost."
+    ],
+    "disadvantages": [
+      "Does not support the speech translation task on Groq; only transcription is available.",
+      "Slightly higher mean word error rate than whisper-large-v3 (7.83 vs 7.44, per Hugging Face's evaluation table).",
+      "Prone to hallucinating text not present in the audio, and word error rates vary across languages and demographic groups, per OpenAI's Whisper model documentation."
+    ],
+    "use_cases": [
+      "Real-time applications such as live captioning, meeting transcription, and voice assistants.",
+      "High-volume batch transcription, including customer service call processing.",
+      "Cost-conscious transcription for startups and educational platforms."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/whisper-large-v3-turbo",
+    "github_url": "https://github.com/openai/whisper"
+  },
+  "sources": [
+    {"url": "https://console.groq.com/docs/speech-to-text", "title": "Speech to Text - GroqDocs", "kind": "host"},
+    {"url": "https://console.groq.com/docs/model/whisper-large-v3-turbo", "title": "whisper-large-v3-turbo - GroqDocs", "kind": "host"},
+    {"url": "https://huggingface.co/openai/whisper-large-v3-turbo", "title": "openai/whisper-large-v3-turbo · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Bud's facts list only the /v1/audio/transcriptions endpoint, matching Groq's documentation that this model does not support the translation endpoint. Parameter count, decoder-layer reduction, and mean WER are from the Hugging Face model card; OpenAI has not published a dedicated model-card.md for the turbo variant on GitHub, so the repo link is used only for the general Whisper codebase. WER figures are reported in prose (not evaluations) since WER is lower-is-better. Language support is given only as a count ('99 languages'), so languages is left empty."
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "dolphin-2-9-2-qwen2-72b",
+  "canonical": "dolphin-2-9-2-qwen2-72b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cognitive Computations",
+  "details": {
+    "description": "Dolphin 2.9.2 Qwen2 72B is a 72-billion-parameter chat model from Cognitive Computations (Eric Hartford, Lucas Atkins, and Fernando Fernandes), fine-tuned from Alibaba's Qwen2-72B on 14 instruction, coding, math, and agentic tool-use datasets in ChatML format, using selective full-weight fine-tuning of layers identified by the project's 'Laser Scanner' technique. Like other Dolphin releases, the makers filtered alignment and safety training out of the data, producing a highly compliant 'uncensored' model that they say requires an added alignment layer before being deployed as a service. It is licensed under Qwen2's Tongyi Qianwen license.",
+    "advantages": [
+      "Scores 49.52 on MMLU-Pro (5-shot), 47.70 on BBH (3-shot), and 40.38 on IFEval (0-shot), per the Open LLM Leaderboard results shown on its Hugging Face model card.",
+      "Trained for coding, conversational, math, and initial agentic/function-calling abilities via its 14-dataset training mix, per its model card."
+    ],
+    "disadvantages": [
+      "Deliberately uncensored: the makers filtered alignment and bias out of the training data, state it 'will be highly compliant to any requests, even unethical ones,' and recommend adding an alignment layer before deployment.",
+      "Fine-tuned at an 8,192-token sequence length, well below the 128k context the Qwen2-72B base model supports.",
+      "Licensed under Qwen2's Tongyi Qianwen license rather than a standard permissive open-source license."
+    ],
+    "use_cases": [
+      "General instruction-following and conversational chat.",
+      "Coding assistance.",
+      "Math word-problem solving.",
+      "Early-stage agentic tool use and function calling."
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 49.52, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"},
+      {"name": "BBH", "score": 47.70, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"},
+      {"name": "IFEval", "score": 40.38, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"},
+      {"name": "MATH Lvl 5", "score": 21.37, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"},
+      {"name": "MuSR", "score": 17.04, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"},
+      {"name": "GPQA", "score": 16.00, "source": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/cognitivecomputations/dolphin-2.9.2-qwen2-72b", "title": "cognitivecomputations/dolphin-2.9.2-qwen2-72b · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list 131072 max input/output tokens, matching the Qwen2-72B base model's 128k context; the model card notes the Dolphin fine-tune itself was trained at a shorter 8,192-token sequence length, which is reflected as a disadvantage rather than a change to the catalog's context-window fact. Evaluation scores are Hugging Face's auto-generated Open LLM Leaderboard results shown on the model's own card, not numbers Cognitive Computations published separately."
+}

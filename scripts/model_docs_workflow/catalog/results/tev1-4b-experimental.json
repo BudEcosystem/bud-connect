@@ -1,0 +1,39 @@
+{
+  "slug": "tev1-4b-experimental",
+  "canonical": "tev1-4b-experimental",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Together AI",
+  "details": {
+    "description": "Tev1-4B-experimental is Together AI's experimental decision-classifier model, a supervised fine-tune of Alibaba's Qwen3.5-4B built to select exactly one option from a structured state, question, and list of 2 to 24 labeled choices, returning only that option's letter. Together's Hugging Face model card describes it as a 'Jev-inspired experiment' that keeps Qwen's standard next-token language-model head rather than a separate non-autoregressive runtime, and recommends a fixed system prompt with temperature 0 and an 8-token output cap for its intended use. On Together's own development evaluation the model chose the correct option in 880 of 1,000 cases (88.0%) on its main decision set and 300 of 300 (100%) on a synthetic policy-transfer set, though Together's card states these are development results, not an independent benchmark, and that no untuned-Qwen baseline exists yet for comparison.",
+    "advantages": [
+      "On Together AI's own development evaluation, the model selected the correct option in 880 of 1,000 cases (88.0%) on the main decision set, per Together's Hugging Face model card.",
+      "On the same development evaluation, the model matched 300 of 300 (100%) cases on a synthetic policy-transfer set and produced a valid single-letter output in all 1,300 evaluation calls with zero HTTP errors, per Together's model card.",
+      "Built specifically for structured decision and classification tasks (choosing one labeled option from 2-24 choices) rather than general chat, with a documented recommended prompt template and request parameters, per Together's model card.",
+      "Retains Qwen's standard next-token language-model head, so it can be served with the same inference stacks (Transformers, vLLM, SGLang) as its Qwen3.5-4B base, per Together's model card."
+    ],
+    "disadvantages": [
+      "Together's own model card states its 88.0%/100% figures come from a development-stage evaluation, not an independent benchmark, and that no untuned-Qwen baseline yet exists for comparison.",
+      "Together's model card states generic chat is not the intended interface and may produce prose.",
+      "Together's model card states the model can be wrong and should not be used as the sole authority for high-impact decisions.",
+      "Together's model card states prompt injection, multilingual behavior, calibration, and broad out-of-distribution robustness have not been comprehensively evaluated.",
+      "Labeled 'experimental' by Together AI; its model card also states the release license for these fine-tuned weights is still being finalized."
+    ],
+    "use_cases": [
+      "Structured decision and classification tasks where the input is a state, a question, and a small set of labeled options, and the output is a single option letter, per Together's model card.",
+      "Policy or rule-based decision automation, based on the model's 100% match rate on Together's synthetic policy-transfer evaluation set, per Together's model card.",
+      "Low-latency single-token classification calls, given the recommended 8-token output cap and temperature-0 (deterministic) sampling, per Together's model card."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/togethercomputer/Tev1-4B-experimental",
+    "github_url": "https://github.com/togethercomputer/tev1"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/togethercomputer/Tev1-4B-experimental", "title": "togethercomputer/Tev1-4B-experimental · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/togethercomputer/tev1", "title": "togethercomputer/tev1", "kind": "maker"},
+    {"url": "https://www.together.ai/blog/how-to-train-your-own-jev", "title": "How to train your own Jev - Together AI", "kind": "maker"}
+  ],
+  "notes": "Left 'evaluations' empty: the only quantitative results the maker publishes (880/1,000 and 300/300 on Together's own development sets) are explicitly labeled by Together's model card as 'development results, not an independent benchmark' with 'no untuned-Qwen baseline yet,' so they are reported as advantages with that caveat rather than as leaderboard-style accuracy entries. The model card tags this model 'image-text-to-text' and its base (Qwen3.5-4B) appears to be multimodal, and the card lists 'Model size: 5B params' despite the '4B' name, but the catalog's modality for this URI is text_input/text_output only; kept the catalog's modality as authoritative and did not describe image input. Catalog's max_input_tokens (32,768) is not contradicted by any figure on the model card, which does not state a context length."
+}

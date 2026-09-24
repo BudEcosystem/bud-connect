@@ -1,0 +1,47 @@
+{
+  "slug": "polyglot",
+  "canonical": "polyglot",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Polyglot is one of the voice types offered by Google Cloud Text-to-Speech, listed alongside Standard, WaveNet, Neural2, Studio, and Chirp 3: HD voices in Google's own voice-type documentation. As of Google's current voice list it comprises six voices — en-AU-Polyglot-1, en-US-Polyglot-1, fr-FR-Polyglot-1, de-DE-Polyglot-1, es-ES-Polyglot-1, and es-US-Polyglot-1, all male — making it Google's smallest TTS voice type by language and voice coverage. Google's documentation does not mark Polyglot as deprecated or legacy, but also does not publish a dedicated description of its underlying technology or intended use case.",
+    "advantages": [
+      "Remains listed as an active, non-deprecated voice type in Google's current Text-to-Speech voice-type documentation.",
+      "Available in six locales — Australian English, US English, French, German, and Spanish (Spain and US) — each with a dedicated Polyglot-1 voice, per Google's voice list."
+    ],
+    "disadvantages": [
+      "Limited to six voices (en-AU-Polyglot-1, en-US-Polyglot-1, fr-FR-Polyglot-1, de-DE-Polyglot-1, es-ES-Polyglot-1, es-US-Polyglot-1), all male, far fewer than Google's Standard, WaveNet, or Neural2 tiers.",
+      "Google's documentation does not publish a dedicated description of Polyglot's underlying technology or recommended use case, unlike its Neural2, Studio, and Chirp 3: HD voice types."
+    ],
+    "use_cases": [
+      "General-purpose text-to-speech output in Australian English, US English, French, German, or Spanish (Spain or US) where a male Polyglot voice is wanted.",
+      "Applications already using Google Cloud Text-to-Speech that want an additional male voice option in one of these six locales."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English (Australian)",
+      "English (US)",
+      "French",
+      "German",
+      "Spanish (Spain)",
+      "Spanish (US)"
+    ],
+    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/voice-types",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/voice-types",
+      "title": "Voice types | Cloud Text-to-Speech",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types",
+      "title": "Supported voices and languages | Cloud Text-to-Speech",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Google's docs give minimal detail on Polyglot beyond its voice list (no dedicated feature description, unlike Neural2/Studio/Chirp), so the write-up is thinner than usual but every claim traces to the voice-type or supported-voices pages. Corrected the voice count against Google's current supported-voices table (last updated 2026-09-18): Polyglot has six voices, not three — en-AU, en-US, fr-FR, de-DE, es-ES, and es-US, all male; the original write-up missed the German and two Spanish voices. Catalog facts give no conflicting token or deprecation values."
+}

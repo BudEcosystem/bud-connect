@@ -1,0 +1,39 @@
+{
+  "slug": "nova-2-atc",
+  "canonical": "nova-2-atc",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 ATC is a speech-to-text model in Deepgram's Nova-2 family, tuned specifically for air traffic control audio rather than general-purpose recordings. Deepgram's Model Options page describes it as \"optimized for audio from air traffic control,\" and its Models & Languages Overview lists it as English-only. Deepgram's newer Nova-3 generation currently ships only general, medical and pharma variants, so this air-traffic-control tuning has no Nova-3 counterpart in Deepgram's documentation.",
+    "advantages": [
+      "Tuned specifically for air traffic control audio and vocabulary, per Deepgram's Model Options page, rather than using the general-purpose Nova-2 model.",
+      "Deepgram's Models & Languages Overview does not group Nova-2 under its \"Legacy Models\" heading, unlike Nova 1, Enhanced and Base."
+    ],
+    "disadvantages": [
+      "Supports English only (en, en-US), per Deepgram's Models & Languages Overview, unlike the general-purpose nova-2-general model, which the same page lists as supporting 25+ additional languages.",
+      "Deepgram's documentation gives no domain-specific accuracy (word error rate) figures for this variant."
+    ],
+    "use_cases": [
+      "Transcribing air traffic control communications"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to nova-2-atc were found on Deepgram's maker pages, so evaluations is left empty. Deepgram's Nova-2 launch article (deepgram.com/learn/nova-2-speech-to-text-api) reports aggregate WER improvements for the Nova-2 line overall, but does not break those numbers out by domain variant, so they were not attributed to this specific model. Catalog facts (audio_input/text_output modality, /v1/audio/transcriptions endpoint) match a batch transcription model; no deprecation_date is set in the catalog and none was found on Deepgram's pages."
+}

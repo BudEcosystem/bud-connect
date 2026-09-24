@@ -1,0 +1,48 @@
+{
+  "slug": "sonic-3.6",
+  "canonical": "sonic-3.6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cartesia",
+  "details": {
+    "description": "Sonic-3.6 is Cartesia's text-to-speech model, announced August 27, 2026 as the successor to Sonic-3.5 and now the company's recommended model for production voice agents. It natively supports 44 languages across 61 locales with over 500 preset voices, including new Odia and Urdu voices and Hinglish (Hindi-English) code-switching. Cartesia says it follows the input transcript faithfully while varying pacing, intonation, and pause length to match emotional context, and reports reply latency under 90ms. Cartesia states Sonic-3.5 remains supported as an earlier stable version, so Sonic-3.6 is the newer of the two rather than a forced replacement.",
+    "advantages": [
+      "In Cartesia's blind head-to-head listening tests across fifteen locales, listeners preferred Sonic-3.6 over Sonic-3.5 in up to 93% of comparisons.",
+      "Cartesia reports Sonic-3.6 generates audio at nearly 2x the speed of its Sonic v3 Conversational model (132 vs. 68 characters/second).",
+      "Reply latency under 90ms, per Cartesia.",
+      "Instant voice cloning is available, including for newly added languages.",
+      "Supports Hinglish (Hindi written in Latin characters) code-switching between Hindi and English.",
+      "Natively handles in-transcript disfluencies (e.g. 'uhm', 'hmm') and adjusts pause length without requiring SSML tags."
+    ],
+    "disadvantages": [
+      "Explicit emotion control via the generation_config.emotion parameter is a beta feature documented as supported for English transcripts only; other languages rely on the model's automatic reading of emotional subtext."
+    ],
+    "use_cases": [
+      "Real-time conversational voice agents.",
+      "Multilingual voice products needing native-quality delivery across 44 languages, including newly added Odia and Urdu.",
+      "Customer service, sales, and recruiting voice applications.",
+      "Localizing existing voices into new languages via voice cloning."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English", "French", "German", "Spanish", "Portuguese", "Chinese", "Japanese", "Hindi", "Italian",
+      "Korean", "Dutch", "Polish", "Russian", "Swedish", "Turkish", "Tagalog", "Bulgarian", "Romanian",
+      "Arabic", "Czech", "Greek", "Finnish", "Croatian", "Malay", "Slovak", "Danish", "Tamil", "Ukrainian",
+      "Hungarian", "Norwegian", "Vietnamese", "Bengali", "Thai", "Hebrew", "Georgian", "Indonesian",
+      "Telugu", "Gujarati", "Kannada", "Malayalam", "Marathi", "Punjabi", "Odia", "Urdu"
+    ],
+    "website_url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/latest",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/latest", "title": "Sonic 3.6 - Cartesia Docs", "kind": "maker"},
+    {"url": "https://cartesia.ai/blog/sonic-3.6", "title": "Introducing Sonic-3.6", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/api-changes", "title": "TTS model API changes and deprecations - Cartesia Docs", "kind": "maker"},
+    {"url": "https://www.cartesia.ai/sonic", "title": "Sonic: The fastest and most natural text to speech model", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/capability-guides/custom-pronunciations", "title": "Custom Pronunciations - Cartesia Docs", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/capability-guides/volume-speed-emotion", "title": "Volume, Speed, and Emotion - Cartesia Docs", "kind": "maker"},
+    {"url": "https://cartesia.ai/customers", "title": "Customers - Cartesia", "kind": "maker"}
+  ],
+  "notes": "An Artificial Analysis Elo rating (1120 controlled voice, vs. 1095 for Sonic-3.5) and the 93% head-to-head preference figure are reported by Cartesia; I kept both out of the evaluations list (Elo and preference-test percentages are not accuracy scores) and used them as attributed advantages instead. Cartesia's API-changes/deprecation page lists Sonic-3.5 and Sonic-3.6 both as current 'stable' offerings with no deprecation date, matching the catalog facts' empty deprecation_date. The model-specific docs page is served at a 'latest' URL that currently resolves to Sonic-3.6; no separate permanent per-version URL was reachable (it redirected to a docs login wall), so I cited the 'latest' page and the dated launch blog post together. Verify pass: the Custom Pronunciations guide documents pronunciation dictionaries working with Sonic 3.6 (and even gates case-insensitive matching behind 'Sonic 3.6+'), contradicting the original 'no pronunciation-dictionary feature' disadvantage, so it was removed; the Volume/Speed/Emotion guide documents an explicit generation_config.emotion parameter (beta, English-only) that the original 'automatic only' disadvantage missed, so it was corrected; and Cartesia's Solutions navigation (customer service, localization, recruiting, finance, healthcare, retail, travel) plus a sales-team customer story support 'customer service, sales, recruiting' as use cases, but no source supports 'training', which was dropped."
+}

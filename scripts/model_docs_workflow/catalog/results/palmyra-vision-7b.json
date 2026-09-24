@@ -1,0 +1,44 @@
+{
+  "slug": "palmyra-vision-7b",
+  "canonical": "palmyra-vision-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Writer",
+  "details": {
+    "description": "Palmyra Vision 7B is Writer's vision-language model, made available on Amazon Bedrock (model ID writer.palmyra-vision-7b) with a launch date of March 26, 2026. It takes text and image input and generates text output, with a 4,096-token context window and up to 4,096 output tokens. AWS's Bedrock model card describes it as built for extracting handwritten text, interpreting charts and graphs, image-based compliance checks, and generating product descriptions from images. Writer's own developer documentation separately lists a model called 'Palmyra Vision' (without the '7B' suffix) as deprecated, with a deprecation date of July 13, 2026 that has already passed; Writer's docs name no specific replacement for it, though Palmyra X5 and X6 now offer their own image-analysis capabilities. It could not be confirmed whether 'Palmyra Vision' is the same model offered on Bedrock, which AWS's own model card still lists as Active.",
+    "advantages": [
+      "Built for extracting handwritten text, interpreting complex charts and graphs, image-based compliance checks, and generating product descriptions from images (AWS Bedrock model card).",
+      "Supports response streaming, guardrails and structured outputs via Bedrock's Invoke and Converse APIs (AWS Bedrock model card).",
+      "Supports client-side tool calling (AWS Bedrock model card)."
+    ],
+    "disadvantages": [
+      "Writer's own developer docs list a model called 'Palmyra Vision' as deprecated (deprecation date July 13, 2026, already past); unclear if this is the same model as Bedrock's still-Active 'Palmyra Vision 7B'.",
+      "4,096-token context window with no video or audio input support (AWS Bedrock model card).",
+      "No server-side tool calling (bedrock-mantle endpoint), and no knowledge base integration or Amazon Bedrock Agents support via the bedrock-runtime API (AWS Bedrock model card)."
+    ],
+    "use_cases": [
+      "Extracting handwritten text from documents",
+      "Interpreting charts and graphs in images",
+      "Image-based compliance checks",
+      "Generating product descriptions from images"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-vision-7b.html",
+      "title": "Palmyra Vision 7B model card - Amazon Bedrock User Guide",
+      "kind": "host"
+    },
+    {
+      "url": "https://dev.writer.com/home/models",
+      "title": "Models - Writer Developer Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Writer's own developer docs (dev.writer.com/home/models) list a model named 'Palmyra Vision' (no '7B' suffix) as deprecated, deprecation date July 13, 2026 (already past as of this research date), and point users to Palmyra X5/X6's built-in vision instead. AWS's Bedrock model card for writer.palmyra-vision-7b, launched March 26, 2026, shows 'Model lifecycle: Active' with 'EOL no sooner than Mar 26, 2027,' and AWS's model-lifecycle page states Bedrock's own lifecycle dates can differ from the dates a model provider publishes. It is not certain whether Writer's deprecated 'Palmyra Vision' and Bedrock's 'Palmyra Vision 7B' are the same model or a distinct, still-supported variant -- flagging for review. Writer's own product page at writer.com/llms/palmyra-vision/ no longer shows content about this model (it now serves Palmyra X6 content instead), consistent with deprecation on Writer's side, so no maker website_url could be confirmed; left website_url null. The 4,096-token context window and 4,096-token max output both match the catalog's facts exactly. Found no accuracy-style benchmark scores from Writer or a named leaderboard for this exact model."
+}

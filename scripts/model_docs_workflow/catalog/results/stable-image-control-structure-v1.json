@@ -1,0 +1,40 @@
+{
+  "slug": "stable-image-control-structure-v1",
+  "canonical": "stable-image-control-structure-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Control Structure is one of Stability AI's Stable Image Control services, offered on Amazon Bedrock as stability.stable-image-control-structure-v1:0. Given a text prompt and a reference image, it generates a new image that keeps the reference image's structure while changing its style or content, which AWS Bedrock's documentation positions for scenarios such as recreating scenes or rendering characters from models in a new visual style.",
+    "advantages": [
+      "Takes a control_strength parameter (0 to 1, default 0.7) that sets how closely the output follows the reference image's structure, per AWS Bedrock documentation.",
+      "Supports a style_preset parameter (options such as photographic, digital-art, anime, cinematic) to guide the generated image's visual style, per AWS Bedrock documentation."
+    ],
+    "disadvantages": [
+      "Requires both a text prompt and a reference image; it is not a plain text-to-image model.",
+      "The reference image must be between 64 pixels per side and 9,437,184 total pixels, with an aspect ratio between 1:2.5 and 2.5:1, per AWS Bedrock documentation."
+    ],
+    "use_cases": [
+      "Recreating a scene or rendering a character from a model in a different visual style while preserving its structure",
+      "Advanced content-creation workflows that need the output to keep a reference image's structure"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stability AI - Stable Image",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html",
+      "title": "Stability AI Image Services - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only one URI targets this model (Bedrock). Stability AI's own API-reference docs (platform.stability.ai/docs/api-reference) are a single-page app that did not return readable content to the fetch tool, so parameter details come from AWS Bedrock's documentation of the same service; the maker's product page (stability.ai/stable-image) confirms the 'Structure' control tool by name and category."
+}

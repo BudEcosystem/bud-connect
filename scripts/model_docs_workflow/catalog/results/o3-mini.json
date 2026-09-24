@@ -1,0 +1,70 @@
+{
+  "slug": "o3-mini",
+  "canonical": "o3-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o3-mini is OpenAI's compact o-series reasoning model, released January 31, 2025 as a cost-efficient successor to o1-mini for STEM-focused work. Unlike o3 and o4-mini it is text-only, with no image input, and offers three selectable reasoning-effort levels (low, medium, high) to trade off speed against accuracy. This snapshot is scheduled for retirement, with gpt-5.6-terra as the recommended replacement.",
+    "advantages": [
+      "OpenAI reports o3-mini matches OpenAI o1 on AIME 2024 and GPQA Diamond at medium reasoning effort, and surpasses o1 at high effort, per OpenAI's launch post.",
+      "Scores 39% pass@1 on SWE-bench Verified with the Agentless scaffold at launch, rising to 61% with an internal tool-use scaffold, per OpenAI's system card.",
+      "At high reasoning effort, OpenAI reports it solves over 32% of FrontierMath problems on the first attempt, per OpenAI's launch post.",
+      "OpenAI reports human testers preferred its responses to o1-mini's 56% of the time, with responses arriving about 24% faster than o1-mini."
+    ],
+    "disadvantages": [
+      "Text-only: does not accept image input, per OpenAI's model documentation, so users needing vision must use a different model.",
+      "Knowledge cutoff of October 1, 2023, per OpenAI's documentation, earlier than o3 and o4-mini's June 2024 cutoff.",
+      "This o3-mini-2025-01-31 snapshot is scheduled for retirement, with gpt-5.6-terra as the recommended replacement."
+    ],
+    "use_cases": [
+      "STEM, math, and science problem solving at selectable reasoning effort",
+      "Coding and technical Q&A tasks",
+      "Cost- and latency-sensitive reasoning where full o3 is not needed"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified (Agentless scaffold, pass@1)",
+        "score": 39,
+        "source": "https://cdn.openai.com/o3-mini-system-card-feb10.pdf"
+      },
+      {
+        "name": "FrontierMath (high reasoning effort, first attempt)",
+        "score": 32,
+        "source": "https://openai.com/index/openai-o3-mini/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o3-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o3-mini",
+      "title": "o3-mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/openai-o3-mini/",
+      "title": "OpenAI o3-mini",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cdn.openai.com/o3-mini-system-card-feb10.pdf",
+      "title": "OpenAI o3-mini System Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts (200k context, 100k max output, text-only modality, /v1/chat/completions endpoint) match OpenAI's current model reference page. FrontierMath figure is a stated lower bound ('over 32%'); reported as 32. The o3-mini system card PDF could not be parsed as text by the fetch tool, so figures were read directly off the rendered PDF pages; the SWE-bench Verified 39%/61% figures were independently re-confirmed from the PDF text. This catalog entry's only provider is Azure (facts.providers = ['azure']), so Azure's own Model Retirement Schedule, not OpenAI's direct-API deprecations page, is the applicable source. It lists o3-mini-2025-01-31 as Deprecated with a retirement date of 2026-11-19 -- an exact match to the catalog's deprecation_date -- and gpt-5.6-terra as the replacement. OpenAI's direct-API deprecations page (opened 2026-09-24) instead lists a shutdown date of October 23, 2026 with gpt-5.6-sol as the replacement: a genuine cross-host divergence (unlike o3, o4-mini and o3-deep-research, where the two hosts name the same replacement). Corrected the replacement name in details to gpt-5.6-terra, the one that matches the Azure schedule this catalog entry actually reflects."
+}

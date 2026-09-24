@@ -1,0 +1,44 @@
+{
+  "slug": "gemma-7b",
+  "canonical": "gemma-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemma 7B is the base, pretrained (non-instruction-tuned) 7-billion-parameter model in Google's first-generation Gemma family of lightweight open-weight models, built from the same research as Google's Gemini models, per Google's model card. It is a decoder-only, text-to-text model trained on roughly 6 trillion tokens of English-language web documents, code, and mathematical text, over an 8,192-token context window, intended as a foundation for further fine-tuning or research rather than for direct chat use. Google's current Gemma documentation lists Gemma 4 as the newest generation and groups this first-generation model among \"previous Gemma models,\" though its weights remain downloadable; Google separately offers an instruction-tuned \"gemma-7b-it\" model for chat use.",
+    "advantages": [
+      "Scores 64.3 on MMLU (5-shot) and 46.4 on GSM8K (maj@1), per Google's Gemma model card.",
+      "Scores 32.3 on HumanEval (pass@1) and 81.2 on HellaSwag (0-shot), per Google's Gemma model card.",
+      "Open weights available for download and local fine-tuning, per Google's model card."
+    ],
+    "disadvantages": [
+      "This is the base, non-instruction-tuned checkpoint; Google offers a separate gemma-7b-it model specifically tuned for chat and instruction-following.",
+      "Superseded by three newer Gemma generations; Google's documentation now lists Gemma 4 as the current generation and groups this model under \"previous Gemma models.\"",
+      "Trained and documented for English-language use only, per Google's model card."
+    ],
+    "use_cases": [
+      "Base model for further fine-tuning on downstream tasks",
+      "Text generation and completion",
+      "Research into language model behavior and NLP experimentation",
+      "Code generation and math problem-solving"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 64.3, "source": "https://ai.google.dev/gemma/docs/core/model_card"},
+      {"name": "HellaSwag", "score": 81.2, "source": "https://ai.google.dev/gemma/docs/core/model_card"},
+      {"name": "PIQA", "score": 81.2, "source": "https://ai.google.dev/gemma/docs/core/model_card"},
+      {"name": "HumanEval", "score": 32.3, "source": "https://ai.google.dev/gemma/docs/core/model_card"},
+      {"name": "GSM8K", "score": 46.4, "source": "https://ai.google.dev/gemma/docs/core/model_card"},
+      {"name": "ARC-c", "score": 53.2, "source": "https://ai.google.dev/gemma/docs/core/model_card"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/google/gemma-7b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-7b", "title": "google/gemma-7b · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core/model_card", "title": "Gemma model card | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core", "title": "Gemma model overview | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "The slug has no '-it' suffix and Fireworks' catalog entry is the base/pretrained checkpoint (Google publishes a separate gemma-7b-it for chat use); described and scored accordingly even though Bud serves it under a chat endpoint. Google's current docs now group Gemma 1 under 'previous Gemma models' with Gemma 4 listed as current, though no formal deprecation date is given for Gemma 1 itself."
+}

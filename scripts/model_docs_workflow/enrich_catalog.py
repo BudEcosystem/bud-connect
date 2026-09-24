@@ -145,6 +145,9 @@ def plan(args: argparse.Namespace) -> None:
         if model["uri"] in existing:
             continue
         name = overrides.get(model["uri"]) or canonical_name(model["uri"], model["provider_type"])
+        if not name:
+            print(f"skipping {model['uri']!r}: no model name in the URI")
+            continue
         groups[name].append(model)
 
     targets = []

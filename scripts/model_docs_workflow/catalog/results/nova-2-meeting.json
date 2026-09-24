@@ -1,0 +1,41 @@
+{
+  "slug": "nova-2-meeting",
+  "canonical": "nova-2-meeting",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 Meeting is a Deepgram speech-to-text model in the Nova-2 tier, described by Deepgram's docs as optimized for conference-room settings with multiple speakers captured by a single microphone. It shares Nova-2's underlying architecture, which Deepgram says improves entity recognition, punctuation, and capitalization over the earlier Nova-1 model through speech-specific Transformer optimizations and multi-stage training. It supports English only. Deepgram's current models overview table now recommends its newer Nova-3 tier, rather than Nova-2, for meetings and other multi-speaker audio.",
+    "advantages": [
+      "Deepgram tunes Nova-2 Meeting specifically for conference-room settings with multiple speakers on a single microphone.",
+      "Deepgram says Nova-2 improves entity recognition (e.g. proper nouns, alphanumerics), punctuation, and capitalization over its Nova-1 predecessor through speech-specific Transformer optimizations, advanced data curation, and multi-stage training."
+    ],
+    "disadvantages": [
+      "Supports English only, per Deepgram's language documentation.",
+      "Deepgram's current models overview table recommends its newer Nova-3 tier, not Nova-2, for meetings and other multi-speaker audio; Nova-3 has no separate meeting-tuned option, and Deepgram's general Nova-3 model is recommended for this use case instead."
+    ],
+    "use_cases": [
+      "Transcribing conference-room meetings with multiple speakers on a single microphone, per Deepgram's documentation."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's models overview table (developers.deepgram.com/docs/models-languages-overview) lists nova-3 as 'Recommended for meetings, event captioning, multi-speaker, multilingual, noisy, or far-field audio in batch or streaming' and nova-2 as 'Recommended for use cases with languages not yet supported by nova-3, and filler word identification' -- i.e. Deepgram's current guidance no longer points to Nova-2 Meeting as the default choice for meetings. No WER or other accuracy figures specific to this variant were found on maker pages, so evaluations is left empty. Catalog carries no deprecation_date, consistent with Nova-2 not appearing under Deepgram's 'Legacy Models' heading."
+}

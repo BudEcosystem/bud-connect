@@ -1,0 +1,42 @@
+{
+  "slug": "claude-opus-4-5",
+  "canonical": "claude-opus-4-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4.5 is Anthropic's flagship Opus-class model, released November 24, 2025, positioned at launch as Anthropic's best model for coding, agentic tasks, and computer use. It supports a 200,000-token context window, vision input, and tool use, including a tool-search capability that lets agents dynamically load only the tool definitions they need from large libraries. It remains an active, supported model as of September 2026, though Anthropic has since released Opus 4.6, 4.7, 4.8, Opus 5, and Opus 5.5.",
+    "advantages": [
+      "Scores 80.9% on SWE-bench Verified, Anthropic's software-engineering benchmark (AWS Bedrock launch blog).",
+      "Scores 80.7% on the MMMU multimodal vision benchmark, described by Anthropic as its best vision model yet at release (AWS Bedrock launch blog).",
+      "Anthropic reports a 10.6% improvement over Claude Sonnet 4.5 on the Aider Polyglot coding benchmark (Anthropic launch post).",
+      "Introduces a tool-search capability that lets agents dynamically discover and load only the tool definitions they need from large tool libraries (AWS Bedrock launch blog)."
+    ],
+    "disadvantages": [
+      "Superseded within Anthropic's own Opus line by Opus 4.6, 4.7, 4.8, Opus 5 and Opus 5.5, all released within a year of Opus 4.5's launch (Anthropic model deprecations page).",
+      "200,000-token context window, smaller than the 1-million-token window Anthropic introduced starting with Opus 4.6 (Claude Opus 4.6 launch post)."
+    ],
+    "use_cases": [
+      "Autonomous coding agents that write and refactor code across an entire project",
+      "Long-running agentic workflows drawing on large tool libraries via tool search",
+      "Computer-use automation such as spreadsheet, slide, and document tasks",
+      "Financial analysis correlating information across filings and reports",
+      "Cybersecurity log correlation and vulnerability analysis"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 80.9, "source": "https://aws.amazon.com/blogs/machine-learning/claude-opus-4-5-now-in-amazon-bedrock/"},
+      {"name": "MMMU", "score": 80.7, "source": "https://aws.amazon.com/blogs/machine-learning/claude-opus-4-5-now-in-amazon-bedrock/"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-opus-4-5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-opus-4-5", "title": "Introducing Claude Opus 4.5", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/claude-opus-4-5-now-in-amazon-bedrock/", "title": "Claude Opus 4.5 now in Amazon Bedrock", "kind": "host"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://www.anthropic.com/news/claude-opus-4-6", "title": "Introducing Claude Opus 4.6", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (200K max input tokens, 64K max output tokens, anthropic/bedrock/vertex_ai-anthropic_models providers, deprecation_date 2026-11-24) match Anthropic's model-deprecations table, which lists claude-opus-4-5-20251101 as Active with tentative retirement 'not sooner than November 24, 2026.' Anthropic's own system-card PDF and launch post render most benchmark numbers as chart images rather than text, and the system-card PDF exceeded the size this tool can fetch, so SWE-bench Verified (80.9%) and MMMU (80.7%) are sourced to AWS's Bedrock launch blog, which republishes Anthropic's own figures. Other benchmarks Anthropic's post names in prose (Vending-Bench +29%, BrowseComp-Plus, tau2-bench) were not accuracy-style 0-100 scores or had no stated number, so they are left out of evaluations."
+}

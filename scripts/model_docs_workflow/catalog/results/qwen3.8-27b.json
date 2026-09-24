@@ -1,0 +1,50 @@
+{
+  "slug": "qwen3.8-27b",
+  "canonical": "qwen3.8-27b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba",
+  "details": {
+    "description": "Qwen3.8-27B is a dense 27-billion-parameter multimodal model from Alibaba's Qwen team, part of the Qwen3.8 series (built on the Qwen3.5 architecture) and released in August 2026. It combines text generation with native vision-language understanding of images and documents, and supports a toggleable \"thinking\" reasoning mode with an adjustable reasoning_effort parameter, plus tool calling for agentic use. Qwen's own model card states a native context length of 262,144 tokens, extensible to 1,000,000 tokens; on this catalog it is listed with a 131,042-token input limit and a 16,384-token output limit.",
+    "advantages": [
+      "Scores 90.3% on LiveCodeBench v6 for competitive coding, per its Hugging Face model card.",
+      "Scores 89.2% on GPQA Diamond for scientific reasoning, per its Hugging Face model card.",
+      "Scores 84.3% on OSWorld-Verified for computer-use tasks and 81.9% on AndroidWorld for mobile-use tasks, per its Hugging Face model card.",
+      "Scores 91.1% on OmniDocBench 1.5 for document understanding, per its Hugging Face model card.",
+      "Supports a toggleable \"thinking\" reasoning mode with an adjustable reasoning_effort parameter and tool calling, per its Hugging Face model card and GitHub README."
+    ],
+    "disadvantages": [
+      "Groq's model listing marks this model as a preview, \"intended for evaluation purposes only and should not be used in production environments.\"",
+      "Released in August 2026, so it has limited independent evaluation beyond the maker's own benchmark tables."
+    ],
+    "use_cases": [
+      "Agentic coding and software-engineering tasks.",
+      "Long-horizon autonomous planning and computer-use agents (browser, desktop, mobile).",
+      "Multimodal document and image understanding.",
+      "Visual math and scientific reasoning tasks.",
+      "General chat with an optional extended \"thinking\" mode for harder problems."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 89.2, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "LiveCodeBench v6", "score": 90.3, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "IFBench", "score": 79.5, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "SWE-bench Pro", "score": 61.7, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "Terminal Bench 2.1", "score": 73.0, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "OSWorld-Verified", "score": 84.3, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "WebArena-Verified", "score": 64.8, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "AndroidWorld", "score": 81.9, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "MathVision (with CI)", "score": 94.6, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"},
+      {"name": "OmniDocBench 1.5", "score": 91.1, "source": "https://huggingface.co/Qwen/Qwen3.8-27B"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "github_url": "https://github.com/QwenLM/Qwen3.8"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3.8-27B", "title": "Qwen/Qwen3.8-27B", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3.8", "title": "QwenLM/Qwen3.8", "kind": "maker"},
+    {"url": "https://console.groq.com/docs/models", "title": "GroqCloud Models", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (131,042) is well below the 262,144-token native context (extensible to 1,000,000 with RoPE/YaRN scaling) stated on Qwen's Hugging Face card; kept the catalog's value per instructions and noted the maker's figure in the description. Groq's own model page lists this id as a preview model not intended for production. The maker's model card did not state a specific list of supported languages, so languages is left empty. Qwen's Hugging Face card and GitHub README also describe native video understanding (\"hour-scale videos\"), but the catalog's modality facts list only image_input (no video); video was removed from the description and use cases so the write-up does not restate a modality the catalog does not have. Benchmark names OSWorld, WebArena and OmniDocBench were corrected to the exact table headings (OSWorld-Verified, WebArena-Verified, OmniDocBench 1.5) shown on the model card."
+}

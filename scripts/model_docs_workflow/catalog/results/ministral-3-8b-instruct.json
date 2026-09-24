@@ -1,0 +1,37 @@
+{
+  "slug": "ministral-3-8b-instruct",
+  "canonical": "ministral-3-8b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 8B Instruct is Mistral AI's compact instruction-tuned model in the Ministral 3 family, released December 2, 2025 under an Apache 2.0 license. It pairs an 8.4B-parameter language model with a 0.4B-parameter vision encoder for combined text-and-vision use, and is distributed in FP8 for deployment on devices with as little as 12GB of VRAM. It replaces the original Mistral 7B as Mistral AI's compact open-weight model on La Plateforme.",
+    "advantages": [
+      "Combines an 8.4B-parameter language model with a 0.4B-parameter vision encoder for text-and-vision tasks (Mistral AI model card).",
+      "Supports native function calling with JSON output for agentic use cases (Mistral AI model card).",
+      "Scores 87.6% on MATH (Maj@1) among instruct-tuned models, per Mistral AI's own comparison table (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Scores lower than the larger Ministral 3 14B sibling on Arena Hard (0.509 vs 0.551) and WildBench (66.8 vs 68.5), per Mistral AI's own comparison table."
+    ],
+    "use_cases": [
+      "On-device and edge deployment of a vision-language chat model",
+      "Function calling and agentic tool-use workflows",
+      "Image understanding combined with text chat",
+      "Instruction-following and general chat"
+    ],
+    "evaluations": [
+      {"name": "MATH (Maj@1)", "score": 87.6, "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"}
+    ],
+    "languages": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Dutch", "Chinese", "Japanese", "Korean", "Arabic"],
+    "website_url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512", "title": "mistralai/Ministral-3-8B-Instruct-2512 - Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-ministral-3-8b.md", "title": "Ministral 3 8B - Amazon Bedrock model card", "kind": "host"}
+  ],
+  "notes": "Mistral AI's own model card states a 256,000-token context window, but Amazon Bedrock's own model card for this exact model (model ID mistral.ministral-3-8b-instruct, matching the target URI) instead lists a 128K context window and 8K max output tokens, exactly matching the catalog facts, with lifecycle 'Active' and no EOL date. Kept the catalog's values, now directly confirmed by the host's own page rather than relying only on Mistral AI's model card and docs."
+}

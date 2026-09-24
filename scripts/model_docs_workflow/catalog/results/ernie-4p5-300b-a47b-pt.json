@@ -1,0 +1,47 @@
+{
+  "slug": "ernie-4p5-300b-a47b-pt",
+  "canonical": "ernie-4p5-300b-a47b-pt",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Baidu",
+  "details": {
+    "description": "ERNIE-4.5-300B-A47B-PT is a large instruction-tuned language model from Baidu's ERNIE 4.5 family, released as open weights under the Apache 2.0 license in Transformer-style PyTorch format (the '-PT' suffix distinguishes it from Baidu's PaddlePaddle-format release of the same checkpoint). It uses a mixture-of-experts architecture with 300B total parameters and 47B activated per token, drawn from 64 text experts (8 active per token) across 54 layers, and is trained for text generation in English and Chinese, including prompt templates tuned for Chinese-language web search.",
+    "advantages": [
+      "Scores 78.4 on MMLU-Pro, per Baidu's model card.",
+      "Baidu reports leading scores among the models it compared against on IFEval, Multi-IF, and SimpleQA.",
+      "Uses a mixture-of-experts architecture that activates only 47B of its 300B total parameters per token."
+    ],
+    "disadvantages": [
+      "Documented for English and Chinese only; broader multilingual support is not stated."
+    ],
+    "use_cases": [
+      "General text generation and instruction following in English and Chinese",
+      "Chinese-language web search applications, for which Baidu provides dedicated prompt templates",
+      "Knowledge-intensive tasks and instruction following at large scale"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 78.4,
+        "source": "https://huggingface.co/baidu/ERNIE-4.5-300B-A47B-PT"
+      }
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/baidu/ERNIE-4.5-300B-A47B-PT",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/baidu/ERNIE-4.5-300B-A47B-PT",
+      "title": "baidu/ERNIE-4.5-300B-A47B-PT · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ernie.baidu.com/blog/posts/ernie4.5/",
+      "title": "ERNIE 4.5: Baidu's new open model family",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud's catalog lists a 4,096-token input/output limit for this model, but Baidu's model card states a native context length of 131,072 tokens; kept the catalog's figure per instructions and did not restate 131,072 in the description. Removed the 'surpasses DeepSeek-V3 on 22 of 28 benchmarks' claim: Baidu's blog attributes that specifically to the ERNIE-4.5-300B-A47B-Base checkpoint ('ERNIE-4.5-300B-A47B-Base surpasses DeepSeek-V3-671B-A37B-Base on 22 out of 28 benchmarks'), not this post-trained -PT release. The post-trained model's own claim on that page names only IFEval/Multi-IF/SimpleQA/ChineseSimpleQA, with no competitor named."
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "gpt-6-astra",
+  "canonical": "gpt-6-astra",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-6 Astra is OpenAI's most capable model, which began rolling out to ChatGPT and the API on September 3, 2026 and reached Amazon Bedrock on September 8, 2026. AWS's Bedrock model card describes it as handling the hardest end-to-end work, built for complex reasoning, coding, computer use, research and document creation. It takes text and image input and produces text output, with a knowledge cutoff of April 30, 2026 and reasoning effort adjustable from low up to max. OpenAI's deployment safety documentation rates it at the 'Critical' cybersecurity capability level under its Preparedness Framework, the first model to reach that threshold, and the public release ships with restrictions that reject certain cybersecurity-related prompts.",
+    "advantages": [
+      "AWS Bedrock's model card describes it as OpenAI's most capable model, built for complex reasoning, coding, computer use, research and document creation.",
+      "Scores 53 on the Artificial Analysis Intelligence Index at max reasoning effort, ranked #6 of 210 comparable models and well above the comparable-model median of 25.",
+      "OpenAI's deployment safety documentation states it is the first model to reach the 'Critical' cybersecurity capability threshold under the company's Preparedness Framework, able to find and exploit previously unknown security flaws across well-protected systems with little human guidance.",
+      "Supports reasoning effort levels from low to max, plus function calling, structured outputs, file search, web search, code interpreter, computer use and MCP tool use via the Responses API."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video.",
+      "Not compatible with Live sessions, Realtime, Assistants, fine-tuning, embeddings, or audio/video features.",
+      "Knowledge cutoff of April 30, 2026.",
+      "OpenAI deployed the public release with restrictions that reject certain prompts in sensitive areas such as cybersecurity, and its deployment safety documentation notes reduced chain-of-thought monitorability relative to GPT-5.6 Sol."
+    ],
+    "use_cases": [
+      "Complex, long-horizon reasoning and analysis",
+      "Software engineering and coding",
+      "Computer and browser use / automation",
+      "Research and document creation",
+      "Advanced professional and scientific work"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index (max reasoning effort)", "score": 53, "source": "https://artificialanalysis.ai/models/gpt-6-astra"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-6-astra", "title": "GPT-6 Astra Model | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-6-astra", "title": "GPT-6 Astra (max) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html", "title": "GPT-6 Astra - Amazon Bedrock", "kind": "host"},
+    {"url": "https://deploymentsafety.openai.com/gpt-6-astra", "title": "GPT-6 Astra System Card - Deployment Safety Hub - OpenAI", "kind": "maker"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-6_Astra", "title": "GPT-6 Astra - Wikipedia", "kind": "third_party"},
+    {"url": "https://community.openai.com/t/introducing-gpt-6-astra-the-most-intelligent-and-aligned-model-in-the-world/1394703", "title": "Introducing GPT-6-Astra: The most intelligent and aligned model in the world - OpenAI Developer Community", "kind": "third_party"}
+  ],
+  "notes": "AWS's model card gives a launch date of September 8, 2026 for Bedrock specifically; Wikipedia and the OpenAI community announcement post both give September 3-4, 2026 for the ChatGPT/API rollout, so both dates are stated with their context rather than picked as a single 'release date'. Catalog facts give max_input_tokens as [922000, 1050000], matching AWS's and OpenAI's stated 1,050,000-token context window (922,000 max input plus up to 128,000 output), so no conflict to flag. Wikipedia's claim that Astra uses a 'recurrent depth' / looped-transformer architecture was not corroborated on any OpenAI or AWS page opened, so it was left out. Could not open openai.com's own launch posts (openai.com/index/gpt-6-astra, safety-overview-gpt-6-astra), which returned HTTP 403 on every fetch attempt; relied on OpenAI's API docs and deployment-safety subdomains, AWS's model card, Wikipedia and the OpenAI community forum instead."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "speech-recognition-with-data-logging",
+  "canonical": "speech-recognition-with-data-logging",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "This is Google Cloud Speech-to-Text's V1 API transcription service used with Google's opt-in data logging program enabled. Customers who opt a project into data logging allow Google to use the audio and transcripts it submits to refine and improve Cloud Speech-to-Text's service quality, and in exchange gain access to discounted pricing, per Google's Data Logging documentation. By default, Cloud Speech-to-Text does not log customer audio data or transcripts; logging only happens once a project explicitly opts in.",
+    "advantages": [
+      "Provides access to discounted pricing on Cloud Speech-to-Text transcription in exchange for allowing Google to log the submitted audio and transcripts, per Google's Data Logging documentation.",
+      "Speech-to-Text API includes recognition features such as automatic punctuation and word-level confidence, per Google's Speech-to-Text documentation."
+    ],
+    "disadvantages": [
+      "Audio and transcripts logged under this program are not deleted when the project is deleted; removal requires submitting a separate deletion request form, per Google's Data Logging documentation.",
+      "Only a limited set of authorized Google employees and contractors have access to the logged customer data, per Google's Data Logging documentation."
+    ],
+    "use_cases": [
+      "Transcribing spoken audio to text via the Speech-to-Text V1 API for customers willing to let Google log audio and transcripts in exchange for discounted transcription pricing, per Google's Data Logging documentation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://cloud.google.com/speech-to-text/docs/data-logging",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://cloud.google.com/speech-to-text/docs/data-logging",
+      "title": "Data logging | Cloud Speech-to-Text Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/speech-to-text/docs/basics",
+      "title": "Speech-to-Text basics | Google Cloud",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Google's Data Logging documentation (part of the Cloud Speech-to-Text V1 docs) describes data logging as a project-level opt-in, not a named recognition model, and does not say which specific V1 model(s) (Standard, Enhanced, Chirp, etc.) it applies to, so this entry describes the logging program itself rather than a distinct recognition architecture. No pricing figures, WER numbers or exact language list were stated on the pages opened, so evaluations and languages are left empty. Google's release notes show no deprecation of the V1 API or its data logging program."
+}

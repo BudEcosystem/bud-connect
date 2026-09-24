@@ -1,0 +1,58 @@
+{
+  "slug": "grok-4.20-non-reasoning-gv2",
+  "canonical": "grok-4.20-non-reasoning-gv2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "grok-4.20-non-reasoning-gv2 is one of xAI's alias names for the non-reasoning variant of Grok 4.20: xAI's own model documentation lists 'grok-4.20-non-reasoning-gv2' alongside the plain and '-latest' names as an id for the same model, without describing any functional difference between them. Like the rest of the non-reasoning family, it answers without an extended reasoning step, takes text and image input and returns text, and supports function calling and structured (JSON) outputs over a 1,000,000-token context window.",
+    "advantages": [
+      "Supports function calling and structured (JSON) outputs (xAI model documentation).",
+      "Takes a 1,000,000-token context window with combined text and image input (xAI model documentation).",
+      "Answers directly without an extended reasoning step ('Reasoning: No' per xAI's own model documentation)."
+    ],
+    "disadvantages": [
+      "Does not perform extended reasoning ('Reasoning: No' per xAI's own model documentation), unlike the reasoning and multi-agent Grok 4.20 variants.",
+      "xAI's own documentation does not explain what distinguishes the 'gv2' alias from the plain or '-latest' non-reasoning names.",
+      "Artificial Analysis lists the non-reasoning Grok 4.20 model as deprecated and names xAI's newer Grok 4.3 (Non-reasoning) as a replacement to consider instead, although xAI's own current model page carries no deprecation notice."
+    ],
+    "use_cases": [
+      "Low-latency chat and agentic tool-calling that does not need an extended reasoning step",
+      "Structured-output (JSON) generation and function calling inside an application",
+      "Tasks that combine text and image input with a fast, direct response"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/docs/models/grok-4.20-non-reasoning",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/docs/models",
+      "title": "Models and pricing - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/models/grok-4.20-non-reasoning",
+      "title": "grok-4.20-non-reasoning - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/models/grok-4.20-non-reasoning-gv2",
+      "title": "grok-4.20-non-reasoning-gv2 alias - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning",
+      "title": "Grok 4.20 0309 v2 (Non-reasoning) - Artificial Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://artificialanalysis.ai/providers/xai",
+      "title": "xAI models - Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Identified via xAI's own docs, which list 'grok-4.20-non-reasoning-gv2' as an alias of the non-reasoning Grok 4.20 model but do not explain the 'gv2' label. Artificial Analysis separately scores a distinct 'Grok 4.20 0309 v2 (Non-reasoning)' entry (Intelligence Index 14) alongside a plain 'Grok 4.20 0309 (Non-reasoning)' entry (Intelligence Index 15), which may correspond to gv2 vs. the base snapshot, but I could not confirm this mapping on any maker page, so I did not state it as fact. Catalog facts (1,000,000-token max input/output, image+text in/out) match xAI's own model page; Artificial Analysis separately states a 2,000,000-token context window, which I did not use per instructions to keep the catalog's value. This target, grok-4.20-non-reasoning and grok-4.20-non-reasoning-latest are three separate catalog slugs xAI's own docs list as aliases of the same underlying model."
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "zephyr-7b-beta",
+  "canonical": "zephyr-7b-beta",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Hugging Face H4",
+  "details": {
+    "description": "Zephyr-7B-β is a 7-billion-parameter chat model from Hugging Face's H4 team, released in October 2023 as the second model in the Zephyr series after Zephyr-7B-α. It is a fine-tune of Mistral AI's Mistral-7B-v0.1, aligned with Direct Preference Optimization (DPO) on the synthetic UltraChat dialogue dataset and the UltraFeedback preference dataset, without additional safety RLHF or in-the-loop response filtering. Hugging Face positioned it at release as one of the strongest chat models at the 7B parameter scale on MT-Bench and AlpacaEval.",
+    "advantages": [
+      "Scores 61.07% on MMLU (5-shot), per its Hugging Face model card.",
+      "Scores 84.36% on HellaSwag (10-shot), per its Hugging Face model card.",
+      "Hugging Face reports an MT-Bench score of 7.34 and a 90.60% win rate on AlpacaEval, which it describes as the highest among 7B chat models at release."
+    ],
+    "disadvantages": [
+      "Trained without safety RLHF or in-the-loop response filtering, so per its model card it can produce problematic outputs, especially when explicitly prompted to.",
+      "Card states it is weaker on complex coding and mathematics tasks.",
+      "Documented and evaluated primarily in English."
+    ],
+    "use_cases": [
+      "General-purpose chat and conversational assistant applications",
+      "Research on preference-alignment techniques such as Direct Preference Optimization"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 61.07,
+        "source": "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta"
+      },
+      {
+        "name": "HellaSwag",
+        "score": 84.36,
+        "source": "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta",
+    "github_url": "https://github.com/huggingface/alignment-handbook"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta",
+      "title": "HuggingFaceH4/zephyr-7b-beta · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "MT-Bench (0-10 scale) and AlpacaEval (a win-rate percentage against a reference model, akin to an arena rating) are not accuracy-style 0-100 scores, so they are kept out of evaluations and mentioned in advantages instead with attribution. The model card does not state a numeric context-length figure directly; catalog's 32768 max input/output tokens is kept as authoritative and not contradicted by anything found. Verify pass: the model card's own \"Model Sources\" section lists https://github.com/huggingface/alignment-handbook as this model's \"Repository\" (the training/reproduction code), so github_url was corrected from null to that URL."
+}

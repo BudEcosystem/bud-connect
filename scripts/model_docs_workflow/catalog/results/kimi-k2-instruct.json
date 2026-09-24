@@ -1,0 +1,47 @@
+{
+  "slug": "kimi-k2-instruct",
+  "canonical": "kimi-k2-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi K2 Instruct is Moonshot AI's open-weight mixture-of-experts chat model, with 1 trillion total parameters and 32 billion activated per token across 384 experts (61 layers, MLA attention), released under a Modified MIT License. It is built for agentic tool use, coding and reasoning, running without an extended 'thinking' mode -- Moonshot's own model card describes it as 'reflex-grade' -- and it takes text-only input. Moonshot's Hugging Face card lists Kimi-K2-Instruct-0905 as this checkpoint's designated 'new_version', pointing users to a newer release.",
+    "advantages": [
+      "Scores 89.5% on MMLU and 81.1% on MMLU-Pro, per Moonshot's model card.",
+      "Scores 65.8% on SWE-bench Verified (agentic coding, single attempt), per Moonshot's model card.",
+      "Scores 70.6% (Avg@4) on the Tau2 retail tool-use benchmark, per Moonshot's model card.",
+      "Scores 69.6% (Avg@64) on AIME 2024 and 97.4% on MATH-500, per Moonshot's model card.",
+      "Pre-trained on 15.5 trillion tokens with the Muon optimizer with, per Moonshot, zero reported training instability."
+    ],
+    "disadvantages": [
+      "Text-only: no vision/image input, per the catalog's modality and Moonshot's model card.",
+      "Runs without an extended 'thinking' mode; Moonshot describes it as a 'reflex-grade' model rather than a reasoning model.",
+      "Moonshot's own Hugging Face card lists Kimi-K2-Instruct-0905 as this checkpoint's 'new_version', marking it as superseded within Moonshot's own lineup.",
+      "Moonshot's own API platform lists the matching hosted preview endpoint ('kimi-k2-0711-preview') as discontinued since May 25, 2026, directing users to the newer Kimi K3 model, per Moonshot's Model List page."
+    ],
+    "use_cases": [
+      "Agentic tool-calling workflows, such as retail or customer-support agents.",
+      "Autonomous coding and code-completion tasks.",
+      "General-purpose chat and instruction following without step-by-step reasoning traces.",
+      "Math and STEM problem solving."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 89.5, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"},
+      {"name": "MMLU-Pro", "score": 81.1, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"},
+      {"name": "SWE-bench Verified", "score": 65.8, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"},
+      {"name": "AIME 2024", "score": 69.6, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"},
+      {"name": "Tau2 retail (tool use)", "score": 70.6, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"},
+      {"name": "MATH-500", "score": 97.4, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
+    "github_url": "https://github.com/MoonshotAI/Kimi-K2"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct", "title": "moonshotai/Kimi-K2-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/MoonshotAI/Kimi-K2", "title": "GitHub - MoonshotAI/Kimi-K2", "kind": "maker"},
+    {"url": "https://platform.kimi.ai/docs/models", "title": "Model List - Kimi Open Platform", "kind": "maker"}
+  ],
+  "notes": "Grouped fireworks_ai and hyperbolicai URIs both point to this same original ('0711') Kimi-K2-Instruct checkpoint (128K context, matching the catalog's max_input_tokens). The catalog's max_output_tokens carries two values (16384, 131072); kept as given rather than restated as one number. Moonshot's card also reports SWE-bench Verified (agentic) as a 65.8-71.6% range depending on scaffold; used the single-attempt 65.8% figure for consistency with the model's headline number. Catalog has no deprecation_date. Moonshot's own current API docs (platform.kimi.ai/docs/models) list 'kimi-k2-0711-preview' -- the hosted counterpart of this checkpoint -- among models discontinued since May 25, 2026, recommending Kimi K3; this governs Moonshot's own first-party API only, and the open-weight checkpoint remains independently servable through the Fireworks and Hyperbolic routes this catalog target actually uses, so I did not call the model itself deprecated. No release date found stated in the card text itself."
+}

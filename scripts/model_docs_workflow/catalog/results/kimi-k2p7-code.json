@@ -1,0 +1,39 @@
+{
+  "slug": "kimi-k2p7-code",
+  "canonical": "kimi-k2p7-code",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi K2.7 Code is a coding-focused, agentic large language model from Moonshot AI, built on the Kimi K2.6 checkpoint within Moonshot's Kimi K2 series. It uses a Mixture-of-Experts architecture with 1 trillion total parameters and 32 billion activated per token, a 256K-token context window, and a MoonViT vision encoder for image input, and its Hugging Face card lists it under a Modified MIT License. Fireworks AI, which hosts the model, states its serverless offering begins deprecating the model on September 25, 2026, recommending Kimi K3 or GLM-5.3 as replacements for serverless workloads.",
+    "advantages": [
+      "Reduces thinking-token usage by about 30% compared to its Kimi K2.6 predecessor while improving real-world long-horizon coding performance, per its Hugging Face model card.",
+      "Scores 81.1 on MCPMark-Verified and 76.0 on MCP Atlas, indicating strong tool-use via MCPs (Model Context Protocol), per its Hugging Face model card.",
+      "Supports native INT4 quantization and is documented for deployment with vLLM, SGLang, and KTransformers, per its Hugging Face model card.",
+      "Integrates with the Kimi Code CLI as its recommended agent framework for coding workflows, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Fireworks AI states its serverless offering begins deprecating this model on September 25, 2026, recommending Kimi K3 or GLM-5.3 as replacements; on-demand GPU deployments remain available.",
+      "Scores 62.0 on Kimi Code Bench v2, versus a 69.0 score it reports for GPT-5.5 on the same benchmark, per its Hugging Face model card."
+    ],
+    "use_cases": [
+      "Complex, long-horizon coding tasks across large, existing codebases",
+      "Agentic coding workflows that call external tools via MCPs (Model Context Protocol)",
+      "Terminal and CLI-based coding through the Kimi Code CLI agent framework"
+    ],
+    "evaluations": [
+      {"name": "Kimi Code Bench v2", "score": 62.0, "source": "https://huggingface.co/moonshotai/Kimi-K2.7-Code"},
+      {"name": "MCPMark-Verified", "score": 81.1, "source": "https://huggingface.co/moonshotai/Kimi-K2.7-Code"},
+      {"name": "MCP Atlas", "score": 76.0, "source": "https://huggingface.co/moonshotai/Kimi-K2.7-Code"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code", "title": "moonshotai/Kimi-K2.7-Code · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/kimi-k2p7-code", "title": "Kimi K2.7 Code - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (262144) matches the 256K context stated on the model's Hugging Face card, and catalog's deprecation_date (2026-09-25) matches Fireworks' own stated serverless deprecation start date exactly. The catalog's modality list (image_input, text_input, text_output) omits video, though the Hugging Face card also describes video input support; kept the catalog's value per instructions. No separate GitHub repository for K2.7-Code was found (the general MoonshotAI/Kimi-K2 GitHub repo covers only Kimi-K2-Base and Kimi-K2-Instruct), so github_url is null."
+}

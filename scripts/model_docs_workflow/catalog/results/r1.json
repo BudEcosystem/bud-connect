@@ -1,0 +1,48 @@
+{
+  "slug": "r1",
+  "canonical": "r1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-R1 is DeepSeek AI's first-generation reasoning model, trained primarily through large-scale reinforcement learning and producing chain-of-thought output for math, coding and logic tasks; DeepSeek states it \"achieves performance comparable to OpenAI-o1 across math, code, and reasoning tasks.\" It is a 671-billion-parameter Mixture-of-Experts model with about 37 billion parameters active per token, released January 20, 2025 under the MIT license. AWS offers it as a fully managed, serverless model on Amazon Bedrock with a 128K-token context window. DeepSeek's own website now lists R1 only in its research/model history section behind the newer V3, V3.1, V3.2, V4 and V4.1 families, and DeepSeek's current API pricing page no longer lists an R1/deepseek-reasoner endpoint among its current models.",
+    "advantages": [
+      "Scores 79.8% pass@1 on AIME 2024 and 97.3% pass@1 on MATH-500 (Hugging Face model card).",
+      "Scores 84.0% on MMLU-Pro and 65.9% pass@1 on LiveCodeBench (Hugging Face model card).",
+      "DeepSeek reports a Codeforces rating of 2029 for the model (Hugging Face model card).",
+      "AWS states it is \"the first cloud service provider to deliver DeepSeek-R1 as a fully managed, generally available model,\" with data-privacy protections stating inputs and outputs are not shared with model providers (AWS Bedrock announcement)."
+    ],
+    "disadvantages": [
+      "Superseded within DeepSeek's own model lineup by the V3, V3.1, V3.2, V4 and V4.1 families, and no longer listed as a current model on DeepSeek's own API pricing page (deepseek.com; api-docs.deepseek.com).",
+      "Knowledge cutoff of January 2025, per AWS's Bedrock model card.",
+      "Text-only: no image, audio or video input or output support (AWS Bedrock model card)."
+    ],
+    "use_cases": [
+      "Complex math problem solving",
+      "Competitive programming and coding assistance",
+      "Multi-step logical reasoning and chain-of-thought explanations",
+      "Scientific analysis and data interpretation",
+      "Intelligent decision-support applications"
+    ],
+    "evaluations": [
+      {"name": "AIME 2024", "score": 79.8, "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"},
+      {"name": "MATH-500", "score": 97.3, "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"},
+      {"name": "MMLU-Pro", "score": 84.0, "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"},
+      {"name": "LiveCodeBench", "score": 65.9, "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"},
+      {"name": "C-Eval", "score": 91.8, "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-R1", "title": "deepseek-ai/DeepSeek-R1 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/deepseek-ai/DeepSeek-R1", "title": "deepseek-ai/DeepSeek-R1 - GitHub", "kind": "maker"},
+    {"url": "https://www.deepseek.com/en", "title": "DeepSeek", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing - DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-r1.html", "title": "DeepSeek-R1 - Amazon Bedrock model card", "kind": "host"},
+    {"url": "https://aws.amazon.com/blogs/aws/deepseek-r1-now-available-as-a-fully-managed-serverless-model-in-amazon-bedrock/", "title": "DeepSeek-R1 now available as a fully managed, serverless model in Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog facts show max_input_tokens 128000 and max_output_tokens [4096, 8192]; AWS's current Bedrock model card states a 128K context window and 8K max output tokens, matching the catalog's upper bound, so no correction was needed. DeepSeek's own site and API docs no longer surface R1/deepseek-reasoner as a current model, though AWS's Bedrock model card still lists its lifecycle as 'Active' with EOL no sooner than 2026-03-10; both statuses are reported above rather than reconciled, since they come from different parties (maker vs. host)."
+}

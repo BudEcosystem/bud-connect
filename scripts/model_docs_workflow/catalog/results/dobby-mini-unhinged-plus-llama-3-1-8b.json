@@ -1,0 +1,33 @@
+{
+  "slug": "dobby-mini-unhinged-plus-llama-3-1-8b",
+  "canonical": "dobby-mini-unhinged-plus-llama-3-1-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Sentient",
+  "details": {
+    "description": "Dobby-Mini-Unhinged-Plus-Llama-3.1-8B is an 8-billion-parameter chat model from Sentient (SentientAGI), fine-tuned from Meta's Llama-3.1-8B-Instruct to have a deliberately casual, opinionated, pro-crypto 'unhinged' personality rather than a neutral corporate-assistant tone. It is Sentient's improved successor to Dobby-Mini-Unhinged-Llama-3.1-8B, with changes the maker describes as targeting general utility -- formatting, multi-turn performance, and tone -- while keeping baseline Llama 3.1 academic performance. It remains governed by Meta's Llama 3.1 Community License Agreement.",
+    "advantages": [
+      "Improves formatting-consistency score to 0.95 from 0.35 for its Dobby-Mini-Unhinged predecessor, per Sentient's model card.",
+      "Maintains baseline Llama-3.1-8B-Instruct academic performance, scoring 0.3774 on MMLU-Pro per Sentient's model card.",
+      "Scores 0.87 out of 1.0 on Sentient's own 'unhinged tone' evaluation."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of December 2023, inherited from the Llama 3.1 base model.",
+      "Deliberately casual tone that can include profanity and strong opinions rather than neutral assistant behavior; Sentient says investment or legal opinions from it require independent verification.",
+      "Governed by Meta's Llama 3.1 Community License Agreement rather than a fully permissive open-source license."
+    ],
+    "use_cases": [
+      "General conversational chat emphasizing personality and authenticity over a formal, neutral assistant tone.",
+      "Multi-turn dialogue with a distinctive, opinionated character."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/SentientAGI/Dobby-Mini-Unhinged-Plus-Llama-3.1-8B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/SentientAGI/Dobby-Mini-Unhinged-Plus-Llama-3.1-8B", "title": "SentientAGI/Dobby-Mini-Unhinged-Plus-Llama-3.1-8B · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "MMLU-Pro (0.3774) and the 'unhinged tone' (0.87) and formatting (0.95 vs 0.35) figures on the model card are given on a 0-1 scale rather than the maker's own percentage figures, so I did not place them in the structured evaluations list (which requires a 0-100 accuracy score); they are quoted in advantages instead, attributed to the maker's card."
+}

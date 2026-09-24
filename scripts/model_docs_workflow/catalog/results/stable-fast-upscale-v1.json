@@ -1,0 +1,47 @@
+{
+  "slug": "stable-fast-upscale-v1",
+  "canonical": "stable-fast-upscale-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Fast Upscale is Stability AI's lightweight image-upscaling model that increases an image's resolution by 4x using a combination of predictive and generative AI, per Amazon's Bedrock documentation for the model. It is the quickest of Stability AI's three upscaling tools (alongside Conservative Upscale and Creative Upscale) and is aimed at enhancing lower-quality or compressed images, such as social media photos, rather than adding new creative detail. Unlike Stability AI's other upscalers, it takes only an input image, with no text prompt, and returns the upscaled image as JPEG, PNG or WebP. It launched on Amazon Bedrock on September 10, 2024, where it is listed as an Active model (stability.stable-fast-upscale-v1:0).",
+    "advantages": [
+      "Upscales images by 4x using a combination of predictive and generative AI, per Amazon Bedrock's documentation for the model.",
+      "Designed to be lightweight and fast, aimed at enhancing compressed or lower-quality images such as social media photos, per Amazon Bedrock's documentation.",
+      "Requires only an input image with no text prompt, simplifying the request compared to Stability AI's other upscaling and control tools."
+    ],
+    "disadvantages": [
+      "Takes only an image as input with no text prompt, so users cannot steer added detail with a description, unlike Stability AI's Creative or Conservative Upscale tools.",
+      "Input image width and height must each be between 32 and 1,536 pixels, with a total pixel count between 1,024 and 1,048,576 pixels, per Amazon Bedrock's documentation."
+    ],
+    "use_cases": [
+      "Increasing the resolution of compressed or lower-quality images",
+      "Preparing images for social media posts, per Amazon Bedrock's documentation",
+      "Fast upscaling where processing speed matters more than adding new creative detail"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html",
+      "title": "Stability AI Image Services - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-fast-upscale.html",
+      "title": "Stable Image Fast Upscale - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stable Image Services | Stability AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Stability AI's own documented Fast Upscale request parameters are only `image` and `output_format` (no text prompt), which differs from the catalog's `text_input` modality entry for this target; kept the catalog's facts as instructed and flagged the discrepancy here. Amazon Bedrock's model card lists the model's lifecycle as Active as of this research date, with no EOL date set."
+}

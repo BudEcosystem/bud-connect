@@ -1,0 +1,49 @@
+{
+  "slug": "qwen1p5-72b-chat",
+  "canonical": "qwen1p5-72b-chat",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen1.5-72B-Chat is the chat-tuned, 72-billion-parameter model in Alibaba Cloud's Qwen1.5 series, which Qwen describes as the beta version of the Qwen2 architecture. It was produced with supervised fine-tuning and direct preference optimization, which Qwen's model card states brought a significant improvement in human preference for chat responses compared to earlier Qwen releases. It is a decoder-only transformer using SwiGLU activation and attention QKV bias, with stable support for 32K-token context length across the series, and works with the standard Hugging Face Transformers library without custom remote code. It is released under Alibaba's Tongyi Qianwen license.",
+    "advantages": [
+      "Trained with supervised fine-tuning and direct preference optimization, which Qwen's model card states significantly improved human preference alignment for chat responses versus earlier Qwen releases.",
+      "Scores 52.64 on the MMLU-Pro benchmark, per its Hugging Face model card.",
+      "Uses an improved tokenizer adaptive to multiple natural languages and code, per Qwen's model card.",
+      "Works with the standard Transformers library without requiring custom remote code, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Superseded within Qwen's own lineup by the Qwen2, Qwen2.5, and newer Qwen3 model generations.",
+      "Released under Alibaba's Tongyi Qianwen license rather than a permissive license such as Apache 2.0."
+    ],
+    "use_cases": [
+      "General-purpose multi-turn chat and dialogue",
+      "Multilingual conversational tasks",
+      "Applications requiring standard Transformers-library compatibility"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 52.64,
+        "source": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen1.5-72B-Chat",
+      "title": "Qwen/Qwen1.5-72B-Chat · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen1p5-72b-chat",
+      "title": "Qwen1.5 72B Chat - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Qwen's model card does not state an exact release date (it links only to the underlying arXiv:2309.16609 technical report); described it as the 'beta version of Qwen2' per Qwen's own wording instead of guessing a date. Catalog's 32,768 input/output token facts match Qwen's stated '32K context length' and Fireworks' listed 32.7k-token context for this deployment, so no conflict. The model card gives no specific language names or count, only 'multilingual support of both base and chat models,' so languages is left empty rather than guessed. github.com/QwenLM/Qwen1.5 now redirects to the unrelated QwenLM/Qwen3 repository, so github_url is null. No maker page found declaring this model formally deprecated; 'superseded' reflects that Qwen's current org and docs pages no longer list Qwen1.5 models."
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "qwen2p5-coder-3b",
+  "canonical": "qwen2p5-coder-3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-Coder-3B is the base (pretrained, non-instruction-tuned) checkpoint in Alibaba's Qwen2.5-Coder code-model family: a 3.09-billion-parameter (2.77B non-embedding) transformer with grouped-query attention across 36 layers, trained on 5.5 trillion tokens of source code, text-code grounding, and synthetic data. Released by Qwen on November 12, 2024 as part of the family's expansion beyond the original 1.5B/7B sizes, it is meant as a foundation for further fine-tuning or completion-style use rather than direct conversation; Qwen's own model card states 'we do not recommend using base language models for conversations.' Unlike most other Qwen2.5-Coder sizes, this checkpoint is released under a Qwen Research license rather than Apache 2.0.",
+    "advantages": [
+      "Trained on 5.5 trillion tokens including source code, text-code grounding, and synthetic data, per Qwen's model card.",
+      "Uses grouped-query attention (16 query heads, 2 key-value heads) across 36 layers for efficient inference at 3B scale, per Qwen's model card.",
+      "One of six sizes (0.5B-32B) in the Qwen2.5-Coder family, giving a low-resource entry point for code-focused pretraining or fine-tuning."
+    ],
+    "disadvantages": [
+      "This is a base, non-instruction-tuned checkpoint; Qwen's model card states base language models are not recommended for conversations without further post-training such as SFT or RLHF.",
+      "Text-only; Qwen's model card and the catalog facts list no vision or audio input.",
+      "Released under a Qwen Research license, more restrictive for commercial use than the Apache 2.0 license Qwen uses for other Qwen2.5-Coder sizes."
+    ],
+    "use_cases": [
+      "Base checkpoint for supervised fine-tuning (SFT) or RLHF into custom coding assistants",
+      "Code completion and generation research",
+      "Foundation for building coding agents and downstream applications, per Qwen's model card"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-3B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-3B", "title": "Qwen/Qwen2.5-Coder-3B · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"}
+  ],
+  "notes": "No numeric benchmark scores for this specific 3B size are shown in text on Qwen's model card or the Qwen2.5-Coder blog (the blog only shows size-vs-score charts, not tabulated numbers), so evaluations is left empty rather than guessed. Qwen's GitHub repo for Qwen2.5-Coder now redirects (HTTP 301) to QwenLM/Qwen3-Coder, so no working github_url could be confirmed; left null. Release date corrected to November 12, 2024 (the family's four-size expansion announcement): the HF repo's first commit is Nov 8, 2024, and the September 2024 date on the model card lineage actually belongs to the earlier 1.5B/7B release wave."
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "qwen3.8-flash",
+  "canonical": "qwen3.8-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba (Qwen)",
+  "details": {
+    "description": "Qwen3.8 Flash is Alibaba's production, API-only version of Qwen3.8-Flash-Next, which Alibaba's Hugging Face model card describes as an experimental preview of the architecture underpinning its planned Qwen4 line, offered through Together AI. It pairs a 125-billion-parameter main model that activates only 6 billion parameters per token with 51 billion parameters of n-gram embedding memory, combining Gated DeltaNet and Qwen Sparse Attention (QSA) to keep long-context inference efficient; Alibaba's model card lists a native context of 262,144 tokens, extensible to 1,000,000. Together AI serves the production version with a 1,000,000-token context window by default, built-in tools, and per-request reasoning-effort control across low, medium, and xhigh levels.",
+    "advantages": [
+      "Scores 91.7 on GPQA Diamond and 35.9 on Humanity's Last Exam (graded by GPT-4o), per Alibaba's Hugging Face model card for Qwen3.8-Flash-Next.",
+      "Scores 62.5 on SWE-bench Pro, 81.0 on SWE-bench Multilingual, and 91.9 on LiveCodeBench v6, per Alibaba's model card.",
+      "Scores 81.3 on IFBench for instruction following, per Alibaba's model card.",
+      "Serves a 1,000,000-token context window by default through a hybrid Gated DeltaNet / Qwen Sparse Attention design, per Together AI's model page.",
+      "Supports per-request reasoning-effort control across low, medium, and xhigh levels, per Together AI's model page.",
+      "Activates only 6B of its 125B main-model parameters per token (plus 51B n-gram embedding parameters), which Alibaba states keeps per-token compute low as parameters scale."
+    ],
+    "disadvantages": [
+      "Alibaba's own Hugging Face card calls the underlying Qwen3.8-Flash-Next architecture an 'experimental preview' of its planned Qwen4 line, not a finished, general-availability architecture generation."
+    ],
+    "use_cases": [
+      "High-volume, tool-driven agent workloads, using low reasoning effort for routine calls and xhigh for harder steps, per Together AI.",
+      "Repository-scale coding and multilingual software-engineering tasks, per Alibaba's SWE-bench Pro, SWE-bench Multilingual, and NL2Repo-Bench results.",
+      "Long-horizon office and professional-work agents, per Alibaba's CoWorkBench and JobBench results.",
+      "Long-context analysis across large codebases or document sets using the 1,000,000-token context window, per Together AI."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 91.7, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"},
+      {"name": "Humanity's Last Exam", "score": 35.9, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"},
+      {"name": "LiveCodeBench v6", "score": 91.9, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"},
+      {"name": "SWE-bench Pro", "score": 62.5, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"},
+      {"name": "SWE-bench Multilingual", "score": 81.0, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"},
+      {"name": "IFBench", "score": 81.3, "source": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+    "github_url": "https://github.com/QwenLM/Qwen3.8-Flash-Next"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next", "title": "Qwen/Qwen3.8-Flash-Next · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3.8-Flash-Next", "title": "GitHub - QwenLM/Qwen3.8-Flash-Next", "kind": "maker"},
+    {"url": "https://www.together.ai/models/qwen3-8-flash", "title": "Qwen3.8 Flash API: Pricing, Benchmarks & Docs | Together AI", "kind": "host"}
+  ],
+  "notes": "The exact target id 'Qwen/Qwen3.8-Flash' has no separate Hugging Face card; Alibaba's card for the open checkpoint it is built on (Qwen/Qwen3.8-Flash-Next) states 'Qwen3.8-Flash is the official version based on Qwen3.8-Flash-Next with more production features, e.g., 1M context length by default, official built-in tools,' so all benchmark and architecture figures are taken from that card and treated as describing this production model. Alibaba's card lists 'Type: Causal Language Model with Vision Encoder' and Together AI's page tags the model 'Vision' with vision benchmark scores, but the catalog's modality for this URI is text_input/text_output only; kept the catalog's modality as authoritative and left vision out of the write-up and evaluations. Catalog's max_input_tokens (1,000,000) matches Together AI's stated production default context window."
+}

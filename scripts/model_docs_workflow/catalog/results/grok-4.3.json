@@ -1,0 +1,39 @@
+{
+  "slug": "grok-4.3",
+  "canonical": "grok-4.3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.3 is a chat model from xAI, released around April 2026 per Artificial Analysis, that xAI's own docs describe as a fast, reliable model with strong tool calling and instruction-following capabilities. It supports five reasoning-effort levels (none, low, medium, high and xhigh, defaulting to low) so a caller can trade reasoning depth against latency, and it accepts text and image input and produces text output over a 1,000,000-token context window. xAI's models overview page recommends its separate Grok 4.7 model as the most capable current option rather than Grok 4.3, and Artificial Analysis marks Grok 4.3 (high) deprecated, pointing to xAI's newer Grok 4.6 (high) instead.",
+    "advantages": [
+      "xAI's docs describe it as a fast, reliable model with strong tool calling and instruction-following capabilities.",
+      "Supports five configurable reasoning-effort levels (none, low, medium, high, xhigh) to trade reasoning depth against latency, defaulting to low, per xAI's docs.",
+      "Ranks 5th of 211 models on Artificial Analysis' cost ranking and outputs at 123.2 tokens per second (31st of 211 on speed)."
+    ],
+    "disadvantages": [
+      "Scores 25 on the Artificial Analysis Intelligence Index (high-effort setting), ranking 109th of 211 models evaluated.",
+      "Artificial Analysis marks this model (high-effort setting) deprecated and recommends xAI's newer Grok 4.6 (high) instead.",
+      "xAI's own models page recommends its separate Grok 4.7 model as the most capable current option, positioning Grok 4.3 as a lower tier.",
+      "Time to first token was 21.24 seconds on Artificial Analysis' benchmark for the high-effort setting."
+    ],
+    "use_cases": [
+      "Tool-calling and instruction-following tasks",
+      "General-purpose chat assistant use",
+      "Fast, cost-efficient reasoning tasks with adjustable reasoning effort"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 25, "source": "https://artificialanalysis.ai/models/grok-4-3"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.3",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.3", "title": "Grok 4.3 | xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models", "title": "Models | xAI Docs", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-3", "title": "Grok 4.3 (high) - Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "Could not find a dedicated xAI launch/blog post for Grok 4.3 (https://x.ai/news/grok-4-3 returns 404, and https://x.ai/news itself returned 403 Forbidden to my fetch), and https://docs.x.ai/developers/deprecations also returns 404, so the description relies on xAI's per-model docs page plus Artificial Analysis. The evaluation and speed/TTFT/ranking figures are for Artificial Analysis' 'high' reasoning-effort configuration specifically, since that is the only variant page found; xAI's docs list four other effort levels (none, low, medium, xhigh) with low as the API default, which may score and perform differently. Artificial Analysis' page names the developer as 'SpaceXAI' rather than 'xAI'; this is not corroborated by any xAI-owned page (docs.x.ai still brands itself 'xAI Docs'), so the maker field and description keep 'xAI'. Catalog's max_output_tokens (1,000,000) matches xAI's stated context window but no separate output-token cap could be confirmed on any maker page. VERIFICATION: Artificial Analysis' cost/speed/Intelligence-Index rankings had drifted since research (total ranked pool grew from 210 to 211 models, and output speed moved from 119.2 to 123.2 tokens/sec, 36th to 31st); corrected to two consistent re-fetches taken during verification. Time to first token (21.24s) and Intelligence Index score (25) were unchanged and reconfirmed. xAI's own models overview lists Grok 4.3 among current models with no deprecated/legacy badge; only Artificial Analysis (a third party) calls it deprecated, which is already attributed as such rather than stated as xAI's own status."
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "qwen3-reranker-4b",
+  "canonical": "qwen3-reranker-4b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3-Reranker-4B is a text reranking (cross-encoder) model from Alibaba's Qwen team, the mid-size model of three (0.6B, 4B, 8B) in the Qwen3 Embedding series, built on the Qwen3-4B-Base language model. It scores query-document pairs for relevance so a search or retrieval pipeline can re-rank candidates from a first-stage retriever. It supports over 100 languages, including programming languages, and accepts custom, task-specific instructions.",
+    "advantages": [
+      "Qwen reports an MTEB-R score of 69.76 for this model, its highest score among the three Qwen3-Reranker sizes on that benchmark.",
+      "Qwen reports an MTEB-Code score of 81.20, ahead of the comparison rerankers Jina-multilingual-reranker-v2-base (58.98), gte-multilingual-reranker-base (54.18) and BGE-reranker-v2-m3 (41.38) in the same evaluation table.",
+      "Supports over 100 languages, including programming languages, per the Qwen3-Reranker model card.",
+      "Accepts custom task instructions on the query side; Qwen states that skipping an instruction typically lowers retrieval performance by about 1-5% in its own tests."
+    ],
+    "disadvantages": [
+      "Qwen's own evaluation table shows the larger 8B variant scores higher on CMTEB-R, MMTEB-R and MLDR, so this size is not the top performer on every benchmark."
+    ],
+    "use_cases": [
+      "Re-ranking candidate passages retrieved by a first-stage retriever for web or document search",
+      "Code retrieval and search",
+      "Text classification and clustering",
+      "Bitext (cross-lingual) mining"
+    ],
+    "evaluations": [
+      {"name": "MTEB-R", "score": 69.76, "source": "https://huggingface.co/Qwen/Qwen3-Reranker-4B"},
+      {"name": "CMTEB-R", "score": 75.94, "source": "https://huggingface.co/Qwen/Qwen3-Reranker-4B"},
+      {"name": "MMTEB-R", "score": 72.74, "source": "https://huggingface.co/Qwen/Qwen3-Reranker-4B"},
+      {"name": "MLDR", "score": 69.97, "source": "https://huggingface.co/Qwen/Qwen3-Reranker-4B"},
+      {"name": "MTEB-Code", "score": 81.20, "source": "https://huggingface.co/Qwen/Qwen3-Reranker-4B"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Reranker-4B",
+    "github_url": "https://github.com/QwenLM/Qwen3-Embedding"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-Reranker-4B", "title": "Qwen/Qwen3-Reranker-4B · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-Embedding", "title": "QwenLM/Qwen3-Embedding", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-reranker-4b", "title": "Qwen3 Reranker 4B - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Qwen's model card states a 32K context length, but Fireworks' host page and the catalog's own facts both give 40960 (40.9k) tokens for this deployment; kept the catalog's figure per instructions and note the model card's smaller number here. Languages are stated only as a count ('100+ languages'), so the languages list is left empty. FollowIR scores appear in Qwen's evaluation table (14.84 for this model) but were left out of evaluations since it is a p-MRR metric that can go negative for other models in the same table, not a bounded accuracy-style score. No deprecation or legacy notice found for this model."
+}

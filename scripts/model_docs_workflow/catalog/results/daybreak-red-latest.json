@@ -1,0 +1,37 @@
+{
+  "slug": "daybreak-red-latest",
+  "canonical": "daybreak-red-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Daybreak Red is an OpenAI API alias, launched August 7, 2026 as the more restricted tier of OpenAI's Daybreak cybersecurity access program, for OpenAI's most advanced purpose-trained cybersecurity models. It currently resolves to the GPT-5.6 Cyber snapshot and is intended for approved defenders conducting authorized vulnerability reproduction, exploit validation, penetration testing, red teaming, and complex system analysis. It requires organization and project approval specific to Daybreak Red, separate from and beyond standard Daybreak Blue access, and accepts text and image input and produces text output, with OpenAI's highest reasoning-effort setting.",
+    "advantages": [
+      "Provides access to OpenAI's most advanced purpose-trained cybersecurity models, currently GPT-5.6 Cyber, for authorized vulnerability reproduction, exploit validation, penetration testing, red teaming, and complex system analysis (OpenAI's Daybreak changelog entry).",
+      "As a '-latest' alias it automatically follows updates to its underlying model rather than staying pinned to one snapshot (OpenAI's Daybreak Red model page and Daybreak guide).",
+      "OpenAI's model page lists support for code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search."
+    ],
+    "disadvantages": [
+      "Requires separate Daybreak Red approval in addition to organization and project setup; OpenAI's Daybreak guide states this access is distinct from, and beyond, Daybreak Blue approval.",
+      "As an alias rather than a fixed model, its underlying model and behavior can change over time without a new model id (OpenAI's Daybreak guide)."
+    ],
+    "use_cases": [
+      "Authorized vulnerability reproduction.",
+      "Exploit validation.",
+      "Penetration testing.",
+      "Red teaming.",
+      "Complex system analysis."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-daybreak-red-latest",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-daybreak-red-latest", "title": "Daybreak Red Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/changelog", "title": "Changelog | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/daybreak", "title": "Use Daybreak in the Responses API | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "This is an access-program alias, not a standalone model: OpenAI's snapshot list for gpt-daybreak-red-latest currently names gpt-5.6-cyber as the underlying model. OpenAI's model page states a 400,000-token total context window and separately a 128,000 max output tokens; the catalog's facts list max_input_tokens as 400,000 and max_output_tokens as 128,000, which read together would exceed that stated total, so this may be a max-input vs. total-context distinction in the source. Kept the catalog's values and did not restate a context-window figure in the write-up. The model page currently shows only the Responses endpoint as supported for this alias (Chat Completions, Live, Realtime, Assistants, Batch, Fine-tuning and Embeddings are all shown greyed out/unsupported there), which differs from the catalog's endpoints list including /v1/chat/completions; I did not make any endpoint-support claim in the write-up given this conflict. Web search was unavailable for this session (budget exhausted), so research relied on directly fetching OpenAI's own docs pages."
+}

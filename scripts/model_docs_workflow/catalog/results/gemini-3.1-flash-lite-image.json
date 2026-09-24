@@ -1,0 +1,52 @@
+{
+  "slug": "gemini-3.1-flash-lite-image",
+  "canonical": "gemini-3.1-flash-lite-image",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.1 Flash-Lite Image, marketed as Nano Banana 2 Lite, is Google DeepMind's low-latency image generation and editing model, built on Gemini 3.1 Flash-Lite and designed for high-volume, latency-sensitive use where speed matters most. It generates and edits images at 1024x1024 resolution across 14 aspect ratios, supports fast multi-turn local edits such as color swaps, sticker creation and background changes, and always embeds a SynthID watermark plus C2PA content credentials. Unlike its Flash and Pro siblings, it does not support 2K or 4K output. Released June 2026, its knowledge cutoff is January 2025.",
+    "advantages": [
+      "Google's developer documentation reports sub-2-second end-to-end latency for image generation.",
+      "Supports up to 14 reference images for objects in a single generation, per Google's developer documentation.",
+      "Its own model card tests both 'Thinking' and 'No thinking' variants and Google's developer docs list Thinking mode at 'minimal' and 'high' levels as supported.",
+      "In Google DeepMind's own human evaluations, it scores an Elo of up to 1059\u00b17 for general text-to-image generation and 1056\u00b116 for social-media-style images, per its model card.",
+      "Supports video-to-image generation, using a YouTube URL or an uploaded video file as a multimodal reference to synthesize a new image, per Google's developer documentation."
+    ],
+    "disadvantages": [
+      "Google's own model card lists known limitations: weak small-text rendering, imperfect character consistency, limited instruction-following for doodle or masked editing, and occasional spatial-localization confusion.",
+      "Supports only 1024x1024 (1K) output resolution; 2K and 4K are not supported, per Google's developer documentation.",
+      "Does not support Google Search grounding or function calling, per Google's developer documentation.",
+      "Not optimized for multiple reference-image inputs or multi-turn sequential editing, per Google's own product-positioning page for this model."
+    ],
+    "use_cases": [
+      "High-volume, cost-sensitive image generation and editing where speed is the primary constraint",
+      "Fast multi-turn local edits such as color swaps, sticker creation and background adjustments",
+      "Interactive developer applications and real-time consumer image editing",
+      "Generating images across 14 supported aspect ratios at 1K resolution"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-1-flash-lite-image/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://deepmind.google/models/model-cards/gemini-3-1-flash-lite-image/",
+      "title": "Gemini 3.1 Flash-Lite Image - Model Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image",
+      "title": "Gemini 3.1 Flash-Lite Image | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepmind.google/models/gemini-image/flash-lite/",
+      "title": "Nano Banana 2 Lite (Gemini 3.1 Flash-Lite Image) - Google DeepMind",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's token limits (65,536 input / 4,096 output) match Google's developer docs (ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) exactly; the DeepMind model card separately describes a nominal 'up to 1M' input / '4K image + 64K text' output, which appears to be the underlying model's general context rather than this endpoint's per-call limit, so the catalog's figures were kept. Catalog lists no deprecation date, and none was found on any page opened. Google's general product-positioning page for this model says it is 'not optimized for multiple reference inputs or multi-turn sequential editing' and separately implies no thinking-level control, but the model card's own benchmark table tests both 'Thinking' and 'No thinking' variants and the model-specific developer docs list Thinking mode (minimal/high) as supported; the developer docs and model card were treated as authoritative over the general marketing page for that point. Catalog's modality list does not include video or PDF input, which Google's docs also list as accepted input types for this model. The image-generation guide's 'Video-to-image generation' section and this model's own capabilities table (Video listed as a supported input) both name Gemini 3.1 Flash-Lite Image as one of only two models (with Gemini 3.1 Flash Image) that support it, so the earlier 'does not support video-to-image generation' disadvantage was wrong and has been replaced with an advantage."
+}

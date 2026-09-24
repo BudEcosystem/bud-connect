@@ -1,0 +1,60 @@
+{
+  "slug": "voxtral-mini-tts-2603",
+  "canonical": "voxtral-mini-tts-2603",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral TTS is Mistral AI's text-to-speech model, released March 23, 2026, aimed at voice-agent and other real-time speech applications. It generates expressive speech and clones a voice from a reference sample as short as 2-3 seconds, without needing a transcript of that voice prompt, and Mistral says it captures the source voice's accent, inflections, intonation and disfluencies. It is a lightweight 4-billion-parameter system combining a 3.4B-parameter transformer decoder, a 390M-parameter flow-matching acoustic transformer, and a 300M-parameter neural audio codec; a version with several reference voices is released as open weights on Hugging Face under a CC BY-NC 4.0 (non-commercial) license.",
+    "advantages": [
+      "Clones a voice from a reference sample as short as 2-3 seconds, with no transcript of the voice prompt required (Mistral AI, \"Speaking of Voxtral\").",
+      "Supports zero-shot cross-lingual voice adaptation: generating speech in one language from a voice sample recorded in another while preserving the speaker's accent (Mistral AI, \"Speaking of Voxtral\").",
+      "Mistral reports a model latency of 70ms for a typical 10-second, 500-character input, with a real-time factor of about 9.7x (Mistral AI, \"Speaking of Voxtral\").",
+      "In Mistral's own human evaluation, the model was rated more natural than ElevenLabs Flash v2.5 at similar time-to-first-audio, and reached quality parity with ElevenLabs v3 in a zero-shot multilingual custom-voice setting (Mistral AI, \"Speaking of Voxtral\")."
+    ],
+    "disadvantages": [
+      "Documented for 9 languages (English, French, German, Spanish, Dutch, Portuguese, Italian, Hindi, Arabic), narrower than some competing TTS models (Mistral AI, \"Speaking of Voxtral\").",
+      "The naturalness and quality comparisons against ElevenLabs are Mistral's own human evaluation, not an independent third-party benchmark (Mistral AI, \"Speaking of Voxtral\").",
+      "The open-weights release is under a CC BY-NC 4.0 license, which restricts commercial use of the downloaded weights (Mistral AI, \"Speaking of Voxtral\")."
+    ],
+    "use_cases": [
+      "Low-latency speech synthesis for voice agents and conversational AI",
+      "Branded or custom voice generation via short-sample voice cloning",
+      "Real-time speech translation using cross-lingual voice adaptation that preserves speaker identity",
+      "Customer support, financial services, and other real-time spoken-response applications (Mistral AI, \"Speaking of Voxtral\")"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "French",
+      "German",
+      "Spanish",
+      "Dutch",
+      "Portuguese",
+      "Italian",
+      "Hindi",
+      "Arabic"
+    ],
+    "website_url": "https://docs.mistral.ai/models/voxtral-tts-26-03",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-tts-26-03",
+      "title": "Voxtral TTS - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral-tts",
+      "title": "Speaking of Voxtral - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/capabilities/audio/text_to_speech",
+      "title": "Text to Speech - Mistral AI Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Model doc page (docs.mistral.ai/models/voxtral-tts-26-03) lists both 'voxtral-mini-tts-2603' and 'voxtral-mini-tts-latest' together as the model's id/alias pair, confirming 'latest' currently resolves to this dated 2603 release. Mistral's human-evaluation comparisons against ElevenLabs are described only qualitatively ('widens the quality gap', 'parity with the quality of'), with no numeric 0-100 accuracy score given, so evaluations is left empty rather than guessed. The '2-3 second' voice-cloning sample length is not on either originally-cited page (the launch blog gives 'a voice prompt (5 to 25 seconds)' for the standard input and 'a reference as little as 3s' for the adaptation training); the current capabilities/audio/text_to_speech doc page states 'Clone any voice from as little as 2-3 seconds of audio', so that page was added as the source for the claim instead of removing it. Catalog facts give no max_input_tokens/max_output_tokens for this model and none were found on the maker's pages either."
+}

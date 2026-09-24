@@ -1,0 +1,39 @@
+{
+  "slug": "batch-melia-1",
+  "canonical": "batch-melia-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Melia 1 is Speechmatics' multilingual speech-to-text model, offered for Batch transcription in the EU and US regions by setting the request's model field to \"melia-1\" with language set to \"multi\". Instead of requiring a language to be selected up front, it automatically detects the spoken language from 55 languages, handles code-switching mid-sentence, and labels each word in the output with the language it was spoken in. Speechmatics states Melia 1's accuracy matches its Standard model. As of Speechmatics' current documentation, Melia 1 does not yet support the custom vocabulary, confidence scores, speaker identification, or speech-intelligence add-ons (translation, summarization, etc.) that Speechmatics' Enhanced and Standard models offer.",
+    "advantages": [
+      "Automatically detects the spoken language from 55 languages and handles mid-sentence code-switching without requiring a language to be selected, per Speechmatics' Languages documentation.",
+      "Labels each word in the transcript with the language it was spoken in, a per-word language ID that Speechmatics' other models do not provide, per Speechmatics' Models documentation.",
+      "Speechmatics states Melia 1's accuracy matches its Standard operating point, per Speechmatics' Models documentation.",
+      "Speechmatics' September 2026 changelog reports a model update giving a 2% relative word-error-rate improvement across many languages, plus fewer transliteration errors and better mid-sentence code-switching on Hindi-English audio."
+    ],
+    "disadvantages": [
+      "Does not currently support custom vocabulary, confidence scores, speaker identification, or Speechmatics' speech-intelligence add-ons (translation, summarization, topic detection, chapters, sentiment analysis, audio events), which Enhanced and Standard both offer.",
+      "Available for Batch transcription only in the EU and US regions, per Speechmatics' Models documentation.",
+      "Speechmatics' Models documentation describes Melia 1 as an early-access model whose feature support is still expanding."
+    ],
+    "use_cases": [
+      "Transcribing multilingual audio with mid-sentence code-switching",
+      "Multilingual meeting, call and media transcription where the spoken language is not known in advance",
+      "Localized transcript output using per-language word delimiters and writing direction"
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Bashkir", "Basque", "Belarusian", "Bengali", "Bulgarian", "Cantonese", "Catalan", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Mandarin", "Marathi", "Mongolian", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovakian", "Slovenian", "Spanish", "Swahili", "Swedish", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Uyghur", "Vietnamese", "Welsh"],
+    "website_url": "https://docs.speechmatics.com/speech-to-text/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/speech-to-text/models", "title": "Speech-to-Text Models - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/deployments/container/gpu-speech-to-text-melia-1", "title": "GPU speech-to-text: Melia 1 - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/batch/output", "title": "Batch output - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://speechmatics.featurebase.app/en/changelog", "title": "Changelog - Speechmatics", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/languages", "title": "Languages - Speechmatics Documentation", "kind": "maker"}
+  ],
+  "notes": "Speechmatics' documentation is inconsistent on Melia 1's release status: the on-prem GPU container page describes only how the inference server currently runs ('currently runs in batch mode only'), with no GA/preview/beta label of any kind, so it was not read as a GA claim; the general Models page describes Melia 1's 'feature support' as 'expanding', language consistent with early access. A page claimed to mark a Realtime-only Melia 1 preview as 'early preview... GA targeted October 2026' could not be located on the current docs site (every guessed URL under speech-to-text/realtime/ 404s, and the Realtime transcription section's nav has no Melia 1 page); the Models page itself states Melia 1 is Batch-only today, so that claim was dropped from consideration rather than repeated. The disadvantage above uses only the general Models page's 'early-access'/'expanding' wording, which is confirmed current. The 55-language figure (corrected from a previously unverified '56') comes from Speechmatics' Languages reference page, which lists Melia 1 as transcribing exactly its 55 individually-listed languages (it explicitly does not support the bilingual/multi-language pack codes, so Tagalog, which exists only as a bilingual-pack entry, is excluded). Catalog carries no deprecation_date."
+}

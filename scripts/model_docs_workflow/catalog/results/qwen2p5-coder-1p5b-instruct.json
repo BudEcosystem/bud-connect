@@ -1,0 +1,45 @@
+{
+  "slug": "qwen2p5-coder-1p5b-instruct",
+  "canonical": "qwen2p5-coder-1p5b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-1.5B-Instruct is the instruction-tuned 1.5-billion-parameter model in Alibaba's Qwen2.5-Coder family, first open-sourced by the Qwen team on September 19, 2024, alongside the 7B size. It is built for direct use in code generation, code reasoning, and code fixing, while retaining general language and math ability, and is one of the smaller instruct sizes in the six-size family (0.5B to 32B).",
+    "advantages": [
+      "Instruction-tuned for direct use in code generation, code reasoning, and code fixing, per Qwen's model card.",
+      "Pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card.",
+      "Supports a full 32,768-token context window, per Qwen's model card.",
+      "Released under the Apache 2.0 license, permitting commercial use and redistribution."
+    ],
+    "disadvantages": [
+      "Text-only input and output, with no vision or audio support.",
+      "At 1.5B parameters, it is one of the smaller instruct models in the Qwen2.5-Coder family, trading model capacity for lower resource use and latency."
+    ],
+    "use_cases": [
+      "Lightweight coding assistants and IDE code-completion features where fast, low-resource inference matters.",
+      "Chat-style code generation, explanation, and debugging help for simple to moderate tasks.",
+      "Fine-tuning starting point for smaller, domain-specific coding agents."
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 70.7, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "HumanEval+", "score": 66.5, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP", "score": 69.2, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP+", "score": 59.4, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "BigCodeBench-Instruct (Full)", "score": 32.5, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "LiveCodeBench", "score": 6.1, "source": "https://arxiv.org/html/2409.12186"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct", "title": "Qwen/Qwen2.5-Coder-1.5B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Family: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder/", "title": "Qwen2.5-Coder: Code More, Learn More!", "kind": "maker"},
+    {"url": "https://arxiv.org/html/2409.12186", "title": "Qwen2.5-Coder Technical Report", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-1p5b-instruct", "title": "qwen2p5-coder-1p5b-instruct - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Corrected the open-source date: the Nov 12, 2024 family post explicitly says 1.5B/7B were already open-sourced before that post; the original Qwen2.5-Coder launch post dates the 1.5B/7B release to September 19, 2024. Corrected a false claim that this is the smallest instruct size: a Qwen2.5-Coder-0.5B-Instruct also exists and is smaller. Added instruct-model benchmark scores (HumanEval, HumanEval+, MBPP, MBPP+, BigCodeBench-Instruct, LiveCodeBench) from the Qwen2.5-Coder Technical Report (arXiv 2409.12186), which reports per-size scores that the family blog post omits."
+}

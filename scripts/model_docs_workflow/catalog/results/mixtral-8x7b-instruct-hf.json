@@ -1,0 +1,56 @@
+{
+  "slug": "mixtral-8x7b-instruct-hf",
+  "canonical": "mixtral-8x7b-instruct-hf",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mixtral 8x7B Instruct is an instruction-tuned sparse mixture-of-experts (SMoE) language model from Mistral AI, released December 11, 2023 under the Apache 2.0 license. It has 46.7 billion total parameters but activates only about 12.9 billion per token across 8 expert feedforward blocks, giving it inference cost and latency close to a 12.9B dense model. It supports English, French, Italian, German and Spanish, and is built for general instruction-following, conversational use, and code generation. Mistral has since deprecated its own hosted API endpoint for this model in favor of newer releases, though the open weights remain available and are served here by a third-party host.",
+    "advantages": [
+      "Mistral reports it outperforms Llama 2 70B on most benchmarks while running roughly 6x faster than a dense model of comparable quality.",
+      "Scores 43.27 on MMLU-Pro, per its Hugging Face model card.",
+      "Mistral reports the instruct model scored 8.30 on MT-Bench, which it describes as the best score among open-weight models at release.",
+      "Mistral's announcement reports strong code generation capabilities and reduced demographic bias versus Llama 2 on the BBQ benchmark."
+    ],
+    "disadvantages": [
+      "Mistral's own model card states it 'does not have any moderation mechanisms' and calls for community engagement to add guardrails for regulated deployments.",
+      "Mistral deprecated its own hosted 'open-mixtral-8x7b' API endpoint on November 30, 2024 and retired it March 30, 2025, recommending newer models as a replacement.",
+      "Released December 2023, making it an older generation model relative to Mistral's current lineup."
+    ],
+    "use_cases": [
+      "General instruction-following and conversational assistance",
+      "Code generation",
+      "Multilingual tasks in English, French, Italian, German and Spanish",
+      "Self-hosted or third-party-hosted deployment under its Apache 2.0 license"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 43.27,
+        "source": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1"
+      }
+    ],
+    "languages": ["English", "French", "Italian", "German", "Spanish"],
+    "website_url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "title": "mistralai/Mixtral-8x7B-Instruct-v0.1 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/mixtral-of-experts",
+      "title": "Mixtral of experts | Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This catalog entry is served via Fireworks AI (third-party host of the open weights), separate from Mistral's own hosted API, which deprecated and retired its 'open-mixtral-8x7b' endpoint in 2024-2025 in favor of newer Mistral models. Catalog's 32,768-token input/output limits are consistent with Mistral's stated ~32K context window (no conflict to flag)."
+}

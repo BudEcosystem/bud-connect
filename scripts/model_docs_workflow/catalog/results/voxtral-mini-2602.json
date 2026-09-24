@@ -1,0 +1,65 @@
+{
+  "slug": "voxtral-mini-2602",
+  "canonical": "voxtral-mini-2602",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Mini Transcribe 2 (also called Voxtral Mini Transcribe V2) is Mistral AI's batch speech-to-text model, released February 4, 2026 as the successor to the original Voxtral Mini Transcribe. Mistral's docs describe it as an efficient audio input model \"pre-trained and optimized for transcription purposes only,\" and its launch post reports approximately 4% word error rate on the FLEURS benchmark. It adds speaker diarization, context biasing for up to 100 custom words or phrases, and word-level timestamps, and handles recordings up to 3 hours long.",
+    "advantages": [
+      "Mistral reports approximately 4% word error rate on the FLEURS benchmark for this model, per its Voxtral Transcribe 2 launch post.",
+      "Supports speaker diarization, producing transcripts with speaker labels and precise start and end times, per Mistral's Voxtral Transcribe 2 launch post.",
+      "Supports context biasing, letting a caller supply up to 100 words or phrases to guide correct spelling of names, technical terms or domain-specific vocabulary, per Mistral's launch post.",
+      "Produces word-level timestamps, enabling subtitle generation, audio search and content alignment, per Mistral's Voxtral Transcribe 2 launch post.",
+      "Mistral states it maintains accuracy in challenging acoustic environments such as factory floors, busy call centers and field recordings, per its launch post.",
+      "Mistral's launch post states it outperforms GPT-4o mini Transcribe, Gemini 2.5 Flash, AssemblyAI Universal and Deepgram Nova on accuracy."
+    ],
+    "disadvantages": [
+      "Positioned by Mistral for offline, batch transcription; Mistral offers a separate Voxtral Mini Transcribe Realtime model for live or streaming use cases, per Mistral's documentation and launch post.",
+      "Mistral documents strong performance in 13 languages; broader language coverage is not stated, per Mistral's Voxtral Transcribe 2 launch post."
+    ],
+    "use_cases": [
+      "Meeting intelligence and transcription, per Mistral's Voxtral Transcribe 2 launch post.",
+      "Contact center and call center automation, per Mistral's Voxtral Transcribe 2 launch post.",
+      "Media and broadcast subtitling, enabled by word-level timestamps, per Mistral's launch post.",
+      "Compliance documentation, including GDPR- and HIPAA-compliant deployments, per Mistral's launch post."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese",
+      "Hindi",
+      "Spanish",
+      "Arabic",
+      "French",
+      "Portuguese",
+      "Russian",
+      "German",
+      "Japanese",
+      "Korean",
+      "Italian",
+      "Dutch"
+    ],
+    "website_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-26-02",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-26-02",
+      "title": "Voxtral Mini Transcribe 2 | Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral-transcribe-2",
+      "title": "Voxtral Transcribe 2 - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/changelog/",
+      "title": "Changelog | Mistral AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts give no max_input_tokens, max_output_tokens or deprecation_date for this model, so there is nothing to reconcile there. Mistral's docs also list the alias voxtral-mini-latest for this same model. The ~4% FLEURS word error rate is reported here in advantages rather than as an evaluations entry, since WER is excluded from the evaluations metric per the brief."
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "llama4-scout-17b-instruct",
+  "canonical": "llama4-scout-17b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 4 Scout is Meta's natively multimodal, mixture-of-experts chat model, released April 5, 2025 alongside Llama 4 Maverick. It activates 17 billion of its 109 billion total parameters across 16 experts per token, accepts text and image input, and is built for long-document analysis using Meta's iRoPE attention architecture. Meta positions it as deployable on a single H100 GPU with Int4 quantization and documents the same 12 languages as Maverick.",
+    "advantages": [
+      "Scores 74.3 on the MMLU Pro reasoning benchmark (Meta's Llama 4 model page).",
+      "Scores 32.8 on LiveCodeBench, Meta's coding benchmark (Meta's Llama 4 model page).",
+      "Scores 69.4 on the MMMU vision-reasoning benchmark and 94.4 on DocVQA document understanding (Meta's Llama 4 model page).",
+      "Meta reports it exceeds Gemma 3, Gemini 2.0 Flash-Lite and Mistral 3.1 on numerous benchmarks for its size class (Meta's Llama 4 launch post)."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of August 2024 (Bedrock model card).",
+      "No audio or video input/output modality.",
+      "Scores lower than Maverick on every benchmark Meta reports for these two models (MMLU Pro, LiveCodeBench, MMMU), reflecting its smaller total parameter count."
+    ],
+    "use_cases": [
+      "Long-document analysis and summarization",
+      "Multimodal chat and virtual assistants",
+      "Visual question answering and document/image understanding",
+      "Coding assistance"
+    ],
+    "evaluations": [
+      {"name": "MMLU Pro", "score": 74.3, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "LiveCodeBench", "score": 32.8, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "MMMU", "score": 69.4, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "DocVQA", "score": 94.4, "source": "https://dev.meta.ai/llama/models/llama-4/"}
+    ],
+    "languages": ["Arabic", "English", "French", "German", "Hindi", "Indonesian", "Italian", "Portuguese", "Spanish", "Tagalog", "Thai", "Vietnamese"],
+    "website_url": "https://dev.meta.ai/llama/models/llama-4/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://dev.meta.ai/llama/models/llama-4/", "title": "Llama 4 - Models", "kind": "maker"},
+    {"url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", "title": "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct", "title": "meta-llama/Llama-4-Scout-17B-16E-Instruct", "kind": "third_party"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-4-scout-17b-instruct.html", "title": "Llama 4 Scout 17B Instruct - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog facts list max_input_tokens 128000 and max_output_tokens 4096 for this Bedrock offering; Meta's own model page and the Bedrock model card instead describe a 10,000,000-token context window and an 8K output limit — kept the catalog's figures per instructions and flag the gap here. Bedrock lists this model as 'Active' lifecycle with a tentative EOL no sooner than April 2026 (already past as of the research date); no newer Llama generation was found superseding Scout on Meta's current model pages, though dev.meta.ai's homepage now promotes separate 'Muse' products rather than Llama."
+}

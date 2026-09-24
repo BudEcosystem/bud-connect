@@ -1,0 +1,33 @@
+{
+  "slug": "stable-outpaint-v1",
+  "canonical": "stable-outpaint-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Outpaint is Stability AI's image-editing model for extending an existing image beyond its original borders, available on Amazon Bedrock as stability.stable-outpaint-v1:0. It generates new content that continues the scene in one or more chosen directions (left, right, up, down), and AWS states it is designed to minimize visible seams or edit artifacts compared with other automated or manual expansion methods. An adjustable creativity parameter controls how much new content the model invents when filling the extended area.",
+    "advantages": [
+      "AWS states the service 'minimizes indications that the original image has been edited' compared with other automated or manual methods of expanding image content (AWS Bedrock documentation).",
+      "Extends an image independently in any combination of four directions (left, right, up, down), each up to 2,000 pixels, with an adjustable creativity parameter for how much new content is invented (AWS Bedrock documentation)."
+    ],
+    "disadvantages": [
+      "Requires an existing input image to edit; every side must be at least 64 pixels and the total pixel count cannot exceed 9,437,184 pixels (AWS Bedrock documentation).",
+      "Input image aspect ratio must be between 1:2.5 and 2.5:1 (AWS Bedrock documentation)."
+    ],
+    "use_cases": [
+      "Extending a photo's background or scene in a chosen direction without visible seams",
+      "Expanding an image's canvas to fit a different aspect ratio or crop"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-outpaint.html", "title": "Stability AI - Stable Image Outpaint model card - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html", "title": "Stability AI Image Services - Amazon Bedrock", "kind": "host"},
+    {"url": "https://platform.stability.ai/docs/api-reference", "title": "API Reference - Stability AI Developer Platform", "kind": "maker"}
+  ],
+  "notes": "The catalog's max_input_tokens (77) does not match either source: this service takes an image plus an optional prompt of 0-10,000 characters, not a 77-token count; kept the catalog's value as instructed. No accuracy-style benchmark scores were found, so evaluations is empty. AWS's Bedrock model card marks stability.stable-outpaint-v1:0 lifecycle 'Active' (launched Nov 2022, no EOL date set) as of the page fetched on 2026-09-24."
+}

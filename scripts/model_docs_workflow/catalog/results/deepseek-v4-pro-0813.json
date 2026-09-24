@@ -1,0 +1,47 @@
+{
+  "slug": "deepseek-v4-pro-0813",
+  "canonical": "deepseek-v4-pro-0813",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V4-Pro-0813 is DeepSeek's flagship mixture-of-experts chat model, released August 13, 2026 as the official general-availability version of DeepSeek-V4-Pro, superseding an earlier preview with what DeepSeek's Hugging Face model card describes as 'greatly enhanced agentic capabilities and performance improvements' especially in production use. It has 1.7 trillion parameters, a roughly 1,000,000-token context window, three reasoning-effort levels (low, high, max), and a DSpark speculative-decoding module, with native OpenAI Responses API support optimized for Codex integration. DeepSeek's own DeepSeek-V4.1-Flash launch announcement states that, starting September 14, 2026, all deepseek-v4-pro API requests are automatically routed to the newer, smaller DeepSeek-V4.1-Flash at V4.1-Flash's rates, effectively retiring this release for new traffic.",
+    "advantages": [
+      "Scores 87.9 on Terminal-Bench 2.1, an agentic terminal-use benchmark, per DeepSeek's Hugging Face model card.",
+      "Resolves 83.3% of tasks on CyberGym, a cybersecurity-research agent benchmark.",
+      "Scores 60.0 on Humanity's Last Exam when allowed to use tools.",
+      "Supports a roughly 1,000,000-token context window with three reasoning-effort levels (low, high, max) to trade off latency against depth.",
+      "Includes native OpenAI Responses API support optimized for Codex, per DeepSeek's launch announcement."
+    ],
+    "disadvantages": [
+      "Text only; no image or audio input, per the catalog's recorded modality.",
+      "DeepSeek has routed all deepseek-v4-pro API requests to the newer, cheaper DeepSeek-V4.1-Flash since September 14, 2026, effectively retiring this model for new traffic.",
+      "This dated snapshot is scheduled for removal from third-party hosts, per the catalog's provider deprecation dates."
+    ],
+    "use_cases": [
+      "Long-horizon agentic coding, with native OpenAI Responses API support optimized for Codex integration.",
+      "Cybersecurity-research agent tasks (CyberGym).",
+      "Tool-augmented reasoning and knowledge tasks (Humanity's Last Exam with tools).",
+      "Tool-use agent workflows (Toolathlon-Verified).",
+      "Long-context document or codebase analysis using up to a roughly 1,000,000-token context window."
+    ],
+    "evaluations": [
+      {"name": "Terminal-Bench 2.1", "score": 87.9, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"},
+      {"name": "CyberGym", "score": 83.3, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"},
+      {"name": "Humanity's Last Exam (with tools)", "score": 60.0, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"},
+      {"name": "NL2Repo", "score": 61.5, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"},
+      {"name": "Toolathlon-Verified", "score": 74.1, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813", "title": "deepseek-ai/DeepSeek-V4-Pro-0813 · Hugging Face", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/news/news260813/", "title": "DeepSeek-V4-Pro GA Release | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/", "title": "Introducing DeepSeek-V4.1-Flash", "kind": "maker"},
+    {"url": "https://www.together.ai/models/deepseek-v4-pro-0813", "title": "DeepSeek V4 Pro 0813 | Together AI", "kind": "host"}
+  ],
+  "notes": "The Hugging Face card for this specific dated snapshot (DeepSeek-V4-Pro-0813) states '1.7T params' without a separate active-parameter figure, differing from the 1.6T-total/49B-active figures on the generic 'DeepSeek-V4-Pro' card used for the sibling slug deepseek-v4-pro (likely an earlier preview-era card); this entry uses the 0813-specific figure since it is the one about this exact release. Catalog's modality (text only) and max_input_tokens (1,048,576) match Together AI's page for this exact model id; catalog's max_output_tokens (131,072) is the provider-side cap, lower than the 384K DeepSeek recommends at high/max reasoning effort, so the description covers context window only. Evaluation scores are this model's own agentic-benchmark table on its Hugging Face card, not the different benchmark set on the generic DeepSeek-V4-Pro card."
+}

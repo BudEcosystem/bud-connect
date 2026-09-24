@@ -1,0 +1,39 @@
+{
+  "slug": "grok-voice-transcribe-1.0",
+  "canonical": "grok-voice-transcribe-1.0",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "grok-voice-transcribe-1.0 is a speech-to-text model in xAI's Grok Voice API, offered alongside a newer version, grok-voice-transcribe-2.0. It converts audio to text either through a single REST call or over a WebSocket stream, and xAI's API reference documents support for 12 audio formats, word-level timestamps, multichannel audio, speaker diarization, and Smart Turn end-of-turn detection, across 25 languages. xAI's docs set grok-voice-transcribe-2.0, not this version, as the default model for its Speech to Text endpoints.",
+    "advantages": [
+      "Transcribes audio through either a single-call REST request or real-time WebSocket streaming.",
+      "Returns word-level timestamps with per-word confidence scores, and can label speakers when diarization is enabled.",
+      "Supports multichannel audio and up to 100 keyterm bias terms per request to improve recognition of specific words.",
+      "Accepts 12 audio formats, including WAV, MP3, FLAC, Opus and AAC, plus raw PCM, mu-law and A-law streams.",
+      "Covers 25 languages with automatic language detection returned as a BCP-47 code."
+    ],
+    "disadvantages": [
+      "xAI's documentation does not publish a word error rate or other accuracy benchmark for this model.",
+      "xAI's docs designate grok-voice-transcribe-2.0, not this version, as the default Speech to Text model."
+    ],
+    "use_cases": [
+      "Batch transcription of recorded audio files or URLs.",
+      "Real-time transcription of streaming audio over WebSocket.",
+      "Multi-speaker call or meeting transcription with diarization and per-speaker word timestamps.",
+      "Voice-agent turn-taking, using Smart Turn end-of-turn detection to identify when a speaker has finished."
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Czech", "Danish", "Dutch", "English", "Filipino", "French", "German", "Hindi", "Indonesian", "Italian", "Japanese", "Korean", "Macedonian", "Malay", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Spanish", "Swedish", "Thai", "Turkish", "Vietnamese"],
+    "website_url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-text",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/model-capabilities/audio/voice", "title": "Voice - xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-text", "title": "Speech to Text - xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/rest-api-reference/inference/voice", "title": "Voice API Reference - xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models", "title": "Models - xAI Docs", "kind": "maker"}
+  ],
+  "notes": "xAI's dedicated Speech to Text docs page (added to sources) individually names all 25 supported languages and confirms grok-voice-transcribe-2.0 is the default on both the REST form and the WebSocket endpoint when `model` is omitted; it describes grok-voice-transcribe-1.0 as the original model, kept available for callers who pin this slug. No WER or other accuracy benchmark is published for either version, and no functional difference beyond that positioning is stated."
+}

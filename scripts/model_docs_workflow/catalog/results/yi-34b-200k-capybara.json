@@ -1,0 +1,51 @@
+{
+  "slug": "yi-34b-200k-capybara",
+  "canonical": "yi-34b-200k-capybara",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NousResearch",
+  "details": {
+    "description": "Yi-34B-200K-Capybara (listed on Fireworks AI as \"Nouse Capybara 34B V1.9\") is a 34.3-billion-parameter fine-tune by Nous Research of 01.AI's Yi-34B-200K base model. Nous trained it on its Capybara dataset, a collection of largely newly-synthesized, reasoning-focused multi-turn conversations, and it inherits the base model's 200,000-token context window. It is intended for long-document handling and multi-turn reasoning tasks rather than as a general chat-safety-tuned assistant.",
+    "advantages": [
+      "Inherits the 200,000-token context window of the Yi-34B-200K base model, which 01.AI reports ranked first among open-source models on English and Chinese benchmarks including the Hugging Face Open LLM Leaderboard and C-Eval.",
+      "Fine-tuned on Nous Research's Capybara dataset, whose creator states most of its tokens were newly synthesized rather than reused from existing online text, with an emphasis on reasoning and logic across physics, biology, math, chemistry and culture."
+    ],
+    "disadvantages": [
+      "No benchmark scores for this specific fine-tuned checkpoint were found on Fireworks AI's model page or elsewhere.",
+      "Built on 01.AI's original Yi-34B-200K release, whose pretraining data extends only through June 2023."
+    ],
+    "use_cases": [
+      "Long-document summarization and analysis using the extended 200K-token context window",
+      "Multi-turn conversational tasks emphasizing reasoning and logic",
+      "Question-answering and text generation across science and reasoning domains, per the Capybara dataset's documented scope"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/NousResearch/Nous-Capybara-34B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/yi-34b-200k-capybara",
+      "title": "Nouse Capybara 34B V1.9 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/NousResearch/Nous-Capybara-34B",
+      "title": "NousResearch/Nous-Capybara-34B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/01-ai/Yi-34B-200K",
+      "title": "01-ai/Yi-34B-200K · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/datasets/LDJnr/Capybara",
+      "title": "LDJnr/Capybara · Datasets at Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Verify pass: the URL the researcher tried (huggingface.co/NousResearch/Yi-34B-200K-Capybara) does still return HTTP 401 (reconfirmed with a direct curl), but that is not this model's actual Hugging Face repository — the Fireworks AI host page links to https://huggingface.co/NousResearch/Nous-Capybara-34B instead, which loads fine and is Nous Research's own card for this exact checkpoint (Nous-Capybara-34B V1.9, fine-tuned from Yi-34B-200K on the Capybara dataset, 200K context, MIT license). That page confirms no benchmark scores are published for it (\"Benchmarks! (Coming soon!)\"), matching the disadvantages entry, and is now added to sources with website_url pointing to it instead of null. Catalog facts (200,000 max input/output tokens) match both the base model and the Fireworks listing."
+}

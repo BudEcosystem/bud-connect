@@ -1,0 +1,63 @@
+{
+  "slug": "claude-fable-5-1",
+  "canonical": "claude-fable-5-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Fable 5.1 is Anthropic's current Mythos-class flagship model, released September 1, 2026 as an update to Claude Fable 5 for demanding reasoning and long-horizon agentic work. It takes text and image input with a 1M-token context window and 128K-token max output, and runs adaptive (always-on) thinking at a 'high' default effort. Anthropic's own model page says to start with Claude Opus 5 for most workloads and reach for Fable 5.1 only when evaluations at higher effort still fall short; an invitation-only sibling, Claude Mythos 5.1, offers the same capabilities with more permissive safeguards for vetted cybersecurity and biology-research partners.",
+    "advantages": [
+      "Anthropic reports stronger long-running agentic coding, multistep research, and document, spreadsheet, and slide work than Claude Fable 5.",
+      "Supports per-message effort changes, turn-scoped system messages, and readable progress updates between tool calls, per Anthropic's release notes (each currently in beta).",
+      "Adaptive thinking is always on, with a 1M-token context window and 128K-token max output, per Anthropic's model page."
+    ],
+    "disadvantages": [
+      "Three changes from Claude Fable 5 are breaking: forced tool use returns an error, earlier models can't read its thinking blocks, and editing earlier turns invalidates thinking blocks, per Anthropic's release notes.",
+      "Includes safety classifiers that can decline requests in sensitive domains such as cybersecurity and biology/chemistry; Claude Mythos 5.1, which has more permissive safeguards in those domains rather than none, is invitation-only."
+    ],
+    "use_cases": [
+      "Long-horizon, multi-day autonomous coding and agentic workflows",
+      "Enterprise deep research and complex analysis deliverables",
+      "Document-heavy finance, legal, and architectural review, including diagrams, charts, and tables in PDFs",
+      "Ambitious software engineering across entire codebases"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+      "title": "Claude Fable 5.1 - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.anthropic.com/claude/fable",
+      "title": "Claude Fable \\ Anthropic",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "title": "Models overview - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      "title": "Claude Fable 5.1 and Claude Mythos 5.1",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
+      "title": "Choosing the right model - Claude Platform Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "GROUPING/FACT CONFLICT: catalog's deprecation_date for this target is 2027-03-01, but Anthropic's own model-deprecations table and the Fable 5.1 model page both give a tentative retirement of 'not sooner than September 1, 2027' -- a roughly six-month discrepancy. Kept the catalog's date per instructions but flagging it for review. The Fable 5.1 model page and its 'what's new' page both say to start with 'Claude Opus 5' for most workloads (a separate current model from Opus 5.5); Anthropic's general 'Choosing a model' guide instead names Claude Opus 5.5 as the default starting point and pairs it with the same escalation-to-Fable-5.1 language. The description follows the model's own page since it is the more specific source, and both pages are listed in sources. Corrected during verification: the Fable/Mythos 5.1 announcement says Fable 5.1 and Mythos 5.1 are 'the same model, but with different levels of safeguards' and that Mythos 5.1 gets 'more permissive safeguards' for vetted partners, not the classifiers' complete removal (unlike Mythos 5, whose model page explicitly says it does not include Fable 5's classifiers)."
+}

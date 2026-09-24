@@ -1,0 +1,45 @@
+{
+  "slug": "moonshot-v1-auto",
+  "canonical": "moonshot-v1-auto",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "moonshot-v1-auto was the \"auto-router\" chat model in Moonshot AI's original moonshot-v1 line, alongside the fixed context-length variants moonshot-v1-8k, moonshot-v1-32k and moonshot-v1-128k; it was launched in August 2024. Moonshot AI (whose developer platform now operates as Kimi) closed the moonshot-v1 series to newly registered users in July 2026 when it launched its current flagship, Kimi K3, and fully retired the series platform-wide on August 31, 2026, after which calls to moonshot-v1-auto return a 404 \"model not found\" error. Moonshot AI directs remaining users to migrate to kimi-k3.",
+    "advantages": [
+      "As the \"auto-router\" entry in Moonshot's list-models API, it sat alongside the 8K/32K/128K moonshot-v1 tiers, reaching up to the series' 128K-token top tier."
+    ],
+    "disadvantages": [
+      "Fully retired by Moonshot AI on August 31, 2026; API calls to this model now return a 404 \"model not found\" error.",
+      "Was already closed to newly registered accounts from July 2026, before the full retirement.",
+      "Text-only: Moonshot offered vision input only through separate moonshot-v1-*-vision-preview models (also retired), not this one.",
+      "Superseded by Moonshot AI's current flagship, kimi-k3, which the maker recommends migrating to."
+    ],
+    "use_cases": [
+      "General-purpose text chat completions via Moonshot's Chat Completions API, for existing accounts that already had access before the series closed to new sign-ups."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://platform.kimi.ai/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://platform.kimi.ai/docs/models.md",
+      "title": "Models — Kimi Open Platform (Moonshot AI)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.kimi.ai/docs/platform-changelog.md",
+      "title": "Platform Changelog — Kimi Open Platform (Moonshot AI)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/promptfoo/promptfoo/032e1cded55158ed585caebd52596d77bf697af0/site/docs/providers/moonshot.md",
+      "title": "Moonshot AI provider — promptfoo docs",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Moonshot AI's developer platform now redirects platform.moonshot.ai -> platform.kimi.ai (rebrand to 'Kimi'). Current docs list moonshot-v1-auto only as a retired entry and never explain the mechanics of how 'auto' picked among the 8k/32k/128k tiers, so that selection behavior is not stated here (dropped rather than guessed from memory). The catalog's facts (131072 max input/output tokens, text-only, /v1/chat/completions) are consistent with what the sources describe. Given the confirmed August 31, 2026 platform-wide retirement (calls now 404), Bud may want to consider whether this model should still be offered at all."
+}

@@ -43,7 +43,15 @@ Each target looks like this:
    an independent benchmark such as Artificial Analysis or LMArena) come last.
 3. Open every page you rely on. A search snippet is not a source.
 4. Make sure a page is about this exact model and version, not a sibling. Sonnet 4.5 benchmarks
-   are not Sonnet 4.6 benchmarks, and "Nova 3" is not "Nova 3 Medical".
+   are not Sonnet 4.6 benchmarks, and "Nova 3" is not "Nova 3 Medical". On a Hugging Face card
+   with separate tables, take the Instruct or chat model's numbers, not the Base checkpoint's.
+5. Check the model's **current** status on the maker's current pages: its models overview,
+   deprecations or changelog page. Launch posts go stale. In the pilot, a model described as
+   "alpha" had been generally available for seven months, and another was being phased out.
+   Say plainly if the model is legacy, deprecated, superseded or being retired, and by what.
+6. If the URIs in a target are clearly not the same model (different makers, or different
+   generations), do not describe any of them. Write `insufficient_sources` with a note that
+   starts `GROUPING:` and says which URIs belong together.
 
 ## What to write
 
@@ -75,9 +83,12 @@ Each target looks like this:
 
 The style to follow:
 
-- No marketing words ("state-of-the-art", "revolutionary", "best-in-class") unless they are
-  attributed to a benchmark result in the same sentence.
-- No prices. Bud shows its own.
+- No marketing words ("state-of-the-art", "revolutionary", "best-in-class", "the best coding
+  model") unless they are attributed to a benchmark result in the same sentence. Quoting the
+  maker does not make a superlative acceptable.
+- No prices, and no relative price claims ("20% cheaper than X"). Bud shows its own.
+- A figure the maker measured on its own benchmark is attributed as such ("Deepgram reports a
+  3.44% median WER on its medical test set"), not stated as a neutral fact.
 - Nothing about Bud, routes or hosting regions.
 - Every list item is a single sentence of at most 300 characters.
 

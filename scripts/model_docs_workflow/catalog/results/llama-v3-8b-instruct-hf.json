@@ -1,0 +1,65 @@
+{
+  "slug": "llama-v3-8b-instruct-hf",
+  "canonical": "llama-v3-8b-instruct-hf",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3 8B Instruct is Meta's instruction-tuned, 8-billion-parameter chat model in the Llama 3 family, released April 18, 2024 alongside the base checkpoint. Meta fine-tuned it from the pretrained model using supervised fine-tuning, rejection sampling, PPO and DPO, and it shares the base model's 8,192-token context window and March 2023 knowledge cutoff. Fireworks AI serves this target as the '-hf' build, which Fireworks describes as the original FP16 version whose outputs should match the official Hugging Face implementation, rather than a quantized variant.",
+    "advantages": [
+      "Scores 68.4 on MMLU, 62.2% on HumanEval and 79.6% on GSM-8K as the instruction-tuned 8B model, per Meta's official Llama 3 model card.",
+      "Fireworks AI states this FP16 build's results should be consistent with the official Hugging Face implementation, unlike quantized variants."
+    ],
+    "disadvantages": [
+      "Context window is limited to 8,192 tokens, far short of the 128,000-token window Meta introduced with the later Llama 3.1 family.",
+      "Meta's model card states intended use is commercial and research use in English; using it in other languages requires developers to fine-tune and safety-test it themselves."
+    ],
+    "use_cases": [
+      "Assistant-style chat and dialogue",
+      "Brainstorming and creative writing",
+      "Coding assistance",
+      "Question answering and text summarization"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 68.4,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      },
+      {
+        "name": "HumanEval",
+        "score": 62.2,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM-8K",
+        "score": 79.6,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+    "github_url": "https://github.com/meta-llama/llama3"
+  },
+  "sources": [
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3/",
+      "title": "Introducing Meta Llama 3",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+      "title": "llama3/MODEL_CARD.md",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3-8b-instruct-hf",
+      "title": "Llama 3 8B Instruct (HF) - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": null
+}

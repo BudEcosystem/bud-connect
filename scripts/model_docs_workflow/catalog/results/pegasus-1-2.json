@@ -1,0 +1,38 @@
+{
+  "slug": "pegasus-1-2",
+  "canonical": "pegasus-1-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "TwelveLabs",
+  "details": {
+    "description": "Pegasus v1.2 is TwelveLabs' video-to-text generation model, offered on Amazon Bedrock since February 2025, that takes a video (supplied as a storage location) together with a text prompt and produces descriptions, summaries, or answers about the video's content. It uses an encoder-decoder architecture combining a video encoder, tokenizer, and large language model, and TwelveLabs documents it as handling videos up to one hour long with temporal grounding that can localize events by timestamp. TwelveLabs' current product documentation centers on the newer Pegasus 1.5, which extends 1.2 with features such as video segmentation, video clipping, and a larger context and response window, indicating Pegasus v1.2 is an earlier generation of the model that remains available through Bedrock.",
+    "advantages": [
+      "TwelveLabs reports leading results on the VideoMME-Long benchmark (videos longer than 30 minutes), outperforming GPT-4o and Gemini 1.5 Pro, with faster time-to-first-token on 30-60 minute videos (TwelveLabs blog).",
+      "Supports temporal grounding that localizes specific events within a video by timestamp (TwelveLabs blog).",
+      "TwelveLabs documents Pegasus v1.2 as processing videos up to one hour long, combining fine-grained visual detail with long-term contextual understanding (TwelveLabs blog).",
+      "Generates structured video metadata and supports knowledge graph construction from video content (TwelveLabs blog)."
+    ],
+    "disadvantages": [
+      "TwelveLabs' current documentation centers on the newer Pegasus 1.5, which adds video segmentation, video clipping, reference-image prompting, and a larger context and response window not documented for Pegasus v1.2.",
+      "Output is text only; it does not generate or edit video, image, or audio content.",
+      "On Amazon Bedrock it is only reachable through the Invoke API, without support for the Converse or Chat Completions APIs (Amazon Bedrock model card)."
+    ],
+    "use_cases": [
+      "Video content search and metadata generation for media archives",
+      "Brand and product analysis from influencer or user-generated video content",
+      "Sports event analysis and statistics extraction from game footage",
+      "Sentiment and content analysis of long-form video"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.twelvelabs.io/docs/concepts/models/pegasus",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.twelvelabs.io/blog/introducing-pegasus-1-2", "title": "Introducing Pegasus-1.2", "kind": "maker"},
+    {"url": "https://docs.twelvelabs.io/docs/concepts/models/pegasus.md", "title": "Pegasus - TwelveLabs Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-pegasus-v1-2.md", "title": "TwelveLabs — Pegasus v1.2 model card (Amazon Bedrock)", "kind": "host"}
+  ],
+  "notes": "Catalog's modality facts list only text_input/text_output, but Amazon Bedrock's own model card documents Video as a supported input modality alongside Text (Image input is not supported, output is Text only). I described the model's actual video-to-text function since that is its core purpose and omitting it would be misleading, but kept the catalog's modality values as authoritative and flag the conflict here. No page I opened gave an explicit 0-100 accuracy number for the VideoMME-Long result mentioned in TwelveLabs' blog, so it is described in advantages (with attribution) rather than added to evaluations. TwelveLabs' docs page states Pegasus 1.5 (not 1.2) combines visual, audio, and textual understanding; the introducing-Pegasus-1.2 blog post does not claim audio understanding for 1.2, so that detail was corrected during fact-checking. All four URIs (us/eu/global-prefixed and bare) map to the single Bedrock model ID twelvelabs.pegasus-1-2-v1:0 per AWS's card's geo/global routing table, so no grouping issue. Catalog's max_input_tokens/max_output_tokens are empty; TwelveLabs' and AWS's pages did not give exact token limits either, only a duration limit (videos up to one hour)."
+}

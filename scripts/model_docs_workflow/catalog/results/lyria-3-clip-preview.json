@@ -1,0 +1,35 @@
+{
+  "slug": "lyria-3-clip-preview",
+  "canonical": "lyria-3-clip-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Lyria 3 Clip Preview is a Google DeepMind music generation model, offered through the Gemini API, optimized for short musical clips, loops, and previews. It generates 30 seconds of high-quality, 48kHz stereo audio from text prompts or image inputs. Released March 25, 2026, it remains in preview status; Google's Gemini API deprecations page recommends migrating to the newer Lyria 3.5, which now covers both short clips and full-length songs.",
+    "advantages": [
+      "Generates 30 seconds of high-quality, 48kHz stereo audio from text or image prompts (Gemini API model page).",
+      "Accepts image inputs in addition to text prompts (Gemini API model page)."
+    ],
+    "disadvantages": [
+      "In preview status; Google's Gemini API deprecations page lists lyria-3.5 as the recommended replacement (Gemini API deprecations page).",
+      "Limited to 30 seconds of output audio, versus full-length songs on the newer Lyria 3.5 (Gemini API model page)."
+    ],
+    "use_cases": [
+      "Generating short musical clips, loops, and previews from text prompts",
+      "Generating short musical clips from image inputs"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview", "title": "Lyria 3 Clip Preview - Gemini API models", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models - Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/music-generation", "title": "Music generation with Lyria - Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations - Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/pricing", "title": "Gemini Developer API Pricing", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list kind 'chat', endpoints /v1/chat/completions and /v1/completions, and modality audio_output/text_input, but Google documents this as a music-generation model that also accepts image input and returns lyrics text alongside audio; kept the catalog's facts as authoritative and described the model's real capabilities instead. Catalog's max_input_tokens (131072) matches the Gemini API model page's stated input token limit; max_output_tokens (8192) is not stated on the source pages. Google's pricing page groups this model under a 'Lyria 3' heading described in body text as 'Google's family of legacy music generation models' (not literally titled 'Lyria 3 (Legacy)'), even though the deprecations page lists no shutdown date, so the pricing page's 'legacy' language and the deprecations page's active-preview status appear to disagree; both are noted here rather than picking one for the description."
+}

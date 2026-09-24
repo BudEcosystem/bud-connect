@@ -1,0 +1,49 @@
+{
+  "slug": "gpt-5.3-codex",
+  "canonical": "gpt-5.3-codex",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.3-Codex is OpenAI's agentic coding model, released February 5, 2026, that merges Codex-line coding ability with GPT-5.2's general reasoning into a single model for software engineering, web development, debugging, deployment and monitoring, as well as broader computer-use tasks. OpenAI reports it runs about 25% faster than GPT-5.2-Codex and supports interactive steering mid-task in the Codex CLI, IDE extension and web interface. It takes text and image input and produces text-only output, supports reasoning effort levels from low to xhigh, and has a knowledge cutoff of August 31, 2025. It is OpenAI's first model classified 'high capability' for cybersecurity under OpenAI's Preparedness Framework, reflecting its ability to identify and fix software vulnerabilities.",
+    "advantages": [
+      "Scores 77.3% on Terminal-Bench 2.0 on OpenAI's own Codex harness (OpenAI).",
+      "Scores 64.7% on OSWorld-Verified, a computer-use benchmark, up 26.5 points from its predecessor (OpenAI).",
+      "Scores 56.8% on SWE-Bench Pro, a state-of-the-art result at release according to OpenAI (OpenAI).",
+      "OpenAI reports it runs about 25% faster than GPT-5.2-Codex (OpenAI).",
+      "Supports interactive mid-task steering: users can ask questions or redirect the model while it is working (OpenAI)."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Available in the Responses API only, not Chat Completions (OpenAI API model docs).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API model docs).",
+      "DataCamp's testing found it prioritizes an explicit instruction over an obvious contradiction, executing what it was told rather than questioning a logically inconsistent request (DataCamp)."
+    ],
+    "use_cases": [
+      "Agentic software engineering: writing, reviewing and debugging code",
+      "Web development and deployment workflows",
+      "Infrastructure monitoring and automated remediation",
+      "Vulnerability identification and patching"
+    ],
+    "evaluations": [
+      {"name": "Terminal-Bench 2.0", "score": 77.3, "source": "https://openai.com/index/introducing-gpt-5-3-codex/"},
+      {"name": "OSWorld-Verified", "score": 64.7, "source": "https://openai.com/index/introducing-gpt-5-3-codex/"},
+      {"name": "SWE-Bench Pro", "score": 56.8, "source": "https://openai.com/index/introducing-gpt-5-3-codex/"},
+      {"name": "GDPval", "score": 70.9, "source": "https://openai.com/index/introducing-gpt-5-3-codex/"},
+      {"name": "Artificial Analysis Intelligence Index (xhigh reasoning, estimate)", "score": 33, "source": "https://artificialanalysis.ai/models/gpt-5-3-codex"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex", "title": "GPT-5.3-Codex Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-gpt-5-3-codex/", "title": "Introducing GPT-5.3-Codex | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-3-codex", "title": "GPT-5.3-Codex (xhigh) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://www.datacamp.com/blog/gpt-5-3-codex", "title": "GPT-5.3 Codex: From Coding Assistant to General Work Agent | DataCamp", "kind": "third_party"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-5.3-Codex", "title": "GPT-5.3-Codex - Wikipedia", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's own announcement post (openai.com/index/introducing-gpt-5-3-codex/) returned HTTP 403 on a direct fetch, so it was read via a read-only proxy (r.jina.ai) of the same URL; the cited source URL is the original openai.com page. Maker's own docs page states this model supports the Responses API only (v1/responses), with Chat Completions explicitly marked 'Not supported'; this conflicts with the catalog's endpoints fact (/v1/chat/completions, /v1/responses), and third-party reports (GitHub issues, Microsoft Learn docs on Azure Codex models) corroborate that Codex-line models reject the chat/completions endpoint. Kept the catalog's endpoints value per instructions and flagged the conflict here rather than in the description. Max input tokens (272,000) and max output tokens (128,000) match the catalog's facts exactly. Artificial Analysis marks its Intelligence Index score for this model as an 'Estimate' pending independent evaluation; noted as such in the evaluation name. Not deprecated per OpenAI's own deprecations page or API docs; Wikipedia (as of the model's Feb 2026 release) described it as ChatGPT-Pro-only, but the catalog's live azure/openai API entries confirm API access has since broadened, consistent with OpenAI's 'API access coming soon' statement at launch."
+}

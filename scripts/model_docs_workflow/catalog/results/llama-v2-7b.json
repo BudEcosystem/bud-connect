@@ -1,0 +1,47 @@
+{
+  "slug": "llama-v2-7b",
+  "canonical": "llama-v2-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 2 7B is Meta's smallest pretrained (base, non-chat-tuned) model in the original Llama 2 family, trained on 2 trillion tokens of publicly available data between January and July 2023 and released July 18, 2023. Meta's model card describes it as intended for commercial and research use in English, adaptable to \"a variety of natural language generation tasks\" but, unlike the separate Llama-2-7b-chat model, it has not been fine-tuned with supervised fine-tuning or RLHF for dialogue. It has since been superseded by Meta's Llama 3, 3.1, 3.2, 3.3 and 4 model families.",
+    "advantages": [
+      "Meta's model card reports this pretrained model scores 45.3 on MMLU, 16.8 on the combined HumanEval/MBPP code benchmark (average pass@1), and 63.9 on the Commonsense Reasoning benchmark group.",
+      "Scores 61.3 on the Reading Comprehension benchmark group and 48.9 on the World Knowledge benchmark group, per Meta's model card.",
+      "Trained on 2 trillion tokens of publicly available data, double the 1 trillion tokens Meta's original LLaMA 1 7B model card reports for the same size."
+    ],
+    "disadvantages": [
+      "This is a pretrained base checkpoint, not fine-tuned for dialogue or instruction-following; Meta's model card describes the separate Llama-2-7b-chat model as the version tuned for assistant-like chat.",
+      "Meta's model card states Llama 2 is intended for commercial and research use in English only and was tested only in English.",
+      "Knowledge cutoff of September 2022, per Meta's model card.",
+      "Smallest size in the Llama 2 family; Meta's model card shows the 70B checkpoint scoring higher on every reported benchmark group, e.g. MMLU 68.9 vs. 45.3.",
+      "Superseded by Meta's Llama 3, 3.1, 3.2, 3.3 and 4 model families."
+    ],
+    "use_cases": [
+      "General natural-language generation tasks, per Meta's model card statement that \"pretrained models can be adapted for a variety of natural language generation tasks.\"",
+      "Base checkpoint for further fine-tuning or instruction-tuning."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 45.3, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Code (HumanEval/MBPP avg pass@1)", "score": 16.8, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Commonsense Reasoning", "score": 63.9, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "World Knowledge", "score": 48.9, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Reading Comprehension", "score": 61.3, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Math (GSM8K/MATH avg)", "score": 14.6, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "BIG-Bench Hard", "score": 32.6, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "AGI Eval", "score": 29.3, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {"url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md", "title": "llama/MODEL_CARD.md at main", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/llama-v2-7b", "title": "Llama 2 7B - Fireworks AI", "kind": "host"},
+    {"url": "https://ai.meta.com/blog/llama-2/", "title": "Llama 2: open source, free for research and commercial use", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama/blob/llama_v1/MODEL_CARD.md", "title": "llama/MODEL_CARD.md at llama_v1", "kind": "maker"}
+  ],
+  "notes": "This is the base pretrained checkpoint, not the chat-tuned variant (see llama-v2-7b-chat). Catalog's 4,096-token max_input/max_output matches Meta's model card (4k context) and Fireworks' hosted page (4.09k) for this model. Release date (July 18, 2023) is not on the Llama 2 model card itself; confirmed on Meta's launch blog post. The Llama 2 card does not state a comparison to Llama 1's token count; confirmed instead on the original LLaMA 1 model card, which lists 1T training tokens for its 7B size, exactly half of Llama 2 7B's 2T."
+}

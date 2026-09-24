@@ -1,0 +1,43 @@
+{
+  "slug": "nova-general",
+  "canonical": "nova-general",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova is a general-purpose speech-to-text model from Deepgram's first Nova-tier release, used for transcribing everyday audio. Deepgram's Model Options page describes the Nova tier as trained on over 100 domains and 47 billion tokens. Deepgram's Models & Languages Overview lists Nova under \"Legacy Models\", meaning it has been superseded by the Nova-2 and Nova-3 model generations.",
+    "advantages": [
+      "Trained on over 100 domains and 47 billion tokens, per Deepgram's Model Options documentation."
+    ],
+    "disadvantages": [
+      "Deepgram's Models & Languages Overview lists Nova under \"Legacy Models\", superseded by the Nova-2 and Nova-3 generations.",
+      "Deepgram's language documentation lists support only for English (en, en-US, en-AU, en-GB, en-NZ, en-IN), Spanish (es, es-419), and a Latin-script transliteration of Hindi (hi-Latn), far fewer languages than Nova-3.",
+      "No word-error-rate or other accuracy figures for this model were found on Deepgram's current documentation."
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish",
+      "Hindi"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's language table lists Hindi only as 'hi-Latn' (a Latin-script transliteration variant), so I recorded the language as Hindi rather than a separate transliteration entry. No WER or other benchmark figures specific to plain 'Nova' were found on Deepgram's maker pages, so evaluations is left empty. The catalog carries no deprecation_date, though Deepgram's own docs mark this model legacy."
+}

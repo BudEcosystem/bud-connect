@@ -1,0 +1,49 @@
+{
+  "slug": "chat-latest",
+  "canonical": "chat-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "chat-latest is OpenAI's rolling alias for the Instant-tier model currently used in ChatGPT's default chat experience; the underlying snapshot is updated regularly rather than being a fixed dated release. It is offered directly by OpenAI and, as gpt-chat-latest, through Azure OpenAI in Microsoft Foundry, where it currently carries a preview label. It accepts text and image input and produces text output, and supports reasoning, function calling, structured outputs and tools such as web search, file search, image generation and a code interpreter, but not the computer-use tool. OpenAI's own documentation recommends GPT-6 Astra instead for production API usage.",
+    "advantages": [
+      "Supports reasoning together with function calling, structured outputs, web search, file search, image generation and a code interpreter tool (OpenAI chat-latest model page; Microsoft Foundry models page).",
+      "Azure's gpt-chat-latest snapshot (2026-08-06) lists training data current through February 2026 (Microsoft Foundry models page).",
+      "Offered on both OpenAI's own API and Azure OpenAI in Microsoft Foundry (OpenAI chat-latest model page; Microsoft Foundry models page)."
+    ],
+    "disadvantages": [
+      "OpenAI's own documentation recommends GPT-6 Astra rather than chat-latest for production API usage (OpenAI chat-latest model page).",
+      "Listed as a Preview model on Azure OpenAI in Microsoft Foundry, so it does not follow Azure's standard GA retirement lifecycle (Microsoft Foundry models page).",
+      "Does not support the computer-use tool (OpenAI chat-latest model page)."
+    ],
+    "use_cases": [
+      "General-purpose conversational chat matching ChatGPT's default Instant-tier behavior",
+      "Tool-using agents that need function calling, web search or file search",
+      "Combined image-and-text tasks using vision input",
+      "Coding assistance via the code interpreter tool"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/chat-latest",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/chat-latest",
+      "title": "Chat Latest Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "Azure hosts this model as gpt-chat-latest (preview) while OpenAI's own API uses the unversioned alias chat-latest; both point to the same rolling Instant-tier snapshot, matching this target's grouping of azure/chat-latest and openai/chat-latest. The catalog's max_input_tokens [272000, 400000] and max_output_tokens [128000] match the newest Azure snapshot (400,000 context = 272,000 input + 128,000 output) and OpenAI's own page. Confirmed the catalog's 2026-12-02 deprecation_date against Azure's Model retirement schedule, which lists gpt-chat-latest (2026-08-06, Preview) with a 2026-12-02 retirement date."
+}

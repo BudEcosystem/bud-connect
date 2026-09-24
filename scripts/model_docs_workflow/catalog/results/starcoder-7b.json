@@ -1,0 +1,62 @@
+{
+  "slug": "starcoder-7b",
+  "canonical": "starcoder-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "BigCode",
+  "details": {
+    "description": "StarCoderBase-7B is a 7-billion-parameter code-generation model from the BigCode project, trained on over 80 programming languages from The Stack (v1.2) using a GPT-2-style architecture with multi-query attention and a fill-in-the-middle objective over roughly 1 trillion tokens. Like the larger StarCoder models, it is a base model rather than an instruction-tuned assistant. BigCode's current model listing presents the newer StarCoder2 family as its successor generation.",
+    "advantages": [
+      "Scores 28.37% pass@1 on HumanEval, per the model card.",
+      "Supports an 8,192-token context window and fill-in-the-middle completion, trained on over 80 programming languages, per the model card."
+    ],
+    "disadvantages": [
+      "Superseded by the StarCoder2 family, which BigCode's model listing presents as its current generation of code models.",
+      "Not an instruction-following model; the model card says it works better as a technical assistant with appropriate prompting than with direct commands.",
+      "The model card warns it 'can generate source code verbatim from the dataset' and that generated code is not guaranteed to work as intended."
+    ],
+    "use_cases": [
+      "Code completion and generation across 80+ programming languages",
+      "Fill-in-the-middle code infilling"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 28.37,
+        "source": "https://huggingface.co/bigcode/starcoderbase-7b"
+      },
+      {
+        "name": "MultiPL-E JavaScript pass@1",
+        "score": 27.35,
+        "source": "https://huggingface.co/bigcode/starcoderbase-7b"
+      },
+      {
+        "name": "MultiPL-E Java pass@1",
+        "score": 24.44,
+        "source": "https://huggingface.co/bigcode/starcoderbase-7b"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/bigcode/starcoderbase-7b",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/bigcode/starcoderbase-7b",
+      "title": "bigcode/starcoderbase-7b · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/bigcode",
+      "title": "BigCode · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/starcoder-7b",
+      "title": "starcoder-7b - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "This is BigCode's StarCoderBase-7B (bigcode/starcoderbase-7b on Hugging Face), matching the Fireworks host id 'starcoder-7b'."
+}

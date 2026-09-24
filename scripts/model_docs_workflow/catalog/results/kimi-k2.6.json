@@ -1,0 +1,43 @@
+{
+  "slug": "kimi-k2.6",
+  "canonical": "kimi-k2.6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi K2.6 is an open-source multimodal agentic model from Moonshot AI, built as a 1-trillion-parameter Mixture-of-Experts model with 32 billion activated parameters and a 256K-token context window. It accepts text, image and video input and offers both a thinking (extended reasoning) mode and a non-thinking (instant) mode, aimed at long-horizon coding, design tasks, autonomous agent execution, and coordinating multiple sub-agents.",
+    "advantages": [
+      "Scores 80.2% on SWE-bench Verified and 89.6% on LiveCodeBench (v6), per Moonshot AI's model card.",
+      "Scores 96.4% on AIME 2026 and 90.5% on GPQA-Diamond in thinking mode, per Moonshot AI's model card.",
+      "Can coordinate agent swarms of up to 300 sub-agents executing tasks together, per Moonshot AI's model card.",
+      "Supports image and video understanding via an integrated MoonViT vision encoder, per Moonshot AI's model card."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Long-horizon coding across multiple languages including Rust, Go and Python",
+      "Autonomous agent execution with web browsing, code interpretation and search tool integration",
+      "Multi-agent coordination for complex, long-running tasks",
+      "Visual understanding tasks such as chart and document analysis"
+    ],
+    "evaluations": [
+      {"name": "AIME 2026", "score": 96.4, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "GPQA-Diamond", "score": 90.5, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "HMMT 2026", "score": 92.7, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "SWE-bench Verified", "score": 80.2, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "SWE-bench Pro", "score": 58.6, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "LiveCodeBench (v6)", "score": 89.6, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "MMMU-Pro", "score": 79.4, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "MathVision", "score": 87.4, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2.6", "title": "moonshotai/Kimi-K2.6 · Hugging Face", "kind": "maker"},
+    {"url": "https://platform.kimi.ai/docs/models", "title": "Kimi Open Platform - Model List", "kind": "maker"},
+    {"url": "https://platform.kimi.ai/docs/pricing/chat", "title": "Kimi Open Platform - Chat Model Pricing", "kind": "maker"}
+  ],
+  "notes": "BrowseComp, DeepSearchQA and HLE-Full agentic scores and the V* vision score from the Hugging Face card are not accuracy-style leaderboard scores in the same sense as the others (some are F1 or tool-augmented composite scores), so they were left out of evaluations to stay conservative; they are documented on the same model card if wanted. Catalog facts list max_input_tokens and max_output_tokens both at 262144; Moonshot AI's own pages describe the context window as 256K tokens (262,144), which is consistent."
+}

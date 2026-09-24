@@ -1,0 +1,73 @@
+{
+  "slug": "gpt-5.2",
+  "canonical": "gpt-5.2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.2 is OpenAI's flagship GPT-5-series chat model, released December 11, 2025 in Instant, Thinking (standard and extended) and Pro modes alongside a coding-specialized GPT-5.2-Codex variant. OpenAI's launch announcement (reposted on its developer community forum) describes it as stronger on complex, multi-step tasks such as building spreadsheets and presentations, writing code, interpreting images and working with long documents, with the Thinking variant producing about 30% fewer factual errors than GPT-5.1 Thinking and 'nearly solving' the 4-needle MRCR long-context benchmark. It takes text and image input, produces text output, and offers five reasoning-effort levels (none, low, medium, high, xhigh) with a broad agentic tool set (function calling, web search, file search, code interpreter, hosted shell, MCP) via OpenAI's API. As of this research, OpenAI's own gpt-5.2 model-card page labels it a 'previous flagship model' and directs users to GPT-6 Astra, and the gpt-5.2-chat-latest API alias and the GPT-5.2-Codex coding variant have both already been formally retired by OpenAI in favor of newer models.",
+    "advantages": [
+      "OpenAI reports the Thinking variant produces about 30% fewer factual errors than GPT-5.1 Thinking (OpenAI GPT-5.2 announcement).",
+      "OpenAI states GPT-5.2 'nearly solves' the 4-needle MRCR long-context benchmark and clearly outperforms GPT-5.1 when analyzing very long documents (OpenAI GPT-5.2 announcement).",
+      "Scores 30 on the Artificial Analysis Intelligence Index (xhigh reasoning), above the comparable-model median of 25 (Artificial Analysis).",
+      "Supports five reasoning-effort levels (none, low, medium, high, xhigh) and a broad agentic tool set -- function calling, web search, file search, code interpreter, hosted shell and MCP -- via OpenAI's API (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's own gpt-5.2 model-card page labels it a 'previous flagship model' and directs users to GPT-6 Astra, as of this research date (OpenAI API docs).",
+      "OpenAI's deprecations page lists the gpt-5.2-chat-latest API alias's shutdown date as August 10, 2026 -- already past as of this research date -- with gpt-5.6-sol as the recommended replacement.",
+      "GitHub reports GPT-5.2 was deprecated across most GitHub Copilot experiences by June 5, 2026, with GPT-5.5 recommended instead (GPT-5.2 remained available only for Copilot code review).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "Building spreadsheets, presentations and other professional documents",
+      "Writing and reviewing code",
+      "Interpreting images",
+      "Analyzing very long documents in Thinking mode",
+      "Agentic tool-using tasks via function calling, web search, file search and MCP"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index (xhigh reasoning)",
+        "score": 30,
+        "source": "https://artificialanalysis.ai/models/gpt-5-2"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.2",
+      "title": "GPT-5.2 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://community.openai.com/t/gpt-5-2-is-rolling-out-right-now/1369052",
+      "title": "GPT 5.2 is rolling out right now! - OpenAI Developer Community",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://github.blog/changelog/2026-06-05-gpt-5-2-and-gpt-5-2-codex-deprecated/",
+      "title": "GPT-5.2 and GPT-5.2-Codex deprecated - GitHub Changelog",
+      "kind": "host"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/gpt-5-2",
+      "title": "GPT-5.2 (xhigh) - Intelligence, Performance & Price Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/GPT-5.2",
+      "title": "GPT-5.2 - Wikipedia",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (272,000) conflicts with OpenAI's own model-card page, which states a 400,000-token context window; kept the catalog's value per instructions. Catalog's modality list includes image_output, but OpenAI's model-card page states GPT-5.2's output modality is text only (image generation is available only as a callable tool, not a native output type) -- flagging rather than restating. No formal OpenAI shutdown date has been published yet for the bare 'gpt-5.2' API model id itself (only for the gpt-5.2-chat-latest alias, Aug 10 2026, and the gpt-5.2-codex variant, Jul 23 2026), so the catalog's 2027-06-08 deprecation_date isn't directly contradicted by a dated source, but GPT-5.2's own current model card already points users to GPT-6 Astra and GitHub/Artificial Analysis both already treat it as deprecated."
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "cogito-v1-preview-llama-8b",
+  "canonical": "cogito-v1-preview-llama-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deep Cogito",
+  "details": {
+    "description": "Cogito v1-preview-llama-8B is a hybrid-reasoning chat model from Deep Cogito, fine-tuned from Meta's Llama-3.1-8B base checkpoint and released April 8, 2025 as a preview. It uses Deep Cogito's Iterated Distillation and Amplification (IDA) training method, lets a user toggle between answering directly or self-reflecting before answering, and was trained in over 30 languages with tool-calling support. Deep Cogito has since released newer Cogito v2 Preview (July 2025) and Cogito v2.1 (November 2025) generations.",
+    "advantages": [
+      "Supports a toggleable hybrid-reasoning mode: it can answer directly like a standard chat model, or self-reflect before answering, per its model card.",
+      "Supports single, parallel, multiple and parallel-multiple tool/function calling in both standard and thinking modes, per its model card.",
+      "Trained in over 30 languages, per Deep Cogito's model card."
+    ],
+    "disadvantages": [
+      "Preview release (v1-preview); Deep Cogito has since released newer Cogito v2 Preview (July 2025) and Cogito v2.1 (November 2025) generations.",
+      "Not optimized for very long reasoning chains, per Deep Cogito, which designed the thinking mode for shorter self-reflection rather than extended chain-of-thought."
+    ],
+    "use_cases": [
+      "Agentic applications requiring tool or function calling, in either standard or extended-thinking mode.",
+      "Multilingual chat and instruction-following tasks across 30+ languages.",
+      "Coding and STEM tasks, per Deep Cogito's positioning of the Cogito family.",
+      "Tasks where a user wants to toggle between fast direct answers and slower self-reflective reasoning."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepcogito/cogito-v1-preview-llama-8B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepcogito/cogito-v1-preview-llama-8B",
+      "title": "deepcogito/cogito-v1-preview-llama-8B",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.deepcogito.com/research/cogito-v1-preview",
+      "title": "Cogito v1 Preview - Deep Cogito Research",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.deepcogito.com/research",
+      "title": "Research - Deep Cogito",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/cogito-v1-preview-llama-8b",
+      "title": "Cogito v1 Preview Llama 8B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list max tokens as 131072 (~128K), matching the model card's 128k context window, so kept as-is. No numeric benchmark scores were legible from Deep Cogito's benchmark chart images (only image comparisons against Llama/Qwen/DeepSeek R1 are shown), so evaluations is left empty rather than guessed. Checked Deep Cogito's research index, its HF org page and the v2-preview announcement: v2 Preview (July 2025) and v2.1 (November 2025) were released later, but no page calls v1-preview deprecated or superseded, and the v1-preview models remain listed without any such notice, so the description now just states the later releases exist rather than asserting supersession."
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "deepseek-coder-33b-instruct",
+  "canonical": "deepseek-coder-33b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-Coder-33B-Instruct is DeepSeek AI's instruction-tuned 33-billion-parameter code model, created by fine-tuning DeepSeek-Coder-Base 33B on 2 billion tokens of instruction data. It belongs to DeepSeek's original DeepSeek-Coder series (released November 2023, with a technical report following in January 2024), trained from scratch on 2 trillion tokens (87% code, 13% natural language in English and Chinese) with a 16K-token context window and support for 87 programming languages. DeepSeek's current API pricing page no longer lists any DeepSeek-Coder v1 model, so it is available only as open weights on Hugging Face or through third-party hosts.",
+    "advantages": [
+      "Scores 79.3% pass@1 on DeepSeek's multilingual HumanEval Python benchmark and averages 69.2% across eight languages (Python, C++, Java, PHP, TypeScript, C#, Bash, JavaScript), per DeepSeek's technical report.",
+      "Scores 70.0% pass@1 on the MBPP benchmark, per DeepSeek's technical report.",
+      "Was the only open-source model in DeepSeek's LeetCode Contest comparison to outperform GPT-3.5-Turbo, scoring 27.8% overall pass@1 (28.9% with chain-of-thought prompting) versus GPT-3.5-Turbo's 23.3%, per DeepSeek's technical report.",
+      "Trained on 87 programming languages and supports project-level (cross-file) code completion with a 16K-token context window, per DeepSeek's model card."
+    ],
+    "disadvantages": [
+      "DeepSeek's own current API pricing page no longer lists any DeepSeek-Coder v1 model; it is retired from DeepSeek's hosted platform and available only as open weights or via third-party hosts.",
+      "Still trails GPT-4-Turbo by a wide margin on DeepSeek's LeetCode Contest benchmark (28.9% vs. 41.8%, both with chain-of-thought prompting), per DeepSeek's technical report.",
+      "Natural-language training data covers only English and Chinese, per DeepSeek's model card."
+    ],
+    "use_cases": [
+      "Code generation and multi-turn coding chat assistance",
+      "Project-level (cross-file, repository-aware) code completion",
+      "Fill-in-the-middle code infilling",
+      "Program-aided math reasoning tasks"
+    ],
+    "evaluations": [
+      {"name": "HumanEval (Python)", "score": 79.3, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MBPP", "score": 70.0, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "LeetCode Contest (Overall)", "score": 27.8, "source": "https://arxiv.org/abs/2401.14196"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-instruct",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-instruct", "title": "deepseek-ai/deepseek-coder-33b-instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2401.14196", "title": "DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence", "kind": "maker"},
+    {"url": "https://github.com/deepseek-ai/DeepSeek-Coder", "title": "deepseek-ai/DeepSeek-Coder", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/deepseek-coder-33b-instruct", "title": "DeepSeek Coder 33B Instruct - Fireworks AI", "kind": "host"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"}
+  ],
+  "notes": "DeepSeek's current API pricing page (checked 2026-09-24) lists only deepseek-flash and deepseek-v4-pro; DeepSeek-Coder v1/v1.5/V2 are absent, so this model is described as retired from DeepSeek's own platform though the weights and third-party hosting (e.g. Fireworks) remain. The paper's DS-1000 benchmark table covers only Base models, not this Instruct variant, so it is omitted from evaluations. Catalog facts (16384-token context, /v1/chat/completions endpoint) match Fireworks' model page. Verify pass: corrected the release date - the arXiv technical report (2401.14196) is dated January 2024, but the model repo itself (huggingface.co/deepseek-ai/deepseek-coder-33b-instruct) was created 2023-11-01 and the GitHub repo 2023-10-20, so the series' actual release was November 2023, not January 2024. No source states a formal 'deprecated' status for DeepSeek-Coder v1 (checked the API docs changelog/updates pages too); the description's 'no longer lists' framing is accurate and was kept as-is."
+}

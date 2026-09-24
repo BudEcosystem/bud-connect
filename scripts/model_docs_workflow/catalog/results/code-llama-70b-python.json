@@ -1,0 +1,78 @@
+{
+  "slug": "code-llama-70b-python",
+  "canonical": "code-llama-70b-python",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Code Llama - Python 70B is the largest Python-specialized model in Meta's Code Llama family, further trained on Python code on top of the 70B base checkpoint. Meta fine-tuned it with sequences of up to 16k tokens; it does not support the up-to-100k-token long-context handling of some sibling variants, and it does not support infilling, instruction-following, or chat -- it is a raw completion model. Training ran between January 2023 and January 2024. Meta's Code Llama GitHub repository was archived (read-only) on July 1, 2025, and Code Llama is absent from Meta's current model documentation, which now centers on newer Llama releases.",
+    "advantages": [
+      "Scores 57.3% pass@1 on HumanEval and 65.6% pass@1 on MBPP, the strongest results among the Code Llama - Python sizes (Meta's Code Llama paper, Table 2).",
+      "Largest Code Llama Python model, at 70 billion parameters."
+    ],
+    "disadvantages": [
+      "Does not support infilling, instruction-following, or chat; Meta's model card lists only code completion for this variant.",
+      "Does not support the up-to-100k-token long context available for some other Code Llama variants.",
+      "Trained only on data collected through January 2024.",
+      "Meta's Code Llama GitHub repository was archived in July 2025 and the family is absent from Meta's current model documentation."
+    ],
+    "use_cases": [
+      "Python-specific code completion for large or complex codebases.",
+      "Base model for further fine-tuning on Python coding tasks."
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 57.3,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 65.6,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf",
+    "github_url": "https://github.com/meta-llama/codellama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf",
+      "title": "CodeLlama-70b-Python-hf",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf/raw/main/README.md",
+      "title": "CodeLlama-70b-Python-hf README",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+      "title": "Introducing Code Llama, an AI Tool for Coding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/codellama",
+      "title": "meta-llama/codellama (archived)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ar5iv.labs.arxiv.org/html/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code (HTML, Table 2)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/",
+      "title": "Model Cards and Prompt formats",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud's catalog gives a 4096-token input/output limit for this model, but Meta's model card says it was fine-tuned with sequences of up to 16k tokens (and does not support the up-to-100k long context of some Code Llama variants); kept the catalog's 4096 value per instructions. Bud also serves this as 'chat' kind, but Meta's card states this variant supports only code completion, not instructions or chat."
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "llama-v2-70b-chat",
+  "canonical": "llama-v2-70b-chat",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 2 70B Chat is Meta's largest dialogue-tuned model from the original Llama 2 family, trained between January and July 2023 and released July 18, 2023. It is fine-tuned from the Llama 2 70B pretrained checkpoint using supervised fine-tuning (SFT) and reinforcement learning from human feedback (RLHF), and uses Grouped-Query Attention (GQA) for inference efficiency at this size. Meta's own Llama 3 model card reports Llama 2 70B scoring well below Llama 3 70B Instruct on every benchmark it lists (e.g. MMLU 52.9 vs. 82.0), so this is an earlier, superseded generation within Meta's own lineup.",
+    "advantages": [
+      "Meta states Llama-2-Chat models 'outperform open-source chat models on most benchmarks' tested, per the model card.",
+      "Meta's model card reports this model scores 64.14% on TruthfulQA (percentage of generations that are both truthful and informative, higher is better) and 0.01% on the ToxiGen toxic-generation rate (lower is better).",
+      "Uses Grouped-Query Attention (GQA), which Meta's model card notes only the 70B size uses, for improved inference scalability versus the 7B/13B sizes.",
+      "Meta's Llama 3 model card, in a direct side-by-side comparison table, reports this model scoring 57.5 on GSM-8K (8-shot, CoT) and 25.6 on HumanEval (0-shot)."
+    ],
+    "disadvantages": [
+      "Meta's model card states Llama 2 is intended for commercial and research use in English only and was tested only in English.",
+      "Knowledge cutoff of September 2022 for pretraining data (some fine-tuning data extends to July 2023), per Meta's model card.",
+      "Meta's model card does not describe tool-calling, function-calling or vision support, unlike Meta's later Llama 3.1, 3.2 and 3.3 releases.",
+      "Superseded by Meta's Llama 3 family; Meta's Llama 3 model card reports this model scoring far below Llama 3 70B Instruct on every listed benchmark (e.g. MMLU 52.9 vs. 82.0, HumanEval 25.6 vs. 81.7)."
+    ],
+    "use_cases": [
+      "General-purpose assistant-like chat, per Meta's stated intended use for tuned Llama 2 models.",
+      "Commercial and research natural-language applications in English, per Meta's model card."
+    ],
+    "evaluations": [
+      {"name": "TruthfulQA (Llama-2-Chat)", "score": 64.14, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "MMLU (5-shot)", "score": 52.9, "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"},
+      {"name": "GPQA (0-shot)", "score": 21.0, "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"},
+      {"name": "HumanEval (0-shot)", "score": 25.6, "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"},
+      {"name": "GSM-8K (8-shot, CoT)", "score": 57.5, "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"},
+      {"name": "MATH (4-shot, CoT)", "score": 11.6, "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {"url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md", "title": "llama/MODEL_CARD.md at main", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md", "title": "llama3/MODEL_CARD.md at main", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/llama-v2-70b-chat", "title": "Llama 2 70B Chat - Fireworks AI", "kind": "host"},
+    {"url": "https://ai.meta.com/blog/llama-2/", "title": "Llama 2: open source, free for research and commercial use", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md", "title": "llama-models/models/llama3_1/MODEL_CARD.md at main", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct", "title": "meta-llama/Llama-3.2-11B-Vision-Instruct - Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Meta's Llama 2 model card documents a 4,096-token context window for all Llama 2 sizes; Bud's catalog lists 2,048 for this model's max_input_tokens and max_output_tokens, and Fireworks' own hosted page for this specific model also states 2.04k tokens of context (its 7B and 7B-chat pages state 4.09k), so the catalog value is kept and matches the host's actual deployment. MMLU/GPQA/HumanEval/GSM-8K/MATH scores for this exact chat model come from Meta's Llama 3 model card's side-by-side comparison table, not the Llama 2 card itself (which reports only TruthfulQA/Toxigen for Llama-2-Chat). Release date (July 18, 2023) is not stated on the Llama 2 model card itself; confirmed on Meta's launch blog post. The tool-calling/vision comparison to later releases is confirmed on the Llama 3.1 and Llama 3.2 model cards, not the Llama 2 or Llama 3 cards."
+}

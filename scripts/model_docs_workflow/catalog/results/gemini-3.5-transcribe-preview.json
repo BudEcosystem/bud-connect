@@ -1,0 +1,22 @@
+{
+  "slug": "gemini-3.5-transcribe-preview",
+  "canonical": "gemini-3.5-transcribe-preview",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "title": "Gemini API changelog | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Could not confirm a model with the exact id 'gemini-3.5-transcribe-preview'. Google's Gemini API models page and changelog document 'gemini-3.5-transcribe' (stable/GA, released August 26, 2026: non-streaming speech-to-text with utterance-based language detection, diarization and word timestamps) and 'gemini-3.5-transcribe-live' (streaming variant), and the changelog states these are the first dedicated speech-to-text models in the Gemini 3.5 generation with no earlier preview phase documented. Vertex AI doc URLs guessed for a '-preview' variant of this model returned 404, and web search for the exact id found nothing. Since I cannot confirm whether this catalog id is the same model as the GA 'gemini-3.5-transcribe', an earlier undocumented Vertex-only preview snapshot, or something else, I am not describing it rather than guess."
+}

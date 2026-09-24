@@ -1,0 +1,38 @@
+{
+  "slug": "real-time",
+  "canonical": "real-time",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Gladia",
+  "details": {
+    "description": "Gladia's real-time speech-to-text API, delivered over a WebSocket connection for live audio such as voice agents, meeting assistants and contact-center calls. A client first requests a session over REST, then streams audio to the returned WebSocket URL. It runs on Gladia's Solaria-1 model by default, covers 100+ languages with automatic language detection, and can switch the detected language mid-utterance instead of locking to the first language it hears.",
+    "advantages": [
+      "Gladia states it returns partial transcripts in under 103ms, with sub-300ms end-to-end latency.",
+      "Covers 100+ languages via ISO 639-1 codes with automatic language detection.",
+      "Detects a language switch mid-utterance automatically rather than locking to the first detected language.",
+      "Supports custom vocabulary, named entity recognition and word-level timestamps for domain-specific streaming use.",
+      "Gladia reports its default Solaria-1 model returns a 37.3% word error rate on the Switchboard conversational benchmark, which it states outperforms every other provider tested."
+    ],
+    "disadvantages": [
+      "Does not support speaker diarization on the live stream; Gladia's own guidance is to re-run the recording through its async API afterward for speaker labels.",
+      "Gladia's higher-accuracy Solaria-3 model is not available for real-time streaming; only Solaria-1 is used."
+    ],
+    "use_cases": [
+      "Live voice agents and conversational AI",
+      "Live captioning",
+      "Meeting assistants and meeting copilots, using bot providers such as Recall and Meeting BaaS to capture calls",
+      "Real-time contact-center transcription"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://www.gladia.io/product/real-time",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.gladia.io/product/real-time", "title": "Real-time speech-to-text - Gladia", "kind": "maker"},
+    {"url": "https://docs.gladia.io/api-reference/v2/live/init", "title": "Live transcription API reference - Gladia docs", "kind": "maker"},
+    {"url": "https://www.gladia.io/", "title": "Gladia - Speech-to-Text API", "kind": "maker"}
+  ],
+  "notes": "The catalog id 'real-time' names Gladia's live/streaming transcription product, not a specific 'model' value; the underlying default model is Solaria-1 per the live API docs, which also lists solaria-1 as the only option for the live 'model' parameter (solaria-3 is documented there as 'Async (pre-recorded) only'). The product/real-time page's Switchboard chart also shows a 33.9% WER bar for Solaria-3, but that figure is not used here since Solaria-3 cannot run in real time; the page's own text credits the real-time model, Solaria-1, with a 37.3% WER that it says beats every other provider, so that figure was added to advantages instead. No higher-is-better 0-100 benchmark was found, so evaluations is empty. The language count was corrected from 97+ to the 100+ the maker's page and nav both state, and the use-case list was corrected: Gladia's own integrations page names Recall and Meeting BaaS (not Zoom, Google Meet or Microsoft Teams by name) as its meeting-bot partners."
+}

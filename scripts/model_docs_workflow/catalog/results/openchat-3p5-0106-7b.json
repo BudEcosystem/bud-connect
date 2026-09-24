@@ -1,0 +1,36 @@
+{
+  "slug": "openchat-3p5-0106-7b",
+  "canonical": "openchat-3p5-0106-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenChat",
+  "details": {
+    "description": "OpenChat-3.5-0106 is a 7-billion-parameter chat model from the open-source OpenChat project, fine-tuned from Mistral-7B-v0.1 using C-RLFT (Conditioned Reinforcement Learning Fine-Tuning), a method its developers describe as inspired by offline reinforcement learning. Released in January 2024, it is the third release in the OpenChat 3.5 line, following OpenChat-3.5 and OpenChat-3.5-1210. It offers two chat modes: a default mode for coding and general tasks, and a separate mode tuned for mathematical reasoning.",
+    "advantages": [
+      "Scores 71.3% on HumanEval, per the OpenChat-3.5-0106 model card.",
+      "Scores 77.4% on GSM8K and 65.8% on MMLU, per the model card.",
+      "The model card's benchmark table shows a higher overall average score (64.5) than the earlier OpenChat-3.5-1210 (63.8) and OpenChat-3.5 (61.6) releases."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Coding assistance",
+      "General conversational chat",
+      "Mathematical reasoning via a dedicated math mode"
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 71.3, "source": "https://huggingface.co/openchat/openchat-3.5-0106"},
+      {"name": "GSM8K", "score": 77.4, "source": "https://huggingface.co/openchat/openchat-3.5-0106"},
+      {"name": "MMLU", "score": 65.8, "source": "https://huggingface.co/openchat/openchat-3.5-0106"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/openchat/openchat-3.5-0106",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/openchat/openchat-3.5-0106", "title": "openchat/openchat-3.5-0106 · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/openchat-3p5-0106-7b", "title": "OpenChat 3.5 0106 - Fireworks AI", "kind": "host"},
+    {"url": "https://github.com/imoneoi/openchat", "title": "imoneoi/openchat: OpenChat: Advancing Open-source Language Models with Mixed-Quality Data", "kind": "maker"}
+  ],
+  "notes": "Fireworks' page confirms fireworks/openchat-3p5-0106-7b maps to openchat/openchat-3.5-0106 and matches the catalog's 8192-token max_input/max_output. The model card does not state a supported-language list, so languages is left empty. Released January 2024. Correction: a newer OpenChat release does exist — OpenChat 3.6 (Llama-3 8B based, released 2024/05/22) — per the project's GitHub README, but that same README's 'currently supported models' list still includes openchat_3.5 -> openchat/openchat-3.5-0106, and nothing marks this model deprecated, legacy or superseded."
+}

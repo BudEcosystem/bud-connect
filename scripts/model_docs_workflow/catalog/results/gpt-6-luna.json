@@ -1,0 +1,45 @@
+{
+  "slug": "gpt-6-luna",
+  "canonical": "gpt-6-luna",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-6 Luna is OpenAI's fast, cost-efficient model in the GPT-6 family, released September 22, 2026 alongside GPT-6 Sol as the successor to GPT-5.6 Luna. AWS's Bedrock blog describes it as built for high-frequency, repeatable tasks such as extracting information from large document collections, summarizing incoming material, classifying inputs and answering focused questions. It takes text and image input and produces text output, with a knowledge cutoff of May 18, 2026 and reasoning effort adjustable per request from none up to max.",
+    "advantages": [
+      "Scores 37 on the Artificial Analysis Intelligence Index at max reasoning effort, well above the comparable-model median of 13.",
+      "AWS's Bedrock blog reports improved factual reliability and clearer result communication compared to its predecessor, GPT-5.6 Luna.",
+      "Supports reasoning effort adjustable per request, from none to max, to balance quality and responsiveness for each task.",
+      "Supports function calling, structured outputs, file search, web search, code interpreter, hosted shell, computer use and MCP tool use via the Responses API."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video.",
+      "Not compatible with Live sessions, Realtime, Assistants, fine-tuning, embeddings, or audio/video features.",
+      "Knowledge cutoff of May 18, 2026.",
+      "Artificial Analysis measured a time-to-first-token of about 109 seconds at max reasoning effort, well above the roughly 2-second median for comparable reasoning models.",
+      "AWS positions Luna below GPT-6 Sol in capability, intended for high-volume, repeatable tasks rather than the complex, multistep reasoning work Sol handles."
+    ],
+    "use_cases": [
+      "Extracting information from large document collections",
+      "Summarizing incoming material",
+      "Classifying and routing inputs",
+      "Answering focused, high-volume questions",
+      "Lightweight agentic tasks"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index (max reasoning effort)", "score": 37, "source": "https://artificialanalysis.ai/models/gpt-6-luna"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-6-luna", "title": "GPT-6 Luna Model | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-6-luna", "title": "GPT-6 Luna (max) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/bring-more-intelligence-to-everyday-work-with-gpt-6-sol-and-gpt-6-luna-on-amazon-bedrock/", "title": "Bring more intelligence to everyday work with GPT-6 Sol and GPT-6 Luna on Amazon Bedrock", "kind": "host"},
+    {"url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/", "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes | TechCrunch", "kind": "third_party"},
+    {"url": "https://github.blog/changelog/2026-09-22-openais-gpt-6-sol-and-gpt-6-luna-now-available/", "title": "OpenAI's GPT-6 Sol and GPT-6 Luna now available - GitHub Changelog", "kind": "third_party"}
+  ],
+  "notes": "Could not find or load an AWS Bedrock model-card page specifically for gpt-6-luna (the guessed URL 404s / redirects to the generic userguide index), so host-side description relies on the AWS machine-learning blog post instead, which is a valid host source. Catalog facts give max_input_tokens as [922000, 1050000], matching OpenAI's and Artificial Analysis's stated ~1,050,000-token context window, so no conflict to flag. TechCrunch's claim that OpenAI says Luna outperforms specific Anthropic models was left out as an unverifiable competitor comparison. Removed an unsupported claim that Luna takes on more complex software-engineering/computer-use work at higher reasoning effort: neither OpenAI's docs nor AWS's blog say this, and AWS's blog instead routes that kind of complex work to GPT-6 Sol/Astra, positioning Luna for classification and extraction regardless of effort level. Could not open OpenAI's own launch post (openai.com/index/introducing-gpt-6-sol-and-luna), which returned HTTP 403; relied on OpenAI's API docs subdomain, AWS's blog, TechCrunch and GitHub's changelog instead."
+}

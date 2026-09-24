@@ -1,0 +1,42 @@
+{
+  "slug": "nvidia-nemotron-nano-12b-v2",
+  "canonical": "nvidia-nemotron-nano-12b-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron Nano 12B v2 is a 12-billion-parameter unified reasoning and non-reasoning language model built by NVIDIA on a hybrid Mamba-2/Transformer architecture, combining mostly Mamba-2 and MLP layers with six attention layers. Released August 29, 2025, it can generate an internal reasoning trace before its final answer, toggled with a \"/think\" or \"/no_think\" system prompt and a configurable thinking-token budget. It was trained on 20 trillion tokens of public web, code, and academic text plus synthetic reasoning data distilled from DeepSeek-R1 and Qwen models, and is released under the NVIDIA Open Model License for commercial use.",
+    "advantages": [
+      "Scores 97.75% on MATH500 with reasoning enabled, per its model card.",
+      "Scores 76.25% on AIME25 with reasoning enabled, per its model card.",
+      "Scores 89.81% on IFEval instruction-following with reasoning enabled, per its model card.",
+      "Reasoning can be toggled on or off, and its thinking-token budget capped, to trade accuracy for latency."
+    ],
+    "disadvantages": [
+      "Its model card reports a slight accuracy decrease on harder tasks when reasoning is turned off.",
+      "Reasoning mode uses more tokens and adds latency versus non-reasoning mode, per its model card."
+    ],
+    "use_cases": [
+      "AI agent systems and chatbots",
+      "Retrieval-augmented generation (RAG)",
+      "Instruction-following tasks",
+      "Multi-step reasoning and math problem solving",
+      "Coding assistance"
+    ],
+    "evaluations": [
+      {"name": "AIME25", "score": 76.25, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2"},
+      {"name": "MATH500", "score": 97.75, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2"},
+      {"name": "GPQA", "score": 64.48, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2"},
+      {"name": "BFCL v3", "score": 66.98, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2"},
+      {"name": "IFEval-Instruction", "score": 89.81, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2"}
+    ],
+    "languages": ["English", "German", "Spanish", "French", "Italian", "Japanese"],
+    "website_url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2", "title": "nvidia/NVIDIA-Nemotron-Nano-12B-v2", "kind": "third_party"}
+  ],
+  "notes": "Attempts to reach build.nvidia.com and an NVIDIA developer-blog page for this model both 404'd, so only the Hugging Face model card (published by NVIDIA's own org account) was used. Could not confirm whether a newer Nemotron Nano version has superseded this one as of the research date."
+}

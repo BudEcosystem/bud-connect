@@ -1,0 +1,37 @@
+{
+  "slug": "qwen2p5-coder-0p5b-instruct",
+  "canonical": "qwen2p5-coder-0p5b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba Cloud (Qwen)",
+  "details": {
+    "description": "Qwen2.5-Coder-0.5B-Instruct is the smallest, instruction-tuned size (0.49B parameters) in Alibaba Cloud's Qwen2.5-Coder family of code-focused language models, released November 12, 2024. It is built on the Qwen2.5-Coder-0.5B base checkpoint, which was pretrained on 5.5 trillion tokens of source code, text-code grounding, and synthetic data, and is post-trained for code generation, code reasoning, and code fixing while also retaining general math and reasoning ability. Alibaba's Qwen GitHub organization has since retitled its coder repository for the newer Qwen3-Coder family, though this model's weights remain published on Hugging Face with no explicit deprecation notice on the model card itself.",
+    "advantages": [
+      "Instruction-tuned for code generation, code reasoning, and code fixing, built on a base pretrained with 5.5 trillion tokens of source code, text-code grounding, and synthetic data, per the model card.",
+      "Part of a family the maker says supports more than 40 programming languages, per the Qwen2.5-Coder blog.",
+      "Small footprint (0.49B parameters), suited to lightweight or resource-constrained deployment relative to larger Qwen2.5-Coder sizes."
+    ],
+    "disadvantages": [
+      "Text-only model with no image, audio, or video input support.",
+      "As the smallest model in the Qwen2.5-Coder family, it is expected to trail the larger 7B/14B/32B sizes on coding benchmarks, though the model card gives no benchmark numbers specific to this size, only chart comparisons across the family."
+    ],
+    "use_cases": [
+      "Code generation and code completion",
+      "Code reasoning and code fixing/debugging",
+      "Lightweight coding assistant for resource-constrained environments",
+      "Code agent applications"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct", "title": "Qwen/Qwen2.5-Coder-0.5B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct/raw/main/README.md", "title": "Qwen2.5-Coder-0.5B-Instruct model card (raw README)", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5-Coder", "title": "QwenLM/Qwen2.5-Coder (GitHub org repo, now retitled Qwen3-Coder)", "kind": "maker"}
+  ],
+  "notes": "No exact benchmark numbers for the 0.5B-Instruct size were found in text form; the family blog post presents comparisons only as chart images, which this agent could not read, so evaluations is left empty rather than guessed. Context length (32,768) matches the catalog facts with no conflict. github.com/QwenLM/Qwen2.5-Coder now displays Qwen3-Coder content, used only as evidence Alibaba's primary coder repo has moved to Qwen3-Coder; github_url is left null since there is no dedicated current repo for this exact model. No language list is published for this model (code-focused, English documentation), so languages is left empty."
+}

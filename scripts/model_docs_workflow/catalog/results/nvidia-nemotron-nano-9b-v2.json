@@ -1,0 +1,43 @@
+{
+  "slug": "nvidia-nemotron-nano-9b-v2",
+  "canonical": "nvidia-nemotron-nano-9b-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron Nano 9B v2 is a 9-billion-parameter language model that NVIDIA released on August 18, 2025, built on a hybrid architecture combining primarily Mamba-2 and MLP layers with just four attention layers. It is designed as a unified model for both reasoning and non-reasoning chat: adding \"/think\" to the system prompt turns on step-by-step reasoning traces, and \"/no_think\" turns them off. NVIDIA's technical report also describes a reasoning-budget control that lets developers cap how many tokens the model spends on its internal reasoning. It supports a 128K-token context window and native, JSON-formatted tool/function calling.",
+    "advantages": [
+      "Scores 97.8% on MATH500 and 72.1% on AIME25 with reasoning enabled, per NVIDIA's model card.",
+      "Scores 90.3% on IFEval (instruction-strict), per NVIDIA's model card.",
+      "Reaches 78.9% on the RULER long-context benchmark at 128K tokens, per NVIDIA's model card.",
+      "Supports a reasoning-budget control that lets developers cap how many tokens the model spends on its internal reasoning trace, per NVIDIA's technical report.",
+      "Supports native tool calling with JSON-formatted function-call output."
+    ],
+    "disadvantages": [
+      "The benchmark scores NVIDIA reports (e.g. 72.1% on AIME25, 97.8% on MATH500) are measured with reasoning mode turned on; non-reasoning-mode scores are not given on the model card."
+    ],
+    "use_cases": [
+      "General-purpose reasoning and chat with a controllable reasoning/non-reasoning mode",
+      "Building AI agent systems",
+      "Chatbots",
+      "Retrieval-augmented generation (RAG) systems"
+    ],
+    "evaluations": [
+      {"name": "AIME25 (reasoning on)", "score": 72.1, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"},
+      {"name": "MATH500 (reasoning on)", "score": 97.8, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"},
+      {"name": "GPQA (reasoning on)", "score": 64.0, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"},
+      {"name": "IFEval instruction-strict (reasoning on)", "score": 90.3, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"},
+      {"name": "RULER 128K (reasoning off)", "score": 78.9, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"}
+    ],
+    "languages": ["English", "German", "Spanish", "French", "Italian", "Japanese", "Korean", "Portuguese", "Russian", "Chinese"],
+    "website_url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2", "title": "nvidia/NVIDIA-Nemotron-Nano-9B-v2 · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/nvidia-nemotron-nano-9b-v2", "title": "NVIDIA Nemotron Nano 9B v2 - Fireworks AI", "kind": "host"},
+    {"url": "https://build.nvidia.com/nvidia/nvidia-nemotron-nano-9b-v2", "title": "nvidia-nemotron-nano-9b-v2 Model by Nvidia | NVIDIA NIM", "kind": "maker"}
+  ],
+  "notes": "NVIDIA's model card names English, German, Spanish, French, Italian and Japanese as the primary supported languages in its Overview and Use Case sections, but its Input properties section separately lists Korean, Portuguese, Russian and Chinese as 'Supported languages' too; all ten are listed here since the card names all of them as supported somewhere. The RULER 128K score was evaluated in Reasoning-Off mode per the model card's own note (\"except RULER, which is evaluated in Reasoning-Off mode\"); the evaluation entry has been corrected from '(reasoning on)' to '(reasoning off)'. The catalog's 131072-token max_input/max_output and text-only modality match the model card's 128K context and text-only (no image input) description. Checked build.nvidia.com's current listing in addition to the Hugging Face card; found no newer-version or retirement notice for this model."
+}

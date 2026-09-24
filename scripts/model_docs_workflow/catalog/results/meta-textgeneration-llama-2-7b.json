@@ -1,0 +1,45 @@
+{
+  "slug": "meta-textgeneration-llama-2-7b",
+  "canonical": "meta-textgeneration-llama-2-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 2 7B is Meta's 7-billion-parameter pretrained (base) large language model, part of the Llama 2 family released in July 2023 alongside 13B and 70B sizes. It is an auto-regressive transformer trained on 2 trillion tokens of publicly available data with a September 2022 data cutoff, intended for commercial and research natural language generation in English rather than for chat out of the box. On Amazon SageMaker JumpStart it is offered under the model id \"meta-textgeneration-llama-2-7b\" as the plain text-completion variant, distinct from the dialogue-tuned \"meta-textgeneration-llama-2-7b-f\" model.",
+    "advantages": [
+      "Pretrained on 2 trillion tokens of publicly available data with an optimized auto-regressive transformer architecture, per Meta's official model card.",
+      "Scores 45.3 on MMLU and an aggregate 63.9 on commonsense-reasoning benchmarks (PIQA, SIQA, HellaSwag, WinoGrande, ARC, OpenBookQA, CommonsenseQA), per Meta's model card.",
+      "Openly released with downloadable weights for both commercial and research use in English, under Meta's custom Llama 2 license."
+    ],
+    "disadvantages": [
+      "4,096-token context window, per Meta's model card, below more recent Llama generations.",
+      "Pretraining data has a cutoff of September 2022, per Meta's model card.",
+      "Base pretrained model only, not fine-tuned for dialogue; Meta's card lists 'assistant-like chat' as the intended use of the separate tuned (chat) variant instead.",
+      "Testing was conducted only in English; Meta's model card lists use in other languages as out-of-scope."
+    ],
+    "use_cases": [
+      "General natural language text generation and completion in English.",
+      "Adapting or fine-tuning for downstream NLG applications, per Meta's model card ('pretrained models can be adapted for a variety of natural language generation tasks').",
+      "Deployable via Amazon SageMaker JumpStart as a text-completion model, per AWS's SageMaker JumpStart documentation."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 45.3, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Code (HumanEval/MBPP avg pass@1)", "score": 16.8, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Commonsense Reasoning (avg)", "score": 63.9, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "World Knowledge (avg)", "score": 48.9, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "Reading Comprehension (avg)", "score": 61.3, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"},
+      {"name": "TruthfulQA (% truthful and informative)", "score": 33.29, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-2-7b-hf",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {"url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md", "title": "llama/MODEL_CARD.md at main · meta-llama/llama", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-2-7b-hf", "title": "meta-llama/Llama-2-7b-hf · Hugging Face", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/llama-2-foundation-models-from-meta-are-now-available-in-amazon-sagemaker-jumpstart/", "title": "Llama 2 foundation models from Meta are now available in Amazon SageMaker JumpStart", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-choose.html", "title": "Model sources and license agreements - Amazon SageMaker AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts (4096 max input tokens, 4096 max output tokens, /v1/completions endpoint) match this base (non-chat) variant's single 4,096-token context window described on Meta's model card. The huggingface.co/meta-llama/Llama-2-7b-hf model card is gated (requires an accepted license to view raw text), so its content was read via a page fetch rather than the raw file; the same model-card text (including the evaluation table) was cross-checked against Meta's public, ungated GitHub MODEL_CARD.md, which matches. No current Meta or AWS page marks this specific model deprecated or legacy, though it predates Meta's Llama 3/3.1/3.2/3.3/4 releases already in this catalog; I did not find an explicit superseded/deprecation statement to cite, so none is claimed in the description."
+}

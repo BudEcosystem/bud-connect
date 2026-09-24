@@ -1,0 +1,70 @@
+{
+  "slug": "qwen3-embedding-8b",
+  "canonical": "qwen3-embedding-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Embedding-8B is the largest model in Alibaba's Qwen3 Embedding series, a text embedding model built on the Qwen3-8B-Base foundation with 36 transformer layers and roughly 8 billion parameters. It produces embeddings for retrieval, classification, clustering, and bitext mining, supports instruction-aware queries, and uses Matryoshka Representation Learning so output vectors can be truncated to smaller dimensions. Qwen's Qwen3 Embedding launch blog states this model ranked first on the MTEB multilingual leaderboard as of June 5, 2025, and Qwen states it supports over 100 languages including programming languages. It is released under the Apache 2.0 license.",
+    "advantages": [
+      "Scored 70.58 on the MTEB Multilingual leaderboard, ranking first as of June 5, 2025, per Qwen's Qwen3 Embedding launch blog.",
+      "Scores 75.22 on MTEB English v2 and 73.84 on C-MTEB (Chinese), per its Hugging Face model card.",
+      "Supports Matryoshka Representation Learning, allowing the 4,096-dimension output to be truncated down to 32 dimensions, per its Hugging Face model card.",
+      "Instruction-aware: supports user-defined instructions to improve accuracy for specific tasks, languages, or scenarios, per Qwen's launch blog."
+    ],
+    "disadvantages": [
+      "Largest and most resource-intensive model in the series; its Hugging Face model card recommends Flash Attention 2 for efficient inference."
+    ],
+    "use_cases": [
+      "Text retrieval and semantic search",
+      "Code retrieval",
+      "Text classification",
+      "Text clustering",
+      "Bitext mining / cross-lingual text matching"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB Multilingual",
+        "score": 70.58,
+        "source": "https://qwenlm.github.io/blog/qwen3-embedding/"
+      },
+      {
+        "name": "MTEB English v2",
+        "score": 75.22,
+        "source": "https://huggingface.co/Qwen/Qwen3-Embedding-8B"
+      },
+      {
+        "name": "C-MTEB (Chinese)",
+        "score": 73.84,
+        "source": "https://huggingface.co/Qwen/Qwen3-Embedding-8B"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+    "github_url": "https://github.com/QwenLM/Qwen3-Embedding"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "title": "Qwen/Qwen3-Embedding-8B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3-embedding/",
+      "title": "Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Embedding",
+      "title": "QwenLM/Qwen3-Embedding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-embedding-8b",
+      "title": "Qwen3 Embedding 8B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only a language count ('over 100 languages') is given, not a list, so languages is left empty per the brief and the count is in the description instead. Context-length conflict: Qwen's own model card, the Qwen3 Embedding launch blog, and the GitHub README all state a 32K-token context for this model. Fireworks' hosted page is internally inconsistent: its spec box lists 'Context Length: 40.9k tokens' (matching the catalog's 40,960 max_input/max_output facts), while its own FAQ states 'The model supports a context length of 32,000 tokens' and 'The full 32K token context length is usable as supported by the model architecture.' Kept the catalog's figure per instructions; flagging this disagreement for review. No source found declaring this model deprecated or superseded within the Qwen3 Embedding line."
+}

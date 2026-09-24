@@ -1,0 +1,42 @@
+{
+  "slug": "claude-opus-4-6",
+  "canonical": "claude-opus-4-6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4.6 is Anthropic's Opus-class flagship, launched February 5, 2026 as an upgrade to Opus 4.5 with more careful task planning, longer-sustained agentic work, and more reliable operation in large codebases. It is Anthropic's first Opus-class model with a 1-million-token context window (beta) and supports 128,000 max output tokens, adaptive thinking, and four effort levels (low, medium, high, max). It remains an active model as of September 2026, though Anthropic has since released Opus 4.7, 4.8, Opus 5, and Opus 5.5.",
+    "advantages": [
+      "Scores 81.42% on SWE-bench Verified, Anthropic's software-engineering benchmark, with a prompt modification, averaged over 25 trials (Anthropic launch post).",
+      "Scores 53.0% on Humanity's Last Exam when run with tools such as web search, web fetch, and code execution (Anthropic launch post).",
+      "Anthropic states it achieves the highest score on the agentic-coding benchmark Terminal-Bench 2.0 (Anthropic launch post).",
+      "First Opus-class Claude model with a 1-million-token context window, offered in beta (Anthropic launch post).",
+      "Supports four effort levels (low, medium, high, max) so users can trade off reasoning depth against latency (Anthropic launch post)."
+    ],
+    "disadvantages": [
+      "The 1-million-token context window and 128K output tokens are offered in beta, with premium pricing above 200K tokens of prompt (Microsoft Foundry blog).",
+      "Superseded within Anthropic's own Opus line by Opus 4.7, 4.8, Opus 5 and Opus 5.5, all released within eight months of Opus 4.6's launch (Anthropic model deprecations page)."
+    ],
+    "use_cases": [
+      "Long-running agentic coding, including refactoring and debugging across large codebases",
+      "Complex search and research tasks combining web search, web fetch, and code execution",
+      "Computer-use automation for visual navigation and multi-step tasks",
+      "Enterprise knowledge work such as financial and regulatory analysis",
+      "Multi-agent 'Agent Teams' workflows"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 81.42, "source": "https://www.anthropic.com/news/claude-opus-4-6"},
+      {"name": "Humanity's Last Exam", "score": 53.0, "source": "https://www.anthropic.com/news/claude-opus-4-6"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-opus-4-6",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-opus-4-6", "title": "Introducing Claude Opus 4.6", "kind": "maker"},
+    {"url": "https://azure.microsoft.com/en-us/blog/claude-opus-4-6-anthropics-powerful-model-for-coding-agents-and-enterprise-workflows-is-now-available-in-microsoft-foundry-on-azure/", "title": "Claude Opus 4.6 now available in Microsoft Foundry on Azure", "kind": "host"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1M max input tokens, 128K max output tokens, deprecation_date 2027-02-05, anthropic/bedrock/vertex_ai-anthropic_models providers) match Anthropic's model-deprecations table entry for claude-opus-4-6 (Active, tentative retirement not sooner than February 5, 2027). The system-card PDF was too large to fetch directly. The launch post states SWE-bench Verified as 81.42% but explicitly qualifies it as measured 'with a prompt modification' over 25 trials -- that qualifier is preserved in the advantages text. Humanity's Last Exam was revised on the same page from 53.1% to 53.0% per an editor's footnote dated Feb 23, 2026; the revised figure is used here."
+}

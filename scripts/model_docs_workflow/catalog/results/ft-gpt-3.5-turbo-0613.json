@@ -1,0 +1,55 @@
+{
+  "slug": "ft-gpt-3.5-turbo-0613",
+  "canonical": "ft:gpt-3.5-turbo-0613",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "ft:gpt-3.5-turbo-0613 is OpenAI's fine-tuning offering built on the gpt-3.5-turbo-0613 snapshot from June 13, 2023, the first GPT-3.5 Turbo version OpenAI opened to custom fine-tuning (announced August 22, 2023). Rather than a chat endpoint to call directly, it is the base model developers train on their own data to produce a custom ft:-prefixed model. OpenAI's direct chat-completions access to the bare gpt-3.5-turbo-0613 snapshot was already shut down September 13, 2024, and Azure retired its equivalent gpt-35-turbo (0613) deployment on February 13, 2025. OpenAI's fine-tuning platform is now winding down for new users, and fine-tuned models built on this snapshot are scheduled to stop working October 23, 2026.",
+    "advantages": [
+      "OpenAI's August 2023 launch announcement reported that early tests showed a fine-tuned GPT-3.5 Turbo could match, or even outperform, base GPT-4-level capabilities on certain narrow tasks.",
+      "OpenAI documented fine-tuning gains in steerability (e.g. reliably responding in a specified language), structured output formatting such as JSON, and matching a custom brand tone.",
+      "OpenAI reported that early fine-tuning testers reduced prompt size by up to 90% by baking repeated instructions into the model itself, speeding up each API call."
+    ],
+    "disadvantages": [
+      "Direct chat-completions access to the underlying gpt-3.5-turbo-0613 snapshot was discontinued September 13, 2024, and Azure retired its equivalent deployment on February 13, 2025.",
+      "No longer offered as a base model for new fine-tuning jobs; OpenAI's current fine-tuning guide lists only the GPT-4.1 family, GPT-4o (vision) and o4-mini (reinforcement) as supported bases.",
+      "OpenAI's deprecations page schedules fine-tuned models built on this snapshot to stop working October 23, 2026, as the fine-tuning platform winds down.",
+      "4,096-token context window, well below later GPT-3.5 Turbo and GPT-4-class fine-tuning bases."
+    ],
+    "use_cases": [
+      "Fine-tuning for improved instruction-following and steerability, e.g. enforcing a specific response language",
+      "Fine-tuning for reliable structured output such as JSON, XML or YAML generation",
+      "Fine-tuning to match a custom brand tone or voice",
+      "Shortening prompts by baking repeated instructions into the fine-tuned model itself"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/guides/model-optimization",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/model-optimization",
+      "title": "Model optimization - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "http://web.archive.org/web/20260429183751/https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/",
+      "title": "GPT-3.5 Turbo fine-tuning and API updates",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+      "title": "Retired Microsoft Foundry Models - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "The catalog's deprecation_date (2026-10-23) matches OpenAI's deprecations page entry for the fine-tuned 'ft-gpt-3.5-turbo' snapshot group (covers both -0613 and -1106), not the earlier 2024-09-13 shutdown of direct chat-completions access to the bare 0613 snapshot; both are mentioned for clarity. openai.com blog pages return 403 to a direct fetch, so the August 2023 fine-tuning announcement was read via its Wayback Machine mirror instead."
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "qwen-v2p5-14b-instruct",
+  "canonical": "qwen-v2p5-14b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-14B-Instruct is an instruction-tuned chat model in Alibaba Cloud's Qwen2.5 series, released September 19, 2024, with about 14.7 billion parameters (13.1 billion non-embedding) across 48 transformer layers. Qwen's model card reports improved knowledge and stronger coding and mathematics ability compared to the prior Qwen2 generation, more robust instruction following, and the ability to generate long text and structured outputs such as JSON. It supports over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, and Arabic, and is released under the Apache 2.0 license.",
+    "advantages": [
+      "Qwen's model card reports improved knowledge and stronger coding and mathematics ability compared to the prior Qwen2 generation.",
+      "Understands structured data such as tables and can generate structured outputs, especially JSON, per Qwen's model card.",
+      "Supports over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, and Arabic, per Qwen's model card.",
+      "Released under the Apache 2.0 license, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "No benchmark table for this specific 14B checkpoint is published on Qwen's Hugging Face model card or launch blog, only qualitative comparisons against the prior generation.",
+      "Superseded within Qwen's own lineup by the newer Qwen3 and Qwen3.8 model generations."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction following",
+      "Coding and mathematical reasoning tasks",
+      "Long-form text generation",
+      "Structured data understanding and JSON-formatted output generation",
+      "Multilingual conversational tasks across supported languages"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-14B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-14B-Instruct",
+      "title": "Qwen/Qwen2.5-14B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2.5/",
+      "title": "Qwen2.5: A Party of Foundation Models!",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen-v2p5-14b-instruct",
+      "title": "Qwen2.5 14B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts cap this deployment at 32,768 input/output tokens; Qwen's own model card states a native 131,072-token context with generation up to 8K tokens, and Fireworks' page for this exact deployment lists a 32.7k-token context, matching the catalog value, so no conflict noted beyond keeping the catalog figures as authoritative. No benchmark table for the 14B checkpoint specifically was found on any maker page opened (the blog's benchmark charts are images, not extractable text), so evaluations is left empty rather than guessed. github.com/QwenLM/Qwen2.5 now redirects to the unrelated QwenLM/Qwen3 repository, so github_url is null. No maker page found declaring this model formally deprecated; 'superseded' reflects that Qwen's own current org and docs pages feature Qwen3/Qwen3.8 and no longer list Qwen2.5 models."
+}

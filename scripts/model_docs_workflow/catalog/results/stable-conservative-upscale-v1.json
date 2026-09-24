@@ -1,0 +1,30 @@
+{
+  "slug": "stable-conservative-upscale-v1",
+  "canonical": "stable-conservative-upscale-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Conservative Upscale is one of Stability AI's Stable Image Services, offered through Amazon Bedrock as stability.stable-conservative-upscale-v1:0. It takes an input image between 64x64 pixels and 1 megapixel and enlarges it to 4K resolution, an upscale of 20 to 40 times. Per AWS's documentation, it 'minimizes alterations to the image and should not be used to reimagine an image,' keeping the upscaled result close to the original rather than adding new content. It takes an image and a required text prompt, with optional negative prompt, creativity, seed, and output format parameters.",
+    "advantages": [
+      "Minimizes alterations to the source image rather than reimagining it, per AWS's documentation of Stability AI Image Services.",
+      "Can upscale an image 20 to 40 times to 4K resolution, per AWS's documentation."
+    ],
+    "disadvantages": [
+      "Input images must have an aspect ratio between 1:2.5 and 2.5:1 and a total pixel count up to 9,437,184 pixels, per AWS's documentation, which limits which source images qualify."
+    ],
+    "use_cases": [
+      "Enlarging existing photos or artwork to 4K resolution while keeping the original composition and detail intact.",
+      "Upscaling images for print or display where fidelity to the source image matters more than added detail."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html", "title": "Stability AI Image Services", "kind": "host"}
+  ],
+  "notes": "Stability AI's own developer docs (platform.stability.ai) are a JavaScript application that returned no readable content when fetched, so this write-up relies on AWS Bedrock's host documentation, which describes the same service and parameters in detail. website_url was left null because no maker page could be opened."
+}

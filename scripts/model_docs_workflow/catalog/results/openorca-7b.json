@@ -1,0 +1,38 @@
+{
+  "slug": "openorca-7b",
+  "canonical": "openorca-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Open-Orca",
+  "details": {
+    "description": "Mistral-7B-OpenOrca is a 7-billion-parameter chat model fine-tuned by Open-Orca from Mistral 7B on a curated, filtered subset of the OpenOrca dataset, which reproduces the augmented instruction data described in Microsoft Research's Orca paper. Training used the Axolotl framework with OpenChat-style sequence packing. The model card reports it reaching 106% of the base Mistral-7B model's average performance on the Hugging Face Open LLM Leaderboard and ranking first among openly available models under 30B parameters at its release. It is licensed under Apache 2.0.",
+    "advantages": [
+      "Scores 65.84 average on the Hugging Face Open LLM Leaderboard (MMLU, ARC, HellaSwag, TruthfulQA), per the model card.",
+      "The model card reports reaching 106% of the base Mistral-7B model's Open LLM Leaderboard average, and ranking first among openly available models under 30B parameters at release.",
+      "Scores 83.99% on HellaSwag (10-shot), per the model card."
+    ],
+    "disadvantages": [
+      "The model card lists English as the only supported language."
+    ],
+    "use_cases": [
+      "General conversational chat",
+      "Text generation deployable on moderate consumer GPUs"
+    ],
+    "evaluations": [
+      {"name": "MMLU (5-shot)", "score": 62.24, "source": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca"},
+      {"name": "ARC (25-shot)", "score": 64.08, "source": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca"},
+      {"name": "HellaSwag (10-shot)", "score": 83.99, "source": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca"},
+      {"name": "TruthfulQA (0-shot)", "score": 53.05, "source": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca"},
+      {"name": "HF Open LLM Leaderboard average", "score": 65.84, "source": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca", "title": "Open-Orca/Mistral-7B-OpenOrca · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/openorca-7b", "title": "Mistral 7B OpenOrca - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Fireworks' page confirms fireworks/openorca-7b maps to Open-Orca/Mistral-7B-OpenOrca and matches the catalog's 32768-token max_input/max_output (Fireworks states 32.7k). No mention on the model card of this model being superseded or deprecated."
+}

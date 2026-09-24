@@ -1,0 +1,45 @@
+{
+  "slug": "ternary-bonsai-27b",
+  "canonical": "ternary-bonsai-27b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "PrismML",
+  "details": {
+    "description": "Ternary Bonsai 27B is PrismML's ternary (three-value, ~1.71-bit-per-weight) quantization of Alibaba's Qwen3.6-27B, compressing the model roughly 9.4x versus its FP16 baseline. PrismML's own benchmark table reports it retains about 95% of full-precision quality, an 80.49 average across 15 thinking-mode benchmarks versus an 85.07 FP16 baseline. The compression runs end-to-end across embeddings, attention and MLP projections, and the LM head, leaving the base model's hybrid-attention architecture and 262,144-token context window unchanged, and PrismML releases it under the Apache 2.0 license. It is offered free through Together AI's serverless API.",
+    "advantages": [
+      "PrismML reports the model retains about 95% of the FP16 baseline's quality (80.49 vs. 85.07 average across 15 thinking-mode benchmarks) at roughly 1.71 bits per weight, about 9.4x smaller than FP16, per PrismML's Hugging Face model card.",
+      "Scores 99.20 on MATH-500, 96.06 on GSM8K, and 90.84 on AIME 2025, per PrismML's model card.",
+      "Scores 93.90 on HumanEval+ and 82.75 on LiveCodeBench, per PrismML's model card.",
+      "Scores 85.03 on IFEval and 74.41 on BFCL v3 function calling, per PrismML's model card.",
+      "Ships with an MTP and DSpark speculative-decoding drafter layer that PrismML states verifies losslessly, preserving the target model's output distribution exactly, per PrismML's Hugging Face model card.",
+      "Released under the Apache 2.0 license, per PrismML's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "A compressed, ternary-weight build of Qwen3.6-27B rather than a full-precision model; PrismML's own benchmark table shows a real, if small, quality gap versus its FP16 baseline (80.49 vs. 85.07 average across 15 thinking-mode benchmarks).",
+      "PrismML's own site presents a newer 'Bonsai 2 27B' model, built on Qwen3.8 27B with higher (98.2%) precision retention, as its most capable model, positioning this Qwen3.6-based 27B release as an earlier generation in the Bonsai family."
+    ],
+    "use_cases": [
+      "Cost-efficient reasoning and tool-calling agent loops served free through Together AI's serverless endpoint, per Together AI.",
+      "Long-context document and codebase analysis and summarization using the 262,144-token context window, per Together AI.",
+      "On-device or memory-constrained local inference via llama.cpp, Ollama, or LM Studio, where PrismML reports a roughly 7.2 GB deployed footprint (5.9 GB at an idealized 1.71 bits per weight), per PrismML's Hugging Face model card."
+    ],
+    "evaluations": [
+      {"name": "MATH-500", "score": 99.20, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"},
+      {"name": "AIME 2025", "score": 90.84, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"},
+      {"name": "HumanEval+", "score": 93.90, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"},
+      {"name": "LiveCodeBench", "score": 82.75, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"},
+      {"name": "IFEval", "score": 85.03, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"},
+      {"name": "BFCL v3", "score": 74.41, "source": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf", "title": "prism-ml/Ternary-Bonsai-27B-gguf · Hugging Face", "kind": "maker"},
+    {"url": "https://prismml.com", "title": "PrismML — Concentrating intelligence", "kind": "maker"},
+    {"url": "https://www.together.ai/models/prism-ml-ternary-bonsai-27b", "title": "Ternary Bonsai 27B API: Pricing, Benchmarks & Docs | Together AI", "kind": "host"}
+  ],
+  "notes": "Together AI serves this model at endpoint 'Prism-ML/Ternary-Bonsai-27B'; PrismML's own Hugging Face org uses the lowercase handle 'prism-ml', and the closest matching repo found there is 'prism-ml/Ternary-Bonsai-27B-gguf' (a GGUF build), which carries the identical benchmark numbers, architecture description, and license that Together AI's page states for this endpoint, so it is treated as the maker's card for this model; a plain (non-GGUF) 'Ternary-Bonsai-27B' repo could not be found. Both PrismML's Hugging Face card and Together AI's page state the model supports image input (a 4-bit vision tower) and report vision benchmarks (MMMU-Pro, OCR Bench v2), but the catalog's modality for this URI is text_input/text_output only; kept the catalog's modality as authoritative and left vision out of the write-up and evaluations. Catalog's max_input_tokens (262,144) matches PrismML's and Together's stated context window exactly."
+}

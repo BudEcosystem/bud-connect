@@ -1,0 +1,40 @@
+{
+  "slug": "fare-20b",
+  "canonical": "fare-20b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "FARE-20B is a multi-task evaluator model that Fireworks AI fine-tuned from OpenAI's open-weight gpt-oss-20B, using rejection-sampled supervised fine-tuning across a range of domains. Rather than a general-purpose chat assistant, it is built to score and judge other models' outputs, covering pairwise comparison, step-level scoring, reference-based and reference-free verification, and single-score assessment. It has 20.9B parameters and is served through Fireworks' on-demand GPU deployment.",
+    "advantages": [
+      "Fireworks describes it as covering pairwise comparison, step-level scoring, and both reference-based and reference-free verification within a single model."
+    ],
+    "disadvantages": [
+      "Fireworks' product listing states this model does not support fine-tuning, serverless deployment, function calling, embeddings, reranking, or image input."
+    ],
+    "use_cases": [
+      "Automated evaluation and scoring of other models' outputs (LLM-as-judge)",
+      "Pairwise comparison between two candidate responses",
+      "Step-level scoring of multi-step reasoning or agent trajectories",
+      "Reference-based and reference-free verification of generated content"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/fare-20b",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/fare-20b",
+      "title": "FARE-20B - Fireworks AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/gpt-oss-20b",
+      "title": "GPT-OSS-20B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only one source describes FARE-20B itself: Fireworks' own product page. Could not find a blog post, paper, or model card explaining what 'FARE' stands for, its training data in detail, or any benchmark scores, despite repeated search attempts (a dedicated fireworks.ai/blog/fare-20b post and a fireworks-ai/fare-20b Hugging Face card do not exist/are inaccessible; web search budget was also exhausted mid-task). Confident on model identity (an evaluator fine-tuned from gpt-oss-20B, published under Fireworks' own account) but details beyond that page are unconfirmed, so advantages/evaluations are kept minimal rather than guessed. The FARE-20B page itself does not attribute gpt-oss-20B to OpenAI or describe the serving API's shape; OpenAI's authorship is confirmed via Fireworks' own gpt-oss-20b page ('gpt-oss-20b is an open-weight 21.5B parameter model developed by OpenAI'), and the unverifiable 'chat-completions style API' detail was dropped."
+}

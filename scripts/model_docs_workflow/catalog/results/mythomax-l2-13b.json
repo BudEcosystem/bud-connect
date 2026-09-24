@@ -1,0 +1,37 @@
+{
+  "slug": "mythomax-l2-13b",
+  "canonical": "mythomax-l2-13b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Gryphe",
+  "details": {
+    "description": "MythoMax-L2-13B is a 13-billion-parameter merge model built by the independent creator Gryphe by combining two Llama-2-13B-based models, MythoLogic-L2 and Huginn, using individualized merge ratios applied across 363 tensors. It is tuned for roleplaying and creative storywriting rather than general instruction-following. Gryphe's own model card describes it as a legacy release that is 'fading away' following the release of Llama 3, positioning it as an older option among newer alternatives.",
+    "advantages": [
+      "Combines MythoLogic-L2, described by Gryphe as its 'more robust understanding' component, with Huginn, described as its 'creative writing' component, via a custom per-tensor merge.",
+      "Available in GGUF, GPTQ and AWQ quantized formats, per its Hugging Face card, suited to local or self-hosted inference."
+    ],
+    "disadvantages": [
+      "Gryphe's own model card states it is being 'phased out' following the release of Llama 3, calling it a legacy model relative to newer options.",
+      "Listed under a non-standard 'other' license on its Hugging Face card rather than a standard open license.",
+      "No benchmark scores are published on its model card."
+    ],
+    "use_cases": [
+      "Roleplaying and character-driven chat",
+      "Creative story writing",
+      "Local or self-hosted deployment via quantized GGUF/GPTQ/AWQ builds"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Gryphe/MythoMax-L2-13b",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Gryphe/MythoMax-L2-13b",
+      "title": "Gryphe/MythoMax-L2-13b · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No context window is stated on Gryphe's card; catalog's 4,096-token input/output limit could not be independently confirmed against a source but was not contradicted. No maker site beyond the Hugging Face card was found."
+}

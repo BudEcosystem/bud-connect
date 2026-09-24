@@ -1,0 +1,46 @@
+{
+  "slug": "glm-4.7",
+  "canonical": "glm-4.7",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-4.7 is Z.ai's (formerly Zhipu AI) open-weight Mixture-of-Experts language model, released December 22, 2025 with 355 billion total parameters and 32 billion active per token, per Z.ai's GitHub model repository. It targets agentic software-engineering workflows -- multi-file coding, end-to-end task execution, and stable multi-step tool use -- and supports interleaved and preserved thinking that carries reasoning context across turns, per Z.ai's documentation. It is a text-only model with a 200K-token context window; as of September 2026, Z.ai's newer GLM-5 series (through GLM-5.3) has become the flagship, though GLM-4.7 remains listed as an active, available model.",
+    "advantages": [
+      "Scores 73.8% on SWE-bench Verified, a 5.8-point improvement over GLM-4.6, per Z.ai's documentation.",
+      "Scores 84.9 on LiveCodeBench V6, which Z.ai says surpasses Claude Sonnet 4.5 on that benchmark.",
+      "Supports interleaved thinking, thinking that persists across conversation turns, and per-turn thinking controls, per Z.ai's documentation.",
+      "355 billion total parameters with 32 billion active per token in a Mixture-of-Experts architecture, per Z.ai's GitHub model repository."
+    ],
+    "disadvantages": [
+      "Superseded as Z.ai's flagship chat model by the GLM-5 series (through GLM-5.3, released August 2026), per Z.ai's release-notes page, though GLM-4.7 remains an active, available model.",
+      "Text-only model; does not accept image or other non-text input, per Z.ai's API documentation."
+    ],
+    "use_cases": [
+      "Multi-file software engineering and end-to-end coding task completion",
+      "Agentic workflows with multi-step tool use and orchestration",
+      "Mathematical and multi-step reasoning",
+      "Long-context document and codebase understanding"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 73.8, "source": "https://huggingface.co/zai-org/GLM-4.7"},
+      {"name": "LiveCodeBench V6", "score": 84.9, "source": "https://docs.z.ai/guides/llm/glm-4.7"},
+      {"name": "Terminal Bench 2.0", "score": 41.0, "source": "https://huggingface.co/zai-org/GLM-4.7"},
+      {"name": "HLE with tools", "score": 42.8, "source": "https://huggingface.co/zai-org/GLM-4.7"},
+      {"name": "MMLU-Pro", "score": 84.3, "source": "https://huggingface.co/zai-org/GLM-4.7"},
+      {"name": "BrowseComp", "score": 52.0, "source": "https://huggingface.co/zai-org/GLM-4.7"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.z.ai/guides/llm/glm-4.7",
+    "github_url": "https://github.com/zai-org/GLM-4.5"
+  },
+  "sources": [
+    {"url": "https://docs.z.ai/guides/llm/glm-4.7", "title": "GLM-4.7 - Overview - Z.AI DEVELOPER DOCUMENT", "kind": "maker"},
+    {"url": "https://huggingface.co/zai-org/GLM-4.7", "title": "zai-org/GLM-4.7 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/zai-org/GLM-4.5", "title": "zai-org/GLM-4.5: GLM-4.7 & GLM-4.6 & GLM-4.5", "kind": "maker"},
+    {"url": "https://docs.z.ai/release-notes/new-released", "title": "New Released - Overview - Z.AI DEVELOPER DOCUMENT", "kind": "maker"},
+    {"url": "https://docs.z.ai/guides/overview/pricing", "title": "Pricing - Z.AI DEVELOPER DOCUMENT", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_output_tokens (4000) is far below Z.ai's own stated 128K max output for GLM-4.7's native API (docs.z.ai/guides/llm/glm-4.7); likely a Bedrock-specific output cap, kept the catalog's value per instructions. Catalog's max_input_tokens (203000) is close to Z.ai's stated 200K context window, not flagged as a conflict. Sources disagreed on GLM-4.7's tau-squared-Bench score (84.7 per docs.z.ai's guide vs 87.4 on its Hugging Face card), so that benchmark was left out of evaluations. As of September 2026, Z.ai's GLM-5 series (through GLM-5.3, released August 18, 2026) is the current flagship chat model, with GLM-4.7 an older but still actively offered generation, per docs.z.ai's pricing and release-notes pages. No explicit language list found on maker pages beyond 'en'/'zh' metadata tags, so languages is left empty."
+}

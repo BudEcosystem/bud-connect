@@ -1,0 +1,81 @@
+{
+  "slug": "deepseek-v3",
+  "canonical": "deepseek-v3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V3 is DeepSeek's 671-billion-parameter (37 billion activated per token) Mixture-of-Experts chat model, released December 26, 2024 per DeepSeek's own API changelog. Per its Hugging Face model card it uses Multi-head Latent Attention and an auxiliary-loss-free load-balancing strategy with multi-token-prediction training, was pretrained on 14.8 trillion tokens, and supports a 128,000-token context window. DeepSeek's own changelog shows the deepseek-chat endpoint was later upgraded through DeepSeek-V3-0324, V3.1, V3.1-Terminus, V3.2 and V4.",
+    "advantages": [
+      "Scores 88.5 on MMLU, per DeepSeek's Hugging Face model card.",
+      "Scores 90.2 on MATH-500, per DeepSeek's Hugging Face model card.",
+      "Scores 82.6 on HumanEval-Mul, per DeepSeek's Hugging Face model card.",
+      "Uses Multi-head Latent Attention and an auxiliary-loss-free load-balanced Mixture-of-Experts design, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "DeepSeek's own changelog shows this model was superseded by DeepSeek-V3-0324, V3.1, V3.1-Terminus, V3.2 and V4, and is no longer served under DeepSeek's default deepseek-chat alias.",
+      "Scores 59.1 on GPQA-Diamond, which DeepSeek's own changelog shows the later V3-0324 update raised to 68.4.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "General-purpose chat and text generation.",
+      "Coding assistance and code generation.",
+      "Mathematical problem solving.",
+      "Document analysis within a 128,000-token context window."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 88.5,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      },
+      {
+        "name": "MATH-500",
+        "score": 90.2,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      },
+      {
+        "name": "HumanEval-Mul",
+        "score": 82.6,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 59.1,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 42.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V3",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-V3"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3",
+      "title": "deepseek-ai/DeepSeek-V3 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+      "title": "deepseek-ai/DeepSeek-V3 · GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog lists several max_input_tokens values (32768, 65536, 128000, 163840) across providers; only 128000 is corroborated here, by DeepSeek's own Hugging Face card and GitHub README, both stating a 128K context window. The GitHub repository is titled DeepSeek-V3 and covers only the Base and Chat checkpoints of this release, not later V3.x versions. The GSM8K 89.3 figure on the Hugging Face card belongs to the Base checkpoint's table, not the Chat model's, so it was removed here. DeepSeek's changelog shows deepseek-chat/deepseek-reasoner (the default aliases this model was once served under) were progressively upgraded past this checkpoint through V3-0324, V3.1, V3.1-Terminus, V3.2 and now V4-Pro/V4-Flash models; the current pricing page no longer lists this checkpoint by name at all (it only names deepseek-flash and deepseek-v4-pro, and mentions retiring the unrelated legacy names deepseek-v4-flash and deepseek-v4-flash-vision-exp). This model's weights remain downloadable and it may still be served by third-party hosts."
+}

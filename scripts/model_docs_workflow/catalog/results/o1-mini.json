@@ -1,0 +1,48 @@
+{
+  "slug": "o1-mini",
+  "canonical": "o1-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o1-mini was OpenAI's smaller, faster and cheaper reasoning model, offered as a lower-cost alternative to the full o1 model for problem-solving across coding, math and science. The default snapshot, o1-mini-2024-09-12, takes text-only input and produces text output, with a 128,000-token context window and up to 65,536 output tokens. OpenAI notified developers of its deprecation in April 2025 and removed it from OpenAI's own API on October 27, 2025, recommending o4-mini as the replacement; it is also absent from Microsoft's current Azure Foundry model retirement schedule, which lists o1, o1-pro, o3, o3-mini and o3-pro but no plain o1-mini row.",
+    "advantages": [
+      "Supports reasoning tokens for multi-step problem solving across coding, math and science domains (OpenAI o1-mini model docs).",
+      "Offers a 128,000-token context window with up to 65,536 output tokens (OpenAI o1-mini model docs)."
+    ],
+    "disadvantages": [
+      "Already removed from OpenAI's own API: OpenAI's deprecations page lists a shutdown date of October 27, 2025, with o4-mini as the replacement.",
+      "OpenAI's own model page recommends the newer o3-mini model instead, stating it offers higher intelligence at the same latency and price.",
+      "Text-only input; does not accept image input, unlike the full o1 model (OpenAI o1-mini model docs).",
+      "Does not support function calling or structured outputs (OpenAI o1-mini model docs).",
+      "Knowledge cutoff of October 1, 2023 (OpenAI o1-mini model docs)."
+    ],
+    "use_cases": [
+      "Multi-step reasoning tasks in coding, math and science",
+      "Lower-cost alternative to full o1 for problems not requiring image input"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o1-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o1-mini",
+      "title": "o1-mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "IMPORTANT STATUS CONFLICT: the catalog's facts list an empty deprecation_date for o1-mini, but OpenAI's own deprecations page states it was already removed from OpenAI's API on 2025-10-27 (announced 2025-04-28), and it no longer appears at all in Azure's current model retirement schedule table (which still lists o1, o1-pro, o3, o3-mini, o3-pro, o3-deep-research and o4-mini), suggesting it is fully retired on Azure too. Despite this, developers.openai.com/api/docs/models/o1-mini still renders as a live docs page with a 'Try in Playground' option and is marked 'Deprecated' (not removed) in its own snapshot list, so the exact current callable status on Azure could not be confirmed from an opened page; treat the description's retirement claim as the best-supported reading of the sources rather than a confirmed API test. No accuracy-style benchmark was found on an opened maker or leaderboard page for this exact snapshot, so evaluations is left empty rather than guessed."
+}

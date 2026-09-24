@@ -1,0 +1,90 @@
+{
+  "slug": "llama-v3p1-8b-instruct",
+  "canonical": "llama-v3p1-8b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 8B Instruct is Meta's 8-billion-parameter instruction-tuned chat model, released July 23, 2024 as the smallest of the three Llama 3.1 sizes (8B, 70B, 405B) Meta released together. It is built for assistant-style multilingual dialogue, coding help, and tool use in agentic or retrieval-augmented workflows, and its pretraining data has a cutoff of December 2023. On this catalog entry it has a 16,384-token context window.",
+    "advantages": [
+      "Scores 84.5% on GSM-8K (chain-of-thought) and 72.6% Pass@1 on HumanEval, per Meta's Llama 3.1 model card.",
+      "Scores 80.4% on IFEval instruction-following and 82.6% on the API-Bank tool-use benchmark, per Meta's Llama 3.1 model card.",
+      "Supports multiple tool-use and function-calling formats through Meta's Transformers chat template, per Meta's model card.",
+      "Officially supports 8 languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai), per Meta's model card."
+    ],
+    "disadvantages": [
+      "Pretraining data cutoff of December 2023, per Meta's model card.",
+      "The smallest of the three Llama 3.1 sizes Meta released (8B, 70B, 405B); Meta's own benchmark tables show the 70B and 405B models scoring higher on the same tests."
+    ],
+    "use_cases": [
+      "Assistant-like conversational chat",
+      "Code generation and coding assistance",
+      "Tool use and function calling for agentic workflows",
+      "Retrieval-augmented generation (RAG) in enterprise applications",
+      "Multilingual dialogue"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 69.4,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+      },
+      {
+        "name": "HumanEval",
+        "score": 72.6,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+      },
+      {
+        "name": "GSM-8K (CoT)",
+        "score": 84.5,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+      },
+      {
+        "name": "IFEval",
+        "score": 80.4,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+      },
+      {
+        "name": "MATH (CoT)",
+        "score": 51.9,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Hindi",
+      "Spanish",
+      "Thai"
+    ],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+      "title": "meta-llama/Llama-3.1-8B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_1/MODEL_CARD.md",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+      "title": "Introducing Llama 3.1: Our most capable models to date",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p1-8b-instruct",
+      "title": "Llama 3.1 8B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Meta's model card states a 128K-token context window for Llama 3.1 8B Instruct generally; this catalog entry gives it a 16,384-token window, which I kept per instructions. Benchmark numbers were cross-checked between Meta's Hugging Face card and its GitHub MODEL_CARD.md and matched exactly."
+}

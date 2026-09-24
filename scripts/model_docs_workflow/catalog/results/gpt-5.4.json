@@ -1,0 +1,50 @@
+{
+  "slug": "gpt-5.4",
+  "canonical": "gpt-5.4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.4 is OpenAI's reasoning model for complex professional work, released March 5, 2026 as OpenAI's most token-efficient reasoning model to date. It combines frontier coding ability with general reasoning and was the first general-purpose OpenAI model released with native computer-use capabilities, letting agents operate applications via mouse, keyboard and code libraries like Playwright. It takes text and image input and produces text-only output, with configurable reasoning effort (none, low, medium, high, xhigh) and a knowledge cutoff of August 31, 2025. OpenAI has since released GPT-5.5 (April 2026) and GPT-5.6 as newer flagship models, though GPT-5.4 remains available via the API.",
+    "advantages": [
+      "Scores 83.0% on GDPval, OpenAI's benchmark of economically valuable professional tasks, up from 70.9% for GPT-5.2 (OpenAI).",
+      "Scores 75.0% on OSWorld-Verified, a computer-use benchmark, up from 47.3% for GPT-5.2 (OpenAI).",
+      "Scores 93.7% on ARC-AGI-1, up from 86.2% for GPT-5.2 (OpenAI).",
+      "OpenAI reports individual factual claims are 33% less likely to be false than GPT-5.2's (OpenAI).",
+      "A tool-search feature that OpenAI reports cuts token usage by 47% when working with large tool ecosystems (OpenAI)."
+    ],
+    "disadvantages": [
+      "OpenAI reports long-context performance degrades significantly beyond 256,000 tokens (OpenAI).",
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API model docs).",
+      "Superseded as OpenAI's flagship chat model by GPT-5.5, released in April 2026, and later GPT-5.6, though still available via the API (OpenAI, Wikipedia)."
+    ],
+    "use_cases": [
+      "Professional knowledge work across spreadsheets, presentations and documents",
+      "Agentic coding, including complex frontend development",
+      "Computer-use agents that operate applications end to end",
+      "Deep, multi-source web research",
+      "Tool-calling agents working with large tool ecosystems"
+    ],
+    "evaluations": [
+      {"name": "GDPval", "score": 83.0, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "SWE-Bench Pro", "score": 57.7, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "OSWorld-Verified", "score": 75.0, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "ARC-AGI-1", "score": 93.7, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "Artificial Analysis Intelligence Index (xhigh reasoning)", "score": 39, "source": "https://artificialanalysis.ai/models/gpt-5-4"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.4",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.4", "title": "GPT-5.4 Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-gpt-5-4/", "title": "Introducing GPT-5.4 | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-4", "title": "GPT-5.4 (xhigh) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-5.5", "title": "GPT-5.5 - Wikipedia", "kind": "third_party"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-5.4", "title": "GPT-5.4 - Wikipedia", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's own announcement post (openai.com/index/introducing-gpt-5-4/) returned HTTP 403 on a direct fetch, so it was read via a read-only proxy (r.jina.ai) of the same URL; the cited source URL is the original openai.com page. OpenAI's API docs page states a 1,050,000-token context window, matching the higher of the catalog's two max_input_tokens facts (1,000,000 and 1,050,000); not flagged as a conflict. OpenAI's API docs page lists Chat Completions, Responses and Batch as supported endpoints, matching the catalog's facts. Not deprecated per OpenAI's own deprecations page (checked directly) or its API docs; description says 'superseded' only in the sense that GPT-5.5 and GPT-5.6 are now OpenAI's newer flagship models, not that GPT-5.4 has been withdrawn."
+}

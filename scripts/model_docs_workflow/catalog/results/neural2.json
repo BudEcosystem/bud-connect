@@ -1,0 +1,57 @@
+{
+  "slug": "neural2",
+  "canonical": "neural2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Neural2 is a text-to-speech voice type offered by Google Cloud Text-to-Speech, built, per Google's documentation, on \"the same technology used to create a Custom Voice,\" giving custom-voice-level naturalness without training and submitting a customer's own recordings. As of Google's current supported-voices table it spans 17 languages and locales — English (US, UK, Australian, and Indian), French (France and Canadian), Spanish (Spain and US), German, Danish, Italian, Japanese, Korean, Portuguese (Brazilian), Hindi, Thai, and Vietnamese — with between 1 and 9 voices per locale. Google's current voice-type documentation does not mark Neural2 as deprecated or legacy.",
+    "advantages": [
+      "Built on the same neural technology Google uses to create a Custom Voice, giving custom-voice-level naturalness without training a bespoke voice model, per Google's documentation.",
+      "Covers 17 languages and locales, including English, French, Spanish, German, Danish, Italian, Japanese, Korean, Portuguese, Hindi, Thai, and Vietnamese, per Google's current supported-voices table.",
+      "US English alone offers 9 distinct Neural2 voices and UK English 7, spanning multiple male and female options, per Google's voice list."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Natural-sounding narration and IVR or voice-assistant prompts in a supported language without training a custom voice model.",
+      "Multilingual applications needing English, French, or Spanish locale variants, plus German, Danish, Italian, Japanese, Korean, Portuguese, Hindi, Thai, or Vietnamese, within one TTS tier.",
+      "Applications wanting a choice among several male and female voices per locale, such as the nine US English Neural2 voices."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English (Australian)",
+      "English (Indian)",
+      "English (British)",
+      "English (US)",
+      "French (Canadian)",
+      "French",
+      "Spanish (Spain)",
+      "Spanish (US)",
+      "Danish",
+      "German",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Portuguese (Brazilian)",
+      "Hindi",
+      "Thai",
+      "Vietnamese"
+    ],
+    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/voice-types",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/voice-types",
+      "title": "Voice types | Cloud Text-to-Speech",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types",
+      "title": "Supported voices and languages | Cloud Text-to-Speech",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Corrected the language list against Google's current supported-voices table (last updated 2026-09-18): Neural2 currently covers 17 locales, not 19. Filipino, Russian, Swedish, Turkish, Mandarin/Taiwanese Chinese, and European Portuguese have no Neural2 voices on the live table (though several have Standard/WaveNet voices), so they were removed; Spanish (Spain), Spanish (US), Hindi, and Thai do have Neural2 voices and were added. US English voice count corrected from 8 to 9, UK English from 6 to 7. Catalog facts give no max-token or deprecation values for this TTS model, consistent with what was found."
+}

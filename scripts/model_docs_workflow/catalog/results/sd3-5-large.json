@@ -1,0 +1,35 @@
+{
+  "slug": "sd3-5-large",
+  "canonical": "sd3-5-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Diffusion 3.5 Large is Stability AI's text-to-image and image-to-image generation model, built as a Multimodal Diffusion Transformer (MMDiT) with 8 billion parameters. It uses three fixed text encoders (OpenCLIP-ViT/G, CLIP-ViT/L, and T5-XXL) and generates images up to 1 megapixel. Query-Key normalization was added to its transformer blocks to improve training stability. It is released under Stability AI's Community License, which is free for non-commercial use and for organizations with under $1M in annual revenue; larger organizations need an Enterprise License. On Amazon Bedrock it is available as stability.sd3-5-large-v1:0.",
+    "advantages": [
+      "Supports both text-to-image and image-to-image generation from a single model, per AWS Bedrock's documentation.",
+      "Uses Query-Key normalization in its transformer blocks, which Stability AI says improves training stability."
+    ],
+    "disadvantages": [
+      "Output resolution is capped at 1 megapixel, per Stability AI's launch announcement and AWS Bedrock's documentation."
+    ],
+    "use_cases": [
+      "Generating concept art, visual effects, and product imagery for customers in media, gaming, advertising, and retail, per AWS's Stability AI on Bedrock page.",
+      "Producing high-volume creative assets such as marketing campaigns and digital assets, per AWS's documented use case.",
+      "Editing or restyling an existing image through image-to-image generation with an adjustable strength parameter.",
+      "Generating artworks and assets for design, education, and other creative or artistic processes, per Stability AI's model card."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "http://stability.ai/news-updates/introducing-stable-diffusion-3-5", "title": "Introducing Stable Diffusion 3.5", "kind": "maker"},
+    {"url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large", "title": "stabilityai/stable-diffusion-3.5-large", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-diffusion-3-5-large.html", "title": "Stability.ai Stable Diffusion 3.5 Large", "kind": "host"},
+    {"url": "https://aws.amazon.com/bedrock/stability-ai/", "title": "Stability AI models on Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Stability AI's launch post claims the model 'leads the market in prompt adherence and rivals much larger models in image quality' based on its own comparison charts, but gives no extractable numeric scores, so no evaluations entry was added and the superlative was left out of advantages per the no-marketing-words rule. AWS Bedrock's parameter docs cap the text prompt at 10,000 characters, a different unit from the catalog's max_input_tokens of 77 (likely the model's CLIP token limit); the catalog value was kept and not restated as a differing figure."
+}

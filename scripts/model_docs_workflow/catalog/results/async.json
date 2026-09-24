@@ -1,0 +1,39 @@
+{
+  "slug": "async",
+  "canonical": "async",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Gladia",
+  "details": {
+    "description": "Gladia's asynchronous (batch) speech-to-text API for pre-recorded audio and video, such as call recordings, meetings and podcasts. A file is uploaded and Gladia returns a full transcript, with optional speaker diarization, translation, summarization and other audio-intelligence add-ons in the same call. By default it runs on Gladia's Solaria-1 model, which covers 100+ languages with mid-sentence code-switching; the higher-accuracy Solaria-3 model can be selected instead but is restricted to English, French, German, Spanish and Italian, one language per request.",
+    "advantages": [
+      "Supports 100+ languages with automatic mid-sentence code-switching using the default Solaria-1 model.",
+      "Offers an optional Solaria-3 model that Gladia positions as its highest-accuracy option for English, French, German, Spanish and Italian audio.",
+      "Gladia reports a 33.9% word error rate on the Switchboard conversational benchmark, which it states is the lowest among the providers it tested.",
+      "Built-in speaker diarization lets a caller fix the exact speaker count or set a minimum/maximum via diarization_config.",
+      "Bundles audio-intelligence add-ons (translation, summarization, named entity recognition, sentiment analysis, PII redaction, custom vocabulary) in the same request."
+    ],
+    "disadvantages": [
+      "Processes only pre-recorded files uploaded by URL; it is not a live/streaming transcription mode.",
+      "The higher-accuracy Solaria-3 model accepts only one language per request, with no code-switching, and covers just five languages."
+    ],
+    "use_cases": [
+      "Transcribing meeting and call recordings",
+      "Contact-center quality assurance and compliance review",
+      "Sales call analysis",
+      "Podcast and media transcription"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://www.gladia.io/product/async-transcription",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.gladia.io/product/async-transcription", "title": "Async / pre-recorded speech-to-text - Gladia", "kind": "maker"},
+    {"url": "https://docs.gladia.io/api-reference/v2/pre-recorded/init", "title": "Pre-recorded transcription API reference - Gladia docs", "kind": "maker"},
+    {"url": "https://www.gladia.io/solaria", "title": "Solaria speech-to-text model - Gladia", "kind": "maker"},
+    {"url": "https://www.gladia.io/", "title": "Gladia - Speech-to-Text API", "kind": "maker"}
+  ],
+  "notes": "The catalog id 'async' names Gladia's asynchronous/pre-recorded transcription product, not a specific Gladia 'model' value (the API's own model field takes solaria-1/solaria-3/solaria-fusion, defaulting to solaria-1). No maker-published benchmark met the higher-is-better 0-100 rule, so evaluations is empty; the 33.9% figure is a word error rate (lower is better) and is placed in advantages instead. Language count is only ever given as '100+', not a named list, so languages is empty."
+}

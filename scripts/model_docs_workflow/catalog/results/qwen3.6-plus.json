@@ -1,0 +1,44 @@
+{
+  "slug": "qwen3.6-plus",
+  "canonical": "qwen3.6-plus",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3.6-Plus was a closed, proprietary Alibaba Qwen chat model that Fireworks AI describes as having been \"Alibaba's latest flagship closed model.\" Fireworks AI states it has been superseded by Qwen3.7-Plus and, as of June 2026, is no longer available through Fireworks' serverless API, with customers directed to migrate to the newer model. It does not appear in Alibaba Cloud Model Studio's current text-generation catalog, though it remains listed as a chat model in Together AI's serverless-models documentation.",
+    "advantages": [
+      "Used a Mixture-of-Experts architecture and supported function calling (tool use) while available on Fireworks AI's serverless API, per Fireworks AI's model listing."
+    ],
+    "disadvantages": [
+      "Superseded by Qwen3.7-Plus and no longer available through Fireworks AI's serverless API as of June 2026, per Fireworks AI, which recommends migrating to the newer model.",
+      "Does not appear in Alibaba Cloud Model Studio's current text-generation model catalog.",
+      "Closed, proprietary model: no parameter count or independently verifiable benchmark scores are published for it on the pages available."
+    ],
+    "use_cases": [
+      "General-purpose text generation and chat via Together AI's serverless API, per Together AI's model documentation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3p6-plus",
+      "title": "Qwen 3.6 Plus - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.together.ai/docs/serverless-models",
+      "title": "Serverless Models - Together AI Docs",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.alibabacloud.com/help/en/model-studio/models",
+      "title": "Models - Alibaba Cloud Model Studio",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This model does not appear on Alibaba Cloud Model Studio's current text-generation listing. Fireworks AI's page (a host, not Alibaba directly) states it has been superseded by Qwen3.7-Plus and pulled from Fireworks' serverless API as of June 2026; Together AI's own serverless-models documentation still lists it as an active chat model with a 1,000,000-token context length, matching the catalog's max_input_tokens fact, so it appears to remain reachable via Together AI even though Fireworks dropped it. Catalog's text-only modality was kept as authoritative; Fireworks' listing (describing the model before removal) had shown image input support, not reflected here."
+}

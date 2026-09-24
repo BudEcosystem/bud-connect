@@ -1,0 +1,93 @@
+{
+  "slug": "gpt-5.5",
+  "canonical": "gpt-5.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.5 is OpenAI's general-purpose flagship model, released April 23, 2026 as the successor to GPT-5.4, with API access following on April 24. OpenAI positioned it as its most autonomous model yet for agentic coding, computer-use automation, knowledge work (documents, spreadsheets, analysis) and early-stage scientific research, with an adjustable reasoning effort (none through xhigh) and vision input. OpenAI's July 2026 GPT-5.6 family and, more recently, its September 2026 GPT-6 family (Astra, Sol, Luna) have since become OpenAI's current featured models; OpenAI's live API model documentation no longer lists GPT-5.5 among them, though the model remains reachable through the API.",
+    "advantages": [
+      "Scores 93.6% on GPQA Diamond and 85.0% on ARC-AGI-2 (Verified), per OpenAI's launch benchmarks.",
+      "Reaches 82.7% on Terminal-Bench 2.0 and 58.6% on SWE-Bench Pro for agentic, command-line coding tasks, per OpenAI's launch benchmarks.",
+      "Scores 78.7% on OSWorld-Verified for computer-use tasks and 81.8% on CyberGym, per OpenAI's launch benchmarks.",
+      "Supports adjustable reasoning effort from none through xhigh plus vision (image) input, letting a caller trade latency for reasoning depth.",
+      "OpenAI reports it matches GPT-5.4's per-token serving latency while using fewer tokens to reach a given task's answer."
+    ],
+    "disadvantages": [
+      "Superseded within OpenAI's own lineup first by the GPT-5.6 family (July 2026) and then by the GPT-6 family (Astra, Sol, Luna) launched September 2026; OpenAI's current model documentation no longer features GPT-5.5.",
+      "Text output only; does not generate images or audio.",
+      "Knowledge cutoff of December 1, 2025, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Agentic software engineering: debugging, multi-file refactors and long command-line workflows",
+      "Knowledge work: generating and analyzing documents, spreadsheets and reports",
+      "Computer-use automation across tools and applications",
+      "Early-stage scientific research support, e.g. data analysis and literature synthesis",
+      "Long-context tasks such as reasoning over large codebases or document sets"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA Diamond",
+        "score": 93.6,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "ARC-AGI-2 (Verified)",
+        "score": 85.0,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "Terminal-Bench 2.0",
+        "score": 82.7,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "OSWorld-Verified",
+        "score": 78.7,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "SWE-Bench Pro",
+        "score": 58.6,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "CyberGym",
+        "score": 81.8,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+      "title": "GPT-5.5 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/introducing-gpt-5-5/",
+      "title": "Introducing GPT-5.5 | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+      "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes | TechCrunch",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/gpt-5-5",
+      "title": "GPT-5.5 - Intelligence, Performance & Price Analysis | Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "openai.com/index pages block direct automated fetches (HTTP 403); content was retrieved through a read-only fetch proxy and cross-checked against a third-party summary (Vellum) that matched the same numbers, so it is treated as opened. Catalog's max_input_tokens (1,000,000 and 1,050,000 across snapshots) and max_output_tokens (128,000) were kept as-is and not restated as a single figure. Artificial Analysis separately labels this model 'deprecated' in favor of GPT-5.6 Sol; OpenAI's own docs do not use that word for GPT-5.5, so the description says 'superseded' rather than 'deprecated'. Dropped an unverified third-hand claim (via a blog) that OpenAI's evaluations found GPT-5.5 'slightly more misaligned' than GPT-5.4 -- could not confirm it on the system card page itself."
+}

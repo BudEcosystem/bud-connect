@@ -1,0 +1,38 @@
+{
+  "slug": "meta-textgeneration-llama-2-13b-f",
+  "canonical": "meta-textgeneration-llama-2-13b-f",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 2 13B Chat is the 13-billion-parameter fine-tuned chat model in Meta's Llama 2 family, built on the base Llama 2 13B pretrained checkpoint using supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) for dialogue alignment, per Meta's model card. It is optimized for assistant-like chat and accepts a conversation history rather than a single completion prompt, and was trained on 2 trillion tokens of publicly available text between January and July 2023 (pretraining cutoff September 2022). Meta's Hugging Face organization now lists Llama 2 in a legacy 'History' section behind the current Llama 3.1, 3.2, 3.3 and 4 families.",
+    "advantages": [
+      "Reports 62.18% on TruthfulQA on Meta's fine-tuned safety evaluation, higher than the 7B chat model, per Meta's model card.",
+      "Reports 0.00% toxic generations on ToxiGen in Meta's fine-tuned safety evaluation, per Meta's model card.",
+      "Uses supervised fine-tuning and RLHF for dialogue alignment, per Meta's model card."
+    ],
+    "disadvantages": [
+      "Meta states intended use is English only, and that safety testing 'has not covered, nor could it cover, all scenarios.'",
+      "Superseded by later Llama generations: Meta's Hugging Face organization lists Llama 2 in a legacy 'History' section behind Llama 3.1, 3.2, 3.3 and 4.",
+      "Pretraining knowledge cutoff of September 2022, per Meta's model card."
+    ],
+    "use_cases": [
+      "Assistant-like conversational chat, per Meta's model card",
+      "Multi-turn dialogue applications that pass a chat history rather than a raw prompt"
+    ],
+    "evaluations": [
+      {"name": "TruthfulQA (fine-tuned safety evaluation)", "score": 62.18, "source": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf", "title": "meta-llama/Llama-2-13b-chat-hf · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama", "title": "meta-llama/llama", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama", "title": "meta-llama (Meta Llama) · Hugging Face", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/llama-2-foundation-models-from-meta-are-now-available-in-amazon-sagemaker-jumpstart/", "title": "Llama 2 foundation models from Meta are now available in Amazon SageMaker JumpStart", "kind": "host"}
+  ],
+  "notes": "This is the SageMaker JumpStart artifact for the fine-tuned chat Llama 2 13B model; the AWS launch blog confirms the '-f' suffix denotes the chat/fine-tuned id, matching the catalog's /v1/chat/completions endpoint. ToxiGen (0.00%, lower is better) is not included in evaluations per the accuracy-only rule but is cited as an advantage. Capability benchmarks (MMLU, commonsense reasoning, etc.) on the shared Llama 2 model-card table are reported only for the pretrained sizes, not repeated for the chat-tuned variant, so only the fine-tuned safety table (TruthfulQA/ToxiGen) is used here. Catalog's 4096/4096 token limits match Meta's stated 4,096-token context."
+}

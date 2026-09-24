@@ -1,0 +1,81 @@
+{
+  "slug": "ft-gpt-4.1",
+  "canonical": "ft:gpt-4.1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "ft:gpt-4.1 is OpenAI's fine-tuning offering built on gpt-4.1-2025-04-14, the GPT-4.1 snapshot released April 14, 2025 with a June 1, 2024 knowledge cutoff. Rather than a chat endpoint to call directly, it is the base model developers use OpenAI's supervised or preference (DPO) fine-tuning to train a custom ft:-prefixed model on their own data. Unlike GPT-3.5 Turbo and GPT-4's original 0613 snapshots, plain gpt-4.1 remains one of the models OpenAI's current fine-tuning documentation lists as an active supervised- and preference-fine-tuning base, alongside gpt-4.1-mini and gpt-4.1-nano, though OpenAI has begun winding down the fine-tuning platform overall and no longer accepts new fine-tuning customers.",
+    "advantages": [
+      "One of the models OpenAI's current fine-tuning documentation still lists as an active supervised fine-tuning and direct preference optimization (DPO) base, alongside gpt-4.1-mini and gpt-4.1-nano.",
+      "Inherits gpt-4.1's context window up to 1,047,576 tokens and June 1, 2024 knowledge cutoff, per OpenAI's model documentation.",
+      "OpenAI's fine-tuning guide recommends supervised fine-tuning on this base for classification, nuanced translation, generating content in a specific format, and correcting instruction-following failures.",
+      "The underlying gpt-4.1 model scores 54.6% on SWE-bench Verified and 90.2% on MMLU, per OpenAI's own launch announcement."
+    ],
+    "disadvantages": [
+      "OpenAI is winding down its fine-tuning platform: it is no longer accessible to new users, though existing users can keep creating training jobs 'for the coming months,' per OpenAI's fine-tuning guide.",
+      "OpenAI's guide notes fine-tuning gains are not guaranteed below roughly 50 well-crafted demonstration examples.",
+      "A third-party comparison reports the underlying gpt-4.1 model trails competitors on some reasoning (GPQA) and coding (SWE-bench) benchmarks despite its strong MMLU score."
+    ],
+    "use_cases": [
+      "Fine-tuning for classification tasks",
+      "Fine-tuning for nuanced translation",
+      "Fine-tuning to generate content in a specific format",
+      "Fine-tuning to correct instruction-following failures"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 54.6,
+        "source": "http://web.archive.org/web/20260912032013/https://openai.com/index/gpt-4-1/"
+      },
+      {
+        "name": "MMLU",
+        "score": 90.2,
+        "source": "http://web.archive.org/web/20260912032013/https://openai.com/index/gpt-4-1/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4.1",
+      "title": "GPT-4.1 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning",
+      "title": "Supervised fine-tuning - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/model-optimization",
+      "title": "Model optimization - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "http://web.archive.org/web/20260912032013/https://openai.com/index/gpt-4-1/",
+      "title": "Introducing GPT-4.1 in the API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.datacamp.com/blog/gpt-4-1",
+      "title": "GPT-4.1: Features, Access, GPT-4o Comparison, and More",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://www.rdworldonline.com/openai-claims-gpt-4-1-sets-new-90-standard-in-mmlu-reasoning-benchmark/",
+      "title": "OpenAI says GPT-4.1 sets new 90%+ standard in MMLU reasoning benchmark",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's empty deprecation_date matches what was found: OpenAI's deprecations page lists gpt-4.1-nano (and ft-gpt-4.1-nano-2025-04-14) for an October 23, 2026 shutdown, but plain gpt-4.1 / ft-gpt-4.1 do not appear in any deprecation table, and gpt-4.1-2025-04-14 is still listed as a live supervised- and DPO-fine-tuning base. Evaluations describe the underlying gpt-4.1 chat model's benchmark results, which also apply to this fine-tuning base since it is the same weights prior to any customer fine-tuning; both scores (54.6% SWE-bench Verified, 90.2% MMLU) are confirmed on OpenAI's own 'Introducing GPT-4.1 in the API' launch post, so evaluations now cite that maker page directly instead of the third-party blogs that had reported the same figures. Removed the unsupported 'evaluate against the base model' clause from a disadvantage: neither the supervised fine-tuning guide nor the model-optimization guide states it."
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "glm-5p3-fast",
+  "canonical": "glm-5p3-fast",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.3 is Z.ai's (Zhipu AI) current flagship large language model, released August 18, 2026, built for complex software engineering, long-horizon agentic tasks and cybersecurity vulnerability research, with a 1,048,576-token context window and configurable low, high or max reasoning effort. This id serves GLM-5.3 through Fireworks AI's 'Fast' serverless mode, which targets 100+ tokens per second of generated throughput using the same underlying model and quality as standard serverless (Fireworks AI docs). Z.ai reports a 50% improvement over GLM-5.2 on its internal Code Bench for the underlying model.",
+    "advantages": [
+      "The underlying GLM-5.3 model shows a 50% performance gain over GLM-5.2 on Z.ai's internal Code Bench (Z.ai docs).",
+      "The underlying GLM-5.3 model scores 78.1 on the FrontierSWE benchmark, per its Hugging Face model card.",
+      "The underlying GLM-5.3 model scores 84.5 on CyberGym, a cybersecurity vulnerability-discovery benchmark, per its Hugging Face model card.",
+      "Fireworks' Fast mode targets 100+ tokens per second of generated throughput while keeping the same underlying model and quality as standard serverless (Fireworks AI docs)."
+    ],
+    "disadvantages": [
+      "Text-only input and output, with no image, audio or video support (Fireworks AI, Z.ai docs)."
+    ],
+    "use_cases": [
+      "Complex software engineering and long-horizon coding-agent workflows",
+      "Cybersecurity vulnerability discovery and exploit research",
+      "Terminal automation and tool-calling agents"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.3",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.3",
+      "title": "GLM-5.3 - Z.ai Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.3",
+      "title": "zai-org/GLM-5.3 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-5p3",
+      "title": "GLM-5.3 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.fireworks.ai/ecosystem/firerouter/overview",
+      "title": "FireRouter overview - Fireworks AI Docs",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.fireworks.ai/serverless/serverless-modes",
+      "title": "Fast and Priority serverless modes - Fireworks AI Docs",
+      "kind": "host"
+    }
+  ],
+  "notes": "This id (accounts/fireworks/routers/glm-5p3-fast) is documented on Fireworks' Serverless Modes page as the 'Fast' tier for GLM-5.3: the same underlying model and quality as standard serverless, targeting 100+ tokens/second throughput. No benchmark scores are published for this exact endpoint, so evaluations are left empty. Unlike the glm-5p2-fast routers, Bud's catalog records no deprecation date for this one."
+}

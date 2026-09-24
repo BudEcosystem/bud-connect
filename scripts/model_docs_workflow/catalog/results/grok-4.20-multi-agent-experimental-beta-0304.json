@@ -1,0 +1,60 @@
+{
+  "slug": "grok-4.20-multi-agent-experimental-beta-0304",
+  "canonical": "grok-4.20-multi-agent-experimental-beta-0304",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 Multi-Agent is xAI's real-time multi-agent research mode built on the Grok 4.20 model: instead of one model answering directly, it orchestrates a team of specialized agents that search the web, analyze data and cross-reference findings, and a designated leader agent then synthesizes a sourced final answer. xAI's own documentation marks this feature as beta, meaning its API interface and behavior may still change. It accepts text and image input over a 1,000,000-token context window and launched alongside the base Grok 4.20 model on March 10, 2026. xAI's docs list this exact model id as one of several aliases -- including grok-4.20-multi-agent and grok-4.20-multi-agent-latest -- for the single underlying model grok-4.20-multi-agent-0309.",
+    "advantages": [
+      "Orchestrates a team of specialized agents that search the web, analyze data and synthesize findings together in real time on a single query, per xAI's Multi-Agent documentation.",
+      "Supports two configurable team sizes, 4 agents for quick research or 16 agents for deeper multi-faceted research, per xAI's Multi-Agent documentation.",
+      "Can enable built-in web_search, x_search, code_execution and collections_search tools so the server runs the full multi-agent research loop automatically, per xAI's Multi-Agent documentation.",
+      "Supports Batch API requests at a 20% discount to standard pricing, per xAI's model page."
+    ],
+    "disadvantages": [
+      "xAI marks this multi-agent research feature as beta, meaning its API interface and behavior may still change, per xAI's Multi-Agent documentation.",
+      "By default only the leader agent's tool calls and final response are returned; sub-agents' intermediate reasoning and outputs are encrypted unless use_encrypted_content is set, per xAI's Multi-Agent documentation.",
+      "Not listed among xAI's currently recommended models on its Models overview page, which now points to the newer Grok 4.7 for chat and code."
+    ],
+    "use_cases": [
+      "Deep, multi-step research questions that need information gathered and cross-referenced from multiple sources.",
+      "Producing sourced, citation-backed answers to complex research queries.",
+      "Agentic research workflows that combine web search, X search, code execution and collection search in one request.",
+      "Multi-turn research conversations that preserve sub-agent context across turns via encrypted content."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-experimental-beta-0304",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-experimental-beta-0304",
+      "title": "Grok 4.20 Multi Agent Experimental Beta 0304 | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/multi-agent",
+      "title": "Multi Agent | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/release-notes",
+      "title": "Release Notes | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Models | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "title": "Grok Model Retirement on May 15, 2026 | xAI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Despite the 'experimental' and '0304' naming, this id is one of xAI's own listed aliases for the same model, grok-4.20-multi-agent-0309; the page served at this exact URL is byte-identical in content to the pages for the other three targets in this batch, and xAI's release notes only ever announce one launch ('Grok 4.20 and Grok 4.20 Multi-agent are live', March 10, 2026), with no separate 'experimental' tier documented. The catalog's max_output_tokens (1,000,000) could not be separately confirmed: xAI's docs give only one combined 1,000,000-token 'context window' figure. No maker-published accuracy benchmark specific to this multi-agent mode was found, so evaluations is empty. No supported-language list was found, so languages is empty."
+}

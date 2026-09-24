@@ -1,0 +1,40 @@
+{
+  "slug": "marengo-embed-2-7",
+  "canonical": "marengo-embed-2-7",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "TwelveLabs",
+  "details": {
+    "description": "Marengo Embed 2.7 is TwelveLabs' embedding model for content search, classification and recommendation use cases. TwelveLabs released it December 4, 2024, reporting over a 15% improvement over its predecessor across more than 60 evaluation datasets. On AWS Bedrock, where this catalog entry is hosted, TwelveLabs' model card marks the lifecycle status 'Legacy' with an end-of-life date of November 30, 2026, matching the catalog's own deprecation date, and TwelveLabs' current documentation no longer describes this version, covering only the newer Marengo Embed 3.0 and 3.5 models.",
+    "advantages": [
+      "Produces multi-vector embeddings that separately capture visual appearance and on-screen text (OCR), rather than compressing content into a single vector (TwelveLabs' Marengo 2.7 launch post).",
+      "TwelveLabs reports 90.6% recall on image-to-visual object search across 60+ evaluation datasets, over 15% higher than its predecessor (TwelveLabs' Marengo 2.7 launch post).",
+      "TwelveLabs reports it can search low-resolution images down to 64x64 pixels (TwelveLabs' Marengo 2.7 launch post)."
+    ],
+    "disadvantages": [
+      "Marked 'Legacy' on AWS Bedrock with an end-of-life date of November 30, 2026, matching the catalog's deprecation date (Bedrock model card).",
+      "TwelveLabs' current model documentation covers only the newer Marengo Embed 3.0 and 3.5, and no longer describes the 2.7 version (TwelveLabs docs).",
+      "TwelveLabs does not publish the embedding vector's output dimensionality in its public documentation."
+    ],
+    "use_cases": [
+      "Image content search",
+      "Recommendation systems built on image embeddings",
+      "Content classification and tagging",
+      "Similarity search integrated into custom ML pipelines"
+    ],
+    "evaluations": [
+      {"name": "Image-to-visual object search recall", "score": 90.6, "source": "https://www.twelvelabs.io/blog/introducing-marengo-2-7"}
+    ],
+    "languages": [],
+    "website_url": "https://www.twelvelabs.io/blog/introducing-marengo-2-7",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.twelvelabs.io/blog/introducing-marengo-2-7", "title": "Introducing Marengo 2.7", "kind": "maker"},
+    {"url": "https://docs.twelvelabs.io/docs/concepts/models/marengo", "title": "Marengo - TwelveLabs Docs", "kind": "maker"},
+    {"url": "https://docs.twelvelabs.io/docs/concepts/models", "title": "Models - TwelveLabs Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-marengo-embed-v2-7.html", "title": "Marengo Embed v2.7 - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog facts list modality as image_input only and max_input_tokens 77, but TwelveLabs and the Bedrock model card describe Marengo 2.7 as embedding video, image, audio and text — removed the video/audio (motion, speech) claims and the motion-understanding evaluation from the description, advantages, use_cases and evaluations so the visible details do not restate a different modality than the catalog's, and kept the catalog's narrower facts, flagging the disagreement here instead per the brief. TwelveLabs' current Marengo docs page no longer mentions the 2.7 version at all, only Marengo 3.0 and 3.5, consistent with Bedrock's 'Legacy' lifecycle label and November 30, 2026 EOL date, which exactly matches the catalog's deprecation date. Could not find published embedding output dimensionality in any source opened."
+}

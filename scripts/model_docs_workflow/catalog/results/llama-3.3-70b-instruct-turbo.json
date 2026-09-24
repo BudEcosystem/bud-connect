@@ -1,0 +1,49 @@
+{
+  "slug": "llama-3.3-70b-instruct-turbo",
+  "canonical": "llama-3.3-70b-instruct-turbo",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.3 70B Instruct is Meta's 70-billion-parameter, instruction-tuned, text-only model in the Llama 3 family, released December 6, 2024 as an update to Llama 3.1 70B. Meta says that for some applications it approaches the performance of the much larger Llama 3.1 405B model, using an optimized transformer architecture with Grouped-Query Attention, a 128,000-token context window and tool-calling support. It was pretrained on about 15 trillion tokens of publicly available data, has a knowledge cutoff of December 2023, and Meta officially lists support for eight languages. This id serves the model as Together AI's FP8-quantized 'Turbo' build for faster inference; the underlying weights and published benchmarks are Meta's standard 70B Instruct release.",
+    "advantages": [
+      "Scores 86.0% on MMLU (CoT), per Meta's model card.",
+      "Scores 88.4% pass@1 on HumanEval and 87.6% on MBPP EvalPlus, per Meta's model card.",
+      "Scores 92.1% on IFEval instruction-following, per Meta's model card.",
+      "Scores 77.3% on the BFCL v2 tool-use benchmark, per Meta's model card.",
+      "Meta says that for some applications it approaches the performance of its much larger Llama 3.1 405B model."
+    ],
+    "disadvantages": [
+      "Text-only: does not accept image, audio or video input.",
+      "Knowledge cutoff of December 2023.",
+      "Meta's official language support is limited to eight languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai)."
+    ],
+    "use_cases": [
+      "Multilingual assistant-style chat",
+      "Tool use and function calling in agentic workflows",
+      "Code generation and reasoning tasks",
+      "General-purpose text generation"
+    ],
+    "evaluations": [
+      {"name": "MMLU (CoT)", "score": 86.0, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "MMLU Pro (CoT)", "score": 68.9, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "HumanEval", "score": 88.4, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "MBPP EvalPlus", "score": 87.6, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "IFEval", "score": 92.1, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "GPQA Diamond (CoT)", "score": 50.5, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "MATH (CoT)", "score": 77.0, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "MGSM", "score": 91.1, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"},
+      {"name": "BFCL v2", "score": 77.3, "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"}
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct", "title": "meta-llama/Llama-3.3-70B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://docs.together.ai/docs/serverless-models", "title": "Serverless Models - Together AI docs", "kind": "host"},
+    {"url": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama3_3/", "title": "Llama 3.3 - Meta AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens (131,072) matches both Meta's model card (128,000-token context) and Together AI's serverless-models table (131,072 tokens) exactly. Together's docs table lists this Turbo id as FP8 quantized, confirming it serves Meta's standard weights at reduced precision rather than a different model. No deprecation or legacy notice was found for Llama 3.3 70B Instruct on Meta's pages."
+}

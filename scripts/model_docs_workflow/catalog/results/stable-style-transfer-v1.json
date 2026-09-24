@@ -1,0 +1,32 @@
+{
+  "slug": "stable-style-transfer-v1",
+  "canonical": "stable-style-transfer-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Style Transfer is Stability AI's image-editing model for applying the visual style of a separate reference image onto a target image, available on Amazon Bedrock as stability.stable-style-transfer-v1:0. AWS describes it as transforming an existing image's content while preserving its original composition, which it distinguishes from Stability's related Style Guide tool that generates new content in a matched style. It is intended to help produce visually consistent content across multiple assets.",
+    "advantages": [
+      "AWS states the model 'transforms existing content while preserving the original composition,' unlike Stability's Style Guide tool which generates new content from a prompt (AWS Bedrock documentation).",
+      "Exposes composition_fidelity, style_strength, and change_strength parameters to tune how closely the output follows the style image versus the original target image (AWS Bedrock documentation)."
+    ],
+    "disadvantages": [
+      "Requires two input images (a target image and a separate style image), each with sides of at least 64 pixels and an aspect ratio between 1:2.5 and 2.5:1 (AWS Bedrock documentation)."
+    ],
+    "use_cases": [
+      "Applying an existing artwork or photo's visual style to a different target image while keeping the target's composition",
+      "Producing visually consistent variations of an asset across a campaign"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-style-transfer.html", "title": "Stability AI - Stable Image Style Transfer model card - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html", "title": "Stability AI Image Services - Amazon Bedrock", "kind": "host"},
+    {"url": "https://platform.stability.ai/docs/api-reference#tag/Control/paths/~1v2beta~1stable-image~1control~1style-transfer/post", "title": "Style Transfer - API Reference - Stability AI Developer Platform", "kind": "maker"}
+  ],
+  "notes": "'Style Transfer' is confirmed as a distinct, currently active endpoint (POST /v2beta/stable-image/control/style-transfer) on Stability AI's own current API reference, separate from 'Style Guide' (/v2beta/stable-image/control/style); Stability's own endpoint description ('Style Transfer specifically transforms existing content while preserving the original composition... helps create consistent content across multiple assets') matches AWS's Bedrock wording almost verbatim, so the earlier doubt about the name not appearing on Stability's own site is resolved. The catalog's max_input_tokens (77) does not match either source (no token-based prompt limit is documented for this service); kept the catalog's value as instructed. No accuracy-style benchmark scores were found. AWS's model card marks stability.stable-style-transfer-v1:0 lifecycle 'Active' (launched Oct 2024, no EOL date set) as of the page fetched on 2026-09-24."
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "firellava-13b",
+  "canonical": "firellava-13b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "FireLLaVA-13B is a vision-language model released by Fireworks AI on January 18, 2024, combining the LLaVA architecture's Vicuna v1.5 13B language model with an OpenAI CLIP-ViT vision encoder. Fireworks describes it as the first LLaVA-style multimodal model released under a commercially permissive license (the Llama 2 Community License), trained on 588K lines of visual-instruction data that Fireworks generated with CodeLlama 34B Instruct instead of GPT-4, which the original LLaVA model used. It takes a single image plus text and returns text, for tasks like describing an image or answering questions about a chart.",
+    "advantages": [
+      "Released under the Llama 2 Community License, allowing commercial use, unlike the original LLaVA-13B model's non-commercial CC BY-NC 4.0 license, per Fireworks' launch post.",
+      "Fireworks reports FireLLaVA performs close to the original GPT-4-data-trained LLaVA-13B model across seven common vision benchmarks, and slightly ahead of it on four of the seven.",
+      "Exposes an OpenAI-Vision-compatible chat completions API, so existing vision-chat integrations can point at it with minimal changes."
+    ],
+    "disadvantages": [
+      "Trained on single-image conversations, so Fireworks says performance may degrade with multiple images in the same conversation.",
+      "Input images are downscaled before processing, which Fireworks says can make small text within an image hard for the model to read.",
+      "Ignores the OpenAI Vision API's 'detail' parameter, since all images are treated uniformly, per Fireworks' launch post.",
+      "Limited to a 4,096-token context window per Bud's catalog facts."
+    ],
+    "use_cases": [
+      "Writing marketing descriptions or captions from product images.",
+      "Building vision-capable chatbots that answer questions about an image.",
+      "Interpreting charts and other visual content.",
+      "General single-image visual question answering."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/firellava-13b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://fireworks.ai/blog/firellava-the-first-commercially-permissive-oss-llava-model", "title": "FireLLaVA: the first commercially permissive OSS LLaVA model", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/firellava-13b", "title": "FireLLaVA 13B API & Playground", "kind": "maker"},
+    {"url": "https://huggingface.co/fireworks-ai/FireLLaVA-13b", "title": "fireworks-ai/FireLLaVA-13b · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Fireworks' launch post states FireLLaVA 'slightly beats the original LLaVA model on four of the seven benchmarks' it evaluated, but the fetched page text did not include the underlying score table (likely rendered as a chart image), so no numeric figures could be confirmed and evaluations is left empty rather than guessed. Bud's catalog modality facts for this entry list only text_input/text_output; Fireworks documents firellava-13b as accepting image input via its chat completions API, which is the model's core purpose -- flagging this discrepancy for the catalog facts to be checked."
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "firesearch-ocr-v6",
+  "canonical": "firesearch-ocr-v6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "Firesearch OCR V6 is an optical character recognition model that Fireworks AI provides through its model library, built to extract text from images via an OpenAI-compatible chat completions API. Fireworks' own model page lists it as a 4.54-billion-parameter base (non-instruction-tuned) model with an 8.19K-token context window, created December 11, 2024, and marks it 'Ready' for on-demand deployment. Fireworks has not published a launch post, benchmark results, or a supported-language list for this model.",
+    "advantages": [
+      "Accepts image input directly through Fireworks' chat completions API for extracting text from images, per Fireworks' model page and its vision-language-model API guide.",
+      "Available for on-demand deployment on dedicated GPUs with, per Fireworks, high reliability and no rate limits."
+    ],
+    "disadvantages": [
+      "Fireworks has not published benchmark results, accuracy figures, or a supported-language list for this model.",
+      "Listed as a base model rather than instruction-tuned, and does not support fine-tuning or serverless deployment, per its Fireworks model page.",
+      "No launch post or documentation beyond the model-library listing was found describing how it was trained or what it is specialized for."
+    ],
+    "use_cases": [
+      "Extracting text from images, such as scanned documents or photographed text."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/firesearch-ocr-v6",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://fireworks.ai/models/fireworks/firesearch-ocr-v6", "title": "Firesearch OCR V6 API & Playground | Fireworks AI", "kind": "maker"},
+    {"url": "https://docs.fireworks.ai/guides/querying-vision-language-models", "title": "Querying vision-language models - Fireworks AI Docs", "kind": "maker"}
+  ],
+  "notes": "The only source found is Fireworks' own model-library page for this model; no blog post, Hugging Face card, or third-party coverage of firesearch-ocr-v6 could be found, so this write-up is thinner than for Fireworks' other models. Bud's catalog modality facts for this entry list only text_input/text_output; Fireworks' page marks 'Support image input: Supported', which is the model's stated purpose -- flagging this discrepancy for the catalog facts to be checked."
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "gemini-2.5-pro-tts",
+  "canonical": "gemini-2.5-pro-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 2.5 Pro Preview TTS is Google's high-fidelity text-to-speech model, optimized for quality in structured audio workflows such as podcasts and audiobooks. It supports both single-speaker narration and multi-speaker dialogue with prebuilt voices in one request, with style, accent, pace and tone steerable through natural-language prompting. Google now lists this model as limited access, restricted to accounts that used it before, and does not recommend it for new projects, pointing instead to the newer Gemini 3.x TTS models.",
+    "advantages": [
+      "Google describes it as high-fidelity speech synthesis optimized for quality in structured workflows like podcasts and audiobooks.",
+      "Supports both single-speaker narration and multi-speaker dialogue generation with prebuilt voices in a single request."
+    ],
+    "disadvantages": [
+      "Google lists this model as limited access, restricted to accounts that used it before, and does not recommend it for new projects.",
+      "Does not support voice design or voice replication (voice cloning), which Google's newer Gemini 3.x TTS models add.",
+      "It is a preview-era release, not a generally available model."
+    ],
+    "use_cases": [
+      "Podcast production",
+      "Audiobook narration",
+      "Multi-speaker dialogue synthesis"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+      "title": "Speech generation (text-to-speech) | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud's catalog id (gemini-2.5-pro-tts) omits the '-preview-' segment Google's own docs use for this model's id (gemini-2.5-pro-preview-tts); treated as the same model since the id, maker, generation and modality all match. Single/multi-speaker support and the absence of voice design/replication are confirmed from Google's TTS supported-models capability table. Could not confirm a specific supported-language count, voice list, or context window for this model, so these were left out rather than guessed."
+}

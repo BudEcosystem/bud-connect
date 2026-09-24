@@ -1,0 +1,114 @@
+{
+  "slug": "nova-3-general",
+  "canonical": "nova-3-general",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-3 General is the default, general-purpose option in Deepgram's Nova-3 speech-to-text family, documented as \"optimized for everyday audio processing\" and recommended for meetings, event captioning, multi-speaker, multilingual, noisy, or far-field audio in both batch and streaming. Deepgram's docs list it under the same language-support table row as the bare `nova-3` model id, meaning calling the API with `model=nova-3` uses this same general option. Deepgram also offers nova-3-medical and nova-3-pharma variants, tuned for healthcare and pharmaceutical vocabulary, as separate Nova-3 options.",
+    "advantages": [
+      "Deepgram reports a 53.4% reduction in word error rate for real-time streaming and a 47.4% reduction for batch transcription compared to the competitors it tested, per its documentation.",
+      "Supports real-time multilingual transcription with code-switching across English, Spanish, French, German, Hindi, Russian, Portuguese, Japanese, Italian, and Dutch within a single conversation.",
+      "Deepgram describes it as the first of its voice AI models to offer self-serve vocabulary customization, letting users adapt to new terms without retraining the model.",
+      "Includes an optional personal-information redaction feature, per Deepgram's documentation."
+    ],
+    "disadvantages": [
+      "Not tuned for medical or pharmaceutical vocabulary; Deepgram offers separate nova-3-medical and nova-3-pharma variants for those domains."
+    ],
+    "use_cases": [
+      "General-purpose transcription of meetings, events, and multi-speaker conversations in noisy or far-field conditions.",
+      "Real-time multilingual transcription with code-switching for customer support or contact-center audio.",
+      "Batch transcription of recorded audio that needs custom vocabulary adapted without retraining."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Afrikaans",
+      "Arabic",
+      "Armenian",
+      "Assamese",
+      "Belarusian",
+      "Bengali",
+      "Bosnian",
+      "Bulgarian",
+      "Catalan",
+      "Chinese (Cantonese)",
+      "Chinese (Mandarin)",
+      "Croatian",
+      "Czech",
+      "Danish",
+      "Dutch",
+      "English",
+      "Estonian",
+      "Finnish",
+      "Flemish",
+      "French",
+      "Georgian",
+      "German",
+      "Greek",
+      "Gujarati",
+      "Hebrew",
+      "Hindi",
+      "Hungarian",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Kannada",
+      "Kazakh",
+      "Korean",
+      "Latvian",
+      "Lithuanian",
+      "Macedonian",
+      "Malay",
+      "Marathi",
+      "Mongolian",
+      "Nepali",
+      "Norwegian",
+      "Pashto",
+      "Persian",
+      "Polish",
+      "Portuguese",
+      "Punjabi",
+      "Romanian",
+      "Russian",
+      "Serbian",
+      "Slovak",
+      "Slovenian",
+      "Spanish",
+      "Swedish",
+      "Tagalog",
+      "Tamil",
+      "Telugu",
+      "Thai",
+      "Turkish",
+      "Ukrainian",
+      "Urdu",
+      "Vietnamese"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepgram.com/learn/introducing-nova-3-speech-to-text-api",
+      "title": "Introducing Nova-3: Setting a New Standard for AI-Driven Speech-to-Text",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/changelog/2026/9/17",
+      "title": "Deepgram Changelog - September 17, 2026",
+      "kind": "maker"
+    }
+  ],
+  "notes": "developers.deepgram.com/docs/model documents model=nova-3-{option} with general/medical/pharma as the only listed options ('general: Optimized for everyday audio processing'), and models-languages-overview lists `nova-3` and `nova-3-general` together in the same language-support table row, so this entry treats nova-3-general and the bare nova-3 id as the same model. The current docs/model page states a 53.4%/47.4% WER reduction; Deepgram's original October 2024 launch post (introducing-nova-3-speech-to-text-api) instead states 54.2% streaming / 47.4% batch with median WERs of 6.84% and 5.26%, and the also-current models-languages-overview page still shows that same older 54.2% figure too -- docs/model (the dedicated model-options page) is treated as the more authoritative, updated number, so 53.4% is the one used here. WER figures are not included in evaluations since they are not accuracy-style, higher-is-better scores. Only the 10 languages named above support real-time code-switching; the rest are single-language support."
+}

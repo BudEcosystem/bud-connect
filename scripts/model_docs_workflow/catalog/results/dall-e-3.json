@@ -1,0 +1,59 @@
+{
+  "slug": "dall-e-3",
+  "canonical": "dall-e-3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "DALL-E 3 is OpenAI's third-generation text-to-image model, released via ChatGPT and the API in fall 2023. It uses GPT-4 to automatically rewrite prompts before generating an image, and produces a single image per request at 1024x1024, 1792x1024, or 1024x1792 resolution, with a Standard or HD quality setting and Natural or Vivid style options. OpenAI's own deprecations page set a shutdown date of May 12, 2026 for DALL-E 3, and Microsoft separately scheduled the Azure OpenAI version for retirement on February 18, 2026 (with a possible six-month extension for pre-existing deployments) -- both dates have already passed as of this research date, and neither OpenAI's nor Azure's current model documentation lists it as available any longer.",
+    "advantages": [
+      "Automatically rewrites prompts with GPT-4 before generating an image, which OpenAI says improves prompt fidelity.",
+      "Generates images at three fixed resolutions -- 1024x1024, 1792x1024, and 1024x1792 -- about 75% higher than DALL-E 2's maximum resolution.",
+      "Offers an HD quality setting OpenAI says produces finer details and greater consistency, plus Natural and Vivid style options."
+    ],
+    "disadvantages": [
+      "Deprecated and removed from OpenAI's API on May 12, 2026, per OpenAI's deprecations page; OpenAI's current model documentation recommends GPT-Image-2.5 Sunburst as the replacement.",
+      "On Azure, DALL-E 3 was scheduled for retirement on February 18, 2026, with Microsoft recommending GPT Image models such as gpt-image-1-mini as the replacement.",
+      "Only supports generating one image per request (n=1), and only the image-generation endpoint -- the Edits and Variations endpoints work with DALL-E 2, not DALL-E 3.",
+      "OpenAI's own cookbook notes it struggles with custom fonts, letter design, and seamless texture generation."
+    ],
+    "use_cases": [
+      "Generating original images from natural-language text prompts",
+      "Producing images in square, portrait, or landscape aspect ratios for illustration or marketing use",
+      "HD-quality image generation where finer detail is needed"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/dall-e-3",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/dall-e-3",
+      "title": "DALL·E 3 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/cookbook/articles/what_is_new_with_dalle_3",
+      "title": "What's new with DALL·E 3?",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/answers/questions/5769115/confirmation-on-dall-e-3-retirement-timeline-and-e",
+      "title": "Confirmation on DALL·E 3 retirement timeline and extension policy (Azure OpenAI) - Microsoft Q&A",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's deprecation_date for this target is empty. OpenAI's own deprecations page gives an explicit shutdown date of 2026-05-12 for dall-e-3 (announced 2025-11-14, recommending gpt-image-2, gpt-image-1, or gpt-image-1-mini), and OpenAI's current model documentation separately names GPT-Image-2.5 Sunburst -- a newer model -- as today's recommended replacement. Microsoft's Azure documentation set a DALL-E 3 retirement date of 2026-02-18 (with a possible 6-month extension for pre-existing deployments). All of these dates are already past as of this research date, and Azure's current model-catalog/retirement-schedule pages no longer list dall-e-3 at all. All target URIs are azure/hd and azure/standard quality variants, so this describes the underlying model, not any one variant."
+}

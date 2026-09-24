@@ -1,0 +1,46 @@
+{
+  "slug": "stable-image-control-sketch-v1",
+  "canonical": "stable-image-control-sketch-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Control Sketch is Stability AI's sketch-to-image model: it upgrades a rough hand-drawn sketch into a refined image guided by a text prompt, or, given a non-sketch image, uses that image's contour lines and edges to steer the composition of a new generated image. It is one of Stability AI's Control-category Image Services (alongside Control Structure, Style Guide and Style Transfer), built using ControlNet-style conditioning on top of Stable Diffusion models, per Amazon's Bedrock documentation. On Amazon Bedrock it is offered as stability.stable-image-control-sketch-v1:0 and is currently listed as an Active model.",
+    "advantages": [
+      "Accepts both hand-drawn sketches and non-sketch images, using the contour lines and edges of either to guide detailed control over the generated output, per Amazon Bedrock's documentation.",
+      "Exposes an adjustable control_strength parameter (0 to 1, default 0.7) to set how strongly the input guides the generation, plus 17 named style presets such as anime, cinematic and photographic, per Amazon Bedrock's documentation."
+    ],
+    "disadvantages": [
+      "Requires the input image's aspect ratio to be between 1:2.5 and 2.5:1, with every side at least 64 pixels and a total pixel count up to 9,437,184, per Amazon Bedrock's documentation.",
+      "Requires a text prompt describing the desired output in addition to the sketch or image, per Amazon Bedrock's documentation."
+    ],
+    "use_cases": [
+      "Turning rough hand-drawn sketches into refined, detailed images",
+      "Using the contour lines and edges of an existing non-sketch image to guide detailed control over a newly generated image",
+      "Applying named style presets, such as anime, cinematic or photographic, to sketch-guided generations"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html",
+      "title": "Stability AI Image Services - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-control-sketch.html",
+      "title": "Stable Image Control Sketch - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stable Image Services | Stability AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Amazon Bedrock's model card lists a 'Model launch date' of Jul 13, 2023 for this service, which predates SDXL 1.0's own July 26, 2023 release and the broader Stable Image Services suite; this date looks unreliable and I did not rely on it for the description. Lifecycle is listed as Active as of this research date, with no EOL date set."
+}

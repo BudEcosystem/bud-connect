@@ -1,0 +1,81 @@
+{
+  "slug": "qwen3-next-80b-a3b-thinking",
+  "canonical": "qwen3-next-80b-a3b-thinking",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Next-80B-A3B-Thinking is the reasoning-focused chat model in Alibaba's Qwen3-Next series, sharing the same hybrid attention architecture (combining Gated DeltaNet linear attention with Gated Attention) and high-sparsity Mixture-of-Experts design as the Instruct variant, with 80 billion total parameters and about 3 billion activated per token. Qwen's model card states it supports only thinking mode, generating extended reasoning content before producing a final answer, unlike the separate Instruct variant which does not generate reasoning traces. It integrates with the Qwen-Agent framework for tool use and agentic tasks, is text-only with no vision input, and is released under the Apache 2.0 license.",
+    "advantages": [
+      "Scores 87.8% on AIME25, a competition math benchmark, per its Hugging Face model card.",
+      "Scores 82.7 on MMLU-Pro and 92.5 on MMLU-Redux, knowledge benchmarks, per its Hugging Face model card.",
+      "Scores 68.7% on LiveCodeBench v6, a coding benchmark, per its Hugging Face model card.",
+      "Its Hugging Face model card states it outperforms Gemini-2.5-Flash-Thinking across multiple benchmarks.",
+      "Only about 3 billion of its 80 billion parameters are activated per token via its Mixture-of-Experts design, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Supports only thinking mode and always generates extended reasoning content; Qwen offers a separate Qwen3-Next-80B-A3B-Instruct model for direct, non-reasoning responses, per its Hugging Face model card.",
+      "Text-only: no image or vision input, per its Hugging Face model card."
+    ],
+    "use_cases": [
+      "Complex multi-step reasoning and problem solving",
+      "Competition-level mathematics",
+      "Coding assistance",
+      "Agentic tool use via the Qwen-Agent framework"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME25",
+        "score": 87.8,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      {
+        "name": "HMMT25",
+        "score": 73.9,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      {
+        "name": "MMLU-Pro",
+        "score": 82.7,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      {
+        "name": "MMLU-Redux",
+        "score": 92.5,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      {
+        "name": "LiveCodeBench v6",
+        "score": 68.7,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      {
+        "name": "BFCL-v3",
+        "score": 72.0,
+        "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking",
+      "title": "Qwen/Qwen3-Next-80B-A3B-Thinking · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-next-80b-a3b-thinking",
+      "title": "Qwen3 Next 80B A3B Thinking - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list",
+      "title": "Qwen3-Next: Towards Ultimate Training & Inference Efficiency",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Large context/output-length conflict: the catalog lists max_input_tokens and max_output_tokens as 4,096, but the Hugging Face model card and Qwen's own Qwen3-Next launch blog both state a native context length of 262,144 tokens (validated up to about 1,010,000 tokens via YaRN scaling), and the model card recommends allowing tens of thousands of output tokens for its extended thinking traces -- a two-orders-of-magnitude gap from the catalog facts. Per instructions the catalog figure was kept and no specific context/output-token number is stated in the description; flagging this for review since it is a much larger discrepancy than typical rounding. Fireworks' hosted listing separately states function calling is not supported on that platform, which appears to contradict the maker's own tool-use/Qwen-Agent documentation, so that claim was left out rather than used as a disadvantage. A Qwen maker blog post for Qwen3-Next was found, linked directly from the Hugging Face model card (qwen.ai/blog?id=4074cca8...); it has been added to sources and directly confirms the model outperforming Gemini-2.5-Flash-Thinking 'on multiple benchmarks,' plus the architecture and context-length figures above. No dedicated Qwen3-Next GitHub repository was found -- the QwenLM GitHub org's Qwen3-Next repo path now redirects to a newer 'Qwen3.8' repo -- so github_url remains null. OJBench (29.7) was left out of evaluations since its scale/methodology could not be confirmed as a 0-100 accuracy score. No source found declaring this model deprecated or superseded."
+}

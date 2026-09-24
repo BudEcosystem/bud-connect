@@ -1,0 +1,41 @@
+{
+  "slug": "gpt-oss-safeguard-20b",
+  "canonical": "gpt-oss-safeguard-20b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-oss-safeguard-20b is OpenAI's smaller open-weight reasoning model for safety classification, released as a research preview in October 2025 under an Apache 2.0 license alongside the larger gpt-oss-safeguard-120b. It is a reasoning fine-tune of gpt-oss-20b (21 billion total / 3.6 billion active parameters) that takes a user-supplied written policy and a piece of content, classifies the content against that policy, and returns its chain-of-thought reasoning alongside the decision rather than only a score. It supports low, medium and high reasoning-effort settings and, like the base gpt-oss models, requires OpenAI's harmony response format. OpenAI recommends the base gpt-oss models for non-safety use cases.",
+    "advantages": [
+      "OpenAI reports that on internal multi-policy accuracy tests, gpt-oss-safeguard-20b outperforms gpt-5-thinking and the base gpt-oss models, per OpenAI's launch post.",
+      "OpenAI reports gpt-oss-safeguard slightly outperformed all other tested models on a 2022 content-moderation dataset, per OpenAI's launch post.",
+      "Exposes its reasoning process for each classification decision, making it possible to audit why content was labeled a certain way, per OpenAI's Hugging Face model card.",
+      "Interprets a custom, written policy at inference time rather than requiring retraining, so one model can generalize across products and use cases, per OpenAI's launch post.",
+      "Lower-latency alternative to gpt-oss-safeguard-120b, built on the smaller gpt-oss-20b base, per OpenAI's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Released as a research preview, per OpenAI's launch post.",
+      "Performance was mixed on the ToxicChat benchmark, where gpt-5-thinking marginally outperformed gpt-oss-safeguard-20b, per OpenAI's launch post.",
+      "OpenAI notes traditional classifiers trained on large labeled datasets can still outperform gpt-oss-safeguard, and its reasoning process is more computationally expensive to run at scale, per OpenAI's launch post.",
+      "Requires OpenAI's harmony response format; OpenAI recommends the base gpt-oss models for applications outside safety classification, per OpenAI's Hugging Face model card."
+    ],
+    "use_cases": [
+      "LLM input/output filtering against a custom safety policy",
+      "Online content labeling and moderation",
+      "Offline Trust and Safety labeling at scale",
+      "Lower-latency, auditable policy-based content classification"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/gpt-oss-safeguard-20b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://openai.com/index/introducing-gpt-oss-safeguard/", "title": "Introducing gpt-oss-safeguard", "kind": "maker"},
+    {"url": "https://huggingface.co/openai/gpt-oss-safeguard-20b", "title": "openai/gpt-oss-safeguard-20b", "kind": "maker"},
+    {"url": "https://huggingface.co/openai/gpt-oss-safeguard-120b", "title": "openai/gpt-oss-safeguard-120b", "kind": "maker"},
+    {"url": "https://developers.openai.com/cookbook/articles/gpt-oss-safeguard-guide", "title": "gpt-oss-safeguard guide", "kind": "maker"}
+  ],
+  "notes": "No exact numeric benchmark scores were published by OpenAI for gpt-oss-safeguard-20b (only comparative statements like 'outperforms gpt-5-thinking'), so evaluations is left empty rather than guess. Catalog facts list two max_input_tokens values (128000, 131072) and three max_output_tokens values (16000, 65536, 131072) depending on host; sources gave no single context/output figure for this model, so no specific number is stated in the description. Exact release day not independently confirmed beyond 'October 2025'."
+}

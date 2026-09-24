@@ -1,0 +1,76 @@
+{
+  "slug": "grok-build-latest",
+  "canonical": "grok-build-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "grok-build-latest is xAI's alias for whichever model currently powers its Grok Build coding agent; as of this research (September 2026) it resolves to Grok 4.5, xAI's model for coding, agentic tasks, and knowledge work, launched July 16, 2026 and described by xAI as trained alongside Cursor. It has a 500K-token context window, accepts text and image input with text output, and supports function calling, structured outputs, and four selectable reasoning-effort levels (low, medium, high, xhigh; high by default). xAI states Grok 4.5 is the default model in Grok Build.",
+    "advantages": [
+      "Resolves 64.7% of tasks on the SWE-Bench Pro benchmark (xAI Grok 4.5 launch post).",
+      "Scores 83.3% on Terminal-Bench 2.1 (xAI Grok 4.5 launch post).",
+      "Scores 62.0% on DeepSWE 1.0, evaluated by Artificial Analysis using each provider's own harness (xAI Grok 4.5 launch post).",
+      "xAI reports it runs at fast-model speeds of about 80 tokens/second with roughly twice the token efficiency of comparable leading models on SWE-Bench Pro tasks (xAI Grok 4.5 launch post).",
+      "Supports four reasoning-effort levels (low, medium, high, xhigh) to trade depth against latency, with reasoning on by default (xAI model registry, docs.x.ai)."
+    ],
+    "disadvantages": [
+      "As of September 2026, xAI has released newer Grok 4.6 and Grok 4.7 models as separate named models; the grok-build-latest alias currently still resolves to Grok 4.5, per xAI's own model registry.",
+      "No audio input or output, and no image-generation output; accepts text and image input only."
+    ],
+    "use_cases": [
+      "Long-running agentic coding via the Grok Build CLI/TUI and Agent Client Protocol integrations",
+      "End-to-end application building from a single prompt",
+      "Generating Excel workbooks, PowerPoint decks, and Word documents with research, formulas, and native shapes, as demonstrated in Grok Build (xAI Grok 4.5 launch post)",
+      "Research and multi-step knowledge work"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-Bench Pro",
+        "score": 64.7,
+        "source": "https://x.ai/news/grok-4-5"
+      },
+      {
+        "name": "Terminal-Bench 2.1",
+        "score": 83.3,
+        "source": "https://x.ai/news/grok-4-5"
+      },
+      {
+        "name": "DeepSWE 1.0",
+        "score": 62.0,
+        "source": "https://x.ai/news/grok-4-5"
+      },
+      {
+        "name": "DeepSWE 1.1",
+        "score": 53.0,
+        "source": "https://x.ai/news/grok-4-5"
+      },
+      {
+        "name": "SWE Marathon (pass@1)",
+        "score": 29.0,
+        "source": "https://x.ai/news/grok-4-5"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://x.ai/news/grok-4-5",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://x.ai/news/grok-4-5",
+      "title": "Introducing Grok 4.5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/build/overview",
+      "title": "Grok Build",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/",
+      "title": "SpaceXAI Docs (model registry)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "grok-build-latest is an alias, not a fixed model: xAI's own client-side model registry (embedded on docs.x.ai as __XAI_PUBLIC_MODELS__) lists it as an alias of the model named 'grok-4.5' (alongside 'grok-4.5-latest'), and xAI's Grok 4.5 launch post states Grok 4.5 'is now the default model in Grok Build.' The catalog's 500K/500K max_input/max_output_tokens match the 500K context window / maxPromptLength given for grok-4.5 in that registry. Benchmark figures above are read off a comparison chart on xAI's own launch post, which credits Datacurve for creating the DeepSWE/SWE-Marathon evals and Artificial Analysis (AA) for running them with each provider's own harness. Because this is a moving alias, this write-up will go stale if xAI repoints grok-build-latest to a newer model. xAI's docs/blog currently brand the company 'SpaceXAI'; kept maker as 'xAI' for consistency with the catalog's provider id."
+}

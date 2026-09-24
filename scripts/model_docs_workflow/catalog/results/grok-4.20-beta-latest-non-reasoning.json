@@ -1,0 +1,62 @@
+{
+  "slug": "grok-4.20-beta-latest-non-reasoning",
+  "canonical": "grok-4.20-beta-latest-non-reasoning",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 is a chat model from xAI, released on March 10, 2026 as part of the Grok 4.20 family; this is the configuration without an extended reasoning step, which answers directly. It accepts text and image input and produces text output over a 1,000,000-token context window, with function calling, structured outputs and Batch API support, per xAI's own documentation. xAI has since shipped three newer flagship chat generations, Grok 4.5, Grok 4.6 and Grok 4.7, and its current model-selection guidance recommends Grok 4.7, not Grok 4.20, for coding and chat. Third-party benchmark tracker Artificial Analysis lists this snapshot as deprecated, naming Grok 4.3 (Non-reasoning) as its replacement.",
+    "advantages": [
+      "Supports a 1,000,000-token context window with text and image input, per xAI's API documentation.",
+      "Supports native function calling, structured outputs and the Batch API, per xAI's documentation.",
+      "Answers directly without an extended reasoning step, for lower latency than the reasoning variant of the same model, per xAI's documentation.",
+      "Runs at about 93 output tokens per second on Artificial Analysis' speed benchmark, above the roughly 68 t/s median for comparable models."
+    ],
+    "disadvantages": [
+      "Scores an Artificial Analysis Intelligence Index of 14, below the 15 median for comparable models.",
+      "Superseded by three newer Grok releases (4.5, 4.6, 4.7); xAI's current guidance recommends Grok 4.7 for coding and chat instead.",
+      "Artificial Analysis lists this model as deprecated, naming Grok 4.3 (Non-reasoning) as its replacement.",
+      "xAI's documentation states that logprobs and top_logprobs are not supported by grok-4.20 and newer models."
+    ],
+    "use_cases": [
+      "Lower-latency chat responses where an extended reasoning step is not needed",
+      "Agentic workflows that call tools/functions as part of multi-step tasks",
+      "Structured-output generation",
+      "Vision tasks that combine image and text input"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index",
+        "score": 14,
+        "source": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Grok Models & Pricing | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/release-notes",
+      "title": "Release Notes | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "title": "May 15, 2026 Model Retirement | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning",
+      "title": "Grok 4.20 0309 v2 (Non-reasoning) - Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "grok-4.20-beta-non-reasoning and grok-4.20-beta-latest-non-reasoning are both aliases xAI's own model config (docs.x.ai/developers/models) maps to the same underlying model, grok-4.20-0309-non-reasoning (confirmed by fetching the page's embedded model/pricing data directly, not just the rendered summary), so this file describes that one model. The catalog's max_input_tokens/max_output_tokens of 1,000,000 match xAI's own docs (maxPromptLength 1,000,000); Artificial Analysis states a 2.0M context window for the same snapshot, which conflicts with xAI's own figure and with the catalog, so the catalog's 1,000,000 was kept and the conflicting figure was not used. xAI's own current pages (models/pricing, release notes) do not label grok-4.20 itself beta, deprecated or retired; the May 15, 2026 retirement notice covers only the older grok-4/grok-4.1-fast/grok-3 line, not grok-4.20. The 'superseded' framing comes from two independent facts: xAI's own 'which model should I choose' guidance now points to Grok 4.7 for code and chat, and Artificial Analysis explicitly marks this snapshot deprecated in favor of Grok 4.3 (Non-reasoning)."
+}

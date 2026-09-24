@@ -1,0 +1,49 @@
+{
+  "slug": "ink-whisper",
+  "canonical": "ink-whisper",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cartesia",
+  "details": {
+    "description": "Ink-Whisper is Cartesia's lower-cost speech-to-text model, used for batch transcription of pre-recorded audio and, via Cartesia's manual-finalization realtime endpoint, for streaming transcription without built-in turn detection (the snapshot ink-whisper-2025-06-04 is documented as stable). Cartesia describes it as more accurate and lower-latency than baseline Whisper, with dynamic chunking for variable-length audio, resilience to background noise and telephony artifacts, and accurate transcription of proper nouns and domain-specific terms. Cartesia's current docs describe it as an older model and point users to Ink-2 for improved turn detection in English voice agents, though Ink-Whisper remains documented and available.",
+    "advantages": [
+      "Cartesia reports higher accuracy and lower latency than baseline Whisper.",
+      "Supports transcription across around 99 languages, per Cartesia's documentation.",
+      "Dynamic chunking handles variable-length audio and interruptions.",
+      "Designed for resilience to background noise and telephony artifacts, with accurate transcription of proper nouns and domain-specific terminology."
+    ],
+    "disadvantages": [
+      "Not available on Cartesia's auto-finalization realtime endpoint with native turn detection, which is exclusive to Ink-2 and Ink-preview; Ink-Whisper is used via the batch endpoint or the manual-finalization realtime endpoint instead.",
+      "Cartesia's own docs describe it as an older model and direct users toward Ink-2, which offers improved turn detection for English voice agents.",
+      "No word-error-rate figures, diarization support, or domain-specific (e.g. medical, phonecall) tuning are documented for this model."
+    ],
+    "use_cases": [
+      "Batch transcription of pre-recorded audio files.",
+      "Multilingual transcription where broad language coverage matters more than realtime turn detection.",
+      "Lower-cost transcription workloads that do not need Ink-2's realtime turn-detection features."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English", "Mandarin Chinese", "German", "Spanish", "Russian", "Korean", "French", "Japanese", "Portuguese",
+      "Turkish", "Polish", "Catalan", "Dutch", "Arabic", "Swedish", "Italian", "Indonesian", "Hindi", "Finnish",
+      "Vietnamese", "Hebrew", "Ukrainian", "Greek", "Malay", "Czech", "Romanian", "Danish", "Hungarian", "Tamil",
+      "Norwegian", "Thai", "Urdu", "Croatian", "Bulgarian", "Lithuanian", "Latin", "Maori", "Malayalam", "Welsh",
+      "Slovak", "Telugu", "Farsi", "Latvian", "Bengali", "Serbian", "Azerbaijani", "Slovenian", "Kannada",
+      "Estonian", "Macedonian", "Breton", "Basque", "Icelandic", "Armenian", "Nepali", "Mongolian", "Bosnian",
+      "Kazakh", "Albanian", "Swahili", "Galician", "Marathi", "Punjabi", "Sinhala", "Khmer", "Shona", "Yoruba",
+      "Somali", "Afrikaans", "Occitan", "Georgian", "Belarusian", "Tajik", "Sindhi", "Gujarati", "Amharic",
+      "Yiddish", "Lao", "Uzbek", "Faroese", "Haitian Creole", "Pashto", "Turkmen", "Nynorsk", "Maltese",
+      "Sanskrit", "Luxembourgish", "Burmese", "Tibetan", "Tagalog", "Malagasy", "Assamese", "Tatar", "Hawaiian",
+      "Lingala", "Hausa", "Bashkir", "Javanese", "Sundanese", "Cantonese"
+    ],
+    "website_url": "https://docs.cartesia.ai/build-with-cartesia/stt/older-models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/stt/older-models", "title": "Older STT Models - Cartesia Docs", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/use-the-api/stt/compare-endpoints", "title": "Compare STT endpoints - Cartesia Docs", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/api-reference/stt/websocket", "title": "Realtime Speech-to-Text (Manual) - Cartesia API Reference", "kind": "maker"}
+  ],
+  "notes": "Cartesia's docs page states this model supports '99 languages' but the enumerated list on the same page contains 100 names ending in Cantonese, which matches the well-known discrepancy in Whisper-derived models (the original 99-language list plus Cantonese added later); I listed every name given rather than trim one to force the count to 99. No WER, diarization, or domain-tuning (medical/phonecall) details were found on the maker's page for this specific model, so I left those out rather than assume they carry over from the general Ink product page. Verify pass: the compare-endpoints table and the /stt/websocket API reference's model enum (ink-2, ink-preview, ink-whisper) show Ink-Whisper also works on the manual-finalization realtime endpoint, not just batch; only the auto-finalization/turn-detection endpoint is Ink-2-exclusive."
+}

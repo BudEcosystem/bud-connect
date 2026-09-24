@@ -1,0 +1,52 @@
+{
+  "slug": "qwen2p5-32b",
+  "canonical": "qwen2p5-32b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-32B is a base (pretrained, not instruction-tuned) causal language model from Alibaba's Qwen team, released September 2024 under the Apache 2.0 license. It has 32.5 billion parameters (31.0B non-embedding) across 64 transformer layers with grouped-query attention, and Qwen's model card lists native support for up to 131,072 tokens of context. Qwen's documentation states it does not recommend using base language models directly for conversation, expecting further post-training such as SFT or RLHF before deployment as a chat assistant.",
+    "advantages": [
+      "Scores 55.1 on MMLU-Pro, a knowledge and reasoning benchmark, per Qwen's Qwen2.5-LLM announcement blog.",
+      "Lists native support for a 131,072-token context length, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Is a base (pretrained) model, not instruction-tuned; Qwen's documentation states 'We do not recommend using base language models for conversations' without further post-training.",
+      "Fireworks AI, which hosts this model, likewise labels it a 'Base model' distinct from the separately listed Qwen2.5-32B-Instruct chat variant."
+    ],
+    "use_cases": [
+      "Base checkpoint for further supervised fine-tuning (SFT) or RLHF post-training",
+      "Continued pretraining or domain adaptation",
+      "Few-shot text completion"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 55.1,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-32B",
+    "github_url": "https://github.com/QwenLM/Qwen2.5"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-32B",
+      "title": "Qwen/Qwen2.5-32B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+      "title": "Qwen2.5-LLM: Extending the boundary of LLMs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen2p5-32b",
+      "title": "Qwen2.5 32B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "This is a base/pretrained checkpoint, not instruction-tuned, even though Bud's catalog records its kind as chat; Qwen's own docs advise against using it directly for conversation without further fine-tuning, and Fireworks' listing tags it 'Base model'. Corrected: Qwen's per-benchmark comparison table for base models on the Qwen2.5-LLM announcement blog is a real HTML table, not an image — it gives MMLU-Pro 55.1 for Qwen2.5-32B (base), which is now used instead of the 69.23 figure previously cited to the Hugging Face model card; that 69.23 figure is not stated on Qwen's card text but is an automated third-party MMLU-Pro leaderboard result (TIGER-Lab/MMLU-Pro via an HF evaluation widget), not a Qwen-published number. Qwen's model card also states a max generation length of 8,000 tokens, which conflicts with catalog's max_output_tokens (131,072); the catalog value is kept and the maker's generation cap is not restated in the description. Catalog's 131,072-token context matches both Qwen's model card and Fireworks' listed context length for this deployment."
+}

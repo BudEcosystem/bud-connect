@@ -1,0 +1,37 @@
+{
+  "slug": "gemma-2b-it",
+  "canonical": "gemma-2b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemma 2B-it is the instruction-tuned, 2-billion-parameter model in Google's first-generation Gemma family of lightweight open-weight models, built from the same research as Google's Gemini models, per Google's model card. It is a decoder-only, text-to-text model tuned for chat-style tasks such as question answering, summarization, and reasoning, over an 8,192-token context window, with English-language training data drawn from web documents, code, and mathematical text. Google's current Gemma documentation lists Gemma 4 as the newest generation and groups this first-generation model among \"previous Gemma models,\" though its weights remain downloadable.",
+    "advantages": [
+      "Instruction-tuned for chat-style tasks including question answering, summarization, and reasoning, per Google's model card.",
+      "Lightweight at 2B parameters, positioned for deployment on resource-constrained hardware such as laptops, per Google's model card.",
+      "Open weights available for download and local fine-tuning, per Google's model card."
+    ],
+    "disadvantages": [
+      "Superseded by three newer Gemma generations; Google's documentation now lists Gemma 4 as the current generation and groups this model under \"previous Gemma models.\"",
+      "Trained and documented for English-language use only, per Google's model card.",
+      "Google publishes general reasoning benchmarks (MMLU, GSM8K, HumanEval) for this model family only on the base pretrained checkpoint, not the instruction-tuned model."
+    ],
+    "use_cases": [
+      "Conversational chatbot applications",
+      "Question answering",
+      "Text summarization",
+      "General text generation and creative writing"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/google/gemma-2b-it",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-2b-it", "title": "google/gemma-2b-it · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core/model_card", "title": "Gemma model card | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core", "title": "Gemma model overview | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Google's Gemma 1 model card gives the MMLU/HellaSwag/HumanEval/GSM8K benchmark table only for the pretrained (PT) checkpoints, not the instruction-tuned (IT) ones; the IT-specific tables on that page cover only toxicity/bias metrics (RealToxicity, BBQ, CrowS-Pairs, Winogender, etc.), which the evaluations rules exclude (not accuracy-style or the wrong direction), so evaluations is left empty for this exact (IT) model rather than borrowing the base checkpoint's scores."
+}

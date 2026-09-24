@@ -1,0 +1,45 @@
+{
+  "slug": "minimax-m3",
+  "canonical": "minimax-m3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax-M3 is MiniMax's natively multimodal Mixture-of-Experts flagship model, released in June 2026, with roughly 428 billion total parameters and about 23 billion activated per token across 128 routed experts. MiniMax trained it on text and images together from the start rather than adding vision later, and built it around a new MiniMax Sparse Attention (MSA) mechanism for long-context efficiency, natively supporting up to about 1,048,576 tokens. It offers a toggleable reasoning ('thinking') mode and is aimed at coding, long-horizon agentic tool use, and multimodal understanding, and is currently MiniMax's newest and most prominently featured text/multimodal model.",
+    "advantages": [
+      "Scores 59.0% on SWE-Bench Pro, per Together AI's model page.",
+      "Scores 66.0% on Terminal-Bench 2.1, per Together AI's model page.",
+      "Scores 74.2% on MCP Atlas, a tool-orchestration benchmark, per Together AI's model page.",
+      "Scores 83.5 on BrowseComp, per MiniMax's model card.",
+      "MiniMax reports 9x faster prefill and 15x faster decode than M2 at 1M-token context using its MiniMax Sparse Attention mechanism, per its GitHub model card."
+    ],
+    "disadvantages": [
+      "Bud's hosted providers serve roughly 512K tokens of context for this model, well below the ~1,048,576-token native context MiniMax describes, per MiniMax's GitHub card and Together AI's listing.",
+      "Released only a few months before this write-up (June 2026), so independent, longer-term evaluation is limited."
+    ],
+    "use_cases": [
+      "Agentic coding across large, multi-file codebases",
+      "Long-horizon agent workflows with extensive tool orchestration (MCP-style tool calling)",
+      "Multimodal tasks that combine text and image understanding",
+      "Long-document and long-context processing using sparse attention"
+    ],
+    "evaluations": [
+      {"name": "SWE-Bench Pro", "score": 59.0, "source": "https://www.together.ai/models/minimax-m3"},
+      {"name": "Terminal-Bench 2.1", "score": 66.0, "source": "https://www.together.ai/models/minimax-m3"},
+      {"name": "MCP Atlas", "score": 74.2, "source": "https://www.together.ai/models/minimax-m3"},
+      {"name": "BrowseComp", "score": 83.5, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+    "github_url": "https://github.com/MiniMax-AI/MiniMax-M3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M3", "title": "MiniMaxAI/MiniMax-M3 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/MiniMax-AI/MiniMax-M3", "title": "MiniMax-AI/MiniMax-M3", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2606.13392", "title": "MiniMax Sparse Attention (technical report)", "kind": "maker"},
+    {"url": "https://www.together.ai/models/minimax-m3", "title": "MiniMax M3 - Together AI", "kind": "host"},
+    {"url": "https://fireworks.ai/models/fireworks/minimax-m3", "title": "MiniMax-M3 - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input/output facts (~512,000-524,288 tokens) match what Fireworks and Together AI actually serve; MiniMax's own docs describe a larger native 1,048,576-token context that isn't reflected in the hosted limit, so the description states both and defers to the catalog for what's actually available. Catalog modality facts list image_input but not video_input; MiniMax's docs describe broader native video understanding that is not claimed here since it isn't in Bud's catalog facts. The June 2026 release date is given directly by both host listings (Together AI: May 31, 2026; Fireworks: June 1, 2026) and is consistent with the MSA arXiv paper's June 11 2026 submission date; no dedicated MiniMax launch blog post was found for M3 specifically."
+}

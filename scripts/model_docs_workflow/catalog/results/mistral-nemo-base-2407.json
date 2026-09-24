@@ -1,0 +1,46 @@
+{
+  "slug": "mistral-nemo-base-2407",
+  "canonical": "mistral-nemo-base-2407",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral NeMo Base 2407 is a 12-billion-parameter pretrained (non-instruct) language model that Mistral AI built jointly with NVIDIA and released in July 2024. Mistral AI describes it as a drop-in replacement for Mistral 7B, trained with a 128,000-token context window and a large proportion of multilingual and code data. As a base checkpoint it has no instruction-tuning and, per its model card, 'does not have any moderation mechanisms', so it is meant as a foundation for further fine-tuning rather than direct chat use. Mistral AI's own model-status page lists the Mistral NeMo 12B family as deprecated (2026-05-22) and retired from its hosted API as of 2026-07-31, with Ministral 3 8B given as the replacement.",
+    "advantages": [
+      "128,000-token context window, positioned by Mistral AI as a drop-in replacement for Mistral 7B, per the model card.",
+      "Scores 68.0% on MMLU (5-shot) and 83.5% on HellaSwag (0-shot) in Mistral AI's own benchmark table.",
+      "Trained on a large proportion of multilingual and code data, with multilingual MMLU tested across French, German, Spanish, Italian, Portuguese, Russian, Chinese and Japanese (59.0-64.6%), per the model card.",
+      "Apache 2.0 licensed for commercial and open-source use."
+    ],
+    "disadvantages": [
+      "Pretrained base model only; the model card states it 'does not have any moderation mechanisms' and is not instruction-tuned for chat.",
+      "Mistral AI's model-status page lists the Mistral NeMo 12B family as deprecated (2026-05-22) and retired from Mistral's own hosted API as of 2026-07-31, with Ministral 3 8B as the listed replacement."
+    ],
+    "use_cases": [
+      "Base checkpoint for fine-tuning into instruction-following or domain-specific chat models.",
+      "Foundation used by Mistral AI to train Mistral-NeMo-Instruct-2407."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 68.0, "source": "https://huggingface.co/mistralai/Mistral-Nemo-Base-2407"},
+      {"name": "HellaSwag", "score": 83.5, "source": "https://huggingface.co/mistralai/Mistral-Nemo-Base-2407"},
+      {"name": "TruthfulQA", "score": 50.3, "source": "https://huggingface.co/mistralai/Mistral-Nemo-Base-2407"}
+    ],
+    "languages": ["English", "French", "German", "Spanish", "Italian", "Portuguese", "Russian", "Chinese", "Japanese"],
+    "website_url": "https://huggingface.co/mistralai/Mistral-Nemo-Base-2407",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-Nemo-Base-2407",
+      "title": "mistralai/Mistral-Nemo-Base-2407 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input/output_tokens (128000) match the model card's stated 128k context window, so no conflict. Mistral AI's model-status page places Mistral NeMo 12B's deprecation on 2026-05-22 and retirement on 2026-07-31, after which Ministral 3 8B is the listed replacement; the catalog's facts carry no deprecation_date for this entry. Named languages come from the card's multilingual-MMLU table, which may not be an exhaustive language list."
+}

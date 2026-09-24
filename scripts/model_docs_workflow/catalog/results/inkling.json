@@ -1,0 +1,69 @@
+{
+  "slug": "inkling",
+  "canonical": "inkling",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Thinking Machines Lab",
+  "details": {
+    "description": "Inkling is a general-purpose multimodal chat model from Thinking Machines Lab, released in July 2026. It is a 66-layer decoder-only transformer with a sparse Mixture-of-Experts feed-forward backbone (975B total parameters, 41B active per token, routing each token to 6 of 256 experts plus 2 shared experts), natively accepting text, image, and audio input and generating text output. The model card states it is intended for use in English and other languages, and across multiple coding languages, for developers building conversational, agentic/tool-use, coding-assistant, and retrieval-augmented-generation applications. It is released with open weights under an Apache 2.0 license.",
+    "advantages": [
+      "Scores 97.1% on the AIME 2026 math competition benchmark and 87.2% on GPQA Diamond, per the model card's published evaluation table.",
+      "Scores 77.6% on SWE-bench Verified and 73.5% on MMMU Pro, per the model card.",
+      "Natively accepts text, image, and audio input, jointly encoded and processed by the decoder, per the model card's architecture description.",
+      "Released with open weights (Apache 2.0) and supports deployment via vLLM and SGLang, per the model card."
+    ],
+    "disadvantages": [
+      "The model card states it \"may exhibit general limitations common to foundation models, including hallucination... occasional failures to follow instructions precisely, and degraded performance in long multi-turn conversations.\"",
+      "Knowledge is limited to information available as of its training cutoff, per the model card.",
+      "The maker advises against deploying it in medical, legal, or safety-critical decision-making without additional fine-tuning, domain-specific validation, and human oversight, per the model card."
+    ],
+    "use_cases": [
+      "Agentic and tool-use systems",
+      "Coding assistants",
+      "General-purpose conversational chat",
+      "Retrieval-augmented generation (RAG) systems",
+      "Instruction-following tasks combining text, image, and audio input"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2026",
+        "score": 97.1,
+        "source": "https://huggingface.co/thinkingmachines/Inkling"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 87.2,
+        "source": "https://huggingface.co/thinkingmachines/Inkling"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 77.6,
+        "source": "https://huggingface.co/thinkingmachines/Inkling"
+      },
+      {
+        "name": "MMMU Pro",
+        "score": 73.5,
+        "source": "https://huggingface.co/thinkingmachines/Inkling"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/thinkingmachines/Inkling",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/thinkingmachines/Inkling",
+      "title": "thinkingmachines/Inkling · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/inkling",
+      "title": "Inkling API & Playground | Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog groups the Fireworks and Together AI URIs together; the Hugging Face model card confirms both 'together' and 'fireworks-ai' as listed inference providers for this same weights repo, so the grouping is correct. The model card lists audio input as a supported modality (with WAV/16kHz guidance) which the catalog facts do not include (facts list only image_input/text_input/text_output) — kept the catalog's modality list per instructions and note the discrepancy here. Catalog facts give two different max_input_tokens values (524288 vs 1048576) across the two URIs; the model card does not state an exact context length, so no context-window figure was restated. Languages: only 'English' is explicitly named; the card also claims 'general multilingual capabilities across other languages' without naming them, per instructions on counts without a list. Created July 14, 2026 per Hugging Face metadata, so this is a very recent release with no indication of being superseded."
+}

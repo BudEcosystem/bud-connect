@@ -1,0 +1,42 @@
+{
+  "slug": "gpt-5.6-sol",
+  "canonical": "gpt-5.6-sol",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.6 Sol is OpenAI's flagship reasoning model in the GPT-5.6 family, launched July 13, 2026. AWS Bedrock's model card describes it as delivering frontier reasoning and state-of-the-art agentic performance across coding, cybersecurity and scientific research. It takes text and image input and produces text output, with a knowledge cutoff of February 16, 2026 and reasoning effort adjustable from none up to max. Artificial Analysis's leaderboard marks it deprecated and recommends the newer GPT-6 Sol instead, though AWS Bedrock's model card lists its lifecycle as Active (EOL no sooner than July 2027) and OpenAI's own documentation does not list it among deprecated models.",
+    "advantages": [
+      "AWS Bedrock's model card describes it as delivering frontier reasoning and state-of-the-art agentic performance across coding, cybersecurity, and scientific research.",
+      "Scores 47 on the Artificial Analysis Intelligence Index at max reasoning effort, ranked #19 of 210 comparable models and well above the comparable-model median of 25.",
+      "Supports reasoning effort levels from none to max, plus function calling, structured outputs, file search, web search, code interpreter, computer use and MCP tool use via the Responses API."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video.",
+      "Not compatible with Live sessions, Realtime, Assistants, fine-tuning, embeddings, or audio/video features.",
+      "Knowledge cutoff of February 16, 2026.",
+      "Artificial Analysis's leaderboard marks this model deprecated, recommending the newer GPT-6 Sol instead."
+    ],
+    "use_cases": [
+      "Complex reasoning chains and long document analysis",
+      "Intricate, long-horizon code generation",
+      "Cybersecurity work",
+      "Scientific research",
+      "Agentic workflows using computer use, code interpreter and MCP tools"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index (max reasoning effort)", "score": 47, "source": "https://artificialanalysis.ai/models/gpt-5-6-sol"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol", "title": "GPT-5.6 Sol Model | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-6-sol", "title": "GPT-5.6 Sol (max) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-sol.html", "title": "GPT-5.6 Sol - Amazon Bedrock", "kind": "host"},
+    {"url": "https://www.mindstudio.ai/blog/what-is-gpt-5-6-sol-terra-luna-explained", "title": "What Is GPT-5.6? OpenAI's Sol, Terra, and Luna Model Tiers Explained | MindStudio", "kind": "third_party"}
+  ],
+  "notes": "Catalog facts give max_input_tokens as [922000, 1000000]; OpenAI's and AWS's own pages describe a 1,050,000-token context window (922,000 max input plus up to 128,000 output), which is consistent with that range across hosts, so no value was restated or flagged as a conflict. Artificial Analysis's own page for this model carries the banner 'This model is deprecated... OpenAI has launched a newer model, GPT-6 Sol (max). We suggest considering it instead.' -- verified verbatim from the page. AWS Bedrock's model card lists the model's lifecycle as 'Active' with EOL no sooner than July 13, 2027, and OpenAI's own deprecations page lists gpt-5.6-sol only as a recommended replacement for older models, never as deprecated itself, so the maker/host status is kept as active despite AA's deprecated badge. Could not open openai.com's own launch posts (previewing-gpt-5-6-sol, gpt-5-6) or the OpenAI Help Center article, which returned HTTP 403 on every fetch attempt; relied on OpenAI's API docs subdomain and AWS's model card instead."
+}

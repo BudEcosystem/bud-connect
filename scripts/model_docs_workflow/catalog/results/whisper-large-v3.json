@@ -1,0 +1,40 @@
+{
+  "slug": "whisper-large-v3",
+  "canonical": "whisper-large-v3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Whisper large-v3 is OpenAI's automatic speech recognition and speech translation model, a 1.55-billion-parameter transformer encoder-decoder trained on 5 million hours of audio (1 million hours of weakly labeled data plus 4 million hours of pseudo-labeled data), released in November 2023. It supports transcription across 99 languages, with OpenAI reporting strong ASR results in around 10 of them, and can also translate speech into English. Versus large-v2 it adds 128 Mel frequency bins (up from 80) and a Cantonese language token. On Groq it is served for transcription; Groq's speech-to-text docs list it as the model to use when both transcription and translation are needed.",
+    "advantages": [
+      "Hugging Face's Open ASR Leaderboard reports a mean word error rate of 7.44 for this model, and OpenAI's model card states a 10% to 20% reduction in errors versus Whisper large-v2.",
+      "Groq reports word error rates of 8.4% for short-form audio, 10.0% for sequential long-form audio, and 11.0% for chunked long-form audio.",
+      "Supports both transcription and translation to English, unlike the large-v3-turbo variant which supports transcription only.",
+      "OpenAI's model card describes improved robustness to accents, background noise, and technical language versus many existing ASR systems."
+    ],
+    "disadvantages": [
+      "Prone to hallucinating text that is not actually present in the audio, per OpenAI's model card.",
+      "Word error rates vary substantially across languages, with lower accuracy on low-resource languages.",
+      "OpenAI's model card notes word error rates differ across speakers of different genders, races, and ages.",
+      "Groq reports 189x real-time processing speed, slower than the 216x it reports for whisper-large-v3-turbo."
+    ],
+    "use_cases": [
+      "Legal, medical, and academic transcription.",
+      "International conference and meeting transcription.",
+      "Transcription in challenging audio conditions with background noise or multiple speakers.",
+      "Multilingual transcription and speech translation into English."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/whisper-large-v3",
+    "github_url": "https://github.com/openai/whisper"
+  },
+  "sources": [
+    {"url": "https://console.groq.com/docs/speech-to-text", "title": "Speech to Text - GroqDocs", "kind": "host"},
+    {"url": "https://console.groq.com/docs/model/whisper-large-v3", "title": "whisper-large-v3 - GroqDocs", "kind": "host"},
+    {"url": "https://huggingface.co/openai/whisper-large-v3", "title": "openai/whisper-large-v3 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/openai/whisper/blob/main/model-card.md", "title": "whisper/model-card.md at main · openai/whisper", "kind": "maker"}
+  ],
+  "notes": "Bud's facts list only the /v1/audio/transcriptions endpoint for this model on Groq; Whisper large-v3 also supports speech translation to English via a separate endpoint, which is not reflected in Bud's endpoint list, so it is mentioned only in the description/advantages, not treated as a Bud route. Groq's per-condition WER figures (8.4/10.0/11.0%) and Hugging Face's mean WER (7.44) are both reported as-is since they measure different test conditions; none qualify for the evaluations list because WER is lower-is-better, not an accuracy score. Both sources give language support only as a count ('99 languages'/'99+ languages'), so languages is left empty."
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "minimax-m2.1",
+  "canonical": "minimax-m2.1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax M2.1 is MiniMax's open-weight large language model, an update to M2 with improved reasoning, coding, and instruction following. It targets agentic coding across a wide range of programming languages (including Rust, Java, Go, C++, Kotlin, Objective-C, TypeScript, and JavaScript) plus native Android, iOS, and web app development, and uses an interleaved-thinking reasoning style for long-horizon tool use. It was released December 23, 2025 under a Modified MIT license, with weights published on Hugging Face and GitHub. MiniMax has since released newer M2.5, M2.7, and M3 models in the same line.",
+    "advantages": [
+      "Scores 74.0% on SWE-bench Verified, up from MiniMax M2's 69.4%.",
+      "Scores 88.0% on MMLU-Pro.",
+      "Scores 72.5% on the multilingual SWE-bench benchmark.",
+      "Uses an interleaved-thinking reasoning approach aimed at long-horizon planning and multi-step tool use.",
+      "Released as an open-weight model under a Modified MIT license, with weights published on Hugging Face and GitHub."
+    ],
+    "disadvantages": [
+      "Text-only model with no image, audio, or video input.",
+      "MiniMax has released newer M2.5, M2.7, and M3 models with further coding and agent improvements since M2.1 launched."
+    ],
+    "use_cases": [
+      "Multi-language software engineering and full-stack application development",
+      "Native Android and iOS app development",
+      "Agentic workflows that require multi-step tool use and planning",
+      "Interactive web development, including data visualization and simulation"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 74.0, "source": "https://github.com/MiniMax-AI/MiniMax-M2.1"},
+      {"name": "MMLU-Pro", "score": 88.0, "source": "https://github.com/MiniMax-AI/MiniMax-M2.1"},
+      {"name": "SWE-bench Multilingual", "score": 72.5, "source": "https://github.com/MiniMax-AI/MiniMax-M2.1"},
+      {"name": "VIBE full-stack development benchmark", "score": 88.6, "source": "https://www.minimax.io/news/minimax-m21"}
+    ],
+    "languages": [],
+    "website_url": "https://www.minimax.io/news/minimax-m21",
+    "github_url": "https://github.com/MiniMax-AI/MiniMax-M2.1"
+  },
+  "sources": [
+    {"url": "https://www.minimax.io/news/minimax-m21", "title": "MiniMax M2.1 announcement", "kind": "maker"},
+    {"url": "https://github.com/MiniMax-AI/MiniMax-M2.1", "title": "MiniMax-M2.1 GitHub repository", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-minimax-minimax-m2-1.md", "title": "MiniMax M2.1 model card - Amazon Bedrock", "kind": "host"},
+    {"url": "https://platform.minimax.io/docs/guides/text-generation", "title": "MiniMax text generation models", "kind": "maker"},
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1", "title": "MiniMax-M2.1 (Hugging Face)", "kind": "third_party"}
+  ],
+  "notes": "MiniMax's own docs still list M2.1 as an active model ('historical models remain available'), not deprecated, even though it's no longer the flagship on minimax.io; kept it as active per that page. Parameter count (229B) came from the Hugging Face card, since neither MiniMax's announcement nor its GitHub repo stated it directly. Context window (196K) and max output (8K) match the catalog facts."
+}

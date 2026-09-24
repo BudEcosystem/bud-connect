@@ -1,0 +1,44 @@
+{
+  "slug": "stable-image-core-v1",
+  "canonical": "stable-image-core-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Core is Stability AI's fast, affordable text-to-image generation model, offered on Amazon Bedrock as stability.stable-image-core-v1:1. It takes only a text prompt (no input image) and returns a single generated image in JPEG or PNG, with a selectable aspect ratio and output dimensions between 640 and 1,536 pixels per side. AWS describes it as delivering 'exceptional speed and efficiency while maintaining the high-quality output synonymous with Stable Diffusion models.'",
+    "advantages": [
+      "AWS describes Stable Image Core as delivering exceptional speed and efficiency while maintaining Stable Diffusion's characteristic image quality.",
+      "Supports nine selectable aspect ratios for text-to-image generation (16:9, 1:1, 21:9, 2:3, 3:2, 4:5, 5:4, 9:16, 9:21), per AWS Bedrock documentation."
+    ],
+    "disadvantages": [
+      "Text-to-image only; AWS Bedrock's documented request parameters for this model do not include an input-image field, so it cannot edit an existing image."
+    ],
+    "use_cases": [
+      "Fast, efficient text-to-image generation",
+      "General-purpose creative image generation from a text prompt"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stability AI - Stable Image",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-diffusion-stable-image-core-text-image-request-response.html",
+      "title": "Stable Image Core request and response - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://aws.amazon.com/bedrock/stability-ai/",
+      "title": "Stability AI models on Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only one URI targets this model (Bedrock). Stability AI's own API-reference docs (platform.stability.ai/docs/api-reference) are a single-page app that did not return readable content to the fetch tool, so request/parameter details come from AWS Bedrock's documentation of the same model; the maker's product page (stability.ai/stable-image) was used to confirm Stability as the maker. Verify pass: removed an unsupported claim that AWS's documentation cited an online retailer using Core for product images -- no page found states this; replaced with AWS's actual description of the model as fast/efficient."
+}

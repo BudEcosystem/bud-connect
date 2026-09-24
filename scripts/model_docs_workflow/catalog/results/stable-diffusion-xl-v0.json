@@ -1,0 +1,56 @@
+{
+  "slug": "stable-diffusion-xl-v0",
+  "canonical": "stable-diffusion-xl-v0",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Diffusion XL 0.9 is Stability AI's two-stage latent diffusion text-to-image model: a roughly 3-billion-parameter base model produces initial image latents, and a separate refinement model sharpens the final denoising steps, both conditioned on the OpenCLIP-ViT/G and CLIP-ViT/L text encoders. Stability AI released it under a non-commercial Research License as a preview ahead of the full SDXL 1.0 launch. On Amazon Bedrock it was offered as stability.stable-diffusion-xl-v0 for text-to-image generation, but it is absent from AWS's current Stability AI model documentation, which now lists only Stability's newer Stable Image editing and control tools, indicating the Bedrock offering has been deprecated.",
+    "advantages": [
+      "Uses a two-stage base-plus-refinement diffusion pipeline, with a base model of roughly 3 billion parameters, per Stability AI's own model card."
+    ],
+    "disadvantages": [
+      "Released under a non-commercial Research License restricting use to non-commercial research purposes, per Stability AI's model card.",
+      "Not listed among Amazon Bedrock's currently supported Stability AI models (the current list covers only Stability's newer Stable Image editing and control tools), indicating the Bedrock offering has been deprecated.",
+      "Cannot render legible text and does not achieve perfect photorealism, per Stability AI's own model card.",
+      "Superseded by the full SDXL 1.0 release."
+    ],
+    "use_cases": [
+      "Text-to-image generation from text prompts, for non-commercial research per Stability AI's Research License",
+      "Early evaluation of the SDXL architecture ahead of the SDXL 1.0 release"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-0.9",
+    "github_url": "https://github.com/Stability-AI/generative-models"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-0.9",
+      "title": "stabilityai/stable-diffusion-xl-base-0.9 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models",
+      "title": "Stability-AI/generative-models",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-stability-ai.html",
+      "title": "Stability AI - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-stability-diffusion.html",
+      "title": "Stability AI models - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "STATUS: stability.stable-diffusion-xl-v0 does not appear in Amazon Bedrock's current 'Models at a glance' page or its Stability AI model-card list (Sept 2026), which now cover only 13 Stable Image editing/control services; an older Bedrock Stability AI page separately states 'Support for all other Stability AI models are in the process of being deprecated.' I could not find an exact Bedrock EOL date, and the catalog's deprecation_date is empty for this target -- flagging so it can be checked against AWS's ListFoundationModels lifecycle field. The underlying SDXL 0.9 model weights remain published by Stability AI on Hugging Face/GitHub; only the Bedrock-hosted route appears discontinued."
+}

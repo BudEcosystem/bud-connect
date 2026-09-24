@@ -1,0 +1,45 @@
+{
+  "slug": "gemma2-9b-it",
+  "canonical": "gemma2-9b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemma 2 9B-IT is a 9-billion-parameter, instruction-tuned, decoder-only text model in Google's second-generation Gemma family, trained on 8 trillion tokens of web documents, code and mathematical text. It takes text input and produces English text output. Google's current Gemma documentation groups Gemma 2, together with Gemma 1 and Gemma 3, under a \"Legacy Gemma setup\" section, with Gemma 4 presented as the current flagship generation.",
+    "advantages": [
+      "Scores 71.3 on MMLU (5-shot), per Google's Gemma 2 9B-it model card.",
+      "Scores 81.9 on HellaSwag (10-shot), per the model card.",
+      "Scores 40.2 (pass@1) on HumanEval for code generation, per the model card.",
+      "Scores 68.6 (5-shot) on GSM8K grade-school math, per the model card."
+    ],
+    "disadvantages": [
+      "Google's Gemma documentation groups this Gemma 2 family, along with Gemma 1 and 3, under a \"Legacy Gemma setup\" section, with Gemma 4 as the current flagship generation.",
+      "English only, per the model card.",
+      "The model card states it can struggle with subtle nuance, sarcasm and figurative language.",
+      "The model card states it may generate factually incorrect or outdated information."
+    ],
+    "use_cases": [
+      "Question answering and text summarization",
+      "Code generation and assistance",
+      "Content creation such as poems, scripts and marketing copy",
+      "Chatbots and conversational AI",
+      "NLP research and language-learning tools"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 71.3, "source": "https://huggingface.co/google/gemma-2-9b-it"},
+      {"name": "HellaSwag", "score": 81.9, "source": "https://huggingface.co/google/gemma-2-9b-it"},
+      {"name": "HumanEval", "score": 40.2, "source": "https://huggingface.co/google/gemma-2-9b-it"},
+      {"name": "GSM8K", "score": 68.6, "source": "https://huggingface.co/google/gemma-2-9b-it"},
+      {"name": "MATH", "score": 36.6, "source": "https://huggingface.co/google/gemma-2-9b-it"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/google/gemma-2-9b-it",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-2-9b-it", "title": "google/gemma-2-9b-it · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs", "title": "Gemma models overview | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Google's Gemma 2-specific model_card pages (ai.google.dev/gemma/docs/gemma2 and .../gemma2/model_card) returned 404, so the Hugging Face card under the official google/ org was used as the primary source instead. ai.google.dev/gemma/docs navigation reads \"Legacy Gemma setup [Gemma 1, 2, and 3]\", with Gemma 4 shown as current flagship; no page explicitly calls Gemma 2 'deprecated'. Catalog facts (8192/8192 tokens, text-only chat) match the model card and are unchanged."
+}

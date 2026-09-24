@@ -1,0 +1,43 @@
+{
+  "slug": "mistral-large-3-fp8",
+  "canonical": "mistral-large-3-fp8",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Large 3 is Mistral AI's flagship open-weight mixture-of-experts model, released in December 2025 (version 25.12) as Mistral-Large-3-675B-Instruct-2512. It has 675 billion total parameters with 41 billion active per forward pass and was trained on 3,000 H200 GPUs. This fp8 build is Mistral's own post-trained, instruction-tuned checkpoint quantized to FP8 and recommended for deployment on H200 nodes; Mistral also ships BF16 and NVFP4 versions of the same weights. It is licensed Apache 2.0 and supports a 256,000-token context window, native function calling, and JSON output.",
+    "advantages": [
+      "675B total / 41B active mixture-of-experts parameters, trained on 3,000 H200 GPUs, per the Hugging Face model card.",
+      "256,000-token context window, per the Hugging Face model card.",
+      "Supports native function calling and JSON output for tool-use and agentic workflows, per the model card.",
+      "Apache 2.0 licensed for commercial and non-commercial use, per Mistral AI's models overview."
+    ],
+    "disadvantages": [
+      "Mistral AI's own model card states it is 'not a dedicated reasoning model' and that dedicated reasoning models can outperform it on strict reasoning tasks.",
+      "Its 675B total parameter count requires substantial multi-GPU infrastructure to deploy, per the model card's deployment guidance."
+    ],
+    "use_cases": [
+      "Production-grade conversational assistants and agentic tool-use workflows.",
+      "Retrieval-augmented generation (RAG) over long documents.",
+      "Long-context enterprise and scientific-document analysis and summarization."
+    ],
+    "evaluations": [],
+    "languages": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Dutch", "Chinese", "Japanese", "Korean", "Arabic"],
+    "website_url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+      "title": "mistralai/Mistral-Large-3-675B-Instruct-2512 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The Hugging Face model card describes this Instruct model as multimodal (a 'Vision' capability enabling image input, via a 2.5B-parameter vision encoder alongside the 673B/39B-active language model), but this catalog entry's facts list modality as text_input/text_output only; kept the catalog's modality and removed the image-input clause from the description accordingly, per instructions not to restate a different modality. The model card shows benchmark comparisons only as chart images with no numeric scores in the fetched text, so evaluations is left empty rather than guess. Languages: the card's 'Multilingual' feature bullet names 11 languages ('dozens of languages, including English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean, Arabic'), which is not exhaustive but is what the card states. FP8 is a maker-provided quantized checkpoint format of the same instruct model, not a separate model, so the fp8 suffix does not indicate a grouping problem."
+}

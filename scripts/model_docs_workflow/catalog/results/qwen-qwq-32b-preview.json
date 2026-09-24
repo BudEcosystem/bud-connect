@@ -1,0 +1,44 @@
+{
+  "slug": "qwen-qwq-32b-preview",
+  "canonical": "qwen-qwq-32b-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba Qwen Team",
+  "details": {
+    "description": "QwQ-32B-Preview is an experimental reasoning-focused language model from Alibaba's Qwen team, built on the Qwen2.5-32B architecture (a causal transformer using RoPE, SwiGLU, RMSNorm, and attention QKV bias) with a full 32,768-token context length. Released as a preview, it is designed to reason through problems step by step before answering, and the Qwen team reports particular strength on mathematics and coding tasks. Qwen explicitly labels it a preview and describes it as 'an early step on a longer journey' in reasoning-model development, rather than a finished product.",
+    "advantages": [
+      "Scores 50.0% on AIME (American Invitational Mathematics Examination), per Qwen's official blog post.",
+      "Scores 90.6% on MATH-500, per Qwen's official blog post.",
+      "Scores 65.2% on GPQA, a graduate-level science reasoning benchmark, per Qwen's official blog post.",
+      "Scores 50.0% on LiveCodeBench, per Qwen's official blog post."
+    ],
+    "disadvantages": [
+      "Qwen labels this a preview release with explicitly listed limitations: unexpected language mixing/code-switching, and recursive reasoning loops that can produce lengthy, inconclusive responses.",
+      "Qwen states the model has gaps in common-sense reasoning and nuanced language understanding despite its strength in math and coding.",
+      "Qwen states the model requires enhanced safety measures and does not guarantee reliable, secure operation in its current preview form.",
+      "Qwen's current documentation says its Qwen3 models, in thinking mode, surpass 'previous QwQ' on mathematics, code generation, and commonsense logical reasoning, indicating this preview has since been surpassed by Qwen's newer reasoning models."
+    ],
+    "use_cases": [
+      "Mathematical problem-solving and competition-style reasoning tasks, such as AIME-style questions.",
+      "Coding and programming-reasoning tasks, per Qwen's reported LiveCodeBench results.",
+      "Research and experimentation with extended, step-by-step reasoning approaches before Qwen's later reasoning-model releases."
+    ],
+    "evaluations": [
+      {"name": "AIME 2024", "score": 50.0, "source": "https://qwenlm.github.io/blog/qwq-32b-preview/"},
+      {"name": "MATH-500", "score": 90.6, "source": "https://qwenlm.github.io/blog/qwq-32b-preview/"},
+      {"name": "GPQA", "score": 65.2, "source": "https://qwenlm.github.io/blog/qwq-32b-preview/"},
+      {"name": "LiveCodeBench", "score": 50.0, "source": "https://qwenlm.github.io/blog/qwq-32b-preview/"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/QwQ-32B-Preview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/QwQ-32B-Preview", "title": "Qwen/QwQ-32B-Preview · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwq-32b-preview/", "title": "QwQ: Reflect Deeply on the Boundaries of the Unknown", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwq-32b/", "title": "QwQ-32B: Embracing the Power of Reinforcement Learning", "kind": "maker"},
+    {"url": "https://qwen.readthedocs.io/en/latest/", "title": "Welcome to Qwen! — Qwen documentation", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (32,768 max input/output tokens) match Qwen's stated 'Full 32,768 tokens' context length. Verification pass: removed the MMLU-Pro 70.97 evaluation -- not stated on the cited Hugging Face card (checked the full README), on either QwQ blog post, or on Qwen2.5-32B-Instruct's card; no supporting page found. Resolved the researcher's open question on supersession: neither QwQ page mentions the other, but Qwen's current documentation (qwen.readthedocs.io) states Qwen3 in thinking mode surpasses 'previous QwQ' on math, code, and commonsense reasoning, so a disadvantage noting this was added and cited."
+}

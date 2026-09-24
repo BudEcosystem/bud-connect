@@ -1,0 +1,50 @@
+{
+  "slug": "gpt-rosalind-research",
+  "canonical": "gpt-rosalind-research",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-rosalind-research (GPT-Rosalind) is OpenAI's dedicated life sciences reasoning model, combining frontier reasoning with specialized tool orchestration across medicinal chemistry, genomics, wet-lab assistance and other scientific applications. It powers Rosalind Workbench, a research-preview environment in the ChatGPT app that gives scientists a guided, connected view from a biological question through data, analysis and evidence. API access to gpt-rosalind-research is limited to approved organizations through OpenAI's trusted-access program, and billing for it is scheduled to begin October 5, 2026.",
+    "advantages": [
+      "OpenAI describes it as its dedicated life sciences model, combining frontier reasoning with specialized tool orchestration across medicinal chemistry, genomics, wet-lab assistance and other scientific applications (OpenAI Rosalind Workbench blog post).",
+      "Powers Rosalind Workbench's guided scientific workflows, including a molecular structure viewer, a biological sequence and alignment viewer, and a pathology slide viewer that keep the request, analysis and evidence connected in one conversation (OpenAI Rosalind Workbench blog post).",
+      "OpenAI states that all eligible organizations will continue to get access to the latest GPT-Rosalind models as they are released (OpenAI pricing page)."
+    ],
+    "disadvantages": [
+      "API access is limited to approved organizations through OpenAI's trusted-access program rather than being generally available (OpenAI pricing page).",
+      "Rosalind Workbench, the primary way this model is used, is still in research preview through the ChatGPT app (OpenAI Rosalind Workbench blog post).",
+      "OpenAI has not published a dedicated model-card page, context window or output-token limit for gpt-rosalind-research (OpenAI Models and pricing pages)."
+    ],
+    "use_cases": [
+      "Guided scientific research workflows connecting a biological question to genomic, structural and literature evidence",
+      "Molecular structure analysis, such as inspecting a protein-ligand complex from a PDB file",
+      "Biological sequence and alignment analysis, such as comparing protein variants",
+      "Pathology slide review",
+      "Medicinal chemistry and wet-lab assistance"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/blog/rosalind-workbench",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/blog/rosalind-workbench",
+      "title": "Meet Rosalind Workbench: Empowering every scientist to be their own research team | OpenAI Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "title": "Pricing | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "OpenAI has no dedicated /api/docs/models/gpt-rosalind-research page (404); it appears only in the models overview list ('Life sciences reasoning for approved organizations') and the pricing page's specialized-models table, which links out to the Rosalind Workbench blog post for the product description used here. Catalog's max_input_tokens/max_output_tokens are empty and no context/output limit is published anywhere found, so none is stated. Catalog modality is text_input/text_output only; could not confirm on an opened page whether the raw API model itself accepts image input (Workbench's own viewers handle images/structures), so modality was left as given rather than guessed."
+}

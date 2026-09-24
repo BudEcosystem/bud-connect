@@ -1,0 +1,77 @@
+{
+  "slug": "qwen3-235b-a22b-2507",
+  "canonical": "qwen3-235b-a22b-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-235B-A22B-Instruct-2507 is a mixture-of-experts chat model from Alibaba's Qwen team, with 235 billion total parameters and 22 billion activated per token. Released July 21, 2025 as an update to the original Qwen3-235B-A22B, it targets instruction following, logical reasoning, mathematics, science, coding, and tool use. Qwen's own model card states it runs in non-thinking mode only (no <think> reasoning blocks), unlike its sibling Qwen3-235B-A22B-Thinking-2507. It is offered on Amazon Bedrock as 'Qwen3 235B A22B 2507' (model ID qwen.qwen3-235b-a22b-2507-v1:0), listed there as an Active model with a 262,144-token context window.",
+    "advantages": [
+      "Scores 83.0 on MMLU-Pro, a knowledge and reasoning benchmark (Qwen's model card).",
+      "Scores 70.3 on AIME25, a competition math benchmark (Qwen's model card).",
+      "Scores 51.8 on LiveCodeBench v6, a coding benchmark (Qwen's model card).",
+      "Scores 79.2 on Arena-Hard v2, an instruction-following comparison benchmark (Qwen's model card).",
+      "Scores 70.9 on BFCL-v3, a tool/function-calling benchmark (Qwen's model card).",
+      "Supports tool calling and agent workflows through the Qwen-Agent framework, including MCP configuration."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; Qwen's card states it does not generate <think></think> reasoning blocks, unlike the sibling Qwen3-235B-A22B-Thinking-2507 checkpoint."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and multi-turn chat",
+      "Multi-step mathematical and scientific reasoning",
+      "Code generation and software engineering tasks",
+      "Agentic tool calling and MCP-based agent workflows",
+      "Long-document processing up to Qwen's stated 262,144-token native context"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 83.0,
+        "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+      },
+      {
+        "name": "AIME25",
+        "score": 70.3,
+        "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+      },
+      {
+        "name": "LiveCodeBench v6",
+        "score": 51.8,
+        "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+      },
+      {
+        "name": "BFCL-v3",
+        "score": 70.9,
+        "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "title": "Qwen/Qwen3-235B-A22B-Instruct-2507 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3",
+      "title": "QwenLM/Qwen3 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3/",
+      "title": "Qwen3: Think Deeper, Act Faster",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-235b-a22b-2507.md",
+      "title": "Qwen — Qwen3 235B A22B 2507 - Amazon Bedrock User Guide",
+      "kind": "host"
+    }
+  ],
+  "notes": "AWS Bedrock's model card lists a launch date of April 28, 2025, which is the original base Qwen3-235B-A22B family's release date (per Qwen's blog and GitHub repo); this specific Instruct-2507 checkpoint was released July 21, 2025 per the QwenLM/Qwen3 GitHub repo's changelog (Thinking-2507 followed July 25, 2025). Catalog's max_output_tokens (131,072) matches neither source: Qwen's card recommends 16,384 output tokens for most queries, and Amazon Bedrock's current model card caps this endpoint at 8K max output tokens; catalog value kept per instructions. Bedrock's card also flags 'Reasoning: Supported' for this model, which conflicts with Qwen's card stating the Instruct-2507 checkpoint is non-thinking only — likely a generic Bedrock feature flag rather than evidence of actual <think> support, so not claimed above. Identified as the Instruct-2507 (not Thinking-2507) checkpoint because AWS's EULA link for this exact model ID points to Qwen3-235B-A22B-Instruct-2507's license page."
+}

@@ -1,0 +1,75 @@
+{
+  "slug": "code-llama-7b",
+  "canonical": "code-llama-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Code Llama 7B is the smallest base model in Meta's Code Llama family, an auto-regressive transformer built on Llama 2 and further trained on code and code-related natural language collected between January and July 2023. It performs raw code completion and infilling rather than instruction following. Meta's Code Llama GitHub repository was archived (read-only) on July 1, 2025, and Code Llama is absent from Meta's current model documentation, which now centers on newer Llama releases.",
+    "advantages": [
+      "Scores 33.5% pass@1 on HumanEval and 41.4% pass@1 on MBPP (Meta's Code Llama paper, Table 2).",
+      "Supports code infilling (fill-in-the-middle) at the 7B size, per Meta's launch post.",
+      "Trained on sequences of up to 16k tokens."
+    ],
+    "disadvantages": [
+      "Trained only on data collected through July 2023.",
+      "Testing focused on English; use in other languages is out of scope per Meta's model card.",
+      "Base model, not instruction- or chat-tuned; it continues text rather than following chat prompts.",
+      "Meta's Code Llama GitHub repository was archived in July 2025 and the family is absent from Meta's current model documentation."
+    ],
+    "use_cases": [
+      "General code synthesis and understanding across common programming languages.",
+      "Code completion and fill-in-the-middle (infilling) editing.",
+      "Base model for further fine-tuning on code tasks."
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 33.5,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 41.4,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/codellama/CodeLlama-7b-hf",
+    "github_url": "https://github.com/meta-llama/codellama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/codellama/CodeLlama-7b-hf",
+      "title": "CodeLlama-7b-hf",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+      "title": "Introducing Code Llama, an AI Tool for Coding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/codellama",
+      "title": "meta-llama/codellama (archived)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ar5iv.labs.arxiv.org/html/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code (HTML, Table 2)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/",
+      "title": "Model Cards and Prompt formats",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud serves this model as 'chat' kind via /v1/chat/completions, but Meta's card describes it as a base completion/infilling model, not instruction- or chat-tuned; kept Bud's routing/kind as given."
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "qwen-2-1.5b-instruct",
+  "canonical": "qwen-2-1.5b-instruct",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {"url": "https://huggingface.co/arize-ai", "title": "arize-ai (Arize AI) - Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Qwen/Qwen2-1.5B-Instruct", "title": "Qwen/Qwen2-1.5B-Instruct · Hugging Face", "kind": "third_party"}
+  ],
+  "notes": "Target's only URI is together_ai/arize-ai/qwen-2-1.5b-instruct, i.e. a model uploaded under an 'arize-ai' namespace on Together AI. Arize AI's public Hugging Face org lists 6 models (data-drift demo models: ResNet-50 and XLM-RoBERTa/DistilBERT variants), none Qwen-based or matching this id. No Arize blog, GitHub org or docs page mentions a Qwen2-1.5B-Instruct fine-tune, and Together AI's own docs/model listing and blog did not surface this id either. Found the likely base model (Qwen/Qwen2-1.5B-Instruct, Apache 2.0, 1.5B params, MMLU 52.4/HumanEval 37.8/GSM8K 61.6 per its Hugging Face card) but could not confirm what this specific 'arize-ai' checkpoint is, what it was fine-tuned or evaluated for, or how it differs from stock Qwen2-1.5B-Instruct, so nothing model-specific can be written accurately."
+}

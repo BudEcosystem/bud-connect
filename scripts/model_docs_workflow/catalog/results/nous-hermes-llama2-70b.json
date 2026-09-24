@@ -1,0 +1,43 @@
+{
+  "slug": "nous-hermes-llama2-70b",
+  "canonical": "nous-hermes-llama2-70b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Nous Research",
+  "details": {
+    "description": "Nous Hermes Llama2 70B is a 70-billion-parameter chat model that Nous Research fine-tuned from Meta's Llama 2 70B base, using the same corpus of more than 300,000 mostly GPT-4-generated synthetic instructions as Nous Research's other Hermes-Llama2 models. It targets long-form, low-restriction responses for creative writing, roleplay, and general instruction-following, and is released as an open-weight model under the MIT license.",
+    "advantages": [
+      "Scores 83.13% accuracy on PIQA, per its model card.",
+      "Scores 77.51% accuracy on WinoGrande, per its model card.",
+      "Scores 86.41% accuracy on the AGIEval SAT English subtask, per its model card.",
+      "Its model card reports long responses, a lower hallucination rate, and no OpenAI-style censorship mechanisms in its training data."
+    ],
+    "disadvantages": [
+      "English-language training data only, per its model card.",
+      "Its model card reports varied performance on specialized reasoning tasks such as logical deduction and geometric reasoning.",
+      "4,096-token training context, short next to more recent chat models."
+    ],
+    "use_cases": [
+      "Creative text generation",
+      "Instruction-following",
+      "Knowledge-based question answering",
+      "Code generation",
+      "Roleplay conversations"
+    ],
+    "evaluations": [
+      {"name": "ARC Challenge", "score": 57.34, "source": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b"},
+      {"name": "HellaSwag", "score": 65.19, "source": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b"},
+      {"name": "PIQA", "score": 83.13, "source": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b"},
+      {"name": "WinoGrande", "score": 77.51, "source": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b"},
+      {"name": "AGIEval SAT English", "score": 86.41, "source": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/NousResearch/Nous-Hermes-Llama2-70b", "title": "NousResearch/Nous-Hermes-Llama2-70b", "kind": "third_party"}
+  ],
+  "notes": "Only the Hugging Face model card was available; no separate maker docs page or host listing was found."
+}

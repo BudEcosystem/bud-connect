@@ -1,0 +1,49 @@
+{
+  "slug": "stable-image-style-guide-v1",
+  "canonical": "stable-image-style-guide-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Style Guide is an image model from Stability AI that generates a new image following a text prompt while matching the visual style of a reference image supplied as input, rather than editing the input image's own content. Amazon Bedrock's sample request pairs a reference image with a prompt such as 'wide shot of modern metropolis' to produce a new scene rendered in that reference's style. Amazon Bedrock lists a model launch date of October 2024 for this model. Amazon Bedrock lists the model's lifecycle as Active with no confirmed end-of-life date, though its originally stated 'no sooner than' retirement window of October 2025 has passed.",
+    "advantages": [
+      "Takes a reference image plus a separate text prompt to steer a newly generated image's visual style, per AWS Bedrock's sample request body."
+    ],
+    "disadvantages": [
+      "Generates a new image guided by a style reference rather than directly editing the pixels of the input image, unlike Stability AI's other Stable Image edit models."
+    ],
+    "use_cases": [
+      "Applying the visual style of a reference image to a newly generated scene.",
+      "Keeping brand or campaign imagery visually consistent across new generated content.",
+      "Style-guided concept art or creative exploration from a reference image."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/news-updates/stability-ai-brings-image-services-to-amazon-bedrock-delivering-professional-creative-control-with-enterprise-grade-infrastructure",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-style-guide.md",
+      "title": "Stable Image Style Guide - Amazon Bedrock Model Card",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stable Image - Stability AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/news-updates/stability-ai-brings-image-services-to-amazon-bedrock-delivering-professional-creative-control-with-enterprise-grade-infrastructure",
+      "title": "Stability AI Brings Image Services to Amazon Bedrock, Delivering End-to-End Creative Control with Enterprise-Grade Infrastructure",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Stability AI's Sept 18, 2025 announcement of its Image Services on Amazon Bedrock names 'Style Guide' as one of its Control-category tools, alongside Style Transfer, Structure and Sketch, confirming this is Stability's own current name for the model rather than a Bedrock-only rename, so website_url now points to that announcement. Stability's general Stable Image product page (stability.ai/stable-image) still uses a shorter 'Style' label under Control rather than this full name, and platform.stability.ai's interactive API reference is a JavaScript app that could not be fetched directly to check further. Bedrock's model card lists lifecycle as Active with EOL date N/A, even though the model's originally stated 'no sooner than' end-of-life window (Oct 2025) has already passed; no source states it is deprecated or superseded."
+}

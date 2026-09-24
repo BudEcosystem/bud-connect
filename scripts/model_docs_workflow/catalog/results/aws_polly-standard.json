@@ -1,0 +1,81 @@
+{
+  "slug": "aws_polly-standard",
+  "canonical": "aws_polly-standard",
+  "status": "ok",
+  "researched_on": "2026-09-25",
+  "method": "claude-code-subagent",
+  "maker": "Amazon Web Services",
+  "details": {
+    "description": "Amazon Polly Standard is the original text-to-speech engine in AWS's Amazon Polly service, using concatenative synthesis that joins phonemes of recorded human speech into audio. It is one of four Polly voice engines, alongside Neural, Long-Form and Generative, which AWS documents as producing more natural, human-like speech than Standard. AWS currently offers 60 Standard voices (40 female, 20 male) across 29 languages and language variants, each usable for real-time or asynchronous synthesis with SSML markup and Polly speech marks.",
+    "advantages": [
+      "Offers 60 voices (40 female, 20 male) across 29 languages and language variants, per AWS's Standard voices documentation.",
+      "AWS describes the concatenative synthesis it uses as producing 'very natural-sounding synthesized speech' by joining phonemes of recorded human speech.",
+      "Supports real-time and asynchronous synthesis operations, all Polly speech marks, and most SSML tags.",
+      "Lets users choose from multiple sampling rates (22 kHz default) and output audio as MP3, OGG Vorbis, or raw PCM."
+    ],
+    "disadvantages": [
+      "AWS says concatenative synthesis has an inherent ceiling: 'the inevitable variations in speech and the techniques used to segment the waveforms limits the quality of speech' compared with its Neural, Long-Form and Generative engines.",
+      "Many newer Polly voices are Neural-, Long-Form- or Generative-only and are not offered on the Standard engine, per AWS's available voices table."
+    ],
+    "use_cases": [
+      "Adding spoken narration to websites, RSS feeds, or videos for a global audience.",
+      "Powering IVR prompts and automated voice-response systems for customer engagement.",
+      "Creating voiceovers for animations, games, and other media directly from scripts, with SSML control over phrasing.",
+      "Making mobile and IoT applications voice-enabled."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Arabic",
+      "Chinese",
+      "Danish",
+      "Dutch",
+      "English",
+      "French",
+      "German",
+      "Hindi",
+      "Icelandic",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Romanian",
+      "Russian",
+      "Spanish",
+      "Swedish",
+      "Turkish",
+      "Welsh"
+    ],
+    "website_url": "https://docs.aws.amazon.com/polly/latest/dg/standard-voices.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/standard-voices.html",
+      "title": "Standard voices - Amazon Polly",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/available-voices.html",
+      "title": "Available voices - Amazon Polly",
+      "kind": "maker"
+    },
+    {
+      "url": "https://aws.amazon.com/polly/features/",
+      "title": "Amazon Polly Features",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/neural-voices.html",
+      "title": "Neural voices - Amazon Polly",
+      "kind": "maker"
+    },
+    {
+      "url": "https://aws.amazon.com/polly/",
+      "title": "AI Voice Generator and Text-to-Speech Tool - Amazon Polly - AWS",
+      "kind": "maker"
+    }
+  ],
+  "notes": "aws_polly/standard is Amazon Polly's Standard voice engine (concatenative synthesis), distinct from Polly's Neural, Long-Form and Generative engines. Confirmed current on AWS's docs as of 2026-09-25: the Standard engine has no deprecation notice and remains listed alongside the other three engines with full voice/region tables. No accuracy-style benchmark scores are published by AWS for any Polly engine, so evaluations is empty. Catalog facts (endpoints, audio_output/text_input modality) do not conflict with anything found."
+}

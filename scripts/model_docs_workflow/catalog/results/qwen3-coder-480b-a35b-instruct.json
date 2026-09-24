@@ -1,0 +1,66 @@
+{
+  "slug": "qwen3-coder-480b-a35b-instruct",
+  "canonical": "qwen3-coder-480b-a35b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Coder-480B-A35B-Instruct is Qwen's largest coding-specialized model, a mixture-of-experts model with 480 billion total parameters and 35 billion activated per token (160 experts, 8 active), released July 22, 2025. It is built for agentic coding, agentic browser-use, and agentic tool-use, with a native 262,144-token context window (extendable to 1 million tokens via Yarn) and repository-scale code understanding. Qwen's launch blog describes its results on these agentic tasks among open models as 'comparable to Claude Sonnet 4.' It runs in non-thinking mode only.",
+    "advantages": [
+      "Scores 38.7 on SWE-bench Pro's public dataset, a software-engineering benchmark (Scale AI's SWE-bench Pro leaderboard).",
+      "Qwen's launch blog describes its results on Agentic Coding, Agentic Browser-Use, and Agentic Tool-Use as 'comparable to Claude Sonnet 4' among open models.",
+      "Native 262,144-token context window, extendable to 1 million tokens using Yarn (Qwen's model card).",
+      "Integrates with Qwen Code and Cline for IDE-based agentic coding workflows."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; does not generate <think></think> reasoning blocks (Qwen's model card).",
+      "480B total parameters (35B active) are far larger than the 30B-A3B sibling model, requiring proportionally more compute to serve."
+    ],
+    "use_cases": [
+      "Autonomous coding agents for multi-step software development tasks",
+      "Repository-scale code understanding and refactoring",
+      "Agentic browser-use tasks driven by a coding agent",
+      "Tool-calling and function-calling workflows via OpenAI-compatible APIs",
+      "IDE-integrated coding assistants (Qwen Code, Cline)"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Pro",
+        "score": 38.7,
+        "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-Coder"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "title": "Qwen/Qwen3-Coder-480B-A35B-Instruct \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3-coder/",
+      "title": "Qwen3-Coder: Agentic Coding in the World",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Coder",
+      "title": "QwenLM/Qwen3-Coder - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-coder-480b-a35b-instruct",
+      "title": "Qwen3 Coder 480B A35B Instruct - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+      "title": "SWE-bench Pro Public Leaderboard - Scale AI",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog facts (262,144 max input/output tokens) match Qwen's native context spec and are consistent with Fireworks' own page (~262,000 tokens) for this exact model ID, so no conflict to flag. Verification pass: neither the HF model card nor Qwen's blog/GitHub actually contains a benchmark table (no model-index on HF, no scores in the README text) despite the researcher citing the HF card for SWE-bench Pro and Terminal-Bench 2.0 scores. SWE-bench Pro 38.7 was independently confirmed on Scale AI's public SWE-bench Pro leaderboard for 'qwen3-coder-480b-a35b' (exact match) and re-sourced there. Terminal-Bench 2.0 23.9 could not be confirmed on any current or archived maker or third-party page (Terminal-Bench's own site now only shows v4.0; Wayback Machine had no snapshot) and was removed. A third benchmark on Qwen's model card ('EvasionBench', 78.16) was already left out of evaluations by the researcher: it is not a benchmark we could independently verify, and its scoring direction is unclear."
+}

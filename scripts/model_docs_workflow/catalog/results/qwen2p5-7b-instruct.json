@@ -1,0 +1,42 @@
+{
+  "slug": "qwen2p5-7b-instruct",
+  "canonical": "qwen2p5-7b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba Cloud (Qwen)",
+  "details": {
+    "description": "Qwen2.5-7B-Instruct is an instruction-tuned, 7.61-billion-parameter text language model in Alibaba Cloud's Qwen2.5 series, released September 19, 2024. The model card describes gains over earlier Qwen models in coding and mathematics, instruction-following, generating long-form text, understanding structured data such as tables, and producing structured output such as JSON. Alibaba's Qwen GitHub organization now centers on the newer Qwen3 model family, though the Qwen2.5-7B-Instruct weights remain published on Hugging Face with no explicit deprecation notice on its model card.",
+    "advantages": [
+      "Multilingual support for over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, and Arabic, per the model card.",
+      "The model card lists a full context length of 131,072 tokens (via YaRN scaling) with generation up to 8,192 tokens, versus a 32,768-token default configuration.",
+      "The model card states improved instruction-following and better understanding of structured data (e.g. tables) with structured output generation such as JSON, compared to earlier Qwen releases."
+    ],
+    "disadvantages": [
+      "Text-only model with no image, audio, or video input support.",
+      "The model card does not publish exact benchmark scores (e.g. MMLU, GSM8K, HumanEval) in text form for this specific 7B size; detailed results are only shown as chart images in Qwen's blog post."
+    ],
+    "use_cases": [
+      "General-purpose conversational assistant and instruction following",
+      "Coding assistance",
+      "Mathematical problem solving",
+      "Long-document processing aided by extended context length",
+      "Structured data understanding and JSON/structured output generation",
+      "Multilingual tasks across 29+ languages"
+    ],
+    "evaluations": [],
+    "languages": [
+      "Chinese", "English", "French", "Spanish", "Portuguese", "German", "Italian", "Russian",
+      "Japanese", "Korean", "Vietnamese", "Thai", "Arabic"
+    ],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct", "title": "Qwen/Qwen2.5-7B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/README.md", "title": "Qwen2.5-7B-Instruct model card (raw README)", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5/", "title": "Qwen2.5: A Party of Foundation Models!", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5", "title": "QwenLM/Qwen2.5 (GitHub org repo, now retitled Qwen3)", "kind": "maker"}
+  ],
+  "notes": "The model card's headline context length (131,072 tokens via YaRN, default config 32,768) differs from the catalog's max_input/max_output of 32768; the catalog's value is kept per instructions. The languages list is the explicit example set named on the model card ('including... and more'); the card does not give a closed list, so a small number of additional languages may exist beyond those named. No exact benchmark numbers (MMLU/GSM8K/HumanEval/etc.) for the 7B size were found in text form on the maker's model card, README, or blog post -- only aggregate chart images, which this agent could not read -- so evaluations is left empty rather than guessed. The github.com/QwenLM/Qwen2.5 repository now displays Qwen3 content (title 'Qwen3 Repository'), used only as evidence that Alibaba's primary GitHub project has moved to Qwen3; github_url is left null since there is no dedicated current repo for this model."
+}

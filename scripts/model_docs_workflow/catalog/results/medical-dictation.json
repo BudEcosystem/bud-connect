@@ -1,0 +1,49 @@
+{
+  "slug": "medical-dictation",
+  "canonical": "medical-dictation",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Medical Dictation is one of Google Cloud Speech-to-Text's two medical speech recognition models, alongside Medical Conversation, tuned for notes dictated by a single medical provider — for example, a doctor dictating notes about a patient's blood test results — and for vocabulary such as diagnoses, medications, symptoms, treatments, and conditions. It is offered through Speech-to-Text's v1 API and, per Google's documentation, is available only for US English.",
+    "advantages": [
+      "Recognizes medical vocabulary — diagnoses, medications, symptoms, treatments, and conditions — that Google's general-purpose Speech-to-Text models are not tuned for.",
+      "Automatically enables spoken punctuation, formatting commands, and spoken headings, features Google's documentation says \"cannot be disabled\" for this model.",
+      "Supports automatic punctuation (enabled by default), alternate transcriptions, word timestamps, and word-level confidence, the only additional features Google's documentation allows with medical models."
+    ],
+    "disadvantages": [
+      "Available only for US English (en-US); Google's documentation states medical models are not offered in any other language.",
+      "Listed only among Speech-to-Text's v1 API models; it does not appear among the v2 API's Chirp-based models (chirp_3, chirp_2, telephony) in Google's current documentation."
+    ],
+    "use_cases": [
+      "Transcribing a single medical provider's dictated notes, such as a doctor recording findings from a patient's blood test.",
+      "Capturing medical documentation with correctly recognized diagnosis, medication, symptom, treatment, and condition terminology.",
+      "Structured dictation workflows that rely on spoken punctuation, spoken headings, and formatting commands to shape the transcript."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English (US)"
+    ],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models",
+      "title": "Medical models | Cloud Speech-to-Text",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/v1/transcription-model",
+      "title": "Transcription models (v1) | Cloud Speech-to-Text",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/transcription-model",
+      "title": "Transcription models (v2) | Cloud Speech-to-Text",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Confirmed via Google's v1 and v2 model-name lists that medical_dictation exists only in the v1 API; catalog facts give no language, token, or deprecation constraints, and nothing here conflicts with them. Removed the allowlist-only claim: none of Google's medical-models, v1 transcription-model, v2 transcription-model, v1 product-overview, quotas, or best-practices pages state that medical_dictation requires allowlisting. The only allowlist reference found is an 'Allowlist-only features' nav heading marked 'Limited Access' whose contents are not publicly viewable, so it cannot be used to confirm the claim either way. Google's v1 transcription-model page does call medical_dictation 'a premium model that costs more than the standard rate,' which is a price detail and is left out per style rules. Checked WaaV's gateway source (local checkout) for whether it exposes this the same way: WaaV's Google STT integration (gateway/src/core/stt/google/) implements Google's v2 Speech-to-Text API only and passes the configured model string straight through with no v1 or medical-model-specific handling, so a v1-only model like medical_dictation is not confirmed to be reachable through WaaV's current Google STT provider — out of scope for this write-up, which describes Google's own model."
+}

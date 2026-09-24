@@ -1,0 +1,50 @@
+{
+  "slug": "nova-lite-v1",
+  "canonical": "nova-lite-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Nova Lite is Amazon's low-cost multimodal foundation model, launched December 5, 2024 and accessed through Amazon Bedrock. It processes text and image inputs and generates text output, with a 300K-token context window, and also accepts document inputs such as PDF, DOCX and XLS. It supports the Converse API, client-side tool calling and fine-tuning, and Amazon positions it for interactive chat, retrieval-augmented generation, agentic applications and UI workflow automation. AWS's Bedrock model card lists this v1 snapshot as Active, with no end-of-life date announced as of this research.",
+    "advantages": [
+      "Accepts document inputs including PDF, CSV, DOC, DOCX, XLS, XLSX, HTML, TXT and MD files (Amazon Nova user guide).",
+      "Supports explicit prompt caching, with a minimum of 1K tokens per cache checkpoint and up to 4 checkpoints per request, to reduce latency and cost on repeated context (AWS Bedrock model card).",
+      "Supports client-side tool calling and Amazon Bedrock Agents for building agentic workflows (AWS Bedrock model card).",
+      "Optimized for 15 named languages within a training set Amazon says spans up to 200 languages (Amazon Nova user guide)."
+    ],
+    "disadvantages": [
+      "Does not support structured outputs via the bedrock-runtime API (AWS Bedrock model card).",
+      "Knowledge cutoff of October 2024 (AWS Bedrock model card).",
+      "Amazon's Nova documentation site now covers this as 'Amazon Nova Version 1' and points to a separate Nova 2 user guide, and AWS's Bedrock model catalog separately lists a newer 'Nova 2 Lite' model."
+    ],
+    "use_cases": [
+      "Interactive chat interfaces",
+      "Retrieval-augmented generation (RAG) systems",
+      "Agentic applications and UI workflow automation",
+      "Document analysis and visual question answering"
+    ],
+    "evaluations": [],
+    "languages": ["English", "German", "Spanish", "French", "Italian", "Japanese", "Korean", "Arabic", "Simplified Chinese", "Russian", "Hindi", "Portuguese", "Dutch", "Turkish", "Hebrew"],
+    "website_url": "https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html",
+      "title": "What is Amazon Nova? - Amazon Nova User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-lite.html",
+      "title": "Nova Lite model card - Amazon Bedrock User Guide",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/ai/responsible-ai/nova-micro-lite-pro/overview.html",
+      "title": "Amazon Nova Micro, Lite, Pro, and Premier - AWS AI Service Card",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (10000) matches the Nova user guide's model-specifications table (10K), but AWS's Bedrock model card for amazon.nova-lite-v1:0 separately states 'Max output tokens: 5K' -- kept the catalog's value and flagged this source disagreement. AWS's own documentation also lists video as a supported input modality for Nova Lite alongside text and image, but the catalog's modality facts list only text_input, image_input and text_output, so video input was left out of the write-up per the catalog's authoritative facts. Found no accuracy-style benchmark scores from Amazon or a named leaderboard for this exact model."
+}

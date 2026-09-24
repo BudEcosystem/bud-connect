@@ -1,0 +1,85 @@
+{
+  "slug": "nemotron-nano-9b",
+  "canonical": "nemotron-nano-9b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron Nano 9B v2 is a 9-billion-parameter hybrid language model from NVIDIA, combining Mamba-2 and MLP layers with just four attention layers. Released August 18, 2025 under the NVIDIA Nemotron Open Model License, it generates an internal reasoning trace before its final answer, with reasoning togglable via /think or /no_think prompts and a runtime thinking-token budget, and supports native tool calling within a 128K-token context window; it is text-only, with no image or audio input.",
+    "advantages": [
+      "Scored 72.1% on AIME25 and 97.8% on MATH500 in reasoning-on mode (Hugging Face model card).",
+      "Scored 64.0% on GPQA and 90.3% on IFEval in reasoning-on mode (Hugging Face model card).",
+      "Scored 78.9% on the RULER 128K long-context benchmark (Hugging Face model card).",
+      "Documented support for ten languages: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian and Chinese (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Text-only; no image or audio input (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "AI agents and tool-calling workflows",
+      "Chatbots and instruction following",
+      "Retrieval-augmented generation (RAG)",
+      "Long-context document processing up to 128K tokens"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME25",
+        "score": 72.1,
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"
+      },
+      {
+        "name": "MATH500",
+        "score": 97.8,
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"
+      },
+      {
+        "name": "GPQA",
+        "score": 64.0,
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"
+      },
+      {
+        "name": "IFEval",
+        "score": 90.3,
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"
+      },
+      {
+        "name": "RULER (128K)",
+        "score": 78.9,
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "Spanish",
+      "French",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Portuguese",
+      "Russian",
+      "Chinese"
+    ],
+    "website_url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+      "title": "nvidia/NVIDIA-Nemotron-Nano-9B-v2 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nvidia-nemotron-nano-9b-v2.md",
+      "title": "NVIDIA Nemotron Nano 9B v2 - Amazon Bedrock model card",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/",
+      "title": "NVIDIA Nemotron Open Model License",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's 128K input and 8000/8192 output token facts match both NVIDIA's Hugging Face card and AWS Bedrock's model card for nvidia.nemotron-nano-9b-v2; both sources describe it as text-only, consistent with the catalog's text_input/text_output-only modality, so no conflicts to flag. Corrected the license name from 'NVIDIA Open Model License' to its exact title, 'NVIDIA Nemotron Open Model License', per the license page itself and the EULA link on both cited model cards."
+}

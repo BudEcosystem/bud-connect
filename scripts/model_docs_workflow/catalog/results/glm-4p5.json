@@ -1,0 +1,41 @@
+{
+  "slug": "glm-4p5",
+  "canonical": "glm-4p5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai (Zhipu AI)",
+  "details": {
+    "description": "GLM-4.5 is an open-weight Mixture-of-Experts large language model from Z.ai (Zhipu AI) with 355 billion total parameters and 32 billion active per forward pass, trained on 23 trillion tokens. It is designed to unify reasoning, coding and agentic tool-use in one model, offering a \"thinking mode\" for complex reasoning and tool calls alongside a non-thinking mode for immediate replies. It is released under the MIT license, permitting commercial use.",
+    "advantages": [
+      "Scores 91.0% on AIME 24, per Z.ai's GLM-4.5 technical report.",
+      "Scores 64.2% on SWE-bench Verified, per the technical report.",
+      "Scores 70.1% on TAU-Bench, an agentic tool-use benchmark, per the technical report.",
+      "Supports native, OpenAI-style function calling and tool schemas, and is documented for use with agent frameworks such as Claude Code and Roo Code, per Z.ai's API documentation.",
+      "Offers a switchable thinking mode for complex reasoning and tool use, and a non-thinking mode for instant responses, per Z.ai's API documentation."
+    ],
+    "disadvantages": [
+      "Text-only model: input and output are both text, per Z.ai's API documentation."
+    ],
+    "use_cases": [
+      "Coding and full-stack software development agents",
+      "Tool-calling and browsing agents",
+      "Complex multi-step reasoning tasks",
+      "General-purpose chat with a switchable thinking mode"
+    ],
+    "evaluations": [
+      {"name": "AIME 24", "score": 91.0, "source": "https://arxiv.org/abs/2508.06471"},
+      {"name": "SWE-bench Verified", "score": 64.2, "source": "https://arxiv.org/abs/2508.06471"},
+      {"name": "TAU-Bench", "score": 70.1, "source": "https://arxiv.org/abs/2508.06471"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.z.ai/guides/llm/glm-4.5",
+    "github_url": "https://github.com/zai-org/GLM-4.5"
+  },
+  "sources": [
+    {"url": "https://docs.z.ai/guides/llm/glm-4.5", "title": "GLM-4.5 | Z.ai API Platform Docs", "kind": "maker"},
+    {"url": "https://github.com/zai-org/GLM-4.5", "title": "zai-org/GLM-4.5", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2508.06471", "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (128000 max input / 96000 max output, text-only) match Z.ai's own API docs exactly. Z.ai's docs and GitHub also state an aggregate score of 63.2 across 12 benchmarks (3rd overall, 2nd among agentic benchmarks), but that is a composite index rather than a single named accuracy benchmark, so it was left out of evaluations. Could not confirm a specific supported-language list on a maker page (only general Chinese/English framing), so languages is left empty per the brief's guidance. Verify pass: Z.ai's GitHub README now also lists GLM-4.6 and GLM-4.7 as newer generations in the same model family (with GLM-4.6's Claude Code/Cline/Roo Code coding-performance callout previously misattributed here to GLM-4.5); no maker page labels GLM-4.5 itself deprecated or legacy, and it remains listed on Z.ai's current pricing page alongside GLM-4.6/4.7."
+}

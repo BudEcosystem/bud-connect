@@ -1,0 +1,39 @@
+{
+  "slug": "qwen2p5-coder-32b-instruct",
+  "canonical": "qwen2p5-coder-32b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-32B-Instruct is the flagship instruction-tuned model in Alibaba's Qwen2.5-Coder family, open-sourced by the Qwen team on November 12, 2024. It is built on a 32.5-billion-parameter base pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, and is tuned for code generation, code reasoning, and code fixing while retaining general language and math ability.",
+    "advantages": [
+      "Scores 73.7 on the Aider code-editing benchmark, per Qwen's Qwen2.5-Coder family announcement.",
+      "Scores 65.9 on McEval, a multi-programming-language code generation benchmark, per Qwen's family announcement.",
+      "Scores 75.2 on MdEval, a multi-language code-debugging benchmark, per Qwen's family announcement.",
+      "Pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Text-only input and output, with no vision or audio support."
+    ],
+    "use_cases": [
+      "Code generation, completion, and refactoring across multiple programming languages.",
+      "Code review, debugging, and automated code fixing.",
+      "Building coding agents and code-focused conversational assistants."
+    ],
+    "evaluations": [
+      {"name": "Aider", "score": 73.7, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "McEval", "score": 65.9, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "MdEval", "score": 75.2, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", "title": "Qwen/Qwen2.5-Coder-32B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Family: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct", "title": "qwen2p5-coder-32b-instruct - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Qwen's model card states this model natively supports 32,768 tokens, extendable to 131,072 via YaRN scaling, which is larger than the catalog's 4,096-token figure for this entry; kept the catalog's value and left context length out of the write-up rather than restate a different number. A separate catalog entry (qwen2p5-coder-32b-instruct-128k) covers the same model served with the extended 131,072-token window."
+}

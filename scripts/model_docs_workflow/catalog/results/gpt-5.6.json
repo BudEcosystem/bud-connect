@@ -1,0 +1,92 @@
+{
+  "slug": "gpt-5.6",
+  "canonical": "gpt-5.6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.6 (Sol) is the flagship model of OpenAI's GPT-5.6 family, launched July 9, 2026 as the successor to GPT-5.5; the unsuffixed 'gpt-5.6' model id routes to Sol. It is one of three GPT-5.6 tiers (Sol as flagship, Terra as a mid-tier, Luna as the cost-efficient tier) and OpenAI positioned it for coding, agentic workflows, cybersecurity, knowledge work and science, with support for tool use and computer use; OpenAI's separate 'ultra' multi-agent mode is a ChatGPT Work and Codex product feature, not an API setting. OpenAI has since launched a newer GPT-6 family (Astra, Sol, Luna) on September 22, 2026, and its current API model documentation no longer lists GPT-5.6 among its featured models; TechCrunch reports the new GPT-6 Sol makes about half as many mistakes as this model on OpenAI's internal factuality evaluation.",
+    "advantages": [
+      "Reaches 80 on the Artificial Analysis Coding Agent Index, the top score at publication across DeepSWE, Terminal-Bench v2 and SWE-Atlas-QnA.",
+      "Scores 71.2% on SEC-Bench Pro (cybersecurity) and 62.6% on OSWorld 2.0 (computer use), per OpenAI's launch page.",
+      "Scores 52.7% on Agents' Last Exam, a professional-workflow agentic benchmark, per OpenAI's launch page.",
+      "Supports reasoning effort from none through max via the API, letting a caller trade latency for reasoning depth, per OpenAI's model documentation.",
+      "Per Artificial Analysis, it uses fewer output tokens than GPT-5.5 on Intelligence Index tasks (15k vs 16k) while scoring higher on that benchmark."
+    ],
+    "disadvantages": [
+      "Scores only 7.78% on ARC-AGI-3, a newer abstract-reasoning benchmark, per OpenAI's launch page.",
+      "Superseded by GPT-6 Sol, part of the GPT-6 family OpenAI launched September 22, 2026; TechCrunch reports GPT-6 Sol makes about half as many mistakes as this model on OpenAI's internal factuality evaluation.",
+      "Text output only; knowledge cutoff of February 16, 2026, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Agentic coding and complex, multi-step software engineering workflows",
+      "Cybersecurity tasks and vulnerability analysis",
+      "Complex professional and knowledge-work tasks",
+      "Computer-use automation across applications"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Coding Agent Index (max)",
+        "score": 80,
+        "source": "https://artificialanalysis.ai/articles/gpt-5-6-has-landed"
+      },
+      {
+        "name": "Artificial Analysis Intelligence Index (max)",
+        "score": 59,
+        "source": "https://artificialanalysis.ai/articles/gpt-5-6-has-landed"
+      },
+      {
+        "name": "SEC-Bench Pro",
+        "score": 71.2,
+        "source": "https://openai.com/index/gpt-5-6/"
+      },
+      {
+        "name": "OSWorld 2.0",
+        "score": 62.6,
+        "source": "https://openai.com/index/gpt-5-6/"
+      },
+      {
+        "name": "Agents' Last Exam",
+        "score": 52.7,
+        "source": "https://openai.com/index/gpt-5-6/"
+      },
+      {
+        "name": "ARC-AGI-3",
+        "score": 7.78,
+        "source": "https://openai.com/index/gpt-5-6/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.6",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6",
+      "title": "GPT-5.6 Sol Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-6/",
+      "title": "GPT-5.6: Frontier intelligence that scales with your ambition | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://artificialanalysis.ai/articles/gpt-5-6-has-landed",
+      "title": "GPT-5.6 benchmarks across Intelligence, Speed and Cost | Artificial Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+      "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes | TechCrunch",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "openai.com/index/gpt-5-6/ returned HTTP 403 on direct fetch; content was retrieved through a read-only fetch proxy. Confirmed via the API docs page that the unsuffixed 'gpt-5.6' id is an alias for Sol (model id gpt-5.6-sol), matching this target's uris (no '-sol' suffix, no '-terra' or '-luna'). Catalog's max_input_tokens (922,000) and max_output_tokens (128,000) match OpenAI's own published figures. Catalog carries no deprecation_date for this target and OpenAI's deprecations page lists no shutdown date for it either, even though it is no longer OpenAI's featured/recommended model."
+}

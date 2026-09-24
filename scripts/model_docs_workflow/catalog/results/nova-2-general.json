@@ -1,0 +1,76 @@
+{
+  "slug": "nova-2-general",
+  "canonical": "nova-2-general",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 General is Deepgram's general-purpose speech-to-text model in its Nova-2 tier, described by Deepgram's docs as optimized for everyday audio processing. It expands on the earlier Nova-1 model with speech-specific Transformer optimizations, additional data curation, and multi-stage training, which Deepgram says reduce word error rate and improve entity recognition, punctuation, and capitalization compared with Nova-1. It supports about 35 languages, including Spanish-English code-switching. Deepgram's current models overview table recommends its newer Nova-3 tier as the default general-purpose choice, and now positions Nova-2 mainly for languages Nova-3 does not yet support and for filler-word identification.",
+    "advantages": [
+      "Supports about 35 languages, including multilingual Spanish+English code-switching in a single stream, per Deepgram's language documentation.",
+      "Deepgram says Nova-2 improves entity recognition (e.g. proper nouns, alphanumerics), punctuation, and capitalization over its Nova-1 predecessor through speech-specific Transformer optimizations, advanced data curation, and multi-stage training."
+    ],
+    "disadvantages": [
+      "Deepgram's current models overview table recommends its newer Nova-3 tier, not Nova-2, as the default general-purpose ASR choice, positioning Nova-2 mainly for languages Nova-3 does not yet support and for filler-word identification."
+    ],
+    "use_cases": [
+      "Everyday, general-purpose audio transcription, per Deepgram's model documentation.",
+      "Transcription in languages not yet supported by Deepgram's newer Nova-3 tier.",
+      "Filler-word identification, which Deepgram's models overview lists as a current Nova-2 use case."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Bulgarian",
+      "Catalan",
+      "Chinese (Mandarin)",
+      "Chinese (Cantonese)",
+      "Czech",
+      "Danish",
+      "Dutch",
+      "English",
+      "Estonian",
+      "Finnish",
+      "Flemish",
+      "French",
+      "German",
+      "Greek",
+      "Hindi",
+      "Hungarian",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Latvian",
+      "Lithuanian",
+      "Malay",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Romanian",
+      "Russian",
+      "Slovak",
+      "Spanish",
+      "Swedish",
+      "Thai",
+      "Turkish",
+      "Ukrainian",
+      "Vietnamese"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's 'Nova-2 Speech-to-Text API' launch article (deepgram.com/learn/nova-2-speech-to-text-api) reports a median WER of 8.4% and other accuracy figures, but these are tested across four generic audio domains (podcast, video/media, meeting, phone call) for the Nova-2 model as a whole, not attributed to the general-tuned option specifically, so they are left out (WER is also excluded from the evaluations schema, which wants only 0-100 higher-is-better accuracy scores). Catalog facts carry no deprecation_date, consistent with Deepgram's docs, which list Nova-2 outside its 'Legacy Models' section (Nova 1, Enhanced, Base)."
+}

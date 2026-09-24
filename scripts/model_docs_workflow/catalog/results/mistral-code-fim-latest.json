@@ -1,0 +1,11 @@
+{
+  "slug": "mistral-code-fim-latest",
+  "canonical": "mistral-code-fim-latest",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find any Mistral documentation, changelog entry, product page, or API reference using the id 'mistral-code-fim-latest'. Mistral's FIM (fill-in-the-middle) completions endpoint documents its model field as taking Codestral ids (default codestral-2404, examples codestral-latest / codestral-2508), not 'mistral-code-fim-latest'. Mistral's coding product bundles Codestral for FIM/autocomplete, but no source names a separate model or id called 'mistral-code-fim'. Without a page using this exact id I cannot confirm it is simply an alias for the current Codestral release (128K context does not match Codestral's documented ~256K context either, per docs.mistral.ai), so I am not willing to describe it as Codestral outright."
+}

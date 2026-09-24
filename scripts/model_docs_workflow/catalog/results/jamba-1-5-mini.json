@@ -1,0 +1,70 @@
+{
+  "slug": "jamba-1-5-mini",
+  "canonical": "jamba-1-5-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "AI21 Labs",
+  "details": {
+    "description": "Jamba 1.5 Mini is AI21 Labs' smaller Jamba 1.5 model, a hybrid SSM-Transformer (Joint Attention and Mamba) model with 12B active parameters out of 52B total, released August 22, 2024 alongside Jamba 1.5 Large. It shares the family's 256K-token context window and is positioned for lower-latency, cost-efficient enterprise chat, RAG and agentic tasks, with function calling, JSON-formatted output, and document-based grounded generation with citations. AI21 has since released Jamba Mini 1.7, and Hugging Face marks this 1.5 Mini snapshot as superseded by that newer version.",
+    "advantages": [
+      "AI21 reports an Arena Hard score of 46.1, which it describes as the strongest open model in its size class, ahead of Mixtral 8x22B and Command-R+ (AI21 launch post).",
+      "Shares the family's 256K-token context window, with AI21 reporting 86.1% effective context length retention at 256K tokens on the RULER benchmark (Hugging Face model card).",
+      "Supports function calling, JSON-formatted structured output, and document-based grounded generation with citations (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Hugging Face displays a banner marking this card superseded, pointing to a newer version, AI21-Jamba-Mini-1.7 (Hugging Face model card).",
+      "Amazon Bedrock lists this model's lifecycle status as Legacy, with an end-of-life date of November 26, 2026 (Amazon Bedrock model card).",
+      "Knowledge cutoff of March 2024 (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Low-latency enterprise chat and customer support",
+      "Retrieval-augmented generation (RAG) with grounded, cited responses over long documents",
+      "Agentic workflows using function calling and structured JSON output",
+      "Cost-efficient long-document summarization using the 256K-token context window"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (CoT)",
+        "score": 69.7,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini"
+      },
+      {
+        "name": "GSM-8K",
+        "score": 75.8,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini"
+      },
+      {
+        "name": "ARC Challenge",
+        "score": 85.7,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini"
+      },
+      {
+        "name": "BFCL",
+        "score": 80.6,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini"
+      }
+    ],
+    "languages": ["English", "Spanish", "French", "Portuguese", "Italian", "Dutch", "German", "Arabic", "Hebrew"],
+    "website_url": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini",
+      "title": "ai21labs/AI21-Jamba-1.5-Mini · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.ai21.com/blog/announcing-jamba-model-family",
+      "title": "Announcing Jamba Model Family - AI21",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-ai21-labs-jamba-1-5-mini.html",
+      "title": "Jamba 1.5 Mini - Amazon Bedrock model card",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (256000) is kept as authoritative per instructions, but Amazon Bedrock's own model card lists 'Max output tokens: 4K' for this model on Bedrock -- flagging the mismatch. Catalog's deprecation_date (2026-11-26) matches Amazon Bedrock's 'Model EOL date' exactly. A Hugging Face banner marks this specific 1.5 Mini card superseded by AI21-Jamba-Mini-1.7; a date given on that banner for a 'deprecation' (May 6, 2024) predates the model's own August 22, 2024 launch date and looks like a page-scraping artifact, so it was not used."
+}

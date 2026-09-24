@@ -1,0 +1,36 @@
+{
+  "slug": "batch-standard",
+  "canonical": "batch-standard",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Standard is Speechmatics' fastest-turnaround operating point for its Batch and Realtime speech-to-text API, selected by setting the request's model field to \"standard\". Speechmatics states its accuracy matches its newer Melia 1 model and sits slightly below its own Enhanced operating point, while offering the same core transcription feature set as Enhanced. Speechmatics positions Standard as the choice when throughput matters more than peak accuracy.",
+    "advantages": [
+      "Speechmatics documents Standard as its fastest-turnaround operating point for Batch and Realtime transcription, per Speechmatics' Models documentation.",
+      "Speechmatics states Standard's accuracy matches its Melia 1 model, per Speechmatics' Models documentation.",
+      "Supports custom dictionaries, per-word confidence scores, and speaker diarization, the same feature set as Enhanced, per Speechmatics' Models documentation.",
+      "Bundles speech-intelligence add-ons in the same job, including translation, summarization, topic detection, chapters, sentiment analysis and audio-event detection, per Speechmatics' Models documentation."
+    ],
+    "disadvantages": [
+      "Speechmatics documents Enhanced, not Standard, as its highest-accuracy operating point, describing Standard as prioritising throughput over maximum accuracy."
+    ],
+    "use_cases": [
+      "Archival transcription",
+      "Content indexing",
+      "Large-scale or bulk captioning",
+      "High-volume batch transcription where turnaround speed matters more than peak accuracy"
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Bashkir", "Basque", "Belarusian", "Bengali", "Bulgarian", "Cantonese", "Catalan", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Mandarin", "Marathi", "Mongolian", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovakian", "Slovenian", "Spanish", "Swahili", "Swedish", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Uyghur", "Vietnamese", "Welsh"],
+    "website_url": "https://docs.speechmatics.com/speech-to-text/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/speech-to-text/models", "title": "Speech-to-Text Models - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/voice-agents", "title": "Voice Agents - Speechmatics", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/languages", "title": "Languages - Speechmatics Documentation", "kind": "maker"}
+  ],
+  "notes": "Catalog carries no deprecation_date and no source marks Standard as legacy or deprecated. Speechmatics' general speech-to-text marketing page states company-wide accuracy figures (a 90%+ real-world claim and alphanumeric-accuracy percentages) that are not tied to a specific operating point, so they are omitted here rather than risk misattributing them to Standard specifically. The Languages reference page enumerates every individual language Standard supports (55, excluding the 'Automatic' auto-detect option and the bilingual/multi-language pack combinations such as 'Arabic & English bilingual'); Tagalog is offered only as part of a bilingual pack, with no standalone entry, so it is not listed. This list supersedes the earlier '55+' vs '72' count confusion: the '72' figure could not be reproduced from any current page and appears to have been a mis-scrape."
+}

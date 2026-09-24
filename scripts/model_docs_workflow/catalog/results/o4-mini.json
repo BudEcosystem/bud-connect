@@ -1,0 +1,66 @@
+{
+  "slug": "o4-mini",
+  "canonical": "o4-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o4-mini is OpenAI's compact o-series reasoning model, released April 16, 2025 alongside o3, optimized for fast and cost-efficient reasoning while keeping strong coding and visual-task performance. It takes text and image input and can agentically use tools such as web browsing, Python, and image analysis while reasoning. OpenAI's own model documentation now lists it as succeeded by GPT-5 Mini, and OpenAI's deprecations page schedules the o4-mini-2025-04-16 snapshot for shutdown on its direct API, with gpt-5.6-terra as the recommended replacement.",
+    "advantages": [
+      "Scores 99.5% pass@1 (100% consensus@8) on AIME 2025 with Python, the best of any model OpenAI benchmarked at launch, per OpenAI's launch post.",
+      "OpenAI describes it as offering exceptionally efficient performance in coding and visual tasks for its size, per OpenAI's model documentation.",
+      "Supports higher usage limits than o3, per OpenAI's launch post, making it suited to higher-volume use.",
+      "Integrates images directly into its reasoning chain, able to crop, zoom, or transform images mid-reasoning, per OpenAI."
+    ],
+    "disadvantages": [
+      "OpenAI's own documentation for this model states it has been succeeded by GPT-5 Mini.",
+      "OpenAI's deprecations page lists the o4-mini-2025-04-16 snapshot for shutdown on its direct API, with gpt-5.6-terra as the recommended replacement.",
+      "Knowledge cutoff of June 1, 2024, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Fast, cost-sensitive coding and debugging tasks",
+      "Visual problem solving over charts, graphics, and images",
+      "High-volume agentic workflows combining web search, Python, and file/image analysis",
+      "STEM math and science reasoning at lower cost than o3"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2025 (with Python, pass@1)",
+        "score": 99.5,
+        "source": "https://openai.com/index/introducing-o3-and-o4-mini/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o4-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o4-mini",
+      "title": "o4-mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+      "title": "Introducing OpenAI o3 and o4-mini",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
+      "title": "OpenAI o3 and o4-mini System Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts (200k context, 100k max output, image+text input) match OpenAI's current model reference page. The catalog lists only /v1/chat/completions as an endpoint; OpenAI's docs also list Responses and Batch as supported for this model, but that looks like Bud's own routing choice rather than a factual claim about the model, so it wasn't treated as a conflict. This catalog entry's only provider is Azure (facts.providers = ['azure']). OpenAI's direct-API deprecations page (opened 2026-09-24) lists o4-mini-2025-04-16 with a shutdown date of October 23, 2026 and gpt-5.6-terra as the recommended replacement, about a month earlier than the catalog's deprecation_date (2026-11-19). Checked Azure's own Model Retirement Schedule (the applicable source for this entry): it lists o4-mini-2025-04-16 as Deprecated with a retirement date of 2026-11-19 and gpt-5.6-terra as the replacement -- an exact match to the catalog's date and consistent on the replacement name, confirming this is a genuine cross-host scheduling difference rather than an error."
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "kat-coder",
+  "canonical": "kat-coder",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Kwaipilot",
+  "details": {
+    "description": "KAT-Coder is Kwaipilot's (Kuaishou's AI team) flagship agentic coding model, built for real-world software-engineering work such as feature implementation, bug fixing, refactoring and test generation. Fireworks AI, which hosts the version served under this id as \"KAT-Coder-Pro V1\", lists it at 235 billion parameters with a 262,000-token context window. Unlike Kwaipilot's open-weight KAT-Dev models, KAT-Coder itself is not open-weight; Kwaipilot's own site says it is reached via an API key on the StreamLake platform.",
+    "advantages": [
+      "Resolves 73.4% of tasks on SWE-bench Verified, per Kwaipilot's own report.",
+      "Kwaipilot reports 32% fewer multi-turn interactions compared to its SFT-stage models after large-scale reinforcement learning.",
+      "Supports parallel tool calling, invoking multiple tools simultaneously rather than one at a time, per Kwaipilot.",
+      "Trained through a multi-stage pipeline of mid-training, supervised fine-tuning, reinforcement fine-tuning and scalable agentic reinforcement learning, per Fireworks AI's model page."
+    ],
+    "disadvantages": [
+      "Not open-weight; Kwaipilot's site says KAT-Coder is reached only via an API key on the StreamLake platform, unlike its open-weight KAT-Dev siblings."
+    ],
+    "use_cases": [
+      "Feature implementation and enhancement in existing codebases",
+      "Bug fixing and code refactoring",
+      "Automated test generation and code understanding",
+      "Agentic software-engineering workflows with sandboxed tool use"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 73.4, "source": "https://kwaipilot.github.io/KAT-Coder/"}
+    ],
+    "languages": [],
+    "website_url": "https://kwaipilot.github.io/KAT-Coder/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://kwaipilot.github.io/KAT-Coder/", "title": "KAT-Coder — Kwaipilot", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/kat-coder", "title": "KAT-Coder-Pro V1 - Fireworks AI", "kind": "host"},
+    {"url": "https://github.com/Kwaipilot", "title": "Kwaipilot · GitHub", "kind": "maker"}
+  ],
+  "notes": "Fireworks AI's host page identifies the model served at this id as \"KAT-Coder-Pro V1\" (235B params, ~262K context), matching the catalog's context-window facts (262144) and distinguishing it from Kwaipilot's separate open-weight 35B \"KAT-Coder-V2.5-Dev\" on Hugging Face. Description and evaluation draw on Kwaipilot's own KAT-Coder landing page, which does not break figures out by sub-version. The Kwaipilot/KAT-Coder GitHub repo is only a marketing landing page with no published code or weights, so no github_url is claimed."
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "glm-4.7-flash",
+  "canonical": "glm-4.7-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-4.7-Flash is Z.ai's (formerly Zhipu AI) lightweight, open-weight chat model in the GLM-4.7 series, released January 19, 2026. It uses a 30-billion-parameter Mixture-of-Experts architecture with 3 billion active parameters per token, and it is designed for resource-constrained deployment while still supporting agentic reasoning, coding, and multi-turn tool use. It is a text-only model that supports Preserved Thinking mode for multi-turn agentic tasks, per its Hugging Face model card; as of September 2026 it has itself been superseded by GLM-5.3-Flash, Z.ai's newer lightweight model.",
+    "advantages": [
+      "Scores 59.2% on SWE-bench Verified, per its Hugging Face model card.",
+      "Scores 91.6 on AIME 2025 and 75.2 on GPQA, per its Hugging Face model card.",
+      "Runs with only 3 billion active parameters per token (30B total, Mixture-of-Experts), making it deployable on consumer hardware, per its Hugging Face model card.",
+      "Released under the MIT license with open weights, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Scores lower than the full GLM-4.7 on coding benchmarks, e.g. 59.2% vs 73.8% on SWE-bench Verified, per both models' Hugging Face cards.",
+      "Text-only model; does not accept image or other non-text input, per Z.ai's API documentation.",
+      "Superseded as Z.ai's lightweight model by GLM-5.3-Flash (released August 26, 2026), per Z.ai's release-notes page, though GLM-4.7-Flash remains offered on the free tier."
+    ],
+    "use_cases": [
+      "Lightweight or local deployment of an agentic coding assistant on consumer hardware",
+      "Multi-turn tool use and agentic reasoning",
+      "Coding tasks and software-engineering task completion",
+      "Mathematical reasoning"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 59.2, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"},
+      {"name": "AIME 2025", "score": 91.6, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"},
+      {"name": "GPQA", "score": 75.2, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"},
+      {"name": "LiveCodeBench V6", "score": 64.0, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"},
+      {"name": "HLE", "score": 14.4, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"},
+      {"name": "tau-squared-Bench", "score": 79.5, "source": "https://huggingface.co/zai-org/GLM-4.7-Flash"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+    "github_url": "https://github.com/zai-org/GLM-4.5"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/zai-org/GLM-4.7-Flash", "title": "zai-org/GLM-4.7-Flash · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/zai-org/GLM-4.7", "title": "zai-org/GLM-4.7 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/zai-org/GLM-4.5", "title": "zai-org/GLM-4.5: GLM-4.7 & GLM-4.6 & GLM-4.5", "kind": "maker"},
+    {"url": "https://docs.z.ai/release-notes/new-released", "title": "New Released - Overview - Z.AI DEVELOPER DOCUMENT", "kind": "maker"},
+    {"url": "https://docs.z.ai/guides/overview/pricing", "title": "Pricing - Z.AI DEVELOPER DOCUMENT", "kind": "maker"},
+    {"url": "https://docs.z.ai/guides/llm/glm-4.7", "title": "GLM-4.7 - Overview - Z.AI DEVELOPER DOCUMENT", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_output_tokens (4000) is far below the 131,072-token default max output listed on GLM-4.7-Flash's Hugging Face card; likely a Bedrock-specific output cap, kept the catalog's value per instructions. GLM-4.7-Flash has itself been superseded as Z.ai's lightweight flagship by GLM-5.3-Flash (released August 26, 2026), per docs.z.ai's release-notes page, though it remains listed as an active, free-tier model on docs.z.ai's pricing page. No explicit language list found on maker pages beyond 'en'/'zh' metadata tags, so languages is left empty."
+}

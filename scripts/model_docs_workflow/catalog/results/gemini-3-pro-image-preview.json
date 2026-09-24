@@ -1,0 +1,51 @@
+{
+  "slug": "gemini-3-pro-image-preview",
+  "canonical": "gemini-3-pro-image-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 3 Pro Image Preview, nicknamed 'Nano Banana Pro', is Google DeepMind's professional-tier native image generation and editing model, built on Gemini 3 Pro and released in preview on November 20, 2025 as the successor to Gemini 2.5 Flash Image. It combines a reasoning step with image generation to produce studio-quality visuals up to 4K resolution, render legible text and complex layouts directly in images, blend up to 14 reference images while keeping people and objects consistent, and ground generations in Google Search for real-world accuracy. According to Google's own API changelog, this preview model (id `gemini-3-pro-image-preview`) was deprecated and scheduled to shut down on June 25, 2026, once Google shipped `gemini-3-pro-image`, the generally available version of Nano Banana Pro, on May 28, 2026.",
+    "advantages": [
+      "Generates images at 1K, 2K or 4K resolution with Google's stated focus on studio-quality output.",
+      "Renders legible, correctly-spelled text directly in generated images, including for infographics and diverse fonts and calligraphy styles, per Google's launch post.",
+      "Blends up to 14 input images into one composition while maintaining the resemblance of up to 5 people, per Google's image-generation documentation.",
+      "Can ground generated visuals in Google Search results for more accurate, context-rich imagery (e.g. current data in an infographic).",
+      "Uses a 'thinking' step to refine composition before producing the final image, generating interim thought images that are visible but not charged, per Google's image-generation documentation.",
+      "Every generated image carries an invisible SynthID watermark, with a visible watermark for free/Pro-tier users."
+    ],
+    "disadvantages": [
+      "Preview release: Google's API changelog states this exact model id, `gemini-3-pro-image-preview`, was deprecated and scheduled to shut down on June 25, 2026, superseded by the general-availability id `gemini-3-pro-image` released May 28, 2026.",
+      "As a preview model it sat behind Google's general preview terms (e.g. subject to change) rather than the stability guarantees of a GA release."
+    ],
+    "use_cases": [
+      "Professional-grade asset creation: marketing visuals, infographics and complex layouts with legible text",
+      "Multi-turn, multi-image creative composition (up to 14 reference images) with consistent characters",
+      "Search-grounded image generation for up-to-date, factually-informed visuals",
+      "Story generation with interleaved text and illustrations"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/image-generation",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://blog.google/technology/ai/nano-banana-pro/",
+      "title": "Nano Banana Pro: Meet the new state of the art in AI image generation and editing - Google Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+      "title": "Image generation | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "title": "Gemini API changelog | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "IMPORTANT CONFLICT: the target's facts list an empty deprecation_date, but Google's own API changelog (checked 2026-09-24) says the `gemini-3-pro-image-preview` id specifically was deprecated with a shutdown date of June 25, 2026 -- which is before today's research date, so this exact preview id may already be non-functional on Google's side even though Bud's catalog still carries it with no deprecation_date. Kept the catalog's empty deprecation_date per instructions but flagged this plainly since it materially affects whether the model is usable. Capability details (resolution, image blending, text rendering) are drawn from Google's Nano Banana Pro launch post and current image-generation docs, which describe the same underlying model now sold under the GA id `gemini-3-pro-image`; I could not find preview-specific numbers that differ from what's documented for the GA release. No accuracy-style (0-100) benchmark was found for this model, so evaluations is empty."
+}

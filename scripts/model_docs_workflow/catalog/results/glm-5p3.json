@@ -1,0 +1,78 @@
+{
+  "slug": "glm-5p3",
+  "canonical": "glm-5p3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.3 is Z.ai's (Zhipu AI) current flagship large language model, released August 18, 2026, built for complex software engineering, long-horizon agentic tasks and cybersecurity vulnerability research. It uses a Mixture-of-Experts architecture with Dynamic Sparse Activation, supports a 1,048,576-token context window with up to 128,000 tokens of output, and always reasons at a configurable low, high or max effort level. Z.ai reports a 50% improvement over GLM-5.2 on its internal Code Bench, and Fireworks AI recommends it as the migration target for GLM-5.2 users.",
+    "advantages": [
+      "Z.ai reports a 50% performance gain over GLM-5.2 on Z.ai's internal Code Bench, calling GLM-5.3 the most capable open-weights coding model (Z.ai docs / Hugging Face model card).",
+      "Scores 78.1 on the FrontierSWE benchmark, per its Hugging Face model card.",
+      "Scores 84.5 on CyberGym, a cybersecurity vulnerability-discovery benchmark, per its Hugging Face model card.",
+      "Supports three configurable reasoning effort levels (low, high, max) for coding and agentic tasks (Z.ai docs)."
+    ],
+    "disadvantages": [
+      "Text-only input and output, with no image, audio or video support (Fireworks AI, Z.ai docs).",
+      "Documented language support is limited to English and Chinese (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Complex software engineering and long-horizon coding-agent workflows",
+      "Cybersecurity vulnerability discovery and exploit research",
+      "Terminal automation and tool-calling agents",
+      "Long-context, codebase-scale reasoning tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "FrontierSWE",
+        "score": 78.1,
+        "source": "https://huggingface.co/zai-org/GLM-5.3"
+      },
+      {
+        "name": "CyberGym",
+        "score": 84.5,
+        "source": "https://huggingface.co/zai-org/GLM-5.3"
+      },
+      {
+        "name": "DeepSWE v1.1",
+        "score": 66.9,
+        "source": "https://huggingface.co/zai-org/GLM-5.3"
+      }
+    ],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.3",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.3",
+      "title": "GLM-5.3 - Z.ai Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.3",
+      "title": "zai-org/GLM-5.3 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-5p3",
+      "title": "GLM-5.3 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-5p2",
+      "title": "GLM 5.2 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/zai-org/GLM-5",
+      "title": "zai-org/GLM-5 - GitHub",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Z.ai's own GitHub repository (zai-org/GLM-5) lists GLM-5.3 at 744B-A40B parameters, close to the 743B figure on Fireworks' hosted model page, while Z.ai's Hugging Face model card instead states 'Model size: 753B params'; docs.z.ai's own guide page does not give a parameter count at all. Since maker-controlled sources disagree, parameter count is left out of the description. Catalog's max_output_tokens (128000) and max_input_tokens (1048576) match both Fireworks' and Z.ai's stated figures."
+}

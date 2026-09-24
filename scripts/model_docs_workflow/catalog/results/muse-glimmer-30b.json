@@ -1,0 +1,57 @@
+{
+  "slug": "muse-glimmer-30b",
+  "canonical": "muse-glimmer-30b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Muse Glimmer is a 30-billion-parameter dense model from Meta Superintelligence Labs, released August 10, 2026 with open weights under the Apache 2.0 license. It pairs a causal transformer language model with a dedicated vision-transformer perception encoder for image and document understanding, and is tuned for tool calling, coding, and long-running, multi-step agentic workflows intended to run locally on a single consumer GPU. Meta trained it on data from more than 100 languages and reports it comparing favorably to Gemma4-31B and Qwen3.6-27B on agentic, coding, multimodal, safety and reasoning benchmarks.",
+    "advantages": [
+      "Scores 94.7% on AIME 2026, per Meta's model page.",
+      "Scores 83.5% on GPQA Diamond, per Meta's model page.",
+      "Scores 76.0% on SWE-Bench Verified, per its Hugging Face model card.",
+      "Meta reports the model runs within under 20GB of memory when quantized, aided by speculative decoding it says gives a 3.1x speedup on an RTX 5090.",
+      "Supports image and document understanding through a dedicated perception encoder, alongside tool calling for agentic workflows."
+    ],
+    "disadvantages": [
+      "Meta's own safety testing found a 28.4% attack success rate on the Siren AgentDojo prompt-injection benchmark, alongside 94.2% task utility.",
+      "Meta states performance may degrade on less-represented languages despite training on data from more than 100 languages."
+    ],
+    "use_cases": [
+      "Always-on local coding and agent assistants that keep persistent state across restarts",
+      "Long-running, multi-step agentic workflows requiring tool use and self-managed memory",
+      "Document and screenshot understanding for multimodal tasks",
+      "Function calling and LLM-as-a-judge style evaluation workflows"
+    ],
+    "evaluations": [
+      {"name": "AIME 2026", "score": 94.7, "source": "https://dev.meta.ai/models/muse-glimmer/"},
+      {"name": "GPQA Diamond", "score": 83.5, "source": "https://dev.meta.ai/models/muse-glimmer/"},
+      {"name": "SWE-Bench Verified", "score": 76.0, "source": "https://huggingface.co/meta-models/Muse-Glimmer-30B"},
+      {"name": "SWE-Bench Pro", "score": 51.2, "source": "https://dev.meta.ai/models/muse-glimmer/"},
+      {"name": "MCP Atlas", "score": 75.5, "source": "https://dev.meta.ai/models/muse-glimmer/"},
+      {"name": "OmniDocBench v1.5", "score": 75.8, "source": "https://huggingface.co/meta-models/Muse-Glimmer-30B"}
+    ],
+    "languages": [],
+    "website_url": "https://dev.meta.ai/models/muse-glimmer/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+      "title": "Introducing Muse Glimmer: An Open Agentic Model That Runs on a Single GPU",
+      "kind": "maker"
+    },
+    {
+      "url": "https://dev.meta.ai/models/muse-glimmer/",
+      "title": "Muse Glimmer | Meta",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+      "title": "meta-models/Muse-Glimmer-30B · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Meta states data training covered 'more than 100 languages' (count only, no list given), matching the instruction to omit a language list. Catalog's 131,072 max_input_tokens matches Meta's stated '131,072+ token' context window and its image+text modality. Catalog lists a 2026-09-25 deprecation date for this entry; no source I opened mentions Meta deprecating this model (it launched barely six weeks earlier), so I could not corroborate or contradict that date."
+}

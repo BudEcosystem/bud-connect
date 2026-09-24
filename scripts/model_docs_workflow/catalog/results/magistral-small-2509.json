@@ -1,0 +1,43 @@
+{
+  "slug": "magistral-small-2509",
+  "canonical": "magistral-small-2509",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Magistral Small 2509 (version 1.2) is Mistral AI's 24-billion-parameter open-weight reasoning model, released September 2025 and built on Mistral Small 3.2, fine-tuned on Magistral Medium's reasoning traces and further refined with reinforcement learning. It adds a vision encoder for multimodal (text and image) input and uses [THINK]/[/THINK] tags to structure chain-of-thought for math, coding and logic tasks, and Mistral documents support across 24 languages. It is licensed under Apache 2.0 for self-deployment. Per Mistral's own model-lifecycle documentation, this version (API id magistral-small-2509) is deprecated, with Mistral Small 4 named as the recommended successor for new integrations.",
+    "advantages": [
+      "Scores 86.14% on AIME 2024 and 77.34% on AIME 2025 math-reasoning benchmarks (Mistral AI's Magistral-Small-2509 model card).",
+      "Scores 70.07% on GPQA Diamond and 70.88% on LiveCodeBench (Mistral AI's Magistral-Small-2509 model card).",
+      "Supports function calling, document Q&A, and chat completions through Mistral's API (Mistral AI docs).",
+      "Open-weight under Apache 2.0 and deployable on consumer hardware such as an RTX 4090 or a 32GB MacBook when quantized (Mistral AI's Magistral-Small-2509 model card)."
+    ],
+    "disadvantages": [
+      "Deprecated by Mistral AI (deprecation date April 30, 2026), which recommends Mistral Small 4 for new integrations — the catalog's deprecation_date field is currently empty for this model, so this is flagged here rather than in the structured facts.",
+      "Mistral states reasoning performance can degrade beyond roughly 40,000 tokens of context, well inside the 128K window (Mistral AI's Magistral-Small-2509 model card)."
+    ],
+    "use_cases": [
+      "Complex math problem solving",
+      "Coding assistance and code reasoning",
+      "Multi-step logic and reasoning tasks",
+      "Multilingual reasoning"
+    ],
+    "evaluations": [
+      {"name": "AIME 2024", "score": 86.14, "source": "https://huggingface.co/mistralai/Magistral-Small-2509"},
+      {"name": "AIME 2025", "score": 77.34, "source": "https://huggingface.co/mistralai/Magistral-Small-2509"},
+      {"name": "GPQA Diamond", "score": 70.07, "source": "https://huggingface.co/mistralai/Magistral-Small-2509"},
+      {"name": "LiveCodeBench", "score": 70.88, "source": "https://huggingface.co/mistralai/Magistral-Small-2509"}
+    ],
+    "languages": ["English", "French", "German", "Greek", "Hindi", "Indonesian", "Italian", "Japanese", "Korean", "Malay", "Nepali", "Polish", "Portuguese", "Romanian", "Russian", "Serbian", "Spanish", "Turkish", "Ukrainian", "Vietnamese", "Arabic", "Bengali", "Chinese", "Farsi"],
+    "website_url": "https://docs.mistral.ai/models/magistral-small-1-2-25-09",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/models/magistral-small-1-2-25-09", "title": "Magistral Small 1.2 - Mistral AI Docs", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Docs", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Magistral-Small-2509", "title": "mistralai/Magistral-Small-2509", "kind": "third_party"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-magistral-small-2509.html", "title": "Magistral Small 2509 - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Mistral's own docs (models_overview and the dedicated magistral-small-1-2-25-09 page) list this model as deprecated as of 2026-04-30 with retirement 2026-07-31 (both already past as of the research date) and name Mistral Small 4 as successor; the catalog's deprecation_date facts list is empty for this model, so this is a real conflict worth surfacing, not just a differing number — said so plainly in the description and disadvantages per the brief. Context window (128K) and max output tokens (40K) both match the catalog's facts, confirmed on Bedrock's own model card. All 24 languages Mistral names for this model (on its Hugging Face model card) are now listed rather than left empty. AWS Bedrock's own model card still lists this model's lifecycle as 'Active' with EOL 'N/A', which conflicts with Mistral's own deprecation notice — Bedrock may not have caught up to Mistral's change yet."
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "claude-3-7-sonnet",
+  "canonical": "claude-3-7-sonnet",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude 3.7 Sonnet, released February 24, 2025, was Anthropic's first hybrid reasoning model: it can give a near-instant response or an extended, step-by-step 'thinking' trace visible to the user, with a developer-settable thinking budget of up to 128K tokens. It launched alongside Claude Code, a command-line agentic coding tool, and supports vision alongside text within a 200K-token context window. Anthropic has since released newer Sonnet models (currently Claude Sonnet 5), and both Anthropic's own platform and its Amazon Bedrock integration table list Claude 3.7 Sonnet (20250219) as retired.",
+    "advantages": [
+      "Scored 63.7% on SWE-bench Verified on a single attempt without extra scaffolding, per Anthropic's launch post.",
+      "Introduced Claude Code, a command-line agentic coding tool (limited research preview at launch) that can search code, edit files, write and run tests, and use command-line utilities, per Anthropic.",
+      "Lets developers set an extended-thinking token budget (up to 128K tokens) to trade off speed and cost for answer quality, per Anthropic."
+    ],
+    "disadvantages": [
+      "Retired on Anthropic's own platform since February 19, 2026 (deprecated October 28, 2025), and marked Retired on Anthropic's Amazon Bedrock integration table, superseded by Claude Sonnet 5.",
+      "Extended thinking mode is not available on Claude's free tier, per Anthropic's launch post."
+    ],
+    "use_cases": [
+      "Coding and front-end web development",
+      "Test-driven development and debugging",
+      "Large-scale refactoring and full-stack application development",
+      "Tasks needing a visible, step-by-step reasoning trace (extended thinking)"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 63.7,
+        "source": "https://www.anthropic.com/news/claude-3-7-sonnet"
+      },
+      {
+        "name": "SWE-bench Verified (high-compute scaffold)",
+        "score": 70.3,
+        "source": "https://www.anthropic.com/news/claude-3-7-sonnet"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "title": "Claude 3.7 Sonnet and Claude Code",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy",
+      "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+      "title": "Claude Sonnet 5",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The target's only URI is bedrock/anthropic.claude-3-7-sonnet-20240620-v1:0 -- the date suffix (20240620) doesn't match Anthropic's actual Claude 3.7 Sonnet release (2025-02-19, model id claude-3-7-sonnet-20250219); it looks like a data-entry error in Bud's catalog (possibly copied from Claude 3.5 Sonnet's June 2024 date), but the slug/canonical and facts (200K context, 8192 max output, image_input modality) match Claude 3.7 Sonnet exactly and not any Claude 3.5 Sonnet snapshot, so I described it as Claude 3.7 Sonnet. Catalog's deprecation_date is empty, but Anthropic's model-deprecations page lists claude-3-7-sonnet-20250219 as retired since Feb 19, 2026, and Anthropic's own Bedrock integration table separately marks the Bedrock model id 'Retired' with no regions available. The 63.7%/70.3% SWE-bench Verified figures are both from Anthropic's launch post: 63.7% is a single attempt without extra scaffolding; 70.3% adds a 'high compute' scaffold (parallel attempts, rejection sampling, scoring-model ranking) on a 489-task subset. Also corrected: Claude Sonnet 4.6 has since been superseded by Claude Sonnet 5 (released June 30, 2026, marked 'Active (latest)' on Anthropic's own model page), so the 'currently' successor references were updated."
+}

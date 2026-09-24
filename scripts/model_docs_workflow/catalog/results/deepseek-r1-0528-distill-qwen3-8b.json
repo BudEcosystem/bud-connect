@@ -1,0 +1,81 @@
+{
+  "slug": "deepseek-r1-0528-distill-qwen3-8b",
+  "canonical": "deepseek-r1-0528-distill-qwen3-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-R1-0528-Qwen3-8B is an 8-billion-parameter reasoning model that DeepSeek created by distilling chain-of-thought traces from its updated DeepSeek-R1-0528 model onto a Qwen3-8B Base checkpoint. Fireworks AI serves it as deepseek-r1-0528-distill-qwen3-8b with a 131,000-token context window. DeepSeek's own model card reports the distilled model surpasses the plain Qwen3-8B model by 10 percentage points on AIME 2024 and matches the much larger Qwen3-235B-thinking model on that same benchmark. It is released under the MIT license.",
+    "advantages": [
+      "Scores 86.0% pass@1 on AIME 2024, per DeepSeek's Hugging Face model card.",
+      "Scores 76.3% pass@1 on AIME 2025, per DeepSeek's Hugging Face model card.",
+      "Scores 61.1% on GPQA Diamond, per DeepSeek's Hugging Face model card.",
+      "DeepSeek reports the model surpasses the base Qwen3-8B model by 10 percentage points on AIME 2024 and matches the far larger Qwen3-235B-thinking model on that benchmark."
+    ],
+    "disadvantages": [
+      "8-billion-parameter model; DeepSeek's model card compares it only to Qwen3 models, not to the full DeepSeek-R1-0528 it was distilled from.",
+      "DeepSeek's model card and usage templates cover only Chinese and English, with no other languages stated.",
+      "DeepSeek's own API changelog labels this reasoning generation 'legacy R1' and discontinued the deepseek-reasoner model id in favor of the DeepSeek-V4 series by July 2026, though the open weights stay available on Hugging Face and via third-party hosts such as Fireworks AI."
+    ],
+    "use_cases": [
+      "Competition-style mathematical reasoning",
+      "Competitive programming and code generation",
+      "Multi-step logic puzzles",
+      "General question-answering with an explicit chain-of-thought reasoning step"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2024",
+        "score": 86.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      },
+      {
+        "name": "AIME 2025",
+        "score": 76.3,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      },
+      {
+        "name": "HMMT Feb 2025",
+        "score": 61.5,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 61.1,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      },
+      {
+        "name": "LiveCodeBench (2408-2505)",
+        "score": 60.5,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "title": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-r1-0528-distill-qwen3-8b",
+      "title": "deepseek-r1-0528-distill-qwen3-8b - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "DeepSeek's own repo name for this checkpoint omits 'Distill' (DeepSeek-R1-0528-Qwen3-8B), but its model card confirms it is the same model as Fireworks' deepseek-r1-0528-distill-qwen3-8b: chain-of-thought distilled from DeepSeek-R1-0528 onto a Qwen3-8B Base. DeepSeek's model card does not state an explicit context-length figure; Fireworks' listing states 131k tokens, matching the catalog's 131,072 max_input/max_output facts, which are kept as-is. The model card itself points to the deepseek-ai/DeepSeek-R1 GitHub repo ('for more information about running DeepSeek-R1-0528 locally'), so github_url is set to that repo even though its own model table does not list this specific checkpoint. DeepSeek's own API changelog (api-docs.deepseek.com/updates) shows deepseek-reasoner moved from DeepSeek-R1-0528 to DeepSeek-V3.1/V3.2-Exp in 2025 and then to the discontinued-legacy V4 transition by mid-2026, referring to this generation as 'legacy R1'."
+}

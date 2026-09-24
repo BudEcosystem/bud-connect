@@ -1,0 +1,49 @@
+{
+  "slug": "o1",
+  "canonical": "o1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o1 is OpenAI's first full o-series reasoning model, trained with large-scale reinforcement learning to work through a long internal chain of thought before answering. The current snapshot, o1-2024-12-17, was released December 17, 2024, accepts text and image input, produces text output, and offers a 200,000-token context window with up to 100,000 output tokens. OpenAI's own model catalog now labels it a 'Previous full o-series reasoning model' and marks the snapshot deprecated; Microsoft's Azure retirement schedule lists a retirement date of November 19, 2026, with gpt-5.6-sol as the recommended replacement.",
+    "advantages": [
+      "Accepts image input alongside text, letting it reason over visual inputs for tasks such as diagrams, charts or photos (OpenAI o1 model docs).",
+      "Supports streaming, function calling and structured outputs via the Chat Completions and Responses APIs (OpenAI o1 model docs).",
+      "Offers a 200,000-token context window with up to 100,000 output tokens, the largest of the original o1-series snapshots (OpenAI o1 model docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's own model catalog marks this snapshot deprecated and labels it a 'Previous full o-series reasoning model', with gpt-5.6-sol as the suggested replacement.",
+      "Knowledge cutoff of October 1, 2023 (OpenAI o1 model docs).",
+      "Does not support fine-tuning or predicted outputs (OpenAI o1 model docs).",
+      "OpenAI's own documentation rates its response speed as the slowest among current models (OpenAI o1 model docs)."
+    ],
+    "use_cases": [
+      "Complex multi-step reasoning in science, coding and mathematics",
+      "Problem-solving tasks that benefit from an internal chain of thought before answering",
+      "Visual reasoning tasks combining text and image input"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o1",
+      "title": "o1 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "Bud serves this model only via Azure (azure/eu and azure/us o1-2024-12-17), so Azure's own retirement schedule was used to confirm status: it lists o1 (2024-12-17) as 'Deprecated' with a 2026-11-19 retirement date, exactly matching the catalog's deprecation_date fact. OpenAI's direct-API deprecations page separately lists an earlier 2026-10-23 shutdown date for the same snapshot on OpenAI's own API (not Azure) -- the two hosts run different retirement timelines for the same model, and the catalog's date matches Azure's, which is the relevant host here. No accuracy-style benchmark was found on an opened maker or leaderboard page for this exact snapshot, so evaluations is left empty rather than guessed."
+}

@@ -1,0 +1,31 @@
+{
+  "slug": "fireworks-asr-large",
+  "canonical": "fireworks-asr-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "Fireworks AI documents fireworks-asr-large, branded 'Streaming ASR v1,' as its default model for real-time speech transcription over WebSockets, and recommends it for production use where cost efficiency matters. A March 2026 capture of its model page lists it as 'Ready' for both serverless and on-demand (dedicated-GPU) use, though the page does not publish a parameter count, context length, or accuracy figures for it. As of this research date, the dedicated model page for fireworks-asr-large no longer resolves on fireworks.ai (it returns HTTP 404), so its current public status could not be confirmed on a live page.",
+    "advantages": [
+      "Fireworks describes it as 'production-proven and cost-efficient' for real-time streaming transcription, positioning it as the default choice among its streaming ASR models.",
+      "Supports both serverless (pay-per-use) and on-demand dedicated-GPU deployment, per its archived Fireworks model page."
+    ],
+    "disadvantages": [
+      "Fireworks' model page did not publish a parameter count, context length, or accuracy/WER figures for this model.",
+      "The dedicated fireworks.ai model page for this model returns HTTP 404 as of the research date, and Fireworks' current documentation index has no dedicated audio-transcription API page, so current availability and status could not be confirmed on a live source."
+    ],
+    "use_cases": [
+      "Real-time transcription of live audio over a WebSocket connection."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "http://web.archive.org/web/20260314133804/https://fireworks.ai/models/fireworks/fireworks-asr-large", "title": "Streaming ASR v1 (fireworks-asr-large) | Fireworks AI Model Library -- Wayback Machine capture, 2026-03-14", "kind": "maker"},
+    {"url": "https://fireworks.ai/speech-recognition", "title": "Real-Time Speech Recognition for Enterprise Voice AI | Fireworks", "kind": "maker"}
+  ],
+  "notes": "The live fireworks.ai/models/fireworks/fireworks-asr-large page returns HTTP 404 as of 2026-09-24 (verified directly with repeated requests), so a Wayback Machine capture of the page from 2026-03-14 -- the most recent one available -- was used as the primary source instead. The model may have been renamed, folded into an enterprise-only offering, or removed from the public self-serve library; current status could not be confirmed on a live maker page. Fireworks' current speech-recognition landing page (fetched live) describes generic 'streaming and pre-recorded audio SKUs' and names Whisper/Whisper Turbo, not fireworks-asr-large by name. Bud's catalog lists this model under the /v1/audio/transcriptions REST endpoint, while Fireworks documented it as a WebSocket-based streaming transcription API; I did not attempt to resolve this difference. No accuracy/WER or language-coverage figures were found for this specific model."
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "glm-5p2-fast",
+  "canonical": "glm-5p2-fast",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.2 is Z.ai's Mixture-of-Experts language model for coding-agent workloads, released June 16, 2026, with a 1,048,576-token context window and multi-effort reasoning built for large-scale implementation, automated research, performance optimization and complex debugging. This id serves GLM-5.2 through Fireworks AI's 'Fast' serverless mode, which targets 100+ tokens per second of generated throughput using the same underlying model and quality as standard serverless (Fireworks AI docs). Fireworks is retiring serverless access to GLM-5.2, including this Fast-mode endpoint, starting September 25, 2026 and recommends migrating to Z.ai's newer GLM-5.3.",
+    "advantages": [
+      "The underlying GLM-5.2 model scores 81.0 on Terminal-Bench 2.1, close to Claude Opus 4.8's 85.0 (Z.ai docs).",
+      "The underlying GLM-5.2 model scores 62.1 on SWE-bench Pro (Z.ai docs).",
+      "Fireworks' Fast mode targets 100+ tokens per second of generated throughput while keeping the same underlying model and quality as standard serverless (Fireworks AI docs).",
+      "Supports a 1,048,576-token context window for large-scale codebase and agentic coding work (Fireworks AI)."
+    ],
+    "disadvantages": [
+      "Fireworks AI is deprecating serverless access to GLM-5.2, including this router, starting September 25, 2026, and recommends migrating to GLM-5.3 (Fireworks AI).",
+      "Text-only input and output, with no image, audio or video support (Fireworks AI).",
+      "Superseded by Z.ai's GLM-5.3, released August 18, 2026 with a reported 50% improvement over GLM-5.2 on Z.ai's internal coding benchmark (Z.ai docs)."
+    ],
+    "use_cases": [
+      "Large-scale code implementation and refactoring across big codebases",
+      "Automated research and long-horizon agentic coding workflows",
+      "Complex debugging and performance optimization",
+      "Terminal automation and MCP-based tool-calling agents"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.2",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.2",
+      "title": "GLM-5.2 - Z.ai Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.2",
+      "title": "zai-org/GLM-5.2 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-5p2",
+      "title": "GLM 5.2 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.fireworks.ai/ecosystem/firerouter/overview",
+      "title": "FireRouter overview - Fireworks AI Docs",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.fireworks.ai/serverless/serverless-modes",
+      "title": "Fast and Priority serverless modes - Fireworks AI Docs",
+      "kind": "host"
+    }
+  ],
+  "notes": "This id (accounts/fireworks/routers/glm-5p2-fast) is documented on Fireworks' Serverless Modes page as the 'Fast' tier for GLM-5.2: the same underlying model and quality as standard serverless, targeting 100+ tokens/second throughput. No benchmark scores are published for this exact endpoint, so evaluations are left empty. Fireworks' own glm-5p2 model page states it is deprecating serverless access to GLM-5.2 starting September 25, 2026, matching the catalog's deprecation_date, and recommends migrating to GLM-5.3."
+}

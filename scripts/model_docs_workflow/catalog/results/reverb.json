@@ -1,0 +1,39 @@
+{
+  "slug": "reverb",
+  "canonical": "reverb",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Rev AI",
+  "details": {
+    "description": "Reverb is Rev AI's automatic speech recognition model for English audio, built by Rev (Rev.com), a speech-to-text and captioning company. It was trained on 200,000 hours of human-transcribed audio and offers a tunable verbatimicity setting that lets users choose between a clean, readable transcript and a fully verbatim one, and pairs with Rev's own Reverb Diarization models for speaker separation. Rev has open-sourced the inference and evaluation code for Reverb on GitHub, with model weights published on Hugging Face under a separate model license, and also sells a separate Reverb Foreign Language product for non-English audio.",
+    "advantages": [
+      "Rev reports 9.68% WER on Earnings21, 13.68% on Earnings22, and 10.30% on Rev16, ahead of Whisper Large-v3 (14.26%, 19.05%, 10.86%) and Canary-1B (14.40%, 19.01%, 13.82%) on the same test sets.",
+      "Trained on 200,000 hours of human-transcribed audio.",
+      "Offers a tunable verbatimicity parameter to control how verbatim versus clean the output transcript is, suited to both readable transcripts and audio-editing workflows.",
+      "Pairs with Rev's Reverb Diarization V2 model, which reports 0.046 WDER on Earnings21 and 0.078 on Rev16, improving on Pyannote 3.0's 0.051 and 0.090.",
+      "Inference and evaluation code are open-sourced on GitHub, with model weights available on Hugging Face."
+    ],
+    "disadvantages": [
+      "Limited to English audio; non-English transcription requires Rev AI's separate Reverb Foreign Language model."
+    ],
+    "use_cases": [
+      "Clean, readable transcription of long-form English audio.",
+      "Audio-editing workflows that need verbatim transcripts with precise word-level timing.",
+      "Multi-speaker transcription combined with Reverb Diarization for speaker separation."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/Revai/reverb-asr",
+    "github_url": "https://github.com/revdotcom/reverb"
+  },
+  "sources": [
+    {"url": "https://github.com/revdotcom/reverb", "title": "revdotcom/reverb: Reverb - Open source inference and evaluation code for Rev's state-of-the-art speech recognition and diarization models", "kind": "maker"},
+    {"url": "https://huggingface.co/Revai/reverb-asr", "title": "Revai/reverb-asr · Hugging Face", "kind": "maker"},
+    {"url": "https://www.rev.ai/pricing", "title": "Rev AI Pricing", "kind": "maker"},
+    {"url": "https://docs.rev.ai/changelog/", "title": "Rev AI Changelog", "kind": "maker"}
+  ],
+  "notes": "The GitHub README and Hugging Face card describe only the English 'reverb-asr' (reverb_asr_v1) model; no multilingual or foreign-language variant is documented there, matching the separate 'Reverb Foreign Language' product on the pricing page. Rev's changelog shows the low-cost 'Reverb Turbo' transcriber option was deprecated 2026-07-28, but has no deprecation entry for the standard 'reverb' transcriber as of this research date. A separate Rev marketing PDF ('Rev ASR v3') advertises newer WER/diarization numbers, but never uses the name 'Reverb' and its Earnings-21 WER (7.24-7.60%) differs from the GitHub repo's published 9.68%, so it was not used here since it could not be confirmed to describe this same model."
+}

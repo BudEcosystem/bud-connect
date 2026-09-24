@@ -1,0 +1,51 @@
+{
+  "slug": "gpt-image-1",
+  "canonical": "gpt-image-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Image 1 is OpenAI's natively multimodal image-generation model, released to the API on April 23, 2025. It takes a text prompt and produces an image, aiming for accurate text rendering, strong instruction-following and world-knowledge-grounded output, across low, medium and high quality tiers at 1024x1024, 1024x1536 and 1536x1024 resolutions. OpenAI's own model catalog now labels it 'Our previous image generation model' and marks the gpt-image-1 snapshot 'Deprecated'; OpenAI's official deprecations page confirms an API shutdown on October 23, 2026 with gpt-image-2 as the recommended replacement, matching the catalog's deprecation date.",
+    "advantages": [
+      "OpenAI's launch announcement states the model faithfully follows custom guidelines and accurately renders text, drawing on world knowledge to guide generation.",
+      "Offers three quality tiers (low, medium, high) across three resolutions (1024x1024, 1024x1536, 1536x1024) for generation (OpenAI's model page)."
+    ],
+    "disadvantages": [
+      "OpenAI's own model catalog marks the gpt-image-1 snapshot 'Deprecated' and labels the model 'Our previous image generation model'.",
+      "OpenAI's deprecations page schedules an API shutdown for October 23, 2026, with gpt-image-2 as the recommended replacement, matching the catalog's deprecation date."
+    ],
+    "use_cases": [
+      "Generating images from text prompts via OpenAI's Images API generation endpoint",
+      "Producing images with embedded text such as signage, labels or diagrams (per OpenAI's description of the model's text-rendering strength)",
+      "Style-flexible image creation guided by world knowledge and detailed prompt instructions"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-image-1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-1",
+      "title": "GPT-Image-1 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://openai.com/index/image-generation-api/",
+      "title": "Introducing our latest image generation model in the API | OpenAI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The catalog's modality list for this target (image_output, text_input only) and its endpoints fact (v1/images/generations only, no edits) are narrower than the underlying model's full capability: OpenAI's own page states Image is 'Input and output' for GPT Image 1 as a whole (it also has an edits endpoint elsewhere in OpenAI's API). Kept the catalog's values and described only generation, consistent with what the catalog says this target is routed for. OpenAI's own model catalog page shows the gpt-image-1 snapshot tagged 'Deprecated'; OpenAI's deprecations page and Azure's model-retirement-schedule both independently confirm an October 23, 2026 shutdown/retirement with gpt-image-2 as the replacement, matching the catalog's deprecation_date exactly. No benchmark/evaluation figures for gpt-image-1 were found on any maker or host page. Correction: the researcher's stated release date (April 15, 2025) does not match any date on a page opened; OpenAI's own API launch post 'Introducing our latest image generation model in the API' is dated April 23, 2025 and was used instead. That same post confirms text-rendering, instruction-following and world-knowledge claims directly, but nowhere states the model is 'autoregressive' or contrasts it with diffusion; no other maker or host page opened made that claim either, so it was removed rather than restated from memory."
+}

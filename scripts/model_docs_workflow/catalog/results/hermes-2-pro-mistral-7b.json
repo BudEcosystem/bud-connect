@@ -1,0 +1,74 @@
+{
+  "slug": "hermes-2-pro-mistral-7b",
+  "canonical": "hermes-2-pro-mistral-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Nous Research",
+  "details": {
+    "description": "Hermes 2 Pro on Mistral 7B is Nous Research's 7-billion-parameter chat model, an upgraded retrain of Nous Hermes 2 built on Mistral-7B-v0.1 and trained on a cleaned version of the OpenHermes 2.5 dataset plus new in-house function-calling and JSON-mode datasets, developed in partnership with Fireworks.AI. It uses the ChatML prompt format with a dedicated system-prompt structure for multi-turn function calling and structured JSON output. Nous Research has since released newer Hermes generations (Hermes 4 and Hermes 4.3) on Hugging Face.",
+    "advantages": [
+      "Nous Research's dedicated function-calling evaluation (built with Fireworks.AI) reports 91% accuracy, per the model card's \"Function Calling Accuracy: 91%\" section.",
+      "The same evaluation suite reports 84% accuracy on structured JSON-mode output, per the model card.",
+      "Averages 71.19 on the GPT4All benchmark suite (arc_challenge, arc_easy, boolq, hellaswag, openbookqa, piqa, winogrande), per the model card."
+    ],
+    "disadvantages": [
+      "Built on the original Mistral-7B-v0.1 base model; Nous Research has since released newer Hermes generations (Hermes 4, Hermes 4.3) on Hugging Face.",
+      "The model card's own tables show lower scores on more complex reasoning suites: AGIEval averages 44.52 and BigBench averages 41.65.",
+      "The model card states elsewhere that function-calling accuracy is 90%, a point lower than the 91% given in its dedicated evaluation section."
+    ],
+    "use_cases": [
+      "Function calling and tool use in agentic applications",
+      "Structured JSON output generation",
+      "General multi-turn conversation and instruction-following via ChatML"
+    ],
+    "evaluations": [
+      {
+        "name": "GPT4All benchmark suite (average)",
+        "score": 71.19,
+        "source": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+      },
+      {
+        "name": "AGIEval (average)",
+        "score": 44.52,
+        "source": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+      },
+      {
+        "name": "BigBench (average)",
+        "score": 41.65,
+        "source": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+      },
+      {
+        "name": "Function Calling Accuracy",
+        "score": 91,
+        "source": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+      },
+      {
+        "name": "JSON Mode Accuracy",
+        "score": 84,
+        "source": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B",
+      "title": "NousResearch/Hermes-2-Pro-Mistral-7B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/hermes-2-pro-mistral-7b",
+      "title": "Hermes 2 Pro Mistral 7B API & Playground | Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/NousResearch",
+      "title": "NousResearch (Nous Research) · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The model card itself is inconsistent: its intro prose states 90% function-calling accuracy while its dedicated 'Function Calling Accuracy: 91%' section states 91%; both are reported in the evaluations/notes. Catalog facts (32768 max input/output tokens, /v1/chat/completions) were not restated. Confirmed via the NousResearch org page that Nous Research has since shipped Hermes-4 and Hermes-4.3 model families (last modified Dec 2025/Jan 2026), making this March 2024 model an older generation, though the card itself carries no explicit deprecation notice. github_url left null: the only linked repo (NousResearch/Hermes-Function-Calling) is a tooling repo for the function-calling system, not the model's own repo."
+}

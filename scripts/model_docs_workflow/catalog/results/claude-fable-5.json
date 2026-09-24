@@ -1,0 +1,54 @@
+{
+  "slug": "claude-fable-5",
+  "canonical": "claude-fable-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Fable 5 is Anthropic's first publicly available Mythos-class model, released June 9, 2026 for long-horizon agentic work, large-scale coding, and enterprise research and analysis, with text and image input and a 1M-token context window. It shares its underlying weights with the invitation-only Claude Mythos 5, but includes safety classifiers that can decline requests involving cybersecurity, biology/chemistry, or suspected model distillation. As of September 2026, Anthropic lists Fable 5 as a legacy model and recommends migrating to Claude Fable 5.1, released three months later, for improved performance.",
+    "advantages": [
+      "Completed a 50-million-line codebase migration in one day, a task Stripe said would otherwise take a team over two months, per Anthropic's launch post.",
+      "Scored highest among frontier models on Cognition's FrontierCode coding evaluation, per Anthropic's launch post.",
+      "Achieved the highest score of any model on Hebbia's Finance Benchmark, per Anthropic's launch post.",
+      "Supports adaptive (always-on) thinking at a 'high' default effort level, per Anthropic's model page."
+    ],
+    "disadvantages": [
+      "Legacy model: Anthropic recommends migrating to Claude Fable 5.1, released September 1, 2026, for improved performance.",
+      "Includes safety classifiers that can decline requests involving cybersecurity, biology/chemistry, or suspected model distillation, falling back to Claude Opus 4.8, per Anthropic's launch post."
+    ],
+    "use_cases": [
+      "Software engineering across entire, large codebases",
+      "Multi-hour autonomous agent workflows across many tools",
+      "Enterprise research and analysis of dense filings, charts, and diagrams",
+      "Finance and knowledge work requiring extended reasoning"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "title": "Claude Fable 5 and Claude Mythos 5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+      "title": "Claude Fable 5 - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "title": "Models overview - Claude Platform Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date (2027-06-08) is one day off Anthropic's own tentative retirement date of 'not sooner than June 9, 2027' on both the model-deprecations table and the Fable 5 model page (likely a timezone rounding difference); kept the catalog's value. Anthropic's current models-overview page lists Fable 5 under 'Legacy models (still available)', separate from the current lineup (Fable 5.1, Opus 5.5, Sonnet 5, Haiku 4.5)."
+}

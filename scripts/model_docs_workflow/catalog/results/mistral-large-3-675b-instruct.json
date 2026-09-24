@@ -1,0 +1,35 @@
+{
+  "slug": "mistral-large-3-675b-instruct",
+  "canonical": "mistral-large-3-675b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Large 3 675B Instruct is Mistral AI's current flagship model, an instruction-tuned, FP8 release of a multimodal Mixture-of-Experts model with 41B active and 675B total parameters (673B language plus a 2.5B vision encoder), released December 2, 2025 under an Apache 2.0 license and trained from scratch on 3,000 H200 GPUs. It supports native function calling and JSON output with strong system-prompt adherence, and is built for production assistants, retrieval-augmented systems, and enterprise workflows. It replaced Mistral Large 2 (24.07) as Mistral AI's flagship model.",
+    "advantages": [
+      "Combines a 41B-active / 675B-total-parameter Mixture-of-Experts architecture with a 2.5B-parameter vision encoder for multimodal tasks (Hugging Face model card).",
+      "Supports native function calling and JSON output with strong system-prompt adherence, per Mistral AI's model card.",
+      "Supports dozens of languages including English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean, and Arabic (Hugging Face model card)."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Production-grade AI assistants",
+      "Retrieval-augmented generation systems",
+      "Enterprise workflows",
+      "Multilingual chat and text generation",
+      "Image understanding combined with text",
+      "Agentic tool use via function calling"
+    ],
+    "evaluations": [],
+    "languages": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Dutch", "Chinese", "Japanese", "Korean", "Arabic"],
+    "website_url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512", "title": "mistralai/Mistral-Large-3-675B-Instruct-2512 - Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-large-3.md", "title": "Mistral Large 3 - Amazon Bedrock model card", "kind": "host"}
+  ],
+  "notes": "Catalog facts give 256,000 max input tokens (matches Mistral AI's own model card) but 32,000 max output tokens, while the Hugging Face model card states up to 262,144 configurable output tokens. Amazon Bedrock's own model card for this exact model (model ID mistral.mistral-large-3-675b-instruct, matching the target URI) instead lists a 256K context window and 32K max output tokens, exactly matching the catalog facts, so the 262,144 figure appears to describe the raw model's configurable range rather than the Bedrock-served limit. Kept the catalog's value, now directly confirmed by the host's own page. The benchmark comparison charts on the Hugging Face card are images, not text, so no numeric evaluation could be extracted; evaluations left empty rather than guessed."
+}

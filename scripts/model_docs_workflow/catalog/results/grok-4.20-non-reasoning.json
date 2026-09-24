@@ -1,0 +1,58 @@
+{
+  "slug": "grok-4.20-non-reasoning",
+  "canonical": "grok-4.20-non-reasoning",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 non-reasoning is the direct-response variant of xAI's Grok 4.20 family: xAI's own model page marks it 'Reasoning: No', so it answers without an extended thinking step, unlike the reasoning and multi-agent Grok 4.20 variants. It takes text and image input and returns text, with function calling and structured (JSON) outputs, over a 1,000,000-token context window. xAI's current model-lineup page lists newer, more capable models (Grok 4.3 through Grok 4.7) alongside it and recommends Grok 4.7 'for everything else, including code' as its most capable current model.",
+    "advantages": [
+      "Supports function calling and structured (JSON) outputs (xAI model documentation).",
+      "Takes a 1,000,000-token context window with combined text and image input (xAI model documentation).",
+      "Answers directly without an extended reasoning step ('Reasoning: No' per xAI's own model documentation)."
+    ],
+    "disadvantages": [
+      "Does not perform extended reasoning ('Reasoning: No' per xAI's own model documentation), unlike the reasoning and multi-agent Grok 4.20 variants.",
+      "Artificial Analysis lists this model as deprecated and names xAI's newer Grok 4.3 (Non-reasoning) as a replacement to consider instead, although xAI's own current model page carries no deprecation notice.",
+      "xAI's model-lineup page recommends its newer Grok 4.7 model 'for everything else, including code' rather than the Grok 4.20 family."
+    ],
+    "use_cases": [
+      "Low-latency chat and agentic tool-calling that does not need an extended reasoning step",
+      "Structured-output (JSON) generation and function calling inside an application",
+      "Tasks that combine text and image input with a fast, direct response"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/docs/models/grok-4.20-non-reasoning",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/docs/models",
+      "title": "Models and pricing - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/models/grok-4.20-non-reasoning",
+      "title": "grok-4.20-non-reasoning - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/guides/reasoning",
+      "title": "Reasoning guide - xAI docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning",
+      "title": "Grok 4.20 0309 v2 (Non-reasoning) - Artificial Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://artificialanalysis.ai/providers/xai",
+      "title": "xAI models - Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog facts (1,000,000-token max input/output, image+text in/out) match xAI's own model page. Artificial Analysis separately lists a 2,000,000-token context window and Intelligence Index scores (14 for this 'v2' entry, 15 for a separate plain '0309' entry) for what it calls 'Grok 4.20 0309 v2 (Non-reasoning)', and states it is deprecated in favor of Grok 4.3 (Non-reasoning); kept the catalog's 1M figure per instructions and left the numeric index out of evaluations since I could not fully reconcile it with the maker's page or be sure it is an accuracy-style score. This target, grok-4.20-non-reasoning-latest and grok-4.20-non-reasoning-gv2 are three separate catalog slugs that xAI's own docs list as aliases of the same underlying non-reasoning model; I described each on its own terms but they refer to one model."
+}

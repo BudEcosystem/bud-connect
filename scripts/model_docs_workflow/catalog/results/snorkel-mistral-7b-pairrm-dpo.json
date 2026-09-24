@@ -1,0 +1,37 @@
+{
+  "slug": "snorkel-mistral-7b-pairrm-dpo",
+  "canonical": "snorkel-mistral-7b-pairrm-dpo",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Snorkel AI",
+  "details": {
+    "description": "Snorkel-Mistral-PairRM-DPO is Snorkel AI's demonstration model showing how a base LLM can be programmatically aligned using a smaller reward model instead of hand-labeled preference data. Starting from Mistral-7B-Instruct-v0.2, Snorkel AI generated five response variations per prompt from UltraFeedback, reranked them with the PairRM reward model, and updated the LLM with Direct Preference Optimization (DPO) on the best- and worst-ranked responses, repeating this cycle three times. It is released under the Apache 2.0 license and is presented as a demonstration of this alignment approach rather than a production-ready, moderated model.",
+    "advantages": [
+      "Snorkel AI reports the model scored 30.22 on the AlpacaEval 2.0 leaderboard, versus 14.72 for its Mistral-7B-Instruct-v0.2 base model, ranking 3rd and the highest-scoring open-source base model at the time of publication.",
+      "With PairRM-best-of-16 post-processing (generating 16 responses and selecting the highest-scoring one), Snorkel AI reports a score of 34.86 on AlpacaEval 2.0, ranked 2nd at the time of publication.",
+      "Trained through three iterations of Direct Preference Optimization using only prompts from UltraFeedback, with no external LLM-generated responses, per the model card.",
+      "Released under the Apache 2.0 license, per the model card."
+    ],
+    "disadvantages": [
+      "The model card states it does not have any moderation mechanisms and lacks guardrails for deployment in environments requiring moderated outputs.",
+      "Snorkel AI describes this release as a demonstration of programmatic alignment rather than a production model, per the model card.",
+      "The model card notes the AlpacaEval 2.0 judge (gpt-4-turbo) is biased toward longer responses, which the authors say may be a factor in the model's higher ranking."
+    ],
+    "use_cases": [
+      "General-purpose instruction-following and conversational chat",
+      "Demonstrating reward-model-based (PairRM) alignment as an alternative to human-labeled preference data",
+      "Base model for further fine-tuning or alignment experiments"
+    ],
+    "evaluations": [
+      {"name": "AlpacaEval 2.0", "score": 30.22, "source": "https://huggingface.co/snorkelai/Snorkel-Mistral-PairRM-DPO"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/snorkelai/Snorkel-Mistral-PairRM-DPO",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/snorkelai/Snorkel-Mistral-PairRM-DPO", "title": "snorkelai/Snorkel-Mistral-PairRM-DPO · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Base model Mistral-7B-Instruct-v0.2 and the AlpacaEval 2.0 results (30.22 / 34.86) are from January 2024, and no newer maker page or changelog updating this specific model's status was found; no deprecation or 'legacy' language appears on the model card, and the catalog carries no deprecation_date, so none is claimed here. The 34.86 AlpacaEval score requires PairRM-best-of-16 sampling at inference time rather than being the plain model output, so only the plain-output score (30.22) is recorded in evaluations; the best-of-16 figure is mentioned as an advantage instead."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "text-embedding-3-small",
+  "canonical": "text-embedding-3-small",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "text-embedding-3-small is OpenAI's smaller, cost-efficient model in its third-generation family of text embedding models, alongside the larger text-embedding-3-large. OpenAI's own model documentation describes it as an improved, more performant version of its earlier ada embedding model. It converts text into numerical vector representations for measuring semantic relatedness, used for search, clustering, recommendations, anomaly detection, and classification. It supports a `dimensions` parameter that lets the output embedding be shortened for lower storage and compute cost. It is offered by Microsoft on Azure as a Foundry model sold directly by Azure for use with the Embeddings API.",
+    "advantages": [
+      "Scores 62.3 average on the MTEB English benchmark and 44.0 on the MIRACL multilingual retrieval benchmark, versus 61.0 and 31.4 for text-embedding-ada-002, per OpenAI's reported testing as published in Microsoft's Azure OpenAI documentation.",
+      "Supports reducing the output embedding size via a `dimensions` parameter; Microsoft's Azure OpenAI documentation states OpenAI's MTEB testing found accuracy remains slightly better than text-embedding-ada-002 even when reduced below ada-002's native 1,536 dimensions.",
+      "OpenAI's deprecations page lists it as the recommended replacement for several retired first-generation embedding models, such as text-similarity-ada-001."
+    ],
+    "disadvantages": [
+      "Can only be used with Embedding API and Batch API requests, not chat completions, realtime, or assistants endpoints, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Semantic search",
+      "Text clustering",
+      "Recommendation systems",
+      "Anomaly detection",
+      "Text classification"
+    ],
+    "evaluations": [
+      {"name": "MTEB average (English)", "score": 62.3, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"},
+      {"name": "MIRACL average (multilingual retrieval)", "score": 44.0, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/text-embedding-3-small",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/text-embedding-3-small", "title": "text-embedding-3-small Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models", "title": "Foundry Models sold by Azure - Microsoft Foundry", "kind": "host"}
+  ],
+  "notes": "OpenAI's original announcement blog post (openai.com/index/new-embedding-models-and-api-updates/) returned HTTP 403 to automated fetches, so the MTEB/MIRACL figures are sourced from Microsoft's Azure OpenAI documentation, which attributes them to OpenAI's own reported testing; could not independently verify on openai.com. Microsoft's Azure documentation lists the max request size as 8,192 tokens, one more than the catalog's max_input_tokens of 8191; I kept the catalog's value and did not restate 8192 anywhere. No specific supported-language list or release date was found on an opened page, so languages is left empty and no date is claimed. OpenAI's deprecations page does not list this model as deprecated. Verify pass: OpenAI's model page literally reads \"an improved, more performant version of our ada embedding model\" -- the identical sentence also appears verbatim on OpenAI's text-embedding-ada-002 page describing itself, so it is boilerplate that does not specifically name text-embedding-ada-002 as this model's predecessor; the description no longer claims the documentation names ada-002 specifically."
+}

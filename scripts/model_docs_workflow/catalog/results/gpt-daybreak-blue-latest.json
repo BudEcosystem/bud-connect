@@ -1,0 +1,46 @@
+{
+  "slug": "gpt-daybreak-blue-latest",
+  "canonical": "gpt-daybreak-blue-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-daybreak-blue-latest (Daybreak Blue) is an alias in OpenAI's Daybreak program for its flagship general-purpose model with safeguards calibrated for defensive cybersecurity work. It currently resolves to GPT-5.6 Sol, the flagship model in OpenAI's GPT-5.6 family, and takes text and image input with reasoning support. Its knowledge cutoff is February 16, 2026. Use requires separate approval and provisioning through the Daybreak program.",
+    "advantages": [
+      "OpenAI describes it as an alias for its flagship general-purpose model with safeguards calibrated for defensive cybersecurity work (OpenAI gpt-daybreak-blue-latest model page).",
+      "Currently resolves to GPT-5.6 Sol, OpenAI's flagship GPT-5.6-family model with configurable reasoning effort (none through max), function calling, structured outputs, code interpreter, computer use and MCP (OpenAI gpt-daybreak-blue-latest and gpt-5.6-sol model pages).",
+      "As a defensive-safeguarded flagship alias, it is intended to be usable for both general-purpose reasoning and security-operations tasks (OpenAI gpt-daybreak-blue-latest model page)."
+    ],
+    "disadvantages": [
+      "Requires separate OpenAI approval and provisioning through the Daybreak program before it can be used (OpenAI gpt-daybreak-blue-latest model page).",
+      "Does not support audio or video input, or fine-tuning (OpenAI gpt-daybreak-blue-latest model page)."
+    ],
+    "use_cases": [
+      "Defensive cybersecurity work under added safeguards",
+      "General-purpose reasoning and complex professional work for organizations approved for the Daybreak program"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-daybreak-blue-latest",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-daybreak-blue-latest",
+      "title": "gpt-daybreak-blue-latest Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "title": "gpt-5.6-sol Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens is 922,000, but OpenAI's own gpt-daybreak-blue-latest model page currently lists a 1,050,000-token context window; kept the catalog's value and did not restate a number in the description, per instructions. Catalog's max_output_tokens (128,000), modality and /v1/responses-only endpoint otherwise match the page. As a '-latest' alias, which underlying snapshot it points to (GPT-5.6 Sol as of this research) can change over time. No benchmark table was published on the pages opened."
+}

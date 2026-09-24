@@ -1,0 +1,33 @@
+{
+  "slug": "qwen3-1p7b-fp8-draft-131072",
+  "canonical": "qwen3-1p7b-fp8-draft-131072",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI (draft model built on Alibaba's Qwen3-1.7B)",
+  "details": {
+    "description": "qwen3-1p7b-fp8-draft-131072 is Fireworks AI's fp8-quantized draft model, built on Alibaba Qwen's dense 1.7-billion-parameter Qwen3-1.7B, for use as the small proposer model in speculative decoding alongside a larger model. Fireworks' listing describes it as tuned for a 131,072-token context length and states it is a base model, not a standalone chat model: quality is traded for fast, cheap token proposals. It is available for on-demand deployment on dedicated GPUs with LoRA fine-tuning, but not through Fireworks' serverless deployment.",
+    "advantages": [
+      "Fireworks fp8-quantizes the model specifically for use as a draft model, per its listing.",
+      "Supports LoRA fine-tuning for customization, per its Fireworks listing.",
+      "Available for on-demand deployment on dedicated GPUs, per its Fireworks listing."
+    ],
+    "disadvantages": [
+      "Function calling is not supported, per its Fireworks listing.",
+      "Not available through Fireworks' serverless deployment, only on-demand, per its listing.",
+      "As a draft model it is built for fast token proposals rather than standalone response quality."
+    ],
+    "use_cases": [
+      "Speculative decoding to accelerate inference of a larger Qwen3 model at up to 131,072 tokens of context."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/qwen3-1p7b-fp8-draft-131072",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-1p7b-fp8-draft-131072", "title": "qwen3-1p7b-fp8-draft-131072 – Fireworks AI", "kind": "host"},
+    {"url": "https://huggingface.co/Qwen/Qwen3-1.7B", "title": "Qwen/Qwen3-1.7B · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "This is a Fireworks-specific speculative-decoding draft artifact, not a model Qwen itself publishes under this name; description of the base architecture (dense, 1.7B params, Apache 2.0) comes from Qwen's own Qwen3-1.7B card. No benchmark scores were found for the draft variant itself, so evaluations is empty."
+}

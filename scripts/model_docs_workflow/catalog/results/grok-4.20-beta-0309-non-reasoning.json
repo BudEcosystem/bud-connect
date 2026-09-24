@@ -1,0 +1,41 @@
+{
+  "slug": "grok-4.20-beta-0309-non-reasoning",
+  "canonical": "grok-4.20-beta-0309-non-reasoning",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 Non-reasoning is xAI's non-reasoning chat model in the Grok 4 series; xAI's release notes say Grok 4.20 went live on March 10, 2026. `grok-4.20-beta-0309-non-reasoning` is xAI's API alias for the March 9, 2026 dated snapshot, accepting text and image input and producing text output. Per xAI's own model configuration it lacks the extended-reasoning feature that the paired reasoning model has. xAI has since shipped newer Grok releases (4.3, 4.5, 4.6 and 4.7). Artificial Analysis, a third-party benchmarking site, lists this snapshot as deprecated in favor of Grok 4.3 (Non-reasoning), though xAI's own May 2026 model-retirement guidance does not include Grok 4.20 among the models being retired or redirected.",
+    "advantages": [
+      "Supports function calling and structured outputs, per xAI's published model configuration.",
+      "Artificial Analysis measured about 93 output tokens per second for this model, faster than the 68 token/s median it reported for comparable non-reasoning models."
+    ],
+    "disadvantages": [
+      "Has no extended-reasoning feature in xAI's model configuration, unlike the paired grok-4.20 reasoning variant.",
+      "Artificial Analysis lists this model as deprecated, recommending xAI's newer Grok 4.3 (Non-reasoning) instead."
+    ],
+    "use_cases": [
+      "General-purpose chat and text generation without extended reasoning.",
+      "Agentic or tool-using workflows via xAI's function calling and structured outputs support.",
+      "Tasks that combine image input with text, since the model accepts both text and image input."
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index",
+        "score": 14,
+        "source": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models", "title": "Grok Models & Pricing | SpaceXAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/release-notes", "title": "Release Notes | SpaceXAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/migration/may-15-retirement", "title": "Grok Model Retirement on May 15, 2026 | SpaceXAI Docs", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-20-non-reasoning", "title": "Grok 4.20 0309 v2 (Non-reasoning) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "The catalog's 1M-token context window matches xAI's own model/pricing page for this model; Artificial Analysis's page for this model instead states a 2M-token context window, which I did not use."
+}

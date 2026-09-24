@@ -1,0 +1,34 @@
+{
+  "slug": "gemini-3.1-pro-preview-customtools",
+  "canonical": "gemini-3.1-pro-preview-customtools",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.1 Pro Preview - Custom Tools is a separate API endpoint of Google DeepMind's Gemini 3.1 Pro Preview, documented for developers building agents that mix bash with their own custom tools. Google states this endpoint is better at prioritizing a developer's own custom tools, for example view_file or search_code, over the model's default tool choices. It shares Gemini 3.1 Pro Preview's underlying model, context window, output limit, and preview status; Google notes it may show quality fluctuations in use cases that don't benefit from custom-tool-heavy or bash workflows.",
+    "advantages": [
+      "Documented by Google as better at prioritizing a developer's own custom tools, for example view_file or search_code, over the model's default tool choices.",
+      "Optimized for agentic workflows that mix bash execution with custom tools, per Google's Gemini API documentation.",
+      "Shares Gemini 3.1 Pro Preview's 1,048,576-token input context window and 65,536-token output limit, per Google's Gemini API documentation."
+    ],
+    "disadvantages": [
+      "Google states it may show quality fluctuations in use cases that don't benefit from custom-tool-heavy or bash workflows.",
+      "Preview status, shared with Gemini 3.1 Pro Preview, per Google's Gemini API model deprecations page."
+    ],
+    "use_cases": [
+      "Coding agents that combine bash execution with custom, developer-defined tools",
+      "Agentic workflows that need to prioritize tools such as file viewing or code search over the model's default tool choices"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview", "title": "Gemini 3.1 Pro preview | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/", "title": "Gemini 3.1 Pro - Model Card — Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "gemini-3.1-pro-preview-customtools is documented by Google only as an alternate API endpoint of Gemini 3.1 Pro Preview, tuned for custom-tool prioritization, not as a separately trained or benchmarked model. Google's Gemini 3.1 Pro model card and its benchmark table cover 'Gemini 3.1 Pro' generally and do not break out scores for this endpoint, so evaluations are left empty rather than reused from the parent model. Catalog facts (same token limits, modalities and providers as gemini-3.1-pro-preview) match Google's documentation, which lists both endpoints together under the same model page and versions table."
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "claude-opus-4-8",
+  "canonical": "claude-opus-4-8",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4.8 is Anthropic's Opus-tier model, released May 28, 2026 as an upgrade to Opus 4.7 with improvements across coding, agentic and knowledge-work benchmarks at the same price. It supports adaptive thinking, vision input, tool use and a 1-million-token context window, and Anthropic reports it is about four times less likely than its predecessor to let flaws in code it has written pass unremarked. Anthropic has since released Claude Opus 5 (July 2026) and Claude Opus 5.5 (September 2026) as newer Opus-tier models, and Anthropic's own model reference now lists Opus 4.8 as a legacy model, though it remains active and available.",
+    "advantages": [
+      "Scores 88.6% on SWE-bench Verified (DataCamp, reporting Anthropic's benchmark results; independently corroborated by other reporting on Anthropic's figures).",
+      "Anthropic reports it is about four times less likely than Opus 4.7 to let flaws in code it has written pass unremarked (Anthropic launch post).",
+      "Supports codebase-scale migrations across hundreds of thousands of lines of code via Claude Code's 'dynamic workflows' feature (Anthropic launch post).",
+      "An enterprise tester quoted in Anthropic's launch post reported it can reason directly over PDFs, diagrams and other unstructured content."
+    ],
+    "disadvantages": [
+      "Superseded by Claude Opus 5 (July 2026) and then Claude Opus 5.5 (September 2026); Anthropic's model reference now lists it as a legacy model and recommends migrating to Opus 5.5.",
+      "Reliable knowledge cutoff of January 2026 (Anthropic model reference)."
+    ],
+    "use_cases": [
+      "Agentic coding and large-scale codebase migrations",
+      "Long-running, multi-step autonomous agent tasks",
+      "Legal, finance and other professional knowledge work",
+      "Computer-use and browser-agent automation",
+      "Multimodal document and diagram analysis"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 88.6, "source": "https://www.datacamp.com/blog/claude-opus-4-8"},
+      {"name": "Terminal-Bench 2.1", "score": 74.6, "source": "https://www.datacamp.com/blog/claude-opus-4-8"},
+      {"name": "OSWorld-Verified", "score": 83.4, "source": "https://www.datacamp.com/blog/claude-opus-4-8"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-opus-4-8",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-opus-4-8", "title": "Introducing Claude Opus 4.8", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/models/opus-4-8/overview", "title": "Claude Opus 4.8 - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://www.datacamp.com/blog/claude-opus-4-8", "title": "Claude Opus 4.8: Anthropic's More Honest Flagship Model", "kind": "third_party"}
+  ],
+  "notes": "Catalog's deprecation_date (2027-05-28) matches Anthropic's own model-deprecations table and platform.claude.com overview page exactly ('Not sooner than May 28, 2027'). Catalog's 1M max input / 128K max output tokens and image+text-in/text-out modality match platform.claude.com's specs table. Anthropic's own launch post renders its benchmark table as an unreadable chart image, and its system-card PDF was too large to fetch, so the exact benchmark percentages here are sourced to DataCamp's write-up of the same system card; the 88.6% SWE-bench Verified figure was independently corroborated by a separate search summary. A figure in Anthropic's own footnotes labeled 'OSWorld-Verified: 82.3%' is explicitly the rescored Opus 4.7 baseline, not Opus 4.8's own score, and was not used here to avoid misattribution."
+}

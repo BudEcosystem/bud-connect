@@ -1,0 +1,68 @@
+{
+  "slug": "llama-guard-3-8b",
+  "canonical": "llama-guard-3-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama Guard 3 8B is Meta's content-safety classifier, fine-tuned from Llama 3.1 8B, that reads a prompt or a model's response and outputs a safety verdict plus which of 14 hazard categories it violates, following the MLCommons standardized hazard taxonomy. Released July 23, 2024, it is meant to run alongside a chat model as an input/output guardrail rather than as a general-purpose assistant, and adds detection for search-tool-call and code-interpreter abuse over Llama Guard 2. It classifies content in 8 languages: English, French, German, Hindi, Italian, Portuguese, Spanish, and Thai.",
+    "advantages": [
+      "Meta reports an English response-classification F1 of 0.939 with a 4.0% false positive rate on its internal MLCommons hazard-taxonomy test set, versus 0.877 F1 and an 8.1% false positive rate for Llama Guard 2, per the model card.",
+      "Meta reports an English prompt-classification F1 of 0.947 with a 5.7% false positive rate, per the model card.",
+      "Covers 14 hazard categories, including Code Interpreter Abuse (S14) added since Llama Guard 2, and is separately evaluated for search-tool-call abuse detection, per the model card.",
+      "Classifies content across 8 languages (English, French, German, Hindi, Italian, Portuguese, Spanish, Thai), per the model card.",
+      "Inherits a 131,072-token context window from its Llama 3.1 8B base, per Meta and Fireworks AI.",
+      "Meta also publishes an INT8-quantized build meant to lower deployment cost, per the model card."
+    ],
+    "disadvantages": [
+      "Functions only as a safety classifier, not a general-purpose chat assistant.",
+      "Meta states hazard categories needing up-to-date factual knowledge, such as defamation and intellectual-property infringement, may need supplementary moderation systems, per the model card.",
+      "Meta notes the model can be susceptible to adversarial and prompt-injection attacks, per the model card."
+    ],
+    "use_cases": [
+      "Screening user prompts before they reach a language model.",
+      "Screening model responses before they reach a user.",
+      "Flagging code-interpreter or search-tool-call abuse in agentic systems.",
+      "Multilingual (8-language) content moderation."
+    ],
+    "evaluations": [
+      {
+        "name": "English response-classification F1 (MLCommons hazard taxonomy)",
+        "score": 93.9,
+        "source": "https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard3/8B/MODEL_CARD.md"
+      },
+      {
+        "name": "English prompt-classification F1",
+        "score": 94.7,
+        "source": "https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard3/8B/MODEL_CARD.md"
+      }
+    ],
+    "languages": ["English", "French", "German", "Hindi", "Italian", "Portuguese", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-Guard-3-8B",
+    "github_url": "https://github.com/meta-llama/PurpleLlama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-Guard-3-8B",
+      "title": "meta-llama/Llama-Guard-3-8B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard3/8B/MODEL_CARD.md",
+      "title": "PurpleLlama/Llama-Guard3/8B/MODEL_CARD.md at main",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-guard-3-8b",
+      "title": "Llama Guard 3 8B - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-8B",
+      "title": "meta-llama/Llama-3.1-8B · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input/max_output_tokens (131072) match the 131K context window Meta and Fireworks AI report for this Llama-3.1-8B-based model, so no conflict. F1 is Meta's own 0-1 metric; multiplied by 100 here only to fit the catalog's 0-100 accuracy-score convention, it is not a literal accuracy percentage."
+}

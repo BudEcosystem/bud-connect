@@ -1,0 +1,83 @@
+{
+  "slug": "gemma-4-31b-it",
+  "canonical": "gemma-4-31b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemma 4 31B-it is the largest dense, instruction-tuned model in Google DeepMind's open-weight Gemma 4 family, released in 2026 and built from Gemini 3 research. It has 30.7B parameters and handles text and image input to generate text output over a 256K-token context window, per Google's Gemma 4 model card. It supports a configurable thinking mode for step-by-step reasoning and native function calling for agentic workflows, and was pretrained on data spanning 140+ languages with out-of-the-box support for 35+, per Google's model card.",
+    "advantages": [
+      "Scores 85.2% on MMLU Pro and 84.3% on GPQA Diamond, per Google's Gemma 4 model card.",
+      "Scores 89.2% on AIME 2026 (no tools) math competition problems, per Google's Gemma 4 model card.",
+      "Scores 80.0% on LiveCodeBench v6 competitive-coding problems, per Google's Gemma 4 model card.",
+      "Scores 76.9% on MMMU Pro, a multimodal (vision) reasoning benchmark, per Google's Gemma 4 model card.",
+      "Is the highest-scoring model in the Gemma 4 lineup on MMLU Pro, AIME 2026, and LiveCodeBench v6, per Google's Gemma 4 model card.",
+      "Supports native function calling for agentic workflows and a configurable thinking mode for step-by-step reasoning, per Google's Gemma 4 model card."
+    ],
+    "disadvantages": [
+      "Does not support audio input, unlike the smaller Gemma 4 E2B, E4B, and 12B variants, per Google's Gemma 4 model card.",
+      "As a dense 30.7B-parameter model, it requires more active compute per token at inference than the similarly sized 26B A4B Mixture-of-Experts variant, which activates only 3.8B parameters per token, per Google's Gemma 4 model card."
+    ],
+    "use_cases": [
+      "Text generation and conversational chatbot applications",
+      "Multimodal question answering and image content analysis",
+      "Coding and mathematical problem-solving with step-by-step reasoning",
+      "Agentic workflows using native function calling",
+      "Multilingual applications across 35+ supported languages"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU Pro",
+        "score": 85.2,
+        "source": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      },
+      {
+        "name": "AIME 2026 no tools",
+        "score": 89.2,
+        "source": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      },
+      {
+        "name": "LiveCodeBench v6",
+        "score": 80.0,
+        "source": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 84.3,
+        "source": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      },
+      {
+        "name": "MMMU Pro",
+        "score": 76.9,
+        "source": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/google/gemma-4-31B-it",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemma/docs/core/model_card_4",
+      "title": "Gemma 4 model card | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/google/gemma-4-31B-it",
+      "title": "google/gemma-4-31B-it · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemma/docs/core",
+      "title": "Gemma model overview | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepmind.google/models/gemma/gemma-4/",
+      "title": "Gemma 4 | Google DeepMind",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Benchmark scores were cross-checked between Google's official Gemma 4 model card and the model's own Hugging Face card, both listing identical figures for the 31B row. Catalog's facts (262,144-token input, 32,768-token output, image_input/text_input/text_output modality with no audio_input) are consistent with Google's model card, which lists 256K context and no audio support for this size. One Hugging Face fetch gave a conflicting release date ('July 2025') for the Gemma 4 technical report while the arXiv listing itself (2607.02770, submitted July 2, 2026) and the model card's own 'last updated' timestamp (July 30, 2026) both point to July 2026, so the description omits a specific release month to avoid repeating the inconsistent figure."
+}

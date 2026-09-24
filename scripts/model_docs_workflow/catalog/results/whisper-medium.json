@@ -1,0 +1,40 @@
+{
+  "slug": "whisper-medium",
+  "canonical": "whisper-medium",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Whisper Medium (769M parameters) is Deepgram's default size for OpenAI's open-source Whisper speech recognition models: Deepgram's docs state that supplying model=whisper without a size defaults to whisper-medium. Whisper is trained on 680,000 hours of multilingual, multitask audio and can transcribe speech and translate it into English. Deepgram hosts it as \"Whisper Cloud,\" layering diarization and word timings on top of the open model for pre-recorded audio, and lists 99 supported language codes.",
+    "advantages": [
+      "Deepgram defaults model=whisper to whisper-medium when no size is specified, making it Deepgram's baseline Whisper checkpoint.",
+      "OpenAI's README describes the six Whisper sizes as offering \"speed and accuracy tradeoffs\"; medium runs at roughly 2x the relative inference speed of the large model with about 5 GB of required VRAM, ahead of small and tiny in accuracy.",
+      "Deepgram pairs Whisper Cloud with diarization and word timings, which Deepgram says are not available through OpenAI's own API.",
+      "Trained on 680,000 hours of audio covering 98 languages per OpenAI's model card, giving it broad multilingual coverage."
+    ],
+    "disadvantages": [
+      "Deepgram does not support live streaming with Whisper Cloud; only pre-recorded audio up to 20 minutes of processing time is supported.",
+      "Deepgram calls its Whisper models \"less scalable than all other Deepgram models\" and caps Whisper requests at 15 concurrent calls on paid plans (5 on pay-as-you-go), recommending a Deepgram model such as Nova instead if it meets the need.",
+      "Smaller than Deepgram's large Whisper offering, trading some accuracy for lower resource use and faster inference.",
+      "OpenAI's model card reports the Whisper family is prone to hallucination and shows disparate performance across accents and dialects.",
+      "Deepgram does not support Entity Detection, Keywords, Profanity Filter, or Search with Whisper Cloud models."
+    ],
+    "use_cases": [
+      "General-purpose transcription of pre-recorded audio as Deepgram's default Whisper size",
+      "Multilingual speech-to-text transcription"
+    ],
+    "evaluations": [],
+    "languages": ["English", "Chinese", "German", "Spanish", "Russian", "Korean", "French", "Japanese", "Portuguese", "Turkish", "Polish", "Catalan", "Dutch", "Arabic", "Swedish", "Italian", "Indonesian", "Hindi", "Finnish", "Vietnamese", "Hebrew", "Ukrainian", "Greek", "Malay", "Czech", "Romanian", "Danish", "Hungarian", "Tamil", "Norwegian", "Thai", "Urdu", "Croatian", "Bulgarian", "Lithuanian", "Latin", "Maori", "Malayalam", "Welsh", "Slovak", "Telugu", "Persian", "Latvian", "Bengali", "Serbian", "Azerbaijani", "Slovenian", "Kannada", "Estonian", "Macedonian", "Breton", "Basque", "Icelandic", "Armenian", "Nepali", "Mongolian", "Bosnian", "Kazakh", "Albanian", "Swahili", "Galician", "Marathi", "Punjabi", "Sinhala", "Khmer", "Shona", "Yoruba", "Somali", "Afrikaans", "Occitan", "Georgian", "Belarusian", "Tajik", "Sindhi", "Gujarati", "Amharic", "Yiddish", "Lao", "Uzbek", "Faroese", "Haitian Creole", "Pashto", "Turkmen", "Nynorsk", "Maltese", "Sanskrit", "Luxembourgish", "Myanmar", "Tibetan", "Tagalog", "Malagasy", "Assamese", "Tatar", "Hawaiian", "Lingala", "Hausa", "Bashkir", "Javanese", "Sundanese"],
+    "website_url": "https://github.com/openai/whisper",
+    "github_url": "https://github.com/openai/whisper"
+  },
+  "sources": [
+    {"url": "https://github.com/openai/whisper", "title": "openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision", "kind": "maker"},
+    {"url": "https://github.com/openai/whisper/blob/main/model-card.md", "title": "Whisper Model Card", "kind": "maker"},
+    {"url": "https://developers.deepgram.com/docs/deepgram-whisper-cloud", "title": "Deepgram Whisper Cloud", "kind": "host"},
+    {"url": "https://developers.deepgram.com/docs/model", "title": "Model Options | Deepgram's Docs", "kind": "host"},
+    {"url": "https://developers.deepgram.com/docs/models-languages-overview", "title": "Models & Languages Overview | Deepgram's Docs", "kind": "host"}
+  ],
+  "notes": "Re-checked the Deepgram Whisper Cloud page directly: its \"Supported languages\" section names all 99 language codes inline (en, zh, de, ... jw, su), not just 56, so the list has been mapped to English names and filled in rather than left empty. No WER or other accuracy figures specific to the medium checkpoint were found on maker or host pages, so evaluations remains empty."
+}

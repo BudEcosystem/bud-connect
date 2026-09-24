@@ -1,0 +1,60 @@
+{
+  "slug": "qwen3-embedding-0p6b",
+  "canonical": "qwen3-embedding-0p6b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Embedding-0.6B is the smallest model in Alibaba's Qwen3 Embedding series, a text embedding model built on the Qwen3 foundation architecture with 28 transformer layers and roughly 0.6 billion parameters. It produces embeddings for retrieval, classification, clustering, and bitext mining, supports instruction-aware queries where task-specific instructions can be added to the input to improve results, and uses Matryoshka Representation Learning so output vectors can be truncated to smaller dimensions. Qwen states it supports over 100 languages, including programming languages, and it is released under the Apache 2.0 license.",
+    "advantages": [
+      "Scores 64.33 on the MTEB Multilingual leaderboard, per Qwen's Qwen3 Embedding launch blog.",
+      "Supports instruction-aware retrieval, letting task-specific instructions be added to the input to improve accuracy, per Qwen's Qwen3 Embedding launch blog.",
+      "Supports Matryoshka Representation Learning, allowing the 1,024-dimension output to be truncated to smaller sizes without retraining, per its Hugging Face model card.",
+      "Released under the Apache 2.0 license, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Smallest model in the Qwen3 Embedding series; Qwen's own benchmark table places it behind the 4B and 8B variants on the MTEB multilingual leaderboard (64.33 vs. 69.45 and 70.58), per Qwen's launch blog."
+    ],
+    "use_cases": [
+      "Text retrieval and semantic search",
+      "Code retrieval",
+      "Text classification",
+      "Text clustering",
+      "Bitext mining / cross-lingual text matching"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB Multilingual",
+        "score": 64.33,
+        "source": "https://qwenlm.github.io/blog/qwen3-embedding/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+    "github_url": "https://github.com/QwenLM/Qwen3-Embedding"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "title": "Qwen/Qwen3-Embedding-0.6B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3-embedding/",
+      "title": "Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Embedding",
+      "title": "QwenLM/Qwen3-Embedding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-embedding-0p6b",
+      "title": "Qwen3 Embedding 0.6B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only a language count ('over 100 languages') is given, not a list, so languages is left empty per the brief and the count is in the description instead. Catalog's 32,768 max input/output token facts match Qwen's stated 32K context (model card, blog, GitHub) and Fireworks' listed ~32.7k-token context for this deployment, so no conflict for this size. No source found declaring this model deprecated or superseded within the Qwen3 Embedding line."
+}

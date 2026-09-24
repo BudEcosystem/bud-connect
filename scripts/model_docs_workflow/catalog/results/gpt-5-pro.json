@@ -1,0 +1,76 @@
+{
+  "slug": "gpt-5-pro",
+  "canonical": "gpt-5-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5 Pro is OpenAI's extended-reasoning variant of GPT-5, released to the API on October 6, 2025 at OpenAI's DevDay, replacing OpenAI o3-pro. It uses scaled parallel test-time compute at a fixed high reasoning effort to produce more thorough, reliable answers on the hardest problems than standard GPT-5. It accepts text and image input with text-only output, has a knowledge cutoff of September 30, 2024, and is available only through OpenAI's Responses and Batch APIs; complex requests can take several minutes. In ChatGPT, OpenAI replaced GPT-5 Pro with GPT-5.1 Pro on November 19, 2025, and OpenAI has since shipped several newer GPT-5.x generations.",
+    "advantages": [
+      "OpenAI states GPT-5 Pro set a new state of the art on GPQA (graduate-level science questions), scoring 88.4% without tools using its extended reasoning (OpenAI launch post).",
+      "In OpenAI's evaluation on over 1,000 real-world reasoning prompts, external experts preferred GPT-5 Pro's answers over GPT-5 Thinking's 67.8% of the time and found 22% fewer major errors, especially in health, science, math and coding (OpenAI launch post).",
+      "Supports up to a 400,000-token context window with up to 272,000 tokens of output, per OpenAI's own model documentation.",
+      "Accepts image input alongside text for multimodal reasoning tasks."
+    ],
+    "disadvantages": [
+      "Defaults to, and only supports, reasoning.effort: high, and complex requests can take several minutes, so OpenAI recommends using background mode (OpenAI documentation).",
+      "Available only through OpenAI's Responses and Batch APIs; Chat Completions and code interpreter are not supported (OpenAI documentation).",
+      "Superseded in ChatGPT by GPT-5.1 Pro on November 19, 2025, after which OpenAI kept GPT-5 Pro available only as a legacy model for 90 days before retiring it there (OpenAI ChatGPT release notes).",
+      "Knowledge cutoff of September 30, 2024."
+    ],
+    "use_cases": [
+      "Complex, high-stakes reasoning tasks in science, math, health and coding where answer quality matters more than latency",
+      "Long, extended-reasoning responses generated asynchronously via the Responses or Batch API",
+      "Double-checking or reviewing work from faster models on economically valuable knowledge tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA",
+        "score": 88.4,
+        "source": "https://openai.com/index/introducing-gpt-5/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5-pro",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5-pro",
+      "title": "GPT-5 Pro Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/introducing-gpt-5/",
+      "title": "Introducing GPT-5 | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "title": "ChatGPT Release Notes | OpenAI Help Center",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://simonwillison.net/2025/Oct/6/gpt-5-pro/",
+      "title": "GPT-5 pro",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1/",
+      "title": "GPT-5.1: A smarter, more conversational ChatGPT | OpenAI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date (2027-04-07) matches Microsoft Foundry's official retirement-schedule listing for gpt-5-pro (version 2025-10-06, lifecycle 'GA', retirement date 2027-04-07) exactly. Separately, on OpenAI's own direct API (not Azure), the deprecations page lists this same gpt-5-pro-2025-10-06 snapshot with a shutdown date of December 11, 2026 (replacement gpt-5.6-sol, reasoning.mode: pro) -- a much earlier date than Azure's -- so OpenAI direct and Azure evidently run separate retirement schedules for the same snapshot; all of this target's URIs are Azure or OpenAI, so both may eventually apply. Catalog's max_input_tokens/max_output_tokens arrays include a (272000, 128000) pair alongside the (400000, 272000) pair that OpenAI's own docs and Azure both describe as GPT-5 Pro's context window and output limit; I could not independently source the other pair, so I kept the catalog's values as-is per instructions rather than restate a different number. Catalog's endpoints list includes /v1/chat/completions, but OpenAI's own documentation says GPT-5 Pro supports only the Responses and Batch APIs, not Chat Completions."
+}

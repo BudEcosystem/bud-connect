@@ -1,0 +1,42 @@
+{
+  "slug": "base-finance",
+  "canonical": "base-finance",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Base Finance is a Deepgram speech-to-text model in Deepgram's Base tier, tuned for multiple speakers with varying audio quality such as a typical earnings call, with vocabulary heavily oriented toward finance terminology. Deepgram's Models & Languages Overview lists Base, together with Enhanced and Nova 1, under \"Legacy Models,\" and supports base-finance for English only. It is built on Deepgram's end-to-end deep learning speech recognition architecture.",
+    "advantages": [
+      "Deepgram documents it as \"optimized for multiple speakers with varying audio quality, such as might be found on a typical earnings call,\" with vocabulary heavily oriented toward finance terminology.",
+      "Deepgram describes Base-tier models as built on its \"signature end-to-end deep learning speech-to-text model architecture,\" offering \"a solid combination of accuracy and cost effectiveness in some cases.\""
+    ],
+    "disadvantages": [
+      "Deepgram lists the Base tier under \"Legacy Models\" in its Models & Languages Overview.",
+      "Deepgram states its Enhanced-tier models \"generally have higher accuracy and better word recognition\" than Base models and \"handle uncommon words significantly better.\"",
+      "Supports English only (`en`, `en-US`), per Deepgram's language documentation."
+    ],
+    "use_cases": [
+      "Transcribing multi-speaker financial audio of varying quality, such as earnings calls."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to base-finance were found on Deepgram's maker pages, so evaluations is left empty. Legacy status: developers.deepgram.com/docs/model does not use the word, but developers.deepgram.com/docs/models-languages-overview groups Nova (1), Enhanced and Base under a 'Legacy Models' heading. The catalog carries no deprecation_date."
+}

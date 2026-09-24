@@ -1,0 +1,46 @@
+{
+  "slug": "mistral-7b",
+  "canonical": "mistral-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral 7B (v0.1) is Mistral AI's original 7-billion-parameter dense transformer language model, released in September 2023. It is a pretrained base model rather than an instruction-tuned chat model, using grouped-query attention and sliding-window attention, and Mistral's own model card states it outperforms Llama 2 13B on every benchmark the company tested. Mistral AI's models overview lists Mistral 7B (v0.1-v0.3) as deprecated since November 30, 2024 and retired since March 30, 2025, superseded by newer models such as Ministral 3 8B.",
+    "advantages": [
+      "Mistral AI states Mistral 7B v0.1 outperforms Llama 2 13B on every benchmark the company tested, per its Hugging Face model card.",
+      "Uses grouped-query attention for faster inference and sliding-window attention to handle longer sequences at lower cost, per its Hugging Face model card.",
+      "Released under the Apache 2.0 license, permitting unrestricted commercial and private use."
+    ],
+    "disadvantages": [
+      "Is a pretrained base model rather than an instruction-tuned chat model, and Mistral states it has no moderation mechanisms.",
+      "Mistral AI's models overview (docs.mistral.ai/getting-started/models/) lists Mistral 7B Instruct as deprecated and replaced by Ministral 3 8B, and lists Mistral 7B (v0.1-v0.3) with a deprecation date of November 30, 2024 and a retirement date of March 30, 2025."
+    ],
+    "use_cases": [
+      "Base model for further fine-tuning into custom chat or task-specific models",
+      "General open-ended text generation and completion"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+      "title": "mistralai/Mistral-7B-v0.1 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.fireworks.ai/models/fireworks/mistral-7b",
+      "title": "Mistral 7B | Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens/max_output_tokens of 32768 with no deprecation_date; Fireworks' own model page (the host) states a 32.7k-token context window for this id, matching the catalog, so it was kept as-is. Mistral's own docs state the v0.1-v0.3 line is deprecated (11/30/2024) and retired (3/30/2025), which the catalog's empty deprecation_date does not reflect. An MMLU-Pro/GPQA auto-eval widget appeared on the Hugging Face page on one fetch but not on a repeat fetch of the same URL, so evaluations was left empty rather than risk an unreliable number."
+}

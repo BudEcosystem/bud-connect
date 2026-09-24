@@ -1,0 +1,51 @@
+{
+  "slug": "qwen3-vl-8b-instruct",
+  "canonical": "qwen3-vl-8b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3-VL-8B-Instruct is Alibaba's Qwen team's dense, edge-to-cloud-scale vision-language model, listed at roughly 8.8 billion parameters on its Fireworks AI hosted listing (Hugging Face's model card rounds this to 9 billion). It is the standard instruction-following edition of the 8B size, released October 15, 2025 under the Apache 2.0 license, alongside a separate reasoning-enhanced 'Thinking' edition of the same size, per the Qwen3-VL GitHub README. The model card documents a native 256,000-token context window, expandable to 1 million tokens via YaRN, and covers image, video and text understanding with Interleaved-MRoPE positional embeddings and DeepStack multi-level Vision Transformer feature fusion, plus OCR support across 32 languages and visual-agent GUI operation.",
+    "advantages": [
+      "Supports OCR in 32 languages, up from 19 in the prior Qwen-VL generation (Qwen model card).",
+      "Documented visual agent capability: recognizes on-screen elements and invokes tools to operate PC and mobile GUIs (Qwen model card).",
+      "Native 256,000-token context window per the model card, expandable to 1 million tokens via YaRN; Fireworks AI's own hosted listing for this model separately states a 262,000-token context window (Fireworks model page).",
+      "Includes 2D and 3D spatial grounding for visual reasoning and embodied-AI tasks (Qwen model card).",
+      "One of the smaller sizes in the Qwen3-VL family, alongside the 2B and 4B models, positioned by Qwen for edge deployment (Qwen3-VL GitHub README)."
+    ],
+    "disadvantages": [
+      "Qwen also offers a separate 'Thinking' edition of the 8B size with reasoning-enhanced performance; this Instruct edition is the standard, non-reasoning variant (Qwen3-VL GitHub README).",
+      "The maker's benchmark tables for this model are published only as images, so no independently verifiable numeric benchmark scores could be confirmed from the pages opened."
+    ],
+    "use_cases": [
+      "Visual agent workflows that operate GUIs by recognizing on-screen elements and invoking tools",
+      "Converting screenshots, mockups or diagrams into Draw.io, HTML, CSS or JS code",
+      "Document and OCR understanding across many languages",
+      "Lightweight or edge deployment scenarios needing vision-language capability with a smaller footprint",
+      "General multimodal question answering over images and video"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-VL"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct",
+      "title": "Qwen/Qwen3-VL-8B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-VL",
+      "title": "QwenLM/Qwen3-VL",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-vl-8b-instruct",
+      "title": "Qwen3-VL-8B-Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list max input/output tokens as 4,096 for this route, but the maker's model card states a native 256,000-token context window (expandable to 1 million), and Fireworks' own hosted listing for this exact model states a 262,000-token context window; kept the catalog's values per instructions and flag the discrepancy here. Catalog also lists this route's modality as text-only, though Qwen documents Qwen3-VL-8B-Instruct as a vision-language model that accepts image input, and Fireworks' listing shows image input support enabled. Benchmark tables on the model card are images, so no numeric evaluation scores could be verified from the pages opened."
+}

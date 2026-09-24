@@ -1,0 +1,42 @@
+{
+  "slug": "enhanced-meeting",
+  "canonical": "enhanced-meeting",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Enhanced Meeting is a Deepgram speech-to-text model in Deepgram's Enhanced tier, marked beta, tuned for conference room settings with multiple speakers captured by a single microphone. Deepgram's Models & Languages Overview lists the Enhanced tier, together with Nova 1 and Base, under \"Legacy Models,\" and supports enhanced-meeting for English only.",
+    "advantages": [
+      "Deepgram documents it as \"optimized for conference room settings, which include multiple speakers with a single microphone.\"",
+      "Deepgram describes Enhanced-tier models as generally having \"higher accuracy and better word recognition than our base models,\" and handling uncommon words \"significantly better.\""
+    ],
+    "disadvantages": [
+      "Deepgram marks enhanced-meeting as a beta model on its Model Options page.",
+      "Deepgram lists the Enhanced tier under \"Legacy Models\" in its Models & Languages Overview.",
+      "Supports English only (en, en-US), per Deepgram's language documentation."
+    ],
+    "use_cases": [
+      "Transcribing multi-speaker conference-room recordings captured on a single microphone."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to enhanced-meeting were found on Deepgram's maker pages, so evaluations is left empty. Deepgram's Model Options page marks enhanced-meeting as beta; its Models & Languages Overview separately groups Enhanced (with Nova 1 and Base) under a 'Legacy Models' heading. The catalog carries no deprecation_date."
+}

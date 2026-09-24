@@ -1,0 +1,42 @@
+{
+  "slug": "gpt-5-codex",
+  "canonical": "gpt-5-codex",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5-Codex is a version of GPT-5 that OpenAI optimized for agentic software engineering inside Codex (the CLI, IDE extension and cloud environment), trained on tasks such as building projects from scratch, adding features, debugging, large-scale refactors and code review. It dynamically adjusts how much it reasons, working quickly on simple edits and reasoning for extended periods on complex changes. OpenAI's deprecations page shows gpt-5-codex was removed from its API on July 23, 2026 and replaced by gpt-5.6-sol, and Artificial Analysis lists it as deprecated in favor of GPT-5.1 Codex (high).",
+    "advantages": [
+      "Uses about 93.7% fewer thinking tokens than GPT-5 on the simplest tasks while extending reasoning to more than 7 hours on complex, long-running engineering work, per OpenAI's Codex upgrade announcement.",
+      "Performs code review by navigating a codebase, tracing dependencies and validating changes with tests, per OpenAI.",
+      "Handles image input such as screenshots for front-end and mobile design work (OpenAI's Codex upgrade announcement).",
+      "Supports function calling through the Responses API (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's own deprecations page lists gpt-5-codex as removed from its API on July 23, 2026, with gpt-5.6-sol as the mapped replacement.",
+      "Artificial Analysis lists GPT-5-Codex (high) as deprecated, pointing to GPT-5.1 Codex (high) as the current model.",
+      "OpenAI recommends it only for agentic coding tasks in Codex or Codex-like environments, not as a general-purpose chat model.",
+      "Output is text only, with a knowledge cutoff of September 30, 2024 (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "Agentic software engineering: building projects, adding features, debugging and large-scale refactors within Codex.",
+      "Automated code review that traces dependencies and validates fixes with tests.",
+      "Long-running coding tasks needing extended, variable-depth reasoning.",
+      "Front-end and mobile design work using screenshot or image input."
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index (high reasoning)", "score": 25, "source": "https://artificialanalysis.ai/models/gpt-5-codex"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5-codex",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5-codex", "title": "GPT-5-Codex Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-upgrades-to-codex/", "title": "Introducing upgrades to Codex | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-codex", "title": "GPT-5-Codex (high) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "This target's only provider in the catalog is Azure. OpenAI's own deprecations page lists gpt-5-codex as removed from its direct API on 2026-07-23 (replacement gpt-5.6-sol), earlier than the catalog's deprecation_date fact (2027-03-17); kept the catalog's date but flagging this, since Azure's own retirement schedule for this model could not be confirmed (its dated retirement-schedule page did not load distinct content from the general lifecycle-policy page). The catalog's endpoints fact lists both /v1/chat/completions and /v1/responses, while OpenAI's own model docs page for the direct API says only the Responses API is supported for gpt-5-codex; this may be an Azure-specific difference, not restated in the description. openai.com blocked direct fetches (403) except via a text-extraction proxy (r.jina.ai); a dedicated 'openai.com/index/gpt-5-codex/' launch post no longer exists (404), so the Codex-upgrade announcement page was used instead, and no exact SWE-bench score specific to gpt-5-codex (as opposed to base GPT-5) was found on an opened page."
+}

@@ -1,0 +1,40 @@
+{
+  "slug": "llama-prompt-guard-2-22m",
+  "canonical": "llama-prompt-guard-2-22m",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama Prompt Guard 2 22M is a lightweight text classifier from Meta, built on the DeBERTa-xsmall architecture with 22 million parameters, that detects prompt injection and jailbreak attempts in text sent to an LLM. Given an input, it labels it as either \"benign\" or \"malicious\" rather than generating a reply. It is the smaller and faster of Meta's two Prompt Guard 2 classifiers, meant to run as a low-latency safety filter in front of another LLM rather than as a conversational model itself.",
+    "advantages": [
+      "Meta reports an AUC of 0.995 for English-language attack detection.",
+      "Meta reports 19.3 ms per-classification latency on an A100 GPU, faster than the larger 86M variant.",
+      "Uses adversarial-resistant tokenization intended to counter attacks such as whitespace manipulation, per Meta's model card.",
+      "Evaluated by Meta for attack detection across eight languages: English, French, German, Hindi, Italian, Portuguese, Spanish, and Thai."
+    ],
+    "disadvantages": [
+      "Meta states the model remains vulnerable to adaptive attacks.",
+      "Multilingual detection (AUC 0.942) is weaker than its English-only detection and than the larger 86M model, per Meta's model card.",
+      "Limited to 512 input tokens.",
+      "A classifier only: it outputs a benign/malicious label, not a chat completion or explanation."
+    ],
+    "use_cases": [
+      "Screening user or tool inputs for prompt injection before they reach a downstream LLM.",
+      "Detecting jailbreak attempts in LLM or agent pipelines.",
+      "Low-latency safety filtering where the larger 86M classifier's latency is too high.",
+      "Monitoring production LLM traffic for misuse patterns."
+    ],
+    "evaluations": [
+      {"name": "Recall @ 1% FPR (English)", "score": 88.7, "source": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-22M"},
+      {"name": "Attack Prevention Rate (real-world agentic eval, 3% utility reduction)", "score": 78.4, "source": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-22M"}
+    ],
+    "languages": ["English", "French", "German", "Hindi", "Italian", "Portuguese", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-22M",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-22M", "title": "meta-llama/Llama-Prompt-Guard-2-22M", "kind": "maker"}
+  ],
+  "notes": "This is a binary safety classifier (benign/malicious), not a conversational chat model, even though Groq serves it via /v1/chat/completions and the catalog lists kind=chat. Catalog facts (512/512 tokens, text_input/text_output) match the model card. AUC figures (0.995 English, 0.942 multilingual) are on a 0-1 scale so kept out of the 0-100 evaluations list and stated as advantages instead."
+}

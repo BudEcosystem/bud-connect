@@ -1,0 +1,66 @@
+{
+  "slug": "qwen3-coder-480b-instruct-bf16",
+  "canonical": "qwen3-coder-480b-instruct-bf16",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "This is Fireworks AI's BF16 (full-precision) deployment of Qwen3-Coder-480B-A35B-Instruct, Qwen's largest coding-specialized model: a mixture-of-experts model with 480 billion total parameters and 35 billion activated per token (160 experts, 8 active), released July 22, 2025. Qwen built it for agentic coding, agentic browser-use, and agentic tool-use, with repository-scale code understanding, and its launch blog describes results on these tasks among open models as 'comparable to Claude Sonnet 4.' It runs in non-thinking mode only, per Qwen's model card.",
+    "advantages": [
+      "Scores 38.7 on SWE-bench Pro's public dataset, a software-engineering benchmark (Scale AI's SWE-bench Pro leaderboard, for the underlying model).",
+      "Qwen's launch blog describes its results on Agentic Coding, Agentic Browser-Use, and Agentic Tool-Use as 'comparable to Claude Sonnet 4' among open models.",
+      "Served in BF16 (full) precision on Fireworks AI, rather than a lower-precision quantized format.",
+      "Integrates with Qwen Code and Cline for IDE-based agentic coding workflows."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; does not generate <think></think> reasoning blocks (Qwen's model card).",
+      "480B total parameters (35B active) require substantial compute to serve, especially at full BF16 precision."
+    ],
+    "use_cases": [
+      "Autonomous coding agents for multi-step software development tasks",
+      "Repository-scale code understanding and refactoring",
+      "Agentic browser-use tasks driven by a coding agent",
+      "Tool-calling and function-calling workflows via OpenAI-compatible APIs",
+      "IDE-integrated coding assistants (Qwen Code, Cline)"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Pro",
+        "score": 38.7,
+        "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-Coder"
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-coder-480b-instruct-bf16",
+      "title": "Qwen3 Coder 480B Instruct BF16 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "title": "Qwen/Qwen3-Coder-480B-A35B-Instruct \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3-coder/",
+      "title": "Qwen3-Coder: Agentic Coding in the World",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Coder",
+      "title": "QwenLM/Qwen3-Coder - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+      "title": "SWE-bench Pro Public Leaderboard - Scale AI",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Fireworks' model page for this exact ID (qwen3-coder-480b-instruct-bf16) confirms it as 'The BF16 version of the 480B coder model', referencing Qwen/Qwen3-Coder-480B-A35B-Instruct on Hugging Face as the same base model, and states a 262k-token context length there. Catalog facts for this target, however, give max_input/max_output of only 4,096 tokens, a large conflict with both Qwen's native 262,144-token spec and Fireworks' own page copy; per instructions the catalog value is kept and no specific context-length figure is restated in the description. This may reflect a smaller context cap Fireworks actually enforces on this particular (unquantized) BF16 deployment versus its other Qwen3-Coder-480B-A35B-Instruct listing, but that could not be confirmed on any page opened. Verification pass: the HF card for the underlying model has no benchmark table at all (no model-index, no scores in the README), so both evaluation entries as originally sourced were unsupported. SWE-bench Pro 38.7 was independently confirmed on Scale AI's public leaderboard for 'qwen3-coder-480b-a35b' and re-sourced there; Terminal-Bench 2.0 23.9 could not be confirmed on any current or archived page and was removed."
+}

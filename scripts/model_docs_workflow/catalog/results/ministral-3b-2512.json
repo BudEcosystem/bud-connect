@@ -1,0 +1,44 @@
+{
+  "slug": "ministral-3b-2512",
+  "canonical": "ministral-3b-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 3B is the smallest model in Mistral AI's Ministral 3 family, an edge-optimized model line released December 2, 2025 under the Apache 2.0 license. It pairs a 3.4B-parameter language model with a 0.4B-parameter vision encoder for combined text and image input. The instruction-tuned FP8 build (Mistral's API id 'ministral-3b-2512') supports native function calling and JSON-constrained output, and Mistral says it can be deployed locally in as little as 8GB of VRAM in FP8, or less when further quantized, on a single H200 GPU.",
+    "advantages": [
+      "Scores 83.0% on MATH Maj@1 and 56.8 on WildBench, per Mistral's instruct-model benchmark table on its Hugging Face model card.",
+      "Scores an Arena Hard score of 30.5 and 7.83 on MM MTBench (multimodal chat), per the same benchmark table.",
+      "Mistral says it can be deployed locally in as little as 8GB of VRAM in FP8, and less when further quantized.",
+      "Supports native function calling and JSON-constrained output, per its Hugging Face model card.",
+      "Released under the Apache 2.0 license, allowing commercial and derivative use."
+    ],
+    "disadvantages": [
+      "Smallest model in the Ministral 3 family; scores lower than the 8B and 14B siblings on every benchmark in Mistral's own instruct comparison table.",
+      "Text and image input only; Mistral's model card does not describe audio or video input support."
+    ],
+    "use_cases": [
+      "Lightweight, real-time chat on edge or low-resource devices",
+      "Image captioning and other combined vision-and-text tasks",
+      "Real-time translation and short content generation",
+      "Data extraction and text classification",
+      "Base for fine-tuning and specialization"
+    ],
+    "evaluations": [
+      {"name": "MATH Maj@1", "score": 83.0, "source": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512"},
+      {"name": "Arena Hard", "score": 30.5, "source": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512"},
+      {"name": "WildBench", "score": 56.8, "source": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512"},
+      {"name": "MM MTBench", "score": 7.83, "source": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/models/ministral-3-3b-25-12",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/models/ministral-3-3b-25-12", "title": "Ministral 3 3B - Mistral AI | Mistral Docs", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512", "title": "mistralai/Ministral-3-3B-Instruct-2512 · Hugging Face", "kind": "maker"},
+    {"url": "https://mistral.ai/news/mistral-3", "title": "Introducing Mistral 3 | Mistral AI", "kind": "maker"}
+  ],
+  "notes": "This target's catalog id ('ministral-3b-2512') exactly matches Mistral's own La Plateforme API id and 'ministral-3b-latest' alias for Ministral 3 3B, confirmed on Mistral's docs page. The catalog's 131,072-token (128K) input/output limits were kept as authoritative, but this is a real conflict, not just a naming one: both Mistral's docs page and its Hugging Face model card explicitly state a 256K-token context window for this model ('Large Context Window: Supports a 256k context window')."
+}

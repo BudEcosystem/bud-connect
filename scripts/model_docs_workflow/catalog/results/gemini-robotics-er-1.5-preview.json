@@ -1,0 +1,50 @@
+{
+  "slug": "gemini-robotics-er-1.5-preview",
+  "canonical": "gemini-robotics-er-1.5-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini Robotics-ER 1.5 was Google DeepMind's embodied-reasoning vision-language model for robotics, part of the Gemini Robotics-ER family that Google describes as letting robots \"perceive and interact with the physical world\" by identifying objects, reasoning about scene context and spatial relationships, and returning structured output such as coordinates or bounding boxes. Google released it in preview on September 25, 2025, per its Gemini API changelog, which pointed to Google's Robotics overview documentation for details. It has since been superseded: Google shipped Gemini Robotics-ER 1.6 on April 14, 2026, and shut down gemini-robotics-er-1.5-preview itself on April 30, 2026, so the model is no longer available through the API.",
+    "advantages": [
+      "Part of Google DeepMind's Gemini Robotics-ER family, designed to let robots perceive and reason about the physical world rather than just generate text, per Google's Gemini Robotics documentation.",
+      "Returns structured outputs such as coordinates or bounding boxes for tasks like pointing at objects, tracking them in video, and planning trajectories, per Google's Gemini Robotics documentation."
+    ],
+    "disadvantages": [
+      "Shut down by Google on April 30, 2026 and no longer available; Google directed users to the newer Gemini Robotics-ER 1.6 (itself later succeeded by ER 2), per Google's Gemini API changelog.",
+      "Only ever released as a preview, never reaching general availability before being retired, per Google's Gemini API changelog."
+    ],
+    "use_cases": [
+      "Embodied reasoning for robotics: spatial reasoning, object identification, and multi-step task planning so robots can perceive and act in their physical environment.",
+      "Pointing at objects, tracking them across video, and planning trajectories to support robotic manipulation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "title": "Release notes | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/robotics-overview",
+      "title": "Gemini Robotics overview | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepmind.google/models/gemini-robotics/",
+      "title": "Gemini Robotics | Google DeepMind",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "gemini-robotics-er-1.5-preview was shut down April 30, 2026 and no longer has a dedicated model-card page, so its own exact capability/benchmark list could not be verified independently; the general Gemini Robotics-ER family description and this entry's advantages/use_cases are drawn from Google's overview page, which the changelog itself linked as this model's documentation at launch. That same overview page today describes the successor ER 1.6/ER 2 models with a 131,072-token input / 65,536-token output limit, different from this catalog entry's facts (1,048,576/65,535); since that page now documents the successor versions rather than 1.5 itself, I did not treat it as a contradiction of the catalog's facts for 1.5, and per instructions kept the catalog's numbers as-is. No maker-published accuracy-style (0-100) benchmark specific to the 1.5 version was found, so evaluations is empty."
+}

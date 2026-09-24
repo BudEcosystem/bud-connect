@@ -1,0 +1,93 @@
+{
+  "slug": "glm-4p6",
+  "canonical": "glm-4p6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-4.6 is Z.ai's (formerly Zhipu AI) open-weight Mixture-of-Experts language model, released September 30, 2025, per Z.ai's release notes. It has 357 billion parameters, per its Hugging Face model card, and a context window expanded to 200K tokens from GLM-4.5's 128K, per Z.ai's documentation. It supports a thinking mode, tool use during inference, and improved agentic tool invocation, and was evaluated by Z.ai in coding-agent environments including Claude Code, Cline, Roo Code, and Kilo Code. It is released under the MIT license. As of September 2026, five newer Z.ai generations (GLM-4.7, GLM-5, GLM-5.1, GLM-5.2, and GLM-5.3) have since launched, though GLM-4.6 remains an available model on Fireworks AI.",
+    "advantages": [
+      "Scores 68.0% on SWE-bench Verified and 82.8 on LiveCodeBench-v6, per Z.ai's GLM-4.7 model card, which reports GLM-4.6's scores as a comparison baseline.",
+      "Scores 83.2 on MMLU-Pro and 81.0 on GPQA-Diamond, per Z.ai's GLM-4.7 model card.",
+      "Supports a thinking mode alongside tool use during inference, aimed at stronger agentic tool-use and search performance, per Z.ai's documentation.",
+      "200K-token context window, expanded from GLM-4.5's 128K, per Z.ai's documentation.",
+      "Released under the permissive MIT license."
+    ],
+    "disadvantages": [
+      "Superseded as Z.ai's flagship by five newer generations released within the following year: GLM-4.7 (December 2025), GLM-5 (February 2026), GLM-5.1 (April 2026), GLM-5.2 (June 2026), and GLM-5.3 (August 2026), per Z.ai's release notes.",
+      "Text-only model; Z.ai's documentation describes no image or audio input support.",
+      "Scores lower than GLM-4.7 on every benchmark Z.ai lists for both models, including SWE-bench Verified (68.0 vs. 73.8) and Terminal Bench 2.0 (24.5 vs. 41.0), per Z.ai's GLM-4.7 model card."
+    ],
+    "use_cases": [
+      "AI coding assistance and agent frameworks such as Claude Code, Cline, Roo Code, and Kilo Code",
+      "Agentic tool use and search-augmented workflows",
+      "Long-context document and codebase processing",
+      "Translation, including French, Russian, Japanese, and Korean",
+      "Content creation such as scripts, copywriting, and virtual character interactions"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 68.0,
+        "source": "https://huggingface.co/zai-org/GLM-4.7"
+      },
+      {
+        "name": "MMLU-Pro",
+        "score": 83.2,
+        "source": "https://huggingface.co/zai-org/GLM-4.7"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 81.0,
+        "source": "https://huggingface.co/zai-org/GLM-4.7"
+      },
+      {
+        "name": "LiveCodeBench-v6",
+        "score": 82.8,
+        "source": "https://huggingface.co/zai-org/GLM-4.7"
+      },
+      {
+        "name": "Terminal Bench 2.0",
+        "score": 24.5,
+        "source": "https://huggingface.co/zai-org/GLM-4.7"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.z.ai/guides/llm/glm-4.6",
+    "github_url": "https://github.com/zai-org/GLM-4.5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-4.6",
+      "title": "GLM-4.6 - Overview - Z.AI DEVELOPER DOCUMENT",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-4.6",
+      "title": "zai-org/GLM-4.6 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-4.7",
+      "title": "zai-org/GLM-4.7 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.z.ai/release-notes/new-released",
+      "title": "New Released - Overview - Z.AI DEVELOPER DOCUMENT",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/zai-org/GLM-4.5",
+      "title": "zai-org/GLM-4.5: GLM-4.7 & GLM-4.6 & GLM-4.5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-4p6",
+      "title": "GLM-4.6 - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens and max_output_tokens (both 202800) match GLM-4.6's max_position_embeddings (202,752, from its Hugging Face config.json) and Fireworks' stated context length; Z.ai's own docs describe 200K as the input context window and give no separate maximum-output figure, so the catalog value is kept as-is per instructions. Benchmark scores are Z.ai's own comparison numbers for GLM-4.6, published on the GLM-4.7 model card, since GLM-4.6's own card shows only a benchmark chart image with no extractable numeric values. No deprecation date is set in the catalog facts, consistent with Fireworks still listing GLM-4.6 as an available on-demand model."
+}

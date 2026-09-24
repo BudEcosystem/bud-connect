@@ -1,0 +1,42 @@
+{
+  "slug": "gemini-3.8-flash-lite-tts",
+  "canonical": "gemini-3.8-flash-lite-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.8 Flash-Lite TTS is Google's fast, cost-efficient text-to-speech model, released September 22, 2026 to replace the earlier gemini-3.1-flash-tts-preview for high-throughput production and real-time voice agent applications, per the Gemini API changelog. It converts text into spoken audio across 101 languages with automatic language detection, supporting single- and multi-speaker generation, Voice design for custom vocal personas, and Voice replication with consent verification. As of 2026-09-24, Google's Gemini API models page lists it as a current 'New Stable' Flash-tier TTS model alongside the higher-fidelity Gemini 3.8 Flash TTS.",
+    "advantages": [
+      "Google's Gemini API changelog describes it as a fast, cost-efficient TTS model built to replace gemini-3.1-flash-tts-preview for high-throughput production and real-time voice agent cascades.",
+      "Supports 101 languages with automatic language detection, per Google's Gemini API speech-generation guide.",
+      "Supports Voice design, creating persistent custom vocal personas from text prompts, and Voice replication with consent verification, per Google's Gemini API changelog.",
+      "Ships with 30 prebuilt studio voices plus access to an Extended Voice Library of 150+ prebuilt and custom voices, per Google's Gemini API speech-generation guide and changelog.",
+      "Supports single- and multi-speaker generation (up to two speakers per request) with streaming audio output, per Google's Gemini API speech-generation guide.",
+      "Supports Batch API access for high-volume speech generation, per its Gemini API model page."
+    ],
+    "disadvantages": [
+      "Accepts text input only, with no audio, image or video input, per its Gemini API model page.",
+      "Optimized for throughput and cost efficiency rather than the maximum acoustic fidelity of the flagship Gemini 3.8 Flash TTS model, per Google's Gemini API changelog.",
+      "Does not support the Live API for real-time conversation, function calling, code execution, or thinking, per its Gemini API model page."
+    ],
+    "use_cases": [
+      "High-volume, high-throughput speech generation for production pipelines",
+      "Real-time voice agent cascades and conversational voice applications",
+      "Personalized audio through Voice replication with consent verification",
+      "General text-to-speech narration where studio-grade fidelity is not required"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts", "title": "Gemini 3.8 Flash-Lite TTS | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Models | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/speech-generation", "title": "Speech generation | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Gemini API changelog | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (8,192 input / 16,384 output tokens, text input -> audio output, no deprecation date) match the Gemini API model page exactly. Released September 22, 2026 per the API changelog and deprecations page, explicitly as the replacement for gemini-3.1-flash-tts-preview; no shutdown date is announced for this model. No accuracy-style benchmark score for this exact model was found on any Google page, so evaluations is left empty. The 101-language count is stated by Google but no full per-language list was found, so languages is left empty rather than guessed. Voice-count figures differ slightly across pages (30 prebuilt studio voices per the speech-generation guide vs. \"150+ prebuilt and custom voices\" in the Extended Voice Library per the changelog); both are reported as separate, attributed claims rather than reconciled into one number."
+}

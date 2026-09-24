@@ -1,0 +1,60 @@
+{
+  "slug": "gpt-oss-120b-1",
+  "canonical": "gpt-oss-120b-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-oss-120b is OpenAI's 120-billion-parameter open-weight language model, released August 5, 2025 under the Apache 2.0 license. It uses a Mixture-of-Experts architecture with about 117 billion total parameters and roughly 5.1 billion active parameters per token, letting it run on a single 80GB GPU. It supports three configurable reasoning-effort levels (low, medium, high), full chain-of-thought access, and native agentic tool use including function calling, web browsing, Python code execution, and structured outputs, within a 128K-token context window. OpenAI positions it for production, general-purpose, high-reasoning use cases.",
+    "advantages": [
+      "Scores 80.8% on GPQA Diamond (OpenAI gpt-oss-120b model card).",
+      "Scores 52.6% on SWE-bench Verified at medium reasoning effort (OpenAI gpt-oss-120b model card).",
+      "Runs on a single 80GB GPU despite 117B total parameters, using only about 5.1B active parameters per token (OpenAI gpt-oss-120b model card).",
+      "Supports full chain-of-thought access and native tool use for agentic tasks such as web browsing and Python code execution (OpenAI gpt-oss-120b model card).",
+      "Released under the permissive Apache 2.0 license with no copyleft restrictions (OpenAI gpt-oss-120b model card / GitHub repo)."
+    ],
+    "disadvantages": [
+      "Text-only: no image or audio input or output support."
+    ],
+    "use_cases": [
+      "Coding and software engineering agents",
+      "Agentic tool-use workflows (browsing, function calling, code execution)",
+      "General-purpose reasoning tasks",
+      "Self-hosted, high-reasoning production deployments"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA Diamond",
+        "score": 80.8,
+        "source": "https://huggingface.co/openai/gpt-oss-120b"
+      },
+      {
+        "name": "SWE-bench Verified (medium reasoning)",
+        "score": 52.6,
+        "source": "https://huggingface.co/openai/gpt-oss-120b"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/gpt-oss-120b",
+    "github_url": "https://github.com/openai/gpt-oss"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/openai/gpt-oss-120b",
+      "title": "openai/gpt-oss-120b · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/openai/gpt-oss",
+      "title": "openai/gpt-oss: gpt-oss-120b and gpt-oss-20b are two open-weight language models by OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-120b.html",
+      "title": "gpt-oss-120b - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "The AWS Bedrock model card for openai.gpt-oss-120b-1:0 lists Max output tokens as 16K, not the 128K in the catalog's max_output_tokens fact; context window (128K) matches. Keeping the catalog's 128K figure per instructions but flagging the conflict. Model lifecycle on Bedrock is 'Active' with EOL date 'N/A'; no deprecation or supersession found on OpenAI's own pages."
+}

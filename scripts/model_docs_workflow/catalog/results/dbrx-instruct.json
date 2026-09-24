@@ -1,0 +1,95 @@
+{
+  "slug": "dbrx-instruct",
+  "canonical": "dbrx-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Databricks",
+  "details": {
+    "description": "DBRX Instruct is Databricks' instruction-tuned chat model, using a fine-grained mixture-of-experts architecture with 132 billion total parameters and 36 billion active per token across 16 experts (4 chosen per token). Databricks released it March 27, 2024 with a 32K-token context window, pretrained on 12 trillion tokens of text and code. As of September 2026 it no longer appears on Databricks' current list of supported Foundation Model API models, and the databricks/dbrx GitHub repository referenced in its launch announcement is no longer reachable, both pointing to Databricks having retired it.",
+    "advantages": [
+      "Databricks reported an Open LLM Leaderboard average of 74.5% at launch, versus 72.7% for Mixtral Instruct.",
+      "Databricks reported 73.7% on MMLU (5-shot) at launch.",
+      "Databricks reported 70.1% pass@1 on HumanEval (0-shot) at launch.",
+      "Databricks reported DBRX inference throughput 2-3x higher than a comparable 132B non-MoE model, per its launch announcement."
+    ],
+    "disadvantages": [
+      "No longer listed among Databricks' currently supported Foundation Model API models, per Databricks' current documentation checked September 2026.",
+      "The databricks/dbrx GitHub repository linked from its 2024 launch announcement is no longer reachable (returns 404) as of September 2026."
+    ],
+    "use_cases": [
+      "Conversational chat completions for brief exchanges, per Databricks' description of the instruct tuning.",
+      "Programming and code-generation tasks, evaluated by Databricks on HumanEval.",
+      "Retrieval-augmented generation, evaluated by Databricks on Natural Questions and HotPotQA.",
+      "General reasoning and grade-school math, evaluated by Databricks on GSM8k."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 73.7,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "HellaSwag",
+        "score": 89.0,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "WinoGrande",
+        "score": 81.8,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "HumanEval pass@1",
+        "score": 70.1,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "ARC-challenge",
+        "score": 68.9,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "TruthfulQA",
+        "score": 66.9,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "GSM8k CoT maj@1",
+        "score": 72.8,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      },
+      {
+        "name": "Open LLM Leaderboard average",
+        "score": 74.5,
+        "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm",
+      "title": "Introducing DBRX: A New State-of-the-Art Open LLM",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.databricks.com/en/machine-learning/foundation-models/supported-models.html",
+      "title": "Supported models - Databricks Foundation Model APIs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/dbrx-instruct",
+      "title": "DBRX Instruct - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://web.archive.org/web/2024/https://huggingface.co/databricks/dbrx-instruct",
+      "title": "databricks/dbrx-instruct · Hugging Face (archived copy, live page now returns 401)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts list max tokens as 32768 (32K), matching the launch announcement's 32K context window, so kept as-is. Databricks' current Foundation Model API supported-models documentation (checked September 2026) does not list DBRX or DBRX Instruct, and the databricks/dbrx GitHub repo linked from the 2024 launch post now returns 404; both suggest Databricks has retired the model, though I found no page with an explicit deprecation notice, so github_url is left null rather than asserted. Hugging Face model cards for DBRX Base/Instruct still return 401 (gated) live, but an archived copy of the Instruct card confirms it is built for 'few-turn interactions,' which supports the first use case; added the archived URL as a source since the cited blog post doesn't state that itself. All 8 evaluations verified word-for-word against the launch blog's two benchmark tables and their footnotes, including the GSM8k figure (72.8%), which is the Table 2 / EleutherAI-harness-corrected number the blog itself says supersedes Table 1's 66.9%."
+}

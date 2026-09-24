@@ -1,0 +1,64 @@
+{
+  "slug": "firefunction-v1",
+  "canonical": "firefunction-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "FireFunction V1 is an open-weight function-calling model from Fireworks AI, built on Mixtral-8x7B and released in February 2024 under the Apache 2.0 license. It is designed for structured output generation and routing decisions across up to 20 function specifications in a single turn, and supports a tool_choice value of \"any\" that forces a function call, a mode Fireworks says GPT-4 lacked at the model's release. It is not optimized for general multi-turn conversation or for parallel or nested function calls within one response. As of September 2026 it remains listed as available (\"Ready\") on Fireworks' own model page, though Fireworks has since released a newer firefunction-v2 model in the same family.",
+    "advantages": [
+      "Fireworks reports 87.88% accuracy on short-context (5-function) routing and function-calling evaluations, matching GPT-4's score.",
+      "Fireworks reports 84.43% accuracy on long-context (10+ function) evaluations, closing the gap to GPT-4 Turbo from 14% to under 5%.",
+      "Supports forcing a function call via a tool_choice value of \"any\", which Fireworks says GPT-4 did not support at release.",
+      "Fireworks reports response latency of 0.4-0.6 seconds on its platform versus 2.3-3.0 seconds for GPT-4, about 4x faster."
+    ],
+    "disadvantages": [
+      "Not optimized for general multi-turn conversation or for parallel or nested function calls within a single response; Fireworks recommends breaking such cases into sequential messages.",
+      "Released in February 2024 as a free beta; Fireworks has since released a newer firefunction-v2 model in the same family."
+    ],
+    "use_cases": [
+      "Structured JSON output generation from natural-language requests",
+      "Single-turn routing among up to 20 function specifications",
+      "OpenAI-API-compatible function-calling integration"
+    ],
+    "evaluations": [
+      {
+        "name": "Function-calling accuracy, short context (5 functions)",
+        "score": 87.88,
+        "source": "https://fireworks.ai/blog/firefunction-v1-gpt-4-level-function-calling"
+      },
+      {
+        "name": "Function-calling accuracy, long context (10+ functions)",
+        "score": 84.43,
+        "source": "https://fireworks.ai/blog/firefunction-v1-gpt-4-level-function-calling"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/firefunction-v1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/blog/firefunction-v1-gpt-4-level-function-calling",
+      "title": "FireFunction V1: GPT-4-level function calling",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/fireworks-ai/firefunction-v1",
+      "title": "fireworks-ai/firefunction-v1 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/firefunction-v1",
+      "title": "FireFunction V1 - Fireworks AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/firefunction-v2",
+      "title": "FireFunction V2 - Fireworks AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Fireworks' current function-calling docs (docs.fireworks.ai/guides/function-calling) demonstrate the feature with newer models such as Kimi K2 rather than FireFunction V1, and Fireworks' own catalog lists a newer 'firefunction-v2' model (built on Llama-3, hence the name resemblance, but its own page/URL is 'firefunction-v2', not 'llama-3-firefunction-v2' as originally written here -- corrected), suggesting V1 is an older generation. Checked Fireworks' models listing and deprecation changelog directly: FireFunction V1 does not appear in the current models catalog page, but it also is not named in the changelog's deprecation entries, and its own product page shows no explicit deprecation notice and lists its status as 'Ready', so it is described as available rather than deprecated. Also corrected: the cited launch blog post itself says FireFunction V1 supersedes an earlier 'fw-function-call-34b-v0' model ('our new & improved, open-weights model, based on Mixtral... packed in a significant amount of improvements over our last version'), so it is not Fireworks' first open-weight function-calling model; removed that claim. Catalog's 32,768-token input/output limit matches Fireworks' stated 32.7k context length for this model."
+}

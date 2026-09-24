@@ -1,0 +1,54 @@
+{
+  "slug": "voxtral-mini-3b-2507",
+  "canonical": "voxtral-mini-3b-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Mini 3B is Mistral AI's compact speech-to-text and voice-understanding model, released under the Apache 2.0 license on July 15, 2025 as a smaller sibling to Voxtral Small. Built on the Ministral 3B text backbone, it performs automatic speech transcription with language detection, answers questions about audio, summarizes it, and can trigger function calls directly from voice, while retaining Ministral 3B's text understanding. Mistral documents support for audio up to 30 minutes for transcription or 40 minutes for understanding, and names eight core languages: English, Spanish, French, Portuguese, Hindi, German, Dutch and Italian. Mistral deprecated this original Voxtral Mini (2507) version on its own platform in February 2026 in favor of Voxtral Mini Transcribe 2, but Amazon Bedrock, which offers it as mistral.voxtral-mini-3b-2507 for chat completions, still lists the model as Active with an end-of-life no sooner than July 2026.",
+    "advantages": [
+      "Positioned by Mistral for real-time transcription and voice understanding on edge devices, unlike the larger Voxtral Small 24B (Amazon Bedrock Voxtral Mini 3B 2507 model card).",
+      "Supports direct function-calling from voice commands and can summarize or answer questions about audio without a separate speech-recognition-plus-language-model pipeline (Mistral AI Voxtral blog).",
+      "Released under the Apache 2.0 license, permitting open commercial and research use (Mistral AI Voxtral blog; Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Superseded on Mistral's own platform by Voxtral Mini Transcribe 2 since a February 2026 deprecation, though the Bedrock-hosted version used here remains Active (Mistral AI Voxtral Mini docs; Amazon Bedrock Voxtral Mini 3B 2507 model card).",
+      "Amazon Bedrock's model card lists only client-side tool calling as supported for this model on the bedrock-mantle endpoint, not server-side tool calling, and does not list support for the Responses API (Amazon Bedrock Voxtral Mini 3B 2507 model card).",
+      "Documented for eight languages with strong performance (English, Spanish, French, Portuguese, Hindi, German, Dutch, Italian); Mistral's phrasing ('to name a few') implies broader coverage, but no fuller language list is given (Mistral AI Voxtral blog)."
+    ],
+    "use_cases": [
+      "Real-time voice transcription and understanding on edge devices (Amazon Bedrock Voxtral Mini 3B 2507 model card).",
+      "Multi-turn voice Q&A and audio summarization (Mistral AI Voxtral blog).",
+      "Triggering backend workflows via function calls extracted directly from voice input (Mistral AI Voxtral blog).",
+      "General text chat and instruction-following inherited from the Ministral 3B backbone (Mistral AI Voxtral Mini 3B 2507 model card)."
+    ],
+    "evaluations": [],
+    "languages": ["English", "Spanish", "French", "Portuguese", "Hindi", "German", "Dutch", "Italian"],
+    "website_url": "https://huggingface.co/mistralai/Voxtral-Mini-3B-2507",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Voxtral-Mini-3B-2507",
+      "title": "mistralai/Voxtral-Mini-3B-2507 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral",
+      "title": "Voxtral - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-voxtral-mini-3b-2507.html",
+      "title": "Voxtral Mini 3B 2507 - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-mini-25-07",
+      "title": "Voxtral Mini - Mistral AI | Mistral Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens=128,000 and max_output_tokens=8,192, but both Mistral's own model card and Amazon Bedrock's model card state a 32K-token context window; kept the catalog's values per instructions and flag the conflict here rather than in the details. Mistral's blog states both Voxtral models were released July 15, 2025 under Apache 2.0; Amazon Bedrock's own model card separately lists this model's 'Model launch date' as Jul 2025, matching. Could not extract exact word-error-rate or other numeric benchmark figures from Mistral's blog: the benchmark section is embedded as chart images rather than text, and in any case WER is not an eligible evaluations metric per the brief, so evaluations is left empty. Verify pass: Mistral's own model catalog (docs.mistral.ai/models/voxtral-mini-25-07) marks this exact version 'Deprecated' as of 2/27/2026, recommending Voxtral Mini Transcribe 2 for new integrations; that page was not in the original sources. Added this status and re-cited two claims ('edge devices' positioning) to the Amazon Bedrock model card, which is the page that actually states them (the Hugging Face card does not)."
+}

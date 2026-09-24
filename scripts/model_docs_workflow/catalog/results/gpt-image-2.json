@@ -1,0 +1,58 @@
+{
+  "slug": "gpt-image-2",
+  "canonical": "gpt-image-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Image 2 is OpenAI's current flagship image generation and editing model, launched April 21, 2026 in the API and Codex (and as 'ChatGPT Images 2.0' in ChatGPT). It generates and edits images from text and image inputs, with a December 2025 knowledge cutoff, native support up to 4K resolution, an intelligent routing layer that auto-selects generation settings, and a 'thinking mode' that can search the web, produce multiple images from one prompt, and self-check its own outputs. OpenAI highlights stronger multilingual text rendering -- with specific gains named for Japanese, Korean, Chinese, Hindi and Bengali -- plus structured generation for diagrams, infographics, charts and posters, and more reliable instruction-following and detail preservation than earlier GPT Image models.",
+    "advantages": [
+      "Reached the #1 spot across every Image Arena leaderboard within hours of launch, including a score of 1,512 and a 242-point lead over the next-ranked model on the Text-to-Image leaderboard, per OpenAI's own developer-community announcement of independent evaluation results.",
+      "Supports native 4K output resolution alongside custom aspect ratios and dimensions (each dimension a multiple of 16), per Microsoft's Foundry announcement.",
+      "Adds a 'thinking mode' that, used with a reasoning model, can search the web, self-check its own output, and generate multiple images from a single prompt (OpenAI and Microsoft announcements).",
+      "Names specific language improvements for Japanese, Korean, Chinese, Hindi and Bengali text rendering and localization (Microsoft Foundry announcement)."
+    ],
+    "disadvantages": [
+      "OpenAI names specific multilingual text-rendering gains only for Japanese, Korean, Chinese, Hindi and Bengali; broader language coverage for the model is not detailed in the announcements reviewed."
+    ],
+    "use_cases": [
+      "Generating and editing production-grade marketing, product, UI/UX and localized campaign imagery at exact required dimensions",
+      "Creating structured, text-heavy visuals such as diagrams, infographics, charts and posters",
+      "Multi-step, reasoning-assisted image workflows: researching a prompt, generating variations, and self-checking outputs via thinking mode"
+    ],
+    "evaluations": [],
+    "languages": [
+      "Japanese",
+      "Korean",
+      "Chinese",
+      "Hindi",
+      "Bengali"
+    ],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-image-2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2",
+      "title": "GPT-Image-2 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://community.openai.com/t/introducing-gpt-image-2-available-today-in-the-api-and-codex/1379479",
+      "title": "Introducing gpt-image-2 - available today in the API and Codex - OpenAI Developer Community",
+      "kind": "maker"
+    },
+    {
+      "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-gpt-image-2-in-microsoft-foundry/4500571",
+      "title": "Introducing OpenAI's GPT-image-2 in Microsoft Foundry",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "The catalog's modality list for this target (image_input, text_input, text_output) does not match OpenAI's own model page, which states Text is input-only (no text output) and Image is input AND output for gpt-image-2 -- i.e. the catalog's list appears to have image_output and text_output swapped for a 'kind: image' model. Kept the catalog's modality value per instructions but flagging this mismatch since it concerns the model's core generation capability. The 1,512 Elo / +242-point Arena leaderboard result is an Elo/arena score, which the brief excludes from 'evaluations'; included instead as an advantage with its source, per the brief's own guidance. No accuracy-style (0-100, higher-better) benchmark figures for gpt-image-2 were found on any maker or host page opened, so evaluations is left empty rather than using the unverifiable '98% accuracy' / '99% text accuracy' figures that appeared only in third-party search-result summaries and could not be confirmed on OpenAI's own announcement post (openai.com/index/introducing-chatgpt-images-2-0/ returned HTTP 403 on direct fetch; content was cross-checked via OpenAI's community.openai.com mirror of the same announcement instead). Not marked deprecated on any page checked; Azure's retirement schedule lists an October 21, 2027 retirement date, matching the catalog's deprecation_date exactly. Corrections: the community announcement says gpt-image-2 reached #1 'across all Image Arena leaderboards', with the +242-point lead and 1,512 score called out specifically for the Text-to-Image leaderboard -- the original wording conflated the two, describing the #1 finish itself as being 'across every Text-to-Image Arena leaderboard category'; reworded to match the source. Removed the 'storyboarding and scene generation for media and entertainment' use case -- not stated on the model page, the community launch post, the Microsoft Foundry announcement, or OpenAI's image generation guide."
+}

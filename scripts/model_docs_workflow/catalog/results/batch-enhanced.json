@@ -1,0 +1,36 @@
+{
+  "slug": "batch-enhanced",
+  "canonical": "batch-enhanced",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Enhanced is Speechmatics' highest-accuracy operating point for its Batch and Realtime speech-to-text API, selected by setting the request's model field to \"enhanced\". It transcribes a chosen language, or auto-detects one, and carries Speechmatics' full transcription feature set. Speechmatics also offers a medical-domain variant of Enhanced, tuned for healthcare terminology and selected via a domain parameter.",
+    "advantages": [
+      "Speechmatics documents Enhanced as its highest-accuracy operating point for Batch and Realtime transcription, ahead of the faster Standard model.",
+      "Supports custom dictionaries, per-word confidence scores, and speaker diarization, per Speechmatics' Models documentation.",
+      "Bundles speech-intelligence add-ons in the same job, including translation, summarization, topic detection, chapters, sentiment analysis and audio-event detection, per Speechmatics' Models documentation.",
+      "Offers a medical-domain variant, set via a domain parameter, tuned for healthcare terminology, per Speechmatics' Models documentation."
+    ],
+    "disadvantages": [
+      "Speechmatics markets its separate Standard operating point as the faster-turnaround choice, implying Enhanced trades some processing speed for its higher accuracy."
+    ],
+    "use_cases": [
+      "Medical transcription and clinical documentation",
+      "Legal transcription",
+      "Subtitling and captioning requiring maximum precision",
+      "Contact-centre and compliance transcription where accuracy matters more than turnaround speed"
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Bashkir", "Basque", "Belarusian", "Bengali", "Bulgarian", "Cantonese", "Catalan", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Mandarin", "Marathi", "Mongolian", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovakian", "Slovenian", "Spanish", "Swahili", "Swedish", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Uyghur", "Vietnamese", "Welsh"],
+    "website_url": "https://docs.speechmatics.com/speech-to-text/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/speech-to-text/models", "title": "Speech-to-Text Models - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/voice-agents", "title": "Voice Agents - Speechmatics", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/languages", "title": "Languages - Speechmatics Documentation", "kind": "maker"}
+  ],
+  "notes": "Catalog carries no deprecation_date and no source marks Enhanced as legacy or deprecated. Speechmatics' general speech-to-text marketing page states company-wide accuracy figures (a 90%+ real-world claim and alphanumeric-accuracy percentages) that are not tied to a specific operating point (Standard vs Enhanced), so they are omitted here rather than risk misattributing them to Enhanced specifically. The Languages reference page enumerates every individual language Enhanced supports (55, excluding the 'Automatic' auto-detect option and the bilingual/multi-language pack combinations such as 'Arabic & English bilingual'); Tagalog is offered only as part of a bilingual pack, with no standalone entry, so it is not listed. This list supersedes the earlier '55+' vs '72' count confusion: the '72' figure could not be reproduced from any current page and appears to have been a mis-scrape."
+}

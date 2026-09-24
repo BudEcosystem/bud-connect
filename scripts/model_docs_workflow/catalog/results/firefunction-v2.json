@@ -1,0 +1,44 @@
+{
+  "slug": "firefunction-v2",
+  "canonical": "firefunction-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "FireFunction-v2 is an open-weights function-calling model built by Fireworks AI on top of Meta's Llama 3 70B Instruct, released June 17, 2024. It is tuned for real-world agentic use -- multi-turn conversation, instruction following, and parallel function calling -- rather than narrowly overfitting to function-calling benchmarks, so it also keeps much of Llama 3's general chat ability. Fireworks reports it is competitive with GPT-4o on a combined function-calling benchmark medley (0.81 vs 0.80) and reliably handles up to 30 function specifications in a single call.",
+    "advantages": [
+      "Fireworks reports FireFunction-v2 handles up to 30 function specifications reliably in one call, versus about 5 for FireFunction-v1.",
+      "Scores 0.81 on Fireworks' combined function-calling benchmark medley (Gorilla, Nexus, MT-Bench), close to GPT-4o's 0.80, per the launch post.",
+      "Retains general chat and instruction-following ability from its Llama 3 70B Instruct base, scoring 0.84 on MT-Bench versus the base model's 0.89.",
+      "Supports parallel function calling (calling more than one function from a single query), which Fireworks says FireFunction-v1 often failed at."
+    ],
+    "disadvantages": [
+      "Not optimized for more than 100 function specifications or for nested function calling, per its Hugging Face model card.",
+      "MT-Bench score of 0.84 trails GPT-4o's 0.93 and its own Llama 3 70B Instruct base's 0.89, indicating a general-chat quality gap versus those models.",
+      "Limited to an 8K-token context window, inherited from its Llama 3 70B Instruct base."
+    ],
+    "use_cases": [
+      "Chat assistants that mix ordinary conversation with function/tool calls.",
+      "Parallel function calling across multiple APIs within a single turn.",
+      "Routing and decision-making applications that select among many available functions.",
+      "Structured information extraction from natural-language input."
+    ],
+    "evaluations": [
+      {"name": "Gorilla simple", "score": 94, "source": "https://fireworks.ai/blog/firefunction-v2-launch-post"},
+      {"name": "Gorilla multiple_function", "score": 91, "source": "https://fireworks.ai/blog/firefunction-v2-launch-post"},
+      {"name": "Gorilla parallel_function", "score": 89, "source": "https://fireworks.ai/blog/firefunction-v2-launch-post"},
+      {"name": "Gorilla parallel_multiple_function", "score": 79, "source": "https://fireworks.ai/blog/firefunction-v2-launch-post"},
+      {"name": "Nexus parallel", "score": 51, "source": "https://fireworks.ai/blog/firefunction-v2-launch-post"}
+    ],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/firefunction-v2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://fireworks.ai/blog/firefunction-v2-launch-post", "title": "Firefunction-v2: Function calling capability on par with GPT4o at 2.5x the speed and 10% of the cost", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/firefunction-v2", "title": "FireFunction V2 API & Playground | Fireworks AI", "kind": "maker"},
+    {"url": "https://huggingface.co/fireworks-ai/llama-3-firefunction-v2", "title": "fireworks-ai/llama-3-firefunction-v2 · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list max_input/output tokens as 8192, matching Fireworks' stated 8K context window inherited from the Llama 3 70B Instruct base. The Hugging Face model card gives a slightly different summary metric (average 0.82 for FireFunction-v2 vs GPT-4o's 0.80) than the launch blog post's medley average (0.81 vs 0.80); I used the launch post's more detailed per-benchmark table as the primary source for the evaluations listed here."
+}

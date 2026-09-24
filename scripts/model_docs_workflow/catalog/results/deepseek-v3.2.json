@@ -1,0 +1,47 @@
+{
+  "slug": "deepseek-v3.2",
+  "canonical": "deepseek-v3.2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V3.2 is DeepSeek's mixture-of-experts chat and reasoning model, with 685 billion parameters per its Hugging Face model card, released December 1, 2025 as the official successor to the experimental DeepSeek-V3.2-Exp. It uses DeepSeek Sparse Attention for cheaper long-context inference and, per DeepSeek's launch announcement, is the first DeepSeek model to combine a 'thinking' mode -- extended reasoning before acting -- with tool use, alongside a faster non-thinking mode. DeepSeek briefly served it as the standard deepseek-chat/deepseek-reasoner model, but DeepSeek's changelog shows those two names were repointed to the newer DeepSeek-V4-Flash in April 2026 and slated for discontinuation by July 2026, and V4-Flash was itself later retired in favor of DeepSeek-V4.1-Flash. Amazon Bedrock still lists deepseek.v3.2 with an 'Active' lifecycle, a 164K-token context window, and an 8K-token output limit.",
+    "advantages": [
+      "Scores 82.4 on GPQA Diamond, per DeepSeek's Hugging Face model card.",
+      "Scores 85 on MMLU-Pro, per DeepSeek's Hugging Face model card.",
+      "Scores 70 on SWE-bench Verified, per DeepSeek's Hugging Face model card.",
+      "Combines a thinking mode for extended reasoning with tool calls and a faster non-thinking mode, per DeepSeek's V3.2 launch announcement.",
+      "Supports a 164,000-token context window."
+    ],
+    "disadvantages": [
+      "DeepSeek's changelog shows the deepseek-chat/deepseek-reasoner names that served V3.2 were repointed to newer V4 models starting April 2026, with the intervening V4-Flash name itself later retired in favor of DeepSeek-V4.1-Flash.",
+      "8,000-token maximum output on Amazon Bedrock.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "General-purpose chat with a switchable thinking/non-thinking reasoning mode.",
+      "Agentic workflows that interleave long-chain reasoning with tool calls.",
+      "Coding and software-engineering tasks.",
+      "Long-context document analysis up to a 164,000-token context window."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 82.4, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"},
+      {"name": "MMLU-Pro", "score": 85, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"},
+      {"name": "SWE-bench Verified", "score": 70, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"},
+      {"name": "SWE-bench Pro", "score": 15.56, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"},
+      {"name": "MathArena AIME 2026", "score": 94.17, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2", "title": "deepseek-ai/DeepSeek-V3.2 · Hugging Face", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/news/news251201/", "title": "DeepSeek-V3.2 Release | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/updates/", "title": "Change Log | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-v3-2.html", "title": "DeepSeek V3.2 - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens values (163840 and 164000) both match AWS Bedrock's stated 164K context window (the two figures look like rounding differences between Bud's providers). One of catalog's two max_output_tokens values (8000) matches Bedrock's stated 8K output limit, but the second (163840) could not be corroborated: DeepSeek's own current docs no longer document the retired V3.2 model directly, only V4-Pro/V4.1-Flash, so this could not be checked against a maker source. Total parameter count (685B) is DeepSeek's own Hugging Face figure; active-parameter count and exact knowledge cutoff for the chat/thinking modes were not stated on the pages read. A GitHub repo exists for the related DeepSeek-V3.2-Exp release but was not opened, and none was confirmed for V3.2 itself, so github_url is left null. Corrected: the pricing page itself never names 'v3.2', 'deepseek-chat' or 'deepseek-reasoner' as retired -- it only lists 'deepseek-v4-flash' and 'deepseek-v4-flash-vision-exp' as retired legacy names now served by V4.1-Flash. The changelog page (already in sources) is the actual support for V3.2's aliases being superseded: deepseek-chat/deepseek-reasoner were repointed to V4-Flash in April 2026 and slated for discontinuation by 2026-07-24, and V4-Flash was itself later retired in favor of V4.1-Flash."
+}

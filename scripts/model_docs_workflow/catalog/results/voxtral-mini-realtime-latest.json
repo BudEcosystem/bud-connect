@@ -1,0 +1,69 @@
+{
+  "slug": "voxtral-mini-realtime-latest",
+  "canonical": "voxtral-mini-realtime-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Mini Transcribe Realtime, released by Mistral AI on February 4, 2026 as an open-weight sibling to Voxtral Mini Transcribe V2, is a 4-billion-parameter streaming speech-to-text model published on Hugging Face as Voxtral-Mini-4B-Realtime-2602 under the Apache 2.0 license. Mistral describes it as purpose-built for live transcription, pairing a roughly 3.4B-parameter language model with a roughly 970M-parameter causal audio encoder to support configurable transcription delay from 80ms up to 2.4 seconds. Mistral's own Hugging Face model card reports an average FLEURS word error rate of 8.72% at a 480ms delay, versus 5.90% for the offline Voxtral Mini Transcribe V2, with per-language WER at that delay ranging from 3.31% for Spanish to 22.53% for Arabic.",
+    "advantages": [
+      "Mistral's launch post states latency is configurable down to sub-200ms, enabling voice agents and other real-time applications.",
+      "Open-weight under the Apache 2.0 license and published on Hugging Face as Voxtral-Mini-4B-Realtime-2602, per Mistral's model card.",
+      "Uses a natively streaming architecture with causal attention in the audio encoder and sliding-window attention for continuous streaming, per Mistral's Hugging Face model card.",
+      "Mistral's model card states that at a 480ms delay it matches the performance of leading offline open-source transcription models, with throughput exceeding 12.5 tokens per second."
+    ],
+    "disadvantages": [
+      "Mistral's own Hugging Face model card reports a higher average FLEURS word error rate at a 480ms delay (8.72%) than its offline sibling Voxtral Mini Transcribe V2 (5.90%), a roughly 2.8-point accuracy trade-off for lower latency.",
+      "Per-language accuracy varies widely on Mistral's FLEURS benchmark at 480ms delay, from 3.31% WER for Spanish to 22.53% WER for Arabic, per Mistral's Hugging Face model card.",
+      "Mistral's launch post lists context biasing and word-level timestamps as features of Voxtral Mini Transcribe V2 only, not of this realtime model."
+    ],
+    "use_cases": [
+      "Real-time voice agents and virtual assistants, per Mistral's Voxtral Transcribe 2 launch post.",
+      "Live subtitle generation, per Mistral's Hugging Face model card.",
+      "Private, on-device meeting transcription, per Mistral's Hugging Face model card.",
+      "Contact center automation, per Mistral's Voxtral Transcribe 2 launch post."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese",
+      "Hindi",
+      "Spanish",
+      "Arabic",
+      "French",
+      "Portuguese",
+      "Russian",
+      "German",
+      "Japanese",
+      "Korean",
+      "Italian",
+      "Dutch"
+    ],
+    "website_url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-26-02",
+      "title": "Voxtral Mini Transcribe Realtime | Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral-transcribe-2",
+      "title": "Voxtral Transcribe 2 - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+      "title": "mistralai/Voxtral-Mini-4B-Realtime-2602 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/changelog/",
+      "title": "Changelog | Mistral AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This is the 'latest' alias for the same model as voxtral-mini-transcribe-realtime-2602 (Voxtral Mini Transcribe Realtime / Voxtral-Mini-4B-Realtime-2602); Mistral's docs model page lists both id strings together for this one model. Mistral's launch post separately states this model 'stays within 1-2% word error rate' at a 480ms delay, which does not match the more detailed benchmark table on Mistral's own Hugging Face model card (8.72% average FLEURS WER at the same 480ms delay, ranging 3.31%-22.53% by language); flagged rather than resolved since both are maker sources. Catalog facts give no max_input_tokens, max_output_tokens or deprecation_date for this model, so there is nothing to reconcile there."
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "llama3-1-70b-instruct",
+  "canonical": "llama3-1-70b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 70B Instruct is a 70-billion-parameter member of Meta's Llama 3.1 family, an instruction-tuned auto-regressive transformer with grouped-query attention, trained on roughly 15 trillion tokens of publicly available data (knowledge cutoff December 2023) and released July 23, 2024. It extends the earlier Llama 3 70B with a 128K-token context window, multilingual support across eight languages, and improved tool use. Amazon Bedrock still lists this snapshot's lifecycle as Active, though Meta's own Hugging Face card for it points to Llama 3.3 70B Instruct as a newer version.",
+    "advantages": [
+      "Scores 80.5% pass@1 on HumanEval and 95.1% on GSM-8K (chain-of-thought), per Meta's own reported benchmarks (Hugging Face model card).",
+      "Scores 90.0% on the API-Bank tool-use benchmark and 84.8% on BFCL, per Meta's own reported benchmarks (Hugging Face model card).",
+      "Scores 86.9% on the multilingual MGSM benchmark (chain-of-thought), per Meta's own reported benchmarks (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Meta's own Hugging Face card for this snapshot lists a newer version, Llama 3.3 70B Instruct, as available (Hugging Face model card).",
+      "Knowledge cutoff of December 2023 (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Assistant-style chatbots and dialogue",
+      "Code generation and analysis",
+      "Multilingual conversational agents across eight languages",
+      "Tool-integrated agentic systems using function calling",
+      "Document summarization using the 128K-token context window"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (CoT)",
+        "score": 86.0,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct"
+      },
+      {
+        "name": "HumanEval",
+        "score": 80.5,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct"
+      },
+      {
+        "name": "GSM-8K (CoT)",
+        "score": 95.1,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct"
+      },
+      {
+        "name": "ARC-C",
+        "score": 94.8,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct"
+      },
+      {
+        "name": "GPQA",
+        "score": 46.7,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct"
+      }
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
+      "title": "meta-llama/Llama-3.1-70B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+      "title": "Introducing Llama 3.1: Our most capable models to date",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-70b-instruct.html",
+      "title": "Llama 3.1 70B Instruct - Amazon Bedrock model card",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models",
+      "title": "meta-llama/llama-models - GitHub",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (2048) is kept as authoritative per instructions, but Amazon Bedrock's own model card lists 'Max output tokens: 4K' for this model on Bedrock -- flagging the mismatch. Catalog's context window (128000) matches Bedrock's model card. Catalog's deprecation_date is empty, consistent with Bedrock's 'Active' lifecycle status for this snapshot (versus 405B Instruct, which Bedrock marks Legacy)."
+}

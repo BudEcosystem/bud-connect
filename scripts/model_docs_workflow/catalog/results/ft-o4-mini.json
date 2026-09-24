@@ -1,0 +1,46 @@
+{
+  "slug": "ft-o4-mini",
+  "canonical": "ft:o4-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "ft:o4-mini is a custom, fine-tuned version of OpenAI's o4-mini reasoning model, built by fine-tuning the o4-mini-2025-04-16 snapshot on a customer's own data. o4-mini is OpenAI's small o-series reasoning model, optimized for fast, cost-efficient reasoning with strong coding and visual-task performance, and it supports OpenAI's reinforcement fine-tuning (RFT) method, listed by OpenAI as available only for reasoning models. OpenAI's own documentation marks the o4-mini-2025-04-16 snapshot, and its fine-tuned variant, as deprecated, with o4-mini itself succeeded by GPT-5 Mini.",
+    "advantages": [
+      "Supports OpenAI's reinforcement fine-tuning (RFT), which OpenAI documents as available only for reasoning models, letting a customer align the model to a custom numeric grader for domain-specific tasks such as medical diagnosis support or legal passage retrieval.",
+      "Base o4-mini model supports a 200,000-token context window and 100,000-token maximum output per OpenAI's model documentation."
+    ],
+    "disadvantages": [
+      "OpenAI's model documentation marks the o4-mini-2025-04-16 snapshot as Deprecated, and lists the fine-tuned ft-o4-mini-2025-04-16 line with an October 23, 2026 shutdown date and gpt-5.6-terra as the recommended replacement base model.",
+      "OpenAI states the underlying o4-mini has been succeeded by GPT-5 Mini.",
+      "o4-mini has a knowledge cutoff of June 1, 2024, per OpenAI's model page."
+    ],
+    "use_cases": [
+      "Domain-specific reasoning tasks fine-tuned via OpenAI's reinforcement fine-tuning (RFT), such as complex medical or legal reasoning",
+      "Coding and visual-reasoning tasks inherited from the base o4-mini reasoning model"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o4-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o4-mini",
+      "title": "o4-mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning",
+      "title": "Model optimization | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (200K input / 100K output tokens, /v1/chat/completions endpoint, 2026-10-23 deprecation date) match OpenAI's o4-mini model page and deprecations page exactly, including the fine-tuned line 'ft-o4-mini-2025-04-16' with the same October 23, 2026 shutdown date. One discrepancy: the base o4-mini model also accepts image input per OpenAI's docs, while the catalog's modality facts for this fine-tuned entry list text only; kept the catalog's value since fine-tuned checkpoints may not retain vision support. No published, per-model benchmark scores were found specifically for a fine-tuned checkpoint (results depend on the customer's own training data), so evaluations is left empty."
+}

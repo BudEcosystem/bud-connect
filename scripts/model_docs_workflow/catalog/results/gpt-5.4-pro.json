@@ -1,0 +1,47 @@
+{
+  "slug": "gpt-5.4-pro",
+  "canonical": "gpt-5.4-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.4 Pro is a higher-compute variant of GPT-5.4, released March 5, 2026 for people who want maximum performance on the hardest, most complex reasoning tasks. OpenAI describes it as producing smarter, more precise responses than standard GPT-5.4 by using additional computation, with requests that can take several minutes; OpenAI recommends background mode for requests that may otherwise time out. It takes text and image input and produces text-only output, supports reasoning effort levels of medium (default), high and xhigh, and has a knowledge cutoff of August 31, 2025. OpenAI has since released GPT-5.5 Pro (April 2026) as a newer flagship Pro model, though GPT-5.4 Pro remains available via the API.",
+    "advantages": [
+      "Scores 94.4% on GPQA Diamond (OpenAI).",
+      "Scores 83.3% on ARC-AGI-2, up from 73.3% for standard GPT-5.4 (OpenAI).",
+      "Scores 89.3% on BrowseComp, up from 82.7% for standard GPT-5.4 (OpenAI).",
+      "Scores 38.0% on FrontierMath Tier 4, up from 27.1% for standard GPT-5.4 (OpenAI).",
+      "Scores 61.5% on FinanceAgent v1.1, up from 56.0% for standard GPT-5.4 (OpenAI)."
+    ],
+    "disadvantages": [
+      "Requests can take several minutes to complete, and OpenAI recommends background mode to avoid timeouts (OpenAI API model docs).",
+      "Available in the Responses API only, not Chat Completions (OpenAI API model docs).",
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API model docs).",
+      "Superseded as OpenAI's flagship Pro model by GPT-5.5 Pro, released in April 2026, though still available via the API (Wikipedia)."
+    ],
+    "use_cases": [
+      "The hardest, most complex reasoning and analysis tasks",
+      "Long, multi-turn agentic workflows via the Responses API",
+      "Tasks where response quality matters more than latency"
+    ],
+    "evaluations": [
+      {"name": "GDPval", "score": 82.0, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "GPQA Diamond", "score": 94.4, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "ARC-AGI-2", "score": 83.3, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "BrowseComp", "score": 89.3, "source": "https://openai.com/index/introducing-gpt-5-4/"},
+      {"name": "FrontierMath Tier 4", "score": 38.0, "source": "https://openai.com/index/introducing-gpt-5-4/"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.4-pro",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.4-pro", "title": "GPT-5.4 Pro Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-gpt-5-4/", "title": "Introducing GPT-5.4 | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-5.5", "title": "GPT-5.5 - Wikipedia", "kind": "third_party"}
+  ],
+  "notes": "The GPQA Diamond score (94.4%) is confirmed verbatim on OpenAI's announcement post, which reports it in a GPT-5.4 vs GPT-5.4 Pro vs GPT-5.2 comparison table; the maker's API docs page for this model does not mention GPQA Diamond at all, so the evaluation's source was corrected to the announcement post. OpenAI's own announcement post (openai.com/index/introducing-gpt-5-4/) returned HTTP 403 on a direct fetch, so it was read via a read-only proxy (r.jina.ai) of the same URL; the cited source URL is the original openai.com page. Artificial Analysis's tracker page for this model reports it as no longer actively benchmarked there (recommending GPT-5.5 Pro instead), which is a third-party editorial choice, not an OpenAI deprecation; not used as an evaluations source since it had no scores. Maker's own docs page states the model is available in the Responses API only, which conflicts with the catalog's endpoints fact (/v1/batch, /v1/chat/completions, /v1/responses); kept the catalog's value per instructions and flagged the conflict here rather than in the description. Context window (1,050,000) and max output (128,000) match the catalog's facts."
+}

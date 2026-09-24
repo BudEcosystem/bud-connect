@@ -1,0 +1,55 @@
+{
+  "slug": "qwen3-8b",
+  "canonical": "qwen3-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-8B is an 8.2-billion-parameter (6.95B non-embedding) dense causal language model from Alibaba's Qwen team, released April 29, 2025 as part of the original Qwen3 family. It uniquely supports switching between a 'thinking' mode for complex reasoning and a 'non-thinking' mode for efficient dialogue within the same model, with a native 32,768-token context window extendable to 131,072 tokens via YaRN. Qwen's model card reports enhanced reasoning over QwQ and Qwen2.5-Instruct on mathematics, coding, and logic tasks, plus tool-calling and agentic capabilities, and Qwen states the Qwen3 family supports 119 languages and dialects.",
+    "advantages": [
+      "Supports switching between a 'thinking' mode for complex reasoning and a 'non-thinking' mode for efficient dialogue within the same model (Qwen's model card).",
+      "Qwen's model card reports reasoning that surpasses QwQ and Qwen2.5-Instruct on mathematics, coding, and logic tasks.",
+      "Context window extendable to 131,072 tokens via YaRN from a native 32,768 tokens (Qwen's model card).",
+      "Supports tool-calling and agentic use through the Qwen-Agent framework (Qwen's model card).",
+      "Qwen states the Qwen3 model family supports 119 languages and dialects."
+    ],
+    "disadvantages": [
+      "Qwen's later 2507-refresh updates (to the 4B, 30B-A3B, and 235B-A22B sizes) were not extended to the 8B size, which remains on its original April 2025 release."
+    ],
+    "use_cases": [
+      "General-purpose chat combining deep reasoning and efficient response modes",
+      "Complex reasoning tasks such as mathematics and logic in thinking mode",
+      "Coding assistance and code generation",
+      "Tool-calling and agentic workflows",
+      "Multilingual conversation"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-8B",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-8B",
+      "title": "Qwen/Qwen3-8B \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3",
+      "title": "QwenLM/Qwen3 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3/",
+      "title": "Qwen3: Think Deeper, Act Faster - Qwen Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-8b",
+      "title": "Qwen3 8B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "No numeric benchmark table for Qwen3-8B specifically could be confirmed: the Hugging Face card's only auto-populated eval ('Ifstruct V1', 79.75) is from an unfamiliar third-party dataset (LiquidAI/ifstruct-v1.0) whose provenance as an official Qwen benchmark could not be verified, and the Qwen3 launch blog's per-size benchmark tables are rendered as images, not extractable text, so evaluations is left empty rather than guessed. Catalog facts (40,960 max input/output tokens) match Fireworks' own listed context ('40.9k tokens') for this model, though it differs from Qwen's stated native (32,768) and YaRN-extended (131,072) context figures; not restated in description/advantages per instructions."
+}

@@ -1,0 +1,54 @@
+{
+  "slug": "gpt-4o-transcribe-diarize",
+  "canonical": "gpt-4o-transcribe-diarize",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o transcribe diarize is OpenAI's automatic speech recognition model with built-in speaker diarization, used only through the Transcription API (/v1/audio/transcriptions) and labeled Preview in Azure's Foundry Models catalog. OpenAI recommends it specifically for cases where a user needs to identify who is speaking during different parts of a recording: with the diarized_json response format it returns segments tagged with speaker, start and end times, and it can accept up to four speaker reference audio clips to map segments to known speakers. On August 26, 2026, OpenAI notified developers that this model, alongside whisper-1, gpt-4o-transcribe and gpt-4o-mini-transcribe, will be removed from the API on February 26, 2027, recommending gpt-live-transcribe or gpt-transcribe as replacements.",
+    "advantages": [
+      "Returns per-segment speaker labels with start and end timestamps via the diarized_json response format, per OpenAI's speech-to-text guide.",
+      "Can accept up to four speaker reference audio clips to map transcript segments to known speakers, per OpenAI's speech-to-text guide.",
+      "Supports file streaming for transcription integrations, per OpenAI's speech-to-text guide."
+    ],
+    "disadvantages": [
+      "OpenAI has deprecated gpt-4o-transcribe-diarize, announcing on August 26, 2026 that it will be removed from the API on February 26, 2027, with gpt-live-transcribe or gpt-transcribe recommended as replacements, per OpenAI's deprecations page.",
+      "Azure's Foundry Models catalog labels this model Preview, per Microsoft's models page.",
+      "Limited to the Transcription endpoint; does not support Chat Completions, Realtime, Batch or Fine-tuning, per OpenAI's model page.",
+      "Knowledge cutoff of June 1, 2024, per OpenAI's model page.",
+      "OpenAI recommends using this model only when speaker identification is needed; its speech-to-text guide directs ordinary, non-diarized file transcription to gpt-transcribe instead, per OpenAI's speech-to-text guide."
+    ],
+    "use_cases": [
+      "Identifying who is speaking during different parts of a recording, per OpenAI's speech-to-text guide.",
+      "Transcribing multi-speaker recordings, such as meetings or calls, where speaker attribution matters, per OpenAI's speech-to-text guide."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-transcribe-diarize",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o-transcribe-diarize",
+      "title": "GPT-4o Transcribe Diarize Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/speech-to-text",
+      "title": "Speech to text guide | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "OpenAI's deprecations page gives a shutdown date of February 26, 2027 for gpt-4o-transcribe-diarize, close to but not identical to the catalog's 2027-04-15 deprecation_date; kept the catalog's date as instructed. No source states which specific languages this model supports, so the languages list is left empty. Verification pass: the original last disadvantage named gpt-4o-transcribe as the model for ordinary transcription, but OpenAI's current speech-to-text guide instead names gpt-transcribe as the general-purpose model ('For new general-purpose transcription, start with gpt-transcribe') -- corrected to name the right sibling model."
+}

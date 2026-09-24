@@ -1,0 +1,45 @@
+{
+  "slug": "gpt-5",
+  "canonical": "gpt-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5 is OpenAI's flagship model released August 7, 2025, combining a fast general-purpose model with a deeper reasoning mode (GPT-5 thinking) and a router that automatically picks between them based on the conversation. It takes text and image input and produces text output, with a knowledge cutoff of September 30, 2024. OpenAI's own API docs now describe GPT-5 as \"our previous model\" and direct new use to GPT-6 Astra, and Artificial Analysis separately lists it as deprecated, superseded by GPT-5.1 (high).",
+    "advantages": [
+      "Scores 74.9% on SWE-bench Verified and 94.6% on AIME 2025, per OpenAI's GPT-5 launch announcement.",
+      "Supports adjustable reasoning effort (minimal, low, medium, high) via the reasoning.effort parameter (OpenAI API docs).",
+      "With web search enabled, OpenAI reports responses are about 45% less likely to contain a factual error than GPT-4o, and about 80% less likely in thinking mode versus OpenAI o3.",
+      "Supports function calling through the Responses and Chat Completions APIs (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's own API documentation now labels GPT-5 \"our previous model\" and recommends GPT-6 Astra for new use.",
+      "Artificial Analysis lists GPT-5 (high) as deprecated and now benchmarks only its default 10k-input-token configuration.",
+      "Knowledge cutoff of September 30, 2024 (OpenAI API docs).",
+      "Output is text only; the model does not generate images, audio or video (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "General-purpose chat and reasoning across coding, writing and analysis tasks.",
+      "Agentic tool use and multi-step task coordination across external tools.",
+      "Front-end code generation and debugging in larger repositories.",
+      "Multimodal tasks combining visual, spatial and scientific reasoning input."
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 74.9, "source": "https://openai.com/index/introducing-gpt-5/"},
+      {"name": "AIME 2025", "score": 94.6, "source": "https://openai.com/index/introducing-gpt-5/"},
+      {"name": "MMMU", "score": 84.2, "source": "https://openai.com/index/introducing-gpt-5/"},
+      {"name": "Artificial Analysis Intelligence Index (high reasoning)", "score": 23, "source": "https://artificialanalysis.ai/models/gpt-5"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5", "title": "GPT-5 Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-gpt-5/", "title": "Introducing GPT-5 | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5", "title": "GPT-5 (high) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's own docs and Artificial Analysis both treat GPT-5 as superseded as of Sept 2026, but name different successors (GPT-6 Astra vs. GPT-5.1 (high)). OpenAI's deprecations page schedules the gpt-5-2025-08-07 snapshot for shutdown Dec 11, 2026 (replacement gpt-5.6-sol), earlier than the catalog's deprecation_date fact (2027-02-09); kept the catalog's date but flagging the discrepancy. openai.com blocked direct fetches (403); the introducing-gpt-5 page was read via a text-extraction proxy (r.jina.ai) but content and benchmark numbers matched independently-searched figures."
+}

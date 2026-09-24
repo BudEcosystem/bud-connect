@@ -1,0 +1,36 @@
+{
+  "slug": "flux-1-dev-controlnet-union",
+  "canonical": "flux-1-dev-controlnet-union",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "InstantX Team and Shakker Labs",
+  "details": {
+    "description": "FLUX.1 [dev] ControlNet Union is a 3 billion parameter ControlNet adapter for Black Forest Labs' FLUX.1 [dev] text-to-image model, jointly released by the InstantX Team and Shakker Labs. It adds spatial/structural conditioning to FLUX.1 [dev] image generation, letting a control image (edges, depth map, pose, etc.) guide the output in a single unified checkpoint instead of one ControlNet per condition type. Fireworks AI hosts it (accounts/fireworks/models/flux-1-dev-controlnet-union) for on-demand, dedicated-GPU deployment alongside the base FLUX.1 [dev] model it conditions.",
+    "advantages": [
+      "Supports multiple conditioning modes in one unified checkpoint, including canny edge, depth, pose, tile, blur, and low-quality-image enhancement, which the model card rates as \"high validity\".",
+      "Supports \"multi-controls inference\", applying more than one conditioning type at once with independently scaled strengths, per the model card.",
+      "Released as open weights (Safetensors, BF16) that can be loaded alongside FLUX.1 [dev] through the Diffusers library."
+    ],
+    "disadvantages": [
+      "The model card describes this as \"the first beta version checkpoint that maybe not been fully trained\".",
+      "The model card states grayscale conditioning has \"low validity\" compared to the other supported modes.",
+      "The developers state that \"even a fully trained Union model may not perform as well as specialized models\" built for a single condition type.",
+      "Inherits the FLUX.1 [dev] Non-Commercial License of the base model it conditions, restricting commercial use without a separate agreement.",
+      "Fireworks lists fine-tuning, serverless deployment, function calling, embeddings, rerankers, and image input as not supported for this model."
+    ],
+    "use_cases": [
+      "Structure- or pose-guided image generation with FLUX.1 [dev] using canny edge, depth, pose, tile, or blur control images",
+      "Combining multiple structural conditions in a single FLUX.1 [dev] generation via multi-ControlNet inference"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union", "title": "InstantX/FLUX.1-dev-Controlnet-Union · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/flux-1-dev-controlnet-union", "title": "FLUX.1 [dev] ControlNet - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "GROUPING/kind conflict: the catalog lists this entry as kind \"chat\" with endpoint /v1/chat/completions and modality [text_input, text_output], max_input/output_tokens 4096. Both the maker's Hugging Face card and the Fireworks host page confirm this is an image-conditioning adapter for the FLUX.1 [dev] text-to-image model, not a chat/text model. Catalog facts were kept as authoritative per instructions; this is flagged as a likely data/routing mismatch. Maker is listed as InstantX Team and Shakker Labs (the adapter's creators) rather than Black Forest Labs, since Black Forest Labs made the base FLUX.1 [dev] model this adapter conditions, not the adapter itself; Fireworks' own listing names Black Forest Labs as the 'provider' field, which may just reflect the base model. No GitHub repository specific to this adapter was found (its only linked repo is the general huggingface/diffusers library, which is not model-specific), so github_url is null. No benchmark scores were found on the pages opened, so evaluations is empty."
+}

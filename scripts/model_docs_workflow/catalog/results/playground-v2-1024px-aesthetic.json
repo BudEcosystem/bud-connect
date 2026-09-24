@@ -1,0 +1,32 @@
+{
+  "slug": "playground-v2-1024px-aesthetic",
+  "canonical": "playground-v2-1024px-aesthetic",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Playground",
+  "details": {
+    "description": "Playground v2 (1024px Aesthetic) is a latent text-to-image diffusion model from Playground (playground.com) that generates images at 1024x1024 resolution from text prompts. It follows the same architecture as Stable Diffusion XL, using two fixed pretrained text encoders (OpenCLIP-ViT/G and CLIP-ViT/L). Playground reports that in a user study of over 2,600 prompts, images from this model were favored roughly 2.5 times more often than Stable Diffusion XL on aesthetic quality and prompt alignment. Playground has since released Playground v2.5, which its own model card reports as outperforming this model.",
+    "advantages": [
+      "Playground reports the model's images were favored about 2.5 times more often than Stable Diffusion XL in a user study of over 2,600 prompts, judged on aesthetic quality and text alignment.",
+      "Scores 7.07 FID on the MJHQ-30K benchmark at 1024x1024, better than SDXL-1.0-refiner's 9.55, per Playground's model card, with particular strength on people and fashion images.",
+      "Uses the same architecture as Stable Diffusion XL with two pretrained text encoders, and is compatible with the Diffusers library, Automatic1111, and ComfyUI, per the model card."
+    ],
+    "disadvantages": [
+      "Playground's later Playground v2.5 model card reports outperforming Playground v2 in aesthetic-quality user studies and scoring a lower (better) MJHQ-30K FID of 4.48 versus this model's 7.07."
+    ],
+    "use_cases": [
+      "Text-to-image generation for aesthetically-oriented images at 1024x1024 resolution.",
+      "Use with the Diffusers library, Automatic1111, or ComfyUI via released safetensors checkpoints, per the model card."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic", "title": "playgroundai/playground-v2-1024px-aesthetic · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/playgroundai/playground-v2.5-1024px-aesthetic", "title": "playgroundai/playground-v2.5-1024px-aesthetic · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (4096 max input/output tokens, image_output+text_input modality) match the model card. FID scores are lower-is-better, not the 0-100 higher-is-better accuracy figures this tool's evaluations list requires, so they are reported in advantages/disadvantages text instead of the evaluations list. Verification pass: removed an 'about 3 billion parameters' claim from the description -- not stated on the HF model card, the v2.5 card, the technical report (arXiv:2402.17245), or the original Playground v2 blog post (checked via Wayback Machine); the model's own safetensors metadata totals ~2.57B parameters, which does not clearly support 'about 3 billion' either."
+}

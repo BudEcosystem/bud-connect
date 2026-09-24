@@ -1,0 +1,49 @@
+{
+  "slug": "nova-canvas-v1",
+  "canonical": "nova-canvas-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Nova Canvas is Amazon's image generation and editing model, launched December 3, 2024 and accessed through Amazon Bedrock. It creates studio-quality images from text prompts up to 2048x2048 (4.19 million pixels) and supports image-conditioned generation, inpainting, outpainting, background removal, color-guided generation from a supplied palette, and subject-consistency fine-tuning. Every generated image carries an invisible watermark that a public Content Credentials tool can verify. AWS's Bedrock model card lists this v1 snapshot as in its Legacy lifecycle stage, with an end-of-life date of September 30, 2026.",
+    "advantages": [
+      "Supports inpainting, outpainting, background removal and image-conditioned generation in addition to text-to-image generation (AWS Nova user guide).",
+      "Accepts 1 to 10 hex color codes to guide the color palette of generated images (AWS Nova user guide).",
+      "Adds an invisible watermark to every generated image, verifiable with a public Content Credentials tool, to help identify AI-generated content (AWS Nova user guide).",
+      "Supports fine-tuning for subject consistency, preserving a chosen subject such as a product or pet across generated images (AWS Nova user guide)."
+    ],
+    "disadvantages": [
+      "AWS's Bedrock model card lists this Nova Canvas v1 snapshot as in its Legacy lifecycle stage, with a Model EOL date of September 30, 2026, matching the catalog's deprecation date.",
+      "English only for prompts (AWS Nova user guide)."
+    ],
+    "use_cases": [
+      "Text-to-image generation for marketing, retail and entertainment visuals",
+      "Image editing via inpainting, outpainting and background removal",
+      "Color-guided product image generation and image variation from reference images",
+      "Subject-consistent image generation for a recurring product, pet or brand asset"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://docs.aws.amazon.com/nova/latest/userguide/image-generation.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/userguide/image-generation.html",
+      "title": "Generating images with Amazon Nova Canvas - Amazon Nova User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html",
+      "title": "What is Amazon Nova? - Amazon Nova User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-canvas.html",
+      "title": "Nova Canvas model card - Amazon Bedrock User Guide",
+      "kind": "host"
+    }
+  ],
+  "notes": "AWS's Bedrock model card for amazon.nova-canvas-v1:0 shows 'Model lifecycle: Legacy' with 'Model EOL date: September 30, 2026', exactly matching the catalog's deprecation_date -- confirms the catalog fact. AWS documents a max prompt length of 1024 characters (a character count, not a token count), which does not directly compare to the catalog's max_input_tokens of 2600; kept the catalog's value as authoritative and did not restate a different number. Found no accuracy-style benchmark scores from Amazon or a named leaderboard for this model."
+}

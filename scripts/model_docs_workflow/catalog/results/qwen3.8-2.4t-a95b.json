@@ -1,0 +1,59 @@
+{
+  "slug": "qwen3.8-2.4t-a95b",
+  "canonical": "qwen3.8-2.4t-a95b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3.8-2.4T-A95B is an open-weight Mixture-of-Experts chat model from Alibaba's Qwen team, with 2.4 trillion total parameters and 95 billion activated per token across 512 experts (10 routed plus 1 shared), per its Hugging Face model card. It is the first time Alibaba has given a Qwen \"Max\"-class model an open release, built for coding, professional work, research and long-horizon agentic tasks. The checkpoint is text-only and always reasons in a \"thinking\" mode that cannot be disabled; Alibaba's separate commercial Qwen3.8-Max product adds vision input and a non-thinking mode on top of this checkpoint, per the model card.",
+    "advantages": [
+      "Scores 92.6 on GPQA Diamond, per its Hugging Face model card.",
+      "Scores 67.7 on SWE-bench Pro, a real-world software-engineering benchmark, per its Hugging Face model card.",
+      "Scores 86.6 on Terminal-Bench 2.1, an agentic terminal-coding benchmark, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Requires thinking mode for all interactions and cannot run in a non-thinking mode, per its Hugging Face model card.",
+      "The open checkpoint itself has no vision input; Alibaba's separately hosted Qwen3.8-Max product adds vision input, per the model card.",
+      "Distributed under Alibaba's own \"qwen3.8-max\" model license rather than a standard permissive open-source license, per its Hugging Face license tag."
+    ],
+    "use_cases": [
+      "Complex, multi-step coding and software-engineering tasks",
+      "Long-horizon agentic workflows requiring autonomous planning and tool use",
+      "Professional and research tasks needing extended step-by-step reasoning"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA Diamond",
+        "score": 92.6,
+        "source": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+      },
+      {
+        "name": "SWE-bench Pro",
+        "score": 67.7,
+        "source": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+      },
+      {
+        "name": "Terminal-Bench 2.1",
+        "score": 86.6,
+        "source": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+      "title": "Qwen/Qwen3.8-2.4T-A95B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.together.ai/docs/serverless-models",
+      "title": "Serverless Models - Together AI Docs",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (1,010,000) matches the model card's extended-context figure beyond its native 262,144-token window; catalog's text-only modality matches this checkpoint (Alibaba's separately hosted Qwen3.8-Max product, not this checkpoint, adds vision). No explicit language list was found on the model card. Together AI's serverless-models documentation lists this model with function calling and structured outputs both marked unsupported (dash), contradicting an earlier claim that Together supports them; that claim was removed. The GPQA Diamond/SWE-bench Pro/Terminal-Bench 2.1 scores are given on this model's own Hugging Face card, but the results table itself is headed \"Qwen3.8-Max\" -- the card describes Qwen3.8-Max as \"the official version based on Qwen3.8-2.4T-A95B with more features, such as vision input & non-thinking support\" -- so the scores may reflect that served product rather than a separately-measured run of this exact checkpoint; kept because the benchmarks are text/agentic tasks unaffected by Max's added vision/non-thinking features and no other source gives different numbers, but flagging the naming for a future check."
+}

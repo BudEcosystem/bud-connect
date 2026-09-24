@@ -1,0 +1,80 @@
+{
+  "slug": "glm-5-2",
+  "canonical": "glm-5-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.2 is a flagship large language model from Z.ai (Zhipu AI), which its documentation describes as \"a flagship model built for the era of long-horizon tasks,\" succeeding GLM-5.1. It is released as open weights (MIT license, per its Hugging Face model card) and is offered on Mistral AI's La Plateforme as a third-party open-weight model. GLM-5.2 has a 1-million-token context window, multiple reasoning effort levels, and tool-calling and MCP support for agentic and long-horizon coding workflows.",
+    "advantages": [
+      "Scores 91.2 on GPQA-Diamond, per Z.ai's GLM-5.2 model card on Hugging Face.",
+      "Scores 99.2 on AIME 2026, per Z.ai's GLM-5.2 model card on Hugging Face.",
+      "Scores 62.1 on SWE-bench Pro and 81.0-82.7 on Terminal-Bench 2.1, per Z.ai's documentation.",
+      "Z.ai reports IndexShare, which reuses indexers across sparse attention layers, cuts per-token computation by 2.9x at 1-million-token context length.",
+      "Supports multiple reasoning effort levels alongside tool calling and MCP (Model Context Protocol) integration for agentic workflows, per Z.ai's documentation."
+    ],
+    "disadvantages": [
+      "Text-only: Z.ai's documentation and model card do not describe image or vision input support.",
+      "Scores 40.5 on Humanity's Last Exam without tool use (54.7 with tools), per its Hugging Face model card.",
+      "Z.ai's model card documents support for English and Chinese only."
+    ],
+    "use_cases": [
+      "Long-horizon agentic coding and software engineering tasks",
+      "Project-scale codebase understanding and multi-step development workflows",
+      "Tool-calling and MCP-based agent workflows",
+      "General reasoning tasks with configurable effort levels"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA-Diamond",
+        "score": 91.2,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "AIME 2026",
+        "score": 99.2,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "SWE-bench Pro",
+        "score": 62.1,
+        "source": "https://docs.z.ai/guides/llm/glm-5.2"
+      },
+      {
+        "name": "HLE",
+        "score": 40.5,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "HLE with tools",
+        "score": 54.7,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      }
+    ],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.2",
+      "title": "GLM-5.2 | Z.ai Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.2",
+      "title": "zai-org/GLM-5.2 | Hugging Face",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "host"
+    }
+  ],
+  "notes": "Provider 'mistral' in the catalog reflects that Mistral AI's La Plateforme hosts this third-party open-weight model from Z.ai (Mistral's models overview lists 'Z.ai GLM 5.2' under Generalist / Open-weight models with a 1M-token context window); Z.ai is the maker, matching this entry's maker field. Catalog facts (1,048,576 input / 131,072 output tokens, text-only modality) match Z.ai's stated 1M context window and 128K max output. Total parameter count (753B) and an exact release date were not independently confirmed on a second maker page, so left out of the description beyond what both sources agreed on; no separate GitHub repository was found for this model."
+}

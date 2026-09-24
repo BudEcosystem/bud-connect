@@ -1,0 +1,82 @@
+{
+  "slug": "qwen2-72b-instruct",
+  "canonical": "qwen2-72b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2-72B-Instruct is the instruction-tuned, 72-billion-parameter (73B in BF16) flagship of Alibaba Cloud's Qwen2 series, released June 7, 2024. Qwen's launch blog states the series was pretrained with a native 32K-token context, and this checkpoint can be extended up to 128K tokens using YaRN scaling. Qwen reports multilingual support for English, Chinese, and 27 additional languages spanning Western and Eastern Europe, the Middle East, East Asia, Southeast Asia, and South Asia, and the model uses an improved tokenizer adaptive to multiple languages and code. It is released under Alibaba's Tongyi Qianwen license rather than the Apache 2.0 license used for smaller Qwen2 models.",
+    "advantages": [
+      "Scores 82.3 on MMLU, a knowledge benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 86.0 on HumanEval, a coding benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 91.1 on GSM8K, a grade-school math benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 59.7 on MATH, a competition mathematics benchmark, per Qwen's Qwen2 launch blog.",
+      "Context can be extended up to 128K tokens using YaRN scaling, per Qwen's launch blog."
+    ],
+    "disadvantages": [
+      "Superseded within Qwen's own lineup by the Qwen2.5 and newer Qwen3 model generations.",
+      "Released under Alibaba's Tongyi Qianwen license rather than the Apache 2.0 license used by smaller Qwen2 models."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and multi-turn dialogue",
+      "Code generation across multiple programming languages",
+      "Mathematical reasoning",
+      "Long-context document processing using YaRN context extension",
+      "Multilingual tasks across English, Chinese, and 27 additional supported languages"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 82.3,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "MMLU-Pro",
+        "score": 64.4,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "HumanEval",
+        "score": 86.0,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "GSM8K",
+        "score": 91.1,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "MATH",
+        "score": 59.7,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "C-Eval",
+        "score": 83.8,
+        "source": "https://huggingface.co/Qwen/Qwen2-72B-Instruct"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2-72B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2-72B-Instruct",
+      "title": "Qwen/Qwen2-72B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2/",
+      "title": "Hello Qwen2",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen2-72b-instruct",
+      "title": "Qwen2 72B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's 32,768 input/output token facts match Qwen's stated native 32K pretraining context and Fireworks' listed native context for this deployment; the 128K figure above is an optional YaRN extension, not the default served limit, so it is not treated as contradicting the catalog facts. Left out Arena-Hard (48.1, per Qwen's Hugging Face card) since it is a pairwise/arena-style comparison score, excluded by the research brief. Qwen's own model card requires transformers>=4.37.0, a technical detail not included as a user-facing disadvantage. github.com/QwenLM/Qwen2 now redirects to the unrelated QwenLM/Qwen3 repository, so github_url is null. No maker page found declaring this model formally deprecated; 'superseded' reflects that Qwen's current org and docs pages no longer list Qwen2 models."
+}

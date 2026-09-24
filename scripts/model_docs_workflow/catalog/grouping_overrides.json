@@ -1,0 +1,4 @@
+{
+  "aws_polly/standard": "aws_polly-standard",
+  "google_speech/standard": "google_speech-standard"
+}

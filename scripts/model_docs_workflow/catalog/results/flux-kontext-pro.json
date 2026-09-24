@@ -1,0 +1,39 @@
+{
+  "slug": "flux-kontext-pro",
+  "canonical": "flux-kontext-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Black Forest Labs",
+  "details": {
+    "description": "FLUX.1 Kontext [pro] is Black Forest Labs' production-tier image generation and editing model that unifies text-to-image generation with in-context, instruction-based image editing in a single model. Per Black Forest Labs' documentation, it targets fast, iterative editing workflows, preserving character consistency across multiple edit turns while supporting both targeted local edits and full-scene transformations. Black Forest Labs' current developer docs now recommend FLUX.2 over FLUX.1 Kontext for new projects, citing higher resolution (up to 4MP) and multi-reference support, positioning Kontext as a previous-generation model that remains available via its API.",
+    "advantages": [
+      "Supports iterative, multi-turn editing while preserving character consistency across edits, per Black Forest Labs' documentation.",
+      "Handles both targeted local edits and full text-to-image generation in a single unified model, per Black Forest Labs' documentation.",
+      "Accepts input images up to 20MB or 20 megapixels and supports aspect ratios from 3:7 to 7:3, per Black Forest Labs' documentation."
+    ],
+    "disadvantages": [
+      "Black Forest Labs now recommends FLUX.2 over FLUX.1 Kontext for new image generation and editing projects, citing higher resolution (up to 4MP) and multi-reference support.",
+      "Outputs are limited to roughly 1 megapixel total resolution, per Black Forest Labs' documentation.",
+      "Black Forest Labs positions the Kontext [max] tier above Kontext [pro] for prompt adherence and typography generation, per Black Forest Labs' documentation."
+    ],
+    "use_cases": [
+      "Fast, iterative text-to-image generation and editing",
+      "Targeted local edits to specific regions of an existing image",
+      "Character-consistent multi-turn image editing",
+      "Full scene transformation from a text prompt and a reference image",
+      "In-image text replacement"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://bfl.ai/models/flux-kontext",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://bfl.ai/models/flux-kontext", "title": "FLUX.1 Kontext | Black Forest Labs", "kind": "maker"},
+    {"url": "https://bfl.ai/announcements/flux-1-kontext", "title": "Announcing FLUX.1 Kontext | Black Forest Labs", "kind": "maker"},
+    {"url": "https://docs.bfl.ml/kontext/kontext_overview.md", "title": "Kontext overview | Black Forest Labs Docs", "kind": "maker"},
+    {"url": "https://docs.bfl.ml/kontext/kontext_image_editing.md", "title": "Kontext image editing | Black Forest Labs Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog's modality for this Fireworks entry lists text_input/image_output only, but Black Forest Labs documents Kontext as taking both a text prompt and an input image for editing; kept the catalog's modality per instructions. Found no accuracy-style (0-100, higher-is-better) benchmark scores for this exact model — Black Forest Labs' own comparisons are ranking/Elo-style across evaluation tasks, which the evaluations rules exclude, so the list is left empty. No prices are stated despite Black Forest Labs' docs quoting a per-image price, per instructions to omit prices."
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "qwen2p5-14b",
+  "canonical": "qwen2p5-14b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-14B is a 14.7-billion-parameter base (pretrained, non-instruction-tuned) language model from Alibaba's Qwen team, released September 2024 as part of the Qwen2.5 series. Qwen's model card states long-context support up to 128K tokens and generation up to 8K tokens, with support for over 29 languages. As a base model it is intended as a foundation for fine-tuning or continued pretraining rather than direct conversational use; Fireworks AI's hosted listing for it confirms it is the base variant, distinct from the separate Qwen2.5-14B-Instruct model.",
+    "advantages": [
+      "Supports long-context input up to 128K tokens, per Qwen's own model card (Hugging Face model card).",
+      "Reports a score of 63.69 on MMLU-Pro (Hugging Face model card).",
+      "Qwen states support for multilingual text in over 29 languages, including Chinese, English, French, Spanish, German, Japanese, Korean, Arabic and Vietnamese (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Base pretrained model without instruction or chat tuning, so it is not designed to follow chat-style instructions directly (Hugging Face model card).",
+      "Fireworks AI's hosted model listing states this model does not support function calling or image input on that platform."
+    ],
+    "use_cases": [
+      "Foundation for supervised fine-tuning or continued pretraining into a task-specific or chat model",
+      "Long-context document and code processing up to 128K tokens",
+      "Few-shot text completion and in-context learning tasks"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 63.69, "source": "https://huggingface.co/Qwen/Qwen2.5-14B"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-14B",
+    "github_url": "https://github.com/QwenLM/Qwen2.5"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-14B", "title": "Qwen/Qwen2.5-14B · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-14b", "title": "Qwen2.5 14B - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts give this URI's max_input_tokens as 131,072, which matches Qwen's stated 128K-token context length exactly (128 x 1024 = 131,072) and the model's own config.json (max_position_embeddings: 131072), so there is no real conflict there despite the different-looking numbers. The catalog's max_output_tokens of 131,072 does conflict with Qwen's stated generation cap of 8K (8,192) tokens; kept the catalog's figure per instructions and flag that mismatch here. Fireworks AI's hosted listing for 'qwen2p5-14b' (no '-instruct' suffix) confirms this is the base, non-instruction-tuned Qwen2.5-14B model, consistent with the slug and separate from Qwen2.5-14B-Instruct. No source found stating this base model has been superseded. Language support is described only as a partial named list plus a ~29-language count, not a complete enumeration, so languages was left empty."
+}

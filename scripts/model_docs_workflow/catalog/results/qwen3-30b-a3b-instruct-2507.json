@@ -1,0 +1,40 @@
+{
+  "slug": "qwen3-30b-a3b-instruct-2507",
+  "canonical": "qwen3-30b-a3b-instruct-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen3-30B-A3B-Instruct-2507 is Alibaba's July 2025 update to the Qwen3-30B-A3B mixture-of-experts chat model, released as a non-thinking model only: it does not produce visible step-by-step reasoning. It has 30.5B total parameters with 3.3B activated per token across 128 experts (8 active per token). The model card reports 'significant improvements' over the original Qwen3-30B-A3B in instruction following, logical reasoning, mathematics, science, coding and tool usage. Native context is 262,144 tokens, extendable to 1 million tokens with Dual Chunk Attention.",
+    "advantages": [
+      "Scores 78.4 on MMLU-Pro, per the model's Hugging Face card.",
+      "Scores 61.3 on AIME25, per the model's Hugging Face card.",
+      "Scores 83.8 on MultiPL-E, per the model's Hugging Face card.",
+      "Native context window of 262,144 tokens, extendable to 1 million tokens using Dual Chunk Attention, per the model card.",
+      "Fully supports function calling, with the model card recommending the Qwen-Agent framework for tool-calling templates and parsers."
+    ],
+    "disadvantages": [
+      "Runs in non-thinking mode only; it does not produce visible <think> reasoning traces, per the model card."
+    ],
+    "use_cases": [
+      "Instruction following and general-purpose chat without step-by-step reasoning traces",
+      "Coding assistance, per the model's MultiPL-E benchmark result",
+      "Tool calling and agentic workflows via the Qwen-Agent framework",
+      "Long-document and long-context tasks up to 262,144 tokens natively"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 78.4, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"},
+      {"name": "AIME25", "score": 61.3, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"},
+      {"name": "MultiPL-E", "score": 83.8, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507", "title": "Qwen/Qwen3-30B-A3B-Instruct-2507", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-30b-a3b-instruct-2507", "title": "Qwen3 30B A3B Instruct 2507 - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog's 262,144 max input/output tokens match this model's native context window per its Hugging Face card; the card recommends generating up to 16,384 output tokens for typical instruct tasks, well below the catalog's configured maximum. Fireworks lists serving an FP8-quantized build of this model. Arena-Hard v2 (69.0) is reported on the model card but omitted from evaluations as an arena-style score."
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "enhanced-phonecall",
+  "canonical": "enhanced-phonecall",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Enhanced Phonecall is a Deepgram speech-to-text model in Deepgram's Enhanced tier, tuned specifically for low-bandwidth telephone call audio. Deepgram's Models & Languages Overview lists the Enhanced tier, together with Nova 1 and Base, under \"Legacy Models,\" and supports enhanced-phonecall for English only.",
+    "advantages": [
+      "Deepgram documents it as \"optimized for low-bandwidth audio phone calls.\"",
+      "Deepgram describes Enhanced-tier models as generally having \"higher accuracy and better word recognition than our base models,\" and handling uncommon words \"significantly better.\""
+    ],
+    "disadvantages": [
+      "Deepgram lists the Enhanced tier under \"Legacy Models\" in its Models & Languages Overview.",
+      "Supports English only (en, en-US), per Deepgram's language documentation."
+    ],
+    "use_cases": [
+      "Transcribing low-bandwidth telephone call recordings (e.g. call centers, phone-based customer service)."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to enhanced-phonecall were found on Deepgram's maker pages, so evaluations is left empty. Unlike enhanced-meeting, Deepgram's Model Options page does not mark enhanced-phonecall as beta. Its Models & Languages Overview groups Enhanced (with Nova 1 and Base) under a 'Legacy Models' heading. The catalog carries no deprecation_date."
+}

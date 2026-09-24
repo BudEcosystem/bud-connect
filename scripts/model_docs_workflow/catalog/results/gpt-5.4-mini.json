@@ -1,0 +1,48 @@
+{
+  "slug": "gpt-5.4-mini",
+  "canonical": "gpt-5.4-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.4 mini is OpenAI's smaller, faster model in the GPT-5.4 line, released March 17, 2026 alongside GPT-5.4 nano. OpenAI positions it as its strongest mini model yet for coding, computer use and subagent workloads, running about twice as fast as GPT-5 mini while approaching GPT-5.4's performance on several evaluations. It takes text and image input and produces text-only output, with configurable reasoning effort (none, low, medium, high, xhigh) and a knowledge cutoff of August 31, 2025. OpenAI has since released newer model generations (GPT-5.5, GPT-5.6) as its flagship line, though GPT-5.4 mini remains available via the API.",
+    "advantages": [
+      "Scores 88.0% on GPQA Diamond, up from 81.6% for GPT-5 mini (OpenAI).",
+      "Scores 72.1% on OSWorld-Verified, a computer-use benchmark, up from 42.0% for GPT-5 mini (OpenAI).",
+      "Scores 54.4% on SWE-Bench Pro, up from 45.7% for GPT-5 mini (OpenAI).",
+      "Runs about twice as fast as GPT-5 mini (OpenAI).",
+      "Supports function calling, web search, file search, computer use and MCP tool use via the Responses API (OpenAI API model docs)."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Not compatible with Realtime, Live sessions, Assistants, fine-tuning or embeddings endpoints (OpenAI API model docs).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API model docs).",
+      "Superseded as part of OpenAI's flagship line by GPT-5.5 (April 2026) and GPT-5.6, though still available via the API (Wikipedia)."
+    ],
+    "use_cases": [
+      "Coding assistants that need responsive, low-latency performance",
+      "Subagents handling supporting tasks in parallel",
+      "Computer-use agents and screenshot interpretation",
+      "Real-time image reasoning in multimodal applications",
+      "High-volume, cost-sensitive API and agentic workloads"
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 88.0, "source": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/"},
+      {"name": "SWE-Bench Pro", "score": 54.4, "source": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/"},
+      {"name": "OSWorld-Verified", "score": 72.1, "source": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/"},
+      {"name": "Terminal-Bench 2.0", "score": 60.0, "source": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/"},
+      {"name": "Artificial Analysis Intelligence Index (xhigh reasoning)", "score": 24, "source": "https://artificialanalysis.ai/models/gpt-5-4-mini"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini", "title": "GPT-5.4 Mini Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/", "title": "Introducing GPT-5.4 mini and nano | OpenAI", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-4-mini", "title": "GPT-5.4 mini (xhigh) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"},
+    {"url": "https://en.wikipedia.org/wiki/GPT-5.5", "title": "GPT-5.5 - Wikipedia", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's own announcement post (openai.com/index/introducing-gpt-5-4-mini-and-nano/) returned HTTP 403 on a direct fetch, so it was read via a read-only proxy (r.jina.ai) of the same URL; the cited source URL is the original openai.com page. The maker's API docs page separately lists a 400,000-token overall context window and a 272,000 maximum-input-tokens figure (the announcement post gives only the 400,000 context-window number); the 272,000 max-input-tokens figure matches the catalog's fact exactly, so there is no real conflict here despite an earlier note to the contrary. Endpoints (Chat Completions, Responses, Batch) match the catalog's facts. Not on OpenAI's deprecations page; described as 'superseded' only in the sense that GPT-5.5/5.6 are now the newer flagship generation, not that this model has been withdrawn."
+}

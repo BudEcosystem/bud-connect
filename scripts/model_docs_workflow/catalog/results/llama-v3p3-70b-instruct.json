@@ -1,0 +1,113 @@
+{
+  "slug": "llama-v3p3-70b-instruct",
+  "canonical": "llama-v3p3-70b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.3 70B Instruct is Meta's 70-billion-parameter, text-only instruction-tuned model, released December 6, 2024, and trained on roughly 15 trillion tokens. Meta's own benchmark table shows it matching or approaching the much larger Llama 3.1 405B on several tasks while improving over Llama 3.1 70B on steerability, math, and coding. It targets multilingual assistant-style chat across eight languages. Amazon Bedrock's model card lists this model's lifecycle as Active.",
+    "advantages": [
+      "Meta reports 92.1 on IFEval, up from 87.5 for Llama 3.1 70B, per its model card.",
+      "Meta reports 77.0 on MATH (chain-of-thought), up from 68.0 for Llama 3.1 70B, per its model card.",
+      "Meta reports 88.4 pass@1 on HumanEval, up from 80.5 for Llama 3.1 70B, per its model card.",
+      "Meta reports 77.3 on the BFCL v2 tool-use benchmark, per its model card.",
+      "Meta reports 91.1 on the multilingual MGSM benchmark, up from 86.9 for Llama 3.1 70B, per its model card.",
+      "Officially supports 8 languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai, per Meta's model card."
+    ],
+    "disadvantages": [
+      "Text-only; no image or audio input, per Meta's and AWS Bedrock's model cards.",
+      "Knowledge cutoff of December 2023, per Meta's model card.",
+      "Meta's model card does not describe built-in tools (e.g. search or code execution); tool integration is left to developers."
+    ],
+    "use_cases": [
+      "Multilingual assistant-style chat",
+      "Synthetic data generation and model distillation",
+      "Tool-calling and function-calling workflows",
+      "Coding assistance",
+      "Mathematical reasoning"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (CoT)",
+        "score": 86.0,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "MMLU Pro (CoT)",
+        "score": 68.9,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "IFEval",
+        "score": 92.1,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "GPQA Diamond (CoT)",
+        "score": 50.5,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "HumanEval",
+        "score": 88.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "MBPP EvalPlus",
+        "score": 87.6,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "MATH (CoT)",
+        "score": 77.0,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "BFCL v2",
+        "score": 77.3,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      },
+      {
+        "name": "MGSM",
+        "score": 91.1,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Hindi",
+      "Spanish",
+      "Thai"
+    ],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_3/MODEL_CARD.md at main",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+      "title": "meta-llama/Llama-3.3-70B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-3-70b-instruct.html",
+      "title": "Llama 3.3 70B Instruct - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p3-70b-instruct",
+      "title": "Llama 3.3 70B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (131072) matches the 128K context that Meta's model card and AWS Bedrock both report (Bedrock separately caps max output at 4K, not reflected in the catalog's single 131072 figure for both fields). Amazon Bedrock's own model card (fetched 2026-09-24) lists this model's lifecycle as Active, with an 'EOL no sooner than' floor of Dec 19, 2025 that is not an announced retirement. Corrected the parameter count to 70B: neither the GitHub model card nor the Hugging Face page states '70.6B' (both say '70B'; HF's auto-generated size badge says '71B'). Removed 'tool use' from the list of areas improved over Llama 3.1 70B: the model card's own benchmark table has Llama 3.3 70B scoring 77.3 on BFCL v2 versus 77.5 for Llama 3.1 70B, i.e. flat/very slightly lower, not an improvement."
+}

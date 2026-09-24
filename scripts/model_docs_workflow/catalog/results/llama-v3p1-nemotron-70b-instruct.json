@@ -1,0 +1,42 @@
+{
+  "slug": "llama-v3p1-nemotron-70b-instruct",
+  "canonical": "llama-v3p1-nemotron-70b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "Llama 3.1 Nemotron 70B Instruct is a 70.5-billion-parameter chat model that NVIDIA built by further training Meta's Llama 3.1 70B Instruct with the REINFORCE reinforcement-learning algorithm, using NVIDIA's own Llama-3.1-Nemotron-70B-Reward model and HelpSteer2-Preference prompts. NVIDIA designed it to improve the helpfulness of the base model's responses to general-domain instructions, and states it has not been tuned for specialized domains such as math. On this catalog entry it has a 131,072-token context window.",
+    "advantages": [
+      "NVIDIA reports an Arena Hard win rate of 85.0 against GPT-4-based judging, which it said ranked above GPT-4o and Claude 3.5 Sonnet at release, per NVIDIA's model card.",
+      "NVIDIA reports an AlpacaEval 2 LC win rate of 57.6% against GPT-4, per NVIDIA's model card.",
+      "NVIDIA reports an MT-Bench score of 8.98 out of 10 judged by GPT-4-Turbo, per NVIDIA's model card.",
+      "NVIDIA highlights strength on nuanced reasoning tasks such as counting the occurrences of a letter within a word, per its model card."
+    ],
+    "disadvantages": [
+      "NVIDIA states it has not been tuned for performance in specialized domains such as math, per its model card.",
+      "Fine-tuned from Meta's Llama 3.1 70B Instruct rather than a newer Llama generation."
+    ],
+    "use_cases": [
+      "General-domain instruction following and helpful assistant responses",
+      "Open-ended conversational AI"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
+      "title": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p1-nemotron-70b-instruct",
+      "title": "Llama 3.1 Nemotron 70B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Arena Hard, AlpacaEval and MT-Bench are preference/arena-judged scores, not 0-100 accuracy, so I put them in advantages rather than evaluations; I found no MMLU-style accuracy benchmarks on NVIDIA's model card. NVIDIA's card states 128,000 input tokens and a 4,000-token output limit, different from the catalog's 131,072/131,072; I kept the catalog's values per instructions. NVIDIA's card does not state supported languages, a knowledge cutoff, or whether this model has been superseded by a newer NVIDIA Nemotron release, so I left those out rather than guess."
+}

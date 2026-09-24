@@ -1,0 +1,82 @@
+{
+  "slug": "nova-2",
+  "canonical": "nova-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 is Deepgram's general-purpose speech-to-text model, built with \"speech-specific optimizations to the underlying Transformer architecture, advanced data curation techniques, and a multi-stage training methodology\" over its Nova-1 predecessor. Deepgram's Models & Languages Overview lists nova-2 (general) separately from the \"Legacy Models\" section that groups Nova 1, Enhanced and Base, though Deepgram now offers a newer Nova-3 model above it, recommending Nova-2 for languages Nova-3 does not yet support.",
+    "advantages": [
+      "Deepgram reports an 18.4% reduction in word error rate (WER) from Nova-1.",
+      "Deepgram reports a 22.6% relative improvement in punctuation accuracy and a 31.4% relative improvement in capitalization error rate over Nova-1.",
+      "Deepgram reports a median WER of 8.4% across all domains and files it tested overall.",
+      "Supports a broad set of languages including Chinese, French, German, Japanese, Korean, Russian and Spanish, per Deepgram's language documentation."
+    ],
+    "disadvantages": [
+      "Deepgram positions its newer Nova-3 model above Nova-2, recommending Nova-2 mainly for use cases and languages Nova-3 does not yet support."
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio.",
+      "Transcription in languages not yet supported by Deepgram's newer Nova-3 model.",
+      "Filler-word identification, per Deepgram's model recommendation guidance."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Bulgarian",
+      "Catalan",
+      "Chinese",
+      "Czech",
+      "Danish",
+      "Dutch",
+      "English",
+      "Estonian",
+      "Finnish",
+      "Flemish",
+      "French",
+      "German",
+      "Greek",
+      "Hindi",
+      "Hungarian",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Latvian",
+      "Lithuanian",
+      "Malay",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Romanian",
+      "Russian",
+      "Slovak",
+      "Spanish",
+      "Swedish",
+      "Thai",
+      "Turkish",
+      "Ukrainian",
+      "Vietnamese"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepgram.com/learn/nova-2-speech-to-text-api",
+      "title": "Nova-2: Automatic Speech Recognition, Reinvented | Deepgram",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Treated 'nova-2' as Deepgram's Nova-2-General model, distinct from its specialized nova-2-meeting/phonecall/etc. variants, which are separate catalog entries. WER is lower-is-better so Deepgram's WER figures are reported as advantages, not in evaluations (which requires higher-is-better 0-100 scores); no such maker score was found for Nova-2, so evaluations is left empty. Deepgram's own blog also claims WER improvements over unnamed 'competitors' and over OpenAI Whisper-large, which were not included here since they are comparative marketing claims rather than a single reproducible score. The catalog carries no deprecation_date. Verify pass: the nova-2/nova-2-general row of developers.deepgram.com/docs/models-languages-overview also lists Greek and Hungarian, which the original list omitted; added them from the same already-cited source."
+}

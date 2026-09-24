@@ -1,0 +1,40 @@
+{
+  "slug": "meta-textgeneration-llama-2-7b-f",
+  "canonical": "meta-textgeneration-llama-2-7b-f",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama-2-7b-chat is Meta's 7-billion-parameter, dialogue-tuned member of the Llama 2 family, released in July 2023. It starts from the Llama 2 7B pretrained model and is fine-tuned with supervised fine-tuning (SFT) and reinforcement learning from human feedback (RLHF) to act as an assistant-like chat model. On Amazon SageMaker JumpStart it is offered under the model id \"meta-textgeneration-llama-2-7b-f\" (the \"-f\" denoting the fine-tuned/chat variant), which accepts structured conversation input, distinct from the plain-completion \"meta-textgeneration-llama-2-7b\" base model.",
+    "advantages": [
+      "Fine-tuned with supervised fine-tuning (SFT) and reinforcement learning from human feedback (RLHF) specifically for dialogue use, per Meta's official model card.",
+      "Scores 57.04 on Meta's TruthfulQA safety evaluation (percentage of truthful and informative generations), versus 33.29 for the untuned base 7B model, per Meta's model card.",
+      "Reports 0.00% toxic generations on Meta's ToxiGen safety evaluation for the 7B chat model, per Meta's model card."
+    ],
+    "disadvantages": [
+      "4,096-token context window, per Meta's model card, below more recent Llama chat models.",
+      "English only; Meta's model card lists use in other languages as out-of-scope for this model.",
+      "Pretraining data cutoff of September 2022, with fine-tuning data current only to July 2023, per Meta's model card.",
+      "Requires a specific prompt format (`[INST]` / `<<SYS>>` tags with particular BOS/EOS token handling) to get expected chat behavior, per Meta's model card."
+    ],
+    "use_cases": [
+      "Assistant-like conversational chat, per Meta's model card ('Tuned models are intended for assistant-like chat').",
+      "Commercial and research dialogue applications in English.",
+      "Deployable via Amazon SageMaker JumpStart as a chat-completions model, per AWS's SageMaker JumpStart documentation."
+    ],
+    "evaluations": [
+      {"name": "TruthfulQA, chat-tuned 7B (% truthful and informative)", "score": 57.04, "source": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {"url": "https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md", "title": "llama/MODEL_CARD.md at main · meta-llama/llama", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf", "title": "meta-llama/Llama-2-7b-chat-hf · Hugging Face", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/llama-2-foundation-models-from-meta-are-now-available-in-amazon-sagemaker-jumpstart/", "title": "Llama 2 foundation models from Meta are now available in Amazon SageMaker JumpStart", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-choose.html", "title": "Model sources and license agreements - Amazon SageMaker AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts (4096 max input tokens, 4096 max output tokens, /v1/chat/completions endpoint) match this chat-tuned variant's 4,096-token context window and dialogue format. Meta does not publish a chat-specific MMLU/code/reasoning table (only TruthfulQA and ToxiGen are broken out separately for Llama-2-Chat), so only TruthfulQA is listed under evaluations; ToxiGen is lower-is-better so it is not included there but is noted as an advantage instead. The huggingface.co/meta-llama/Llama-2-7b-chat-hf model card is gated (requires an accepted license to view raw text), so its content was read via a page fetch and cross-checked against Meta's public, ungated GitHub MODEL_CARD.md, which matches. No current Meta or AWS page marks this specific model deprecated or legacy, though it predates Meta's Llama 3/3.1/3.2/3.3/4 chat models already in this catalog; I found no explicit superseded/deprecation statement to cite."
+}

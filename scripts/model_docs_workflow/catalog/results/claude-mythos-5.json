@@ -1,0 +1,47 @@
+{
+  "slug": "claude-mythos-5",
+  "canonical": "claude-mythos-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Mythos 5 is Anthropic's invitation-only counterpart to Claude Fable 5, released June 9, 2026 as part of Project Glasswing for defensive cybersecurity and biology research. It shares Claude Fable 5's underlying model, 1M-token context window, and 128K-token max output, but omits Fable 5's safety classifiers that can decline requests in sensitive domains. Access requires approval through Anthropic's, AWS's, or Google Cloud's account teams; Anthropic has since released Claude Mythos 5.1 (September 1, 2026) as the current model in this invitation-only line.",
+    "advantages": [
+      "Removes the safety classifiers that Claude Fable 5 uses to decline requests involving cybersecurity, biology/chemistry, or suspected distillation, giving vetted users direct access to those capabilities, per Anthropic's model page.",
+      "Showed about 80% preference over Opus-class models in blinded comparisons of molecular biology hypotheses, per Anthropic's launch post.",
+      "Shares Claude Fable 5's frontier coding and agentic capabilities, including topping Cognition's FrontierCode evaluation and Hebbia's Finance Benchmark among frontier models, per Anthropic's launch post."
+    ],
+    "disadvantages": [
+      "Restricted to invitation-only access through Project Glasswing; not available to general API users without approval from Anthropic, AWS, or Google Cloud account teams.",
+      "Superseded within the same invitation-only line by Claude Mythos 5.1, released September 1, 2026."
+    ],
+    "use_cases": [
+      "Defensive cybersecurity vulnerability research for vetted security professionals under Project Glasswing",
+      "Biology and life-sciences research, including molecular biology hypothesis generation, for vetted researchers",
+      "Long-horizon agentic coding and enterprise research tasks shared with Claude Fable 5"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://platform.claude.com/docs/en/models/mythos-5/overview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://platform.claude.com/docs/en/models/mythos-5/overview",
+      "title": "Claude Mythos 5 - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "title": "Claude Fable 5 and Claude Mythos 5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog has no deprecation_date fact for this model; for reference, Anthropic's model-deprecations table lists a tentative retirement of 'not sooner than June 9, 2027' for claude-mythos-5. This is a restricted, invitation-only model: general marketing pages found online (e.g. anthropic.com/claude/mythos) describe the current Mythos 5.1, not this Mythos 5 snapshot, so claims specific to 5.1 were excluded here."
+}

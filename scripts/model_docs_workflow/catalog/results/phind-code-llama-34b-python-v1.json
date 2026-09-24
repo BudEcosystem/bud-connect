@@ -1,0 +1,42 @@
+{
+  "slug": "phind-code-llama-34b-python-v1",
+  "canonical": "phind-code-llama-34b-python-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Phind",
+  "details": {
+    "description": "Phind-CodeLlama-34B-Python-v1 is a 34-billion-parameter code-generation model from Phind, fine-tuned from Meta's CodeLlama-34B-Python base model on a proprietary dataset of roughly 80,000 high-quality programming problems and solutions structured as instruction-answer pairs, trained for 2 epochs (about 160,000 total examples). Phind's model card describes it as \"somewhat instruction-tuned, but not chat-tuned,\" so it is meant to be given direct task descriptions rather than multi-turn conversational prompts. Phind states the model \"has undergone very limited testing\" and recommends additional safety testing before real-world deployment.",
+    "advantages": [
+      "Scores 69.5% pass@1 on HumanEval, exceeding the 67% GPT-4 score Phind's model card cites for comparison on the same benchmark.",
+      "Fine-tuned on roughly 80,000 high-quality, instruction-formatted programming problems and solutions, per the model card."
+    ],
+    "disadvantages": [
+      "\"Somewhat instruction-tuned, but not chat-tuned,\" per the model card, so it is not designed for multi-turn conversational prompting.",
+      "Phind's model card states the model \"has undergone very limited testing\" and recommends additional safety testing before real-world deployment.",
+      "Coding focus is specifically Python rather than general-purpose or multi-language code generation, per the model card."
+    ],
+    "use_cases": [
+      "Python code generation from direct task or problem descriptions",
+      "Solving programming problems posed as instruction-style prompts"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval",
+        "score": 69.5,
+        "source": "https://huggingface.co/Phind/Phind-CodeLlama-34B-Python-v1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Phind/Phind-CodeLlama-34B-Python-v1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Phind/Phind-CodeLlama-34B-Python-v1",
+      "title": "Phind/Phind-CodeLlama-34B-Python-v1 \u00b7 Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (16384) is consistent with the CodeLlama-34B-Python base model's published 16K context length. The model card states a training sequence length of 4096 tokens (\"We used a sequence length of 4096 tokens\"), which is a fine-tuning detail rather than the model's architectural context window, so it is not restated as a context-length fact. No note about deprecation or a newer version of this specific Python-tuned model was found on the maker's page."
+}

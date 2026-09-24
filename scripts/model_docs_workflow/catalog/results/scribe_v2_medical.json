@@ -1,0 +1,45 @@
+{
+  "slug": "scribe_v2_medical",
+  "canonical": "scribe_v2_medical",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "ElevenLabs",
+  "details": {
+    "description": "Scribe v2 Medical is ElevenLabs' speech recognition model, a fine-tune of Scribe v2 for medical and clinical audio, that became generally available on September 22, 2026. It improves recognition of drug names, anatomy, pathology, and clinical dictation while matching Scribe v2's accuracy on everyday speech, and supports 90+ languages, entity detection (including PHI categories), speaker diarization, and word-level timestamps through the same batch Speech-to-Text API, request parameters, and pricing as Scribe v2. ElevenLabs intends it for producing draft transcripts of clinical audio, such as clinician-patient conversations, dictation, and intake calls, for review and correction by a healthcare professional; it is not intended to interpret clinical information or provide diagnoses, treatment recommendations, or other clinical guidance.",
+    "advantages": [
+      "ElevenLabs reports 35% fewer transcription errors on clinical audio than base Scribe v2, with no regression in accuracy on everyday speech.",
+      "On the MedDictate clinical-dictation benchmark published by Corti, ElevenLabs reports it scored a 4.9% overall word error rate versus 7.6% for base Scribe v2, 5.9% for OpenAI's GPT Transcribe, and 5.5% for Deepgram's Nova-3 Medical, whose score is English-only.",
+      "Supports entity detection, including PHI categories, and speaker diarization for multi-speaker clinical audio using the same feature set as Scribe v2.",
+      "Eligible for HIPAA compliance with a signed Business Associate Agreement, and offers a Zero Retention Mode that deletes audio input and text output immediately after each request."
+    ],
+    "disadvantages": [
+      "Not intended to interpret clinical information or provide diagnoses, treatment recommendations, or other clinical guidance; ElevenLabs states output transcripts require review and correction by a healthcare professional before use.",
+      "Batch processing only, with no real-time streaming; ElevenLabs recommends Scribe v2 Realtime for live transcription instead.",
+      "On the Eka Medical ASR benchmark, ElevenLabs reports isolated single-word medical terms remain more error-prone (14.3% word error rate) than the same terms used in context (7.5%).",
+      "HIPAA-compliant use of protected health information requires contacting ElevenLabs Sales to sign a Business Associate Agreement, generally an Enterprise-tier arrangement."
+    ],
+    "use_cases": [
+      "Drafting clinical documentation from ambient clinician-patient encounters",
+      "Clinical dictation involving medication names, dosages, and findings",
+      "Transcribing patient intake and care-coordination phone calls",
+      "Compliance workflows combining transcription with PHI entity detection"
+    ],
+    "evaluations": [
+      {
+        "name": "MedTerm medical terminology benchmark term recall",
+        "score": 77.7,
+        "source": "https://elevenlabs.io/blog/scribe-v2-medical-generally-available"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://elevenlabs.io/docs/overview/models#scribe-v2-medical",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://elevenlabs.io/docs/overview/models", "title": "Models | ElevenLabs Documentation", "kind": "maker"},
+    {"url": "https://elevenlabs.io/blog/scribe-v2-medical-generally-available", "title": "Scribe v2 Medical is now generally available", "kind": "maker"},
+    {"url": "https://elevenlabs.io/docs/overview/capabilities/speech-to-text", "title": "Speech to Text | ElevenLabs Documentation", "kind": "maker"}
+  ],
+  "notes": "Language count is stated only as '90+ languages' (same coverage as Scribe v2), so the list is left empty per the count-only rule; the blog's benchmarks were themselves run only in English, French, and German. Word-error-rate figures (MedDictate, Eka Medical ASR, Common Voice) are reported in advantages/disadvantages, not evaluations, since WER is explicitly excluded from the accuracy-score list; the MedTerm term-recall figure (77.7%) is a higher-is-better 0-100 accuracy score from the maker's own published benchmark, so it is included as an evaluation."
+}

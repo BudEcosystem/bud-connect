@@ -1,0 +1,49 @@
+{
+  "slug": "qwen2.5-coder-32b-instruct",
+  "canonical": "qwen2.5-coder-32b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-32B-Instruct is a 32.5-billion-parameter, instruction-tuned code model from Alibaba Cloud's Qwen team, released in November 2024 as the flagship of the Qwen2.5-Coder series. It is built for code generation, code repair, and code reasoning, and was pretrained on 5.5 trillion tokens of source code, text-code grounding, and synthetic data before instruction tuning. The Qwen team describes its coding ability as matching GPT-4o on multiple benchmarks while also retaining general and mathematical competency. It is released under the Apache 2.0 license.",
+    "advantages": [
+      "Scores 92.7% on HumanEval and 90.2% on MBPP code-generation benchmarks, per the Qwen2.5-Coder technical report.",
+      "Averages 79.4% across MultiPL-E, a benchmark spanning multiple programming languages, per the technical report.",
+      "Reports 60.9% pass@1 and 73.7% pass@2 on the Aider code-editing benchmark, which Qwen describes as comparable to GPT-4o.",
+      "Scores 65.9 on McEval and leads open-source models with 75.2 on MdEval, per the Qwen2.5-Coder blog, both benchmarks covering dozens of programming languages.",
+      "Retains strong general and math ability, scoring 93.0% on GSM8K and 76.4% on MATH, per the technical report."
+    ],
+    "disadvantages": [
+      "Scores markedly lower on harder tasks: 27.0% on the BigCodeBench-Hard subset versus 49.6% on the full BigCodeBench set, per the technical report.",
+      "The model card lists English as the primary instruction language, despite broad programming-language coverage.",
+      "Extending context beyond the base 32,768-token configuration requires enabling YaRN scaling, which the model card notes can reduce performance on shorter texts."
+    ],
+    "use_cases": [
+      "Generating and completing code across 40+ programming languages.",
+      "Code repair and debugging, including multi-language fixes as tested by MdEval.",
+      "Code reasoning and step-by-step program execution analysis (CRUXEval).",
+      "Integration into AI coding assistants and IDE tools such as Cursor, per the Qwen blog.",
+      "Building code agents for real-world software engineering tasks, per the model card."
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 92.7, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "HumanEval+", "score": 87.2, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "MBPP", "score": 90.2, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "MultiPL-E (Average)", "score": 79.4, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "BigCodeBench (Full)", "score": 49.6, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "LiveCodeBench", "score": 31.4, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "GSM8K", "score": 93.0, "source": "https://arxiv.org/abs/2409.12186"},
+      {"name": "MATH", "score": 76.4, "source": "https://arxiv.org/abs/2409.12186"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", "title": "Qwen/Qwen2.5-Coder-32B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2409.12186", "title": "Qwen2.5-Coder Technical Report", "kind": "maker"}
+  ],
+  "notes": "Catalog lists a 32,768-token input/output limit for this hyperbolicai route; the Qwen model card describes that as the base config and states full support up to 131,072 tokens is available via YaRN scaling — the catalog's 32,768 value was kept per instructions. The GitHub repo QwenLM/Qwen2.5-Coder now documents the newer Qwen3-Coder series rather than this model, though no deprecation notice was found on the Qwen2.5-Coder-32B-Instruct model card itself, so github_url was left null. Tool/function-calling support is not documented on the pages checked, so it was left out of both advantages and disadvantages."
+}

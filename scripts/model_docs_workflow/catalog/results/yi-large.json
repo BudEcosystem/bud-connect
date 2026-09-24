@@ -1,0 +1,53 @@
+{
+  "slug": "yi-large",
+  "canonical": "yi-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "01.AI",
+  "details": {
+    "description": "Yi-Large is 01.AI's proprietary, API-only large language model, positioned as a flagship separate from the open-weight Yi and Yi-1.5 model families: unlike those, its weights are not published on 01.AI's GitHub or Hugging Face pages, and it is reachable only through 01.AI's own platform API or third-party hosts such as Fireworks AI. Fireworks AI's model listing describes it as a 70-billion-parameter dense model with a roughly 32,800-token context window that ranked among the top models on the LMSYS Chatbot Arena leaderboard at launch, close to GPT-4, Claude 3 Opus and Gemini 1.5 Pro. 01.AI's current English-language site no longer features Yi-Large and instead promotes Yi-Lightning, a newer mixture-of-experts model the company launched in October 2024.",
+    "advantages": [
+      "Fireworks AI reports it ranked among the top-performing models on the LMSYS Chatbot Arena leaderboard at launch, close behind GPT-4, Claude 3 Opus and Gemini 1.5 Pro.",
+      "Fireworks AI notes strong multilingual support, calling out Spanish, Chinese, Japanese, German and French specifically."
+    ],
+    "disadvantages": [
+      "01.AI's current homepage and English-language site promote Yi-Lightning (launched October 2024) as their flagship model instead; Yi-Large is absent from 01.AI's current public pages.",
+      "Not an open-weight model: its weights are not published on 01.AI's GitHub or Hugging Face pages, unlike the rest of the Yi family.",
+      "Context window of roughly 32,800 tokens (per Fireworks AI) is far smaller than 01.AI's separate 200K-token Yi-34B-200K open release."
+    ],
+    "use_cases": [
+      "Conversational AI and dialogue systems",
+      "Code assistance and programming tasks",
+      "Agentic system development",
+      "Enterprise retrieval-augmented generation (RAG)"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/yi-01-ai/yi-large",
+      "title": "Yi-Large - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/01-ai/Yi",
+      "title": "01-ai/Yi: A series of large language models trained from scratch by developers @01-ai",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.lingyiwanwu.com/en",
+      "title": "01.AI (Lingyiwanwu)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.01.ai/",
+      "title": "01.AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "01.AI's own product/docs site (platform.01.ai) is JavaScript-rendered and returned no readable model content to this session, and no accessible 01.AI blog post or press release announcing Yi-Large could be opened (a PR Newswire mirror returned 404, a BusinessWire mirror returned 403); search engines were also unavailable (WebSearch quota exhausted for this session, and Google/Bing/DuckDuckGo blocked automated queries). The parameter count (70B dense), context length and language list are Fireworks AI's characterization as a host, not confirmed directly on an 01.AI page, so languages is left empty per the chat-model rule requiring the maker to state them; the multilingual claim is instead kept as an attributed advantage sentence. Catalog's 32768-token max is consistent with Fireworks' listed ~32,800-token context. 01.AI's own GitHub repo (github.com/01-ai/Yi) does not list Yi-Large among its open-weight models, and 01.AI's current site promotes Yi-Lightning instead, so this write-up flags Yi-Large as likely superseded; a human should confirm current availability directly with 01.AI if possible. Verify pass: checked GitHub's news/changelog, Fireworks' metadata, Wikipedia's 01.AI article and 01.AI's own current pages for a Yi-Large release date; none state one, so the unsupported \"launched in May 2024\" claim was removed from the description rather than corrected."
+}

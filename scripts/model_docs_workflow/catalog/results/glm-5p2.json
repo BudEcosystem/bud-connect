@@ -1,0 +1,90 @@
+{
+  "slug": "glm-5p2",
+  "canonical": "glm-5p2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.2 is Z.ai's (formerly Zhipu AI) open-weight Mixture-of-Experts flagship model, released June 16, 2026, per Z.ai's release notes. It has 753 billion parameters and a 1,048,576-token (1M) context window, per its Hugging Face model card and configuration, and uses an IndexShare sparse-attention design that Z.ai says reduces per-token compute at long context lengths. It supports thinking modes, function calling, streaming, structured JSON output, and MCP tool integration, and Z.ai positions it for large-scale codebase comprehension, multi-file refactoring, and long-horizon agentic engineering. It is released under the MIT license. Fireworks AI, which hosts this model, states that serverless access to GLM-5.2 ends September 25, 2026, directing users to migrate to GLM-5.3, while on-demand deployment continues indefinitely.",
+    "advantages": [
+      "Scores 62.1 on SWE-bench Pro and 91.2 on GPQA-Diamond, per its Hugging Face model card.",
+      "Scores 99.2 on AIME 2026 and 81.0 on Terminal Bench 2.1 (Terminus-2), per its Hugging Face model card.",
+      "1,048,576-token (1M) context window, using an IndexShare architecture Z.ai says reduces per-token compute at long context lengths, per its Hugging Face model card.",
+      "Released under the permissive MIT license.",
+      "Scores higher than GLM-5.1 on every benchmark Z.ai lists for both models, including SWE-bench Pro (62.1 vs. 58.4) and AIME 2026 (99.2 vs. 95.3), per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Fireworks AI states that serverless access to this model ends September 25, 2026, directing users to migrate to GLM-5.3; on-demand deployment continues indefinitely.",
+      "Superseded as Z.ai's flagship by GLM-5.3, released August 18, 2026, per Z.ai's release notes."
+    ],
+    "use_cases": [
+      "Large-scale codebase comprehension and multi-file refactoring",
+      "Long-horizon agentic engineering and terminal-based operations",
+      "Mobile and on-device development and debugging",
+      "Academic research reproduction",
+      "Complex, multi-step reasoning and mathematics"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Pro",
+        "score": 62.1,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 91.2,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "AIME 2026",
+        "score": 99.2,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "Terminal Bench 2.1 (Terminus-2)",
+        "score": 81.0,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      },
+      {
+        "name": "NL2Repo",
+        "score": 48.9,
+        "source": "https://huggingface.co/zai-org/GLM-5.2"
+      }
+    ],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.2",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5.2",
+      "title": "GLM-5.2 - Overview - Z.AI DEVELOPER DOCUMENT",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5.2",
+      "title": "zai-org/GLM-5.2 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/zai-org/GLM-5",
+      "title": "zai-org/GLM-5: GLM-5.3 & GLM-5.2 & GLM-5.1 & GLM-5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.z.ai/release-notes/new-released",
+      "title": "New Released - Overview - Z.AI DEVELOPER DOCUMENT",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/glm-5p2",
+      "title": "GLM 5.2 - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks' serverless-deprecation date for GLM-5.2 (September 25, 2026, migrate to GLM-5.3) matches the catalog's deprecation_date exactly; on-demand deployment is unaffected per the same Fireworks page. Catalog's max_input_tokens (1,048,576) and max_output_tokens (131,072) match the Hugging Face config's max_position_embeddings and Fireworks/Z.ai's stated 128K max output exactly."
+}

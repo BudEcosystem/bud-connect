@@ -1,0 +1,38 @@
+{
+  "slug": "ft-gpt-3.5-turbo-0125",
+  "canonical": "ft:gpt-3.5-turbo-0125",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "ft:gpt-3.5-turbo-0125 is the identifier prefix for chat models fine-tuned from the gpt-3.5-turbo-0125 snapshot of OpenAI's GPT-3.5 Turbo, producing ids of the form ft:gpt-3.5-turbo-0125:{org}:{suffix}:{id}. This snapshot is the model that OpenAI's plain 'gpt-3.5-turbo' alias currently points to, and OpenAI's GPT-3.5 Turbo model page already lists gpt-3.5-turbo-0125 itself as 'Deprecated' in its snapshots list; the model has a 16,385-token context window, a 4,096-token max output, and a September 1, 2021 knowledge cutoff. OpenAI is winding down its fine-tuning platform entirely: it is closed to new users, and this base snapshot, along with fine-tuned models built on it, is scheduled to lose API access on October 23, 2026.",
+    "advantages": [
+      "OpenAI's model page lists fine-tuning as a supported feature of GPT-3.5 Turbo, letting customers train the underlying model on their own example prompts and responses.",
+      "OpenAI describes supervised fine-tuning, the technique this model supports, as well suited to classification, nuanced translation, generating content in a specific format, and correcting instruction-following failures (OpenAI's supervised fine-tuning guide)."
+    ],
+    "disadvantages": [
+      "OpenAI's GPT-3.5 Turbo model page already marks the gpt-3.5-turbo-0125 snapshot itself as 'Deprecated' in its list of snapshots and aliases.",
+      "OpenAI is winding down its fine-tuning platform: it is closed to new users, though existing users can still create jobs for a limited time, and inference on already fine-tuned models continues only until the base model is deprecated (OpenAI's supervised fine-tuning guide).",
+      "OpenAI's deprecations page schedules gpt-3.5-turbo-0125 and its fine-tuned models for shutdown on October 23, 2026, with gpt-5.6-terra listed as the recommended replacement base model.",
+      "Text-only input and output with no image, audio, or video support, and a September 1, 2021 knowledge cutoff (OpenAI's GPT-3.5 Turbo model page)."
+    ],
+    "use_cases": [
+      "Continued inference on chat models already fine-tuned from gpt-3.5-turbo-0125 before OpenAI closed the fine-tuning platform to new users.",
+      "Supervised fine-tuning for classification tasks.",
+      "Supervised fine-tuning for nuanced translation.",
+      "Supervised fine-tuning to generate content in a specific format.",
+      "Supervised fine-tuning to correct instruction-following failures."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-3.5-turbo",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-3.5-turbo", "title": "GPT-3.5 Turbo Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning", "title": "Supervised fine-tuning | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "OpenAI does not publish a separate docs page for the gpt-3.5-turbo-0125 snapshot on its own (that URL 404s); it is documented as an entry in the GPT-3.5 Turbo model page's snapshots list and in the deprecations page, both cited above. OpenAI's example fine-tuned checkpoint id, 'ft:gpt-3.5-turbo-0125:my-org:custom-suffix:96olL566:ckpt-step-2000', confirms this exact prefix format. Catalog facts (16,385 max input, 4,096 max output, text-only modality, 2026-10-23 deprecation, /v1/chat/completions endpoint) match OpenAI's GPT-3.5 Turbo model page and deprecations page, and are identical to the plain 'ft:gpt-3.5-turbo' target since both currently name the same underlying snapshot. Web search was unavailable for this session (budget exhausted), so research relied on directly fetching OpenAI's own docs pages."
+}

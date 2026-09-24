@@ -1,0 +1,38 @@
+{
+  "slug": "trinity-mini",
+  "canonical": "trinity-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Arcee AI",
+  "details": {
+    "description": "Trinity Mini is Arcee AI's 26-billion-parameter mixture-of-experts model with 3 billion active parameters, the medium-sized release in Arcee's new Trinity family of open-weight models that Arcee trained end-to-end in-house rather than fine-tuning another lab's base checkpoint. It uses Arcee's 'afmoe' architecture, described by Arcee as combining gated attention with Muon-based training, and was trained on 10 trillion tokens curated with Datology on a cluster of 512 H200 GPUs, with a 128,000-token context length. Arcee's Hugging Face model card lists the release under the OpenMDW-1.1 license and states the model supports 11 languages: English, Spanish, French, German, Italian, Portuguese, Russian, Arabic, Hindi, Korean, and Chinese.",
+    "advantages": [
+      "Scores 58.6% on GPQA Diamond, per Together AI's model page.",
+      "Arcee AI's launch blog post describes Trinity Mini as a compact reasoning model designed for agents, tools, and other multi-step workloads, with output quality the company says sits close to current instruction-tuned models.",
+      "Trained end-to-end by Arcee AI on 10 trillion tokens using a data pipeline curated with Datology, rather than being fine-tuned from a third-party base model, per Arcee's Hugging Face model card and blog post.",
+      "Supports a 128,000-token context length, per Arcee AI's Hugging Face model card.",
+      "Released as an open-weight model, per Arcee AI's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "As of Together AI's own listing for this model, Together states the model 'is not available on Together's Serverless API,' despite being catalogued on Together's site.",
+      "Arcee AI's December 2025 blog post states a larger 'Trinity Large' model was training on 2,048 B300 GPUs and expected in January 2026, positioning Trinity Mini as the mid-sized, not top-tier, member of the family."
+    ],
+    "use_cases": [
+      "Agentic workflows, tool use, and other multi-step reasoning tasks, per Arcee AI's blog post.",
+      "General reasoning tasks needing output quality close to current instruction-tuned models at a smaller, 3B-active-parameter footprint, per Arcee AI's blog post."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 58.6, "source": "https://www.together.ai/models/trinity-mini"}
+    ],
+    "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Russian", "Arabic", "Hindi", "Korean", "Chinese"],
+    "website_url": "https://huggingface.co/arcee-ai/Trinity-Mini",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/arcee-ai/Trinity-Mini", "title": "arcee-ai/Trinity-Mini · Hugging Face", "kind": "maker"},
+    {"url": "https://www.arcee.ai/blog/the-trinity-manifesto", "title": "Arcee Debuts Trinity Mini, Expanding Its U.S.-Built Model Line | Arcee AI", "kind": "maker"},
+    {"url": "https://www.together.ai/models/trinity-mini", "title": "Arcee AI Trinity Mini API: Pricing, Benchmarks & Docs | Together AI", "kind": "host"}
+  ],
+  "notes": "License conflict between maker sources: Arcee's Hugging Face model card (both the YAML metadata and the README body: 'Trinity-Mini is released under the OpenMDW-1.1 license') states OpenMDW-1.1, while Arcee's own blog post says 'Both are released under Apache 2.0.' Used the model-card-specific statement (OpenMDW-1.1) as authoritative since it directly governs the published weights; flagged the discrepancy here rather than guessing. The Hugging Face model card's and blog's 'Benchmarks' sections are both rendered only as images with no extractable numeric text, so only the single score visible in Together AI's own (text-based) benchmark table -- GPQA Diamond 58.6% -- could be confirmed; other benchmark claims were left out rather than read off an image. Together AI's page explicitly states this model is not currently available on Together's Serverless API, despite the catalog listing together_ai as a provider for this URI -- flagging for awareness, not asserting anything about Bud's own routing. Catalog facts for this target do not specify max_input_tokens, so reporting the maker's stated 128,000-token context length does not contradict a catalog value."
+}

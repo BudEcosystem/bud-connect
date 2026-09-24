@@ -1,0 +1,87 @@
+{
+  "slug": "deepseek-r1",
+  "canonical": "deepseek-r1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-R1 is DeepSeek AI's first-generation reasoning model, released January 2025 and documented in an accompanying arXiv paper (2501.12948) as achieving performance comparable to OpenAI's o1 on math, code and reasoning tasks. It is a 671-billion-parameter Mixture-of-Experts model with 37 billion active parameters, built from a DeepSeek-V3-Base checkpoint and trained with large-scale reinforcement learning to produce extended chain-of-thought reasoning before its final answer, per DeepSeek's GitHub repository. DeepSeek originally served R1 on its own platform under the deepseek-reasoner model name, but DeepSeek's changelog shows that alias was reassigned away from R1 to DeepSeek-V3.1 as early as August 2025, then to several later V3.x releases; DeepSeek's current API pricing page lists only deepseek-flash and deepseek-v4-pro, with deepseek-chat and deepseek-reasoner no longer listed at all following their announced 2026-07-24 discontinuation. The open-weight model remains downloadable from DeepSeek directly and, per Bud's catalog, is still served through third-party hosts such as Fireworks AI and Hyperbolic.",
+    "advantages": [
+      "Scores 79.8% on AIME 2024 (pass@1), close to OpenAI o1's 79.2%, per DeepSeek's GitHub repository.",
+      "Scores 97.3% on MATH-500 (pass@1), per DeepSeek's GitHub repository.",
+      "Scores 71.5% on GPQA Diamond, per DeepSeek's GitHub repository.",
+      "Released under the MIT License, permitting commercial use and distillation into smaller models, per DeepSeek's GitHub repository.",
+      "DeepSeek has released six smaller distilled variants (1.5B-70B, Qwen- and Llama-based) trained on DeepSeek-R1 outputs, per DeepSeek's GitHub repository."
+    ],
+    "disadvantages": [
+      "DeepSeek's current API documentation no longer lists standalone R1 among its active models; the deepseek-reasoner alias that served R1 was reassigned to DeepSeek-V3.1 in August 2025 (a year before any V4 model existed), and the alias itself was discontinued by 2026-07-24 alongside deepseek-chat.",
+      "Superseded on DeepSeek's own reasoning line by the May 2025 DeepSeek-R1-0528 update, which DeepSeek reports scores substantially higher on the same benchmarks.",
+      "DeepSeek's usage guidance for R1 recommends against system prompts and a temperature of 0.5-0.7.",
+      "Text only; no image or audio input or output, per DeepSeek's Hugging Face model card."
+    ],
+    "use_cases": [
+      "Multi-step mathematical and logical reasoning.",
+      "Code generation and competitive programming.",
+      "General reasoning tasks requiring an explicit chain-of-thought before a final answer."
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2024",
+        "score": 79.8,
+        "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "MATH-500",
+        "score": 97.3,
+        "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 71.5,
+        "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "MMLU-Pro",
+        "score": 84.0,
+        "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "LiveCodeBench",
+        "score": 65.9,
+        "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-r1",
+      "title": "DeepSeek R1 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (32768/65536/128000) and max_output_tokens (8192/20480/32768) vary by provider (DeepSeek's own API, Fireworks, Hyperbolic) and are kept as given; DeepSeek's GitHub repository documents a 128,000-token native context, matching the catalog's highest max_input value, while Fireworks' own R1 page separately lists a larger 163,840-token window for its speed-optimized deployment -- not reconciled against catalog's numbers. Correction: DeepSeek's changelog shows the deepseek-reasoner alias served R1 (from 2025-01-20), then R1-0528 (from 2025-05-28), then was reassigned to DeepSeek-V3.1 on 2025-08-21 -- well before any V4 model existed -- and continued through V3.1-Terminus, V3.2-Exp, V3.2 and finally V4-Flash (2026-04-24). That same 2026-04-24 entry separately announced deepseek-chat/deepseek-reasoner would be discontinued by 2026-07-24; as of this research neither name appears on DeepSeek's current pricing page, which lists only deepseek-flash and deepseek-v4-pro. Fireworks' own R1 page showed no deprecation marking as of this research, and Bud's catalog still lists deepseek, fireworks_ai-embedding-models and hyperbolicai as providers."
+}

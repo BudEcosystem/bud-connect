@@ -1,0 +1,38 @@
+{
+  "slug": "grok-4.3-latest",
+  "canonical": "grok-4.3-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "SpaceXAI",
+  "details": {
+    "description": "Grok 4.3 is SpaceXAI's tool-calling-focused chat model, accepting text and image input with text-only output over a 1M-token context window -- twice the window of the newer Grok 4.5, 4.6 and 4.7 models in the same lineup. xAI's docs describe it as a fast, reliable model with strong tool calling and instruction-following, and it supports five reasoning-effort levels, including a non-reasoning 'none' mode, with 'low' as the default.",
+    "advantages": [
+      "1,000,000-token context window, twice that of the newer Grok 4.5, 4.6 and 4.7 models (xAI docs).",
+      "Supports five reasoning-effort levels, including a 'none' mode for non-reasoning responses (xAI docs).",
+      "Supports the Batch API, unlike the newer Grok 4.5 and 4.7 models, which do not (xAI docs)."
+    ],
+    "disadvantages": [
+      "Scores 25 on the Artificial Analysis Intelligence Index, which Artificial Analysis describes as below average among reasoning models in a similar price tier.",
+      "Accepts text and image input only, with text-only output; no audio input/output or native image generation.",
+      "Marked deprecated on Artificial Analysis as of September 2026, which recommends Grok 4.6 as a newer alternative; xAI's own docs still list Grok 4.3 as an available model with no deprecation notice."
+    ],
+    "use_cases": [
+      "Tool-calling and instruction-following tasks",
+      "Long-document or long-context processing up to 1M tokens",
+      "General chat and reasoning tasks, including a faster non-reasoning ('none' effort) mode",
+      "Batch-processed workloads via the Batch API"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 25, "source": "https://artificialanalysis.ai/models/grok-4-3"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.3",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.3", "title": "Grok 4.3 | xAI Docs", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-3", "title": "Grok 4.3 (high) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "No dedicated xAI launch/news post for Grok 4.3 could be found (x.ai/news/grok-4-3 and similar guessed URLs 404, and a web search for it surfaced no dedicated page), so description and specs rely on xAI's docs page and Artificial Analysis only; no numeric task benchmarks beyond the AA Intelligence Index were found. grok-4.3-latest is an alias of grok-4.3 per xAI's docs. 'SpaceXAI' was used as maker for consistency with the sibling Grok 4.5/4.6/4.7 docs and news pages on the same site (e.g. docs.x.ai/developers/models/grok-4.5 reads \"SpaceXAI's intelligent coding model\"), though the grok-4.3 docs page itself did not state a company name in the text checked. No max-output-tokens value distinct from the 1M context window is given on xAI's docs, matching the catalog's facts. No price claims are included per the research brief, so the 'lower pricing than newer versions' seen on xAI's docs is omitted."
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "qwen2p5-coder-32b",
+  "canonical": "qwen2p5-coder-32b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-32B is the 32.5-billion-parameter base checkpoint and flagship size in Alibaba's Qwen2.5-Coder family, open-sourced by the Qwen team on November 12, 2024. It was pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data. As a base (non-instruct) model, Qwen states it is not meant for direct conversational use and instead serves as a foundation for fine-tuning, reinforcement learning, or continued pretraining.",
+    "advantages": [
+      "Pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card.",
+      "Natively supports a 32,768-token context window, extendable to 131,072 tokens via YaRN scaling, per Qwen's model card.",
+      "Released under the Apache 2.0 license, permitting commercial use and redistribution."
+    ],
+    "disadvantages": [
+      "Is a base model, not tuned for instructions; Qwen states it does not recommend using base language models for conversations and instead recommends fine-tuning, RLHF, or continued pretraining.",
+      "Text-only input and output, with no vision or audio support."
+    ],
+    "use_cases": [
+      "Fine-tuning into custom coding assistants, agents, or domain-specific code models.",
+      "Continued pretraining or RLHF starting point for organizations building their own code LLMs.",
+      "Code completion and generation research or benchmarking as an open-weight foundation model."
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 65.9, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "HumanEval+", "score": 60.4, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP", "score": 83.0, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP+", "score": 68.2, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "BigCodeBench-Complete (Full)", "score": 76.4, "source": "https://arxiv.org/html/2409.12186"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B", "title": "Qwen/Qwen2.5-Coder-32B · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Family: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://arxiv.org/html/2409.12186", "title": "Qwen2.5-Coder Technical Report", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-32b", "title": "qwen2p5-coder-32b - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Base (non-instruct) checkpoint. The published Aider/McEval/MdEval scores refer to the Instruct variant, not this base model, so those are correctly excluded. However, the maker's Qwen2.5-Coder Technical Report (arXiv 2409.12186) does publish base-model-specific scores (HumanEval, HumanEval+, MBPP, MBPP+, BigCodeBench-Complete) in its base-model evaluation section, which were added since they were missing from the family blog post the researcher checked."
+}

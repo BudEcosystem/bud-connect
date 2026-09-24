@@ -1,0 +1,65 @@
+{
+  "slug": "code-qwen-1p5-7b",
+  "canonical": "code-qwen-1p5-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba Cloud (Qwen team)",
+  "details": {
+    "description": "CodeQwen1.5-7B is Alibaba Cloud's code-specialized language model built on the Qwen1.5 architecture, pretrained on about 3 trillion tokens of code data and supporting 92 programming languages with a 64K-token context window. It uses grouped-query attention for efficient inference. It is a base model for code completion, infilling and generation rather than conversation -- Qwen's own model card says 'we do not advise you to use it for chat' and recommends it instead for fine-tuning, code infilling, and code generation.",
+    "advantages": [
+      "Scores 51.8% pass@1 on HumanEval and 72.2% pass@1 on MBPP (0-shot), per Qwen's CodeQwen1.5 announcement.",
+      "Also reports 45.7% pass@1 on HumanEval+ (0-shot), per Qwen's CodeQwen1.5 announcement.",
+      "Supports a 64K-token context window.",
+      "Covers 92 programming languages; Qwen evaluated it on eight of them (Python, C++, Java, PHP, TypeScript, C#, Bash, JavaScript) via MultiPL-E."
+    ],
+    "disadvantages": [
+      "Base model, not tuned for chat: Qwen's own model card advises against using it for chat and recommends fine-tuning, infilling, or generation instead.",
+      "Licensed under Alibaba's custom Tongyi Qianwen Research license rather than a fully permissive open-source license.",
+      "Requires transformers>=4.37.0; earlier versions raise a KeyError for its qwen2 architecture, per Qwen's model card."
+    ],
+    "use_cases": [
+      "Code completion and infilling across 92 programming languages.",
+      "Base model for fine-tuning on downstream code-generation tasks.",
+      "Text-to-SQL and bug-fixing tasks, per Qwen's model card."
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 51.8,
+        "source": "https://qwenlm.github.io/blog/codeqwen1.5/"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 72.2,
+        "source": "https://qwenlm.github.io/blog/codeqwen1.5/"
+      },
+      {
+        "name": "HumanEval+ pass@1",
+        "score": 45.7,
+        "source": "https://qwenlm.github.io/blog/codeqwen1.5/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/CodeQwen1.5-7B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/CodeQwen1.5-7B",
+      "title": "CodeQwen1.5-7B",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/CodeQwen1.5-7B/raw/main/README.md",
+      "title": "CodeQwen1.5-7B README",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/codeqwen1.5/",
+      "title": "Code with CodeQwen1.5",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud serves this model as 'chat' kind via /v1/chat/completions, but Qwen's own model card advises against using this base checkpoint for chat and recommends fine-tuning, infilling, or generation instead; kept Bud's routing/kind as given. The catalog's 65536-token input/output limits match Qwen's stated 64K context length. Found no dedicated public GitHub repository for this specific model, so github_url is left null."
+}

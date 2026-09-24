@@ -1,0 +1,74 @@
+{
+  "slug": "code-llama-7b-python",
+  "canonical": "code-llama-7b-python",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Code Llama - Python 7B is Meta's Python-specialized variant of Code Llama 7B, additionally trained on about 100 billion tokens of Python code on top of the base checkpoint for stronger Python completion. It is a raw code-completion model, not instruction- or chat-tuned, and does not support infilling. Meta's Code Llama GitHub repository was archived (read-only) on July 1, 2025, and Code Llama is absent from Meta's current model documentation, which now centers on newer Llama releases.",
+    "advantages": [
+      "Additionally trained on about 100 billion tokens of Python code beyond the base model, per Meta's launch post.",
+      "Scores 38.4% pass@1 on HumanEval and 47.6% pass@1 on MBPP (Meta's Code Llama paper, Table 2).",
+      "Trained on sequences of up to 16k tokens."
+    ],
+    "disadvantages": [
+      "Specialized for Python; Meta positions it for Python rather than general multi-language code tasks.",
+      "Does not support infilling, per Meta's launch post, unlike the base and Instruct 7B/13B variants.",
+      "Trained only on data collected through July 2023.",
+      "Meta's Code Llama GitHub repository was archived in July 2025 and the family is absent from Meta's current model documentation."
+    ],
+    "use_cases": [
+      "Python-specific code completion and generation.",
+      "Base model for fine-tuning on Python-heavy coding tasks."
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 38.4,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 47.6,
+        "source": "https://ar5iv.labs.arxiv.org/html/2308.12950"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/codellama/CodeLlama-7b-Python-hf",
+    "github_url": "https://github.com/meta-llama/codellama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/codellama/CodeLlama-7b-Python-hf",
+      "title": "CodeLlama-7b-Python-hf",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+      "title": "Introducing Code Llama, an AI Tool for Coding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/codellama",
+      "title": "meta-llama/codellama (archived)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ar5iv.labs.arxiv.org/html/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code (HTML, Table 2)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/",
+      "title": "Model Cards and Prompt formats",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud serves this model as 'chat' kind via /v1/chat/completions, but Meta's card describes it as a raw completion model with no instruction/infilling support; kept Bud's routing/kind as given."
+}

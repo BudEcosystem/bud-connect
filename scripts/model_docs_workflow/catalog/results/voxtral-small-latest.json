@@ -1,0 +1,58 @@
+{
+  "slug": "voxtral-small-latest",
+  "canonical": "voxtral-small-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Small is Mistral AI's audio-input model for instruct use cases, released July 15, 2025 under the Apache 2.0 license as an audio-capable version of the Mistral Small 3.1 backbone. 'voxtral-small-latest' is Mistral's always-current API alias for this model, and Mistral's own model card lists it alongside 'voxtral-small-2507' as the version it currently resolves to. It transcribes speech with automatic language detection, answers questions about audio and summarizes it directly without a separate speech-recognition pipeline, and supports function-calling triggered from voice input. Mistral's model card marks it generally available (GA) with a 32K-token context window.",
+    "advantages": [
+      "Mistral reports it comprehensively outperforms OpenAI's Whisper large-v3 on transcription, beating GPT-4o mini Transcribe and Gemini 2.5 Flash across tasks (Mistral AI Voxtral blog).",
+      "Mistral reports state-of-the-art results on English short-form transcription and on Mozilla Common Voice, and that it outperforms Whisper on every FLEURS multilingual task (Mistral AI Voxtral blog).",
+      "Listed as generally available (GA), not preview, on Mistral's own model card (Mistral AI Voxtral Small model page).",
+      "Released under the Apache 2.0 license, permitting open commercial and research use (Mistral AI Voxtral Small model page; Mistral AI Voxtral blog)."
+    ],
+    "disadvantages": [
+      "Mistral documents strong performance for eight named languages (English, Spanish, French, Portuguese, Hindi, German, Dutch, Italian) without giving a fuller list (Mistral AI Voxtral blog).",
+      "Mistral's comparisons against Whisper, GPT-4o mini Transcribe and Gemini 2.5 Flash are its own reported results, not an independent third-party leaderboard for this exact model (Mistral AI Voxtral blog)."
+    ],
+    "use_cases": [
+      "High-accuracy speech transcription with automatic language detection (Mistral AI Voxtral Small model page; Mistral AI Voxtral blog).",
+      "Voice-based question answering and audio summarization (Mistral AI Voxtral blog).",
+      "Speech translation (Mistral AI Voxtral blog).",
+      "Triggering function calls or backend workflows directly from voice input (Mistral AI Voxtral blog)."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish",
+      "French",
+      "Portuguese",
+      "Hindi",
+      "German",
+      "Dutch",
+      "Italian"
+    ],
+    "website_url": "https://docs.mistral.ai/models/voxtral-small-25-07",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-small-25-07",
+      "title": "Voxtral Small - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral",
+      "title": "Voxtral - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/mistralai/Voxtral-Small-24B-2507",
+      "title": "mistralai/Voxtral-Small-24B-2507 - Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Confirmed via Mistral's own model-card page (raw HTML) that the alias 'voxtral-small-latest' is listed together with 'voxtral-small-2507', i.e. it currently resolves to the same July 2025 release already covered under the catalog's separate 'voxtral-small-24b-2507' entry (Bedrock/Hugging Face use the '24B-2507' name; Mistral's own API uses '2507'/'latest'). Catalog facts (32,768 max input and output tokens) match Mistral's own 32K context-window figure exactly, so no conflict to flag here."
+}

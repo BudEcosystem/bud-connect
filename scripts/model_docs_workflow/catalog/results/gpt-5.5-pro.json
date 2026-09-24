@@ -1,0 +1,77 @@
+{
+  "slug": "gpt-5.5-pro",
+  "canonical": "gpt-5.5-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.5 Pro is a high-compute configuration of GPT-5.5 that OpenAI released alongside it on April 23-24, 2026, using additional parallel test-time compute to produce more careful, higher-accuracy responses on complex, high-stakes problems. It is reachable only through OpenAI's Responses and Batch APIs (no Chat Completions), with reasoning effort fixed to medium, high (default) or xhigh, and requests can take several minutes to complete. Like the rest of the GPT-5.5 generation, it is no longer among the models featured in OpenAI's current API documentation, which now leads with the GPT-6 family (Astra, Sol, Luna) launched September 2026.",
+    "advantages": [
+      "Scores 90.1% on BrowseComp, higher than GPT-5.5's 84.4%, per OpenAI's launch benchmarks.",
+      "Reaches 39.6% on FrontierMath Tier 4 and 52.4% on Tier 1-3, both above GPT-5.5's scores on the same tests, per OpenAI's launch benchmarks.",
+      "Scores 82.3% on GDPval for professional knowledge-work tasks, per OpenAI's launch benchmarks.",
+      "Uses additional parallel test-time compute versus the base GPT-5.5 for deeper, more precise reasoning on complex problems, per OpenAI."
+    ],
+    "disadvantages": [
+      "Only available through the Responses and Batch APIs; no Chat Completions endpoint, per OpenAI's model documentation.",
+      "Requests can take several minutes to complete, per OpenAI's API documentation.",
+      "Superseded, along with the rest of the GPT-5.5 generation, by GPT-5.6 and then by the GPT-6 family (Astra, Sol, Luna) launched September 2026.",
+      "Text output only; knowledge cutoff of December 1, 2025, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Deep reasoning on complex, high-stakes problems in research, finance or law",
+      "Long-horizon agentic coding and multi-step technical workflows",
+      "Scientific research collaboration, e.g. critiquing manuscripts or stress-testing analyses",
+      "Batch processing of large document sets where latency matters less than accuracy"
+    ],
+    "evaluations": [
+      {
+        "name": "BrowseComp",
+        "score": 90.1,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "GDPval (wins/ties)",
+        "score": 82.3,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "FrontierMath Tier 1-3",
+        "score": 52.4,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      },
+      {
+        "name": "FrontierMath Tier 4",
+        "score": 39.6,
+        "source": "https://openai.com/index/introducing-gpt-5-5/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.5-pro",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.5-pro",
+      "title": "GPT-5.5 Pro Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/introducing-gpt-5-5/",
+      "title": "Introducing GPT-5.5 | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+      "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes | TechCrunch",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "openai.com/index pages returned HTTP 403 on direct fetch; content was retrieved through a read-only fetch proxy showing the same benchmark table that a third-party summary (Vellum) independently reported, so it is treated as opened. Catalog endpoints (/v1/batch, /v1/responses only) match what OpenAI's docs state for this model. Kept catalog's max_input_tokens (1,050,000) and max_output_tokens (128,000) as-is."
+}

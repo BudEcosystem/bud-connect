@@ -1,0 +1,31 @@
+{
+  "slug": "ft-gpt-4o-mini",
+  "canonical": "ft:gpt-4o-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o mini is OpenAI's fast, affordable small model for focused tasks, positioned by OpenAI as ideal for fine-tuning and for distilling outputs from larger models like GPT-4o. This catalog entry is the gpt-4o-mini-2024-07-18 snapshot as exposed for fine-tuning through OpenAI's fine-tuning API. Knowledge cutoff is October 1, 2023.",
+    "advantages": [
+      "OpenAI's model page states it is \"ideal for fine-tuning\" and lists Fine-tuning among its supported API endpoints.",
+      "OpenAI's model page recommends it for distilling outputs from larger models such as GPT-4o to achieve comparable results at lower cost and latency."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of October 1, 2023."
+    ],
+    "use_cases": [
+      "Creating a custom fine-tuned model for focused, cost-sensitive tasks.",
+      "Distilling a larger model's outputs into a smaller, cheaper model."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4o-mini", "title": "GPT-4o Mini Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "No deprecation notice found for gpt-4o-mini-2024-07-18 on OpenAI's deprecations page. OpenAI's fine-tuning/model-optimization guide table (SFT/DPO/vision/RFT) does not list gpt-4o-mini, but the model's own page explicitly states it is ideal for fine-tuning and lists Fine-tuning as a supported endpoint, so I kept the fine-tuning claim on that basis. Catalog facts list only text_input/text_output modality for this fine-tuning entry, while the general gpt-4o-mini model page also lists image input for normal chat use; kept the catalog's modality per instructions."
+}

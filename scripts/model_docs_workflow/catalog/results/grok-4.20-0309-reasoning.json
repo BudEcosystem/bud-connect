@@ -1,0 +1,37 @@
+{
+  "slug": "grok-4.20-0309-reasoning",
+  "canonical": "grok-4.20-0309-reasoning",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 is a chat model from xAI, released in March 2026 (the 0309 dated snapshot) as part of the Grok 4.20 family alongside a Grok 4.20 Multi-agent model. This is the reasoning-enabled variant, which uses extended step-by-step reasoning before answering. It accepts text and image input and produces text output, with a 1,000,000-token context window, and supports function calling, structured outputs and the Batch API.",
+    "advantages": [
+      "Supports a 1,000,000-token context window.",
+      "Accepts both text and image input for text output, per xAI's model documentation.",
+      "Uses extended reasoning before responding, unlike the grok-4.20-0309-non-reasoning variant of the same model.",
+      "Supports native function calling and structured outputs, per xAI's documentation."
+    ],
+    "disadvantages": [
+      "xAI's documentation states that logprobs and top_logprobs are not supported by grok-4.20 and newer models."
+    ],
+    "use_cases": [
+      "Agentic workflows that call tools/functions as part of multi-step tasks",
+      "Tasks that benefit from extended reasoning before answering",
+      "Structured-output generation",
+      "Vision tasks that combine image and text input"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20-0309-reasoning",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-0309-reasoning", "title": "grok-4.20-0309-reasoning - xAI docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models", "title": "Models - xAI docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/release-notes", "title": "Release notes - xAI docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/rest-api-reference/inference/chat-completions", "title": "Chat Completions - xAI API Reference", "kind": "maker"}
+  ],
+  "notes": "xAI's own pages describe the model with marketing language ('industry-leading speed', 'lowest hallucination rate on the market') that is not tied to a published benchmark number, so it is left out per the no-unattributed-superlatives rule; no evaluation scores were found on any page opened. Facts (1M context, image+text input to text output, xai provider) match the catalog. Model status is not labeled beta/preview/deprecated on the current models or release-notes pages."
+}

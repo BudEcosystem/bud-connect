@@ -1,0 +1,45 @@
+{
+  "slug": "azure-tts",
+  "canonical": "azure-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Microsoft",
+  "details": {
+    "description": "Azure AI Speech's text-to-speech service, part of Microsoft's Azure AI Foundry Tools, converts written text into natural-sounding speech using deep neural networks. It offers more than 500 standard neural voices out of the box across 100+ languages and locales, plus the option to create a custom brand voice from a small set of recordings. It is built for scenarios such as voice assistants, audiobook narration, and in-car navigation.",
+    "advantages": [
+      "Provides more than 500 out-of-the-box standard neural voices across 100+ languages and locales.",
+      "Supports full SSML markup to adjust pitch, pauses, pronunciation, rate, and volume, and to mix multiple voices in one document.",
+      "Each standard voice model is available at both 24 kHz and high-fidelity 48 kHz sample rates.",
+      "A batch synthesis API can asynchronously generate audio longer than 10 minutes, such as audiobooks or lectures, in addition to real-time synthesis.",
+      "Viseme events expose facial animation data (lip and jaw position) for lip-sync applications, currently for en-US voices."
+    ],
+    "disadvantages": [
+      "Viseme (facial animation) support is currently limited to en-US neural voices."
+    ],
+    "use_cases": [
+      "Voice assistants and chatbot responses",
+      "Converting e-books into audiobooks",
+      "In-car navigation announcements",
+      "IVR and interactive voice prompts",
+      "Creating a custom brand voice for a product"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech",
+      "title": "Text to speech overview - Speech service - Foundry Tools | Microsoft Learn",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/high-definition-voices",
+      "title": "What are neural text to speech HD voices? - Foundry Tools | Microsoft Learn",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This catalog entry (azure/speech/azure-tts) covers Azure's standard (non-HD) neural voices as a group, not one named voice. The source states only a '100+ languages and locales' count, so no per-language list is given per the count-only rule. The '500+ voices' figure is not stated on the text-to-speech overview page itself; it is confirmed on Microsoft's high-definition-voices page, which gives 'More than 500' for non-HD Azure Speech voices in its comparison table, so that page was added to sources."
+}

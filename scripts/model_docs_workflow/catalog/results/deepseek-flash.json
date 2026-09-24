@@ -1,0 +1,49 @@
+{
+  "slug": "deepseek-flash",
+  "canonical": "deepseek-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V4.1-Flash is DeepSeek's multimodal mixture-of-experts chat model, released September 10, 2026 as the smallest model in a new architecture family and reached via the API model id deepseek-flash. It uses a Causal Encoder-Decoder design with 552 billion backbone parameters but activates only 8 billion for input processing and 16 billion for output generation, and it processes images alongside text natively from pretraining. DeepSeek reports that internal and third-party tests place it ahead of the larger DeepSeek-V4-Pro on performance, cost, speed and total runtime despite the much smaller active-parameter count. It succeeds the earlier DeepSeek-V4-Flash (public beta July 2026); the legacy ids deepseek-v4-flash and deepseek-v4-flash-vision-exp are retired and now route to this model, billed at Flash pricing.",
+    "advantages": [
+      "Scores 90.9% (Pass@1) on GPQA Diamond, a graduate-level science reasoning benchmark.",
+      "Resolves 74.2% of tasks on the DeepSWE v1.1 software-engineering agent benchmark.",
+      "Passes 90.6% (Pass@1) of tasks on Terminal-Bench 2.1, a benchmark for agentic terminal use.",
+      "Natively processes images and text through a built-in vision encoder from pretraining rather than a later-added adapter.",
+      "Supports a continuously controllable reasoning-effort setting (1-100) that trades inference cost for accuracy.",
+      "DeepSeek reports internal and third-party tests place it ahead of the larger DeepSeek-V4-Pro model on performance, cost, speed and total runtime."
+    ],
+    "disadvantages": [
+      "No audio input or output; modality is limited to text and images."
+    ],
+    "use_cases": [
+      "Agentic coding and terminal/command-line automation, with documented integration into Claude Code, OpenCode and OpenClaw.",
+      "Software-engineering agents that resolve repository bug-fixing tasks.",
+      "Visual-understanding tasks that combine images with tool use.",
+      "Security-research and cybersecurity agent tasks.",
+      "Long-context agentic workflows using up to a 1,000,000-token context window.",
+      "General chat and reasoning tasks with adjustable reasoning effort."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 90.9, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "Humanity's Last Exam", "score": 36.8, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "MathArena Apex", "score": 65.6, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "Terminal-Bench 2.1", "score": 90.6, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "DeepSWE v1.1", "score": 74.2, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "CyberGym", "score": 88.1, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash", "title": "deepseek-ai/DeepSeek-V4.1-Flash · Hugging Face", "kind": "maker"},
+    {"url": "https://deepseek.com/en/news/deepseek-v4-1-flash/", "title": "Introducing DeepSeek-V4.1-Flash: smarter, faster, more efficient", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/guides/coding_agents/", "title": "Integrate with AI Tools | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/updates/", "title": "Change Log | DeepSeek API Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1,000,000 input tokens; 393,216 = 384K output tokens; image+text modality, no audio) match DeepSeek's own pricing and model-card figures, no conflicts. 'deepseek-flash' resolves to DeepSeek-V4.1-Flash (released Sept 10, 2026), which supersedes the earlier DeepSeek-V4-Flash (public beta July 2026); legacy ids deepseek-v4-flash and deepseek-v4-flash-vision-exp now route to it. The model card lists many more agentic benchmark scores (e.g. ProgramBench, NL2Repo-Bench, SEC-Bench Pro, ExploitGym, AutomationBench, Terminal-Bench 3.0/4.0) that were left out here for brevity but are consistent in kind with the ones included; a Codeforces rating (3471) was excluded as not an 0-100 accuracy score."
+}

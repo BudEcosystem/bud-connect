@@ -1,0 +1,48 @@
+{
+  "slug": "gemma-3-4b-it",
+  "canonical": "gemma-3-4b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemma 3 4B is an instruction-tuned, open-weight multimodal model in Google DeepMind's Gemma 3 family, accepting text and image input and producing text output over a 128K-token context window. It was trained on 4 trillion tokens with an August 2024 knowledge cutoff and supports data in over 140 languages, per Google's model card. It is the smaller of Gemma 3's 128K-context sizes and is designed to run on a single GPU or resource-constrained devices; Google's current developer docs now list Gemma 4 as the current generation, with Gemma 3 grouped under \"previous Gemma models,\" though its weights remain downloadable.",
+    "advantages": [
+      "Scores 71.3 on HumanEval (0-shot) and 89.2 on GSM8K (0-shot), per Google's Gemma 3 model card.",
+      "Trained on data spanning over 140 languages, per Google's Gemma 3 model card.",
+      "Small enough to run on a single GPU or on resource-constrained devices such as laptops, per Google's Gemma 3 overview.",
+      "Handles text and image input, encoding each image at 896x896 resolution as 256 tokens, per Google's model card."
+    ],
+    "disadvantages": [
+      "Superseded by Gemma 4, which Google's developer docs list as the current Gemma generation, with Gemma 3 grouped under \"previous Gemma models.\"",
+      "Lower benchmark scores than the larger Gemma 3 12B and 27B variants, e.g. 43.6 vs 60.6 on MMLU (Pro), per Google's model card.",
+      "No function calling or tool-use capability is documented for this model on Google's model card; Google offers a separate FunctionGemma variant for that.",
+      "Knowledge cutoff of August 2024, per Google's model card."
+    ],
+    "use_cases": [
+      "Question answering and image content analysis",
+      "Text summarization",
+      "Creative text generation such as poems, scripts, and marketing copy",
+      "Code generation and math problem-solving",
+      "Deployment in resource-constrained environments such as laptops or personal cloud infrastructure"
+    ],
+    "evaluations": [
+      {"name": "MMLU (Pro)", "score": 43.6, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "GSM8K", "score": 89.2, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "HumanEval", "score": 71.3, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "GPQA Diamond", "score": 30.8, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "BIG-Bench Hard", "score": 72.2, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "MMMU (val)", "score": 48.8, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/google/gemma-3-4b-it",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-3-4b-it", "title": "google/gemma-3-4b-it · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core/model_card_3", "title": "Gemma 3 model card | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core", "title": "Gemma 4 model overview | Google AI for Developers", "kind": "maker"},
+    {"url": "https://deepmind.google/models/gemma/gemma-4/", "title": "Gemma 4 — Google DeepMind", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_output_tokens (8000) is close to, but not identical to, Google's stated 8,192-token max output for Gemma 3 4B IT; kept the catalog's value per instructions. Google's ai.google.dev/gemma/docs/core page now lists Gemma 4 as the current generation and groups Gemma 3 under 'Previous Gemma models,' though no formal deprecation date is stated for Gemma 3 itself and its weights remain available. The Hugging Face card also carries a separate, lower benchmark table for the base ('PT') checkpoint; evaluations above use only the instruction-tuned ('IT') numbers from Google's official model card."
+}
