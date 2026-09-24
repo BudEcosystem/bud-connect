@@ -1,0 +1,36 @@
+{
+  "slug": "yi-34b-chat",
+  "canonical": "yi-34b-chat",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "01.AI",
+  "details": {
+    "description": "Yi-34B-Chat is a 34-billion-parameter bilingual (English/Chinese) chat model from 01.AI, instruction-tuned from the Yi-34B base model and released in November 2023. It was trained on roughly 3 trillion multilingual tokens for general language understanding, commonsense reasoning and reading comprehension, with a default 4,096-token context window (01.AI separately offers a longer-context Yi-34B-Chat-200K variant). 01.AI has since released the upgraded Yi-1.5 series (May 2024), which the company says further improves coding, math, reasoning and instruction-following over the original Yi series.",
+    "advantages": [
+      "Placed second, behind GPT-4 Turbo, on the AlpacaEval Leaderboard at the time of its evaluation.",
+      "Ranked first among open-source models on the CMMLU benchmark, per 01.AI.",
+      "Released under the Apache 2.0 license, free for personal, academic and commercial use.",
+      "01.AI says the model produces more diverse responses, which suits creative-writing use cases."
+    ],
+    "disadvantages": [
+      "4,096-token context window.",
+      "Superseded by 01.AI's own Yi-1.5 series (May 2024), which the company says further improves coding, math, reasoning and instruction-following.",
+      "01.AI cautions that the model's response diversity can amplify hallucination risk and cause non-determinism across regenerations."
+    ],
+    "use_cases": [
+      "General-purpose bilingual (English/Chinese) chat and instruction following.",
+      "Commonsense reasoning and reading-comprehension tasks.",
+      "Creative writing, given the model's more diverse response style."
+    ],
+    "evaluations": [],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/01-ai/Yi-34B-Chat",
+    "github_url": "https://github.com/01-ai/Yi"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/01-ai/Yi-34B-Chat", "title": "01-ai/Yi-34B-Chat · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/01-ai/Yi", "title": "GitHub - 01-ai/Yi", "kind": "maker"}
+  ],
+  "notes": "Catalog facts give a flat 4,096-token max_input and max_output, matching the model's default context window; 01.AI's README also documents a separate Yi-34B-Chat-200K model id with a longer context, which is a different catalog entry and not claimed here. Evaluations left empty because the only additional quantitative score found (MMLU '~80%') was approximate rather than an exact published figure."
+}

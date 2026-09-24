@@ -1,0 +1,41 @@
+{
+  "slug": "gpt-5.4-nano",
+  "canonical": "gpt-5.4-nano",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.4 nano is OpenAI's smallest and cheapest model in the GPT-5.4 line, released March 17, 2026 alongside GPT-5.4 mini. It is built for latency- and cost-sensitive workloads such as classification, data extraction, ranking, request routing and sub-agent tasks delegated by larger models. It takes text and image input and produces text-only output, with adjustable reasoning effort (none, low, medium, high, xhigh) and a knowledge cutoff of August 31, 2025.",
+    "advantages": [
+      "Scores 26.67% on AIME 2025, ahead of the larger GPT-5.4 flagship model's 16.67% on the same benchmark (LayerLens benchmark review).",
+      "Offers adjustable reasoning-effort levels (none, low, medium, high, xhigh) to trade off latency against quality (OpenAI API model docs).",
+      "Supports function calling, web search, file search, code interpreter, hosted shell and MCP tool use via the Responses API (OpenAI API model docs).",
+      "Scores 21 on the Artificial Analysis Intelligence Index at xhigh reasoning effort, above the comparable-model median of 12 (Artificial Analysis)."
+    ],
+    "disadvantages": [
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Not compatible with Realtime, Live sessions, Assistants, fine-tuning, embeddings, or audio/video features (OpenAI API model docs).",
+      "Knowledge cutoff of August 31, 2025 (OpenAI API model docs)."
+    ],
+    "use_cases": [
+      "Text and category classification",
+      "Structured data extraction",
+      "Ranking",
+      "High-volume, low-latency sub-agent tasks",
+      "Request routing and simple terminal workflows"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index (xhigh reasoning)", "score": 21, "source": "https://artificialanalysis.ai/models/gpt-5-4-nano"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano", "title": "GPT-5.4 nano Model | OpenAI API", "kind": "maker"},
+    {"url": "https://layerlens.ai/blog/gpt-5-4-benchmark-review", "title": "GPT-5.4 Benchmarks: Full Results by Category | LayerLens", "kind": "third_party"},
+    {"url": "https://artificialanalysis.ai/models/gpt-5-4-nano", "title": "GPT-5.4 nano (xhigh) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's own announcement post (openai.com/index/introducing-gpt-5-4-mini-and-nano) returned HTTP 403 on every fetch attempt, so specs and use cases rely on OpenAI's API docs page for this model instead, which directly states max input tokens 272,000 and max output tokens 128,000, matching the catalog's facts exactly. The Artificial Analysis Intelligence Index score is specific to the 'xhigh' reasoning-effort configuration, not the default; other configurations were not checked. Removed the 'AIME 2025' and 'SWE-bench Lite' evaluations entries sourced to layerlens.ai: confirmed by fetch that LayerLens ran these benchmarks itself on its own 'Stratix' platform, which is a third-party review site's own test run, not the maker or a named leaderboard, so it is not an acceptable evaluations source under the tightened rule. The AIME 2025 comparison (26.67% nano vs. 16.67% GPT-5.4 flagship, confirmed accurate) is preserved as an advantages sentence with clear LayerLens attribution."
+}

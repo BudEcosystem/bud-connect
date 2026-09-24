@@ -1,0 +1,46 @@
+{
+  "slug": "gemini-3.5-flash",
+  "canonical": "gemini-3.5-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.5 Flash is Google DeepMind's Flash-tier model in the Gemini 3 reasoning series, built on Gemini 3 Flash with adjustable thinking levels to balance response quality, latency and cost. It is natively multimodal, accepting text, image, audio and video input over up to a 1M-token context window, and is positioned for agentic workflows, coding and long-running enterprise tasks. Google's own developer documentation now describes it as \"our legacy Flash model, providing baseline speed and foundational performance for routine, high-throughput workloads.\"",
+    "advantages": [
+      "Scores 83.6% on the agentic MCP Atlas benchmark and 56.5% on Toolathlon, per its Google DeepMind model card.",
+      "Scores 76.2% on Terminal-Bench 2.1 and 55.1% on SWE-Bench Pro for coding tasks.",
+      "Scores 83.6% on MMMU-Pro and 84.2% on CharXiv for multimodal reasoning over images.",
+      "Scores 72.1% on ARC-AGI-2, a general reasoning benchmark.",
+      "Offers adjustable thinking levels to trade off response quality against latency and cost."
+    ],
+    "disadvantages": [
+      "Google's developer docs now describe it as their legacy Flash model, providing baseline speed and foundational performance for routine, high-throughput workloads.",
+      "Scores only 26.6% on the MRCR v2 (1M) long-context benchmark cited on its model card."
+    ],
+    "use_cases": [
+      "Agentic workflows that call tools across multi-step tasks",
+      "Coding and software-engineering tasks",
+      "Multimodal reasoning over text, images, audio and video",
+      "Routine, high-throughput chat workloads where Google positions it as the baseline Flash option"
+    ],
+    "evaluations": [
+      {"name": "MCP Atlas", "score": 83.6, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "Toolathlon", "score": 56.5, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "Terminal-Bench 2.1", "score": 76.2, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "SWE-Bench Pro", "score": 55.1, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "MMMU-Pro", "score": 83.6, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "CharXiv", "score": 84.2, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "ARC-AGI-2", "score": 72.1, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"},
+      {"name": "MRCR v2 (1M)", "score": 26.6, "source": "https://deepmind.google/models/model-cards/gemini-3-5-flash/"}
+    ],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-5-flash/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-5-flash/", "title": "Gemini 3.5 Flash - Model Card — Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Models | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1,048,576 input tokens, 65,536 output tokens, audio+image+text input) match the DeepMind model card, which also mentions video file input that the catalog's modality list does not include. The catalog's deprecation date (2027-05-19) was not confirmed on any page opened; Google's own docs instead call this model 'legacy', without giving a retirement date. As of 2026-09-24, ai.google.dev/gemini-api/docs/models also lists newer stable Flash models (3.6, 3.7, and 3.8 Flash) beyond the 3.5 Flash-Lite/3.6 Flash pairing originally noted, so no specific successor model is named in the description. Knowledge cutoff was not stated on the pages opened; the model card defers limitations/safety details to the Gemini 3 Flash model card rather than listing them itself. The 'Long context' evaluation is officially named 'MRCR v2 (1M)' on the source page; renamed to match. Verified against the model card's benchmark table that all evaluation scores belong to the Gemini 3.5 Flash column specifically, not a sibling model shown in the same comparison table."
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "gpt-image-1.5",
+  "canonical": "gpt-image-1.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Image 1.5 is OpenAI's image generation and editing model, released December 16, 2025 as an upgrade to GPT Image 1 with more precise editing, better preservation of logos and faces, improved instruction following, and stronger text rendering for dense or small text. It generates and edits images at 1024x1024, 1024x1536 or 1536x1024 pixels via low/medium/high quality tiers. As of OpenAI's own current model documentation, it is described as OpenAI's 'previous' image generation model; OpenAI's developer community announced its successor, GPT Image 2, on April 21, 2026.",
+    "advantages": [
+      "Scores 5.0/5 on text accuracy and 4.6/5 on prompt adherence in IMG.LY's independent API benchmark of image models.",
+      "Is, per IMG.LY's benchmark, the only model tested that emits a usable alpha channel for transparency (4.2/5 vs. zero for 20 of 23 models compared), useful for cutout and design work.",
+      "Improved text rendering for denser and smaller text compared to GPT Image 1 (OpenAI developer community announcement).",
+      "Supports an input_fidelity=\"high\" option intended to preserve facial likeness and identity during larger edits (OpenAI's official prompting guide)."
+    ],
+    "disadvantages": [
+      "OpenAI's own model docs now label it 'our previous image generation model' (OpenAI API model docs), after GPT Image 2 launched April 21, 2026 as what OpenAI calls its most capable image generation model yet (OpenAI developer community announcement).",
+      "IMG.LY's benchmark scored it 1.9/5 on latency (5th slowest of the models tested) and 2.9/5 on consistency/repeatability, its lowest category score.",
+      "Community testing found edits still regenerate the whole image rather than precisely preserving unmasked areas pixel-for-pixel, so logo/face preservation means close visual similarity rather than exact preservation (OpenAI developer community announcement thread).",
+      "Does not support chat completions, Realtime, Assistants, fine-tuning, embeddings, video or audio endpoints (OpenAI API model docs)."
+    ],
+    "use_cases": [
+      "Text-to-image generation",
+      "Image editing and inpainting",
+      "Logo and infographic generation",
+      "UI and product mockups",
+      "Marketing creative with in-image text",
+      "Style transfer and virtual try-on edits"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-image-1.5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-image-1.5", "title": "GPT-Image-1.5 Model | OpenAI API", "kind": "maker"},
+    {"url": "https://community.openai.com/t/gpt-image-1-5-rolling-out-in-the-api-and-chatgpt/1369443", "title": "GPT-Image-1.5 rolling out in the API and ChatGPT - OpenAI Developer Community", "kind": "maker"},
+    {"url": "https://developers.openai.com/cookbook/examples/multimodal/image-gen-1.5-prompting_guide", "title": "Gpt-image-1.5 Prompting Guide", "kind": "maker"},
+    {"url": "https://community.openai.com/t/introducing-gpt-image-2-available-today-in-the-api-and-codex/1379479", "title": "Introducing gpt-image-2 - available today in the API and Codex", "kind": "maker"},
+    {"url": "https://img.ly/ai-benchmarks/models/gpt-image-1-5/", "title": "GPT Image 1.5 API Benchmark: Cost, Latency, Quality | IMG.LY", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's original launch post (openai.com/index/new-chatgpt-images-is-here) returned HTTP 403 on every fetch attempt; the description instead relies on OpenAI's API docs page, developer-community rollout thread, and official prompting-guide cookbook. Catalog gives two deprecation dates (2026-12-01, 2026-12-16), presumably per host (OpenAI vs Azure); no maker page with an explicit retirement date for this model was found, so that could not be independently verified -- kept the catalog's values as-is. Catalog shows no max_input/max_output token facts for this model, consistent with it being an image endpoint with resolution-based limits rather than a token budget. Removed the two IMG.LY-sourced evaluations entries (Text Accuracy 5.0, Prompt Adherence 4.6): confirmed by fetch that these are IMG.LY's own independent benchmark run on a 1-5 rating scale, not the maker or a named leaderboard, so they are not an acceptable evaluations source under the tightened rule; the underlying scores are preserved as an advantages sentence, which is allowed. Also removed the '20% cheaper than GPT Image 1' pricing claim from the description and advantages per the 'no prices' style rule -- confirmed via the OpenAI developer-community rollout thread that this figure is accurate but it is a price comparison, not a capability claim. IMG.LY's 'lowest category score' claim for Consistency & Repeatability (2.9/5) was verified against IMG.LY's full scoring breakdown: it refers to their 'Category Scores' group specifically (15 items, lowest of that group), distinct from their separate 'Criterion Scores' group where Latency (1.9/5) is lower -- both figures independently confirmed accurate on the page."
+}

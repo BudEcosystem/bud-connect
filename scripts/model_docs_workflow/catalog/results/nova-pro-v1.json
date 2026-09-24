@@ -1,0 +1,45 @@
+{
+  "slug": "nova-pro-v1",
+  "canonical": "nova-pro-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Nova Pro is AWS's mid-tier multimodal foundation model in the Nova family, launched in Amazon Bedrock on December 5, 2024. It takes text and image input and generates text output over a 300K-token context window, which AWS says is large enough to process codebases exceeding 15,000 lines. AWS positions it as balancing accuracy, speed, and cost among the Nova models, with particular strength in retrieval-augmented generation, function/tool calling, and multi-step agentic workflows. As of the research date, AWS's Bedrock model card still lists Nova Pro (v1) as Active, though AWS's own migration guidance recommends new deployments consider Nova 2 Lite instead.",
+    "advantages": [
+      "300K-token context window, which AWS says can hold codebases exceeding 15,000 lines of code in a single request.",
+      "Scores 85.9% on MMLU and 89.0% (0-shot) on HumanEval per Amazon's Nova technical report.",
+      "Supports Bedrock tool use, Agents, Guardrails, Flows, and both implicit and explicit prompt caching (up to 4 cache checkpoints per request).",
+      "Achieved state-of-the-art results on the TextVQA and VATEX visual/video-understanding benchmarks at launch, per AWS.",
+      "Supports intelligent prompt routing and response streaming on the bedrock-runtime endpoint."
+    ],
+    "disadvantages": [
+      "Does not support structured outputs, Bedrock Knowledge Base integration, or the Count Tokens API on the bedrock-runtime endpoint.",
+      "No audio or speech input/output support.",
+      "AWS's December 2025 migration guide recommends existing Nova 1 Pro users upgrade to Nova 2 Lite for improved reasoning and price-performance."
+    ],
+    "use_cases": [
+      "Retrieval-augmented generation (RAG) and knowledge-base question answering.",
+      "Agentic workflows that call external tools and APIs across multiple steps.",
+      "Financial document analysis and summarization.",
+      "Visual question answering over images such as charts and screenshots within a large context window."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 85.9, "source": "https://arxiv.org/html/2506.12103v1"},
+      {"name": "GPQA", "score": 46.9, "source": "https://arxiv.org/html/2506.12103v1"},
+      {"name": "MATH", "score": 76.6, "source": "https://arxiv.org/html/2506.12103v1"},
+      {"name": "HumanEval (0-shot, Python)", "score": 89.0, "source": "https://arxiv.org/html/2506.12103v1"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-pro.html",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-pro.html", "title": "Nova Pro - Amazon Bedrock", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/aws/introducing-amazon-nova-frontier-intelligence-and-industry-leading-price-performance/", "title": "Introducing Amazon Nova foundation models: Frontier intelligence and industry leading price performance", "kind": "maker"},
+    {"url": "https://arxiv.org/html/2506.12103v1", "title": "The Amazon Nova Family of Models: Technical Report and Model Card", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/machine-learning/migrate-from-amazon-nova-1-to-amazon-nova-2-on-amazon-bedrock/", "title": "Migrate from Amazon Nova 1 to Amazon Nova 2 on Amazon Bedrock", "kind": "maker"}
+  ],
+  "notes": "AWS's Bedrock model card lists max output tokens as 5K, which disagrees with the catalog's 10,000-token max_output_tokens fact; kept the catalog's value per instructions. The 300K context window matches the catalog fact. The model card's input modalities also show Video as supported (with Text/Image), but since the catalog's modality facts list only image_input/text_input/text_output I did not describe video capability, to stay consistent with what Bud actually exposes."
+}
