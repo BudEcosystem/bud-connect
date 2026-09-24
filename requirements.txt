@@ -1,12 +1,19 @@
 # Service/Clients
 dapr >= 1.14.0
 budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
-# Pinned to BudModelCatalog-SDK #5 (2026-09-21), which added the voice providers.
+# Pinned to BudModelCatalog-SDK PR #6 (2026-09-24), which adds voice billing rules and the
+# pricing-page scrapers: authoritative AWS/Azure feeds, and adapters for speechmatics,
+# cartesia, revai, gladia and google_speech (TTS + STT).
+#
+# NOTE: this is a commit on the PR branch, NOT on main -- PR #6 is open at time of writing.
+# Move it to the merge commit once that lands, or a later `git fetch` of main will not contain
+# it and a clean build will fail rather than silently regress.
+#
 # Pinned because unpinned does NOT mean latest: Docker keys the `pip install -r` layer on this
 # file, so an unpinned git URL freezes at whatever HEAD was current when that layer was first
 # built. The nightly shipped a six-month-old catalog that way, and deepgram/elevenlabs seeded
 # with zero models. Bump this SHA deliberately when the SDK moves.
-bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@bef44ac5f2ef0eabb5c561319bced3ee45fd4a52
+bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@9b496dfed7de5aa5eefc6f327bd7c42671df8d8f
 
 # API
 fastapi >= 0.111.1
