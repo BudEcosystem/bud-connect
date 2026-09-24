@@ -14,6 +14,7 @@ from sqlalchemy.dialects.postgresql import insert
 from budconnect.model.crud import ModelArchitectureClassCRUD
 from budconnect.model.models import ModelArchitectureClass
 
+from ..commons.upsert import conflict_set_clause
 from .base import BaseSeeder
 
 
@@ -76,13 +77,17 @@ class ModelArchitectureSeeder(BaseSeeder):
                 stmt = insert(ModelArchitectureClass).values(architecture_records)
                 stmt = stmt.on_conflict_do_update(
                     index_elements=["class_name"],
-                    set_={
-                        "architecture_family": stmt.excluded.architecture_family,
-                        "tool_calling_parser_type": stmt.excluded.tool_calling_parser_type,
-                        "reasoning_parser_type": stmt.excluded.reasoning_parser_type,
-                        "supports_lora": stmt.excluded.supports_lora,
-                        "supports_pipeline_parallelism": stmt.excluded.supports_pipeline_parallelism,
-                    },
+                    set_=conflict_set_clause(
+                        stmt,
+                        {
+                            "architecture_family": stmt.excluded.architecture_family,
+                            "tool_calling_parser_type": stmt.excluded.tool_calling_parser_type,
+                            "reasoning_parser_type": stmt.excluded.reasoning_parser_type,
+                            "supports_lora": stmt.excluded.supports_lora,
+                            "supports_pipeline_parallelism": stmt.excluded.supports_pipeline_parallelism,
+                        },
+                        ["class_name"],
+                    ),
                 )
 
                 session.execute(stmt)

@@ -27,6 +27,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from ..commons.constants import ModelStatusEnum, ProviderCapabilityEnum
+from ..commons.upsert import conflict_set_clause
 from .models import (
     License,
     ModelArchitectureClass,
@@ -91,7 +92,9 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
@@ -419,7 +422,9 @@ class LicenseCRUD(CRUDMixin[License, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model)
             result = _session.execute(stmt)
@@ -504,7 +509,9 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)

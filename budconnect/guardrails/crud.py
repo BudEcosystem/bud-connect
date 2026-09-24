@@ -26,6 +26,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, selectinload
 
+from ..commons.upsert import conflict_set_clause
 from ..model.models import Provider
 from .models import GuardrailProbe, GuardrailRule
 
@@ -83,7 +84,9 @@ class GuardrailProbeCRUD(CRUDMixin[GuardrailProbe, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
@@ -250,7 +253,9 @@ class GuardrailRuleCRUD(CRUDMixin[GuardrailRule, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)

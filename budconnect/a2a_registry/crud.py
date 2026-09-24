@@ -26,6 +26,7 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from ..commons.upsert import conflict_set_clause
 from .models import A2ARegistryAgent
 
 
@@ -60,7 +61,7 @@ class A2ARegistryAgentCRUD(CRUDMixin[A2ARegistryAgent, None, None]):
             stmt = insert(self.__model__.__table__).values(data)
             stmt = stmt.on_conflict_do_update(
                 index_elements=["base_url"],
-                set_={k: v for k, v in data.items() if k != "id"},
+                set_=conflict_set_clause(stmt, {k: v for k, v in data.items() if k != "id"}, ["base_url"]),
             )
             stmt = stmt.returning(self.__model__.id)
             result = _session.execute(stmt)
