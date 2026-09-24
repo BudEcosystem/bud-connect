@@ -20,6 +20,18 @@ image: "dittops/budconnect:nightly"
 rbac:
   clusterScoped: false
 
+# Seeding runs inside the FastAPI lifespan, BEFORE uvicorn serves, and the chart's startup
+# probe allows 30s + 12x10s = 150s. A full catalog seed takes longer than that, so with
+# seeding on startup the probe kills the pod mid-seed, forever: observed crash-looping at 7
+# restarts with the seeder never finishing a pass.
+#
+# Seeding is therefore off at startup here, and driven by the `cron-tensorzero-sync` dapr
+# binding instead -- which is where it belongs anyway, since that is what refreshes prices
+# every 24h in normal operation. The endpoint is POST /model/cron-tensorzero-sync and it
+# takes an asyncio lock, so a manual trigger and the cron cannot overlap.
+#
+# The real fix is for the seeder not to block readiness, or for the probe budget to be a
+# chart value. Both are changes to shared behaviour, so they are not made here.
 host: "connect.dev.bud.studio"
 
 # One namespaced Ingress. Nothing claims this host today, so there is no collision, and the
@@ -65,7 +77,21 @@ env:
   INITIAL_ADMIN_PASSWORD: "changeme"
 
   LOG_LEVEL: "DEBUG"
-  RUN_SEEDERS_ON_STARTUP: "true"
+
+  # OFF, and this is not a preference. Seeding runs inside the FastAPI lifespan, before
+  # uvicorn serves, and the chart's startup probe allows 30s + 12x10s = 150s. A full catalog
+  # seed takes longer than that, so the probe kills the pod mid-seed and the seeder never
+  # finishes a pass -- observed crash-looping at 7 restarts with zero rows written.
+  #
+  # Seeding is driven by the `cron-tensorzero-sync` dapr binding instead, which is where it
+  # belongs: that is what refreshes prices every 24h in normal operation. Trigger it by hand
+  # with POST /model/cron-tensorzero-sync; it holds an asyncio lock, so a manual run and the
+  # cron cannot overlap.
+  #
+  # The real fix is for seeding not to block readiness, or for the probe budget to be a chart
+  # value rather than hardcoded in deployment.yaml. Both change shared behaviour, so neither
+  # is done here.
+  RUN_SEEDERS_ON_STARTUP: "false"
 
 # Dynamic provisioning instead of static hostPath PVs: no cluster-scoped PersistentVolume,
 # and no chance of the pod landing on a node where the data directory is empty.
