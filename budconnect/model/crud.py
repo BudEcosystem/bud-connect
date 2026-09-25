@@ -16,7 +16,7 @@
 
 """ModelInfo, Provider CRUD operations."""
 
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union, cast
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -611,6 +611,27 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
         database operations for the ModelDetails model.
         """
         super().__init__(self.__model__)
+
+    def get_by_model_info_ids(
+        self, model_info_ids: List[UUID], session: Optional[Session] = None
+    ) -> Dict[UUID, ModelDetails]:
+        """Fetch the details of many models in one query, keyed by ``model_info_id``.
+
+        One ``IN`` query for a whole page of the catalog, rather than a lazy load per model.
+
+        Args:
+            model_info_ids: The ``model_info`` ids to fetch details for.
+            session: The session to use for the query.
+
+        Returns:
+            The details rows found, keyed by ``model_info_id``. Models without details are absent.
+        """
+        if not model_info_ids:
+            return {}
+        _session = session or self.get_session()
+        rows = _session.query(self.model).filter(self.model.model_info_id.in_(model_info_ids)).all()
+        # Annotated with SQLAlchemy's UUID type; the value psycopg2 returns is a uuid.UUID.
+        return {cast(UUID, row.model_info_id): row for row in rows}
 
     def get_by_model_uri(self, model_uri: str, session: Optional[Session] = None) -> Optional[Dict[str, Any]]:
         """Get model details with model info and provider by model URI.

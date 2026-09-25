@@ -31,6 +31,7 @@ from typing_extensions import Annotated
 from ..commons.exceptions import SeederException
 from ..seeders.tensorzero import TensorZeroSeeder
 from .schemas import (
+    WITHOUT_MODEL_DETAILS,
     ModelArchitectureClassCreate,
     ModelArchitectureClassResponse,
     ModelArchitectureClassUpdate,
@@ -55,14 +56,22 @@ async def get_compatible_models(
     engine_version: Optional[str] = None,
     page: int = Query(1, ge=1),
     limit: int = Query(5, ge=0),
+    include_details: bool = Query(
+        False,
+        description=(
+            "Also return each model's catalog details (description, advantages, disadvantages, use cases, "
+            "languages, benchmarks, links) under `details`. Off by default: without it the response is unchanged."
+        ),
+    ),
 ) -> JSONResponse:
     """Get compatible models for a given engine version, or all models if no engine specified."""
     # Calculate offset
     offset = (page - 1) * limit
 
     try:
-        response = ModelService.get_compatible_models(engine, offset, limit, engine_version)
-        return response.to_http_response()
+        response = ModelService.get_compatible_models(engine, offset, limit, engine_version, include_details)
+        # Without the flag the key is left out, not sent as null, so existing callers see no change.
+        return response.to_http_response(exclude=None if include_details else WITHOUT_MODEL_DETAILS)
     except ClientException as e:
         logger.error(f"Client exception: {e}")
         error_response = ErrorResponse(message=e.message, code=e.status_code)
