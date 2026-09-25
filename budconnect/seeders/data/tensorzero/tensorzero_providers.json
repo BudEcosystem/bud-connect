@@ -1058,26 +1058,6 @@
             "audio_transcription"
         ]
     },
-    "prosa_ai": {
-        "name": "Prosa.ai",
-        "description": "Prosa.ai Indonesian speech-to-text and text-to-speech, served through WaaV.",
-        "icon": "icons/providers/prosa_ai.png",
-        "credentials": [
-            {
-                "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Prosa.ai API key. Sent as the `x-api-key` header.",
-                "required": true,
-                "order": 1
-            }
-        ],
-        "capabilities": [
-            "model",
-            "audio_transcription",
-            "text_to_speech"
-        ]
-    },
     "resemble": {
         "name": "Resemble AI",
         "description": "Resemble AI text-to-speech with real-time voice cloning, served through WaaV.",

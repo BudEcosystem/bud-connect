@@ -88,7 +88,6 @@ VOICE_PROVIDERS = [
     "naver_clova",
     "nectec",
     "phonexia",
-    "prosa_ai",
     "resemble",
     "revai",
     "reverie",
@@ -467,11 +466,15 @@ TRANSCRIPTION_ONLY = {
 #:                 the service terminated 2025-12-31. play.ht has no DNS answer at all.
 #: Kept as a named list so a future catalog edit cannot quietly reinstate either one.
 DEAD_VENDORS = ("lmnt", "playht")
+#: Vendors that still exist, and that WaaV still dispatches, but that Bud no longer offers.
+#:   * `prosa_ai` -- withdrawn on request, 2026-09-25. WaaV still serves it, which is why it stays
+#:                   in the WAAV_* snapshots below.
+WITHDRAWN_VOICE_VENDORS = ("prosa_ai",)
 
 AUDIO_CAPABILITIES = {"text_to_speech", "audio_transcription", "audio_translation"}
 
 
-@pytest.mark.parametrize("provider", DEAD_VENDORS)
+@pytest.mark.parametrize("provider", DEAD_VENDORS + WITHDRAWN_VOICE_VENDORS)
 def test_a_dead_vendor_is_gone_from_the_catalog(providers, provider):
     """An entry for a vendor that no longer exists is a credential form no key can reach.
 
@@ -484,7 +487,7 @@ def test_a_dead_vendor_is_gone_from_the_catalog(providers, provider):
     )
 
 
-@pytest.mark.parametrize("provider", DEAD_VENDORS)
+@pytest.mark.parametrize("provider", DEAD_VENDORS + WITHDRAWN_VOICE_VENDORS)
 def test_a_dead_vendor_is_gone_from_no_model_providers(provider):
     """The half that actually retires it.
 

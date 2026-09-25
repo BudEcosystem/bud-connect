@@ -100,7 +100,9 @@ NO_MODEL_PROVIDERS = [
     "naver_clova",
     "nectec",
     "phonexia",
-    "prosa_ai",
+    # `prosa_ai` was here and is WITHDRAWN on request (2026-09-25). Unlike lmnt and playht the
+    # vendor still exists and WaaV still serves it; Bud simply no longer offers it. Its entry
+    # left tensorzero_providers.json in the same change. See `WITHDRAWN_VOICE_VENDORS`.
     "resemble",
     "revai",
     "reverie",
