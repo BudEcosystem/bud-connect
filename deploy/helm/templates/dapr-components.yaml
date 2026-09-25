@@ -108,6 +108,7 @@ scopes:
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+{{- if .Values.rbac.clusterScoped }}
 kind: ClusterRole
 metadata:
   name: bud-connect-secret-reader-full
@@ -128,3 +129,32 @@ roleRef:
   kind: ClusterRole
   name: bud-connect-secret-reader-full
   apiGroup: rbac.authorization.k8s.io
+{{- else }}
+# Namespaced equivalent. Dapr's `secretstores.kubernetes` component reads Secrets in
+# this namespace and nothing else, so that is all it is granted. The cluster-scoped
+# branch above grants ["*"]/["*"]/["*"] -- every verb on every resource in every
+# namespace -- which is cluster-admin under a name that reads like "reads secrets".
+# On a shared cluster prefer this branch.
+kind: Role
+metadata:
+  name: bud-connect-secret-reader
+  namespace: {{ .Values.namespace }}
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bud-connect-secret-access
+  namespace: {{ .Values.namespace }}
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: {{ .Values.namespace }}
+roleRef:
+  kind: Role
+  name: bud-connect-secret-reader
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}

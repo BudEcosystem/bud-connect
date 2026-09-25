@@ -16,7 +16,7 @@
 
 """ModelInfo, Provider CRUD operations."""
 
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union, cast
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -27,6 +27,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from ..commons.constants import ModelStatusEnum, ProviderCapabilityEnum
+from ..commons.upsert import conflict_set_clause
 from .models import (
     License,
     ModelArchitectureClass,
@@ -91,7 +92,9 @@ class ProviderCRUD(CRUDMixin[Provider, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
@@ -419,7 +422,9 @@ class LicenseCRUD(CRUDMixin[License, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model)
             result = _session.execute(stmt)
@@ -504,7 +509,9 @@ class ModelInfoCRUD(CRUDMixin[ModelInfo, None, None]):
 
             stmt = insert(self.model.__table__).values(obj)
             if conflict_target:
-                stmt = stmt.on_conflict_do_update(index_elements=conflict_target, set_=obj)
+                stmt = stmt.on_conflict_do_update(
+                    index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+                )
 
             stmt = stmt.returning(self.model.id)
             result = _session.execute(stmt)
@@ -605,6 +612,27 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
         """
         super().__init__(self.__model__)
 
+    def get_by_model_info_ids(
+        self, model_info_ids: List[UUID], session: Optional[Session] = None
+    ) -> Dict[UUID, ModelDetails]:
+        """Fetch the details of many models in one query, keyed by ``model_info_id``.
+
+        One ``IN`` query for a whole page of the catalog, rather than a lazy load per model.
+
+        Args:
+            model_info_ids: The ``model_info`` ids to fetch details for.
+            session: The session to use for the query.
+
+        Returns:
+            The details rows found, keyed by ``model_info_id``. Models without details are absent.
+        """
+        if not model_info_ids:
+            return {}
+        _session = session or self.get_session()
+        rows = _session.query(self.model).filter(self.model.model_info_id.in_(model_info_ids)).all()
+        # Annotated with SQLAlchemy's UUID type; the value psycopg2 returns is a uuid.UUID.
+        return {cast(UUID, row.model_info_id): row for row in rows}
+
     def get_by_model_uri(self, model_uri: str, session: Optional[Session] = None) -> Optional[Dict[str, Any]]:
         """Get model details with model info and provider by model URI.
 
@@ -671,6 +699,7 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
                     "rate_limits": model_info.rate_limits,
                     "media_limits": model_info.media_limits,
                     "features": model_info.features,
+                    "billing": model_info.billing,
                     "endpoints": model_info.endpoints,
                     "deprecation_date": model_info.deprecation_date,
                     "tool_calling_parser_type": model_info.tool_calling_parser_type,

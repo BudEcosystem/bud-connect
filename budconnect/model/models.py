@@ -127,6 +127,7 @@ class ModelInfo(PSQLBase, TimestampMixin):
     rate_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     media_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     features: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    billing: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     provider_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("provider.id"), nullable=False)
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)

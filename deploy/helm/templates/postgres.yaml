@@ -35,7 +35,19 @@ spec:
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:
         - name: postgresql-data
+{{- if .Values.postgres.dynamic }}
+          # Mount the volume one level ABOVE PGDATA. A dynamically provisioned volume is a
+          # real filesystem and arrives with a `lost+found`, and initdb refuses to
+          # initialise into a non-empty directory -- so PGDATA has to be a subdirectory of
+          # the mount, not the mount itself. hostPath volumes have no `lost+found`, which
+          # is why the static path below works and this was never needed before.
+          mountPath: /var/lib/postgresql/data
+{{- else }}
+          # Unchanged for static hostPath installs. Do NOT "fix" this to the parent
+          # directory: existing data sits directly in `host_path`, and moving the mount
+          # would put PGDATA in a new empty subdirectory and re-initdb over a live volume.
           mountPath: /var/lib/postgresql/data/pgdata
+{{- end }}
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:
@@ -55,7 +67,12 @@ spec:
   type: ClusterIP
 ---
 ---
+{{- if not .Values.postgres.dynamic }}
 apiVersion: v1
+# Static hostPath PV. A PersistentVolume is CLUSTER-SCOPED, and this one carries no
+# nodeAffinity -- on a multi-node cluster the pod can be scheduled onto a node where
+# `host_path` is an empty directory, and Postgres comes up with no data and no error.
+# Set `postgres.dynamic: true` to let the cluster's StorageClass provision instead.
 kind: PersistentVolume
 metadata:
   name: "{{ .Values.name }}-postgresql-pv"
@@ -70,6 +87,7 @@ spec:
   hostPath:
     path: {{ .Values.postgres.host_path }}
     type: DirectoryOrCreate
+{{- end }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -82,4 +100,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.postgres.storage_size | default "10Gi" }}
-  storageClassName: "local-path"
+  storageClassName: {{ .Values.postgres.storageClassName | default "local-path" | quote }}

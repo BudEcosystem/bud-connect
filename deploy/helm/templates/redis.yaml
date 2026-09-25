@@ -29,7 +29,9 @@ spec:
           claimName: "{{ .Values.name }}-redis-pvc"
 
 ---
+{{- if not .Values.redis.dynamic }}
 apiVersion: v1
+# Cluster-scoped, and node-unpinned. See the note in postgres.yaml.
 kind: PersistentVolume
 metadata:
   name: "{{ .Values.name }}-redis-pv"
@@ -43,6 +45,7 @@ spec:
   hostPath:
     path: {{ .Values.redis.host_path }}
     type: DirectoryOrCreate
+{{- end }}
 
 ---
 apiVersion: v1
@@ -56,7 +59,7 @@ spec:
   resources:
     requests:
       storage: {{ .Values.redis.storage_size | quote }}  # Quote the value for safety
-  storageClassName: local-path
+  storageClassName: {{ .Values.redis.storageClassName | default "local-path" | quote }}
 
 ---
 apiVersion: v1

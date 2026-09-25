@@ -17,12 +17,19 @@
 """The model schemas, containing essential data structures for the model microservice."""
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict, Field
+from pydantic import UUID4, BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from ..commons.constants import ModalityEnum, ModelEndpointEnum, ModelStatusEnum, ProviderCapabilityEnum
+from ..commons.constants import (
+    BillingUnitEnum,
+    ModalityEnum,
+    ModelEndpointEnum,
+    ModelStatusEnum,
+    PriceConfidenceEnum,
+    ProviderCapabilityEnum,
+)
 
 
 class LicenseFAQ(BaseModel):
@@ -79,6 +86,24 @@ class ProviderCreate(BaseModel):
     capabilities: List[ProviderCapabilityEnum]
 
 
+def _price_extras(model: BaseModel, prefixes: Tuple[str, ...]) -> BaseModel:
+    """Accept price fields the schema does not name, and nothing else.
+
+    LiteLLM adds price dimensions faster than this schema can list them -- long-context tiers
+    above 272k tokens, priority and flex service tiers, 1-hour cache writes, image-token
+    output. With `extra="forbid"` and a whitelist in the seeder, every one of them was
+    dropped on the floor: gpt-image output was stored as free, and OCR and video models were
+    marked "no price found" although one was published. An unnamed key is kept only if it is
+    shaped like a price and holds a number, so the schema still refuses anything else.
+    """
+    for key, value in (model.model_extra or {}).items():
+        if not key.startswith(prefixes) or "cost" not in key:
+            raise ValueError(f"{key!r} is not a price field for {type(model).__name__}")
+        if value is not None and (isinstance(value, bool) or not isinstance(value, (int, float))):
+            raise ValueError(f"{key!r} must be a number, got {value!r}")
+    return model
+
+
 class InputCost(BaseModel):
     """Validates input cost configuration for model pricing."""
 
@@ -105,10 +130,13 @@ class InputCost(BaseModel):
     input_cost_per_character_above_128k_tokens: Optional[float] = Field(None)
     input_dbu_cost_per_token: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for input cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "InputCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("input_", "ocr_", "annotation_", "google_maps_", "code_interpreter_"))
+        return self
 
 
 class OutputCost(BaseModel):
@@ -128,10 +156,13 @@ class OutputCost(BaseModel):
     output_cost_per_reasoning_token: Optional[float] = Field(None)
     output_db_cost_per_token: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for output cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "OutputCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("output_",))
+        return self
 
 
 class CacheCost(BaseModel):
@@ -142,10 +173,13 @@ class CacheCost(BaseModel):
     cache_creation_input_audio_token_cost: Optional[float] = Field(None)
     cache_creation_input_token_cost: Optional[float] = Field(None)
 
-    class Config:
-        """Configuration for cache cost validation."""
+    model_config = ConfigDict(extra="allow")
 
-        extra = "forbid"
+    @model_validator(mode="after")
+    def _only_price_extras(self) -> "CacheCost":
+        """See :func:`_price_extras`."""
+        _price_extras(self, ("cache_",))
+        return self
 
 
 class SearchContextCost(BaseModel):
@@ -227,6 +261,97 @@ class Features(BaseModel):
         extra = "forbid"
 
 
+class BillingTier(BaseModel):
+    """One step of a volume-tiered rate.
+
+    Tiers are ordered cheapest-threshold-first and the last one carries
+    ``up_to_units = None``, meaning "everything above the previous threshold". A consumer
+    walks them in order and stops at the first whose threshold the period's usage has not
+    passed.
+
+    The flat rate in ``input_cost``/``output_cost`` always equals the FIRST tier, so a
+    consumer that knows nothing about tiers bills the undiscounted rate rather than a
+    random one.
+    """
+
+    up_to_units: Optional[float] = Field(
+        None, description="Upper bound of this tier in `unit`s per billing period; None means unbounded."
+    )
+    rate: float = Field(..., description="Price per `unit` within this tier.")
+
+    class Config:
+        """Configuration for billing tier validation."""
+
+        extra = "forbid"
+
+
+class BillingSource(BaseModel):
+    """Where a rate came from and when it was last confirmed.
+
+    Without this a stale number is indistinguishable from a current one, and the only way
+    to re-check a hand-curated rate is to find the pricing page again from memory.
+    """
+
+    url: Optional[str] = Field(None, description="The price feed or pricing page the rate was read from.")
+    checked_on: Optional[str] = Field(None, description="ISO date the rate was last confirmed against `url`.")
+    published: Optional[str] = Field(
+        None, description="Vendor's own publication date for the feed, when it states one."
+    )
+    note: Optional[str] = Field(None, description="Anything a reader needs to reproduce or distrust the number.")
+
+    class Config:
+        """Configuration for billing source validation."""
+
+        extra = "forbid"
+
+
+class Billing(BaseModel):
+    """The rules a rate has to be applied under, and how far to trust it.
+
+    ``input_cost``/``output_cost`` carry a single float. Real metering is not a single
+    float: vendors bill in different units, discount by volume, round up, and impose
+    minimum charges. Billing from the float alone understates short calls -- a 3-second
+    clip against Rev AI's 15-second minimum is billed for 15 -- and overstates committed
+    volume, in opposite directions, so the errors do not even cancel.
+
+    Everything here is optional and additive. A model with no ``billing`` behaves exactly
+    as it did before this field existed, which is what keeps existing consumers correct.
+    """
+
+    unit: Optional[BillingUnitEnum] = Field(None, description="What the rate is quoted per.")
+    meter: Optional[str] = Field(
+        None,
+        description=(
+            "The quantity the gateway must report for this rate to be applicable, e.g. "
+            "`input_audio_seconds` or `output_characters`. A rate whose meter nothing measures "
+            "cannot be billed, however accurate it is."
+        ),
+    )
+    min_billable_units: Optional[float] = Field(
+        None, description="Vendor's minimum charge per request, in `unit`s. Rev AI bills a 15-second minimum."
+    )
+    rounding_increment: Optional[float] = Field(
+        None, description="Usage is rounded UP to a multiple of this many `unit`s before the rate is applied."
+    )
+    tiers: Optional[List[BillingTier]] = Field(
+        None, description="Volume tiers, cheapest threshold first. The flat rate equals the first tier."
+    )
+    region: Optional[str] = Field(
+        None, description="Vendor region the rate was read for; cloud speech prices vary by region."
+    )
+    currency: str = Field("USD", description="ISO 4217 code. Everything is normalised to USD today.")
+    confidence: PriceConfidenceEnum = Field(
+        PriceConfidenceEnum.UNKNOWN,
+        description="How much weight a consumer may put on the rate. UNKNOWN carries no number.",
+    )
+    source: Optional[BillingSource] = Field(None, description="Provenance of the rate.")
+
+    class Config:
+        """Configuration for billing validation."""
+
+        extra = "forbid"
+
+
 class ModelInfoCreate(BaseModel):
     """Schema for model info creation."""
 
@@ -241,6 +366,7 @@ class ModelInfoCreate(BaseModel):
     rate_limits: Optional[RateLimits] = None
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
+    billing: Optional[Billing] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -265,6 +391,7 @@ class ModelInfoCreate(BaseModel):
             "rate_limits",
             "media_limits",
             "features",
+            "billing",
         ]
 
         for field in nested_fields:
@@ -291,6 +418,7 @@ class ModelInfoUpdate(BaseModel):
     rate_limits: Optional[RateLimits] = None
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
+    billing: Optional[Billing] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -360,6 +488,7 @@ class ModelInfoResponse(BaseModel):
     rate_limits: Optional[Dict[str, Any]] = None
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
+    billing: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
@@ -381,13 +510,72 @@ class ModelListResponse(BaseModel):
     page_size: int
 
 
+class ModelEvaluation(BaseModel):
+    """Schema for model evaluation scores."""
+
+    name: str = Field(..., description="Name of the evaluation benchmark")
+    score: float = Field(..., description="Score achieved on the benchmark")
+
+
+class CatalogModelDetails(BaseModel):
+    """What ``model_details`` says about a catalog model, trimmed to what a model picker shows.
+
+    Returned by ``/model/get-compatible-models`` only when the caller passes ``include_details``.
+    ``advantages`` and ``disadvantages`` keep the column names; budmodel and budapp call them
+    strengths and limitations.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    description: Optional[str] = None
+    advantages: List[str] = []
+    disadvantages: List[str] = []
+    use_cases: List[str] = []
+    languages: List[str] = []
+    evaluations: List[ModelEvaluation] = []
+    website_url: Optional[str] = None
+    github_url: Optional[str] = None
+
+    @field_validator("advantages", "disadvantages", "use_cases", "languages", mode="before")
+    @classmethod
+    def _none_is_empty(cls, value: Any) -> Any:
+        return [] if value is None else value
+
+    @field_validator("evaluations", mode="before")
+    @classmethod
+    def _keep_well_formed(cls, value: Any) -> Any:
+        # budmodel's Hugging Face path also writes this table, through POST /model/. One
+        # malformed row must cost that row its benchmarks, not fail the feed for every model.
+        if not isinstance(value, list):
+            return []
+        return [
+            {"name": e["name"], "score": e["score"]}
+            for e in value
+            if isinstance(e, dict)
+            and isinstance(e.get("name"), str)
+            and isinstance(e.get("score"), (int, float))
+            and not isinstance(e.get("score"), bool)
+        ]
+
+
+class CompatibleModelInfo(ModelInfoResponse):
+    """A model in the compatible-models feed: the catalog row, plus its details when asked for."""
+
+    details: Optional[CatalogModelDetails] = None
+
+
+#: ``exclude`` for a compatible-models response when the caller did not ask for details, so the
+#: key is absent rather than null and existing consumers receive exactly what they did before.
+WITHOUT_MODEL_DETAILS: Dict[str, Any] = {"items": {"__all__": {"models": {"__all__": {"details"}}}}}
+
+
 class CompatibleProviders(ProviderCreate):
     """Schema for compatible providers."""
 
     model_config = ConfigDict(from_attributes=True)
 
     id: UUID4
-    models: List[ModelInfoResponse] = []
+    models: List[CompatibleModelInfo] = []
 
 
 class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
@@ -398,13 +586,6 @@ class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
     engine_name: Optional[str] = None
     engine_version: Optional[str] = None
     items: List[CompatibleProviders]
-
-
-class ModelEvaluation(BaseModel):
-    """Schema for model evaluation scores."""
-
-    name: str = Field(..., description="Name of the evaluation benchmark")
-    score: float = Field(..., description="Score achieved on the benchmark")
 
 
 class ModelPaper(BaseModel):
@@ -474,6 +655,7 @@ class ModelDetailsResponse(BaseModel):
     rate_limits: Optional[Dict[str, Any]] = None
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
+    billing: Optional[Billing] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None

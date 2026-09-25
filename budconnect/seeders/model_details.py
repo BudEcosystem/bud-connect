@@ -10,6 +10,7 @@ from typing import Any, Dict
 from budmicroframe.commons import logging
 from sqlalchemy.dialects.postgresql import insert
 
+from ..commons.upsert import conflict_set_clause
 from ..model.crud import ModelDetailsCRUD, ModelInfoCRUD
 from ..model.models import ModelDetails, ModelInfo
 from .base import BaseSeeder
@@ -94,24 +95,27 @@ class ModelDetailsSeeder(BaseSeeder):
                     stmt = insert(ModelDetails).values(model_details_data)
                     stmt = stmt.on_conflict_do_update(
                         index_elements=["model_info_id"],
-                        set_={
-                            "description": stmt.excluded.description,
-                            "advantages": stmt.excluded.advantages,
-                            "disadvantages": stmt.excluded.disadvantages,
-                            "use_cases": stmt.excluded.use_cases,
-                            "evaluations": stmt.excluded.evaluations,
-                            "languages": stmt.excluded.languages,
-                            "tags": stmt.excluded.tags,
-                            "tasks": stmt.excluded.tasks,
-                            "papers": stmt.excluded.papers,
-                            "github_url": stmt.excluded.github_url,
-                            "website_url": stmt.excluded.website_url,
-                            "logo_url": stmt.excluded.logo_url,
-                            "architecture": stmt.excluded.architecture,
-                            "model_tree": stmt.excluded.model_tree,
-                            "extraction_metadata": stmt.excluded.extraction_metadata,
-                            "modified_at": stmt.excluded.modified_at,
-                        },
+                        set_=conflict_set_clause(
+                            stmt,
+                            {
+                                "description": stmt.excluded.description,
+                                "advantages": stmt.excluded.advantages,
+                                "disadvantages": stmt.excluded.disadvantages,
+                                "use_cases": stmt.excluded.use_cases,
+                                "evaluations": stmt.excluded.evaluations,
+                                "languages": stmt.excluded.languages,
+                                "tags": stmt.excluded.tags,
+                                "tasks": stmt.excluded.tasks,
+                                "papers": stmt.excluded.papers,
+                                "github_url": stmt.excluded.github_url,
+                                "website_url": stmt.excluded.website_url,
+                                "logo_url": stmt.excluded.logo_url,
+                                "architecture": stmt.excluded.architecture,
+                                "model_tree": stmt.excluded.model_tree,
+                                "extraction_metadata": stmt.excluded.extraction_metadata,
+                            },
+                            ["model_info_id"],
+                        ),
                     )
 
                     session.execute(stmt)

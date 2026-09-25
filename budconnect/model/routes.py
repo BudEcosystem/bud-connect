@@ -31,6 +31,7 @@ from typing_extensions import Annotated
 from ..commons.exceptions import SeederException
 from ..seeders.tensorzero import TensorZeroSeeder
 from .schemas import (
+    WITHOUT_MODEL_DETAILS,
     ModelArchitectureClassCreate,
     ModelArchitectureClassResponse,
     ModelArchitectureClassUpdate,
@@ -55,14 +56,22 @@ async def get_compatible_models(
     engine_version: Optional[str] = None,
     page: int = Query(1, ge=1),
     limit: int = Query(5, ge=0),
+    include_details: bool = Query(
+        False,
+        description=(
+            "Also return each model's catalog details (description, advantages, disadvantages, use cases, "
+            "languages, benchmarks, links) under `details`. Off by default: without it the response is unchanged."
+        ),
+    ),
 ) -> JSONResponse:
     """Get compatible models for a given engine version, or all models if no engine specified."""
     # Calculate offset
     offset = (page - 1) * limit
 
     try:
-        response = ModelService.get_compatible_models(engine, offset, limit, engine_version)
-        return response.to_http_response()
+        response = ModelService.get_compatible_models(engine, offset, limit, engine_version, include_details)
+        # Without the flag the key is left out, not sent as null, so existing callers see no change.
+        return response.to_http_response(exclude=None if include_details else WITHOUT_MODEL_DETAILS)
     except ClientException as e:
         logger.error(f"Client exception: {e}")
         error_response = ErrorResponse(message=e.message, code=e.status_code)
@@ -371,8 +380,26 @@ async def update_model_details(model_id: UUID, details_data: ModelDetailsUpdate)
 _tensorzero_sync_lock = asyncio.Lock()
 
 
+def _run_tensorzero_seed_blocking() -> None:
+    """Run the seeder to completion in its own event loop.
+
+    ``TensorZeroSeeder.seed`` is declared ``async`` but is blocking throughout: it calls
+    ``CatalogClient().fetch_catalog_sync()`` for the fetch and then performs ~1500
+    synchronous upserts. Awaiting it directly on the request loop starves that loop, so
+    ``/health`` stops answering and the liveness probe -- 10s period, 10s timeout, 3
+    failures -- kills the container about thirty seconds in. The sync then never finishes,
+    on any install, which made the 24h refresh binding useless: observed as a SIGKILL
+    (exit 137) mid-sync with `Empty reply from server` at the caller.
+
+    Running it in a worker thread keeps the request loop free to answer probes. The session
+    factory is a SQLAlchemy ``scoped_session``, which is thread-local, so the seeder gets
+    its own session rather than sharing the request thread's.
+    """
+    asyncio.run(TensorZeroSeeder().seed())
+
+
 @model_router.post("/cron-tensorzero-sync")
-async def handle_tensorzero_sync():
+async def handle_tensorzero_sync() -> Dict[str, Any]:
     """Dapr cron binding endpoint — triggers periodic TensorZero model catalog sync.
 
     Protected by asyncio.Lock to prevent overlapping runs.
@@ -385,15 +412,21 @@ async def handle_tensorzero_sync():
         start_time = time.monotonic()
         logger.info("Starting periodic TensorZero model catalog sync...")
         try:
-            await TensorZeroSeeder().seed()
+            # Off the event loop -- see _run_tensorzero_seed_blocking for why.
+            await asyncio.to_thread(_run_tensorzero_seed_blocking)
             elapsed = time.monotonic() - start_time
             logger.info("TensorZero periodic sync completed successfully in %.1f seconds", elapsed)
             return {"status": "success", "duration_seconds": round(elapsed, 1)}
         except SeederException as e:
             elapsed = time.monotonic() - start_time
             logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e.message)
-            return {"status": "error", "message": e.message, "duration_seconds": round(elapsed, 1)}
+            failure = {"status": "error", "message": e.message, "duration_seconds": round(elapsed, 1)}
         except Exception as e:
             elapsed = time.monotonic() - start_time
             logger.error("TensorZero periodic sync failed after %.1f seconds: %s", elapsed, e)
-            return {"status": "error", "message": str(e), "duration_seconds": round(elapsed, 1)}
+            failure = {"status": "error", "message": str(e), "duration_seconds": round(elapsed, 1)}
+
+    # A failed sync answers 500, not 200 with "error" in the body. Dapr reads the status code:
+    # a 200 is a delivered event, so a sync that refused a truncated catalog, or crashed,
+    # looked identical to a good one everywhere but this process's own log.
+    raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=failure)
