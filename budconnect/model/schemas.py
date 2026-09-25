@@ -20,7 +20,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict, Field, model_validator
+from pydantic import UUID4, BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from ..commons.constants import (
     BillingUnitEnum,
@@ -510,13 +510,72 @@ class ModelListResponse(BaseModel):
     page_size: int
 
 
+class ModelEvaluation(BaseModel):
+    """Schema for model evaluation scores."""
+
+    name: str = Field(..., description="Name of the evaluation benchmark")
+    score: float = Field(..., description="Score achieved on the benchmark")
+
+
+class CatalogModelDetails(BaseModel):
+    """What ``model_details`` says about a catalog model, trimmed to what a model picker shows.
+
+    Returned by ``/model/get-compatible-models`` only when the caller passes ``include_details``.
+    ``advantages`` and ``disadvantages`` keep the column names; budmodel and budapp call them
+    strengths and limitations.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    description: Optional[str] = None
+    advantages: List[str] = []
+    disadvantages: List[str] = []
+    use_cases: List[str] = []
+    languages: List[str] = []
+    evaluations: List[ModelEvaluation] = []
+    website_url: Optional[str] = None
+    github_url: Optional[str] = None
+
+    @field_validator("advantages", "disadvantages", "use_cases", "languages", mode="before")
+    @classmethod
+    def _none_is_empty(cls, value: Any) -> Any:
+        return [] if value is None else value
+
+    @field_validator("evaluations", mode="before")
+    @classmethod
+    def _keep_well_formed(cls, value: Any) -> Any:
+        # budmodel's Hugging Face path also writes this table, through POST /model/. One
+        # malformed row must cost that row its benchmarks, not fail the feed for every model.
+        if not isinstance(value, list):
+            return []
+        return [
+            {"name": e["name"], "score": e["score"]}
+            for e in value
+            if isinstance(e, dict)
+            and isinstance(e.get("name"), str)
+            and isinstance(e.get("score"), (int, float))
+            and not isinstance(e.get("score"), bool)
+        ]
+
+
+class CompatibleModelInfo(ModelInfoResponse):
+    """A model in the compatible-models feed: the catalog row, plus its details when asked for."""
+
+    details: Optional[CatalogModelDetails] = None
+
+
+#: ``exclude`` for a compatible-models response when the caller did not ask for details, so the
+#: key is absent rather than null and existing consumers receive exactly what they did before.
+WITHOUT_MODEL_DETAILS: Dict[str, Any] = {"items": {"__all__": {"models": {"__all__": {"details"}}}}}
+
+
 class CompatibleProviders(ProviderCreate):
     """Schema for compatible providers."""
 
     model_config = ConfigDict(from_attributes=True)
 
     id: UUID4
-    models: List[ModelInfoResponse] = []
+    models: List[CompatibleModelInfo] = []
 
 
 class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
@@ -527,13 +586,6 @@ class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
     engine_name: Optional[str] = None
     engine_version: Optional[str] = None
     items: List[CompatibleProviders]
-
-
-class ModelEvaluation(BaseModel):
-    """Schema for model evaluation scores."""
-
-    name: str = Field(..., description="Name of the evaluation benchmark")
-    score: float = Field(..., description="Score achieved on the benchmark")
 
 
 class ModelPaper(BaseModel):

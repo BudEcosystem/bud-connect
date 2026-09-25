@@ -16,7 +16,7 @@
 
 """This module contains the services for the model API."""
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -29,6 +29,8 @@ from ..engine.crud import EngineCRUD, EngineVersionCRUD
 from .crud import ModelArchitectureClassCRUD, ModelDetailsCRUD, ModelInfoCRUD, ProviderCRUD
 from .models import ModelInfo, Provider
 from .schemas import (
+    CatalogModelDetails,
+    CompatibleModelInfo,
     CompatibleModelsResponse,
     CompatibleProviders,
     ModelArchitectureClassCreate,
@@ -54,6 +56,7 @@ class ModelService:
         offset: int,
         limit: int,
         engine_version: Optional[str] = None,
+        include_details: bool = False,
     ) -> CompatibleModelsResponse:
         """Get the compatible models for a given model architecture and device architecture.
 
@@ -62,6 +65,7 @@ class ModelService:
             offset (int): The offset of the models.
             limit (int): The limit of the models.
             engine_version (str): The version of the engine.
+            include_details (bool): Also attach each model's ``model_details`` as ``details``.
 
         Returns:
             CompatibleModelsResponse: The compatible models.
@@ -110,7 +114,7 @@ class ModelService:
                             description=db_provider.description,
                             credentials=db_provider.credentials,
                             capabilities=db_provider.capabilities,
-                            models=[ModelInfoResponse(**model_data)] if model_data else [],
+                            models=[CompatibleModelInfo(**model_data)] if model_data else [],
                         )
                     else:
                         if db_model:
@@ -135,7 +139,10 @@ class ModelService:
                                 "reasoning_parser_type": db_model.reasoning_parser_type,
                                 "status": db_model.status,
                             }
-                            compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
+                            compatible_providers[str(db_provider.id)].models.append(CompatibleModelInfo(**model_data))
+
+            if include_details:
+                ModelService._attach_details(compatible_providers.values())
 
             return CompatibleModelsResponse(
                 object="model.compatible",
@@ -235,7 +242,7 @@ class ModelService:
                         description=db_provider.description,
                         credentials=db_provider.credentials,
                         capabilities=db_provider.capabilities,
-                        models=[ModelInfoResponse(**model_data)] if model_data else [],
+                        models=[CompatibleModelInfo(**model_data)] if model_data else [],
                     )
                 else:
                     if db_model:
@@ -260,7 +267,10 @@ class ModelService:
                             "reasoning_parser_type": db_model.reasoning_parser_type,
                             "status": db_model.status,
                         }
-                        compatible_providers[str(db_provider.id)].models.append(ModelInfoResponse(**model_data))
+                        compatible_providers[str(db_provider.id)].models.append(CompatibleModelInfo(**model_data))
+
+        if include_details:
+            ModelService._attach_details(compatible_providers.values())
 
         return CompatibleModelsResponse(
             object="model.compatible",
@@ -272,6 +282,22 @@ class ModelService:
             page=(offset // limit) + 1,
             limit=limit,
         )
+
+    @staticmethod
+    def _attach_details(providers: Iterable[CompatibleProviders]) -> None:
+        """Set ``details`` on every model in ``providers`` from one query for the whole page.
+
+        A model with no ``model_details`` row keeps ``details`` as None.
+
+        Args:
+            providers: The providers of one compatible-models page, with their models.
+        """
+        models = [model for provider in providers for model in provider.models]
+        with ModelDetailsCRUD() as crud:
+            by_model = crud.get_by_model_info_ids([model.id for model in models])
+            for model in models:
+                row = by_model.get(model.id)
+                model.details = CatalogModelDetails.model_validate(row) if row is not None else None
 
     @staticmethod
     def get_model_details(model_uri: str) -> Optional[ModelDetailsResponse]:
