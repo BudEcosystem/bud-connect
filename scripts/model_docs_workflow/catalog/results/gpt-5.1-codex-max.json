@@ -1,0 +1,72 @@
+{
+  "slug": "gpt-5.1-codex-max",
+  "canonical": "gpt-5.1-codex-max",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.1-Codex-Max is OpenAI's frontier agentic coding model, released November 19, 2025 as an update built on GPT-5.1 and the default model in Codex. It is OpenAI's first model natively trained to work across multiple context windows through 'compaction', automatically pruning session history so it can stay coherent over millions of tokens in a single task; OpenAI reports internal sessions running independently for more than 24 hours. It is available only through the Responses API, accepts text and image input with text-only output, adds an 'xhigh' extra-high reasoning effort level, and has a knowledge cutoff of September 30, 2024.",
+    "advantages": [
+      "OpenAI reports 77.9% on SWE-bench Verified (n=500) at 'xhigh' reasoning effort, versus 73.7% for GPT-5.1-Codex at high effort (OpenAI launch post).",
+      "OpenAI reports 79.9% on SWE-Lancer IC SWE at 'xhigh' effort, versus 66.3% for GPT-5.1-Codex (OpenAI launch post).",
+      "OpenAI reports 58.1% on Terminal-Bench 2.0 at 'xhigh' effort, versus 52.8% for GPT-5.1-Codex (OpenAI launch post).",
+      "At matched 'medium' reasoning effort, OpenAI reports it outperforms GPT-5.1-Codex on SWE-bench Verified while using 30% fewer thinking tokens (OpenAI launch post).",
+      "First OpenAI model trained to operate in Windows environments, and the first trained to compact its own session across multiple context windows for long-running work (OpenAI launch post)."
+    ],
+    "disadvantages": [
+      "Available only through the Responses API, with no Chat Completions, Assistants, Batch or fine-tuning support (OpenAI documentation); API access was still rolling out at launch, with Codex CLI, IDE extension, cloud and code review as the initial surfaces.",
+      "OpenAI states the model does not reach 'High' capability on cybersecurity under its Preparedness Framework, but calls it the most capable cybersecurity model it had deployed to date, prompting additional safeguards (OpenAI launch post).",
+      "OpenAI's own direct API already shut down this exact model id on July 23, 2026, recommending gpt-5.6-sol; it remains generally available on Azure OpenAI, not expected to retire before May 18, 2027 (OpenAI deprecations page; Microsoft Foundry schedule).",
+      "Knowledge cutoff of September 30, 2024."
+    ],
+    "use_cases": [
+      "Long-running, project-scale refactors and deep debugging sessions spanning millions of tokens",
+      "Multi-hour autonomous agent loops in Codex CLI, IDE extension, cloud or code review",
+      "Windows-environment coding agent tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 77.9,
+        "source": "https://openai.com/index/gpt-5-1-codex-max/"
+      },
+      {
+        "name": "SWE-Lancer IC SWE",
+        "score": 79.9,
+        "source": "https://openai.com/index/gpt-5-1-codex-max/"
+      },
+      {
+        "name": "Terminal-Bench 2.0",
+        "score": 58.1,
+        "source": "https://openai.com/index/gpt-5-1-codex-max/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max",
+      "title": "GPT-5.1-Codex-Max Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1-codex-max/",
+      "title": "Building more with GPT-5.1-Codex-Max | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "All of this target's URIs are Azure-hosted. Catalog's deprecation_date (2027-05-18) matches Microsoft Foundry's retirement-schedule listing for gpt-5.1-codex-max (version 2025-12-04, lifecycle 'GA', retirement date 2027-05-18) exactly. Separately, OpenAI's own direct-API deprecations page shows this same model id already shut down on July 23, 2026 (announced April 22, 2026, in the same wave as gpt-5.1-codex) -- a real divergence between OpenAI-direct and Azure, though the Azure-hosted date the catalog uses is unaffected and still current as of this research date. Catalog's endpoints list includes /v1/chat/completions, but OpenAI's own documentation for gpt-5.1-codex-max says only the Responses API is supported."
+}

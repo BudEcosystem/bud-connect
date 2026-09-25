@@ -1,0 +1,71 @@
+{
+  "slug": "gemini-2.5-pro",
+  "canonical": "gemini-2.5-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 2.5 Pro is Google DeepMind's reasoning-focused model in the Gemini 2.5 family, first released as an experimental preview on March 25, 2025 and made generally available on June 17, 2025. It is a hybrid reasoning ('thinking') model that reasons through a problem internally before responding, and natively processes text, images, audio, video and code with a 1 million token context window. As of Google's current model listing, access to the 2.5 series is now limited to accounts that used it before, and Google directs new projects to its newer Gemini 3 models instead.",
+    "advantages": [
+      "Scored a state-of-the-art 18.8% on Humanity's Last Exam without tool use, per Google's launch announcement.",
+      "Scored 63.8% on SWE-bench Verified with a custom agentic setup, per Google's launch announcement, a large jump over Gemini 2.0.",
+      "Topped the LMArena leaderboard by a significant margin at launch, per Google's announcement.",
+      "Adjustable thinking/reasoning depth, letting a request trade off latency and cost against answer quality.",
+      "Natively multimodal: accepts text, image, audio and video input alongside code."
+    ],
+    "disadvantages": [
+      "Google now limits access to prior users of the 2.5 model family and directs new projects to its newer Gemini 3 models.",
+      "Superseded within the same family's positioning by newer Gemini models that Google recommends for new work."
+    ],
+    "use_cases": [
+      "Complex multi-step reasoning and math/science problem solving",
+      "Agentic coding and large codebase understanding",
+      "Multimodal analysis combining text, image, audio and video input",
+      "Building context-aware agents that need very long context windows"
+    ],
+    "evaluations": [
+      {
+        "name": "Humanity's Last Exam",
+        "score": 18.8,
+        "source": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 63.8,
+        "source": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/",
+      "title": "Gemini 2.5: Our most intelligent AI model - Google Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://blog.google/products/gemini/gemini-2-5-model-family-expands/",
+      "title": "Gemini 2.5: Updates to our family of thinking models - Google Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/thinking",
+      "title": "Gemini thinking | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "title": "Deprecated models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog gives no context-window/output-token figures I could independently verify beyond what's already in facts (1,048,576 input / 65,535 output); Google's own 2.5 Pro launch post separately states a 1M-token context window, consistent with the catalog. Google's current models page (ai.google.dev/gemini-api/docs/models, checked 2026-09-24) states access to 2.5-series models is now limited to users who previously used them, and recommends new projects use its newer Gemini 3 models. CORRECTION: this is not consistent with the catalog's 2026-10-20 deprecation_date as previously noted here -- Google's own deprecations page (ai.google.dev/gemini-api/docs/deprecations, checked 2026-09-24) lists the `gemini-2.5-pro` model's shutdown date as 'No shutdown date announced', so Bud's catalog carries a firm future deprecation date that Google has not itself announced for this id. Could not find a maker page giving an exact knowledge-cutoff date for this model."
+}

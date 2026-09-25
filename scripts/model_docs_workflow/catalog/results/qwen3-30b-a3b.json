@@ -1,0 +1,38 @@
+{
+  "slug": "qwen3-30b-a3b",
+  "canonical": "qwen3-30b-a3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen3-30B-A3B is a mixture-of-experts (MoE) chat model from Alibaba's Qwen team, released April 29, 2025 as part of the Qwen3 family. It has 30.5B total parameters with 3.3B activated per token across 128 experts (8 active per token), and switches between an extended 'thinking' mode for step-by-step reasoning and a fast 'non-thinking' mode within a single model. Its native context window is 32,768 tokens, extendable to 131,072 tokens using YaRN rope scaling. Qwen's Qwen3 announcement blog states the model family supports 119 languages and dialects.",
+    "advantages": [
+      "Qwen's Qwen3 announcement blog states the model 'outcompetes QwQ-32B' (an earlier Qwen reasoning model) while activating about one-tenth as many parameters.",
+      "Supports switching between thinking and non-thinking modes within one model, via the enable_thinking parameter or /think and /no_think chat commands, per the model card.",
+      "Qwen's announcement blog states the Qwen3 family supports 119 languages and dialects.",
+      "Supports tool calling, with the model card recommending the Qwen-Agent framework for tool-calling templates and parsers."
+    ],
+    "disadvantages": [
+      "Native context window is 32,768 tokens; extending to 131,072 tokens requires YaRN rope scaling, which the model card says uses a static scaling factor that can degrade performance on shorter texts.",
+      "The model card warns against greedy decoding in thinking mode, saying it 'can lead to performance degradation and endless repetitions.'",
+      "Alibaba has since released separate Qwen3-30B-A3B-Instruct-2507 and Qwen3-30B-A3B-Thinking-2507 checkpoints of this same architecture."
+    ],
+    "use_cases": [
+      "Conversational assistants that need to switch between quick replies and deeper step-by-step reasoning",
+      "Coding and agentic tool-calling tasks via the Qwen-Agent framework",
+      "Multilingual applications across the 119 languages and dialects Qwen states the model supports",
+      "Long-context tasks up to 131,072 tokens using YaRN scaling"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-30B-A3B", "title": "Qwen/Qwen3-30B-A3B", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen3/", "title": "Qwen3: Think Deeper, Act Faster", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-30b-a3b", "title": "Qwen3 30B-A3B - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog's 131,072 max input/output tokens match this model's YaRN-extended context, which Fireworks fully enables; native context per Qwen's model card is 32,768 tokens. No numeric benchmark table for this exact checkpoint was found on the maker's own pages (the announcement blog's benchmark figures are chart images, not text), so evaluations is left empty rather than guessed."
+}

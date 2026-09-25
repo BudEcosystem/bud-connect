@@ -1,0 +1,80 @@
+{
+  "slug": "claude-3-opus",
+  "canonical": "claude-3-opus",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude 3 Opus, announced March 4, 2024, was the most capable model in Anthropic's original Claude 3 family (alongside Sonnet and Haiku), offering a 200K-token context window (with up to 1M tokens available to select customers) and vision support for photos, charts, graphs and technical diagrams. On Anthropic's own published evaluation table it scored 86.8% on MMLU (5-shot), 50.4% on GPQA Diamond and 95.0% on GSM8K. Anthropic has since released several further generations of Opus models (currently Claude Opus 5.5), and its own platform lists Claude 3 Opus (20240229) as retired since January 5, 2026.",
+    "advantages": [
+      "Scored 86.8% on MMLU (5-shot) and 95.0% on GSM8K grade-school math, per Anthropic's published evaluation table.",
+      "Supports up to a 1M-token context window for select customers, beyond the standard 200K tokens, per Anthropic's launch post.",
+      "Processes photos, charts, graphs and technical diagrams; Anthropic said this addresses enterprise knowledge bases with up to 50% of content in such non-text formats."
+    ],
+    "disadvantages": [
+      "Retired on Anthropic's own platform since January 5, 2026 (deprecated June 30, 2025), superseded by newer Opus models (currently Claude Opus 5.5).",
+      "Scores lower than the later Claude 3.5 Sonnet on every benchmark in Anthropic's own comparison table, e.g. GPQA Diamond 50.4% vs 59.4%.",
+      "No longer listed among Amazon Bedrock's current Anthropic model cards as of this research."
+    ],
+    "use_cases": [
+      "Task automation and interactive coding",
+      "Research and development work",
+      "Strategic analysis of financial and market data",
+      "Enterprise document and knowledge-base understanding via vision (PDFs, flowcharts, slides)"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 86.8,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "GPQA Diamond (0-shot CoT)",
+        "score": 50.4,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "GSM8K (0-shot CoT)",
+        "score": 95.0,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "HumanEval (0-shot)",
+        "score": 84.9,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "MATH (0-shot CoT)",
+        "score": 60.1,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-3-family",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-3-family",
+      "title": "Introducing the next generation of Claude",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf",
+      "title": "Claude 3.5 Sonnet Model Card Addendum",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-anthropic.html",
+      "title": "Anthropic model cards - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's deprecation_date is empty, but Anthropic's model-deprecations page lists claude-3-opus-20240229 as retired since January 5, 2026, superseded by claude-opus-4-8. As of this research, Amazon Bedrock's current Anthropic model-card listing no longer includes any Claude 3 Opus card (nor 3.5 Sonnet or 3.7 Sonnet), and Bedrock's pending-EOL table also omits it -- both consistent with the model having already passed end-of-life on Bedrock too, though I could not find an exact Bedrock EOL date. Benchmark numbers are Anthropic's own, taken from the Claude 3.5 Sonnet model card addendum's comparison table (which republishes Claude 3 Opus's original evaluation results in machine-readable text); the original Claude 3 launch page's own comparison charts are images without extractable text, so I relied on the addendum instead."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "devstral-small-2505",
+  "canonical": "devstral-small-2505",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Devstral Small 2505 is a 24-billion-parameter open-weight coding model that Mistral AI released May 21, 2025 in collaboration with All Hands AI, fine-tuned from Mistral-Small-3.1-24B-Base-2503. It is built for agentic software-engineering work -- exploring codebases and editing multiple files -- through coding-agent scaffolds such as OpenHands and SWE-Agent, and is light enough to run locally on a single RTX 4090 GPU or a Mac with 32GB RAM. Mistral's own current documentation lists this version (internally 'Devstral Small 1.0', API id devstral-small-2505) as deprecated, with a retirement date of November 30, 2025, in favor of later Devstral and Mistral Small/Medium releases.",
+    "advantages": [
+      "Scores 46.8% on SWE-bench Verified, which Mistral describes as a 6-point improvement over the prior open-source state of the art.",
+      "Apache 2.0 license permits commercial and non-commercial use and modification.",
+      "Small enough to run locally on a single RTX 4090 GPU or a Mac with 32GB RAM, per Mistral.",
+      "Supports tool calling for agentic coding frameworks including OpenHands and SWE-Agent."
+    ],
+    "disadvantages": [
+      "Mistral's models-overview documentation currently lists this version (devstral-small-2505) as deprecated, with a retirement date of November 30, 2025.",
+      "Text-only input and output; the vision encoder was removed from its Mistral-Small-3.1-24B base.",
+      "Superseded on Mistral's own roadmap by Devstral Small 1.1 (2507) and Devstral 2, per Mistral's documentation."
+    ],
+    "use_cases": [
+      "Agentic software-engineering tasks: codebase exploration, multi-file edits, and bug fixing via coding-agent scaffolds.",
+      "Local or on-device deployment for privacy-sensitive repositories.",
+      "Integration into IDEs and coding copilots via tool/function calling."
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 46.8, "source": "https://mistral.ai/news/devstral"}
+    ],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/devstral",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/devstral", "title": "Devstral | Mistral AI", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Devstral-Small-2505", "title": "mistralai/Devstral-Small-2505 · Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview | Mistral AI Documentation", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog lists an empty deprecation_date for this target, but Mistral's current models-overview page lists devstral-small-2505 ('Devstral Small 1.0') as deprecated on 2025-10-31 with retirement on 2025-11-30 -- a date already past as of researched_on -- recommending Mistral Medium 3.5 as the replacement. Kept the catalog's facts as-is (context window, modality, endpoints all matched the maker's own pages) but flagged the deprecated/retired status in the description and disadvantages since it materially affects a user's choice."
+}

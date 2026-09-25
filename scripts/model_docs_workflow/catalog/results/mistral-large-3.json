@@ -1,0 +1,67 @@
+{
+  "slug": "mistral-large-3",
+  "canonical": "mistral-large-3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Large 3 is Mistral AI's flagship open-weight model, released December 2, 2025 under an Apache 2.0 license. It uses a sparse Mixture-of-Experts architecture with 41B active and 675B total parameters, including a vision encoder for image understanding, and a 256K-token context window. It supports native function calling, JSON output and strong system-prompt adherence for agentic and enterprise use. Mistral AI states it performs best among open-weight models on multilingual conversations outside English and Chinese, and a dedicated reasoning variant was announced as coming soon but was not yet released at launch.",
+    "advantages": [
+      "Combines a 41B active / 675B total parameter sparse Mixture-of-Experts architecture with a 2.5B-parameter vision encoder for multimodal image understanding (Hugging Face model card).",
+      "Debuted at #2 among open-weight non-reasoning models (#6 among all open-weight models) on the LMArena leaderboard at launch (Mistral AI launch post).",
+      "Supports native function calling and JSON output with strong system-prompt adherence (Hugging Face model card).",
+      "Mistral AI reports best-in-class performance among open-weight models on multilingual conversations outside English and Chinese (Mistral AI launch post).",
+      "Supports English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean and Arabic (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "A dedicated reasoning version was described as 'coming soon' at launch, so this instruct release does not have a reasoning mode (Mistral AI launch post)."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction following",
+      "Multilingual conversation",
+      "Image understanding combined with text",
+      "Agentic tool use via native function calling",
+      "Production and enterprise assistants"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "French",
+      "Spanish",
+      "German",
+      "Italian",
+      "Portuguese",
+      "Dutch",
+      "Chinese",
+      "Japanese",
+      "Korean",
+      "Arabic"
+    ],
+    "website_url": "https://docs.mistral.ai/models/mistral-large-3-25-12",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/mistral-large-3-25-12",
+      "title": "Mistral Large 3 (25.12) - Mistral AI Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview - Mistral AI Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/mistral-3/",
+      "title": "Mistral 3 announcement - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+      "title": "mistralai/Mistral-Large-3-675B-Instruct-2512 - Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Mistral AI's docs give a 256K-token (262,144) context window for this model, matching the catalog's facts exactly. The docs overview page lists Mistral Large 3 (v25.12) as a current, non-deprecated model with no retirement date. No numeric benchmark score (0-100, higher-is-better) was published for this exact model at research time; the LMArena result found is a leaderboard rank/Elo-style placement, not an accuracy score, so it is described in advantages rather than listed under evaluations. The Mistral AI launch post did not give exact benchmark figures for Large 3 itself, only qualitative claims and the LMArena placement."
+}

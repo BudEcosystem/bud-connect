@@ -1,0 +1,36 @@
+{
+  "slug": "medical-conversation",
+  "canonical": "medical-conversation",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "The medical_conversation model is a Google Cloud Speech-to-Text V1 model tailored for transcribing dialogue between a medical provider, such as a doctor or nurse, and a patient. Google's documentation states words spoken by each speaker are automatically detected and labeled in the returned transcript, and the model is available only for en-US audio. Google's Speech-to-Text V1 docs recommend that new users use the V2 API instead, though medical_conversation is a V1-specific model.",
+    "advantages": [
+      "Automatically detects and labels which speaker (provider or patient) said each part of the transcript, per Google's documentation.",
+      "Supports automatic punctuation, alternate transcriptions, word timestamps and word-level confidence scores."
+    ],
+    "disadvantages": [
+      "Only available for en-US audio, per Google's documentation.",
+      "Is a Speech-to-Text V1 model; Google's documentation recommends new Speech-to-Text users use the V2 API instead."
+    ],
+    "use_cases": [
+      "Transcribing conversations between a medical provider and a patient, such as clinical visits"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models",
+      "title": "Medical models | Cloud Speech-to-Text Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Source page gives no WER/accuracy figures and no explicit GA/deprecated status; Speech-to-Text release notes (docs.cloud.google.com/speech-to-text/docs/release-notes) show medical models launched Nov 8 2021 with no later deprecation notice found, so the model is treated as current."
+}

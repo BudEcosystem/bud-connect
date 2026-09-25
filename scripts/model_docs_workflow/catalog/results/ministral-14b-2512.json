@@ -1,0 +1,42 @@
+{
+  "slug": "ministral-14b-2512",
+  "canonical": "ministral-14b-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 14B is the largest size in Mistral AI's open-weight Ministral 3 family for local and edge deployment (3B, 8B and 14B parameters), released December 2, 2025 alongside Mistral Large 3. Mistral describes it as offering performance comparable to its larger Mistral Small 3.2 24B model while being optimized to run across diverse hardware, including local setups. It is a 14-billion-parameter dense model with native text-and-image input and multilingual support across 40+ languages, licensed Apache 2.0, with separate base, instruct and reasoning fine-tunes of the weights published on Hugging Face. Mistral's own documentation lists it as generally available (checked 2026-09-24).",
+    "advantages": [
+      "Mistral's reasoning-tuned weights score higher than Qwen3-14B (Thinking) on AIME 2025 (85.0% vs 73.7%), AIME 2024 (89.8% vs 83.7%), GPQA Diamond (71.2% vs 66.3%) and LiveCodeBench (64.6% vs 59.3%), per Mistral's Hugging Face model card.",
+      "Mistral's instruct-tuned weights score 90.4% on MATH Maj@1, ahead of Qwen3 14B (Non-Thinking) at 87.0% and Gemma3-12B-Instruct at 85.4%, per Mistral's Hugging Face model card.",
+      "Supports native image input alongside text, part of Mistral's Ministral 3 family described as multimodal across 40+ native languages, per Mistral's launch post.",
+      "Supports function calling, structured outputs, document Q&A, prefix continuation and batching via the Chat Completions API, per Mistral's model documentation."
+    ],
+    "disadvantages": [
+      "Positioned by Mistral as its edge/local-deployment tier, below the larger Mistral Small 3.2 24B and flagship Mistral Large 3 models for the most demanding workloads."
+    ],
+    "use_cases": [
+      "Local and edge deployment on diverse hardware, including NVIDIA DGX Spark, RTX PCs/laptops and Jetson devices, per Mistral's launch post",
+      "General-purpose reasoning, coding and tool-use/agentic tasks via function calling",
+      "Document question-answering using the Document QnA feature",
+      "Combined text-and-image understanding tasks"
+    ],
+    "evaluations": [
+      {"name": "AIME 2025 (reasoning weights)", "score": 85.0, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "AIME 2024 (reasoning weights)", "score": 89.8, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "GPQA Diamond (reasoning weights)", "score": 71.2, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "LiveCodeBench (reasoning weights)", "score": 64.6, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "MATH Maj@1 (instruct weights)", "score": 90.4, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/models/ministral-3-14b-25-12",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/models/ministral-3-14b-25-12", "title": "Ministral 3 14B - Mistral AI | Mistral Docs", "kind": "maker"},
+    {"url": "https://mistral.ai/news/mistral-3", "title": "Introducing Mistral 3 | Mistral AI", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512", "title": "mistralai/Ministral-3-14B-Instruct-2512 - Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Mistral's docs page for this model (docs.mistral.ai/models/ministral-3-14b-25-12) explicitly lists both 'ministral-14b-2512' and 'ministral-14b-latest' as its API ids, so both catalog targets are the same model; this write-up is duplicated for both. The marketing name is 'Ministral 3 14B' (the catalog's uri omits the family number '3'). Catalog facts (262144 max input and max output tokens) match the docs page's stated 256k context window and the Hugging Face card's 262144-token context. Benchmark scores are the maker's own, but were published per weight variant (base/instruct/reasoning) rather than for one single default configuration; noted which variant each score belongs to. Mistral states '40+ native languages' as a count only, so the languages list is left empty per the research brief and the count is given in the description instead. Only accuracy-style benchmarks were used; Arena Hard (a win-rate/arena-style score) and MM MTBench (a 0-10 judged score) from the same Hugging Face card were excluded as out of scope for this catalog's 0-100 accuracy format."
+}

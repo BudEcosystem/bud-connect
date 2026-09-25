@@ -1,0 +1,48 @@
+{
+  "slug": "gemini-robotics-er-2-preview",
+  "canonical": "gemini-robotics-er-2-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini Robotics-ER 2, accessed via the API as gemini-robotics-er-2-preview, is Google DeepMind's embodied-reasoning model for robotics: it reasons about physical spaces to plan robot actions, understands robot video for task progress and success detection, reads instruments, and points at objects, per Google's documentation. It builds on Gemini 3.5 Flash and adds improved spatial reasoning, video moment finding, video progress classification, multi-robot orchestration, and multi-step tool use over the prior Gemini Robotics-ER 1.6, per Google's documentation. It takes text, image, video, and audio input and produces text output (plans and reasoning, not motor control), and remains in preview; a separate gemini-robotics-er-2-streaming-preview variant targets low-latency, real-time robot agents over the Live API.",
+    "advantages": [
+      "Adds improved spatial reasoning, video moment finding, video progress classification, multi-robot orchestration, and multi-step tool use over Gemini Robotics-ER 1.6, per Google's documentation.",
+      "Supports embodied-reasoning tasks such as agentic orchestration of robots via vision-language-action (VLA) models, robot video progress and success detection, instrument reading, and pointing, per Google's documentation.",
+      "Supports caching, code execution, computer use, file search, function calling, structured outputs, and thinking modes, per Google's documentation."
+    ],
+    "disadvantages": [
+      "Remains in preview, per its gemini-robotics-er-2-preview model id and Google's documentation.",
+      "Produces text output only; turning its plans into robot motion requires a separate vision-language-action (VLA) model, such as Gemini Robotics 2, per Google's documentation."
+    ],
+    "use_cases": [
+      "Agentic orchestration of robots using vision-language-action (VLA) models",
+      "Robot video understanding, including task-progress and success detection",
+      "Instrument reading and object pointing for robotic perception",
+      "Multi-robot coordination and multi-step spatial task planning"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/robotics-overview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/robotics-overview",
+      "title": "Gemini Robotics overview | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepmind.google/models/gemini-robotics/",
+      "title": "Gemini Robotics | Google DeepMind",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No maker-published accuracy-style (0-100) benchmark numbers were found for this exact model, so evaluations is left empty. The catalog's facts (131,072-token input limit, 65,536-token output limit, and audio_input/image_input/text_input/text_output modality) matched Google's own robotics-overview documentation exactly."
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "ft-gpt-4-0613",
+  "canonical": "ft:gpt-4-0613",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "ft:gpt-4-0613 is OpenAI's fine-tuning offering built on gpt-4-0613, the GPT-4 snapshot OpenAI released June 13, 2023 with an 8,192-token context window, updating the original gpt-4-0314 snapshot from March 2023 with function calling support and improved steerability. OpenAI's own model documentation currently describes GPT-4, the family this snapshot belongs to, as 'an older version of a high-intelligence GPT model.' As the fine-tuning base model, developers use it to train a custom ft:-prefixed model on their own data rather than calling gpt-4-0613 directly. Azure retired its equivalent Foundry deployment (gpt-4 / gpt-4-32k, version 0613) on June 6, 2025, and OpenAI's deprecations page schedules direct access to gpt-4-0613 -- and fine-tuned models built on it -- to shut down October 23, 2026, as it winds down the fine-tuning platform for new customers.",
+    "advantages": [
+      "OpenAI's model documentation lists gpt-4-0613 among GPT-4's fine-tunable snapshots, letting developers train a custom ft:-prefixed model on GPT-4-class reasoning rather than the GPT-3.5 Turbo family.",
+      "8,192-token context window, double the 4,096-token window of OpenAI's original GPT-3.5 Turbo fine-tuning base (gpt-3.5-turbo-0613)."
+    ],
+    "disadvantages": [
+      "OpenAI's own model documentation currently labels GPT-4, the family gpt-4-0613 belongs to, 'an older version' of its high-intelligence models.",
+      "Azure retired its equivalent Foundry deployment (gpt-4 / gpt-4-32k, version 0613) on June 6, 2025.",
+      "No longer offered as a base model for new fine-tuning jobs; OpenAI's current fine-tuning guide lists only the GPT-4.1 family, GPT-4o (vision) and o4-mini (reinforcement) as supported bases.",
+      "OpenAI's deprecations page schedules chat-completions access to gpt-4-0613 and fine-tuned models built on it to shut down October 23, 2026."
+    ],
+    "use_cases": [
+      "Fine-tuning GPT-4-class reasoning for narrow, task-specific applications using custom training data",
+      "Maintaining legacy fine-tuned deployments built on the gpt-4-0613 snapshot ahead of its October 2026 shutdown"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/guides/model-optimization",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/model-optimization",
+      "title": "Model optimization - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "http://web.archive.org/web/20260205072921/https://platform.openai.com/docs/models/gpt-4",
+      "title": "GPT-4 - OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "http://web.archive.org/web/20260907152523/https://openai.com/index/function-calling-and-other-api-updates/",
+      "title": "Function calling and other API updates",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+      "title": "Retired Microsoft Foundry Models - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "gpt-4-0613 is not GPT-4's original public snapshot -- that was gpt-4-0314 (March 2023); gpt-4-0613 is the June 13, 2023 update that added function calling and superseded gpt-4-0314, per OpenAI's own 'Function calling and other API updates' post. Could not locate OpenAI's original 2023 GPT-4 fine-tuning launch post (no live or archived copy found at guessed URLs), so advantages rely on OpenAI's current GPT-4 model page and general fine-tuning documentation rather than a GPT-4-specific fine-tuning announcement; no benchmark scores for this exact snapshot were found, so evaluations is empty. platform.openai.com currently 404s for this legacy model page, so it was read via its Wayback Machine mirror (captured while the page was still live)."
+}

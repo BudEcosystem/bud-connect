@@ -1,0 +1,11 @@
+{
+  "slug": "gpt-5-search-api",
+  "canonical": "gpt-5-search-api",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": null,
+  "sources": [],
+  "notes": "Could not find a maker, host, or credible third-party page describing a model called 'gpt-5-search-api'. OpenAI's model-card pages for both 'gpt-5-search-api' and the dated snapshot 'gpt-5-search-api-2025-10-14' return HTTP 404 on developers.openai.com; the string does not appear on OpenAI's current models overview, pricing, changelog, or deprecations pages (checked by fetching each page directly). OpenAI's current pricing page instead shows web search as a per-call tool usable by any model ($10/1k calls for gpt-5 and o-series, $25/1k calls for non-reasoning models), not a distinct 'search-api' model. Web searches for this exact string returned no matching results. Recommend confirming with whoever supplied this target whether the id or grouping is correct before retrying."
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "gpt-audio",
+  "canonical": "gpt-audio",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Audio is OpenAI's first generally available audio model for the Chat Completions API, accepting and producing both text and audio in a single, non-realtime request rather than a persistent low-latency session. It is designed for asynchronous audio workloads such as text-to-speech generation and audio summarization, and the 2025-08-28 snapshot covered here is its original release. OpenAI is retiring GPT Audio on January 20, 2027 and recommends migrating to gpt-audio-1.5.",
+    "advantages": [
+      "Accepts and returns both audio and text in a single call through the standard Chat Completions API, distinct from the low-latency gpt-realtime model built for persistent WebSocket sessions (OpenAI API docs; Microsoft Learn).",
+      "Supports function calling and streaming responses (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI is retiring GPT Audio on January 20, 2027, with gpt-audio-1.5 as the recommended replacement (OpenAI API deprecations page).",
+      "Only works through the Chat Completions endpoint; not compatible with Realtime, Live sessions, Assistants, Batch, fine-tuning or embeddings (OpenAI API docs).",
+      "Knowledge cutoff of October 1, 2023 (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "Asynchronous, non-realtime audio conversations built on Chat Completions",
+      "Text-to-speech generation",
+      "Audio summarization",
+      "Voice features that do not require real-time, low-latency responses"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-audio",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-audio", "title": "GPT-Audio Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://learn.microsoft.com/en-us/answers/questions/5588373/azure-openai-gpt-audio-model-general-availability", "title": "Azure OpenAI gpt-audio model general availability - Microsoft Q&A", "kind": "host"},
+    {"url": "https://llmlatency.dev/migrate/openai-gpt-audio", "title": "gpt-audio deprecation — retirement date and what to migrate to", "kind": "third_party"}
+  ],
+  "notes": "The catalog groups this target under a single dated Azure snapshot (azure/gpt-audio-2025-08-28) of OpenAI's gpt-audio model. OpenAI's own deprecations page lists a January 20, 2027 shutdown for gpt-audio; the catalog's facts give a later date (2027-03-02), which may reflect an Azure-specific retirement schedule I could not independently confirm, so the catalog's date is kept and only the OpenAI-documented date is stated above. No accuracy-style benchmark for this model was found on any maker, host or third-party page."
+}

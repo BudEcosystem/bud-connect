@@ -1,0 +1,66 @@
+{
+  "slug": "o3",
+  "canonical": "o3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o3 is OpenAI's flagship o-series reasoning model, released April 16, 2025, trained with large-scale reinforcement learning to think through long chains of thought before answering. It takes text and image input and can agentically use tools such as web browsing, Python, and image analysis while reasoning, making it well suited to complex math, science, coding, and visual-reasoning tasks that span text, code, and images. OpenAI's own model documentation now lists it as succeeded by GPT-5, and OpenAI's deprecations page schedules the o3-2025-04-16 snapshot for shutdown on its direct API, with gpt-5.6-sol as the recommended replacement.",
+    "advantages": [
+      "Scores 98.4% pass@1 (100% consensus@8) on AIME 2025 with Python, per OpenAI's launch post.",
+      "OpenAI reports it sets a new state of the art on Codeforces, SWE-bench, and MMMU at launch, and makes 20% fewer major errors than OpenAI o1 on difficult real-world tasks.",
+      "The first OpenAI reasoning model to integrate images directly into its chain of thought, able to crop, zoom, or transform images mid-reasoning, per OpenAI.",
+      "Can agentically combine web browsing, Python, file and image analysis, and image generation within a single reasoning chain, per OpenAI's system card."
+    ],
+    "disadvantages": [
+      "OpenAI's own documentation for this model states it has been succeeded by GPT-5.",
+      "OpenAI's deprecations page lists the o3-2025-04-16 snapshot for shutdown on its direct API, with gpt-5.6-sol as the recommended replacement.",
+      "Knowledge cutoff of June 1, 2024, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Complex multi-step math, science, and coding problems",
+      "Technical writing and analysis spanning text, code, and images together",
+      "Visual reasoning over charts, graphics, and low-quality or altered images",
+      "Agentic workflows that combine web search, code execution, and file/image analysis"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2025 (with Python, pass@1)",
+        "score": 98.4,
+        "source": "https://openai.com/index/introducing-o3-and-o4-mini/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o3",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o3",
+      "title": "o3 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+      "title": "Introducing OpenAI o3 and o4-mini",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
+      "title": "OpenAI o3 and o4-mini System Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts (200k context, 100k max output, image+text input, endpoints /v1/batch, /v1/chat/completions, /v1/responses) match OpenAI's current model reference page, so nothing was overridden. This catalog entry's only provider is Azure (facts.providers = ['azure']). OpenAI's direct-API deprecations page (opened 2026-09-24) lists o3-2025-04-16 with a shutdown date of December 11, 2026 and gpt-5.6-sol as the recommended replacement, a few weeks later than the catalog's deprecation_date (2026-11-19). Checked Azure's own Model Retirement Schedule (the applicable source for this entry): it lists o3-2025-04-16 as Deprecated with a retirement date of 2026-11-19 and gpt-5.6-sol as the replacement -- an exact match to the catalog's date and consistent on the replacement name, confirming this is a genuine cross-host scheduling difference rather than an error."
+}

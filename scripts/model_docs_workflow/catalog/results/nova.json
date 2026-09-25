@@ -1,0 +1,47 @@
+{
+  "slug": "nova",
+  "canonical": "nova",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova is Deepgram's general-purpose speech-to-text model and the predecessor to Nova-2. Deepgram describes it as trained \"over 100 domains and 47 billion tokens.\" Deepgram's Models & Languages Overview lists Nova under \"Legacy Models,\" alongside Enhanced and Base, with Nova-2 as its successor.",
+    "advantages": [
+      "Deepgram describes Nova's training as spanning \"over 100 domains and 47 billion tokens.\""
+    ],
+    "disadvantages": [
+      "Deepgram lists Nova under \"Legacy Models\" in its Models & Languages Overview, with Nova-2 as its successor.",
+      "Deepgram reports that Nova-2 achieves an 18.4% reduction in word error rate (WER) versus Nova-1."
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio across a broad range of domains."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish",
+      "Hindi"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepgram.com/learn/nova-2-speech-to-text-api",
+      "title": "Nova-2: Automatic Speech Recognition, Reinvented | Deepgram",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Treated 'nova' as Deepgram's Nova-General model (as opposed to the nova-phonecall/nova-medical variants, which are separate catalog entries). No standalone maker-published WER figure for Nova itself was found; only Nova-2's own page states its improvement relative to Nova-1, which is cited here as a disadvantage of Nova. Legacy status confirmed via developers.deepgram.com/docs/models-languages-overview's section headings. The catalog carries no deprecation_date. Verify pass: the Nova-2 launch post calls Nova-2 itself (not Nova) 'the deepest-trained automatic speech recognition (ASR) model in the market' ('...Nova-2 continues to be the deepest-trained...'); the prior advantages sentence misattributed that superlative to Nova at its own release, so it was corrected to keep only the supported training-scale figure."
+}

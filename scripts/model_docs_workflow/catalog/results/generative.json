@@ -1,0 +1,56 @@
+{
+  "slug": "generative",
+  "canonical": "generative",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Generative is Amazon Polly's largest text-to-speech engine to date, built on a billion-parameter transformer that converts text into speech codes plus a convolution-based decoder that renders them into waveforms in a streamable way. Amazon describes it as producing the most human-like, emotionally engaged, and adaptive conversational voices available in Polly, aimed at uses such as a customer assistant, a virtual trainer, or an advertiser voice. Polly currently offers 43 Generative voices across languages including English, Dutch, French, German, Italian, Korean, Polish, Portuguese, and Spanish.",
+    "advantages": [
+      "Amazon calls it the largest Polly TTS model to date, describing its voices as the most human-like, emotionally engaged, and adaptive conversational voices in Polly.",
+      "Supports Amazon Polly's Bidirectional Streaming API for simultaneous streaming input and output, in a subset of AWS regions.",
+      "Offers 43 voices across 23 language and locale variants, including English, Dutch, French, German, Italian, Korean, Polish, Portuguese, and Spanish.",
+      "Supports both real-time and asynchronous speech synthesis, and MP3, OGG (Vorbis), and raw PCM output formats."
+    ],
+    "disadvantages": [
+      "Does not support the Newscaster speaking style, which is available for some other Polly voices.",
+      "Does not currently support generating speech marks.",
+      "Amazon warns that updates to the model's training data can cause slight variations in how a voice sounds over time, which can affect projects synthesized in parts over a long period, such as a season of podcasts.",
+      "Amazon notes a built-in emergency-stop mechanism reduces but does not eliminate the risk of the model hallucinating or cutting off a word mid-generation."
+    ],
+    "use_cases": [
+      "Conversational customer-assistant and virtual-agent voices",
+      "Virtual training and e-learning narration",
+      "Advertising and marketing voiceover",
+      "Applications needing simultaneous streaming input and output via the Bidirectional Streaming API"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Dutch",
+      "French",
+      "German",
+      "Italian",
+      "Korean",
+      "Polish",
+      "Portuguese",
+      "Spanish"
+    ],
+    "website_url": "https://docs.aws.amazon.com/polly/latest/dg/generative-voices.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/generative-voices.html",
+      "title": "Generative voices - Amazon Polly",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/newscaster-voices.html",
+      "title": "Applying the newscaster voice - Amazon Polly",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No accuracy-style benchmark scores for the Generative engine were found on Amazon's pages, so evaluations is left empty. Region and voice availability differ by AWS region (e.g. only a subset of voices are offered in Europe (London), Canada (Central) and Europe (Zurich)); not restated here since it is a Bud routing/hosting detail."
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "llama3-2-90b-instruct",
+  "canonical": "llama3-2-90b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.2 90B Vision Instruct is the largest model in Meta's Llama 3.2 family, released September 25, 2024. It pairs a separately trained vision adapter (using cross-attention layers) with the Llama 3.1 text backbone, so it can reason over images alongside text for tasks such as visual question answering, document understanding and chart reading. Text-only prompts support eight languages, but Meta states that image-plus-text prompts are English only. AWS Bedrock's own model card lists this model's lifecycle as Legacy, with a stated EOL date of July 7, 2026, which has already passed as of this research.",
+    "advantages": [
+      "Scores 90.1% (ANLS) on DocVQA and 85.5% relaxed accuracy on ChartQA (CoT), per Meta's model card.",
+      "Scores 92.3% on AI2 Diagram and 78.1% on VQAv2, per Meta's model card.",
+      "Scores 60.3% on MMMU (CoT) for multimodal reasoning and 57.3% on MathVista, per Meta's model card.",
+      "Scores 86.0% on MMLU and 68.0% on MATH (CoT) for its text-only capabilities, per Meta's model card.",
+      "Supports eight text-only languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai), per Meta's model card."
+    ],
+    "disadvantages": [
+      "Image-plus-text prompts are English only; the other supported languages apply to text-only use, per Meta's model card.",
+      "Knowledge cutoff of December 2023, per Meta's model card.",
+      "Meta's model card does not describe tool-calling or function-calling support for this model.",
+      "AWS Bedrock's model card lists this model's lifecycle as Legacy, with a stated EOL date of July 7, 2026 that has already passed as of this research (2026-09-24), though the page has not been updated to show an EOL status."
+    ],
+    "use_cases": [
+      "Visual question answering over images",
+      "Document understanding and reading of charts, diagrams and scanned documents",
+      "Image captioning",
+      "Image-text retrieval",
+      "Visual grounding",
+      "Multilingual text-only assistant chat in the eight supported languages"
+    ],
+    "evaluations": [
+      {"name": "MMMU (CoT)", "score": 60.3, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "MathVista", "score": 57.3, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "ChartQA (CoT, relaxed accuracy)", "score": 85.5, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "AI2 Diagram", "score": 92.3, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "DocVQA (ANLS)", "score": 90.1, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "VQAv2", "score": 78.1, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "MMLU", "score": 86.0, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"},
+      {"name": "MATH", "score": 68.0, "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md"}
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {"url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD_VISION.md", "title": "llama-models/models/llama3_2/MODEL_CARD_VISION.md at main", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-90b-instruct.html", "title": "Llama 3.2 90B Instruct - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "AWS Bedrock's own model card (fetched 2026-09-24) shows this model's lifecycle as 'Legacy' with a stated 'Model EOL date: July 7, 2026' -- a date already in the past relative to today, even though the page still labels the model Legacy rather than EOL; this may mean the page has not been updated, or that access is already restricted. Meta's own model card does not describe the model as deprecated. The catalog's modality (image_input, text_input, text_output), max_input_tokens (128000) and max_output_tokens (4096) match what both Meta and AWS Bedrock state."
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "claude-sonnet-4-5",
+  "canonical": "claude-sonnet-4-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Sonnet 4.5 is Anthropic's mid-tier Claude model, released September 29, 2025 for coding and for building complex agents; Anthropic reported it could stay focused on multi-step tasks for more than 30 hours. It supports vision, extended thinking and parallel tool use, with a 200K-token context window (1M in an available configuration). Anthropic has since released Claude Sonnet 4.6 (February 2026) as a full upgrade in the same tier, and Anthropic's own documentation lists a tentative retirement date of September 29, 2026 for this snapshot.",
+    "advantages": [
+      "Scored 77.2% on SWE-bench Verified, averaged over 10 trials with a 200K token thinking budget, at launch (Anthropic launch post).",
+      "Led the OSWorld computer-use benchmark at 61.4% at launch, up from Sonnet 4's 42.2% four months earlier (Anthropic launch post).",
+      "Anthropic reported it could maintain focus for more than 30 hours on complex, multi-step agentic tasks (Anthropic launch post)."
+    ],
+    "disadvantages": [
+      "Superseded by Claude Sonnet 4.6 (released February 17, 2026), which Anthropic positions as a full upgrade across coding, computer use and reasoning (Anthropic Sonnet 4.6 launch post).",
+      "Anthropic's model-deprecations page lists a tentative retirement date of September 29, 2026 for this snapshot, matching the catalog's deprecation date."
+    ],
+    "use_cases": [
+      "Software engineering and coding agents",
+      "Long-running autonomous agent tasks",
+      "Computer-use automation",
+      "Building complex enterprise agents"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 77.2,
+        "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+      },
+      {
+        "name": "OSWorld",
+        "score": 61.4,
+        "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-5",
+      "title": "Introducing Claude Sonnet 4.5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+      "title": "Introducing Sonnet 4.6",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date (2026-09-29) matches Anthropic's own model-deprecations table, but as of research date that table still lists claude-sonnet-4-5-20250929 as 'Active' with only a tentative ('not sooner than') retirement date, not a confirmed deprecation with a named replacement row -- flagging in case the catalog's date needs to be treated as provisional. Catalog's 200K/1M input-token and 8192/64K output-token facts match the two configurations Anthropic describes (standard vs 1M-context beta)."
+}

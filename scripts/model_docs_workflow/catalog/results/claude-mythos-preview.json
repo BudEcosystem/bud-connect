@@ -1,0 +1,45 @@
+{
+  "slug": "claude-mythos-preview",
+  "canonical": "claude-mythos-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Mythos Preview is Anthropic's first frontier-class model in its access-restricted Mythos line, announced April 7, 2026 as part of Project Glasswing, a defensive-cybersecurity initiative offered to more than 50 vetted organizations (11 named launch partners plus over 40 additional organizations) rather than the general public. Anthropic describes it as a strong general-purpose model that is especially capable at computer-security tasks such as vulnerability discovery and exploit development, with a 1M-token context window and 128K-token maximum output over text and image input. Anthropic superseded it on June 9, 2026 with the generally available Claude Mythos 5 (and its public counterpart Claude Fable 5), and its model-deprecations page now lists Mythos Preview as Deprecated.",
+    "advantages": [
+      "Discovered thousands of zero-day vulnerabilities across every major operating system and web browser during pre-release testing, including a 27-year-old OpenBSD TCP flaw and a 16-year-old FFmpeg codec vulnerability, per Anthropic's Mythos Preview research post.",
+      "Achieved 181 successful exploits of Firefox 147 JavaScript vulnerabilities in testing, versus 2 for Claude Opus 4.6, per Anthropic's research post.",
+      "Achieved full control-flow hijack (tier 5) on ten fully patched OSS-Fuzz targets, while Claude Opus 4.6 reached no better than a single tier-3 crash and no tier-5 hijacks, per Anthropic's research post.",
+      "Can autonomously reverse-engineer stripped binaries and chain multiple vulnerabilities into multi-stage exploits without further human intervention after the initial prompt, per Anthropic's research post."
+    ],
+    "disadvantages": [
+      "Restricted, invitation-only research preview: not generally available, offered only to vetted organizations through Project Glasswing rather than the public API.",
+      "Deprecated as of June 9, 2026, when Claude Mythos 5 and the public Claude Fable 5 superseded it; Anthropic's model-deprecations page marks it Deprecated with retirement date 'to be announced'.",
+      "Anthropic reports it was unsuccessful at remotely exploiting some Linux kernel vulnerabilities it found, and could not produce certain browser exploits without human assistance."
+    ],
+    "use_cases": [
+      "Defensive cybersecurity research: vulnerability discovery, exploit development, and penetration testing for vetted security teams under Project Glasswing",
+      "Reverse-engineering stripped binaries and reconstructing source code for security analysis",
+      "Black-box testing of binaries and endpoint-security hardening",
+      "Open-source software hardening, supported by Anthropic funding to organizations such as OpenSSF and the Apache Software Foundation"
+    ],
+    "evaluations": [
+      {"name": "CyberGym", "score": 83.1, "source": "https://www.anthropic.com/glasswing"},
+      {"name": "SWE-bench Pro", "score": 77.8, "source": "https://www.anthropic.com/glasswing"},
+      {"name": "SWE-bench Verified", "score": 93.9, "source": "https://www.anthropic.com/glasswing"},
+      {"name": "Terminal-Bench 2.0", "score": 82.0, "source": "https://www.anthropic.com/glasswing"},
+      {"name": "GPQA Diamond", "score": 94.6, "source": "https://www.anthropic.com/glasswing"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/glasswing",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/glasswing", "title": "Project Glasswing: Securing critical software for the AI era", "kind": "maker"},
+    {"url": "https://www.anthropic.com/research/mythos-preview", "title": "Claude Mythos Preview's cybersecurity capabilities", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy", "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier) - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog has no deprecation_date for claude-mythos-preview; Anthropic's model-deprecations page lists it Deprecated since June 9, 2026 with retirement 'to be announced', superseded by the GA Claude Mythos 5 / Claude Fable 5 line. This is a restricted research-preview model with access limited to vetted Project Glasswing partners; anthropic.com/claude/mythos (the general marketing page) now describes the current Mythos 5.1 rather than this Preview snapshot, so claims specific to 5.1 were excluded."
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "gemini-embedding-2-preview",
+  "canonical": "gemini-embedding-2-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini Embedding 2 (preview) is a newer Google embedding model, released March 10, 2026 and currently offered in preview rather than general availability. It generates vector representations for semantic search, retrieval-augmented generation, classification and clustering, and Google states it supports over 100 languages. Like gemini-embedding-001, it uses Matryoshka Representation Learning so its output embedding can be reduced from the full size to smaller dimensions (Google recommends 768, 1536 or 3072 within a 128-3072 range), and it automatically normalizes truncated embeddings. Per Bud's catalog, this route accepts up to 8,192 input tokens, four times gemini-embedding-001's 2,048-token limit.",
+    "advantages": [
+      "8,192-token input limit, four times gemini-embedding-001's 2,048-token limit, per Google's documentation.",
+      "Google states it supports over 100 languages.",
+      "Automatically normalizes truncated (non-default-dimension) embeddings, unlike gemini-embedding-001, which needs manual normalization, per Google's documentation."
+    ],
+    "disadvantages": [
+      "Listed in Preview rather than general availability on Google's Gemini models page.",
+      "No MTEB or other retrieval benchmark score specific to this model was found on Google's pages.",
+      "Google's deprecations page lists an August 10, 2026 shutdown (recommending gemini-embedding-2) for a same-dated preview embedding row, but the model's own docs page, updated August 18, 2026, shows no deprecation notice, so status is unclear."
+    ],
+    "use_cases": [
+      "Semantic search and retrieval-augmented generation (RAG).",
+      "Text classification and clustering.",
+      "Question answering and fact-checking retrieval tasks."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2-preview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2-preview", "title": "Gemini Embedding 2 preview model | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/embeddings", "title": "Embeddings | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/pricing", "title": "Gemini Developer API Pricing | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Checked current status per the research instructions. Google released a separate GA sibling, gemini-embedding-2 (no '-preview' suffix), on 2026-04-22; that is a different catalog target and was not researched here. The deprecations page has a row for 'embedding-2-preview' (missing the 'gemini-' prefix, likely a documentation inconsistency rather than a different model, since no other model of that era used a bare 'embedding-N' id) that shares this model's exact 2026-03-10 release date; it gives a shutdown date of 2026-08-10 and recommends gemini-embedding-2 as replacement. However, this model's own dedicated docs page -- last updated 2026-08-18, after that supposed shutdown -- still presents it as a live 'Preview' with no shutdown warning, unlike Google's pages for models it has actually shut down (compare gemini-3.1-flash-lite-preview, which does carry such a banner). Added this as a disadvantage rather than asserting deprecation outright, since the more specific and more recently updated page contradicts the deprecations-table row. Set website_url to the model's own dedicated docs page rather than the shared embeddings guide. Google's embeddings documentation describes gemini-embedding-2-preview as its 'first multimodal embedding model,' accepting text, images, video, audio and PDF documents into a unified embedding space. Bud's catalog lists this route's modality as text_input/text_output only, so I kept the catalog's modality and did not restate the broader multimodal claim in the details fields; flagging the conflict here per the research instructions. No MTEB or other accuracy benchmark specific to this model was found, so evaluations is empty. Languages were given only as 'over 100 languages' by Google (no list), so languages is left empty and the count is in the description."
+}

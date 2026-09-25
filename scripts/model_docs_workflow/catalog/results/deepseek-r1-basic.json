@@ -1,0 +1,77 @@
+{
+  "slug": "deepseek-r1-basic",
+  "canonical": "deepseek-r1-basic",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-R1 is DeepSeek's first-generation reasoning model: a 671-billion-parameter mixture-of-experts architecture (37 billion active parameters per token) built on DeepSeek-V3-Base and trained primarily with large-scale reinforcement learning, plus a small amount of 'cold-start' supervised data added before RL to improve output readability. DeepSeek reports the model reaches performance comparable to OpenAI's o1 on math, code and reasoning tasks. Fireworks AI serves this same model on two endpoints it states are identical in model weights and quality: 'Basic', the lower-cost, lower-throughput serverless tier described here, and a faster 'Fast' tier at a higher per-token price. It is released under the MIT license.",
+    "advantages": [
+      "Scores 79.8% pass@1 on AIME 2024, per DeepSeek's Hugging Face model card.",
+      "Scores 97.3% pass@1 on MATH-500, per DeepSeek's Hugging Face model card.",
+      "Scores 90.8% pass@1 on MMLU, per DeepSeek's Hugging Face model card.",
+      "Scores 65.9% pass@1 on LiveCodeBench, per DeepSeek's Hugging Face model card.",
+      "DeepSeek reports performance comparable to OpenAI-o1 across math, code and reasoning tasks."
+    ],
+    "disadvantages": [
+      "Fireworks' Basic tier trades a lower per-token price for slower response speed than the same provider's Fast tier of this same model, per Fireworks' listing.",
+      "Fireworks' listing for this deployment states it does not support function calling or image input.",
+      "DeepSeek's own API changelog labels this reasoning generation 'legacy R1' and discontinued the deepseek-reasoner model id in favor of the DeepSeek-V4 series by July 2026, though the open weights stay available on Hugging Face and via third-party hosts such as Fireworks AI."
+    ],
+    "use_cases": [
+      "Complex mathematical reasoning and competition math",
+      "Competitive programming and code generation",
+      "Multi-step logical reasoning tasks",
+      "General knowledge question-answering with an explicit chain-of-thought 'thinking' step"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2024",
+        "score": 79.8,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "MATH-500",
+        "score": 97.3,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "MMLU",
+        "score": 90.8,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+      },
+      {
+        "name": "LiveCodeBench",
+        "score": 65.9,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-r1-basic",
+      "title": "deepseek-r1-basic - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "title": "deepseek-ai/DeepSeek-R1 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This is not a distinct model: it is Fireworks' 'Basic' (cost-optimized, slower) serverless endpoint for the same DeepSeek-R1 weights also served on Fireworks' 'Fast' endpoint; Fireworks' own listing states the two are identical in quality. Fireworks' page states a 163k-token context length, but the catalog facts (max_input_tokens 128000, max_output_tokens 20480) are kept as authoritative per instructions; DeepSeek's own Hugging Face card separately states a 128K context, matching the catalog's input figure. Codeforces rating (2029) was left out of evaluations since it is not a 0-100 accuracy score. DeepSeek's own API changelog (api-docs.deepseek.com/updates) shows deepseek-reasoner moved on from DeepSeek-R1 to DeepSeek-V3.1/V3.2-Exp in 2025 and then to the V4 series by mid-2026, referring to this generation as 'legacy R1'."
+}

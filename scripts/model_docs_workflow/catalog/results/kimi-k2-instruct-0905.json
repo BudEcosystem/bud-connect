@@ -1,0 +1,44 @@
+{
+  "slug": "kimi-k2-instruct-0905",
+  "canonical": "kimi-k2-instruct-0905",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi-K2-Instruct-0905 is Moonshot AI's updated release of Kimi K2 Instruct (the '0905' suffix follows Moonshot's date-style naming), sharing the same 1-trillion-parameter, 32-billion-activated mixture-of-experts architecture but with the context window expanded from 128K to 256K tokens. Moonshot's model card states the update brings 'significant improvements' in agentic coding performance and frontend coding compared with the earlier checkpoint, and it is released under a Modified MIT License. It takes text-only input and, like the original, runs without an extended thinking/reasoning mode. Moonshot's own API platform lists this checkpoint's hosted preview endpoint as discontinued since May 25, 2026 in favor of its newer Kimi K3 model.",
+    "advantages": [
+      "Scores 69.2% (±0.63) on SWE-bench Verified, versus 65.8% for the prior Kimi-K2-Instruct checkpoint, per Moonshot's model card.",
+      "Scores 55.9% (±0.72) on SWE-bench Multilingual, versus 47.3% for the prior checkpoint, per Moonshot's model card.",
+      "Scores 44.5% (±2.03) on Terminal-Bench, versus 37.5% for the prior checkpoint, per Moonshot's model card.",
+      "Scores 66.6% (±0.72) on SWE-Dev, versus 61.9% for the prior checkpoint, per Moonshot's model card.",
+      "Context window expanded from 128K to 256K tokens versus the original Kimi K2 Instruct, per Moonshot's model card."
+    ],
+    "disadvantages": [
+      "Text-only: no vision/image input, per the catalog's modality and Moonshot's model card.",
+      "Runs without an extended 'thinking' mode, unlike Moonshot's separate Kimi K2 Thinking model.",
+      "Moonshot's own API platform lists the matching hosted preview endpoint ('kimi-k2-0905-preview') as discontinued since May 25, 2026, directing users to the newer Kimi K3 model, per Moonshot's Model List page."
+    ],
+    "use_cases": [
+      "Long-context agentic coding and code-editing tasks.",
+      "Frontend/UI code generation.",
+      "Terminal-based coding agents.",
+      "General tool-calling chat workflows."
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 69.2, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905"},
+      {"name": "SWE-bench Multilingual", "score": 55.9, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905"},
+      {"name": "Multi-SWE-Bench", "score": 33.5, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905"},
+      {"name": "Terminal-Bench", "score": 44.5, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905"},
+      {"name": "SWE-Dev", "score": 66.6, "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905",
+    "github_url": "https://github.com/MoonshotAI/Kimi-K2"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct-0905", "title": "moonshotai/Kimi-K2-Instruct-0905 · Hugging Face", "kind": "maker"},
+    {"url": "https://platform.kimi.ai/docs/models", "title": "Model List - Kimi Open Platform", "kind": "maker"}
+  ],
+  "notes": "The catalog's max_input_tokens (262144) and max_output_tokens (32768) match this checkpoint's stated 256K context. Could not confirm an exact release date from the card text itself (only the '0905' naming suffix, MMDD-style); left out of the description rather than guessing the year. No deprecation_date in the catalog, but Moonshot's own current API docs (platform.kimi.ai/docs/models) list 'kimi-k2-0905-preview' -- the hosted counterpart of this checkpoint -- among models discontinued since May 25, 2026, recommending Kimi K3; this governs Moonshot's own first-party API only, and the open-weight checkpoint remains independently servable through the Fireworks route this catalog target actually uses, so I did not call the model itself deprecated."
+}

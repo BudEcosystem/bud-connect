@@ -1,0 +1,61 @@
+{
+  "slug": "llama-v2-13b",
+  "canonical": "llama-v2-13b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 2 13B is Meta's 13-billion-parameter pretrained, auto-regressive transformer language model, part of the Llama 2 family spanning 7B to 70B parameters. Released in July 2023 and trained on 2 trillion tokens of publicly available data (knowledge cutoff September 2022), it is a general-purpose base model for commercial and research use in English, meant to be fine-tuned (for example into a chat model) rather than used directly as an assistant. Meta's own GitHub repository for Llama 2 is now marked deprecated, with development consolidated into newer repositories for later Llama generations.",
+    "advantages": [
+      "Scores 54.8 on MMLU (5-shot), per Meta's model card.",
+      "Scores 39.4 on BIG-Bench Hard, per Meta's model card.",
+      "Part of a family spanning 7B to 70B parameters trained with the same recipe, giving a range of compute/quality tradeoffs, per Meta's model card."
+    ],
+    "disadvantages": [
+      "Pretrained base model, not fine-tuned for chat or instruction-following out of the box.",
+      "4,096-token context window, per Meta's model card.",
+      "Officially supported for English only; Meta says other languages need developer fine-tuning and separate license compliance, per the model card.",
+      "Training data has a knowledge cutoff of September 2022, per Meta's model card.",
+      "Meta's dedicated GitHub repository for Llama 2 is now marked deprecated, with development moved to newer repositories, per the repo's README."
+    ],
+    "use_cases": [
+      "Base for fine-tuning into chat, instruction-following, or domain-specific models.",
+      "General-purpose English text generation and completion.",
+      "Research on model behavior, alignment, and fine-tuning techniques."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 54.8,
+        "source": "https://huggingface.co/meta-llama/Llama-2-13b-hf"
+      },
+      {
+        "name": "BIG-Bench Hard",
+        "score": 39.4,
+        "source": "https://huggingface.co/meta-llama/Llama-2-13b-hf"
+      }
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-2-13b-hf",
+    "github_url": "https://github.com/meta-llama/llama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-2-13b-hf",
+      "title": "meta-llama/Llama-2-13b-hf · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama",
+      "title": "meta-llama/llama: Inference code for Llama models",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v2-13b",
+      "title": "Llama 2 13B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's 4,096-token max_input/max_output_tokens match Meta's stated 4K context window for Llama 2, so no conflict. Meta's meta-llama/llama GitHub repo (the original Llama 2 inference repo) is itself marked deprecated in its own README, with development consolidated into newer repositories for later Llama generations; that is a statement about the repo/tooling, not a formal end-of-life notice for the model weights, and the catalog's own deprecation_date is empty."
+}

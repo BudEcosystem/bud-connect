@@ -1,0 +1,50 @@
+{
+  "slug": "toppy-m-7b",
+  "canonical": "toppy-m-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Undi95",
+  "details": {
+    "description": "Toppy-M-7B is a 7-billion-parameter model built on Mistral-7B-v0.1, created by independent developer Undi95 by merging several fine-tuned Mistral models — openchat/openchat_3.5, NousResearch/Nous-Capybara-7B-V1.9, HuggingFaceH4/zephyr-7b-beta, plus roleplay-oriented LoRAs (lemonilia/AshhLimaRP-Mistral-7B, Vulkane/120-Days-of-Sodom-LoRA-Mistral-7b and Undi95/Mistral-pippa-sharegpt-7b-qlora) — using mergekit's task_arithmetic method. Fireworks AI, which hosts the model, lists a 32.7K-token context window. The model is tagged \"Not-For-All-Audiences\" on Hugging Face and licensed CC-BY-NC-4.0 for non-commercial use, reflecting the roleplay- and adult-content-oriented material in some of its merged components.",
+    "advantages": [
+      "Merges several instruction- and roleplay-tuned Mistral-7B models (openchat_3.5, Nous-Capybara-7B-V1.9, zephyr-7b-beta, plus roleplay LoRAs) using mergekit's task_arithmetic method, per Undi95's model card."
+    ],
+    "disadvantages": [
+      "Licensed CC-BY-NC-4.0, restricting use to non-commercial purposes, per Undi95's model card.",
+      "Tagged \"Not-For-All-Audiences\" on Hugging Face, per Undi95's model card.",
+      "No benchmark scores are published by the maker."
+    ],
+    "use_cases": [
+      "General-purpose chat and roleplay conversation",
+      "Creative writing, given its merge of roleplay- and story-focused fine-tunes"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Undi95/Toppy-M-7B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Undi95/Toppy-M-7B",
+      "title": "Undi95/Toppy-M-7B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/Undi95/Toppy-M-7B/raw/main/README.md",
+      "title": "Toppy-M-7B README",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/toppy-m-7b",
+      "title": "Toppy M 7B - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/TheBloke/Toppy-M-7B-GGUF",
+      "title": "TheBloke/Toppy-M-7B-GGUF · Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog facts give a flat 32768-token max input/output; Fireworks' host page independently states a 32.7K-token context window, which is consistent. No maker-published benchmark numbers were found, so evaluations is left empty rather than guessed."
+}

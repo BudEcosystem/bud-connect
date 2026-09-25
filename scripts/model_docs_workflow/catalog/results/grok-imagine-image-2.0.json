@@ -1,0 +1,65 @@
+{
+  "slug": "grok-imagine-image-2.0",
+  "canonical": "grok-imagine-image-2.0",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok Imagine Image 2.0 is xAI's current text-to-image and image-editing model, launched August 7, 2026 as xAI's recommended image model. It serves as the 'Quality Mode' on grok.com/imagine and xAI's iOS/Android apps, and is available via the API as grok-imagine-image-2.0 (POST /v1/images/generations). It generates images at 1K, 1.5K, or 2K resolution with low, medium, or automatically-selected quality, and xAI says it 'follows instructions closely, down to the details,' planning typography and layout so dense, multi-part visuals hold together and small text renders sharply. Editing tools include region-targeted ('magic wand') edits, segmentation-based area selection, background removal to a transparent layer, multi-reference editing that combines up to 5 input images in one generation, and a 'smart resize' that refits an image to a new aspect ratio.",
+    "advantages": [
+      "Ranked second in the world in both text-to-image and image editing at its August 2026 launch; by September 2026 had fallen to 5th in Text-to-Image and 4th in Image Edit by Overall Elo as new models joined (Arena leaderboards, xAI Imagine Image 2.0 launch post).",
+      "Multi-reference editing combines up to 5 input images in a single generation for compositing subjects, transferring styles, or composing scenes (xAI Imagine Image 2.0 launch post; xAI image-editing docs).",
+      "Plans typography and layout so dense, multi-part visuals hold together and small text renders sharply, per xAI (Imagine Image 2.0 launch post).",
+      "Generates images at resolutions up to 2K, with low, medium, and automatic quality tiers (xAI model registry, docs.x.ai).",
+      "Dedicated tools for region-targeted ('magic wand') edits, segmentation-based selection, and background removal to a transparent layer (xAI Imagine Image 2.0 launch post)."
+    ],
+    "disadvantages": [
+      "Image output only; xAI serves video generation as separate models (grok-imagine-video, grok-imagine-video-1.5)."
+    ],
+    "use_cases": [
+      "Photo editing and touch-ups via region-targeted edits and background removal",
+      "Product shots, headshots, icons, and game-asset generation using xAI's ready-made templates",
+      "Poster, packaging, and other typography-heavy graphic design where small text must stay legible",
+      "Multi-image compositing that combines subjects, styles, or props from up to 5 reference images",
+      "General text-to-image generation via the xAI API, grok.com/imagine, or xAI's iOS/Android apps"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://x.ai/news/grok-imagine-image-2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://x.ai/news/grok-imagine-image-2",
+      "title": "Imagine Image 2.0",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/images/generation",
+      "title": "Image Generation — xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/images/editing",
+      "title": "Image Editing — xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Grok Models & Pricing",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arena.ai/leaderboard/text-to-image",
+      "title": "Arena Text-to-Image Leaderboard",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://arena.ai/leaderboard/image-edit",
+      "title": "Arena Image Edit Leaderboard",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "The catalog's second uri (xai/low/1024-x-1024/grok-imagine-image-2.0) corresponds to the '1K resolution, low quality' pricing tier in xAI's model registry, not a separate model. Its Arena ranking ('second in the world') is an Elo-based leaderboard result, so per this workflow's rules I reported it only as an advantage with its source, not as an evaluations entry (Elo isn't an accuracy score). The 'second in the world' claim was true at the model's Aug 7, 2026 launch but is now stale: the live Arena leaderboards (formerly LMArena, now at arena.ai) show it at 5th in Text-to-Image and 4th in Image Edit as of Sept 21, 2026, as competing models (e.g. OpenAI's gpt-image-2.5 family, Microsoft's mai-image-2.6) were added; the advantage sentence was corrected to give both the launch-time and current standing. xAI's docs/blog currently brand the company 'SpaceXAI'; kept maker as 'xAI' for consistency with the catalog's provider id."
+}

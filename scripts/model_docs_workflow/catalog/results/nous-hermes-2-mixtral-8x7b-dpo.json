@@ -1,0 +1,55 @@
+{
+  "slug": "nous-hermes-2-mixtral-8x7b-dpo",
+  "canonical": "nous-hermes-2-mixtral-8x7b-dpo",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NousResearch",
+  "details": {
+    "description": "Nous Hermes 2 Mixtral 8x7B DPO is NousResearch's fine-tune of Mistral AI's Mixtral 8x7B mixture-of-experts model, trained via supervised fine-tuning followed by Direct Preference Optimization (DPO) on over 1,000,000 primarily GPT-4-generated examples plus other open data, including the OpenHermes-2.5 dataset. NousResearch describes it as the first fine-tune to beat Mixtral Instruct, MistralAI's own flagship tune of the base model, and positions it for general-purpose conversation, coding, creative writing, translation, and reasoning. It uses the ChatML prompt format with `<|im_start|>`/`<|im_end|>` tokens for structured multi-turn conversations and system prompts.",
+    "advantages": [
+      "NousResearch reports this DPO version was the first fine-tune to beat Mixtral Instruct, MistralAI's own flagship tune of the base model.",
+      "Averages 75.70 across the GPT4All benchmark suite (Arc Challenge, HellaSwag, PIQA, and others), per NousResearch's published results.",
+      "Averages 46.05 on AGIEval and 49.70 on BigBench, per NousResearch's published results.",
+      "Trained on over 1,000,000 primarily GPT-4-generated examples, including the OpenHermes-2.5 dataset (NousResearch)."
+    ],
+    "disadvantages": [
+      "A 47B mixture-of-experts model that NousResearch says needs more than 24GB of VRAM even at 4-bit quantization.",
+      "An SFT-only variant is also released, so this DPO tune is one of two closely related versions rather than a single canonical model (NousResearch)."
+    ],
+    "use_cases": [
+      "General-purpose conversational assistant",
+      "Coding",
+      "Creative writing",
+      "Translation and reasoning tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "GPT4All Average",
+        "score": 75.7,
+        "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
+      },
+      {
+        "name": "AGIEval Average",
+        "score": 46.05,
+        "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
+      },
+      {
+        "name": "BigBench Average",
+        "score": 49.7,
+        "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
+      "title": "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO - Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Only source found and opened was the Hugging Face model card. Facts list max_input/output tokens 32768; the card does not state a context length independently, so I did not restate or contradict the catalog figure. Card states an Apache 2.0 license."
+}

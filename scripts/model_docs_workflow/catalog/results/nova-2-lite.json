@@ -1,0 +1,54 @@
+{
+  "slug": "nova-2-lite",
+  "canonical": "nova-2-lite",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Nova 2 Lite is Amazon's cost-efficient multimodal model in the Nova 2 family, launched December 2, 2025 for high-volume automation, document processing and customer support across text and image input. It introduces optional extended thinking with three selectable reasoning-effort levels, a 1-million-token context window, up to 64K output tokens, and built-in web-grounding and code-interpreter tools for agentic workflows.",
+    "advantages": [
+      "Supports extended thinking with three selectable reasoning-effort levels (low, medium, high) for multi-step, coding and STEM reasoning tasks (AWS Amazon Nova 2 user guide).",
+      "Processes text and image input with a 1-million-token context window and up to 64K output tokens (AWS Bedrock model card).",
+      "Includes built-in web-grounding and code-interpreter tools usable without external integrations (AWS Amazon Nova 2 user guide).",
+      "Supports supervised and reinforcement fine-tuning on Amazon Bedrock and SageMaker AI (AWS Amazon Nova 2 user guide)."
+    ],
+    "disadvantages": [
+      "Output is text only; the model cannot generate image, video or audio (AWS Bedrock model card).",
+      "When extended thinking is enabled, the reasoning content is returned as '[REDACTED]' rather than shown to the caller, though reasoning tokens are still billed as output tokens (AWS Amazon Nova 2 user guide)."
+    ],
+    "use_cases": [
+      "High-volume automation",
+      "Document processing",
+      "Customer support",
+      "Agentic workflows coordinating multiple tools"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html",
+      "title": "What is Amazon Nova 2? - Amazon Nova 2 User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/whats-new.html",
+      "title": "What's new in Amazon Nova 2 - Amazon Nova 2 User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/extended-thinking.html",
+      "title": "Extended thinking in Amazon Nova 2 - Amazon Nova 2 User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html",
+      "title": "Nova 2 Lite model card - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list modality as image_input, text_input, text_output; the Bedrock model card and the Nova 2 user guide both additionally show video as a supported input modality, and document Nova 2 Lite for video-analysis pipelines. That gap is real, but the researched file had actually written video into the description, one advantage and one use case despite saying in this field that it kept the catalog's facts -- those three video mentions were removed so the file matches its own stated approach; the gap is only flagged here now. No accuracy-style benchmark scores were found on any page opened, so evaluations is empty."
+}

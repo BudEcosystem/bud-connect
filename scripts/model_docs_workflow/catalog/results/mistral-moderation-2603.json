@@ -1,0 +1,32 @@
+{
+  "slug": "mistral-moderation-2603",
+  "canonical": "mistral-moderation-2603",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Moderation 2 (API id mistral-moderation-2603) is Mistral AI's current content-moderation classifier, offered through the Moderations API's two endpoints, one for raw text and one for the last message of a conversation. It scores each input from 0 to 1 across content categories that developers compare against their own thresholds to decide what to flag. Mistral AI's documentation lists a 128k-token context window and 11 policy categories in total -- Sexual, Hate and Discrimination, Violence and Threats, Dangerous, Criminal, Self-Harm, Health, Financial, Law, PII, and a dedicated Jailbreaking category for attempts to bypass or circumvent a model's safety guidelines through prompt manipulation -- up from the 9 categories in the original 2024 Mistral Moderation model. It is a Premier-tier, proprietary model, not released with open weights.",
+    "advantages": [
+      "Classifies content across 11 policy categories, per Mistral AI's guardrailing documentation, including a dedicated jailbreaking category for attempts to bypass a model's safety guidelines, up from 9 categories in the original Mistral Moderation model.",
+      "Supports a 128k-token context window, per Mistral AI's documentation.",
+      "Powers Mistral's 'Custom Guardrails' feature, letting developers declare moderation rules directly in API requests instead of making a separate moderation call."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Classifying chat inputs or outputs for sexual content, hate and discrimination, violence and threats, dangerous or criminal content, self-harm, unqualified advice, and PII",
+      "Detecting jailbreak / prompt-injection attempts aimed at bypassing a model's safety guidelines",
+      "Enforcing custom, request-time guardrail policies on conversational content"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/capabilities/guardrailing/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/capabilities/guardrailing/", "title": "Guardrailing and moderation - Mistral AI documentation", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI documentation", "kind": "maker"},
+    {"url": "https://mistral.ai/news/mistral-moderation/", "title": "Mistral Moderation API", "kind": "maker"}
+  ],
+  "notes": "Mistral's guardrailing documentation names mistral-moderation-2603 directly as the current moderation model id, matching the catalog's canonical name, and states its 128k-token context window, which matches the catalog's max_input_tokens=131072. The original (2024) Mistral Moderation announcement states that model covers 11 languages and 9 categories, which I used only to describe the category count this version adds to, since no source states the language coverage of this exact 2603 version, so languages is left empty. No numeric accuracy/precision benchmark for this exact model was found on any maker page."
+}

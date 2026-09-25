@@ -1,0 +1,41 @@
+{
+  "slug": "codestral-2508",
+  "canonical": "codestral-2508",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Codestral 25.08 (API id codestral-2508) is Mistral AI's code-generation model, released July 30, 2025, built for high-precision fill-in-the-middle (FIM) code completion in production coding assistants and IDEs. It also has a chat mode for instruction-following coding tasks and supersedes the earlier Codestral 25.01 release. Mistral distributes it under a commercial Premier license for cloud, VPC or on-premises deployment.",
+    "advantages": [
+      "Mistral reports +30% more accepted completions and +10% more retained code after a suggestion versus the prior Codestral version.",
+      "Mistral reports 50% fewer runaway generations, which it says improves confidence in longer edits.",
+      "In chat mode, Mistral reports +5% on instruction following and +5% average improvement in code abilities versus the prior version.",
+      "Deployable across cloud, VPC or on-premises infrastructure with no mandatory telemetry and no external API calls for inference or search, per Mistral's announcement."
+    ],
+    "disadvantages": [
+      "Distributed under Mistral's commercial Premier license rather than as open weights.",
+      "Text and code only; Mistral's model listing does not describe image or vision input support."
+    ],
+    "use_cases": [
+      "IDE-integrated fill-in-the-middle code completion"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/codestral-25-08",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://mistral.ai/news/codestral-25-08",
+      "title": "Codestral 25.08",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Mistral's announcement gives relative improvements over the prior Codestral version (e.g. +30% accepted completions) rather than an absolute accuracy benchmark for codestral-2508 itself, so evaluations is left empty rather than guessed. No page found that restates the context window or output limit independently of the catalog's facts (128,000 / 128,000), so those are left to the catalog. No specific programming-language list was published beyond 'a wide range of languages', so languages is left empty."
+}

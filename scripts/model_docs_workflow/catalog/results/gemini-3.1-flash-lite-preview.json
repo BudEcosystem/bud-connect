@@ -1,0 +1,35 @@
+{
+  "slug": "gemini-3.1-flash-lite-preview",
+  "canonical": "gemini-3.1-flash-lite-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 3.1 Flash-Lite Preview was Google's early-access snapshot of Gemini 3.1 Flash-Lite, a cost-efficient model in Google's Gemini 3 family, released March 3, 2026. Google announced its deprecation on May 7, 2026: the preview itself deprecated May 11, 2026 and was shut down entirely on May 25, 2026, directing developers to the stable gemini-3.1-flash-lite release as its replacement. Per Bud's catalog, it accepted text, image and audio input with text output, a 1,048,576-token input context and up to 65,536 output tokens.",
+    "advantages": [
+      "Supported function calling, code execution, file search, structured outputs, search grounding and thinking (extended reasoning), per its own Gemini API model page.",
+      "Supported a 1,048,576-token input context and up to 65,536 output tokens, per Bud's catalog."
+    ],
+    "disadvantages": [
+      "Google announced its deprecation on 2026-05-07, with the preview itself deprecating 2026-05-11 and shutting down 2026-05-25, per the Gemini API changelog.",
+      "Superseded by the stable gemini-3.1-flash-lite release, which Google's deprecations page names as the replacement.",
+      "No longer callable through Google's API as of today, since Google has fully shut the preview build down."
+    ],
+    "use_cases": [
+      "General-purpose chat and text generation with image and audio input, positioned by Google as a low-cost, high-throughput Flash-Lite option.",
+      "Batch-mode inference workloads via the /v1/batch endpoint."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview", "title": "Gemini 3.1 Flash-Lite preview | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog lists no deprecation_date for gemini-3.1-flash-lite-preview. Google's deprecations page gives only a release date (2026-03-03) and shutdown date (2026-05-25) for this model, with no deprecation-date column; the actual deprecation date, 2026-05-11, and the 2026-05-07 announcement date come from the changelog, and both were misattributed to the deprecations page and conflated with each other in the prior draft. Removed a 'frontier-class performance rivaling larger models at a fraction of the cost' quote the prior draft attributed to this preview: on Google's current models overview page that exact tagline describes the GA sibling gemini-3.1-flash-lite (and, separately, an unrelated model, Gemini 3 Flash) -- not this preview id, whose own tagline there is 'Our most cost-efficient multimodal model, offering the fastest performance for high-frequency, lightweight tasks' (also marketing copy, so not substituted in per the no-superlatives rule). Added the model's own dedicated docs page as website_url and a source: despite the shutdown, it is still live and lists Thinking, Function calling, Code execution, File search, Structured outputs, Search grounding and URL context as supported, and Audio generation, Image generation, Computer use and Live API as not supported -- the two now in advantages. That page also lists Video and PDF as additional supported inputs beyond Bud's catalog (audio, image, text); kept the catalog's modality per the research instructions."
+}

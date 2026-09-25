@@ -1,0 +1,75 @@
+{
+  "slug": "nemotron-nano-12b",
+  "canonical": "nemotron-nano-12b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron Nano 12B v2 VL is a 12.6-billion-parameter vision-language model from NVIDIA, pairing a CRadioV2-H vision encoder with the Nemotron-Nano-12B-v2 language backbone. Released October 28, 2025 under the NVIDIA Nemotron Open Model License, it processes up to 4 images per request at resolutions up to 2048x1536 pixels and can reason over sampled video (8-128 frames), supporting multi-image reasoning, document intelligence, visual question answering and function calling within a 128K-token context window.",
+    "advantages": [
+      "Scored a 74.0% average across NVIDIA's full vision benchmark suite (MMMU, MathVista, AI2D, OCRBench v2, OCRBench, OCR-Reasoning, ChartQA, DocVQA and Video-MME) (Hugging Face model card).",
+      "Scored 94.39% on DocVQA and 89.72% on ChartQA (Hugging Face model card).",
+      "Scored 87.11% on AI2D and 76.9% on MathVista (Hugging Face model card).",
+      "Processes up to 4 images per request at resolutions up to 2048x1536 pixels and can reason over 8-128 sampled video frames (Hugging Face model card).",
+      "Supports function calling in addition to vision-language tasks (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "English only; no other languages are documented for this model (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Multi-image reasoning and visual question answering",
+      "Document intelligence for invoices, receipts, manuals and similar documents",
+      "Video understanding and summarization",
+      "Chart and OCR-heavy document extraction"
+    ],
+    "evaluations": [
+      {
+        "name": "MMMU",
+        "score": 68,
+        "source": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16"
+      },
+      {
+        "name": "MathVista",
+        "score": 76.9,
+        "source": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16"
+      },
+      {
+        "name": "AI2D",
+        "score": 87.11,
+        "source": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16"
+      },
+      {
+        "name": "DocVQA",
+        "score": 94.39,
+        "source": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16"
+      },
+      {
+        "name": "ChartQA",
+        "score": 89.72,
+        "source": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL-BF16",
+      "title": "nvidia/Nemotron-Nano-12B-v2-VL-BF16 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nvidia-nemotron-nano-12b-v2-vl-bf16.md",
+      "title": "NVIDIA Nemotron Nano 12B v2 VL BF16 - Amazon Bedrock model card",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/",
+      "title": "NVIDIA Nemotron Open Model License",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The Bedrock model id nvidia.nemotron-nano-12b-v2 in this group's URIs maps to NVIDIA's 'Nemotron Nano 12B v2 VL BF16' card, not the base, text-only 'NVIDIA-Nemotron-Nano-12B-v2' card that shares the same short name -- confirmed via AWS's own model card page, whose title is 'NVIDIA Nemotron Nano 12B v2 VL BF16' and which lists image input as supported (matching the catalog's image_input modality and 128K-context/8K-output facts, which the base text-only card would not). Description and evaluations are written for the VL variant accordingly. Corrected the license name to its exact title, 'NVIDIA Nemotron Open Model License'. Corrected the 74.0% 'Vision Average' advantage: the Hugging Face card does not state it is an average of only the 6 benchmarks originally listed -- recomputing the mean of every score shown in the card's evaluation table (MMMU, MathVista, AI2D, OCRBench v2, OCRBench, OCR-Reasoning, ChartQA, DocVQA, Video-MME) gives 74.0, matching the stated 'Vision Average', so the sentence now lists all nine benchmarks instead of a cherry-picked six that don't actually average to 74.0."
+}

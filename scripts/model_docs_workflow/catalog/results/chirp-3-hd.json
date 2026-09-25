@@ -1,0 +1,87 @@
+{
+  "slug": "chirp-3-hd",
+  "canonical": "chirp-3-hd",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Chirp 3: HD voices are Google Cloud Text-to-Speech's latest generation of generative voice models, described by Google as delivering realism and emotional resonance in synthesized speech. The feature offers 28 distinct HD voices with male and female options and supports streaming and long-form audio synthesis. It is generally available across six Google Cloud regions, while SSML support and additional voice controls remain in preview.",
+    "advantages": [
+      "28 distinct HD voices are available, each with its own characteristics and a choice of male or female options.",
+      "Supports 50+ languages, including multiple English and Spanish variants, French, German, Mandarin, Japanese, Hindi and Arabic.",
+      "Voice controls in preview allow pace adjustment from 0.25x to 2x speed, pause markup tags, and custom pronunciations via IPA or X-SAMPA phonetic encoding.",
+      "Preview SSML support adds tags for paragraphs, sentences, phonemes, breaks and prosody customization.",
+      "Output is available in multiple audio formats (LINEAR16, MP3, OGG_OPUS, PCM, ALAW, MULAW) depending on the API method used."
+    ],
+    "disadvantages": [
+      "SSML support and the voice controls (pace, pause, custom pronunciation) are still in preview, not generally available.",
+      "Punjabi (India) and Chinese (Hong Kong) language support is in preview rather than generally available."
+    ],
+    "use_cases": [
+      "Streaming speech synthesis for interactive applications",
+      "Long-form audio content creation",
+      "Applications requiring natural-sounding, emotionally resonant speech"
+    ],
+    "evaluations": [],
+    "languages": [
+      "Arabic",
+      "Bengali",
+      "Bulgarian",
+      "Chinese (Hong Kong)",
+      "Croatian",
+      "Czech",
+      "Danish",
+      "Dutch",
+      "English",
+      "Estonian",
+      "Finnish",
+      "French",
+      "German",
+      "Greek",
+      "Gujarati",
+      "Hebrew",
+      "Hindi",
+      "Hungarian",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Kannada",
+      "Korean",
+      "Latvian",
+      "Lithuanian",
+      "Malayalam",
+      "Mandarin Chinese",
+      "Marathi",
+      "Norwegian Bokmål",
+      "Polish",
+      "Portuguese",
+      "Punjabi",
+      "Romanian",
+      "Russian",
+      "Serbian",
+      "Slovak",
+      "Slovenian",
+      "Spanish",
+      "Swahili",
+      "Swedish",
+      "Tamil",
+      "Telugu",
+      "Thai",
+      "Turkish",
+      "Ukrainian",
+      "Urdu",
+      "Vietnamese"
+    ],
+    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd",
+      "title": "Chirp 3: HD Voices Overview",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The docs page's 'Language availability' table names all supported languages explicitly (not just examples); all of them are listed here."
+}

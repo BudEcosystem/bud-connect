@@ -1,0 +1,43 @@
+{
+  "slug": "mixtral-8x7b-instruct",
+  "canonical": "mixtral-8x7b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mixtral 8x7B Instruct is Mistral AI's instruction-tuned version of the Mixtral 8x7B sparse mixture-of-experts model, released December 11, 2023 alongside the base checkpoint under an Apache 2.0 license and fine-tuned with supervised fine-tuning and direct preference optimization (DPO). It has 46.7 billion total parameters with 12.9 billion active per token and a 32K-token context window, and Mistral's launch post reports fluency in English, French, Italian, German and Spanish. Mistral deprecated the Mixtral 8x7B family on its own hosted platform (La Plateforme) on November 30, 2024 and retired it March 30, 2025, recommending Mistral Small 4 as a replacement; the open weights remain Active on Amazon Bedrock and available through Fireworks AI.",
+    "advantages": [
+      "Reaches a score of 8.30 on MT-Bench at launch, per Mistral's announcement, competitive with GPT-3.5.",
+      "Scores 43.27 on MMLU-Pro, per its Hugging Face model card evaluation results.",
+      "Mistral's launch post reports it outperforms Llama 2 70B on most benchmarks tested.",
+      "Released under the permissive Apache 2.0 license, allowing unrestricted self-hosting and fine-tuning."
+    ],
+    "disadvantages": [
+      "Deprecated on Mistral's own hosted API as of November 30, 2024 and retired March 30, 2025, with Mistral recommending Mistral Small 4 as a replacement.",
+      "Its Hugging Face model card states 'the model does not have any moderation mechanisms,' with no built-in content filtering.",
+      "Fireworks AI's hosting of this model does not support function calling, image input, embeddings or reranking."
+    ],
+    "use_cases": [
+      "Conversational AI and chat assistants",
+      "Code assistance",
+      "Enterprise search and retrieval-augmented generation (RAG)",
+      "Text-based reasoning tasks"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 43.27, "source": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1"}
+    ],
+    "languages": ["English", "French", "Italian", "German", "Spanish"],
+    "website_url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "github_url": "https://github.com/mistralai/mistral-inference"
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mixtral-of-experts/", "title": "Mixtral of experts | Mistral AI", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1", "title": "mistralai/Mixtral-8x7B-Instruct-v0.1 · Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mixtral-8x7b-instruct.html", "title": "Mixtral 8x7B Instruct model card - Amazon Bedrock", "kind": "host"},
+    {"url": "https://fireworks.ai/models/fireworks/mixtral-8x7b-instruct", "title": "Mixtral MoE 8x7B Instruct - Fireworks AI", "kind": "host"},
+    {"url": "https://github.com/mistralai/mistral-inference", "title": "mistralai/mistral-inference", "kind": "maker"}
+  ],
+  "notes": "AWS Bedrock's own model card (mistral.mixtral-8x7b-instruct-v0:1) lists a 32K context window but only a 4K max output token limit, narrower than the catalog's recorded max_output_tokens values (8191 and 32768); kept the catalog's values per instructions. Bedrock's model card currently lists this model's lifecycle as 'Active' even though Mistral itself deprecated and retired the Mixtral family on its own hosted platform."
+}

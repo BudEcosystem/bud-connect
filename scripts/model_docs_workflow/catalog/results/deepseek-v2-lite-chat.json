@@ -1,0 +1,43 @@
+{
+  "slug": "deepseek-v2-lite-chat",
+  "canonical": "deepseek-v2-lite-chat",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V2-Lite-Chat is the supervised-fine-tuned chat version of DeepSeek-V2-Lite, a 16-billion-parameter Mixture-of-Experts model with 2.4 billion parameters activated per token, which DeepSeek released in May 2024. It uses DeepSeek's Multi-head Latent Attention to compress its key-value cache and DeepSeekMoE for sparse, economical computation; DeepSeek's Hugging Face model card says these let it run BF16 inference on a single 40GB GPU. It is the smaller sibling of the 236-billion-parameter DeepSeek-V2-Chat in the same model family. Model use is governed by DeepSeek's Model License, while the DeepSeek-V2 code is released under the MIT License.",
+    "advantages": [
+      "Supports a 163,840-token context window via YaRN RoPE scaling, per its Hugging Face configuration file.",
+      "Scores 57.3 on HumanEval, per DeepSeek's official DeepSeek-V2 GitHub repository.",
+      "Scores 72.0 on GSM8K, per DeepSeek's DeepSeek-V2 GitHub repository.",
+      "Scores 55.7 on MMLU, per DeepSeek's DeepSeek-V2 GitHub repository.",
+      "Uses Multi-head Latent Attention and DeepSeekMoE so it can run BF16 inference on a single 40GB GPU, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "DeepSeek's GitHub repository says the open-source Hugging Face Transformers implementation runs slower than DeepSeek's internal codebase, and recommends vLLM for best performance.",
+      "Text-only chat model; its model card documents no vision or tool-use support."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction following.",
+      "Mathematical reasoning.",
+      "Code generation and completion.",
+      "Deployment in memory-constrained settings that only fit a single 40GB GPU."
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 55.7, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat"},
+      {"name": "GSM8K", "score": 72.0, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat"},
+      {"name": "C-Eval", "score": 60.1, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat"},
+      {"name": "HumanEval", "score": 57.3, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-V2"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat", "title": "deepseek-ai/DeepSeek-V2-Lite-Chat · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat/raw/main/config.json", "title": "config.json · deepseek-ai/DeepSeek-V2-Lite-Chat", "kind": "maker"},
+    {"url": "https://github.com/deepseek-ai/DeepSeek-V2", "title": "deepseek-ai/DeepSeek-V2 · GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input/output tokens (163840) match this model's max_position_embeddings in its Hugging Face config.json (reached via YaRN RoPE scaling from a 4,096-token base). However, DeepSeek's own model table on that same Hugging Face page, and its GitHub README's model table, both list this model's documented context length as 32K, not 163840 -- kept the catalog's figure per instructions and flagging this disagreement here. No maker source marks this model deprecated; it remains part of DeepSeek's May 2024 V2 release, since followed by larger DeepSeek model generations."
+}

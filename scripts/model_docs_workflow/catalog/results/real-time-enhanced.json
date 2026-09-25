@@ -1,0 +1,40 @@
+{
+  "slug": "real-time-enhanced",
+  "canonical": "real-time-enhanced",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Speechmatics' Enhanced operating point for real-time (streaming) speech-to-text, delivered over a WebSocket connection. It is the higher-accuracy of Speechmatics' two real-time models: the maker recommends it for single-language audio such as medical, legal or subtitling work where accuracy matters more than raw throughput. Enhanced supports 55+ languages and language packs (each covering multiple accents and dialects), plus bilingual packs and translation to/from English for most languages. It is feature-identical to Speechmatics' Standard operating point and differs only in its accuracy/speed trade-off.",
+    "advantages": [
+      "Speechmatics documents Enhanced as delivering the highest accuracy of its two real-time operating points, recommending it for single-language work such as medical, legal or subtitling transcription.",
+      "Supports 55+ languages and language packs, each covering multiple accents and dialects, plus bilingual packs and translation to/from English for most languages.",
+      "Real-time speaker diarization labels up to 50 speakers by default, configurable up to 100.",
+      "Also supports custom dictionaries, turn detection for voice assistants, and speaker identification through voice-profile enrollment on streaming audio."
+    ],
+    "disadvantages": [
+      "Automatic language detection is available only with Speechmatics' Batch transcription, not Realtime, so the language or language pack must be set explicitly for streaming audio.",
+      "Standard, Speechmatics' other real-time operating point, is documented as faster and prioritizing throughput; Enhanced trades some speed for its higher accuracy."
+    ],
+    "use_cases": [
+      "Medical transcription",
+      "Legal transcription",
+      "Live subtitling and captioning",
+      "Voice assistants that use turn detection to know when a speaker has finished talking"
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Bashkir", "Basque", "Belarusian", "Bengali", "Bulgarian", "Cantonese", "Catalan", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Mandarin", "Marathi", "Mongolian", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovakian", "Slovenian", "Spanish", "Swahili", "Swedish", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Uyghur", "Vietnamese", "Welsh"],
+    "website_url": "https://docs.speechmatics.com/speech-to-text/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/speech-to-text/models", "title": "Speech-to-text models | Speechmatics Docs", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/realtime/quickstart", "title": "Realtime quickstart | Speechmatics Docs", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/languages", "title": "Languages | Speechmatics Docs", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/product/real-time", "title": "Real-Time Speech-to-Text - Speechmatics", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/realtime/turn-detection", "title": "Turn detection | Speechmatics Docs", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/realtime/speaker-identification", "title": "Speaker identification | Speechmatics Docs", "kind": "maker"}
+  ],
+  "notes": "The catalog id 'real-time-enhanced' is Speechmatics' Enhanced operating point used with the Realtime API (the older `operating_point` config field is being superseded by a `model` field per the docs, but Enhanced itself is not deprecated). No 0-100 accuracy benchmark for this exact operating point was found on the maker's pages, so evaluations is empty; a competitor error-rate comparison on the product page was not tied to a specific operating point, so it was left out rather than risk misattributing it to Enhanced or Standard."
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "gemma-3-27b-it",
+  "canonical": "gemma-3-27b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemma 3 27B-it is the largest instruction-tuned model in Google DeepMind's Gemma 3 family, a multimodal model that accepts text and image input and generates text output over a 128K-token context window, per Google's Gemma 3 model card. It was trained on 14 trillion tokens with an August 2024 knowledge cutoff and supports data spanning over 140 languages. Google's current developer docs now group Gemma 3 under \"previous Gemma models,\" with Gemma 4 listed as the current generation, though Gemma 3's weights remain downloadable.",
+    "advantages": [
+      "Scores 87.8 on HumanEval and 95.9 on GSM8K, per Google's Gemma 3 model card.",
+      "Scores 42.4 on GPQA Diamond and 67.5 on MMLU (Pro), per Google's Gemma 3 model card.",
+      "Scores 87.6 on BIG-Bench Hard and 64.9 on MMMU (val), per Google's Gemma 3 model card.",
+      "Trained on data spanning over 140 languages, per Google's Gemma 3 model card.",
+      "Handles text and image input, encoding each image at 896x896 resolution as 256 tokens, per Google's model card."
+    ],
+    "disadvantages": [
+      "Superseded by Gemma 4, which Google's developer docs list as the current Gemma generation, with Gemma 3 grouped under \"previous Gemma models.\"",
+      "Knowledge cutoff of August 2024, per Google's Gemma 3 model card.",
+      "Google's model card notes the model can struggle with subtle nuance, sarcasm, or figurative language, and may generate incorrect or outdated factual statements."
+    ],
+    "use_cases": [
+      "Multimodal question answering and image content analysis",
+      "Text summarization",
+      "Code generation and math problem-solving",
+      "Multilingual chatbot and conversational applications",
+      "Creative text generation such as scripts and marketing copy"
+    ],
+    "evaluations": [
+      {"name": "MMLU (Pro)", "score": 67.5, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "GSM8K", "score": 95.9, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "HumanEval", "score": 87.8, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "GPQA Diamond", "score": 42.4, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "BIG-Bench Hard", "score": 87.6, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"},
+      {"name": "MMMU (val)", "score": 64.9, "source": "https://ai.google.dev/gemma/docs/core/model_card_3"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/google/gemma-3-27b-it",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-3-27b-it", "title": "google/gemma-3-27b-it · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core/model_card_3", "title": "Gemma 3 model card | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core", "title": "Gemma model overview | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_output_tokens differs by provider (8000 for the Bedrock entry vs 131072 for Fireworks); Google's model card states total output context up to 128K tokens for the 4B/12B/27B sizes after subtracting input tokens, but kept each provider's catalog value per instructions. The Hugging Face card's auto-extracted benchmark table returned notably lower numbers (e.g. HumanEval 48.8, MMLU 78.6 on a different scale) than Google's official Gemma 3 model card for the 27B IT variant (HumanEval 87.8, MMLU Pro 67.5); those HF figures look like they came from a different table (base/PT or a different metric), so evaluations above use only the IT numbers from Google's official model_card_3 page, re-confirmed on a second fetch. Google's current docs now group Gemma 3 under 'previous Gemma models' with Gemma 4 listed as current, though no formal deprecation date is given."
+}

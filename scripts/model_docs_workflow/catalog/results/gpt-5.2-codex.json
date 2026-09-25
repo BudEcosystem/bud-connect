@@ -1,0 +1,73 @@
+{
+  "slug": "gpt-5.2-codex",
+  "canonical": "gpt-5.2-codex",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.2-Codex is OpenAI's coding-specialized version of GPT-5.2, released December 18, 2025 as, in OpenAI's words, \"our most advanced agentic coding model yet for complex, real-world software engineering.\" Per OpenAI's system-card addendum, it adds long-horizon work via context compaction, stronger performance on large-scale changes such as refactors and migrations, improved behavior in Windows environments, and significantly stronger cybersecurity capabilities than prior Codex models -- rated 'very capable' in cybersecurity under OpenAI's Preparedness Framework, though below the framework's High-capability threshold. It takes text and image input, produces text output, and supports four reasoning-effort levels (low, medium, high, xhigh) with a knowledge cutoff of August 31, 2025. As of this research it has already been formally retired: OpenAI's deprecations page lists a shutdown date of July 23, 2026 (already past) with gpt-5.6-sol as the replacement, and it has been superseded in Codex by GPT-5.3-Codex.",
+    "advantages": [
+      "OpenAI's system-card addendum rates it 'very capable' in the cybersecurity domain under the Preparedness Framework, its strongest cybersecurity rating yet for a Codex model, though still below the framework's High-capability threshold.",
+      "Adds long-horizon agentic coding via context compaction and stronger performance on large-scale refactors and migrations than prior Codex models, per OpenAI's system-card addendum.",
+      "Scores 29 on the Artificial Analysis Intelligence Index (xhigh reasoning), ranked above average among comparable models (Artificial Analysis).",
+      "Supports low/medium/high/xhigh reasoning effort and agentic tool use -- function calling, web search, hosted shell and skills -- via OpenAI's Responses API (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's API deprecations page lists this model's shutdown date as July 23, 2026 -- already past as of this research date -- with gpt-5.6-sol as the recommended replacement.",
+      "GitHub reports it was deprecated across most GitHub Copilot experiences by June 5, 2026, with GPT-5.3-Codex recommended instead, and Artificial Analysis also lists it as deprecated with GPT-5.3-Codex (xhigh) as successor.",
+      "OpenAI treats the model as High capability on biology under its Preparedness Framework, the same safeguard tier applied across the GPT-5 family (OpenAI system-card addendum).",
+      "Output is text-only; the model does not generate images, audio or video (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "Complex, real-world software engineering and agentic coding",
+      "Large-scale refactors and codebase migrations",
+      "Long-horizon coding tasks via context compaction",
+      "Coding work in Windows development environments",
+      "Vetted, invite-only security research and cybersecurity-related coding tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index (xhigh reasoning)",
+        "score": 29,
+        "source": "https://artificialanalysis.ai/models/gpt-5-2-codex"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.2-codex",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.2-codex",
+      "title": "GPT-5.2-Codex Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cdn.openai.com/pdf/ac7c37ae-7f4c-4442-b741-2eabdeaf77e0/oai_5_2_Codex.pdf",
+      "title": "Addendum to GPT-5.2 System Card: GPT-5.2-Codex",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://community.openai.com/t/introducing-gpt-5-2-codex/1369684",
+      "title": "Introducing GPT-5.2-Codex - OpenAI Developer Community",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://github.blog/changelog/2026-06-05-gpt-5-2-and-gpt-5-2-codex-deprecated/",
+      "title": "GPT-5.2 and GPT-5.2-Codex deprecated - GitHub Changelog",
+      "kind": "host"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/gpt-5-2-codex",
+      "title": "GPT-5.2 Codex (xhigh) - Intelligence, Performance & Price Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (272,000) conflicts with OpenAI's own model-card page, which states a 400,000-token context window; kept the catalog's value per instructions. Catalog lists /v1/chat/completions as a supported endpoint, but OpenAI's model-card page states only the Responses API is supported for this model and that Chat Completions, Batch, Assistants and fine-tuning are unsupported; kept the catalog's endpoint facts as instructed but flagging the conflict. Catalog's deprecation_date (2027-07-13) is about a year later than the July 23, 2026 shutdown date OpenAI's own deprecations page lists for this exact model id, which had already passed as of this research date (2026-09-24)."
+}

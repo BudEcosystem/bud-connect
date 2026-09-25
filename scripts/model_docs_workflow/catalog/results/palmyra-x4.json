@@ -1,0 +1,41 @@
+{
+  "slug": "palmyra-x4",
+  "canonical": "palmyra-x4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Writer",
+  "details": {
+    "description": "Palmyra X4 is Writer's enterprise large language model, launched around September 2024, built for business writing, content generation, and knowledge work with an emphasis on tool calling. It supports a 128,000-token context window, built-in retrieval-augmented generation, code generation, and calling external tools and APIs in sequence or in parallel, with support for over 30 languages. Writer's own developer documentation lists Palmyra X4 as deprecated effective December 14, 2026, with Writer recommending migration to its newer Palmyra X6 model.",
+    "advantages": [
+      "Writer reports 78.76% overall accuracy on the Berkeley Function Calling Leaderboard, ahead of the OpenAI, Anthropic, Meta, and Google models it tested against (Writer engineering blog).",
+      "Scores 87.93% on the Berkeley Function Calling Leaderboard's ability-to-structure-calls (AST) component and 88.27% on its execution-ability component (Writer engineering blog).",
+      "Writer reports 81.3% on MMLU as measured by Stanford's HELM Lite benchmark (Writer engineering blog).",
+      "Includes a built-in graph-based retrieval-augmented generation (RAG) tool for grounding responses in a company's own data without custom development (Writer engineering blog)."
+    ],
+    "disadvantages": [
+      "Writer's developer documentation lists Palmyra X4 as deprecated effective December 14, 2026, with migration recommended to Palmyra X6.",
+      "No vision or image input is documented for this model."
+    ],
+    "use_cases": [
+      "Enterprise workflow automation that calls external tools and APIs in sequence or in parallel",
+      "Retrieval-augmented generation grounded in a company's own knowledge graphs and documents",
+      "Business content generation and long-form writing",
+      "Code generation for internal tooling"
+    ],
+    "evaluations": [
+      {"name": "Berkeley Function Calling Leaderboard (Overall Accuracy)", "score": 78.76, "source": "https://writer.com/engineering/actions-with-palmyra-x4/"},
+      {"name": "MMLU (HELM Lite)", "score": 81.3, "source": "https://writer.com/engineering/actions-with-palmyra-x4/"}
+    ],
+    "languages": [],
+    "website_url": "https://writer.com/engineering/actions-with-palmyra-x4/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://writer.com/engineering/actions-with-palmyra-x4/", "title": "Introducing actions with Palmyra X4", "kind": "maker"},
+    {"url": "https://dev.writer.com/home/models", "title": "Models - Writer Developer Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-x4.md", "title": "Writer — Palmyra X4 model card (Amazon Bedrock)", "kind": "host"},
+    {"url": "https://aws.amazon.com/bedrock/writer/", "title": "Writer models on Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog facts (128,000 max input tokens, 8,192 max output tokens, /v1/chat/completions endpoint, text-only modality) match Amazon Bedrock's own Palmyra X4 model card exactly. Writer's developer docs (dev.writer.com/home/models) instead give a 4,096 max-output figure for X4, which I did not use since it conflicts with both the catalog facts and Bedrock's card; kept the catalog's 8,192 value. Catalog's deprecation_date is empty, but Writer's developer docs plainly list Palmyra X4 as 'Deprecated December 14, 2026' recommending migration to Palmyra X6, while Amazon Bedrock's own model card (the specific host behind these URIs) currently still lists its lifecycle as 'Active' with only a minimum EOL floor (no sooner than 4/28/2026, already past as of today). Both us.writer.palmyra-x4-v1:0 and writer.palmyra-x4-v1:0 map to the same Bedrock model ID per AWS's card, so no grouping issue."
+}

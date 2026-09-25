@@ -1,0 +1,77 @@
+{
+  "slug": "gpt-5.1",
+  "canonical": "gpt-5.1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.1 is OpenAI's iterative upgrade to the GPT-5 series, released November 13, 2025. In the API it is the model OpenAI calls 'GPT-5.1 Thinking' in ChatGPT: a flagship reasoning model for coding and agentic tasks with four configurable reasoning-effort levels (none, low, medium, high) and adaptive reasoning that spends more time on harder problems and less on easy ones. It accepts text and image input, supports tool use including new apply_patch and shell tools, and has a knowledge cutoff of September 30, 2024. OpenAI has since shipped several newer generations in the same family (through GPT-5.6), though GPT-5.1 itself remains generally available.",
+    "advantages": [
+      "OpenAI reports 76.3% on SWE-bench Verified (all 500 problems) at high reasoning effort, up from 72.8% for GPT-5 (OpenAI launch post).",
+      "OpenAI reports 88.1% on GPQA Diamond without tools, up from 85.7% for GPT-5 (OpenAI launch post).",
+      "OpenAI reports 94.0% on AIME 2025 without tools (OpenAI launch post).",
+      "OpenAI reports 85.4% on the MMMU multimodal benchmark, up from 84.2% for GPT-5 (OpenAI launch post).",
+      "Adaptive reasoning automatically spends fewer tokens on easy tasks and more on hard ones, with a 'none' reasoning mode for latency-sensitive use (OpenAI documentation).",
+      "Adds native apply_patch and shell tools for more reliable code edits and command-line interaction (OpenAI documentation)."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of September 30, 2024.",
+      "OpenAI has since released newer models in the same family (GPT-5.2 through GPT-5.6)."
+    ],
+    "use_cases": [
+      "General-purpose coding and agentic tasks requiring configurable reasoning depth",
+      "Latency-sensitive applications using the 'none' reasoning effort with tool calling",
+      "Multi-step agent workflows using apply_patch and shell tools to edit code and run commands",
+      "Long, multi-turn sessions using 24-hour extended prompt caching for lower cost and latency"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 76.3,
+        "source": "https://openai.com/index/gpt-5-1-for-developers/"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 88.1,
+        "source": "https://openai.com/index/gpt-5-1-for-developers/"
+      },
+      {
+        "name": "AIME 2025",
+        "score": 94.0,
+        "source": "https://openai.com/index/gpt-5-1-for-developers/"
+      },
+      {
+        "name": "MMMU",
+        "score": 85.4,
+        "source": "https://openai.com/index/gpt-5-1-for-developers/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.1",
+      "title": "GPT-5.1 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1-for-developers/",
+      "title": "Introducing GPT-5.1 for developers | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1/",
+      "title": "GPT-5.1: A smarter, more conversational ChatGPT | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's deprecation_date (2027-05-15) matches Microsoft Foundry's retirement-schedule listing for gpt-5.1 (version 2025-11-13, lifecycle 'GA', retirement date 2027-05-15) exactly, and this model does not appear at all on OpenAI's own direct-API deprecations page, so it looks current on both platforms. OpenAI's own docs describe gpt-5.1 as having a 400,000-token context window with up to 128,000 output tokens; arithmetically that is consistent with the catalog's 272,000 max_input_tokens figure (400,000 minus 128,000), though I could not confirm from an opened source that the catalog computes it that way, so I kept the catalog's numbers as given rather than restate OpenAI's 400,000 figure. Catalog lists image_output among gpt-5.1's modalities, but OpenAI's own model documentation states its output is text only; I could not confirm native image generation from any opened source, so I left it out of the description and flag the disagreement here rather than override the catalog's fact. In the API, plain 'gpt-5.1' is 'GPT-5.1 Thinking'; 'GPT-5.1 Instant' ships separately as gpt-5.1-chat-latest, which is not part of this target."
+}

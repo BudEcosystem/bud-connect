@@ -1,0 +1,39 @@
+{
+  "slug": "gemini-2.5-flash-tts",
+  "canonical": "gemini-2.5-flash-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 2.5 Flash Preview TTS is Google's fast, controllable text-to-speech model, built for low-latency, cost-efficient applications and real-time assistants. It converts text into spoken audio, and style, accent, pace and tone can be steered through natural-language prompting rather than fixed presets. Google now lists this model as limited access, restricted to accounts that used it before, and does not recommend it for new projects, pointing instead to the newer Gemini 3.x TTS models.",
+    "advantages": [
+      "Google describes it as fast and controllable text-to-speech built for low-latency, cost-efficient applications and real-time assistants."
+    ],
+    "disadvantages": [
+      "Google lists this model as limited access, restricted to accounts that used it before, and does not recommend it for new projects.",
+      "It is a preview-era model that no longer appears in Google's current TTS capability table, which documents voice design and voice replication only for newer Gemini 3.x TTS models."
+    ],
+    "use_cases": [
+      "Low-latency, real-time voice assistants",
+      "Cost-efficient text-to-speech where response speed matters more than studio production quality"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+      "title": "Speech generation (text-to-speech) | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Bud's catalog id (gemini-2.5-flash-tts) omits the '-preview-' segment Google's own docs use for this model's id (gemini-2.5-flash-preview-tts); treated as the same model since the id, maker, generation and modality all match. Could not confirm a specific supported-language count, voice list, multi-speaker support, or context window for this model on the pages opened (only Gemini 2.5 Pro Preview TTS and the 3.x models appear in the capability table), so these were left out rather than guessed."
+}

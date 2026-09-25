@@ -1,0 +1,41 @@
+{
+  "slug": "chronos-hermes-13b-v2",
+  "canonical": "chronos-hermes-13b-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Austism",
+  "details": {
+    "description": "Chronos-Hermes-13b-v2 is a 13-billion-parameter Llama 2 based model created by the community developer Austism, who merged elinas/chronos-13b-v2 and NousResearch/Nous-Hermes-Llama2-13b in a 75/25 ratio. Per the model card, it \"offers the imaginative writing style of chronos while still retaining coherency and being capable,\" producing long, prose-heavy outputs, and follows the Alpaca instruction format (\"### Instruction:\" / \"### Response:\"). It is not an official release from Meta, Nous Research or any lab, but a fine-tune merge published on Hugging Face.",
+    "advantages": [
+      "Merges chronos-13b-v2 with Nous-Hermes-Llama2-13b in a 75/25 ratio to combine chronos's imaginative writing style with Nous-Hermes's coherence, per the model card.",
+      "The model card states outputs \"are long and utilize exceptional prose.\""
+    ],
+    "disadvantages": [
+      "4,096-token context window, well below more recent chat models.",
+      "No benchmark scores are published on the model card.",
+      "Not an official model from a named lab; it is a community merge of two other fine-tunes."
+    ],
+    "use_cases": [
+      "Long-form creative writing and storytelling",
+      "Alpaca-format instruction-following chat"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Austism/chronos-hermes-13b-v2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Austism/chronos-hermes-13b-v2",
+      "title": "Austism/chronos-hermes-13b-v2 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/chronos-hermes-13b-v2",
+      "title": "chronos-hermes-13b-v2 - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "This is a community merge (by Austism) of two other Llama-2-based fine-tunes, not a model from a single named lab; 'maker' is set to the merge's author. No benchmark scores were found on the model card or Fireworks page, so evaluations is empty. Catalog facts (4096 max input/output tokens) match the model card's stated context length."
+}

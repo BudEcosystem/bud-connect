@@ -1,0 +1,37 @@
+{
+  "slug": "titan-embed-text-v1",
+  "canonical": "titan-embed-text-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Titan Text Embeddings G1 (amazon.titan-embed-text-v1) is Amazon's first-generation text embedding model on Amazon Bedrock, launched September 28, 2023. It converts text into fixed 1,536-dimension numerical vectors for tasks such as semantic search, personalization, clustering, and retrieval-augmented generation, and accepts up to 8,192 input tokens. AWS states it supports over 25 languages, including English, Chinese, and Spanish. AWS's model card lists its Bedrock lifecycle status as Active, though Amazon has since released Titan Text Embeddings V2 as a successor.",
+    "advantages": [
+      "Produces 1,536-dimension embedding vectors from up to 8,192 input tokens (AWS launch announcement).",
+      "AWS states the model supports over 25 languages, including English, Chinese, and Spanish (AWS launch announcement).",
+      "AWS states it is optimized for retrieval-augmented generation (RAG) in addition to search, personalization, and clustering use cases (AWS launch announcement)."
+    ],
+    "disadvantages": [
+      "Superseded within Amazon's own Titan embeddings line by Titan Text Embeddings V2 (amazon.titan-embed-text-v2:0), which adds configurable output dimensions (1,024, 512, or 256) versus this model's fixed 1,536 (AWS Bedrock documentation).",
+      "Does not support inference parameters such as maxTokenCount or topP (AWS Bedrock documentation)."
+    ],
+    "use_cases": [
+      "Semantic search over documents",
+      "Retrieval step of retrieval-augmented generation (RAG) pipelines",
+      "Personalization and recommendation systems",
+      "Clustering and classification of text by semantic similarity"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-embeddings-g1---text.html",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-embeddings-g1---text.html", "title": "Amazon - Titan Embeddings G1 - Text model card - Amazon Bedrock", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html", "title": "Amazon Titan Text Embeddings models - Amazon Bedrock", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-embed-text.html", "title": "Amazon Titan Embeddings G1 - Text request and response - Amazon Bedrock", "kind": "maker"},
+    {"url": "https://aws.amazon.com/about-aws/whats-new/2023/09/amazon-titan-embeddings-generally-available/", "title": "Amazon Titan Embeddings now generally available - AWS", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (max_input_tokens 8,192, provider bedrock, no deprecation_date) match AWS's model card, which lists amazon.titan-embed-text-v1's Bedrock lifecycle as 'Active' with no EOL date set, even though Amazon has since released Titan Text Embeddings V2. AWS's launch announcement states 'over 25 languages' without listing them individually, so languages is left empty and the count is given in the description per the research instructions. Both target URIs are us-gov-east-1 and us-gov-west-1 regional deployments of the same model; the write-up describes the model itself, not region availability."
+}

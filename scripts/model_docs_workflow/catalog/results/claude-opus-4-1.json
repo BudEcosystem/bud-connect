@@ -1,0 +1,41 @@
+{
+  "slug": "claude-opus-4-1",
+  "canonical": "claude-opus-4-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4.1 (claude-opus-4-1-20250805) is Anthropic's incremental upgrade to Claude Opus 4, released August 5, 2025, with improvements to coding, multi-file refactoring, reasoning, and agentic-task performance. It accepts text and image input, supports extended thinking, and Amazon Bedrock's model card lists a March 2025 knowledge cutoff. As of September 2026, Amazon Bedrock's own model card lists the model's lifecycle as Legacy with a stated end-of-life date of January 8, 2027, while Anthropic has already fully retired it on its direct Claude API, effective August 5, 2026.",
+    "advantages": [
+      "Scores 74.5% on SWE-bench Verified, an improvement over Claude Opus 4, per Anthropic's Claude Opus 4.1 announcement.",
+      "Windsurf reports Opus 4.1 delivers a one-standard-deviation improvement over Opus 4 on its junior-developer coding benchmark, per Anthropic's Claude Opus 4.1 announcement.",
+      "GitHub reports particularly notable performance gains in multi-file code refactoring with Opus 4.1, per Anthropic's Claude Opus 4.1 announcement.",
+      "Rakuten Group reports Opus 4.1 excels at pinpointing exact corrections within large codebases without making unnecessary adjustments or introducing bugs, per Anthropic's Claude Opus 4.1 announcement.",
+      "Notable gains in agentic search and detail-tracking for research and data-analysis workflows, per Anthropic's announcement."
+    ],
+    "disadvantages": [
+      "On Amazon Bedrock the model's own model card lists lifecycle status 'Legacy' with an end-of-life date of January 8, 2027; Anthropic has already fully retired the model on its own Claude API, effective August 5, 2026, recommending claude-opus-4-8 as the replacement.",
+      "Superseded within Anthropic's Opus line by several newer releases (Opus 4.5, 4.6, 4.7, 4.8, 5, 5.5) since its August 2025 launch."
+    ],
+    "use_cases": [
+      "Complex coding and multi-file refactoring in large, existing codebases",
+      "Long-horizon agentic workflows and multi-turn reasoning and planning for complex tasks",
+      "Research and data-analysis workflows requiring careful detail tracking",
+      "Junior-developer-level coding assistance and code review"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 74.5, "source": "https://www.anthropic.com/news/claude-opus-4-1"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-opus-4-1",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-opus-4-1", "title": "Claude Opus 4.1", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-1.html", "title": "Claude Opus 4.1 - Amazon Bedrock User Guide", "kind": "host"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy", "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier) - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog's deprecation_date (2027-01-08) matches Amazon Bedrock's own model card exactly ('Model EOL date: January 8, 2027'), confirming the catalog fact is Bedrock's schedule, not Anthropic's direct-API schedule (which already retired the model August 5, 2026 -- these are set independently per Anthropic's own docs). Context window (200K), max output (32K), and image+text modality on the Bedrock model card also match the catalog facts."
+}

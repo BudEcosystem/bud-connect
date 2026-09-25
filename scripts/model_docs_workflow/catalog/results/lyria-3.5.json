@@ -1,0 +1,34 @@
+{
+  "slug": "lyria-3.5",
+  "canonical": "lyria-3.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Lyria 3.5 is Google DeepMind's flagship music generation model, released September 3, 2026 through the Gemini API. It generates full-length songs with complex structural coherence, including multiple verses, choruses, and bridges, with tracks up to about three minutes long, as well as short clips, from text prompts or image inputs. It can write lyrics in the language of the input prompt and adapts vocal style and pronunciation to match. It succeeds the preview-stage Lyria 3 Pro Preview and Lyria 3 Clip Preview models, which Google's Gemini API deprecations page now recommends migrating from to Lyria 3.5.",
+    "advantages": [
+      "Generates full-length songs with complex structural coherence, including multiple verses, choruses, and bridges, with tracks up to about three minutes long (Google DeepMind Lyria page).",
+      "Generates lyrics in the language of the input prompt and adapts vocal style and pronunciation to match (Gemini API music generation docs).",
+      "Covers both short clips and full-length songs in a single model, replacing the separate Lyria 3 Clip Preview and Lyria 3 Pro Preview models (Gemini API deprecations page)."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Generating full-length songs with verses, choruses, and bridges from text or image prompts",
+      "Generating short clips from text or image prompts",
+      "Generating custom lyrics in the language of the input prompt"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/lyria-3.5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/lyria-3.5", "title": "Lyria 3.5 - Gemini API models", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models - Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/music-generation", "title": "Music generation with Lyria - Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations - Gemini API", "kind": "maker"},
+    {"url": "https://deepmind.google/models/lyria/", "title": "Lyria - Google DeepMind", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list max_input_tokens as 1,048,576, but the Gemini API model page for lyria-3.5 states an input token limit of 131,072 -- kept the catalog's figure and did not restate a token count in the description, per instructions. Catalog also lists kind 'chat' and modality audio_output/text_input; Google documents this as a music-generation model that also accepts image input and returns lyrics text alongside audio, which is described here instead of forcing a chat-model framing. No evaluations or a specific language list were found on any source page (only a general 'language of the prompt' claim and a single French example), so both are left empty per the research brief."
+}

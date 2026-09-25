@@ -1,0 +1,56 @@
+{
+  "slug": "qwen3-vl-30b-a3b-instruct",
+  "canonical": "qwen3-vl-30b-a3b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3-VL-30B-A3B-Instruct is Alibaba's Qwen team's vision-language Mixture-of-Experts model, with 31 billion total parameters across 128 experts, 8 of which activate per token, per its Hugging Face config. It is the standard instruction-following edition of the 30B-A3B size, released October 4, 2025 under the Apache 2.0 license, alongside a separate reasoning-enhanced 'Thinking' edition of the same size, per the Qwen3-VL GitHub README. The model card documents a native 256,000-token context window, expandable to 1 million tokens via YaRN, and covers image, video and text understanding with Interleaved-MRoPE positional embeddings and DeepStack multi-level Vision Transformer feature fusion for visual grounding.",
+    "advantages": [
+      "Supports OCR in 32 languages, up from 19 in the prior Qwen-VL generation, with improved handling of rare or ancient characters (Qwen model card).",
+      "Documented visual agent capability: recognizes on-screen elements and invokes tools to operate PC and mobile GUIs (Qwen model card).",
+      "Can generate Draw.io, HTML, CSS and JS code directly from images or videos of interfaces or diagrams (Qwen model card).",
+      "Includes 2D and 3D spatial grounding for visual reasoning and embodied-AI tasks (Qwen model card).",
+      "Native 256,000-token context window, expandable to 1 million tokens via YaRN (Qwen model card)."
+    ],
+    "disadvantages": [
+      "Qwen also offers a separate 'Thinking' edition of this same 30B-A3B size with reasoning-enhanced performance; this Instruct edition is the standard, non-reasoning variant (Qwen3-VL GitHub README).",
+      "The maker's benchmark tables for this model are published only as images, so no independently verifiable numeric benchmark scores could be confirmed from the pages opened."
+    ],
+    "use_cases": [
+      "Visual agent workflows that operate GUIs by recognizing on-screen elements and invoking tools",
+      "Converting screenshots, mockups or diagrams into Draw.io, HTML, CSS or JS code",
+      "Document and OCR understanding across many languages",
+      "Long-context and hours-long video understanding with temporal grounding",
+      "General multimodal question answering over images and video"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-VL"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "title": "Qwen/Qwen3-VL-30B-A3B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct/raw/main/config.json",
+      "title": "Qwen3-VL-30B-A3B-Instruct config.json",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-VL",
+      "title": "QwenLM/Qwen3-VL",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-vl-30b-a3b-instruct",
+      "title": "Qwen3 VL 30B A3B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list this route's modality as text-only (no image_input), but Qwen documents Qwen3-VL-30B-A3B-Instruct as a vision-language model that accepts image and video input, and Fireworks' own listing for this model shows image input enabled; kept the catalog's modality per instructions and flag the conflict here. Catalog's 262,144 max input/output tokens match the maker's stated 256K native context, so no conflict there. The active-parameters-per-token figure (8 of 128 experts) comes directly from the model's Hugging Face config.json rather than prose on the model card. Benchmark tables on the model card and GitHub README are images, so no numeric evaluation scores could be verified from the pages opened."
+}

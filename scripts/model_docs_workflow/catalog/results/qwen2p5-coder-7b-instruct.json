@@ -1,0 +1,36 @@
+{
+  "slug": "qwen2p5-coder-7b-instruct",
+  "canonical": "qwen2p5-coder-7b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-Coder-7B-Instruct is a 7.61-billion-parameter (6.53B non-embedding) code-focused chat model from Alibaba's Qwen team, released November 12, 2024 as part of the Qwen2.5-Coder family, the successor to CodeQwen. Qwen's model card states it was trained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, and is instruction-tuned for code generation, code reasoning, and code repair while retaining general math and reasoning ability for uses such as code agents. Its published configuration gives a native 32,768-token context window, matching this catalog's limits. As of this research, Qwen's GitHub repository for the Qwen2.5-Coder project now redirects to the newer Qwen3-Coder project, though the Qwen2.5-Coder-7B-Instruct weights and model card remain published without an explicit deprecation notice.",
+    "advantages": [
+      "Trained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card.",
+      "Retains general math and reasoning competencies alongside coding skill, useful for applications such as code agents, per Qwen's model card.",
+      "Native context window of 32,768 tokens, extendable up to 131,072 tokens using YaRN scaling, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Qwen's GitHub repository for the Qwen2.5-Coder project now redirects to the newer Qwen3-Coder repository, indicating Qwen's coding-model development has moved to that newer line.",
+      "Qwen's model card notes that vLLM's YaRN implementation for extending context beyond 32,768 tokens only supports static scaling factors, which can affect performance on shorter texts once enabled."
+    ],
+    "use_cases": [
+      "Code generation from natural-language instructions",
+      "Code reasoning and debugging",
+      "Automated code repair",
+      "Code agent applications that combine coding with general reasoning"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct", "title": "Qwen/Qwen2.5-Coder-7B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-Coder", "title": "QwenLM/Qwen2.5-Coder now redirects to QwenLM/Qwen3-Coder · GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (32,768) match the model's published config.json max_position_embeddings exactly, so no conflict. No numeric coding-benchmark scores (HumanEval, MBPP, LiveCodeBench, etc.) specific to the 7B-Instruct size were found in text form on Qwen's model card or blog post (the blog's per-size benchmark tables are embedded as images), so evaluations was left empty rather than guessed. Qwen's GitHub org page for 'QwenLM/Qwen2.5-Coder' now resolves to the 'QwenLM/Qwen3-Coder' repository (confirmed by fetching it and checking the resolved title/URL), so github_url was left null since that repo no longer represents this specific 2.5-generation model; this supersession signal is also reflected in the description and disadvantages."
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "grok-4.20-reasoning-gv2",
+  "canonical": "grok-4.20-reasoning-gv2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 Reasoning GV2 is one of several ids under which xAI serves its Grok 4.20 model; xAI's docs list it, alongside grok-4.20-reasoning, grok-4.20-reasoning-latest and grok-4.20-beta, as aliases that all map to the same underlying build, grok-4.20-0309-reasoning. Released April 7, 2026 per xAI's system card, it is a reasoning-focused chat model that accepts text and image input and produces text output over a 1,000,000-token context window. xAI describes it as a general-purpose assistant for question answering, reasoning, research, writing, coding, translation, creative ideation and multimodal reasoning, not intended for high-risk autonomous use in medicine, law, finance or safety-critical systems without human oversight; xAI documents a separate multi-agent deployment of Grok 4.20 under its own grok-4.20-multi-agent id family, distinct from this reasoning id. Artificial Analysis lists this build as deprecated, recommending xAI's newer Grok 4.3 instead.",
+    "advantages": [
+      "Records a 0.00 violation rate on xAI's internal chat-refusal safety evaluation, per its system card (Table 1).",
+      "Supports major languages including English, Chinese, Arabic, Hindi and Spanish, plus several dozen others with varying capability, per xAI's system card.",
+      "Scores 26 on the Artificial Analysis Intelligence Index."
+    ],
+    "disadvantages": [
+      "Artificial Analysis marks this build deprecated and recommends xAI's newer Grok 4.3 (high) instead.",
+      "Time to first token was 21.53 seconds on Artificial Analysis' benchmark, well above typical models.",
+      "Violation rate rises to 0.30 on the AgentHarm agentic-refusal evaluation, versus 0.00 on plain chat refusals, per the system card.",
+      "Not designed for high-risk applications such as autonomous medical, legal, financial or safety-critical decisions without human oversight, per xAI's system card."
+    ],
+    "use_cases": [
+      "General-purpose assistant tasks: question answering, reasoning, research and writing",
+      "Coding and translation",
+      "Creative ideation and multimodal reasoning over text and images"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 26, "source": "https://artificialanalysis.ai/models/grok-4-20"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20-reasoning-gv2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-reasoning-gv2", "title": "Grok 4.20 Reasoning GV2 | xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-reasoning", "title": "Grok 4.20 Reasoning | xAI Docs", "kind": "maker"},
+    {"url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf", "title": "Grok 4.20 System Card, xAI, April 7, 2026", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-beta-0309", "title": "Grok 4.20 Multi Agent Beta 0309 | xAI Docs", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-20", "title": "Grok 4.20 0309 v2 (Reasoning) - Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "This id (grok-4.20-reasoning-gv2) is one of many aliases -- xAI's own alias table, shown directly on this id's docs page, lists grok-4.20-reasoning-latest, grok-4.20, grok-4.20-reasoning, grok-4.20-0309, grok-4.20-beta and several beta/experimental variants alongside it -- that all resolve to the same underlying build, grok-4.20-0309-reasoning; this write-up describes that shared model. No source explains what distinguishes the 'gv2' suffix from the plain 'grok-4.20-reasoning' id; both resolve to the identical alias table and model, so no functional difference could be confirmed. Artificial Analysis' own page for this model states a 2.0M-token context window, conflicting with both the catalog's 1,000,000 figure and xAI's own docs (also 1,000,000); the catalog/maker value was kept per instructions and the AA figure was not used. Artificial Analysis' output-speed and time-to-first-token numbers fluctuate over time (speed 101.1-106.2 tokens/sec on two later fetches, TTFT a consistent 21.53s on two later fetches); the TTFT figure was corrected from 20.62s to 21.53s to match. VERIFICATION: the description and advantages/use_cases previously claimed this id 'is offered in a single-agent mode and a multi-agent mode' -- this is not supported by this id's own docs page, which never mentions multi-agent mode and lists an alias table containing only reasoning-family ids (no grok-4.20-multi-agent ids). Multi-agent mode is documented xAI-side only under the separate grok-4.20-multi-agent-0309 id family with its own, disjoint alias table; the multi-agent-mode claims here were describing that sibling model, not this one, and have been removed/rescoped. No separate max_output_tokens limit distinct from the 1M context window could be confirmed on any maker page. The system card's CBRN/cybersecurity dual-use capability scores (Table 4) were deliberately excluded as inappropriate to present as selling points."
+}

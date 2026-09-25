@@ -1,0 +1,43 @@
+{
+  "slug": "nemotron-3-ultra-550b-a55b",
+  "canonical": "nemotron-3-ultra-550b-a55b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "Nemotron 3 Ultra is NVIDIA's largest Nemotron 3 model, a 550-billion-parameter hybrid Mamba-2/Transformer Mixture-of-Experts language model with 55 billion parameters active per token, released June 4, 2026. NVIDIA built it for agentic reasoning, coding, planning, tool calling and long-context analysis, and released it under its OpenMDW-1.1 license for commercial and non-commercial use. NVIDIA reports it leads open models on accuracy and efficiency for agentic RTL (hardware-description-language) coding.",
+    "advantages": [
+      "Scores 69.7 on SWE-Bench Verified and 87.9 on GPQA (no tools), per NVIDIA's model card.",
+      "Scores 94.0 on RULER at 1M-token context and 82.3 on IFBench (prompt), per NVIDIA's model card.",
+      "Achieved a 97.1% average pass rate across nine CVDP hardware-coding categories when paired with NVIDIA's ACE-RTL agent, ahead of GLM 5.2 (92.1%) and Kimi K2.6 (95.2%), per an NVIDIA developer blog post.",
+      "Uses a hybrid Mamba-2 + Mixture-of-Experts + Attention architecture with multi-token prediction and latent expert routing, keeping only 55B of its 550B parameters active per token."
+    ],
+    "disadvantages": [
+      "Text-only: no image, audio or video input or output, per NVIDIA's model card.",
+      "Newly released (June 2026), so independent third-party benchmarking beyond NVIDIA's own reported figures is limited so far."
+    ],
+    "use_cases": [
+      "Long-context agentic reasoning and multi-step task planning",
+      "Software engineering and coding agents, including RTL (hardware description language) coding",
+      "Tool calling and complex agent orchestration",
+      "High-accuracy retrieval-augmented generation over long documents"
+    ],
+    "evaluations": [
+      {"name": "SWE-Bench Verified", "score": 69.7, "source": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b"},
+      {"name": "GPQA (no tools)", "score": 87.9, "source": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b"},
+      {"name": "RULER 1M", "score": 94.0, "source": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b"},
+      {"name": "IFBench (prompt)", "score": 82.3, "source": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b"}
+    ],
+    "languages": ["English", "French", "Spanish", "Italian", "German", "Japanese", "Korean", "Hindi", "Brazilian Portuguese", "Chinese"],
+    "website_url": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b", "title": "nemotron-3-ultra-550b-a55b | NVIDIA NIM", "kind": "maker"},
+    {"url": "https://developer.nvidia.com/blog/how-full-stack-nim-optimizations-deliver-2-5x-more-users-on-nemotron-3-ultra/", "title": "How Full-Stack NIM Optimizations Deliver 2.5x More Users on Nemotron 3 Ultra", "kind": "maker"},
+    {"url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-leads-open-models-on-accuracy-and-efficiency-in-agentic-rtl-coding/", "title": "NVIDIA Nemotron 3 Ultra Leads Open Models on Accuracy and Efficiency in Agentic RTL Coding", "kind": "maker"},
+    {"url": "https://www.together.ai/models", "title": "Together AI Models", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (512,288) is lower than what NVIDIA states: the model card advertises up to 1M tokens (1,048,576) of context, while an NVIDIA NIM performance blog describes a 256K native context; kept the catalog's 512,288 figure per instructions rather than restating a different number. Modality (text-only) and empty deprecation_date match NVIDIA's current model card, which shows no deprecation notice as of the research date."
+}

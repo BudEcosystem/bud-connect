@@ -1,0 +1,74 @@
+{
+  "slug": "internvl3-78b",
+  "canonical": "internvl3-78b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenGVLab",
+  "details": {
+    "description": "InternVL3-78B is a vision-language chat model from OpenGVLab (Shanghai AI Laboratory), released April 11, 2025 as the largest model in the InternVL3 series. It follows a ViT-MLP-LLM design, combining an InternViT-6B-448px-V2_5 vision encoder with a Qwen2.5-72B language model (78B parameters total), trained with Native Multimodal Pre-Training and Mixed Preference Optimization. It handles multimodal reasoning, OCR/chart/document understanding, multi-image and video input, visual grounding, and GUI-agent tasks. OpenGVLab has since released the newer InternVL3.5 series (August 2025).",
+    "advantages": [
+      "Scores 72.2 on MMMU and 79.0 on MathVista, per OpenGVLab's InternVL3 launch blog benchmark tables.",
+      "Scores 95.4 on DocVQA (test) and 89.7 on ChartQA (test avg.) for OCR, chart, and document understanding, per the same blog.",
+      "Combines an InternViT-6B-448px-V2_5 vision encoder with a Qwen2.5-72B language model, and adds Variable Visual Position Encoding for long-context multimodal input, per the model card."
+    ],
+    "disadvantages": [
+      "OpenGVLab has since released InternVL3.5 (announced August 2025), a newer generation in the same InternVL series, per the OpenGVLab/InternVL GitHub README."
+    ],
+    "use_cases": [
+      "Multimodal reasoning and mathematics",
+      "OCR, chart, and document understanding",
+      "Multi-image and video comprehension",
+      "Visual grounding and GUI agent tasks",
+      "Multilingual multimodal understanding"
+    ],
+    "evaluations": [
+      {
+        "name": "MMMU",
+        "score": 72.2,
+        "source": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/"
+      },
+      {
+        "name": "MathVista",
+        "score": 79.0,
+        "source": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/"
+      },
+      {
+        "name": "DocVQA (test)",
+        "score": 95.4,
+        "source": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/"
+      },
+      {
+        "name": "ChartQA (test avg.)",
+        "score": 89.7,
+        "source": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/OpenGVLab/InternVL3-78B",
+    "github_url": "https://github.com/OpenGVLab/InternVL"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/OpenGVLab/InternVL3-78B",
+      "title": "OpenGVLab/InternVL3-78B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/",
+      "title": "InternVL3 launch blog (OpenGVLab)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/OpenGVLab/InternVL/main/README.md",
+      "title": "OpenGVLab/InternVL GitHub README",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/internvl3-78b",
+      "title": "InternVL3 78B API & Playground | Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "The Hugging Face model card embeds its benchmark tables as images, not text, so exact scores were taken from OpenGVLab's own launch blog (internvl.github.io/blog/2025-04-11-InternVL-3.0/), which has the same figures in HTML tables and is the project's own GitHub Pages site (also linked from the GitHub README). OCRBench (906 on the blog) was excluded from evaluations because it is scored out of 1000, not 0-100. Confirmed via the GitHub README that OpenGVLab announced InternVL3.5 on 2025/08/26, a newer generation; no page states InternVL3-78B itself is deprecated. Catalog facts (16384 max input/output tokens) were kept as-is. Catalog facts list only text_input/text_output modality for this Fireworks-hosted endpoint, but Fireworks' own host page for this exact model states \"Support image input: Supported\"; kept the catalog's modality per instructions and flag the discrepancy here."
+}

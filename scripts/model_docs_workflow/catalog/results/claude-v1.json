@@ -1,0 +1,73 @@
+{
+  "slug": "claude-v1",
+  "canonical": "claude-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude v1 (Amazon Bedrock model ID anthropic.claude-v1, with no dated snapshot suffix) is Anthropic's first-generation Claude model line. Anthropic's Claude 2 model card evaluates Claude 1.3, the final and longest-deployed v1.x snapshot, as a general-purpose, text-only conversational model built with RLHF and Constitutional AI, with a 100K-token context window. It was superseded by Claude 2 in July 2023, and Anthropic retired Claude 1.0-1.3 and Claude Instant 1.x from its own Claude API on November 6, 2024; Amazon Bedrock, which sets its own schedule, no longer lists Claude v1 among its currently supported models.",
+    "advantages": [
+      "Scores 90.0% on ARC-Challenge (5-shot science questions), per Anthropic's Claude 2 model card.",
+      "Scores 88.8% on RACE-H (5-shot reading comprehension), the highest of the three models compared, per Anthropic's Claude 2 model card.",
+      "Scores 84.1% on QuALITY (5-shot long-story Q&A), the highest of the three models compared, per Anthropic's Claude 2 model card.",
+      "Anthropic's model card describes Claude models as steerable and conversational, well suited to creative or literary use cases."
+    ],
+    "disadvantages": [
+      "Anthropic retired Claude 1.0-1.3 and Claude Instant 1.x from the Claude API on November 6, 2024, recommending Claude Haiku 4.5 as a replacement.",
+      "Text only: no image input, unlike later Claude models.",
+      "Anthropic's model card says Claude models 'perform less strongly on low-resource languages.'",
+      "100K-token context window, half of Claude 2's 200K, per Anthropic's Claude 2.1 model card appendix."
+    ],
+    "use_cases": [
+      "General, open-ended conversation.",
+      "Writing, editing, outlining, and summarizing text.",
+      "Coding assistance, though Anthropic's model card says this model lagged the state of the art on coding tasks.",
+      "Providing helpful advice across a broad range of subjects.",
+      "Creative or literary use cases, with steerable tone."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 77.0,
+        "source": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf"
+      },
+      {
+        "name": "GSM8K",
+        "score": 85.2,
+        "source": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf"
+      },
+      {
+        "name": "ARC-Challenge",
+        "score": 90.0,
+        "source": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf"
+      },
+      {
+        "name": "RACE-H",
+        "score": 88.8,
+        "source": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf",
+      "title": "Model Card and Evaluations for Claude Models (Claude 2, with Claude 2.1 Appendix)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Bedrock's model ID 'anthropic.claude-v1' has no dated snapshot suffix; identified with Claude 1.3, the final and longest-deployed v1.x release, based on Anthropic's July/November 2023 model card, which evaluates 'Claude 1.3' by name as the deployed non-instant model of that era (benchmark table in section 4.3). Some uncertainty remains about whether Bedrock's undated ID ever pointed to an earlier v1.0-1.2 snapshot. Catalog lists no deprecation_date for this target; Anthropic itself retired the v1.x line from its own Claude API on November 6, 2024, and as of today (2026-09-24) Claude v1 no longer appears in Amazon Bedrock's current 'Models at a glance' listing (which starts at Claude 3 Haiku), suggesting Bedrock access has also ended, though we found no Bedrock-specific EOL date or announcement to cite."
+}

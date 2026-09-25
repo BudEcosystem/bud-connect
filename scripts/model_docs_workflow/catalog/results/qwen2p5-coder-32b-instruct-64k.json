@@ -1,0 +1,42 @@
+{
+  "slug": "qwen2p5-coder-32b-instruct-64k",
+  "canonical": "qwen2p5-coder-32b-instruct-64k",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-Coder-32B-Instruct is Alibaba's flagship code-specialized chat model in the Qwen2.5-Coder family: a 32.5-billion-parameter (31.0B non-embedding) transformer instruction-tuned for code generation, completion, reasoning, and repair. Released by Qwen on November 12, 2024 and trained on 5.5 trillion tokens of source code, text-code grounding, and synthetic data, Qwen's own blog describes it as matching GPT-4o's coding ability among open-source models. This Fireworks AI configuration serves the model with a 65,536-token context window, extended from its 32,768-token base via the YaRN scaling Qwen's model card documents, up to a native maximum of 131,072 tokens.",
+    "advantages": [
+      "Qwen's Qwen2.5-Coder blog states the model matches GPT-4o's coding ability among open-source code models.",
+      "Reaches state-of-the-art results among open-source models on EvalPlus, LiveCodeBench, and BigCodeBench code-generation benchmarks, per Qwen's blog.",
+      "Reaches state-of-the-art results among open-source models on five code-completion benchmarks (HumanEval-Infilling, CrossCodeEval, CrossCodeLongEval, RepoEval, SAFIM), per Qwen's blog.",
+      "Trained on 5.5 trillion tokens spanning source code, text-code grounding, and synthetic data, per Qwen's model card.",
+      "Covers 40+ programming languages, evaluated with the McEval benchmark per Qwen's blog."
+    ],
+    "disadvantages": [
+      "This Fireworks configuration caps the context window at 65,536 tokens, half the model's native 131,072-token maximum stated on Qwen's model card."
+    ],
+    "use_cases": [
+      "Code generation, completion, and debugging across mainstream programming languages",
+      "Multi-language automated code repair, evaluated by Qwen with the MdEval benchmark",
+      "Repository-level and long-context code completion tasks",
+      "Building code agents for real-world software engineering workflows",
+      "General reasoning and mathematics tasks alongside coding, per Qwen's model card"
+    ],
+    "evaluations": [
+      {"name": "Aider", "score": 73.7, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "McEval", "score": 65.9, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "MdEval", "score": 75.2, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", "title": "Qwen/Qwen2.5-Coder-32B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct-64k", "title": "Qwen2.5 Coder 32B Instruct 64k - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Fireworks' page for this exact id confirms a ~65.5k-token context window, matching the catalog facts (65536). Same underlying model as qwen2p5-coder-32b-instruct-32k-rope, served at a longer context. Qwen's own GitHub repo for Qwen2.5-Coder now redirects (HTTP 301) to QwenLM/Qwen3-Coder, so no working github_url could be confirmed; left null. No deprecation or superseded notice found on Qwen's current model card."
+}

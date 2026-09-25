@@ -1,0 +1,56 @@
+{
+  "slug": "qwen3-coder-30b-a3b-instruct",
+  "canonical": "qwen3-coder-30b-a3b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Coder-30B-A3B-Instruct is Qwen's compact agentic coding model, a mixture-of-experts model with 30.5 billion total parameters and 3.3 billion activated per token (128 experts, 8 active), released July 31, 2025. It targets code generation, debugging, and agentic coding tasks such as repository-scale understanding and tool calling, with a native 262,144-token context window (extendable to 1 million tokens via Yarn) and integrations for Qwen Code and Cline. Qwen's model card states it runs in non-thinking mode only.",
+    "advantages": [
+      "Built for agentic coding tasks with repository-scale code understanding, per Qwen's model card.",
+      "Native 262,144-token context window, extendable to 1 million tokens using Yarn (Qwen's model card).",
+      "Supports agentic browser-use tasks alongside coding, per Qwen's model card.",
+      "Integrates with Qwen Code and Cline for IDE-based agentic coding workflows.",
+      "Uses only 3.3B active parameters per token (30.5B total), a smaller compute footprint than the 480B-A35B sibling model for similar agentic coding tasks.",
+      "Fireworks AI states the full 262,144-token context window is usable on its on-demand deployments."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; does not generate <think></think> reasoning blocks (Qwen's model card)."
+    ],
+    "use_cases": [
+      "Code generation and debugging for software projects",
+      "Agentic coding tasks such as multi-step feature implementation",
+      "Repository-scale code understanding across large codebases",
+      "Tool-calling and function-calling for coding agents",
+      "IDE-integrated coding assistants (Qwen Code, Cline)"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-Coder"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "title": "Qwen/Qwen3-Coder-30B-A3B-Instruct \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Coder",
+      "title": "QwenLM/Qwen3-Coder - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3-coder/",
+      "title": "Qwen3-Coder: Agentic Coding in the World",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-coder-30b-a3b-instruct",
+      "title": "Qwen3 Coder 30B A3B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "No benchmark table with numeric scores was found on Qwen's own model card for this specific model (unlike the 480B-A35B sibling), so evaluations is left empty rather than guessed. Catalog facts (262,144 max input/output tokens) match both Qwen's native spec and Fireworks' own page for this exact model ID, so no conflict to flag."
+}

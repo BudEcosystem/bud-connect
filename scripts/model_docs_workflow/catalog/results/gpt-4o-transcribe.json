@@ -1,0 +1,53 @@
+{
+  "slug": "gpt-4o-transcribe",
+  "canonical": "gpt-4o-transcribe",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o transcribe is OpenAI's speech-to-text model built on GPT-4o, used through the Transcription API (/v1/audio/transcriptions) and still labeled Preview in Azure's Foundry Models catalog. OpenAI's model page states it improves on the original Whisper model's word error rate and language recognition; OpenAI's current speech-to-text guide now directs new general-purpose transcription integrations to gpt-transcribe instead. On August 26, 2026, OpenAI notified developers that gpt-4o-transcribe, alongside whisper-1, gpt-4o-mini-transcribe and gpt-4o-transcribe-diarize, will be removed from the API on February 26, 2027, recommending gpt-live-transcribe or gpt-transcribe as replacements.",
+    "advantages": [
+      "OpenAI states it improves on the original Whisper model's word error rate and language recognition, per OpenAI's model page.",
+      "Existing integrations support a free-text prompt to improve recognition of names, acronyms and recording-specific vocabulary, per OpenAI's speech-to-text guide.",
+      "Supports file streaming for transcription integrations, per OpenAI's speech-to-text guide."
+    ],
+    "disadvantages": [
+      "OpenAI has deprecated gpt-4o-transcribe, announcing on August 26, 2026 that it will be removed from the API on February 26, 2027, with gpt-live-transcribe or gpt-transcribe recommended as replacements, per OpenAI's deprecations page.",
+      "Azure's Foundry Models catalog still labels this model Preview, per Microsoft's models page.",
+      "Available only through the Transcription and Realtime endpoints; does not support Chat Completions, Assistants or Speech Generation, per OpenAI's model page.",
+      "Knowledge cutoff of June 1, 2024, per OpenAI's model page."
+    ],
+    "use_cases": [
+      "Transcribing recorded speech into text via the Transcription API, per OpenAI's model page.",
+      "General-purpose speech-to-text transcription positioned by OpenAI as an alternative to Whisper, per OpenAI's model page."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-transcribe",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o-transcribe",
+      "title": "GPT-4o Transcribe Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/speech-to-text",
+      "title": "Speech to text guide | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "OpenAI's deprecations page gives a shutdown date of February 26, 2027 for gpt-4o-transcribe, which differs from the catalog's 2026-10-15 deprecation_date; kept the catalog's date as instructed but flagging the conflict since it affects whether the model is still callable on that date. No source states which specific languages gpt-4o-transcribe supports (only whisper-1 and the separate gpt-transcribe model's language handling are documented), so the languages list is left empty. Verification pass: OpenAI's current speech-to-text guide gives the 'recommended, general-purpose model for transcribing recorded speech in its original language' framing, and the structured 'keywords' prompting parameter, to gpt-transcribe, not gpt-4o-transcribe (gpt-4o-transcribe only gets a free-text prompt) -- both were corrected. OpenAI's model page also shows the Realtime endpoint (v1/realtime), not just Transcription, as supported for gpt-4o-transcribe, so the endpoint disadvantage was corrected to not claim it is limited to Transcription alone."
+}

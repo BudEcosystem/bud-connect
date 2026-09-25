@@ -1,0 +1,39 @@
+{
+  "slug": "embed-v4",
+  "canonical": "embed-v4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cohere",
+  "details": {
+    "description": "Embed v4 is Cohere's unified multimodal embedding model for text, images, and mixed content such as scanned documents, tables, and handwriting, aimed at search and retrieval-augmented generation (RAG). Cohere launched it April 15, 2025. It supports over 100 languages (Cohere names Arabic, English, French, Japanese, and Korean as examples), an input limit of about 128,000 tokens per document, and configurable output dimensions of 256, 512, 1024, or 1536 via Matryoshka representation, plus float, int8, uint8, binary, and ubinary embedding formats. Cohere also offers versions fine-tuned for finance, healthcare, and manufacturing documents.",
+    "advantages": [
+      "Processes interleaved text and image content in a single call, unlike separate text-only and image-only embedding models.",
+      "Natively handles documents with tables, graphs, diagrams, code snippets, and handwritten notes without separate data cleanup, per AWS's launch announcement of the model on Bedrock.",
+      "Supports over 100 languages.",
+      "Offers selectable output dimensions (256, 512, 1024, or 1536) to trade off storage cost against embedding quality."
+    ],
+    "disadvantages": [
+      "AWS's Bedrock parameter documentation notes that for RAG, smaller chunks than the full ~128,000-token limit often improve retrieval quality and cost."
+    ],
+    "use_cases": [
+      "Semantic search and retrieval-augmented generation (RAG) over mixed text-and-image documents.",
+      "Visual document search over scanned reports, contracts, and forms with tables, charts, or handwriting.",
+      "Multilingual search and classification across 100+ languages.",
+      "Domain-tuned retrieval for finance, healthcare, and manufacturing documents, per Cohere and AWS."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.cohere.com/docs/cohere-embed",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cohere.com/docs/cohere-embed", "title": "Cohere Embed and Cohere Embed v4 models | Cohere Docs", "kind": "maker"},
+    {"url": "https://cohere.com/blog/embed-4", "title": "Introducing Embed 4: Multimodal search for business | Cohere Blog", "kind": "maker"},
+    {"url": "https://aws.amazon.com/about-aws/whats-new/2025/10/coheres-embed-v4-multimodal-embeddings-bedrock", "title": "Cohere's Embed v4 multimodal embeddings model now available on Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-embed-v4.html", "title": "Embed v4 - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-embed-v4.html", "title": "Cohere Embed v4 - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.cohere.com/docs/embeddings", "title": "Embeddings | Cohere Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens (128000) matches all sources (Cohere's own docs, AWS's model card, and AWS's parameters page all state ~128K tokens per document). Catalog's modality fact lists only 'image_input', but every source (Cohere's own docs, AWS's launch announcement, and Bedrock's parameter docs) describes Embed v4 as a joint text-and-image embedding model that also accepts text-only input; flagging this discrepancy rather than restating a different modality, per instructions the catalog's fact was kept as-is. Evaluations left empty: several third-party blogs cite an MTEB score (roughly 65.2-65.8) for Embed v4, but none of the maker or host pages opened stated a benchmark number, and no named-leaderboard (MTEB) page itself was opened, so the figure was not used. Only a few example languages ('Arabic, English, French, Japanese, Korean') are named in sources for the 100+ languages claim, not a full list, so per instructions the languages list is left empty and the count is stated in the description. Verified: the 100+ languages claim with Arabic/English/French/Japanese/Korean examples is stated verbatim on AWS's launch announcement page for Embed v4 specifically (not confused with embed-multilingual-v3.0). The 'Matryoshka representation' claim for output dimensions was not supported by any originally cited source; found and added docs.cohere.com/docs/embeddings, which states 'Matryoshka learning creates embeddings with coarse-to-fine representation within a single vector; embed-v4.0 supports multiple output dimensions in the following values: [256,512,1024,1536]', so the claim was kept and the source added."
+}

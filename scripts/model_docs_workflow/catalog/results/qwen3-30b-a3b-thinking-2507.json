@@ -1,0 +1,45 @@
+{
+  "slug": "qwen3-30b-a3b-thinking-2507",
+  "canonical": "qwen3-30b-a3b-thinking-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen3-30B-A3B-Thinking-2507 is Alibaba's July 2025 update to the Qwen3-30B-A3B mixture-of-experts model, dedicated to extended reasoning: the model card states it 'supports only thinking mode' and always produces a reasoning trace before its final answer. It has 30.5B total parameters with 3.3B activated per token across 128 experts (8 active per token). Native context is 262,144 tokens, extendable to 1 million tokens with Dual Chunk Attention. The model card reports gains over the original Qwen3-30B-A3B in mathematics, science, coding and agentic tool-use tasks.",
+    "advantages": [
+      "Scores 85.0 on AIME25, per the model's Hugging Face card.",
+      "Scores 73.4 on GPQA, per the model's Hugging Face card.",
+      "Scores 80.9 on MMLU-Pro, per the model's Hugging Face card.",
+      "Scores 72.4 on the BFCL-v3 tool-calling benchmark, per the model's Hugging Face card.",
+      "Scores 66.0 on LiveCodeBench v6, per the model's Hugging Face card."
+    ],
+    "disadvantages": [
+      "Runs in thinking mode only; the model always produces a reasoning trace and cannot be switched to a faster non-thinking mode, per the model card.",
+      "The extra reasoning step means responses are typically longer than the sibling Instruct-2507 checkpoint, which runs non-thinking only."
+    ],
+    "use_cases": [
+      "Complex mathematical and scientific reasoning tasks",
+      "Competitive coding tasks, per the model's LiveCodeBench v6 result",
+      "Agentic tool-use tasks, per the model's BFCL-v3 result",
+      "Long-context reasoning tasks up to 262,144 tokens natively"
+    ],
+    "evaluations": [
+      {"name": "AIME25", "score": 85.0, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "HMMT25", "score": 71.4, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "LiveCodeBench v6", "score": 66.0, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "MMLU-Pro", "score": 80.9, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "GPQA", "score": 73.4, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "SuperGPQA", "score": 56.8, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"},
+      {"name": "BFCL-v3", "score": 72.4, "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507", "title": "Qwen/Qwen3-30B-A3B-Thinking-2507", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-30b-a3b-thinking-2507", "title": "Qwen3 30B A3B Thinking 2507 - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog's 262,144 max input/output tokens match this model's native context window per Qwen's Hugging Face card; the card recommends a smaller output budget in practice (32,768 tokens for standard queries, up to 81,920 for complex reasoning). Arena-Hard v2 (56.0) and WritingBench (85.0) are reported on the model card but omitted from evaluations as arena/judged-style scores rather than accuracy scores."
+}

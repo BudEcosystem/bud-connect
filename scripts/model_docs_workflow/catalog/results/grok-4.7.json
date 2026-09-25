@@ -1,0 +1,48 @@
+{
+  "slug": "grok-4.7",
+  "canonical": "grok-4.7",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "SpaceXAI",
+  "details": {
+    "description": "Grok 4.7 is SpaceXAI's model for coding and knowledge work, released September 21, 2026 as an update to Grok 4.6. It accepts text and image input with text-only output over a 500K-token context window, and supports four reasoning-effort levels (low, medium, high, xhigh; high by default). xAI's launch post describes improvements on longer, multi-hour agentic tasks, self-checking on complex problems, and resistance to refusals and jailbreak attempts.",
+    "advantages": [
+      "Scores 46 on the Artificial Analysis Intelligence Index, ranking #21 of 211 models tracked (Artificial Analysis).",
+      "Scores 71.0% on DeepSWE v1.1 and 64.0% on EEBench, an electrical-engineering benchmark (xAI's Grok 4.7 launch post).",
+      "xAI reports that only 3.3% of risky prompts were allowed through on HackerBench v0.3, its jailbreak-resistance benchmark.",
+      "Supports four reasoning-effort levels (low, medium, high, xhigh; high by default), function calling, and structured outputs (xAI docs)."
+    ],
+    "disadvantages": [
+      "Scores 19.6% on the Harvey Legal Agent Benchmark and 37.6% on Terminal-Bench 4.0, notably lower than its coding-focused benchmark scores (xAI's Grok 4.7 launch post).",
+      "Accepts text and image input only, with text-only output; no audio input/output or native image generation.",
+      "Batch API is not supported (xAI docs)."
+    ],
+    "use_cases": [
+      "Coding and long-running agentic software-engineering tasks",
+      "Multi-hour autonomous agent workflows requiring self-verification",
+      "Electrical-engineering problem solving",
+      "Legal document and agent-based analysis",
+      "Professional health-related reasoning support",
+      "General knowledge work with tool use via function calling"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 46, "source": "https://artificialanalysis.ai/models/grok-4-7"},
+      {"name": "DeepSWE v1.1", "score": 71.0, "source": "https://x.ai/news/grok-4-7"},
+      {"name": "EEBench", "score": 64.0, "source": "https://x.ai/news/grok-4-7"},
+      {"name": "CursorBench 4.0", "score": 46.3, "source": "https://x.ai/news/grok-4-7"},
+      {"name": "Terminal-Bench 4.0", "score": 37.6, "source": "https://x.ai/news/grok-4-7"},
+      {"name": "Harvey Legal Agent Benchmark", "score": 19.6, "source": "https://x.ai/news/grok-4-7"},
+      {"name": "HealthBench Professional", "score": 56.7, "source": "https://x.ai/news/grok-4-7"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.7",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.7", "title": "Grok 4.7 | xAI Docs", "kind": "maker"},
+    {"url": "https://x.ai/news/grok-4-7", "title": "Introducing Grok 4.7 | SpaceXAI", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-7", "title": "Grok 4.7 (xhigh) Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "Both docs.x.ai and x.ai/news now identify the company as 'SpaceXAI' in page titles and footers (e.g. the grok-4.7 launch post's title tag is 'Introducing Grok 4.7 | SpaceXAI' and grok-4.6's footer reads '(c) 2026 SpaceXAI LLC'), so that name was used as maker instead of 'xAI'. The launch post also reports an AA-Briefcase v1.1 score of 1,657 and a LatchBio biosafety score of 62.4%; both were left out of evaluations because their scale and higher-is-better direction could not be confirmed from the page. No max-output-tokens value distinct from the 500K context window is given on xAI's docs, matching the catalog's facts. Artificial Analysis (accessed 2026-09-24) shows no deprecated label for Grok 4.7, unlike Grok 4.3 and Grok 4.5."
+}

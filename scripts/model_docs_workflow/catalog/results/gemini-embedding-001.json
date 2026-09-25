@@ -1,0 +1,40 @@
+{
+  "slug": "gemini-embedding-001",
+  "canonical": "gemini-embedding-001",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini Embedding 001 is Google's stable text embedding model, generating vector representations for semantic search, classification, clustering and retrieval-augmented generation. Google released it as the general-availability version of its Gemini embedding line on July 14, 2025, succeeding earlier experimental and Gecko-based embedding models. It uses Matryoshka Representation Learning (MRL), so its embedding output can be truncated to smaller sizes (Google recommends 768, 1536 or 3072 within a 128-3072 range) while remaining usable. Per Bud's catalog, it accepts up to 2,048 input tokens.",
+    "advantages": [
+      "Supports eight task types (semantic similarity, classification, clustering, document retrieval, query retrieval, code-retrieval query, question answering and fact verification) selected via a task_type parameter, per Google's embeddings documentation.",
+      "Uses Matryoshka Representation Learning, so its embedding can be truncated to smaller sizes, down to 128 dimensions, while remaining a usable, simpler version of the same vector.",
+      "Scores 68.17 on Google's reported MTEB benchmark table at the 1536-dimension output size."
+    ],
+    "disadvantages": [
+      "Text-only model; Bud's catalog lists only text_input/text_output for this route.",
+      "Limited to a 2,048-token input, per Bud's catalog.",
+      "Any output dimension other than the default 3072 -- including the recommended 768 and 1536 sizes -- needs to be manually normalized, per Google's documentation."
+    ],
+    "use_cases": [
+      "Semantic search over documents.",
+      "Retrieval-augmented generation (RAG) pipelines.",
+      "Text classification and clustering.",
+      "Question answering and fact-verification retrieval tasks."
+    ],
+    "evaluations": [
+      {"name": "MTEB (1536-dimension output)", "score": 68.17, "source": "https://ai.google.dev/gemini-api/docs/embeddings"}
+    ],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/embeddings", "title": "Embeddings | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001", "title": "Gemini Embedding model | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Checked the 'succeeding earlier experimental and Gecko-based embedding models' claim: Google's changelog explicitly frames gemini-embedding-001 (GA, 2025-07-14, described there as 'the stable version of our text embedding model') as following gemini-embedding-exp-03-07, 'an experimental Gemini-based embeddings model' launched 2025-03-07; the deprecations page separately lists embedding-gecko-001 (an older, Gecko-named embedding model) as deprecated the same year. Kept the claim and added the deprecations page as a source for it. Corrected a normalization claim: Google's docs say gemini-embedding-001 needs manual normalization for any non-3072 dimension, including the 'recommended' 768 and 1536 sizes, not only sizes below them. Set website_url to the model's own dedicated docs page rather than the shared embeddings guide. Google's embeddings documentation gives MTEB scores only at reduced dimensions (2048: 68.16, 1536: 68.17, 768: 67.99, 512: 67.55, 256: 66.19, 128: 63.31), does not name the exact benchmark variant (e.g. 'MTEB Multilingual v2'), and does not give a score at the full/default 3072 dimension, so I used the highest reported figure (1536) rather than guess the 3072 value. No explicit supported-language list or count was found on the pages checked, so languages is left empty. The catalog's deprecation_date is 2028-05-20; Google's deprecations page instead gives a shutdown date of 2028-05-14 for gemini-embedding-001, six days off the catalog's date. Kept the catalog's value per the research instructions and flagged the discrepancy here."
+}

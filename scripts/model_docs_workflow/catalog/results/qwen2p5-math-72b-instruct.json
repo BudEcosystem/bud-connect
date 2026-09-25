@@ -1,0 +1,38 @@
+{
+  "slug": "qwen2p5-math-72b-instruct",
+  "canonical": "qwen2p5-math-72b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-Math-72B-Instruct is a 72-billion-parameter instruction-tuned mathematical-reasoning model from Alibaba's Qwen team, released September 19, 2024 and built on the Qwen2.5-72B base model. Qwen's blog states it was trained on the Qwen Math Corpus v2, covering over 1 trillion math-related tokens, and it solves problems through chain-of-thought (CoT) reasoning or tool-integrated reasoning (TIR) that calls a Python interpreter. Qwen's model card explicitly states the series 'mainly supports solving English and Chinese math problems through CoT and TIR' and advises against using it for other tasks. Its published configuration gives a native 4,096-token context window, matching this catalog's limits, and Qwen pairs it with a separate Qwen2.5-Math-RM-72B reward model for best-of-N reranking.",
+    "advantages": [
+      "Scores 87.8 on the MATH benchmark using tool-integrated reasoning (TIR), per Qwen's model card.",
+      "Trained on the Qwen Math Corpus v2, which Qwen's launch blog describes as covering over 1 trillion math-related tokens.",
+      "Qwen's launch blog reports the 72B-Instruct model outperforms the open-source and closed-source models it compared against (including GPT-4o and Gemini Math-Specialized 1.5 Pro) on the math benchmarks tested.",
+      "Can be paired with a dedicated Qwen2.5-Math-RM-72B reward model that Qwen's blog says further improves accuracy via best-of-N reranking (e.g. 92.9 on MATH with RM best-of-8, per Qwen's blog)."
+    ],
+    "disadvantages": [
+      "Qwen's own model card states the series 'mainly supports solving English and Chinese math problems through CoT and TIR' and explicitly advises against using it for other tasks.",
+      "Native context window is 4,096 tokens per its published configuration, short for long problem sets or extended tool-call transcripts."
+    ],
+    "use_cases": [
+      "Solving English and Chinese math word problems via chain-of-thought reasoning",
+      "Tool-integrated reasoning that combines natural-language reasoning with a Python interpreter for computation",
+      "Algebraic equations, matrix operations, and other structured mathematical problem-solving"
+    ],
+    "evaluations": [
+      {"name": "MATH", "score": 87.8, "source": "https://huggingface.co/Qwen/Qwen2.5-Math-72B-Instruct"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Math-72B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen2.5-Math"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Math-72B-Instruct", "title": "Qwen/Qwen2.5-Math-72B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-math/", "title": "Qwen2.5-Math: The world's leading open-sourced mathematical LLMs", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5-Math", "title": "QwenLM/Qwen2.5-Math · GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (4,096) match the model's published config.json max_position_embeddings/sliding_window exactly, so no conflict. Used the plain-TIR MATH score (87.8) from Qwen's model card as the evaluation entry rather than the blog's higher 92.9 figure, which uses an additional reward-model best-of-8 reranking step (RM@8) on top of the base instruct model's output; the 92.9 figure is mentioned only in an advantages sentence with that caveat. No deprecation or supersession notice was found for this model as of the research date; its GitHub repo (QwenLM/Qwen2.5-Math) remains a standalone, active repository and has not redirected to a newer line, unlike Qwen2.5-Coder."
+}

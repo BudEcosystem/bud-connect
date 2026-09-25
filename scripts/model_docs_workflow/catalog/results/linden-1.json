@@ -1,0 +1,40 @@
+{
+  "slug": "linden-1",
+  "canonical": "linden-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Linden 1 is Speechmatics' speech-to-text model built specifically for Agent STT, its turn-based transcription service for voice agents, reached over a dedicated /v2/agent WebSocket endpoint; Speechmatics states Agent STT is powered by linden-1 and offers no alternative model. Rather than a running word stream, it returns speaker-attributed, punctuated segments together with explicit start-of-turn and end-of-turn signals, formatted to pass directly to an LLM. Speechmatics states Agent STT is available in 55+ languages and, as of its current documentation, on SaaS only.",
+    "advantages": [
+      "Returns speaker-attributed, punctuated transcript segments with explicit turn-start and turn-end signals rather than a raw word stream, formatted to pass directly to an LLM, per Speechmatics' Agent STT documentation.",
+      "Speechmatics states end-of-speech finalization lands in about 350ms, per Speechmatics' Voice Agents page.",
+      "Includes speaker diarization by default, attributing every word to the speaker who said it, per Speechmatics' Voice Agents page.",
+      "Supports a custom vocabulary of up to 1,000 domain-specific terms, per Speechmatics' Voice Agents page.",
+      "Speechmatics states Agent STT is available in 55+ languages, per Speechmatics' Voice Agents page.",
+      "Integrates directly with the Vapi, LiveKit and Pipecat voice-agent platforms, plus a Python SDK and a direct WebSocket API for any other language, per Speechmatics' Agent STT documentation."
+    ],
+    "disadvantages": [
+      "Agent STT, the product linden-1 powers, is available on SaaS only, per Speechmatics' Agent STT documentation.",
+      "Linden 1 is the only model Agent STT offers, so there is no alternative model to choose for this endpoint."
+    ],
+    "use_cases": [
+      "Building voice AI agents for conversational, LLM-driven applications",
+      "Real-time, multi-speaker call or meeting transcription feeding directly into an LLM",
+      "Customer-facing voice bots built on Vapi, LiveKit or Pipecat"
+    ],
+    "evaluations": [],
+    "languages": ["Arabic", "Bashkir", "Basque", "Belarusian", "Bengali", "Bulgarian", "Cantonese", "Catalan", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Korean", "Latvian", "Lithuanian", "Malay", "Maltese", "Mandarin", "Marathi", "Mongolian", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Slovakian", "Slovenian", "Spanish", "Swahili", "Swedish", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Uyghur", "Vietnamese", "Welsh"],
+    "website_url": "https://www.speechmatics.com/voice-agents",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/speech-to-text/models", "title": "Speech-to-Text Models - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/agent-stt", "title": "Agent STT - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/api-ref/agent-stt-websocket", "title": "Agent STT WebSocket API - Speechmatics Documentation", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/voice-agents", "title": "Voice Agents - Speechmatics", "kind": "maker"},
+    {"url": "https://docs.speechmatics.com/speech-to-text/languages", "title": "Languages - Speechmatics Documentation", "kind": "maker"}
+  ],
+  "notes": "No page states a deprecation, beta or preview flag for linden-1 itself; Agent STT's own documentation says the product is 'on SaaS only' (no self-hosted/on-prem deployment mentioned), which is noted as a limitation. The Agent STT documentation page states 'The Agent STT SDK is a Python client for the Agent STT service'; it does not mention a JavaScript or .NET SDK for Agent STT specifically (those exist for Speechmatics' general Realtime API, not confirmed for the /v2/agent endpoint), so the SDK claim was corrected. The Languages reference page states Linden 1 'supports the same languages as Realtime transcription' and gives no separate count for it; that page's Realtime/Batch-shared list of 55 individually-named languages (excluding 'Automatic' and the bilingual/multi-language packs, which have no per-language breakdown of Realtime support) is used here. Catalog carries no deprecation_date."
+}

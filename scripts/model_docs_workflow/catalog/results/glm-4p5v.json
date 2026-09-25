@@ -1,0 +1,40 @@
+{
+  "slug": "glm-4p5v",
+  "canonical": "glm-4p5v",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai (Zhipu AI)",
+  "details": {
+    "description": "GLM-4.5V is a vision-language model from Z.ai (Zhipu AI) built on the GLM-4.5-Air architecture (106 billion total parameters, 12 billion active via mixture-of-experts), extended with image, video, document and GUI-screenshot understanding. It accepts images at any aspect ratio up to 4K resolution and long-form video, alongside charts, documents and desktop or mobile screenshots, and includes a switchable thinking mode for adjustable reasoning depth. Released August 11, 2025 under the MIT license.",
+    "advantages": [
+      "Z.ai reports GLM-4.5V achieves state-of-the-art performance among open-source vision-language models of similar scale across 42 public multimodal benchmarks spanning image, video, document and GUI tasks, per Z.ai's GitHub repository.",
+      "Outputs bounding-box grounding for visual element localization using normalized coordinates, per Z.ai's GitHub repository.",
+      "Supports GUI agent operations such as screen reading and desktop or mobile interface interaction (clicking, sliding), per Z.ai's API documentation.",
+      "Accepts images at any aspect ratio up to 4K resolution and long-form video for event recognition, per Z.ai's GitHub repository."
+    ],
+    "disadvantages": [
+      "The maker states generated frontend code can produce unformatted HTML with rendering errors.",
+      "The maker states pure text question-answering capabilities need improvement relative to its multimodal capabilities.",
+      "The maker notes occasional overthinking, content repetition, or restating the answer at the end of a response.",
+      "The maker notes perception limitations in counting and identifying individual objects."
+    ],
+    "use_cases": [
+      "Parsing charts, long documents and research reports",
+      "GUI agent automation such as screen reading and clicking",
+      "Video event recognition and long-form video analysis",
+      "Webpage screenshot-to-code generation",
+      "Multi-image scene understanding and STEM problem solving with combined text and image input"
+    ],
+    "evaluations": [],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/zai-org/GLM-4.5V",
+    "github_url": "https://github.com/zai-org/GLM-V"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/zai-org/GLM-4.5V", "title": "zai-org/GLM-4.5V · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/zai-org/GLM-V", "title": "zai-org/GLM-V", "kind": "maker"},
+    {"url": "https://docs.z.ai/guides/vlm/glm-4.5v", "title": "GLM-4.5V | Z.ai API Platform Docs", "kind": "maker"}
+  ],
+  "notes": "docs.z.ai lists a 16K max-output-token limit for GLM-4.5V, which differs from the catalog's max_input_tokens/max_output_tokens of 131072/131072 (matching Fireworks' listed 131,072-token context length); kept the catalog's values as instructed. No numeric per-benchmark scores (e.g. MMBench, MathVista) were found on a maker page I could open, only the aggregate '42 benchmarks, SOTA among open-source VLMs' claim, so evaluations is left empty rather than guessed. Verify pass: Bud's catalog records this route's modality as text_input/text_output only, with no image or video input, unlike the vision-language capability (image, video, document, GUI-screenshot understanding) Z.ai documents for this model -- kept the catalog's modality value per RESEARCH_PROMPT and flag the mismatch here, consistent with how sibling VLM entries in this batch (e.g. qwen2-vl-72b-instruct, phi-3-vision-128k-instruct) handle the same conflict. Also, Z.ai's GLM-V GitHub repo now lists GLM-4.6V, GLM-5V-Turbo and GLM-5.3-Flash as newer vision-capable generations released after GLM-4.5V, and announced (2026-09-02) that this repository will no longer be maintained; no maker page explicitly calls GLM-4.5V itself deprecated or legacy, so no supersession claim is made in the visible fields, but this is more complete than the single-newer-model picture originally noted."
+}

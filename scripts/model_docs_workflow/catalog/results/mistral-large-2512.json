@@ -1,0 +1,44 @@
+{
+  "slug": "mistral-large-2512",
+  "canonical": "mistral-large-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Large 3 is Mistral AI's flagship general-purpose model, released December 2, 2025 under the API id mistral-large-2512 as part of the wider 'Mistral 3' family launch. It is Mistral's first mixture-of-experts model since the original Mixtral series, with 41B active and 675B total parameters, trained from scratch on 3,000 NVIDIA H200 GPUs. It takes text and image input and produces text output, is released open-weight under the Apache 2.0 license, and is aimed at multilingual conversation, image understanding, function calling and agentic workflows. As of Mistral's current documentation it remains the active Large-tier model, with no newer Large release superseding it; Mistral said at launch that a dedicated reasoning version was coming but none has appeared on Mistral's models overview as of this writing.",
+    "advantages": [
+      "Mistral's first mixture-of-experts model since the Mixtral series, with 41B active and 675B total parameters (Mistral's 'Introducing Mistral 3' launch post).",
+      "Debuts at #2 among open-weight non-reasoning models (#6 among all open-weight models) on the LMArena leaderboard (Mistral's 'Introducing Mistral 3' launch post).",
+      "Supports dozens of languages, explicitly naming English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean and Arabic (Hugging Face model card).",
+      "Released open-weight under the Apache 2.0 license and available in FP8, NVFP4 and BF16 formats (Hugging Face model card).",
+      "Available via Mistral AI Studio, Amazon Bedrock, Azure Foundry and Hugging Face (Mistral's 'Introducing Mistral 3' launch post)."
+    ],
+    "disadvantages": [
+      "Not a dedicated reasoning model; Mistral said at launch a reasoning version was coming, but Mistral's current models overview lists no Large 3 reasoning variant (Mistral's 'Introducing Mistral 3' launch post; Mistral models overview).",
+      "Hugging Face's model card notes it can lag behind vision-first models on multimodal benchmarks (Hugging Face model card).",
+      "Scores 9 on the Artificial Analysis Intelligence Index, below the reported median of 12 for open-weight non-reasoning models of similar size (Artificial Analysis)."
+    ],
+    "use_cases": [
+      "General-purpose multilingual chat and conversation",
+      "Image understanding and document/visual analysis",
+      "Function calling and agentic, tool-using workflows",
+      "Long-context tasks using the model's large token window",
+      "Self-hosted or on-premises deployment given its open weights"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 9, "source": "https://artificialanalysis.ai/models/mistral-large-3"}
+    ],
+    "languages": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Dutch", "Chinese", "Japanese", "Korean", "Arabic"],
+    "website_url": "https://mistral.ai/news/mistral-3/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mistral-3/", "title": "Introducing Mistral 3", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512", "title": "mistralai/Mistral-Large-3-675B-Instruct-2512", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/changelog/", "title": "Changelog - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/mistral-large-3", "title": "Mistral Large 3 - Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "Catalog facts (262144 max input/output tokens, image_input+text_input+text_output, no deprecation_date) match Mistral's documented 256K context and multimodal support; Mistral's docs and HF card render most numeric benchmark tables (MMLU/GPQA/coding) as chart images rather than text I could extract, so only the Artificial Analysis Intelligence Index score (9) is included as a strict evaluations entry. The HF model card's 'dozens of languages' phrasing names 11 languages explicitly; I listed those 11 rather than treating it as a bare count, since specific names were given alongside the 'dozens' qualifier."
+}

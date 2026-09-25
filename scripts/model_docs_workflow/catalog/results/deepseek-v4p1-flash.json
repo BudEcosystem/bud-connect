@@ -1,0 +1,49 @@
+{
+  "slug": "deepseek-v4p1-flash",
+  "canonical": "deepseek-v4p1-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V4.1-Flash is DeepSeek's multimodal mixture-of-experts chat model, released September 10, 2026, reached on Fireworks AI via the model id deepseek-v4p1-flash. Its Hugging Face model card describes a Causal Encoder-Decoder architecture with 552 billion backbone parameters that activates only 8 billion for input processing and 16 billion for output generation, with a native DeepSeek-ViT vision encoder so it processes images and text together from pretraining rather than through a later add-on. DeepSeek's launch announcement states new pre-training methods and larger-scale reinforcement-learning post-training give it benchmark results ahead of the larger DeepSeek-V4-Pro, and that it replaces the retired DeepSeek-V4-Flash and DeepSeek-V4-Flash-Vision-Exp models, which now route to it for compatibility.",
+    "advantages": [
+      "Scores 90.9 on GPQA Diamond, a graduate-level science reasoning benchmark, per DeepSeek's Hugging Face model card.",
+      "Passes 90.6% of tasks on Terminal-Bench 2.1, an agentic terminal-use benchmark.",
+      "Resolves 74.2% of tasks on DeepSWE v1.1, a software-engineering agent benchmark.",
+      "Resolves 88.1% of tasks on CyberGym, a cybersecurity-research agent benchmark.",
+      "Natively processes images and text through a built-in DeepSeek-ViT vision encoder from pretraining, rather than a later-added adapter.",
+      "DeepSeek reports its new pre-training and larger-scale RL post-training give benchmark results ahead of the larger DeepSeek-V4-Pro model."
+    ],
+    "disadvantages": [
+      "No audio input or output; per DeepSeek's own materials and the catalog's recorded modality, capability is limited to text and images."
+    ],
+    "use_cases": [
+      "Agentic coding and terminal/command-line automation, with documented integration into tools such as Codex.",
+      "Software-engineering agents that resolve repository bug-fixing tasks (DeepSWE v1.1).",
+      "Visual-understanding tasks that combine images with tool use.",
+      "Cybersecurity-research agent tasks (CyberGym).",
+      "Long-context agentic workflows using up to a 1,000,000-token context window.",
+      "General chat and reasoning tasks (GPQA Diamond, Humanity's Last Exam)."
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 90.9, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "Terminal-Bench 2.1", "score": 90.6, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "DeepSWE v1.1", "score": 74.2, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "CyberGym", "score": 88.1, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "Humanity's Last Exam", "score": 36.8, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"},
+      {"name": "AutomationBench", "score": 54.8, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash", "title": "deepseek-ai/DeepSeek-V4.1-Flash · Hugging Face", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/news/news260910/", "title": "Introducing DeepSeek-V4.1-Flash | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/", "title": "Introducing DeepSeek-V4.1-Flash", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://fireworks.ai/models", "title": "Models | Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Confirmed on Fireworks AI's own model listing that the id deepseek-ai/deepseek-v4p1-flash is displayed as 'DeepSeek V4.1 Flash' with a 1,048,576-token context window and vision support, matching this target's catalog facts (max_input_tokens 1,048,576; modality image+text) and the same underlying model already covered under the sibling slug deepseek-flash (a different id spelling for the same DeepSeek-V4.1-Flash release). A Codeforces rating (3471) and 'Agent's Last Exam' (31.8, a different benchmark from Humanity's Last Exam) were left out of evaluations: the former is not a 0-100 accuracy score, the latter was left out for brevity in favor of the more established Humanity's Last Exam figure. No language list is published by DeepSeek for this model."
+}

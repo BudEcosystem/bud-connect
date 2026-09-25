@@ -1,0 +1,45 @@
+{
+  "slug": "deepseek-v4-pro",
+  "canonical": "deepseek-v4-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V4-Pro is DeepSeek's flagship mixture-of-experts chat model, with 1.6 trillion total parameters and 49 billion active per token, reaching general availability on August 13, 2026. It supports a 1,000,000-token context window and three switchable reasoning modes (Non-think, Think High, Think Max), and is built for coding, math, and long-horizon agentic workflows. DeepSeek's own V4.1-Flash announcement cites third-party tests showing the newer, smaller DeepSeek-V4.1-Flash (released September 10, 2026) ahead of V4-Pro on performance, cost, speed and total runtime, and DeepSeek has begun phasing out V4-Pro, automatically routing its API requests to V4.1-Flash since September 14, 2026.",
+    "advantages": [
+      "Scores 80.6% on SWE-Bench Verified.",
+      "Scores 93.5% on LiveCodeBench.",
+      "Scores 87.5% on MMLU-Pro.",
+      "Supports a 1,000,000-token context window using hybrid Compressed Sparse Attention and Heavily Compressed Attention to cut inference cost at long context.",
+      "Offers three reasoning modes (Non-think, Think High, Think Max) to trade off latency against reasoning depth."
+    ],
+    "disadvantages": [
+      "Text only; no image or audio input.",
+      "DeepSeek's own announcement cites third-party tests putting the newer, smaller DeepSeek-V4.1-Flash (released September 10, 2026) ahead of V4-Pro on performance, cost, speed and total runtime, and DeepSeek has begun routing V4-Pro API requests to V4.1-Flash since September 14, 2026."
+    ],
+    "use_cases": [
+      "Long-horizon agentic coding, including native support for OpenAI's Responses API format adapted for Codex integration.",
+      "Advanced coding and software engineering tasks.",
+      "Math and STEM problem solving.",
+      "Long-document analysis using the 1,000,000-token context window."
+    ],
+    "evaluations": [
+      {"name": "SWE-Bench Verified", "score": 80.6, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"},
+      {"name": "LiveCodeBench", "score": 93.5, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"},
+      {"name": "MMLU-Pro", "score": 87.5, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"},
+      {"name": "SimpleQA-Verified", "score": 57.9, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro", "title": "deepseek-ai/DeepSeek-V4-Pro · Hugging Face", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/news/news260424/", "title": "DeepSeek V4 Preview Release | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/updates/", "title": "Change Log | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/", "title": "Introducing DeepSeek-V4.1-Flash", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/guides/coding_agents/", "title": "Integrate with AI Tools | DeepSeek API Docs", "kind": "maker"}
+  ],
+  "notes": "The official PDF model card at fe-static.deepseek.com could not be read (binary/corrupted extraction); relied on DeepSeek's Hugging Face model card and API docs instead. Catalog's max_output_tokens (393,216 = 384K) matches DeepSeek's stated 384K output-token allowance for Think High/Think Max modes, and modality (text only) matches facts, so no conflicts found. The Hugging Face model card labels itself 'a preview version' and its benchmark table is the only source found for the cited scores; the Aug 13, 2026 GA changelog entry references different/newer agentic benchmarks (e.g. Terminal Bench 2.1) not present on the card, so the GA model's current numbers may differ slightly from the preview-era figures cited here. Removed a GSM8K figure (92.6) that was previously cited as an evaluation: it is reported on the Hugging Face card only for DeepSeek-V4-Pro-Base (the pretrained base checkpoint), not for the instruct/chat model this entry describes. DeepSeek's own coding_agents integration guide pairs 'Claude Code' with deepseek-flash/DeepSeek-V4.1-Flash, not V4-Pro; V4-Pro's own changelog instead documents Codex integration via the Responses API, so the use_cases entry was corrected accordingly."
+}

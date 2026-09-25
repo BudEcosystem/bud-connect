@@ -1,0 +1,83 @@
+{
+  "slug": "universal-2",
+  "canonical": "universal-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "AssemblyAI",
+  "details": {
+    "description": "Universal-2 is AssemblyAI's broad-coverage, pre-recorded (batch) speech-to-text model, built on an improved automatic speech recognition system paired with a redesigned text-formatting module for punctuation, casing, and inverse text normalization. It transcribes audio in 99 languages and AssemblyAI positions it as the price-sensitive, high-volume option and the automatic fallback for languages that its newer Universal-3.5 Pro model does not cover. AssemblyAI documents Universal-2 as generally available, alongside Universal-3.5 Pro rather than as a deprecated predecessor.",
+    "advantages": [
+      "AssemblyAI reports a mean word error rate of 6.1% (median 6.5%) on English test sets spanning 26 datasets and 250+ hours of audio.",
+      "Covers 99+ languages, with a 'high accuracy' tier AssemblyAI reports at 10% WER or below for languages including English, Spanish, French, German, Italian, Japanese, Dutch, Polish, Portuguese, Russian, Swedish, and Turkish.",
+      "Natively detects filler words such as 'um' and 'uh' via a dedicated disfluencies parameter, which AssemblyAI says is not available on Universal-3.5 Pro.",
+      "AssemblyAI reports that in blind evaluations, human judges preferred Universal-2 over its predecessor Universal-1 in 72.9% of 175 test samples (73.8% of the time when a preference was expressed).",
+      "Speaker diarization is available as an add-on, with AssemblyAI's default settings supporting up to 30 expected speakers for recordings over 10 minutes.",
+      "Serves as AssemblyAI's automatic fallback model for languages outside Universal-3.5 Pro's 18-language coverage."
+    ],
+    "disadvantages": [
+      "Trails Universal-3.5 Pro in accuracy: AssemblyAI reports 6.1% mean English WER versus 5.6% for Universal-3.5 Pro on the same test sets, and 7.42% versus 4.58% on the multilingual FLEURS benchmark.",
+      "Keyterm prompting is limited to 200 terms, versus 1,000 for Universal-3.5 Pro, and general natural-language prompting is not supported.",
+      "AssemblyAI describes its Medical Mode domain tuning as optimized for Universal-3.5 Pro rather than for Universal-2.",
+      "The auto_chapters feature carries a deprecation notice on AssemblyAI's transcription API, with AssemblyAI recommending its LLM Gateway for chapter summaries instead."
+    ],
+    "use_cases": [
+      "High-volume, price-sensitive batch transcription.",
+      "Multilingual transcription across 99+ languages.",
+      "Fallback transcription for languages not covered by Universal-3.5 Pro's 18-language set.",
+      "Transcripts that need native filler-word (disfluency) detection."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://www.assemblyai.com/docs/pre-recorded-audio/universal-2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.assemblyai.com/docs/pre-recorded-audio/universal-2",
+      "title": "Universal-2 | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/blog/universal-2",
+      "title": "Universal-2: Redefining the Foundation of Speech AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/llms/models.md",
+      "title": "AssemblyAI speech-to-text models reference (llms.md)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/getting-started/models",
+      "title": "Models | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model",
+      "title": "Select the speech model | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/getting-started/supported-languages",
+      "title": "Supported languages | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/speech-to-text/speaker-diarization",
+      "title": "Speaker Diarization | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/audio-intelligence/auto-chapters",
+      "title": "Auto Chapters | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/audio-intelligence/summarization",
+      "title": "Summarization | AssemblyAI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "WER and language-tier figures come from AssemblyAI's machine-readable model reference (assemblyai.com/llms/models.md); the dedicated Universal-2 docs page itself gives only qualitative claims. Universal-2 supports 99+ languages per AssemblyAI but no single page lists all of them, so languages is left empty per the research brief (count is in the description). The catalog's facts carry no deprecation_date, consistent with AssemblyAI documenting Universal-2 as GA, not legacy, and using it as the fallback for languages Universal-3.5 Pro lacks. Verify pass: added the Universal-1 comparison baseline to the 72.9% blind-preference figure (AssemblyAI's launch blog states it explicitly); dropped the unsupported 'same architecture as Universal-3.5 Pro' diarization claim; corrected the auto_chapters/summarization disadvantage since AssemblyAI's docs mark summarization 'in open beta', not deprecated."
+}

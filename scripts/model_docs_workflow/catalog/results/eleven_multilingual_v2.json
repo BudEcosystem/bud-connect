@@ -1,0 +1,39 @@
+{
+  "slug": "eleven_multilingual_v2",
+  "canonical": "eleven_multilingual_v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "ElevenLabs",
+  "details": {
+    "description": "Eleven Multilingual v2 is ElevenLabs' most advanced, emotionally-aware speech synthesis model prior to the Eleven v3 family, producing natural, lifelike speech with high emotional range and contextual understanding across 29 languages. It maintains consistent voice quality and personality across all supported languages while preserving the speaker's characteristics and accent, and supports up to 10,000 characters (about 10 minutes of audio) per request. ElevenLabs recommends it, together with Eleven v3, for high-fidelity audio output with rich emotional expression, and describes it as its most stable model for long-form generations.",
+    "advantages": [
+      "Maintains consistent voice quality and personality across all 29 supported languages while preserving the speaker's characteristics and accent, per ElevenLabs' documentation.",
+      "ElevenLabs recommends it, along with Eleven v3, for high-fidelity audio output with rich emotional expression.",
+      "ElevenLabs describes it as its most stable model for long-form generations."
+    ],
+    "disadvantages": [
+      "Higher latency than ElevenLabs' Flash models, per ElevenLabs' documentation, making it less suited to real-time conversational use.",
+      "Limited to 10,000 characters (about 10 minutes of audio) per request, a lower limit than Flash v2 and Flash v2.5, though higher than Eleven v3's 5,000-character limit."
+    ],
+    "use_cases": [
+      "Character voiceovers for gaming and animation",
+      "Professional content such as corporate videos and e-learning materials",
+      "Multilingual projects requiring consistent voice quality across language switches",
+      "Long-form narration where stable, high-quality audio output matters"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English", "Japanese", "Chinese", "German", "Hindi", "French", "Korean", "Portuguese", "Italian",
+      "Spanish", "Indonesian", "Dutch", "Turkish", "Filipino", "Polish", "Swedish", "Bulgarian", "Romanian",
+      "Arabic", "Czech", "Greek", "Finnish", "Croatian", "Malay", "Slovak", "Danish", "Tamil", "Ukrainian",
+      "Russian"
+    ],
+    "website_url": "https://elevenlabs.io/docs/overview/models#multilingual-v2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://elevenlabs.io/docs/overview/models", "title": "Models | ElevenLabs Documentation", "kind": "maker"}
+  ],
+  "notes": null
+}

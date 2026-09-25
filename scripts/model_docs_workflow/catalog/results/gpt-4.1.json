@@ -1,0 +1,76 @@
+{
+  "slug": "gpt-4.1",
+  "canonical": "gpt-4.1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4.1 is OpenAI's general-purpose model released April 14, 2025, which OpenAI describes as 'the smartest non-reasoning model,' built for coding, instruction following, and long-context tasks without a separate reasoning step. It accepts text and image input with text-only output, a context window up to 1,047,576 tokens, a 32,768-token output limit, and a knowledge cutoff of June 1, 2024. Azure's Foundry model catalog currently lists this version (2025-04-14) as 'Deprecated' -- still usable by existing customers but not available for new deployments -- with a retirement date of April 14, 2027.",
+    "advantages": [
+      "Scores 54.6% on SWE-bench Verified per OpenAI's announcement, up from 33.2% for GPT-4o and 38% for GPT-4.5.",
+      "Scores 90.2% on the MMLU benchmark, per OpenAI's launch presentation.",
+      "OpenAI reports it more than doubles GPT-4o's score on Aider's polyglot diff benchmark, reaching 52.9% accuracy on code diffs across multiple languages.",
+      "Supports a context window up to 1 million tokens, over 8x the 128K context of prior GPT-4o models."
+    ],
+    "disadvantages": [
+      "Non-reasoning model -- OpenAI positions it for low-latency, instruction-following use rather than step-by-step reasoning.",
+      "Azure's Foundry catalog currently lists this version as 'Deprecated': open to existing customers only, not available for new deployments.",
+      "Text-only output; does not generate images or audio."
+    ],
+    "use_cases": [
+      "Coding and software-engineering agent tasks",
+      "Long-context processing (up to 1M tokens), e.g. large codebases or document sets",
+      "Instruction-following and tool-calling applications",
+      "General-purpose chat and vision (text+image input) tasks needing low latency"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 54.6,
+        "source": "https://www.datacamp.com/blog/gpt-4-1"
+      },
+      {
+        "name": "MMLU",
+        "score": 90.2,
+        "source": "https://www.rdworldonline.com/openai-claims-gpt-4-1-sets-new-90-standard-in-mmlu-reasoning-benchmark/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4.1",
+      "title": "GPT-4.1 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://azure.microsoft.com/en-us/blog/announcing-the-gpt-4-1-model-series-for-azure-ai-foundry-developers/",
+      "title": "Announcing the GPT-4.1 model series for Azure AI Foundry and GitHub developers",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.datacamp.com/blog/gpt-4-1",
+      "title": "GPT-4.1: Features, Access, GPT-4o Comparison, and More",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://www.rdworldonline.com/openai-claims-gpt-4-1-sets-new-90-standard-in-mmlu-reasoning-benchmark/",
+      "title": "OpenAI says GPT-4.1 sets new 90%+ standard in MMLU reasoning benchmark",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Facts (context window, output limit, modality, endpoints, deprecation date) match what OpenAI's and Azure's own docs state, so no conflicts to flag. Azure's Foundry catalog lists this version's lifecycle as 'Deprecated' (existing customers only) with retirement 2027-04-14, matching the catalog's deprecation_date fact exactly. Could not reach openai.com's own gpt-4-1 announcement post directly (403 on fetch); SWE-bench and MMLU figures are corroborated via third-party articles that quote OpenAI's announcement and launch presentation directly."
+}

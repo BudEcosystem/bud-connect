@@ -1,0 +1,52 @@
+{
+  "slug": "gte-large",
+  "canonical": "gte-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba DAMO Academy",
+  "details": {
+    "description": "GTE-large is a general-purpose English text embedding model from Alibaba DAMO Academy's General Text Embeddings (GTE) family, described in the paper \"Towards General Text Embeddings with Multi-stage Contrastive Learning.\" It is a roughly 335M-parameter BERT-based encoder that outputs 1024-dimensional embeddings for information retrieval, semantic textual similarity, and text reranking. The model card states it caters exclusively to English text and truncates inputs longer than 512 tokens. Alibaba has since published newer GTE generations, including gte-multilingual-base and the gte-Qwen2 series, under its Alibaba-NLP organization on Hugging Face.",
+    "advantages": [
+      "Scores 63.13 average on the MTEB benchmark across 56 tasks, per the model card's published results table.",
+      "Strong MTEB pair-classification (85.00) and semantic textual similarity (83.35) sub-scores, per the model card.",
+      "The model card reports it outperforms E5-large-v2 (62.25 average) and OpenAI's text-embedding-ada-002 (60.99 average) on MTEB."
+    ],
+    "disadvantages": [
+      "Limited to a 512-token input length; the model card states longer texts are truncated.",
+      "English only, per the model card: \"This model exclusively caters to English texts.\"",
+      "Alibaba has since released newer GTE generations (e.g. gte-multilingual-base, gte-Qwen2-7B-instruct) under the Alibaba-NLP organization on Hugging Face."
+    ],
+    "use_cases": [
+      "Information retrieval",
+      "Semantic textual similarity",
+      "Text reranking",
+      "General-purpose sentence and short-document embedding for downstream NLP tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB Average (56 tasks)",
+        "score": 63.13,
+        "source": "https://huggingface.co/thenlper/gte-large"
+      },
+      {
+        "name": "MTEB Retrieval",
+        "score": 52.22,
+        "source": "https://huggingface.co/thenlper/gte-large"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/thenlper/gte-large",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/thenlper/gte-large",
+      "title": "thenlper/gte-large · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (512 max_input_tokens, text embeddings endpoint) match the model card. The Fireworks host page for this exact slug (fireworks.ai/models/fireworks/gte-large) returned 404 at research time, so only the Hugging Face model card was used. Noted that Alibaba's Alibaba-NLP org now hosts newer GTE generations, but the maker's card does not itself label gte-large deprecated."
+}

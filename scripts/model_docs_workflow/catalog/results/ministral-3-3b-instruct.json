@@ -1,0 +1,35 @@
+{
+  "slug": "ministral-3-3b-instruct",
+  "canonical": "ministral-3-3b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 3B is Mistral AI's smallest model in the December 2025 Ministral 3 family, an ultra-compact model built for on-device tasks that need minimal compute, with text and image (vision) input. It is released under the Apache 2.0 license alongside base, instruct, and reasoning variants at the same size, and Mistral says the Ministral 3 lineup natively supports 40+ languages and aims for the best cost-to-performance ratio of any open-weight model.",
+    "advantages": [
+      "Designed as an ultra-compact model for on-device tasks that need minimal compute, per Amazon Bedrock's model card.",
+      "Accepts image input alongside text, for tasks that combine visual and text understanding.",
+      "Released under the Apache 2.0 license, allowing open commercial and derivative use.",
+      "Part of the Ministral 3 family, which Mistral says reaches the best cost-to-performance ratio of any open-weight model."
+    ],
+    "disadvantages": [
+      "No audio or video input support."
+    ],
+    "use_cases": [
+      "On-device deployment for lightweight text tasks with minimal compute",
+      "Multilingual chat and assistant applications",
+      "Combined vision-and-text tasks such as describing or reasoning about images"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mistral-3", "title": "Mistral 3 / Ministral 3 launch announcement", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-ministral-3b.md", "title": "Ministral 3B model card - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Mistral's own pages mostly describe capabilities at the whole Ministral 3 family level (3B/8B/14B); no 3B-specific accuracy benchmark for this exact model was found. The 85% AIME '25 score Mistral reports elsewhere is for the 14B reasoning variant, a different sibling model, so it was left out. Context window (128K) and max output (8K) match the catalog facts."
+}

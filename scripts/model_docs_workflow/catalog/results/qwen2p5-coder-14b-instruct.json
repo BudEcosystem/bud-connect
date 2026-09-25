@@ -1,0 +1,38 @@
+{
+  "slug": "qwen2p5-coder-14b-instruct",
+  "canonical": "qwen2p5-coder-14b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba Cloud (Qwen)",
+  "details": {
+    "description": "Qwen2.5-Coder-14B-Instruct is a 14.7-billion-parameter, instruction-tuned model in Alibaba Cloud's Qwen2.5-Coder family of code-focused language models, released November 12, 2024. It is built on a base pretrained with 5.5 trillion tokens of source code, text-code grounding, and synthetic data, and is post-trained for code generation, code reasoning, and code fixing, while retaining general math and reasoning ability, making it suited to code agent applications. Alibaba's Qwen GitHub organization has since retitled its coder repository for the newer Qwen3-Coder family, though this model's weights remain published on Hugging Face with no explicit deprecation notice on the model card itself.",
+    "advantages": [
+      "Instruction-tuned for code generation, code reasoning, and code fixing, built on a base pretrained with 5.5 trillion tokens of source code, text-code grounding, and synthetic data, per the model card.",
+      "Part of a family the maker says supports more than 40 programming languages, per the Qwen2.5-Coder blog.",
+      "The model card lists a full context length of 131,072 tokens (via YaRN scaling), versus a 32,768-token default configuration.",
+      "The model card states the family maintains strengths in mathematics and general competencies alongside its coding focus, making it suited to code agent applications."
+    ],
+    "disadvantages": [
+      "Text-only model with no image, audio, or video input support.",
+      "The model card gives no benchmark numbers specific to this 14B size in text form, only chart comparisons across the Qwen2.5-Coder family; the 32B size is the one the maker highlights as matching GPT-4o's coding ability."
+    ],
+    "use_cases": [
+      "Code generation and code completion",
+      "Code reasoning and code fixing/debugging",
+      "Code agent applications",
+      "General mathematics and reasoning tasks alongside coding work"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct", "title": "Qwen/Qwen2.5-Coder-14B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct/raw/main/README.md", "title": "Qwen2.5-Coder-14B-Instruct model card (raw README)", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Series: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5-Coder", "title": "QwenLM/Qwen2.5-Coder (GitHub org repo, now retitled Qwen3-Coder)", "kind": "maker"}
+  ],
+  "notes": "The model card's headline context length (131,072 tokens via YaRN, default config 32,768) differs from the catalog's max_input/max_output of 32768; the catalog's value is kept per instructions. No exact benchmark numbers for the 14B-Instruct size were found in text form; the family blog post presents comparisons only as chart images, which this agent could not read, and the model card only states the flagship 32B size matches GPT-4o's coding ability, so evaluations is left empty rather than guessed. github.com/QwenLM/Qwen2.5-Coder now displays Qwen3-Coder content, used only as evidence Alibaba's primary coder repo has moved to Qwen3-Coder; github_url is left null since there is no dedicated current repo for this exact model. No language list is published for this model (code-focused, English documentation), so languages is left empty."
+}

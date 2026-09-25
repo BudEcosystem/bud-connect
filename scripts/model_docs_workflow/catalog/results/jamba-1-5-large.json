@@ -1,0 +1,71 @@
+{
+  "slug": "jamba-1-5-large",
+  "canonical": "jamba-1-5-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "AI21 Labs",
+  "details": {
+    "description": "Jamba 1.5 Large is AI21 Labs' largest Jamba 1.5 model, a hybrid SSM-Transformer (Joint Attention and Mamba) mixture-of-experts model with 94B active parameters out of 398B total, released August 22, 2024. It offers a 256K-token context window aimed at long-document processing, retrieval-augmented generation and enterprise agentic workflows, with built-in support for function calling, JSON-formatted output and document-based grounded generation with citations. AI21 has since released Jamba Large 1.7, and Hugging Face marks this 1.5 Large snapshot as superseded by that newer version.",
+    "advantages": [
+      "AI21 reports an Arena Hard score of 65.4, which it states exceeds Llama 3.1 70B and 405B on that benchmark (AI21 launch post).",
+      "AI21 reports the 256K context window maintains 95.1% effective length at 128K tokens on the RULER long-context benchmark (Hugging Face model card).",
+      "Supports function calling, JSON-formatted structured output, and document-based grounded generation with citations for RAG workflows (Hugging Face model card).",
+      "AI21 reports up to 2.5x faster inference than leading models of comparable size in its own testing (AI21 launch post)."
+    ],
+    "disadvantages": [
+      "Hugging Face displays a banner marking this card superseded, pointing to a newer version, AI21-Jamba-Large-1.7 (Hugging Face model card).",
+      "Amazon Bedrock lists this model's lifecycle status as Legacy, with an end-of-life date of November 26, 2026 (Amazon Bedrock model card).",
+      "Knowledge cutoff of March 2024 (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Long-document summarization and analysis using the 256K-token context window",
+      "Retrieval-augmented generation (RAG) with grounded, cited responses",
+      "Enterprise conversational AI and customer support",
+      "Agentic workflows using function calling and structured JSON output"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (CoT)",
+        "score": 81.2,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large"
+      },
+      {
+        "name": "GSM-8K",
+        "score": 87,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large"
+      },
+      {
+        "name": "ARC Challenge",
+        "score": 93,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large"
+      },
+      {
+        "name": "BFCL",
+        "score": 85.5,
+        "source": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large"
+      }
+    ],
+    "languages": ["English", "Spanish", "French", "Portuguese", "Italian", "Dutch", "German", "Arabic", "Hebrew"],
+    "website_url": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large",
+      "title": "ai21labs/AI21-Jamba-1.5-Large · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.ai21.com/blog/announcing-jamba-model-family",
+      "title": "Announcing Jamba Model Family - AI21",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-ai21-labs-jamba-1-5-large.html",
+      "title": "Jamba 1.5 Large - Amazon Bedrock model card",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (256000) is kept as authoritative per instructions, but Amazon Bedrock's own model card lists 'Max output tokens: 4K' for this model on Bedrock -- flagging the mismatch. Catalog's deprecation_date (2026-11-26) matches Amazon Bedrock's 'Model EOL date' exactly. A Hugging Face banner marks this specific 1.5 Large card superseded by AI21-Jamba-Large-1.7; a date given on that banner for a 'deprecation' (May 6, 2024) predates the model's own August 22, 2024 launch date and looks like a page-scraping artifact, so it was not used."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "pixtral-large-2502",
+  "canonical": "pixtral-large-2502",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Pixtral Large is Mistral AI's 124-billion-parameter multimodal model (a 123-billion-parameter text decoder plus a 1-billion-parameter vision encoder) that extends Mistral Large 2 with image understanding, reading documents, charts, and natural images alongside text. It was announced November 18, 2024, with a 128,000-token context window that Mistral says accommodates at least 30 high-resolution images, plus multilingual OCR and visual-reasoning ability. Mistral's own site now states that 'Pixtral Large is no longer maintained and has been replaced by our latest, more powerful vision and multimodal models,' even though Amazon Bedrock's own listing for this model currently still shows it as an active offering.",
+    "advantages": [
+      "Scores 69.4% on the MathVista visual math-reasoning benchmark (Mistral AI launch post).",
+      "Context window accommodates at least 30 high-resolution images per Mistral's own testing (Mistral AI launch post).",
+      "Mistral states it ranked as the best open-weights model on the LMSys Vision Leaderboard at launch, ahead of the nearest competitor by nearly 50 Elo points (Mistral AI launch post).",
+      "Combines a 123-billion-parameter text decoder with a 1-billion-parameter vision encoder for joint image-and-text reasoning (Mistral AI launch post)."
+    ],
+    "disadvantages": [
+      "Mistral's own site states Pixtral Large 'is no longer maintained and has been replaced by our latest, more powerful vision and multimodal models.'",
+      "Mistral's model-lifecycle page lists its Pixtral Large 24.11 release as deprecated with a retirement date no sooner than May 31, 2026, recommending Mistral Medium 3.5 as a replacement.",
+      "Downloadable weights are available only under Mistral's Research License for non-commercial use, requiring a separate commercial license for production deployment."
+    ],
+    "use_cases": [
+      "Document, chart, and natural-image understanding, including multilingual optical character recognition",
+      "Complex visual reasoning tasks that combine images and text",
+      "Enterprise knowledge exploration and document analysis workflows"
+    ],
+    "evaluations": [
+      {"name": "MathVista", "score": 69.4, "source": "https://mistral.ai/news/pixtral-large"}
+    ],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/pixtral-large",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/pixtral-large", "title": "Pixtral Large", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-pixtral-large.md", "title": "Mistral AI — Pixtral Large model card (Amazon Bedrock)", "kind": "host"}
+  ],
+  "notes": "Catalog's modality facts list only text_input/text_output, but both Mistral's launch post and Amazon Bedrock's model card document Image as a supported input modality (text-only output) — this is the model's defining vision capability, so I described it while keeping the catalog's modality values as authoritative and flagging the conflict here. Catalog's max_output_tokens lists two values (4,096 and 16,384); Amazon Bedrock's card for this exact model (mistral.pixtral-large-2502-v1:0) states 16K uniformly, and I did not restate a different number, only using the 16,384 figure already present in the catalog facts. The clearest conflict is status: Mistral's own site plainly says Pixtral Large is no longer maintained and has been replaced, and Mistral's model-lifecycle page separately marks its 'Pixtral Large 24.11' release deprecated (retiring no sooner than 5/31/2026); yet Amazon Bedrock's own card for this specific 'pixtral-large-2502' build still lists lifecycle 'Active', with only a minimum EOL floor of 4/8/2026 that has already passed as of today (2026-09-24). Catalog's deprecation_date is empty; I did not overwrite it, only noted the conflict. All three URIs (bare, us-, eu-prefixed) map to the single Bedrock model ID per AWS's card's geo routing table, so no grouping issue."
+}

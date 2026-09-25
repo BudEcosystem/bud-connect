@@ -1,0 +1,42 @@
+{
+  "slug": "codestral-embed",
+  "canonical": "codestral-embed",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Codestral Embed is Mistral AI's first embedding model built specifically for code, converting source code into vector representations for retrieval tasks such as code search. The currently served version is codestral-embed-2505, released May 28, 2025. It supports variable output dimensions and precision levels so users can trade retrieval quality against storage and compute cost.",
+    "advantages": [
+      "Mistral reports Codestral Embed outperforms Voyage Code 3, Cohere Embed v4.0 and OpenAI's large embedding model on code retrieval benchmarks including SWE-Bench Lite, CodeSearchNet and Text2SQL.",
+      "Mistral reports that even at 256 output dimensions with int8 precision, Codestral Embed still performs better than any of the competitor models it tested.",
+      "Supports variable output dimensions and precision levels, letting users choose a cost/quality tradeoff, per Mistral's announcement."
+    ],
+    "disadvantages": [
+      "8,192-token input limit; Mistral recommends chunking longer code into roughly 3,000-character pieces with 1,000-character overlap for retrieval."
+    ],
+    "use_cases": [
+      "Code search and retrieval over real-world codebases",
+      "GitHub issue resolution / SWE-bench-style retrieval for coding agents",
+      "Code-to-code and documentation-to-code retrieval",
+      "Text-to-SQL retrieval"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/codestral-embed",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://mistral.ai/news/codestral-embed",
+      "title": "Codestral Embed",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "codestral-embed is Mistral's model name for its code embedding line; the only version Mistral's announcement and models overview page currently list is codestral-embed-2505 (v25.05), so this entry and codestral-embed-2505 describe the same model. Mistral states Codestral Embed outperforms named competitors on several retrieval benchmarks but did not publish the underlying numeric scores on the pages read, so evaluations is left empty rather than guessed."
+}

@@ -1,0 +1,54 @@
+{
+  "slug": "stablecode-3b",
+  "canonical": "stablecode-3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Code 3B is Stability AI's 2.7-billion-parameter decoder-only code-completion model, released January 16, 2024. It was pretrained on 1.3 trillion tokens covering 18 programming languages chosen from the 2023 Stack Overflow Developer Survey, supports fill-in-the-middle completion, and was designed to run code completion on ordinary laptops without a dedicated GPU. Stability AI positions it as a foundational base model for further fine-tuning rather than an instruction-following assistant.",
+    "advantages": [
+      "Stability AI's release announcement reports it matches CodeLLaMA 7B's code-completion performance while being about 60% smaller.",
+      "Supports context windows up to 16,384 tokens with fill-in-the-middle completion and Flash Attention 2 for efficient inference, per the model card.",
+      "Designed to run code completion offline on common laptops without a dedicated GPU, per Stability AI's release announcement."
+    ],
+    "disadvantages": [
+      "As a base model it is not instruction-tuned and 'may exhibit unreliable, unsafe, or other undesirable behaviors,' per the model card.",
+      "Commercial use requires a separate Stability AI membership or commercial license agreement, per the release announcement.",
+      "Fireworks AI's model listing marks fine-tuning, serverless deployment, function calling, and image input as unsupported for this model."
+    ],
+    "use_cases": [
+      "Single- and multi-line code completion across 18 programming languages",
+      "Fill-in-the-middle code infilling in editors and IDE integrations",
+      "Base model for application-specific fine-tuning, per Stability AI"
+    ],
+    "evaluations": [
+      {
+        "name": "MultiPL-E Python pass@1",
+        "score": 32.4,
+        "source": "https://huggingface.co/stabilityai/stable-code-3b"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/stabilityai/stable-code-3b",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/stabilityai/stable-code-3b",
+      "title": "stabilityai/stable-code-3b · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://stability.ai/news-updates/stable-code-2024-llm-code-completion-release",
+      "title": "Stable Code 3B: Coding on the Edge - Stability AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/stablecode-3b",
+      "title": "stablecode-3b - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks' model id is 'stablecode-3b', but its listed specs (2.7B/2.796B params, 18 languages, MultiPL-E benchmarks, created 2024) match Stability AI's 'Stable Code 3B' (stabilityai/stable-code-3b), a separate and newer model from the earlier 'StableCode-Completion-Alpha-3B' (2.8B, Apache-2.0, HumanEval-based benchmarks); this entry describes the former."
+}

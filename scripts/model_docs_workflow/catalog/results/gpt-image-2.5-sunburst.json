@@ -1,0 +1,69 @@
+{
+  "slug": "gpt-image-2.5-sunburst",
+  "canonical": "gpt-image-2.5-sunburst",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Image 2.5 Sunburst is OpenAI's most capable image generation and editing model, released September 8, 2026 as part of the GPT Image 2.5 family alongside the faster Flare model. It takes text and image input and produces image output, with higher image quality than the earlier GPT Image 2 model, and is built for workflows where editing precision is the priority, such as production-ready campaign creative and polished product imagery. It supports precise text rendering and multi-turn editing.",
+    "advantages": [
+      "OpenAI describes it as its most capable image generation and editing model, with higher image quality than GPT Image 2 (OpenAI image prompting guide).",
+      "Ranks 1st on the Artificial Analysis Text to Image Arena with an Elo score of 1196 at max quality, the highest of any model on that leaderboard as of this research.",
+      "Ranks 1st on the Artificial Analysis Image Editing Arena with an Elo score of 1181 at max quality.",
+      "Supports precise, legible text rendering in generated images such as signage, labels and logos, per OpenAI's image prompting guide.",
+      "Supports multi-turn editing, letting a previous output be fed back in as the next edit input for iterative refinement.",
+      "Supports sketch-to-render workflows that turn rough drawings into photorealistic images while preserving layout and perspective."
+    ],
+    "disadvantages": [
+      "OpenAI's own guidance rates its generation speed as medium versus Flare's very fast, and recommends starting with Flare unless demanding quality requirements are the priority (OpenAI image prompting guide).",
+      "Output is images only; the model does not produce text, audio or video output (OpenAI API docs).",
+      "Custom output resolutions above 2,560x1,440 total pixels (up to a 3,840-pixel-per-edge, 4K maximum) are marked experimental by OpenAI."
+    ],
+    "use_cases": [
+      "Production-ready campaign creative and marketing imagery",
+      "Polished product photography and imagery",
+      "Precision-critical image editing",
+      "Sketch-to-render conversion of rough drawings",
+      "Multi-turn iterative image refinement",
+      "Image edits that require accurate rendered text, such as signage or labels"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+      "title": "GPT-Image-2.5 Sunburst Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/image-prompting",
+      "title": "Image prompting | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://artificialanalysis.ai/image/models/gpt-image-2.5-sunburst-2026-09-08",
+      "title": "GPT Image 2.5 Sunburst (max) - Model Elo, Generation Time & Price Analysis | Artificial Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+      "title": "Text to Image Leaderboard - Top AI Image Models | Artificial Analysis",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://artificialanalysis.ai/image/leaderboard/editing",
+      "title": "Image Editing Leaderboard - Top AI Image Models | Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "OpenAI's own launch post (openai.com/index/introducing-chatgpt-images-2-5) returned HTTP 403 on every fetch attempt, so this relies on OpenAI's API docs and image-prompting guide instead, which give the snapshot date (2026-09-08) matching the catalog's URIs and a 2027-09-09 retirement date matching the catalog's deprecation_date exactly (confirmed via Azure's model retirement schedule, since Bud serves this model only via Azure and OpenAI directly). Elo/arena rankings from Artificial Analysis are not accuracy scores, so they are reported in advantages rather than evaluations, per the research brief."
+}

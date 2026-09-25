@@ -1,0 +1,44 @@
+{
+  "slug": "glm-5.3",
+  "canonical": "glm-5.3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.3 is Z.ai's frontier coding and agentic model, built on the same base as GLM-5.2 with all of its gains coming from further post-training rather than a new base model. It is a 753-billion-parameter mixture-of-experts model that always reasons, with three selectable thinking-effort levels (low, high, max), and supports a 1M-token context window with function calling, context caching and structured JSON output. Z.ai reports large gains over GLM-5.2 on long, multi-day agentic coding tasks and on security-research benchmarks such as vulnerability discovery. It is text-only and is generally available to Z.ai's GLM Coding Plan subscribers.",
+    "advantages": [
+      "Scores 84.5% on the CyberGym vulnerability-discovery benchmark, per Z.ai's documentation.",
+      "Improves from 4.6 to 28.3 on Terminal-Bench 3.0 versus GLM-5.2, per Z.ai's documentation.",
+      "More than doubles GLM-5.2's score on ExploitBench, reaching 54.4%, per Z.ai's documentation.",
+      "Reports a 50% improvement over GLM-5.2 on Z.ai's in-house Code Bench, reaching 34.5% at max thinking effort.",
+      "Supports a 1M-token context window with function calling, context caching and structured JSON output, per Z.ai's documentation."
+    ],
+    "disadvantages": [
+      "Text-only input; does not accept image, video or other multimodal input, unlike the GLM-5.3-Flash variant.",
+      "Reasoning is always on and cannot be disabled; Z.ai says apps that previously used a disabled-thinking setting must be migrated."
+    ],
+    "use_cases": [
+      "Frontier agentic coding, including multi-day, end-to-end engineering tasks",
+      "Long-horizon, tool-using agent workflows",
+      "Security research: vulnerability discovery and exploit development",
+      "General reasoning and chat with adjustable thinking effort"
+    ],
+    "evaluations": [
+      {"name": "CyberGym", "score": 84.5, "source": "https://docs.z.ai/guides/llm/glm-5.3"},
+      {"name": "Terminal-Bench 3.0", "score": 28.3, "source": "https://docs.z.ai/guides/llm/glm-5.3"},
+      {"name": "ExploitBench", "score": 54.4, "source": "https://docs.z.ai/guides/llm/glm-5.3"},
+      {"name": "Z.ai Code Bench", "score": 34.5, "source": "https://docs.z.ai/guides/llm/glm-5.3"},
+      {"name": "DeepSWE v1.1", "score": 66.9, "source": "https://huggingface.co/zai-org/GLM-5.3"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.3",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.z.ai/guides/llm/glm-5.3", "title": "GLM-5.3 - Z.ai docs", "kind": "maker"},
+    {"url": "https://huggingface.co/zai-org/GLM-5.3", "title": "zai-org/GLM-5.3 · Hugging Face", "kind": "maker"},
+    {"url": "https://www.together.ai/models/glm-5-3", "title": "GLM-5.3 - Together AI", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (1,048,575) and max_output_tokens (128,000) match Z.ai's own docs (1M context / 128K output) exactly, and the catalog's text-only modality matches Z.ai's docs, which state GLM-5.3 accepts text-only input (vision is on the separate GLM-5.3-Flash model)."
+}

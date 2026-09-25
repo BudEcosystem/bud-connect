@@ -1,0 +1,38 @@
+{
+  "slug": "gemini-omni-flash-preview",
+  "canonical": "gemini-omni-flash-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini Omni Flash Preview is a multimodal Gemini model that Google released in public preview on June 30, 2026, described in Google's Gemini API changelog as \"a high-performance multimodal model designed for high-speed video generation and conversational video editing.\" Google has since moved this line to general availability as gemini-omni-1.1-flash (released August 27, 2026, with expanded video extension and interpolation features), and per the changelog the gemini-omni-flash-preview endpoint itself is scheduled for deprecation on September 30, 2026.",
+    "advantages": [
+      "Google describes it as a high-performance multimodal model built for high-speed video generation and conversational video editing, per the Gemini API changelog."
+    ],
+    "disadvantages": [
+      "Preview release: Google made the successor gemini-omni-1.1-flash generally available on August 27, 2026 and is deprecating the gemini-omni-flash-preview endpoint on September 30, 2026, per the Gemini API changelog.",
+      "No longer listed on Google's current Gemini models page, which now shows only the general-availability gemini-omni-1.1-flash in this line."
+    ],
+    "use_cases": [
+      "Fast, conversational video generation and editing, per Google's description of the model."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "title": "Release notes | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Google's own description of this model centers on video generation and conversational video editing, but Bud's catalog facts route it as a chat-completions model with audio_input/image_input/text_input/text_output only (no video modality) and a 1,048,576/65,535 token window; I kept the catalog's facts as instructed and flagged the mismatch here rather than restating a different modality. No maker-published accuracy-style (0-100) benchmark was found for this exact preview id, so evaluations is empty. Because the model is being deprecated September 30, 2026, no current dedicated model-card page remains, so website_url is null."
+}

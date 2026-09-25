@@ -1,0 +1,87 @@
+{
+  "slug": "deepseek-r1-0528",
+  "canonical": "deepseek-r1-0528",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-R1-0528 is a May 28, 2025 update to DeepSeek AI's R1 reasoning model, released as an in-place improvement of the same 671-billion-parameter (37B active) Mixture-of-Experts architecture rather than a new model line, per DeepSeek's Hugging Face model card. DeepSeek attributes the update to increased post-training compute and algorithmic optimizations that deepen the model's chain-of-thought before answering, using roughly double the tokens per question versus the original R1. Unlike the original R1, DeepSeek's documentation states R1-0528 supports system prompts and no longer requires forcing the reasoning tag to start generation, and adds improved function calling. A related distilled 8-billion-parameter variant, DeepSeek-R1-0528-Qwen3-8B, is also available. DeepSeek's changelog shows the deepseek-reasoner alias that served this model was reassigned to DeepSeek-V3.1 in August 2025, then to several later V3.x releases and finally to V4-Flash; DeepSeek's current API pricing page no longer lists deepseek-reasoner at all, following its announced 2026-07-24 discontinuation.",
+    "advantages": [
+      "Scores 91.4% on AIME 2024 (pass@1), up from 79.8% for the original R1, per DeepSeek's Hugging Face model card.",
+      "Scores 87.5% on AIME 2025 (pass@1), up from 70.0% for the original R1, per DeepSeek's Hugging Face model card.",
+      "Scores 81.0% on GPQA Diamond, up from 71.5% for the original R1, per DeepSeek's Hugging Face model card.",
+      "Scores 73.3% on LiveCodeBench, up from 63.5% for the original R1, per DeepSeek's Hugging Face model card.",
+      "Scores 57.6% on SWE-bench Verified, up from 49.2% for the original R1, per DeepSeek's Hugging Face model card.",
+      "Supports system prompts and improved function calling, unlike the original R1, per DeepSeek's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Uses roughly double the tokens per answer versus the original R1 (about 23K vs 12K average on AIME), reflecting deeper but costlier reasoning, per DeepSeek's Hugging Face model card.",
+      "DeepSeek's current API pricing page no longer lists this model; the deepseek-reasoner alias that served it was reassigned to DeepSeek-V3.1 in August 2025 and, after several further upgrades, ultimately to V4-generation models, before the alias itself was discontinued by 2026-07-24.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "Multi-step mathematical and logical reasoning.",
+      "Competitive programming and software-engineering tasks.",
+      "Agentic use cases needing function/tool calling, newly supported in this update."
+    ],
+    "evaluations": [
+      {
+        "name": "AIME 2024",
+        "score": 91.4,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      },
+      {
+        "name": "AIME 2025",
+        "score": 87.5,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 81.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      },
+      {
+        "name": "LiveCodeBench",
+        "score": 73.3,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 57.6,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      },
+      {
+        "name": "MMLU-Pro",
+        "score": 85.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-R1"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+      "title": "deepseek-ai/DeepSeek-R1-0528 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-r1-0528",
+      "title": "DeepSeek R1-0528 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (131072/160000) far exceed DeepSeek's own stated maximum generation length of 64,000 tokens for this model; kept catalog's values per instructions since facts are authoritative, but flagging the conflict here. Catalog's max_input_tokens (131072/160000) are broadly consistent with Fireworks' stated ~163.8K-token context for this model. No 'deepseek' (first-party) provider is listed for this model in Bud's catalog, only Fireworks and Hyperbolic, consistent with DeepSeek's own docs: the deepseek-reasoner alias moved on to DeepSeek-V3.1 as early as 2025-08-21 (well before any V4 model existed) and was itself discontinued by 2026-07-24."
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "stable-image-search-recolor-v1",
+  "canonical": "stable-image-search-recolor-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Search and Recolor is an image-editing model from Stability AI that finds a specific object in an uploaded image, named in a select_prompt parameter, and recolors it according to a separate text prompt, leaving the rest of the image unchanged. Amazon Bedrock lists a model launch date of August 19, 2024 for this model, and Stability AI's current Stable Image product page still lists 'Search and recolor' among its editing tools. Amazon Bedrock lists the model's lifecycle as Active with no confirmed end-of-life date, though its originally stated 'no sooner than' retirement window of August 2025 has passed.",
+    "advantages": [
+      "Targets only the object named in its select_prompt parameter, leaving the rest of the image unchanged, per AWS Bedrock's sample request body."
+    ],
+    "disadvantages": [
+      "Recolors an identified object rather than replacing it with new content or generating a new image, unlike Stability AI's Search and Replace model."
+    ],
+    "use_cases": [
+      "Previewing a product, such as a garment, in different colors without a reshoot.",
+      "Exploring color variants of an object in a design or marketing image.",
+      "Making a targeted color correction to one element of a photo."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-search-and-recolor.md",
+      "title": "Stable Image Search and Recolor - Amazon Bedrock Model Card",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stable Image - Stability AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "AWS's sample request for this model passes image, prompt, and select_prompt parameters; Bud's catalog facts list only image/text input and image output modalities, which is consistent. Bedrock's model card lists lifecycle as Active with EOL date N/A, even though the model's originally stated 'no sooner than' end-of-life window (Aug 19, 2025) has already passed; no source states it is deprecated or superseded."
+}

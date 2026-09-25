@@ -1,0 +1,42 @@
+{
+  "slug": "kimi-k2p6",
+  "canonical": "kimi-k2p6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi K2.6 is Moonshot AI's native multimodal agentic chat model, an update to Kimi K2.5 on the same 1-trillion-parameter, 32-billion-activated mixture-of-experts architecture with a MoonViT vision encoder, adding stronger long-horizon coding, coding-driven design, and 'swarm-based' multi-agent task orchestration. Moonshot's model card enables thinking mode by default (with an optional instant mode) and reports improvements over Kimi K2.5 on several agentic benchmarks. It takes text and image input -- video chat is described as experimental and limited to Moonshot's official API -- and is released under a Modified MIT License.",
+    "advantages": [
+      "Scores 54.0% on Humanity's Last Exam (Full, with tools), up from 50.2% for Kimi K2.5, per Moonshot's model card.",
+      "Scores 58.6% on SWE-Bench Pro, up from 50.7% for Kimi K2.5, per Moonshot's model card.",
+      "Scores 92.5 F1 on DeepSearchQA, up from 89.0 for Kimi K2.5, per Moonshot's model card.",
+      "Agent swarm mode can coordinate up to 300 sub-agents across 4,000 coordinated steps, per Moonshot's model card.",
+      "Includes a 'preserve thinking' feature that carries reasoning across multi-turn interactions, per Moonshot's model card."
+    ],
+    "disadvantages": [
+      "Video chat support is described by Moonshot as experimental and limited to the official API, not a core capability.",
+      "Moonshot's newer Kimi K2.7-Code, built upon K2.6, reduces thinking-token usage by roughly 30% compared with K2.6 on coding tasks, per Kimi K2.7-Code's model card."
+    ],
+    "use_cases": [
+      "Long-horizon autonomous coding across large codebases.",
+      "Coding-driven UI and visual design from screenshots or mockups.",
+      "Swarm-based multi-agent task orchestration.",
+      "Multi-turn agent workflows that need reasoning preserved across turns."
+    ],
+    "evaluations": [
+      {"name": "Humanity's Last Exam (Full, with tools)", "score": 54.0, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "SWE-Bench Pro", "score": 58.6, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"},
+      {"name": "DeepSearchQA (F1)", "score": 92.5, "source": "https://huggingface.co/moonshotai/Kimi-K2.6"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2.6", "title": "moonshotai/Kimi-K2.6 · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code", "title": "moonshotai/Kimi-K2.7-Code · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/kimi-k2p6", "title": "Kimi K2.6 | Fireworks AI", "kind": "host"}
+  ],
+  "notes": "The canonical id 'kimi-k2p6' is Fireworks' id for this model; Fireworks' own model page for accounts/fireworks/models/kimi-k2p6 identifies it as Moonshot AI's Kimi K2.6 (linked to the Hugging Face repo) and shows the model as 'Ready' with no deprecation, retirement, or sunset notice anywhere on the page. I found no Moonshot or Fireworks page announcing a shutdown of this model -- flagging prominently because the catalog's own deprecation_date (2026-09-25) falls the day after this research date, i.e. essentially immediate, yet no source corroborates it; worth double-checking against Fireworks directly. No exact public release date found on Kimi-K2.6's own model card; Fireworks' page separately showed a creation date of April 17, 2026. Did not claim K2.6 is itself deprecated/superseded in the description since no source states that -- only that its own successor (K2.7-Code) exists and improves token efficiency for coding."
+}

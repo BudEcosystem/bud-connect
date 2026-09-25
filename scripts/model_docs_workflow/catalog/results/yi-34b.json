@@ -1,0 +1,66 @@
+{
+  "slug": "yi-34b",
+  "canonical": "yi-34b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "01.AI",
+  "details": {
+    "description": "Yi-34B is a 34-billion-parameter bilingual (English/Chinese) base language model from 01.AI, pretrained from scratch on roughly 3 trillion multilingual tokens (data through June 2023) with a default 4,096-token context window, matching the catalog's limits. It uses a Llama-compatible transformer architecture but is trained independently rather than derived from Llama weights. 01.AI also offers an extended-context Yi-34B-200K variant and an instruction-tuned Yi-34B-Chat model; as a base (pretrained, non-chat) model, Yi-34B is intended as a foundation for fine-tuning or few-shot prompting rather than direct conversational use. 01.AI has since released the newer Yi-1.5 series, which it says further improves coding, math, reasoning and instruction-following, while describing Yi-1.5 as an addition to rather than a replacement for the original Yi models.",
+    "advantages": [
+      "Scores 76.3% on MMLU and 83.7% on CMMLU, per 01.AI's Yi technical report, compared with 69.7% and 53.3% respectively for Llama 2 70B.",
+      "01.AI states Yi-34B ranked first among open-source models on the Hugging Face Open LLM Leaderboard and on C-Eval at the time of its release."
+    ],
+    "disadvantages": [
+      "This is a base (pretrained) model, not instruction-tuned; 01.AI's own Yi-34B-Chat is intended for conversational use.",
+      "Default 4,096-token context window; 01.AI offers a separate Yi-34B-200K variant for longer contexts.",
+      "Training data extends only through June 2023, per 01.AI's model card."
+    ],
+    "use_cases": [
+      "Foundation model for fine-tuning bilingual (English/Chinese) applications",
+      "Language understanding, commonsense reasoning and reading-comprehension tasks",
+      "Few-shot prompting and in-context learning"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 76.3,
+        "source": "https://arxiv.org/html/2403.04652"
+      },
+      {
+        "name": "CMMLU",
+        "score": 83.7,
+        "source": "https://arxiv.org/html/2403.04652"
+      }
+    ],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://huggingface.co/01-ai/Yi-34B",
+    "github_url": "https://github.com/01-ai/Yi"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/01-ai/Yi-34B",
+      "title": "01-ai/Yi-34B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/01-ai/Yi",
+      "title": "01-ai/Yi",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2403.04652",
+      "title": "Yi: Open Foundation Models by 01.AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/html/2403.04652",
+      "title": "Yi: Open Foundation Models by 01.AI (HTML)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (4096-token max input/output, /v1/chat/completions endpoint) match the base model's default 4K context window, though this is a base/completion model rather than an instruction-tuned chat model. MMLU/CMMLU figures are from the Yi technical report's Table 2; the GitHub README describes Yi-1.5 as improving on rather than deprecating the original Yi series, so this is not described as superseded or deprecated."
+}

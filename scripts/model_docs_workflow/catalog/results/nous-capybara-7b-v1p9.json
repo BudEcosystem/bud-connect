@@ -1,0 +1,38 @@
+{
+  "slug": "nous-capybara-7b-v1p9",
+  "canonical": "nous-capybara-7b-v1p9",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NousResearch",
+  "details": {
+    "description": "Nous Capybara 7B V1.9 is NousResearch's 7B chat model built on Mistral, fine-tuned on roughly 20,000 curated conversational examples using the team's Amplify-Instruct synthesis method, over 60% of which are multi-turn. NousResearch describes it as the best 7B model in the Capybara series to date, using unalignment techniques aimed at more consistent, dynamic instruction following than the original V1. It targets general-purpose instruction following, including complex summarization and philosophical or rationality discussions, and NousResearch tested it for contamination against HumanEval, AGIEval, TruthfulQA, MMLU and GPT4All without finding matches.",
+    "advantages": [
+      "Trained on curated multi-turn data via NousResearch's Amplify-Instruct method, with over 60% of examples being multi-turn conversations (NousResearch).",
+      "Built on the Mistral base model, which NousResearch describes as a stronger foundation than the model used for Capybara V1 (NousResearch).",
+      "Tested for benchmark contamination against HumanEval, AGIEval, TruthfulQA, MMLU, and GPT4All with no matches found at 97%+ similarity (NousResearch)."
+    ],
+    "disadvantages": [
+      "NousResearch had not published benchmark scores for this model on its model card ('Coming soon!').",
+      "Context length is not stated on the model card.",
+      "Knowledge recall is described as extending only through late 2022 (NousResearch)."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and conversation",
+      "Complex summarization of advanced topics",
+      "Philosophical reasoning and rationality discussions"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/NousResearch/Nous-Capybara-7B-V1.9",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/NousResearch/Nous-Capybara-7B-V1.9",
+      "title": "NousResearch/Nous-Capybara-7B-V1.9 - Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Only source found and opened was the Hugging Face model card. It lists benchmark scores as 'Coming soon!' and does not state a context length, so both are left empty rather than guessed. Facts list max_input/output tokens 32768; the card does not confirm or contradict this. Card states an MIT license."
+}

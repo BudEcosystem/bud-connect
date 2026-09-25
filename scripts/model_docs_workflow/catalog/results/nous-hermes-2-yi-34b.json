@@ -1,0 +1,41 @@
+{
+  "slug": "nous-hermes-2-yi-34b",
+  "canonical": "nous-hermes-2-yi-34b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Nous Research",
+  "details": {
+    "description": "Nous Hermes 2 Yi 34B is a chat and instruction-tuned language model that Nous Research fine-tuned on top of 01.AI's Yi-34B base model. It was trained on roughly 1 million examples, primarily GPT-4-generated data plus other curated open datasets, and uses the ChatML prompt format for multi-turn conversations. It is released as an open-weight model under the Apache 2.0 license.",
+    "advantages": [
+      "Scores 76.00% average on the GPT4All benchmark suite, per its model card.",
+      "Scores 50.27% average on AGIEval, per its model card.",
+      "Its model card reports it outperforms Nous Research's earlier OpenHermes-2.5 Mistral 7B model on GPT4All, BigBench, AGIEval, and TruthfulQA.",
+      "Uses the ChatML prompt format, which is compatible with OpenAI-style chat API clients."
+    ],
+    "disadvantages": [
+      "English-language training data only, per its model card.",
+      "4,096-token context window, short next to more recent chat models."
+    ],
+    "use_cases": [
+      "Multi-turn conversational assistants",
+      "Instruction-following tasks",
+      "Code generation",
+      "General reasoning and analysis"
+    ],
+    "evaluations": [
+      {"name": "GPT4All", "score": 76.00, "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B"},
+      {"name": "AGIEval", "score": 50.27, "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B"},
+      {"name": "BigBench", "score": 46.69, "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B"},
+      {"name": "TruthfulQA (mc2)", "score": 60.34, "source": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B", "title": "NousResearch/Nous-Hermes-2-Yi-34B", "kind": "third_party"},
+    {"url": "https://fireworks.ai/models/fireworks/nous-hermes-2-yi-34b", "title": "Nous Hermes 2 Yi 34B - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Fireworks AI's model page lists the context window as about 4,090 tokens, close to but not exactly the catalog's 4096; kept the catalog value. No maker docs page beyond the Hugging Face card was found; could not confirm a launch date or whether the model has since been superseded."
+}

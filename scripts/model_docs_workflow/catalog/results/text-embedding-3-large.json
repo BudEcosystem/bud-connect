@@ -1,0 +1,39 @@
+{
+  "slug": "text-embedding-3-large",
+  "canonical": "text-embedding-3-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "text-embedding-3-large is OpenAI's largest and most capable text embedding model, producing embeddings of up to 3,072 dimensions from text input, useful for semantic search, clustering, recommendations, anomaly detection, and classification. It is part of OpenAI's third-generation embedding family (alongside the smaller text-embedding-3-small) and supersedes text-embedding-ada-002. It supports a `dimensions` parameter (Matryoshka-style representation learning) that lets the output embedding be shortened for lower storage and compute cost with only a modest quality loss. On Azure, it is offered as a Foundry model sold directly by Microsoft for use with the Embeddings API.",
+    "advantages": [
+      "Scores 64.6 average on the MTEB English benchmark, versus 62.3 for text-embedding-3-small and 61.0 for text-embedding-ada-002, per OpenAI's reported testing as republished in Microsoft's Azure OpenAI documentation.",
+      "Scores 54.9 average on the MIRACL multilingual retrieval benchmark, versus 44.0 for text-embedding-3-small and 31.4 for text-embedding-ada-002, per the same source.",
+      "Supports reducing output embedding size via the `dimensions` parameter; per Microsoft's documentation of OpenAI's testing, accuracy remains slightly better than ada-002 even when reduced below ada-002's native 1,536 dimensions.",
+      "Can be used for both English and non-English embedding tasks, per OpenAI's own model documentation."
+    ],
+    "disadvantages": [
+      "Can only be used with Embedding API requests, not general chat or completion endpoints, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Semantic search",
+      "Text clustering",
+      "Recommendation systems",
+      "Anomaly detection",
+      "Text classification"
+    ],
+    "evaluations": [
+      {"name": "MTEB average (English)", "score": 64.6, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"},
+      {"name": "MIRACL average (multilingual retrieval)", "score": 54.9, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/text-embedding-3-large",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/text-embedding-3-large", "title": "text-embedding-3-large Model | OpenAI API", "kind": "maker"},
+    {"url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models", "title": "Foundry Models sold by Azure - Microsoft Foundry", "kind": "host"}
+  ],
+  "notes": "Microsoft's Azure documentation lists this model's max request size as 8,192 tokens, one more than the catalog's max_input_tokens of 8191; I kept the catalog's 8191 and did not restate 8192 anywhere. OpenAI's own announcement blog post (openai.com/index/new-embedding-models-and-api-updates/) returned HTTP 403 to automated fetches, so benchmark numbers are sourced from Microsoft's Azure OpenAI docs, which attribute them to OpenAI's own reported testing; I could not independently verify on openai.com. No specific list of supported languages was found (only 'English and non-English tasks'), so languages is left empty. No release date could be confirmed on an opened page, so none is stated."
+}

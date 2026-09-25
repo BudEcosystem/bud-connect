@@ -1,0 +1,45 @@
+{
+  "slug": "aura",
+  "canonical": "aura",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Aura is Deepgram's first-generation text-to-speech model, offering a catalog of 12 English voices for real-time speech synthesis through Deepgram's Speak API. Each voice is documented with a set of characteristics (for example clear, warm or confident) and a recommended use case such as advertising, IVR or customer service. Deepgram's Speak API still defaults to an Aura voice (aura-asteria-en) when no model is specified, even after the release of the newer, multilingual Aura-2 family.",
+    "advantages": [
+      "Is the Deepgram Speak API's default voice model (aura-asteria-en) when no model is specified, per Deepgram's Text-to-Speech guide.",
+      "Offers 12 distinct English voices, each documented with characteristics and a recommended use case, per Deepgram's TTS Models documentation.",
+      "Streams audio back as it is generated so playback can begin as soon as the first byte arrives, per Deepgram's Text-to-Speech guide."
+    ],
+    "disadvantages": [
+      "English only, while Deepgram's newer Aura-2 model adds voices in additional languages including Spanish, German, French, Dutch, Italian and Japanese, per Deepgram's TTS Models documentation."
+    ],
+    "use_cases": [
+      "Interactive voice response (IVR) prompts, e.g. the luna and zeus voices, per Deepgram's TTS Models documentation.",
+      "Customer service voice agents, e.g. the stella, arcas, perseus and helios voices, per Deepgram's TTS Models documentation.",
+      "Advertising voiceovers, e.g. the asteria voice, per Deepgram's TTS Models documentation.",
+      "Storytelling and narration, e.g. the athena, angus and orpheus voices, per Deepgram's TTS Models documentation.",
+      "Informative announcements, e.g. the hera and orion voices, per Deepgram's TTS Models documentation."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/tts-models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/tts-models",
+      "title": "Text-to-Speech Models | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/text-to-speech",
+      "title": "Text-to-Speech | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's TTS Models and Text-to-Speech docs never call Aura (v1) legacy, deprecated or superseded; aura-asteria-en remains the documented API default even after Aura-2 shipped, so no legacy claim is made here. No word-error-rate or other accuracy figure was found for Aura, so evaluations is left empty. Catalog carries no deprecation_date."
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "voxtral-mini-realtime-2602",
+  "canonical": "voxtral-mini-realtime-2602",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": null,
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-26-02",
+      "title": "Voxtral Mini Transcribe Realtime | Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral-transcribe-2",
+      "title": "Voxtral Transcribe 2 - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+      "title": "mistralai/Voxtral-Mini-4B-Realtime-2602 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models overview | Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/changelog/",
+      "title": "Changelog | Mistral AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The exact id 'voxtral-mini-realtime-2602' (without 'transcribe') does not appear on any Mistral page. The Voxtral Mini Transcribe Realtime docs page embeds exactly two id strings for that model -- voxtral-mini-transcribe-realtime-2602 and voxtral-mini-realtime-latest -- via its own id-compare widget data (checked in the raw page source, not just the rendered text), and Mistral's full models overview and deprecated-models tables use only those same two strings plus the older voxtral-mini-2507/voxtral-mini-transcribe-25-07. The Hugging Face model card and the arXiv technical report (2602.11298) likewise never use this string. This batch's Bud catalog facts (mistral provider, stt kind, /v1/audio/transcriptions endpoint, audio_input to text_output modality, no token limits or deprecation date) match the other 3 targets in this batch, and the id string plausibly combines pieces of the two confirmed aliases ('realtime' + '2602'), but that is a guess about a working API alias Bud may have verified independently, not something any Mistral page confirms. Per the research brief's identification bar, this is insufficient_sources rather than a described model. If it is later confirmed to be Voxtral Mini Transcribe Realtime, the content already written for voxtral-mini-transcribe-realtime-2602.json and voxtral-mini-realtime-latest.json applies unchanged."
+}

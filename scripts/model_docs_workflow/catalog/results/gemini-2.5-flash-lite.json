@@ -1,0 +1,38 @@
+{
+  "slug": "gemini-2.5-flash-lite",
+  "canonical": "gemini-2.5-flash-lite",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 2.5 Flash-Lite is Google DeepMind's lowest-cost, lowest-latency model in the Gemini 2.5 family, designed for high-volume tasks such as classification and simple data extraction. It accepts text, image, video, audio and PDF input over up to a 1,048,576-token context window with up to 65,536 output tokens, and supports thinking, function calling, code execution and structured outputs, per its Gemini API model page. Its knowledge cutoff is January 2025. Google's current documentation limits access to users who used the 2.5 models previously and directs new projects to Gemini 3.5 Flash-Lite or Gemini 3.8 Flash instead, while stating the 2.5 models are not deprecated and remain served.",
+    "advantages": [
+      "Supports a 1,048,576-token input context with up to 65,536 output tokens and accepts text, image, video, audio and PDF input, per its Gemini API model page.",
+      "Supports thinking mode, function calling, code execution, Google Search and Google Maps grounding, and context caching, per its Gemini API model page.",
+      "Positioned by Google for high-volume classification, simple data extraction and low-latency applications where budget and speed matter, per its Gemini API model page."
+    ],
+    "disadvantages": [
+      "Access is now limited to users who used the 2.5 models previously; Google directs new projects to Gemini 3.5 Flash-Lite or Gemini 3.8 Flash instead, per its Gemini API documentation.",
+      "No longer listed on Google DeepMind's current Gemini model overview page, which now centers on the 3.x generation.",
+      "Knowledge cutoff of January 2025, per its Gemini API model page.",
+      "Does not support the Live API or audio/music generation, per its Gemini API model page."
+    ],
+    "use_cases": [
+      "High-volume classification and simple data-extraction tasks",
+      "Low-latency, high-throughput applications",
+      "Multimodal understanding of text, image, video, audio and PDF input",
+      "Agentic tool use via function calling and code execution"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite", "title": "Gemini 2.5 Flash-Lite | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API", "kind": "maker"},
+    {"url": "https://deepmind.google/models/gemini/", "title": "Gemini models overview | Google DeepMind", "kind": "maker"}
+  ],
+  "notes": "No exact benchmark scores or a language list were found on the maker pages I opened, so evaluations and languages are left empty. The catalog's deprecation_date (2026-10-20) was not stated on Google's model page, which instead says the 2.5 models are 'not deprecated' and 'will continue to be served until further notice' while limiting new access; I kept the catalog's deprecation_date as authoritative and note the discrepancy here rather than restate it in the description."
+}

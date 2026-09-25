@@ -1,0 +1,44 @@
+{
+  "slug": "grok-4.20",
+  "canonical": "grok-4.20",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 is xAI's reasoning model released as a public beta (model id grok-4.20-0309), available in a single-agent mode and a multi-agent mode where multiple specialized agents collaborate and synthesize one response, per xAI's system card. It accepts text and image input and produces text output over a 1M-token context window. xAI's April 2026 system card describes it as a general-purpose, truth-seeking assistant for everyday and professional tasks -- question answering, reasoning, research, writing, coding, translation, creative ideation and multimodal reasoning -- and states it is not designed for high-risk uses such as autonomous medical, legal, financial or safety-critical decisions without human oversight. It supports a variety of major languages by xAI's own account (including English, Chinese, Arabic, Hindi and Spanish), plus several dozen others with varying capability.",
+    "advantages": [
+      "Scores an Artificial Analysis Intelligence Index of 26, above the 25 median for comparable models (Artificial Analysis, April 2026).",
+      "Outputs at 106.2 tokens/second on Artificial Analysis' speed benchmark, above the 72.3 t/s median for comparable models.",
+      "Can run in a multi-agent mode in addition to a single-agent mode, per xAI's system card.",
+      "Records a 0.00 violation rate on xAI's internal chat-refusal safety evaluation in single-agent mode, per its system card."
+    ],
+    "disadvantages": [
+      "Time to first token is 21.53 seconds on Artificial Analysis' benchmark, well above the 3.78s median for comparable models.",
+      "Not designed for high-risk applications such as autonomous medical, legal, financial or safety-critical decisions without human oversight, per xAI's system card.",
+      "Artificial Analysis lists this snapshot (grok-4.20-0309 v2) as deprecated, naming xAI's Grok 4.3 as a newer alternative."
+    ],
+    "use_cases": [
+      "General-purpose assistant tasks: question answering, reasoning, research and writing",
+      "Coding and agentic tool-calling workflows",
+      "Translation and creative ideation",
+      "Multimodal reasoning over text and images",
+      "Collaborative multi-agent workflows via its multi-agent mode"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 26, "source": "https://artificialanalysis.ai/models/grok-4-20"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.20", "title": "Grok 4.20 | xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-0309-reasoning", "title": "Grok 4.20 0309 Reasoning | xAI Docs", "kind": "maker"},
+    {"url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf", "title": "Grok 4.20 System Card, xAI, April 7, 2026", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-20", "title": "Grok 4.20 0309 v2 (Reasoning) - Artificial Analysis", "kind": "third_party"},
+    {"url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-beta-0309", "title": "Grok 4.20 Multi Agent Beta 0309 | xAI Docs", "kind": "maker"},
+    {"url": "https://docs.x.ai/developers/release-notes", "title": "Release Notes | xAI Docs", "kind": "maker"}
+  ],
+  "notes": "The catalog's max_output_tokens (1,000,000) could not be confirmed on any page opened; xAI's docs give a 1M context window but do not separately state a max output limit. Several third-party blogs (not opened, only seen as search snippets) claim a 2M context window, which would conflict with the catalog's 1,000,000 and with xAI's own docs (1M), so the catalog figure was kept and the conflicting snippet was not used. Standard capability benchmarks (SWE-bench, MMLU, AIME, GPQA) circulating on aggregator sites such as BenchmarkList and BenchLM were not used because I could not verify them against a maker page or against Artificial Analysis, and those numbers looked inconsistent across sites. xAI's own system card covers mainly safety/dual-use evaluations (refusal rates, WMDP, CyBench, MASK honesty) rather than general capability benchmarks, so I relied on Artificial Analysis for the capability comparison figures. The languages field was left empty because xAI names only a handful of languages explicitly ('English, Chinese, Arabic, Hindi, Spanish, etc., and several dozen others') without a closed list; the named examples are given in the description instead. The system card and xAI's docs confirm two deployment modes, single-agent and multi-agent, but do not state how many sub-agents make up multi-agent mode; the 'four agents' figure circulating on third-party blogs (Verdent, Medium, etc.) could not be confirmed on any xAI page, so specific agent-count claims were removed. The 'released as a public beta in February 2026' date could not be confirmed on any opened xAI page (their release notes place Grok 4.20 going live under a 'March' heading with no year or day given); the specific month was dropped from the description rather than asserted on search-snippet evidence alone."
+}

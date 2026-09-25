@@ -1,0 +1,11 @@
+{
+  "slug": "mistral-vibe-cli-latest",
+  "canonical": "mistral-vibe-cli-latest",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "This id looks like a Mistral API model alias tied to 'Vibe CLI', Mistral's open-source terminal coding agent (github.com/mistralai/mistral-vibe), which launched alongside Devstral 2 in December 2025 and was later folded into the broader 'Vibe' product, whose remote agents Mistral says are now powered by Mistral Medium 3.5 (announced May 2026). I checked Mistral's models-overview and changelog docs, the API reference, the Vibe CLI and Vibe product launch posts, the pricing page, and the mistral-vibe GitHub README; none of them documents 'vibe-cli-latest' (or any 'vibe-cli-*' alias) as a named model with its own specs -- only the underlying models Vibe/Vibe CLI can call (Devstral 2, Devstral Small 2, Mistral Medium 3.5, Mistral Small 4) are documented on their own pages. Given Mistral's rolling '-latest' aliases point to whichever model is current, and Vibe's default/remote-agent model has already changed at least once (Devstral 2 at Vibe CLI's Dec 2025 launch, Mistral Medium 3.5 for remote agents from May 2026), I could not confirm which model this alias currently resolves to, so I am not describing any of those models under this id."
+}

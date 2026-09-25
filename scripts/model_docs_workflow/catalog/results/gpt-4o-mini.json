@@ -1,0 +1,43 @@
+{
+  "slug": "gpt-4o-mini",
+  "canonical": "gpt-4o-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o mini is OpenAI's small, low-cost model in the GPT-4o family, released July 18, 2024 as a faster, cheaper option than GPT-4o for focused tasks. It takes text and image input and produces text output, including Structured Outputs, with a 128,000-token context window and a knowledge cutoff of October 1, 2023. OpenAI positions it for chaining or parallelizing multiple model calls, processing large volumes of context such as a codebase or conversation history, and fast, low-latency chat such as customer support.",
+    "advantages": [
+      "Scores 82.0% on MMLU, 87.2% on HumanEval and 87.0% on MGSM, which OpenAI reported at launch as ahead of Gemini 1.5 Flash and Claude 3 Haiku on the same evaluations (OpenAI's GPT-4o mini announcement).",
+      "Supports vision input alongside text, plus function calling and Structured Outputs (OpenAI API model docs).",
+      "OpenAI's API deprecations page lists it as the recommended replacement base model for fine-tuning the older babbage-002 and davinci-002 models."
+    ],
+    "disadvantages": [
+      "Scores 40.2% on GPQA Diamond and 8.7% on SWE-bench Verified, both well below GPT-4o's 46.0% and 33.2% on the same evaluations (OpenAI's GPT-4.1 announcement).",
+      "Knowledge cutoff of October 1, 2023, older than the GPT-4.1 family's June 2024 cutoff.",
+      "Output is text only; the model does not generate images, audio or video (OpenAI API model docs)."
+    ],
+    "use_cases": [
+      "Chaining or parallelizing multiple model calls in an application",
+      "Processing large volumes of context, such as an entire codebase or conversation history",
+      "Fast, low-latency chat such as customer support",
+      "Fine-tuning for narrow, specialized tasks"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 82.0, "source": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"},
+      {"name": "HumanEval", "score": 87.2, "source": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"},
+      {"name": "MGSM", "score": 87.0, "source": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"},
+      {"name": "GPQA Diamond", "score": 40.2, "source": "https://openai.com/index/gpt-4-1/"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/", "title": "GPT-4o mini: advancing cost-efficient intelligence | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4o-mini", "title": "GPT-4o Mini Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/gpt-4-1/", "title": "Introducing GPT-4.1 in the API | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "OpenAI's own GPT-4o mini launch post reports MMMU 59.4%, but the later GPT-4.1 comparison table reports 56.3% for the same model; since the two OpenAI sources disagree, MMMU was left out of evaluations rather than picking one. OpenAI's API deprecations page does not list gpt-4o-mini among models scheduled for shutdown, so the catalog's 2027-04-14 deprecation_date fact could not be corroborated or contradicted from primary sources as of this research. Pages under openai.com returned HTTP 403 to direct fetch and were read via the r.jina.ai reader proxy; cited URLs are the original OpenAI pages."
+}

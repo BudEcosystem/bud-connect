@@ -1,0 +1,44 @@
+{
+  "slug": "gpt-4.1-nano",
+  "canonical": "gpt-4.1-nano",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4.1 nano is the smallest and fastest model in OpenAI's GPT-4.1 family, released April 14, 2025 for latency-sensitive tasks such as classification, autocompletion and information extraction. It takes text and image input and produces text-only output, keeps the family's 1-million-token context window despite its size, and has a knowledge cutoff of June 1, 2024. OpenAI's API deprecations page has since scheduled gpt-4.1-nano for shutdown on October 23, 2026, recommending gpt-5.6-luna as its replacement.",
+    "advantages": [
+      "Scores 50.3% on GPQA Diamond and 29.4% on AIME 2024, both higher than GPT-4o mini's 40.2% and 8.6% on the same evaluations (OpenAI's GPT-4.1 announcement).",
+      "Scores 9.8% on Aider's polyglot coding benchmark (whole-file), roughly triple GPT-4o mini's 3.6% (OpenAI).",
+      "Keeps the GPT-4.1 family's 1-million-token context window despite being the smallest model in the line (OpenAI API model docs).",
+      "OpenAI describes it as the fastest and lowest-latency model in the GPT-4.1 family, built for quick, targeted tasks (OpenAI)."
+    ],
+    "disadvantages": [
+      "OpenAI's API deprecations page schedules gpt-4.1-nano for shutdown on October 23, 2026, with gpt-5.6-luna as the recommended replacement.",
+      "Scores 80.1% on MMLU, below GPT-4o mini's 82.0% on the same evaluation (OpenAI's GPT-4.1 announcement).",
+      "Output is text only; the model does not generate images, audio or video (OpenAI API model docs).",
+      "Knowledge cutoff of June 1, 2024 (OpenAI API model docs)."
+    ],
+    "use_cases": [
+      "Text and content classification",
+      "Autocomplete suggestions",
+      "Information extraction from large documents",
+      "High-volume, low-latency sub-tasks within a larger agent pipeline"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 80.1, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "GPQA Diamond", "score": 50.3, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "MMMU", "score": 55.4, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "AIME 2024", "score": 29.4, "source": "https://openai.com/index/gpt-4-1/"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4.1-nano",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://openai.com/index/gpt-4-1/", "title": "Introducing GPT-4.1 in the API | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4.1-nano", "title": "GPT-4.1 nano Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "IMPORTANT catalog discrepancy: the catalog's deprecation_date fact for this model is 2027-04-14, but OpenAI's own API deprecations page (section '2026-04-22: Legacy GPT model snapshots', fetched and grepped directly from the raw page HTML, not summarized) lists both the gpt-4.1-nano alias and the gpt-4.1-nano-2025-04-14 snapshot with shutdown date October 23, 2026 and recommended substitute gpt-5.6-luna -- over five months earlier than the catalog date. Flagging since it changes how current this model is. SWE-bench Verified was not reported for nano in OpenAI's comparison table (shown as '-'), so it is omitted from evaluations rather than guessed. OpenAI's GPT-4.1 launch post returned HTTP 403 to a direct fetch and was read via the r.jina.ai reader proxy instead; the cited URL is the original OpenAI page."
+}

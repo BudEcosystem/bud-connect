@@ -1,0 +1,40 @@
+{
+  "slug": "stable-image-erase-object-v1",
+  "canonical": "stable-image-erase-object-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Erase (Stable Image Erase Object) is one of Stability AI's Stable Image Edit services, offered on Amazon Bedrock as stability.stable-image-erase-object-v1:0. Given an input image and a mask -- either a supplied black-and-white mask image or the input image's alpha channel -- it removes the masked object or area and reconstructs the background behind it, without needing a text prompt.",
+    "advantages": [
+      "AWS Bedrock documentation says the service 'intelligently maintains background consistency' when removing a masked object.",
+      "Accepts a grow_mask parameter (0 to 20 pixels, default 5) that expands and blurs the mask edges to smooth the transition around the removed area, per AWS Bedrock documentation."
+    ],
+    "disadvantages": [
+      "Requires a mask, either a separate mask image or the input image's alpha channel, to indicate what to remove; there is no automatic object-detection mode.",
+      "The input image must be between 64 pixels per side and 9,437,184 total pixels, with an aspect ratio between 1:2.5 and 2.5:1, per AWS Bedrock documentation."
+    ],
+    "use_cases": [
+      "Removing an unwanted object or element from a photo while preserving the surrounding background",
+      "Cleaning up product or marketing photos before publishing"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stability AI - Stable Image",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html",
+      "title": "Stability AI Image Services - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Only one URI targets this model (Bedrock). AWS Bedrock's documented request parameters for Erase list only image, mask, seed, output_format and grow_mask -- no text-prompt field -- while the catalog's facts list text_input among this model's modalities; kept the catalog's modality value as instructed but flagging the mismatch. Stability's own API-reference docs did not return readable content to the fetch tool (single-page app), so parameter detail comes from AWS Bedrock's documentation of the same service."
+}

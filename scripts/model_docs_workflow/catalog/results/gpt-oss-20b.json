@@ -1,0 +1,47 @@
+{
+  "slug": "gpt-oss-20b",
+  "canonical": "gpt-oss-20b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-oss-20b is OpenAI's smaller open-weight reasoning model, released under an Apache 2.0 license in August 2025 alongside the larger gpt-oss-120b. It uses a mixture-of-experts transformer architecture with 21 billion total parameters and 3.6 billion active parameters per token, and is designed to run within 16GB of memory using native MXFP4 quantization of its MoE weights, suiting local or specialized deployment. The model supports low, medium and high reasoning-effort settings, exposes its full chain of thought, and is trained for agentic tool use including function calling, Python code execution and web browsing. It requires OpenAI's harmony response format to operate correctly.",
+    "advantages": [
+      "OpenAI reports gpt-oss-20b matches or exceeds OpenAI o3-mini on core reasoning benchmarks including competition coding, general problem solving and tool calling, per OpenAI's launch post.",
+      "Scores 85.3% on MMLU and 71.5% on GPQA Diamond at high reasoning effort, per OpenAI's gpt-oss model card (arXiv:2508.10925).",
+      "Scores 60.7% on SWE-bench Verified and 42.5% on HealthBench at high reasoning effort, per OpenAI's gpt-oss model card.",
+      "Runs within 16GB of memory using native MXFP4 quantization of the MoE weights, enabling local and consumer-hardware deployment, per OpenAI's Hugging Face model card.",
+      "Exposes full chain-of-thought reasoning for debugging and transparency, and supports adjustable reasoning effort (low, medium, high), per OpenAI's launch post."
+    ],
+    "disadvantages": [
+      "Requires OpenAI's harmony response format; OpenAI's model card states the model will not function correctly without it.",
+      "Reported knowledge cutoff of June 2024, per OpenAI's developer documentation.",
+      "Trained mostly on English, text-only data, per OpenAI's launch post.",
+      "Scores lower than the larger gpt-oss-120b on MMLU, GPQA Diamond, SWE-bench Verified and HealthBench, per OpenAI's gpt-oss model card."
+    ],
+    "use_cases": [
+      "On-device and local inference on consumer or specialized hardware",
+      "Low-latency agentic workflows with function calling, Python code execution and web browsing",
+      "Custom fine-tuning for resource-constrained deployments",
+      "General-purpose chat and instruction-following with adjustable reasoning effort"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 85.3, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "GPQA Diamond", "score": 71.5, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "SWE-bench Verified", "score": 60.7, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "HealthBench", "score": 42.5, "source": "https://arxiv.org/abs/2508.10925"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/gpt-oss-20b",
+    "github_url": "https://github.com/openai/gpt-oss"
+  },
+  "sources": [
+    {"url": "https://openai.com/index/introducing-gpt-oss/", "title": "Introducing gpt-oss", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2508.10925", "title": "gpt-oss-120b & gpt-oss-20b Model Card", "kind": "maker"},
+    {"url": "https://huggingface.co/openai/gpt-oss-20b", "title": "openai/gpt-oss-20b", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/models/gpt-oss-20b", "title": "gpt-oss-20b - OpenAI API docs", "kind": "maker"},
+    {"url": "https://github.com/openai/gpt-oss", "title": "openai/gpt-oss", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens (131,072) matches the 128K context window OpenAI's launch post and model card describe. Catalog lists two max_output_tokens values (32768 and 65536) and OpenAI's own docs page separately states 131,072; since sources disagree on the exact output cap, no specific output-token number is stated in the description, per the catalog-is-authoritative rule. Benchmark scores are OpenAI's 'high reasoning effort, no tools' figures from Table 3 of the arXiv model card; with-tools variants score marginally higher on GPQA/AIME/HLE but were not used to avoid double-counting a near-duplicate metric."
+}

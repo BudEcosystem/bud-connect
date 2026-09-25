@@ -1,0 +1,57 @@
+{
+  "slug": "nomic-embed-text-v1.5",
+  "canonical": "nomic-embed-text-v1.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Nomic AI",
+  "details": {
+    "description": "Nomic Embed Text v1.5 is Nomic AI's updated open-weight text embedding model, adding Matryoshka Representation Learning so one model can output resizable embeddings: 768 dimensions by default, or truncated to 512, 256, 128, or 64. It natively supports sequence lengths past 2048 tokens and up to 8192 tokens with RoPE scaling, and targets the same semantic search, retrieval-augmented generation, clustering, and classification use cases as v1 using the same `search_document`/`search_query` task prefixes. Nomic releases the weights, training code, and training data openly under Apache 2.0.",
+    "advantages": [
+      "Adds Matryoshka Representation Learning, letting the 768-dimension embedding be truncated to 512, 256, 128 or 64 dimensions with only a small accuracy drop (Nomic AI).",
+      "Scores 62.28 on MTEB at full 768 dimensions, and still 61.96 at 512 dimensions (Nomic AI).",
+      "Natively supports sequence lengths past 2048 tokens, extendable to 8192 tokens via dynamic RoPE scaling (Nomic AI)."
+    ],
+    "disadvantages": [
+      "MTEB score drops to 56.10 when the embedding is truncated down to 64 dimensions (Nomic AI).",
+      "Requires a task-specific prefix (e.g. `search_document`, `search_query`) before embedding (Nomic AI).",
+      "Documented as an English-language model (Nomic AI)."
+    ],
+    "use_cases": [
+      "Semantic search with adjustable embedding size for storage or latency trade-offs",
+      "Retrieval-augmented generation (RAG) retrieval",
+      "Text clustering",
+      "Text classification feature extraction"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB (768 dim)",
+        "score": 62.28,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5"
+      },
+      {
+        "name": "MTEB (512 dim)",
+        "score": 61.96,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5"
+      },
+      {
+        "name": "MTEB (64 dim)",
+        "score": 56.1,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+    "github_url": "https://github.com/nomic-ai/contrastors"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+      "title": "nomic-ai/nomic-embed-text-v1.5 - Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Only source found and opened was the Hugging Face model card; no separate nomic.ai blog page could be located to fetch. Facts list max_input_tokens 8192, matching the card's RoPE-extended length (the card describes 2048 tokens as the native length before scaling)."
+}

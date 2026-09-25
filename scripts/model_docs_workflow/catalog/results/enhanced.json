@@ -1,0 +1,33 @@
+{
+  "slug": "enhanced",
+  "canonical": "enhanced",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Enhanced is the default, general-purpose model in Deepgram's Enhanced speech-to-text tier; Deepgram's own documentation lists \"enhanced\" and \"enhanced-general\" together as the same model option, optimized for everyday audio processing and recommended as the starting point when unsure which Enhanced model to pick. Deepgram states Enhanced models generally have higher accuracy and better word recognition than its Base tier, including significantly better handling of uncommon words. Deepgram's Models & Languages Overview currently groups the Enhanced tier, together with Base and Nova 1, under \"Legacy Models\", behind its newer Nova-3 and Flux offerings.",
+    "advantages": [
+      "Deepgram states Enhanced models generally have higher accuracy and better word recognition than its Base-tier models, and handle uncommon words significantly better.",
+      "Deepgram describes this option as likely more accurate than any region-specific Base model for its supported language, and recommends it as the starting point if unsure which model to select.",
+      "Supports 17 languages, including Danish, Dutch, English, Flemish, French, German, Hindi, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Spanish, Swedish, Tamasheq and Tamil, per Deepgram's Models & Languages Overview."
+    ],
+    "disadvantages": [
+      "Deepgram groups the Enhanced tier under \"Legacy Models\" in its Models & Languages Overview, alongside Base and Nova 1.",
+      "Deepgram's Models & Languages Overview does not list Chinese, Indonesian, Russian, Turkish or Ukrainian support for this model, though its own Base-general model does support them."
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio",
+      "Use cases needing better accuracy and uncommon-word recognition than Deepgram's Base tier"
+    ],
+    "evaluations": [],
+    "languages": ["Danish", "Dutch", "English", "Flemish", "French", "German", "Hindi", "Italian", "Japanese", "Korean", "Norwegian", "Polish", "Portuguese", "Spanish", "Swedish", "Tamasheq", "Tamil"],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.deepgram.com/docs/model", "title": "Model Options | Deepgram's Docs", "kind": "maker"},
+    {"url": "https://developers.deepgram.com/docs/models-languages-overview", "title": "Models & Languages Overview | Deepgram's Docs", "kind": "maker"}
+  ],
+  "notes": "Deepgram's language table lists this model's row as 'enhanced or enhanced-general', i.e. 'enhanced' (this target's id) is Deepgram's alias for the same model documented as enhanced-general (a separate catalog slug); descriptions and language lists for the two are therefore based on the same source row. No word-error-rate or other accuracy figures specific to this model were found on Deepgram's maker pages, so evaluations is left empty. The catalog carries no deprecation_date for this model."
+}

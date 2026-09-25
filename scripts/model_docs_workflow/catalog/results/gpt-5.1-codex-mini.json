@@ -1,0 +1,68 @@
+{
+  "slug": "gpt-5.1-codex-mini",
+  "canonical": "gpt-5.1-codex-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.1-Codex Mini is OpenAI's smaller, more cost-effective and less capable sibling of GPT-5.1-Codex, built for coding and agentic tasks where cost and latency matter more than maximum capability (OpenAI's own model card: \"Smaller, more cost-effective, less-capable version of GPT-5.1-Codex\"). It rolled out in public preview across GitHub Copilot surfaces (VS Code, JetBrains, Xcode, Eclipse, Copilot CLI) on November 13, 2025, and Microsoft's Azure AI Foundry catalog describes it as designed for steerability, front-end development and interactivity, with multimodal reasoning over code, UI states and design mockups, context-aware code review, and repository-aware refactoring. It takes text and image input and produces text only, with reasoning-token support and tool use (function calling, web search) via OpenAI's Responses API. As of this research, OpenAI's own API deprecations page lists its shutdown date as July 23, 2026 -- already past -- recommending gpt-5.6-terra as the replacement, and Artificial Analysis lists it as deprecated in favor of GPT-5.2 Codex, even though Azure's catalog entry still shows it as Generally Available.",
+    "advantages": [
+      "Azure AI Foundry's catalog describes it as excelling at multimodal reasoning, context-aware code review, asynchronous execution and repository-aware intelligence, including analyzing UI states, architecture diagrams and design mockups via image input.",
+      "Supports long-running tasks with state retention across interactions and full-repository understanding for refactoring and test automation (Azure AI Foundry catalog).",
+      "Scores 20 on the Artificial Analysis Intelligence Index (high reasoning effort), above the comparable-model median of 13 (Artificial Analysis).",
+      "Supports function calling and the web-search tool via OpenAI's Responses API, with prompt caching and structured outputs (OpenAI API docs)."
+    ],
+    "disadvantages": [
+      "OpenAI's API deprecations page lists this model's shutdown date as July 23, 2026 -- already past as of this research date -- with gpt-5.6-terra as the recommended replacement.",
+      "Artificial Analysis separately lists the model as deprecated, recommending GPT-5.2 Codex (xhigh) instead.",
+      "Output is text-only; only the Responses API is supported, with no Chat Completions, Assistants, Batch or fine-tuning access (OpenAI API docs).",
+      "Knowledge cutoff of September 30, 2024 (OpenAI API docs)."
+    ],
+    "use_cases": [
+      "Cost- and latency-sensitive coding and agentic coding tasks",
+      "Front-end development and UI-focused coding work",
+      "Context-aware code review across a repository",
+      "Repository-wide refactoring and test automation",
+      "Analyzing UI states, architecture diagrams and design mockups via image input"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index (high reasoning)",
+        "score": 20,
+        "source": "https://artificialanalysis.ai/models/gpt-5-1-codex-mini"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini",
+      "title": "GPT-5.1-Codex Mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.azure.com/catalog/models/gpt-5.1-codex-mini",
+      "title": "gpt-5.1-codex-mini | Model Catalog | Microsoft Foundry",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.blog/changelog/2025-11-13-openais-gpt-5-1-gpt-5-1-codex-and-gpt-5-1-codex-mini-are-now-in-public-preview-for-github-copilot/",
+      "title": "OpenAI's GPT-5.1, GPT-5.1-Codex and GPT-5.1-Codex-Mini are now in public preview for GitHub Copilot",
+      "kind": "host"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/gpt-5-1-codex-mini",
+      "title": "GPT-5.1 Codex mini (high) - Intelligence, Performance & Price Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (272,000) conflicts with OpenAI's own model-card page and Azure's catalog, both of which state a 400,000-token context window; kept the catalog's value per instructions. Endpoints (Responses API only) and modality (text+image in, text out) match the catalog. Azure's Foundry catalog still lists the model as 'Generally Available' as of this research, which conflicts with OpenAI's own deprecations page (July 23, 2026 shutdown, already past as of 2026-09-24) and Artificial Analysis's 'deprecated' label -- flagging the inconsistency rather than resolving it. Catalog's deprecation_date (2027-05-15) is about 10 months later than the July 23, 2026 shutdown date OpenAI's own deprecations page lists for this exact model id."
+}

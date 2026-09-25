@@ -1,0 +1,75 @@
+{
+  "slug": "glm-5",
+  "canonical": "glm-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5 is Z.ai's (Zhipu AI) frontier-class general-purpose large language model, released February 11, 2026. It is a Mixture-of-Experts model with 744 billion total parameters and 40 billion active parameters per token, trained on 28.5 trillion tokens, and uses DeepSeek Sparse Attention to cut deployment cost while preserving long-context capacity. It is built for complex systems engineering, multi-step reasoning, math, advanced coding, and tool-augmented agentic workflows, with a 200K-token context window and up to 128K tokens of output. It is released under the MIT license.",
+    "advantages": [
+      "Scores 77.8% on SWE-bench Verified (Z.ai GLM-5 model card).",
+      "Scores 86.0 on GPQA-Diamond (Z.ai GLM-5 model card).",
+      "Scores 92.7 on AIME 2026 I (Z.ai GLM-5 model card).",
+      "Scores 50.4 on Humanity's Last Exam with tools (Z.ai GLM-5 model card).",
+      "Uses DeepSeek Sparse Attention to reduce deployment cost while preserving long-context capacity (Z.ai GLM-5 model card).",
+      "Released under the permissive MIT license (Z.ai GLM-5 model card)."
+    ],
+    "disadvantages": [
+      "Text-only: no image or audio input or output support."
+    ],
+    "use_cases": [
+      "Complex systems engineering and software development",
+      "Long-horizon agentic and tool-augmented workflows",
+      "Advanced coding and software engineering tasks",
+      "Mathematical and multi-step reasoning",
+      "Enterprise applications requiring long context"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 77.8,
+        "source": "https://huggingface.co/zai-org/GLM-5-FP8"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 86.0,
+        "source": "https://huggingface.co/zai-org/GLM-5-FP8"
+      },
+      {
+        "name": "AIME 2026 I",
+        "score": 92.7,
+        "source": "https://huggingface.co/zai-org/GLM-5-FP8"
+      },
+      {
+        "name": "Humanity's Last Exam (with tools)",
+        "score": 50.4,
+        "source": "https://huggingface.co/zai-org/GLM-5-FP8"
+      }
+    ],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://huggingface.co/zai-org/GLM-5-FP8",
+    "github_url": "https://github.com/zai-org/GLM-5"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/zai-org/GLM-5-FP8",
+      "title": "zai-org/GLM-5-FP8 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-zai-glm-5.html",
+      "title": "GLM 5 - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5",
+      "title": "GLM-5 | Z.ai Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Confirmed this target is the original GLM-5 (launched Feb 11, 2026), not the later GLM-5.2 (June 2026) or GLM-5.3 (Aug 2026) point releases, by matching the Bedrock model card's Feb 11, 2026 launch date and 200K/128K context/output figures against the catalog facts (both match exactly). Z.ai's newer GLM-5.2 and GLM-5.3 exist but are not what this target's URIs (zai.glm-5) reference. Verify pass: opened Z.ai's own current docs page (docs.z.ai/guides/llm/glm-5), which was unavailable to the researcher; it independently confirms the 744B/40B parameter counts, 200K/128K context/output window, and 77.8 SWE-bench Verified score, and lists no deprecation of GLM-5 despite the newer 5.1/5.2/5.3 releases. All other claims (GPQA Diamond, AIME 2026 I, HLE, DeepSeek Sparse Attention, MIT license, languages) checked against the Hugging Face model card and Bedrock model card and confirmed accurate; github.com/zai-org/GLM-5 confirmed to exist and cover the GLM-5 family."
+}

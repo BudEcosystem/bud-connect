@@ -1,0 +1,40 @@
+{
+  "slug": "openhermes-2p5-mistral-7b",
+  "canonical": "openhermes-2p5-mistral-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Teknium",
+  "details": {
+    "description": "OpenHermes-2.5-Mistral-7B is a 7-billion-parameter chat model created by Teknium, fine-tuned from Mistral-7B-v0.1 and described on its model card as \"a continuation of OpenHermes 2\". It was trained on roughly 1 million entries of primarily GPT-4-generated instruction data plus curated open-source datasets, with 7-14% of that data focused on code, which the card says unexpectedly improved several non-code benchmark scores too. It uses ChatML-formatted multi-turn conversations compatible with the OpenAI chat-endpoint structure and is licensed under Apache 2.0.",
+    "advantages": [
+      "Scores 73.12 average on the GPT4All benchmark suite, per the model card.",
+      "Scores 50.7% pass@1 on HumanEval, per the model card.",
+      "Adding roughly 7-14% code-instruction data to training unexpectedly improved several non-code benchmark scores, per the model card."
+    ],
+    "disadvantages": [
+      "The model card lists English as the only supported language."
+    ],
+    "use_cases": [
+      "Multi-turn conversational chat",
+      "Coding assistance",
+      "Creative writing",
+      "Roleplay"
+    ],
+    "evaluations": [
+      {"name": "GPT4All benchmark suite average", "score": 73.12, "source": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B"},
+      {"name": "AGIEval average", "score": 43.07, "source": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B"},
+      {"name": "BigBench average", "score": 40.96, "source": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B"},
+      {"name": "TruthfulQA (mc2)", "score": 53.04, "source": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B"},
+      {"name": "HumanEval pass@1", "score": 50.7, "source": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B", "title": "teknium/OpenHermes-2.5-Mistral-7B · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/openhermes-2p5-mistral-7b", "title": "OpenHermes 2.5 Mistral 7B - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Fireworks' page confirms the mapping to teknium/OpenHermes-2.5-Mistral-7B and matches the catalog's 32768-token max_input/max_output (Fireworks states 32.7k). No mention on the model card of this model being superseded or deprecated."
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "tts-1-hd-1106",
+  "canonical": "tts-1-hd-1106",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "tts-1-hd-1106 is OpenAI's November 6, 2023 dated snapshot of tts-1-hd, a text-to-speech model that converts text into natural-sounding spoken audio and is optimized for higher audio quality rather than the lowest possible latency. OpenAI describes tts-1-hd as trading latency for quality compared to its faster tts-1 sibling. It offers nine built-in voices (alloy, ash, coral, echo, fable, onyx, nova, sage, and shimmer) that OpenAI notes are currently optimized for English, and OpenAI's own documentation states the underlying model covers the same language range as its Whisper speech models. OpenAI's current guides now point developers toward the newer gpt-4o-mini-tts model for applications needing more reliability and voice-style control.",
+    "advantages": [
+      "OpenAI states tts-1-hd produces higher audio quality than the faster tts-1 model.",
+      "Offers nine built-in voices (alloy, ash, coral, echo, fable, onyx, nova, sage, shimmer) with no separate voice-cloning step required.",
+      "Supports real-time audio streaming of generated speech using chunked transfer encoding."
+    ],
+    "disadvantages": [
+      "OpenAI states tts-1-hd has higher latency than the tts-1 model.",
+      "Voices are, per OpenAI's own documentation, currently optimized for English even though the model can generate speech in other languages.",
+      "OpenAI's current guidance recommends the newer gpt-4o-mini-tts model instead for applications needing more reliability and voice-style control."
+    ],
+    "use_cases": [
+      "Generating higher-quality spoken audio from text where latency is less critical than fidelity",
+      "Reading text aloud using one of nine built-in voices",
+      "Streaming synthesized speech as it is generated via chunked transfer encoding"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/tts-1-hd",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/tts-1-hd", "title": "tts-1-hd - OpenAI API models", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/text-to-speech", "title": "Text to speech - OpenAI API guide", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/pricing", "title": "Pricing - OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations - OpenAI API", "kind": "maker"},
+    {"url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json", "title": "LiteLLM model_prices_and_context_window.json", "kind": "third_party"}
+  ],
+  "notes": "OpenAI's current model and pricing pages document the base alias tts-1-hd (no separate page exists for the tts-1-hd-1106 dated snapshot itself, and it is not listed on OpenAI's deprecations page as retired). The LiteLLM community pricing file confirms tts-1-hd-1106 exists as a distinct OpenAI model id, priced identically to tts-1-hd ($30/1M characters) with the same audio_speech endpoint, consistent with it being tts-1-hd's November 6, 2023 (DevDay) pinned snapshot; description above is written from tts-1-hd's current documentation on that basis. Bud's catalog lists no deprecation date, matching that tts-1-hd does not appear on OpenAI's deprecations page, though tts-1-hd is also no longer shown on OpenAI's current top-level models list, which now features gpt-4o-mini-tts as the featured TTS model."
+}

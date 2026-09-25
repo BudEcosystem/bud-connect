@@ -1,0 +1,47 @@
+{
+  "slug": "gpt-4o-audio-preview",
+  "canonical": "gpt-4o-audio-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o Audio Preview is a preview release of OpenAI's GPT-4o model family that accepts both text and audio inputs and can generate both text and audio outputs, used through the Chat Completions API. The specific snapshot in this catalog entry, gpt-4o-audio-preview-2025-06-03, is listed by OpenAI as Deprecated on its own model documentation page, and the underlying gpt-4o-audio-preview alias appears on OpenAI's deprecations page with a recommended replacement of gpt-audio-1.5.",
+    "advantages": [
+      "Accepts and generates both text and audio in a single Chat Completions request, per OpenAI's model documentation."
+    ],
+    "disadvantages": [
+      "OpenAI's model page lists the gpt-4o-audio-preview-2025-06-03 snapshot as Deprecated, and OpenAI's deprecations page recommends migrating to gpt-audio-1.5.",
+      "OpenAI classifies this as a preview model, and states that preview models 'may be retired with much shorter notice, such as 2 weeks,' naming gpt-4o-audio-preview as an example.",
+      "Does not support fine-tuning, structured outputs or predicted outputs, per OpenAI's model page.",
+      "Knowledge cutoff of October 1, 2023, per OpenAI's model page.",
+      "No image input or output support, per OpenAI's model page."
+    ],
+    "use_cases": [
+      "Adding audio input or output to an existing Chat Completions application, which OpenAI's audio guide categorizes as a bounded multimodal chat request rather than a realtime conversational agent.",
+      "Applications combining spoken audio understanding with text-based reasoning in one call"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-audio-preview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o-audio-preview",
+      "title": "GPT-4o Audio Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/audio",
+      "title": "Audio and voice | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (128K input / 16,384 output tokens, audio_input/audio_output modality, /v1/chat/completions endpoint) match OpenAI's model page exactly. Discrepancy worth flagging: the catalog's deprecation_date fact is 2027-01-20, but OpenAI's deprecations page lists a 2026-05-07 shutdown date for the gpt-4o-audio-preview alias (replacement gpt-audio-1.5), which is already in the past relative to today's research date (2026-09-24); OpenAI's own model page still marks the exact 2025-06-03 snapshot 'Deprecated' rather than removed, so kept the catalog's date as instructed but noted the conflict since it affects whether this model is still callable."
+}

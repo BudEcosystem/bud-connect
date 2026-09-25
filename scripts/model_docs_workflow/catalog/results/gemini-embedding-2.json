@@ -1,0 +1,41 @@
+{
+  "slug": "gemini-embedding-2",
+  "canonical": "gemini-embedding-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini Embedding 2 is Google's first natively multimodal embedding model, built on the Gemini foundation model to map text, images, video, audio and PDF documents into a single, unified embedding space rather than pairing separate encoders per modality. It is generally available through the Gemini API, accepts up to 8,192 input tokens per request, and produces normalized vectors of up to 3,072 dimensions that can be truncated to smaller sizes (e.g. 768 or 1,536) via Matryoshka Representation Learning. Google describes its multilingual understanding as covering over 100 languages.",
+    "advantages": [
+      "Scores 69.9 on the MTEB Multilingual benchmark and 84.0 on MTEB Code, per Google DeepMind's model page.",
+      "Accepts multimodal input (text, images, video, audio, PDF) into one shared embedding space rather than requiring separate encoders per modality.",
+      "Supports flexible output dimensions from 128 to 3,072 via Matryoshka Representation Learning, avoiding the need for a separate model per size.",
+      "Supports custom task instructions to optimize embeddings for a specific retrieval or similarity goal."
+    ],
+    "disadvantages": [
+      "Input is capped at 8,192 tokens per request.",
+      "Per-request multimodal input is limited to 6 images, 120 seconds of video, 180 seconds of audio, and 6 pages of PDF."
+    ],
+    "use_cases": [
+      "Cross-modal semantic search",
+      "Document and multimodal retrieval",
+      "Recommendation systems requiring fast similarity search over large multimodal datasets"
+    ],
+    "evaluations": [
+      {"name": "MTEB Multilingual", "score": 69.9, "source": "https://deepmind.google/models/gemini/embedding/"},
+      {"name": "MTEB Code", "score": 84.0, "source": "https://deepmind.google/models/gemini/embedding/"}
+    ],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2", "title": "Gemini Embedding 2 model | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://deepmind.google/models/gemini/embedding/", "title": "Gemini Embedding 2 — Google DeepMind", "kind": "maker"},
+    {"url": "https://developers.googleblog.com/building-with-gemini-embedding-2/", "title": "Building with Gemini Embedding 2: Agentic multimodal RAG and beyond", "kind": "maker"},
+    {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/", "title": "Gemini Embedding 2: Our first natively multimodal embedding model", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/embeddings", "title": "Embeddings | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog's 8,192-token input limit matches the sources exactly. The catalog's modality list includes audio_input, image_input and text_output; the sources confirm audio/image/video/PDF input but describe the model's output as an embedding vector, not text — likely a generic label in Bud's shared modality taxonomy rather than a real disagreement. Language support is described only as 'over 100 languages' on every page opened, with no enumerated list, so the languages field was left empty per the brief's guidance for count-only claims. Added blog.google's launch post (title verbatim matches the 'first natively multimodal embedding model' description claim, and confirms per-request caps and 'built on the Gemini architecture') and ai.google.dev/gemini-api/docs/embeddings (confirms output vectors, including truncated ones, are normalized, and confirms task-instruction support) as sources, since the description and advantages relied on facts not present on the three originally cited pages. MTEB Multilingual 69.9 and MTEB Code 84.0 were independently corroborated in the Google/Gemini team paper arXiv:2605.27295 ('Gemini Embedding 2: A Native Multimodal Embedding Model from Gemini'), confirming the scores are for gemini-embedding-2 and not an older embedding model on the shared DeepMind page."
+}

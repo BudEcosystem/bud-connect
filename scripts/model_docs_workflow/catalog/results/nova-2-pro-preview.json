@@ -1,0 +1,11 @@
+{
+  "slug": "nova-2-pro-preview",
+  "canonical": "nova-2-pro-preview",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find any maker or host page describing a model named 'Nova 2 Pro' or 'Nova 2 Pro Preview'. AWS Bedrock's model-card index (model-cards-amazon.html), the Nova 2 core-inference model-ID table, the Nova 2 'what's new' and 'what is Nova 2' pages, the Bedrock regional-availability page, and the Bedrock pricing page all list only Nova 2 Lite, Nova 2 Sonic and (Nova) Multimodal Embeddings in the Nova 2 family -- no Nova 2 Pro. Guessed Bedrock model-card URLs for Nova 2 Pro and Nova 2 Pro Preview returned no content, and a guessed AWS 'what's new' announcement URL 404'd. WebSearch was unavailable for this batch (session search budget exhausted), so I could not search further; leaving this as insufficient_sources rather than describing the older Nova Pro (v1) model, which is a different, non-preview model with a different model ID."
+}

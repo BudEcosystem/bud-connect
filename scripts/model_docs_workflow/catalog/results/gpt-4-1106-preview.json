@@ -1,0 +1,58 @@
+{
+  "slug": "gpt-4-1106-preview",
+  "canonical": "gpt-4-1106-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-4-1106-preview is the first GPT-4 Turbo preview snapshot, announced at OpenAI's DevDay in November 2023. It introduced a 128K-token context window (expanded from GPT-4's original 8K), a JSON mode for structurally valid output, parallel function calling, and a seed parameter for more reproducible outputs; OpenAI described its knowledge of world events as current to April 2023. OpenAI's deprecations page currently schedules this snapshot for shutdown on October 23, 2026, recommending gpt-5.6-sol as the replacement (a since-superseded September 2025 notice had set an earlier March 26, 2026 date); Azure's current GPT-4 documentation already treats the GA gpt-4 (turbo-2024-04-09) release as the replacement for all 2023-era GPT-4 preview snapshots, including this one.",
+    "advantages": [
+      "Introduced JSON mode, giving structurally valid output for data pipelines where earlier GPT-4 versions could produce parsing failures.",
+      "Expanded the context window from GPT-4's original 8K tokens to 128K tokens at launch.",
+      "Added a seed parameter for more reproducible, deterministic outputs, alongside parallel function calling."
+    ],
+    "disadvantages": [
+      "Scheduled for shutdown by OpenAI on October 23, 2026, per OpenAI's deprecations page, which recommends gpt-5.6-sol as the replacement.",
+      "Azure's current GPT-4 documentation lists the GA gpt-4 (turbo-2024-04-09) release as the replacement for all previous GPT-4 preview models, including this one.",
+      "OpenAI's own November 2023 announcement described this model's knowledge of world events as current only to April 2023."
+    ],
+    "use_cases": [
+      "Chat and text-generation tasks requiring a 128K-token context window",
+      "Structured/JSON-formatted output for data pipelines",
+      "Applications needing reproducible outputs via the seed parameter, e.g. regression testing"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview",
+      "title": "GPT-4 Turbo Preview Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://telnyx.com/llm-library/gpt-4-1106-preview",
+      "title": "GPT-4 1106 Preview -- A review of performance and quality",
+      "kind": "third_party"
+    },
+    {
+      "url": "https://community.openai.com/t/data-cutoff-date-in-1106-models/513443",
+      "title": "Data cutoff date in 1106 models - OpenAI Developer Community",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's deprecation_date of 2026-10-23 for this target matches OpenAI's own deprecations page: a 2026-04-22 dated entry lists gpt-4-1106-preview's shutdown as October 23, 2026 (replacement gpt-5.6-sol). That entry supersedes an earlier 2025-09-26 dated entry on the same page, which had set a March 26, 2026 shutdown (replacement 'gpt-5 or gpt-4.1'); the page keeps both as a changelog, newest first, so October 23, 2026 is the current figure and it agrees with the catalog -- no mismatch remains. Grouped azure/openai URIs both refer to the same OpenAI-authored 1106 preview snapshot, so treated as one model. Could not reach openai.com's original November 2023 DevDay post directly (403 on fetch); its 'knowledge to April 2023' line is corroborated via a quote reproduced in the linked OpenAI community-forum thread."
+}

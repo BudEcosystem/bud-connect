@@ -1,0 +1,58 @@
+{
+  "slug": "deepseek-coder-v2-lite-base",
+  "canonical": "deepseek-coder-v2-lite-base",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-Coder-V2-Lite-Base is the pretrained (non-instruction-tuned) checkpoint in DeepSeek's DeepSeek-Coder-V2 family of code-focused models, from DeepSeek AI. It is a 16-billion-parameter Mixture-of-Experts model with 2.4 billion active parameters per forward pass, built by further pretraining an intermediate DeepSeek-V2 checkpoint on 6 trillion additional tokens of code- and math-heavy data, per DeepSeek's GitHub repository. It supports 338 programming languages, up from 86 in the original DeepSeek-Coder, and a 128,000-token context window per DeepSeek's documentation. As a base checkpoint it has not been instruction-tuned, so it is intended for continued pretraining, fine-tuning or raw completion rather than following chat instructions directly.",
+    "advantages": [
+      "Supports 338 programming languages, expanded from 86 in the original DeepSeek-Coder, per DeepSeek's GitHub repository.",
+      "Uses a sparse Mixture-of-Experts architecture with only 2.4 billion active parameters out of 16 billion total, per DeepSeek's Hugging Face model card.",
+      "Trained with 6 trillion additional tokens of continued pretraining from an intermediate DeepSeek-V2 checkpoint, per DeepSeek's GitHub repository."
+    ],
+    "disadvantages": [
+      "This is the base (pretrained) checkpoint, not instruction-tuned, so it is not designed to follow chat instructions directly.",
+      "DeepSeek's GitHub repository publishes math and general-reasoning benchmark numbers (HumanEval, MBPP+, GSM8K, MATH, LiveCodeBench) only for the instruction-tuned Lite-Instruct variant, not this base checkpoint."
+    ],
+    "use_cases": [
+      "Continued pretraining or fine-tuning for downstream code models.",
+      "Raw code and text completion.",
+      "Base checkpoint for building instruction-tuned or task-specific coding models."
+    ],
+    "evaluations": [
+      {
+        "name": "RepoBench (Python)",
+        "score": 38.9,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "RepoBench (Java)",
+        "score": 43.3,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "HumanEval FIM",
+        "score": 86.4,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Lite-Base",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Lite-Base",
+      "title": "deepseek-ai/DeepSeek-Coder-V2-Lite-Base · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+      "title": "deepseek-ai/DeepSeek-Coder-V2 - GitHub",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens and max_output_tokens (163,840, identical for both) exceed DeepSeek's documented native context of 128,000 tokens; kept per catalog facts as instructed. Correction: DeepSeek's GitHub repository does publish base-checkpoint benchmark numbers -- a 'Code Completion' table (section 3.2) reports RepoBench (Python) 38.9, RepoBench (Java) 43.3 and HumanEval FIM 86.4 specifically for DeepSeek-Coder-V2-Lite-Base, now added to evaluations. Only the math/general-reasoning tables (HumanEval, MBPP+, GSM8K, MATH, LiveCodeBench, AIME) are Lite-Instruct-only."
+}

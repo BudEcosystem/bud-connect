@@ -1,0 +1,59 @@
+{
+  "slug": "uae-large-v1",
+  "canonical": "uae-large-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "WhereIsAI",
+  "details": {
+    "description": "UAE-Large-V1 (\"Universal AnglE Embedding\") is a BERT-based English text embedding model from WhereIsAI, released in December 2023 and trained with the angle-optimized (AnglE) loss described in the paper \"AnglE-optimized Text Embeddings\" (accepted at ACL 2024). It has a hidden size of 1024 and a maximum input length of 512 tokens, matching the catalog's limits, and uses CLS-token pooling. It is intended for semantic textual similarity, feature extraction and retrieval; for retrieval queries WhereIsAI recommends prefixing text with its built-in \"Prompts.C\" prompt, used for queries only and not for documents.",
+    "advantages": [
+      "WhereIsAI reported an average score of 64.64 on the MTEB Leaderboard, describing it as state-of-the-art at its December 2023 release.",
+      "Released under the MIT license, per WhereIsAI's model card."
+    ],
+    "disadvantages": [
+      "Limited to a 512-token maximum input length, per the model's configuration.",
+      "Documented and trained for English only, per WhereIsAI's model card."
+    ],
+    "use_cases": [
+      "Semantic textual similarity scoring",
+      "Feature extraction and retrieval embeddings for search and RAG pipelines",
+      "General-purpose sentence embeddings for non-retrieval similarity comparisons"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB (average)",
+        "score": 64.64,
+        "source": "https://huggingface.co/WhereIsAI/UAE-Large-V1"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/WhereIsAI/UAE-Large-V1",
+    "github_url": "https://github.com/SeanLee97/AnglE"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/WhereIsAI/UAE-Large-V1",
+      "title": "WhereIsAI/UAE-Large-V1 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/WhereIsAI/UAE-Large-V1/raw/main/README.md",
+      "title": "UAE-Large-V1 README",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/WhereIsAI/UAE-Large-V1/resolve/main/config.json",
+      "title": "UAE-Large-V1 config.json",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/SeanLee97/AnglE",
+      "title": "SeanLee97/AnglE: Angle-optimized Text Embeddings",
+      "kind": "maker"
+    }
+  ],
+  "notes": "MTEB 64.64 average and \"SOTA\" framing are dated to the model's December 2023 release on WhereIsAI's own model card; no fresher leaderboard snapshot was opened, so this is reported as WhereIsAI's claim rather than a current ranking. Catalog's 512-token max_input_tokens matches config.json's max_position_embeddings; hidden_size (1024) is the embedding dimension. github_url points to the AnglE training/inference library that WhereIsAI's own model card documents as the way to run this model, not a UAE-Large-V1-specific repo."
+}

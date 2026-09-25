@@ -1,0 +1,42 @@
+{
+  "slug": "minimax-m2.7",
+  "canonical": "minimax-m2.7",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax-M2.7 is MiniMax's 229-billion-parameter text model built for software engineering and long-horizon agentic work, including multi-agent collaboration and tool use through external scaffolding. MiniMax describes it as its first model to have deeply participated in its own development, running over 100 autonomous optimization rounds during training that it says produced a 30% improvement on internal programming benchmarks. It also targets office-productivity editing (Word, Excel, PowerPoint) and reports strong identity and emotional-intelligence consistency for character-driven applications. MiniMax has since released MiniMax M3 as its newer flagship text model, though M2.7 remains generally available alongside it.",
+    "advantages": [
+      "Scores 56.2% on SWE-Bench Pro, per MiniMax's model card.",
+      "Scores 76.5% on SWE Multilingual, per MiniMax's model card.",
+      "Achieves a 66.6% medal rate on MLE-Bench Lite, which MiniMax's site says ranks second only to Claude Opus 4.6 and GPT-5.4.",
+      "Scores 55.6% on VIBE-Pro end-to-end project delivery, per MiniMax's model card.",
+      "Supports automatic prompt caching and a faster 'M2.7-highspeed' API variant that MiniMax says returns identical results."
+    ],
+    "disadvantages": [
+      "Superseded as MiniMax's flagship text model by MiniMax M3, which MiniMax's site lists as its newer, top-tier coding and multimodal model."
+    ],
+    "use_cases": [
+      "Software engineering: end-to-end project delivery, debugging, refactoring and code security review",
+      "Multi-agent, tool-using agentic workflows",
+      "Office document editing (Word, Excel, PowerPoint)",
+      "Character-driven and emotionally consistent conversational applications"
+    ],
+    "evaluations": [
+      {"name": "SWE-Bench Pro", "score": 56.2, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"},
+      {"name": "SWE Multilingual", "score": 76.5, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"},
+      {"name": "MLE-Bench Lite", "score": 66.6, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"},
+      {"name": "VIBE-Pro", "score": 55.6, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"},
+      {"name": "Terminal-Bench 2", "score": 57.0, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"}
+    ],
+    "languages": [],
+    "website_url": "https://www.minimax.io/models/text/m27",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.minimax.io/models/text/m27", "title": "MiniMax M2.7", "kind": "maker"},
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7", "title": "MiniMaxAI/MiniMax-M2.7 · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens is 196,608; MiniMax's own pages did not state a context figure and Together AI's listing showed a conflicting 228,700, so the catalog's value was kept per instructions. Together AI's model listing page showed the model marked 'Launching soon', but MiniMax's own site lists M2.7 as generally available now (alongside the newer M3) and the catalog's own facts already show it routed live through together_ai, so 'Launching soon' looks like a stale cache on that one page and was not used. SWE Multilingual is a multi-language coding-accuracy benchmark, not a spoken-language list, so `languages` was left empty per the brief (no explicit spoken-language list was found)."
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "eleven_v3",
+  "canonical": "eleven_v3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "ElevenLabs",
+  "details": {
+    "description": "Eleven v3 is ElevenLabs' most expressive text-to-speech model, launched in alpha in June 2025 and made generally available in February 2026, built to produce emotionally nuanced, reactive speech rather than flat narration. It reads inline audio tags such as [whispers], [laughs], and [excited] for emotional and non-verbal delivery, offers a Text to Dialogue mode that blends multiple speakers with matched prosody, and supports 70+ languages. ElevenLabs positions it for long-form, scripted content such as audiobooks, film, and game dialogue rather than real-time conversation.",
+    "advantages": [
+      "Reads inline audio tags such as [whispers], [laughs], and [excited] to control emotional and non-verbal delivery within the script.",
+      "Text to Dialogue endpoint accepts structured multi-speaker input and automatically manages transitions and emotional shifts between speakers.",
+      "Supports 70+ languages with native IPA transcription for pronunciation control without extra XML tags.",
+      "Scores an Elo of 1167 (rank #17) on Artificial Analysis's Provider Voice speech arena leaderboard."
+    ],
+    "disadvantages": [
+      "Not recommended for real-time or conversational use because of higher latency; ElevenLabs' current model guide recommends its Flash models (~75ms latency) or the eleven_v3_conversational model (~280ms latency) for those cases instead.",
+      "Limited to 5,000 characters per request, about 5 minutes of audio.",
+      "Professional Voice Clones are not fully optimized for v3 during this research preview stage; ElevenLabs recommends Instant Voice Clones instead."
+    ],
+    "use_cases": [
+      "Audiobook narration with multiple emotionally distinct characters.",
+      "Film, game, and video voiceover requiring dramatic or reactive delivery.",
+      "Multi-speaker dialogue scenes via the Text to Dialogue endpoint."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Afrikaans", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Belarusian", "Bengali", "Bosnian",
+      "Bulgarian", "Catalan", "Cebuano", "Chichewa", "Croatian", "Czech", "Danish", "Dutch", "English",
+      "Estonian", "Filipino", "Finnish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati",
+      "Hausa", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Irish", "Italian", "Japanese",
+      "Javanese", "Kannada", "Kazakh", "Kirghiz", "Korean", "Latvian", "Lingala", "Lithuanian",
+      "Luxembourgish", "Macedonian", "Malay", "Malayalam", "Mandarin Chinese", "Marathi", "Nepali",
+      "Norwegian", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Romanian", "Russian",
+      "Serbian", "Sindhi", "Slovak", "Slovenian", "Somali", "Spanish", "Swahili", "Swedish", "Tamil",
+      "Telugu", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese", "Welsh"
+    ],
+    "website_url": "https://elevenlabs.io/v3",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://elevenlabs.io/blog/eleven-v3", "title": "Eleven v3: Most Expressive AI TTS Model Launched", "kind": "maker"},
+    {"url": "https://elevenlabs.io/blog/eleven-v3-is-now-generally-available", "title": "Eleven v3 is Now Generally Available", "kind": "maker"},
+    {"url": "https://elevenlabs.io/docs/overview/models", "title": "Models | ElevenLabs Documentation", "kind": "maker"},
+    {"url": "https://elevenlabs.io/docs/best-practices/prompting/eleven-v3", "title": "Best practices | ElevenLabs Documentation", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice", "title": "Text to Speech Leaderboard - Top AI Speech Models | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "ElevenLabs' docs list 74 named languages (rounded to '70+'); I listed them all. The Artificial Analysis leaderboard is a live ranking so the #17/1167 figure will drift over time; it was current as of the research date, and is stated only in advantages (an Elo rating is not an accuracy score, so it does not belong in evaluations). A prior draft called this model an alpha release and recommended v2.5 Turbo/Flash for real-time use; ElevenLabs' own blog confirms v3 left alpha and became generally available on 2026-02-02, and its current model guide (docs/overview/models) recommends Flash models or the new eleven_v3_conversational model for real-time use instead, so both have been corrected. The 'education and accessibility' use case in a prior draft was dropped because it reflects general ElevenLabs company positioning, not a use case documented specifically for the v3 model."
+}

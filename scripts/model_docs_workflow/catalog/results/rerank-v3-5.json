@@ -1,0 +1,35 @@
+{
+  "slug": "rerank-v3-5",
+  "canonical": "rerank-v3-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cohere",
+  "details": {
+    "description": "Rerank 3.5 is Cohere's semantic reranking model, offered as a single multilingual model rather than separate English and multilingual variants. Given a query and a list of documents, it reorders the documents from most to least semantically relevant, and can rerank plain text, semi-structured data, and JSON documents. Cohere's documentation states it supports the languages covered by its embed-multilingual-v3.0 model, described elsewhere as over 100 languages. On Amazon Bedrock it is available as cohere.rerank-v3-5:0.",
+    "advantages": [
+      "Uses a single multilingual model rather than separate English and multilingual variants, per Cohere's documentation.",
+      "Reranks semi-structured data and JSON documents in addition to plain text, per Cohere's documentation."
+    ],
+    "disadvantages": [
+      "Cohere also offers newer rerank-v4.0-pro and rerank-v4.0-fast models alongside rerank-v3.5."
+    ],
+    "use_cases": [
+      "Reordering search or retrieval results by relevance to a query.",
+      "Improving retrieval-augmented generation (RAG) pipelines by reranking retrieved passages before they reach the generation model.",
+      "Reranking semi-structured or JSON records alongside plain-text documents."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.cohere.com/docs/rerank-overview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cohere.com/docs/rerank-overview", "title": "Reranking Overview", "kind": "maker"},
+    {"url": "https://docs.cohere.com/docs/rerank-2", "title": "Rerank Models", "kind": "maker"},
+    {"url": "https://docs.cohere.com/docs/rerank", "title": "Rerank", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank-supported.html", "title": "Supported Regions and models for reranking in Amazon Bedrock", "kind": "host"},
+    {"url": "https://cohere.com/rerank", "title": "Rerank", "kind": "maker"}
+  ],
+  "notes": "Cohere's own docs (docs.cohere.com/docs/rerank-2) give rerank-v3.5 a 4096-token context length per document with automatic truncation, and recommend under 1,000 documents per request; this differs from the catalog's max_input_tokens/max_output_tokens of 32000, so the catalog value was kept per instructions and the description avoids restating a token limit. Cohere lists rerank-v4.0-pro and rerank-v4.0-fast as newer models alongside rerank-v3.5, but no source marked v3.5 deprecated or legacy, so it is described as current."
+}

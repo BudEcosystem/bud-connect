@@ -1,0 +1,64 @@
+{
+  "slug": "voxtral-mini-transcribe-realtime-latest",
+  "canonical": "voxtral-mini-transcribe-realtime-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Realtime is Mistral AI's speech-to-text model built for live, streaming transcription, released February 4, 2026 as the streaming counterpart to the batch-oriented Voxtral Mini Transcribe 2. It is a 4-billion-parameter model that Mistral says runs efficiently enough for edge deployment, with transcription delay configurable from sub-200ms (for voice agents) up to about 2.4 seconds (for subtitling). Mistral's own model card lists 'voxtral-mini-realtime-latest' as the alias that currently resolves to the dated release 'voxtral-mini-transcribe-realtime-2602'.",
+    "advantages": [
+      "Mistral reports transcription support in 13 languages: English, Chinese, Hindi, Spanish, Arabic, French, Portuguese, Russian, German, Japanese, Korean, Italian, and Dutch (Mistral AI, \"Voxtral transcribes at the speed of sound\").",
+      "Delay is configurable down to sub-200ms for latency-sensitive applications such as voice agents (Mistral AI, \"Voxtral transcribes at the speed of sound\").",
+      "Mistral reports the model stays within 1-2% word error rate when run at a 480ms delay setting (Mistral AI, \"Voxtral transcribes at the speed of sound\").",
+      "Runs on a 4-billion-parameter footprint that Mistral describes as efficient enough for edge deployment (Mistral AI, \"Voxtral transcribes at the speed of sound\").",
+      "Released as open weights under the Apache 2.0 license on Hugging Face (Mistral AI, \"Voxtral transcribes at the speed of sound\")."
+    ],
+    "disadvantages": [
+      "Mistral's own audio capabilities documentation states real-time transcription is not compatible with the `diarize` (speaker-labeling) parameter (Mistral AI Capabilities: Audio).",
+      "Documented for 13 languages, a defined list rather than broad open-ended coverage (Mistral AI, \"Voxtral transcribes at the speed of sound\")."
+    ],
+    "use_cases": [
+      "Live, streaming voice transcription for voice agents and contact-center automation",
+      "Real-time subtitling or captioning when run at a higher-latency setting",
+      "Edge or on-device deployment for latency- or privacy-sensitive live transcription",
+      "Feeding a live transcript into an LLM as part of a voice-to-voice pipeline"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese",
+      "Hindi",
+      "Spanish",
+      "Arabic",
+      "French",
+      "Portuguese",
+      "Russian",
+      "German",
+      "Japanese",
+      "Korean",
+      "Italian",
+      "Dutch"
+    ],
+    "website_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-26-02",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-26-02",
+      "title": "Voxtral Mini Transcribe Realtime - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/capabilities/audio/",
+      "title": "Audio - Mistral AI Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral-transcribe-2/",
+      "title": "Voxtral transcribes at the speed of sound - Mistral AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "'-latest' alias: the model doc page (docs.mistral.ai/models/voxtral-mini-transcribe-realtime-26-02) lists the dated id 'voxtral-mini-transcribe-realtime-2602' together with the alias 'voxtral-mini-realtime-latest' -- Mistral's own page drops 'transcribe' from that alias, so it does not literally match this catalog entry's slug/uri 'voxtral-mini-transcribe-realtime-latest'; corrected the description to quote the alias as it actually appears on the model card. Diarization conflict: Mistral's launch blog (voxtral-transcribe-2) states 'Both models provide speaker labels with precise timing' for the Transcribe V2 + Realtime family, but the current docs.mistral.ai audio capabilities page explicitly states 'Realtime transcription is not compatible with the diarize parameter' -- kept the docs page's statement (current reference doc) as the disadvantage and flagged the discrepancy here rather than picking one silently. Word-error-rate figures are cited in advantages per the brief (WER is not an eligible 0-100 accuracy metric for the evaluations list), so evaluations is empty. Catalog facts give no max_input_tokens/max_output_tokens for this model and none were found on the maker's pages either, so none were added."
+}

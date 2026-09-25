@@ -1,0 +1,43 @@
+{
+  "slug": "claude-opus-4",
+  "canonical": "claude-opus-4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4 (claude-opus-4-20250514) is Anthropic's flagship model at its May 22, 2025 release, built for sustained, complex work such as long-running coding and agentic tasks. It combines a near-instant response mode with an extended-thinking mode for deeper reasoning, and accepts both text and image input. Anthropic released it under its AI Safety Level 3 (ASL-3) standard. By September 2026 Anthropic lists claude-opus-4-20250514 as Retired on both the Claude API and Amazon Bedrock, recommending Claude Opus 4.8 as the replacement.",
+    "advantages": [
+      "Sustains focus on long-running, multi-step agentic tasks for several hours without degrading, per Anthropic's Claude 4 launch post.",
+      "65% less likely than Claude Sonnet 3.7 to take shortcuts or exploit loopholes when completing tasks, per Anthropic's launch post.",
+      "Supports an extended-thinking mode that can use tools, including web search, during its reasoning process, per Anthropic's launch post.",
+      "Dramatically outperforms prior Claude models on memory tasks when given local file access, creating and maintaining its own memory files, per Anthropic's launch post."
+    ],
+    "disadvantages": [
+      "Retired: Anthropic's model-deprecations page lists claude-opus-4-20250514 as Retired (deprecated April 14, 2026, retired June 15, 2026 on the Claude API), and the Amazon Bedrock legacy model table also marks it Retired, both recommending claude-opus-4-8 as the replacement."
+    ],
+    "use_cases": [
+      "Software engineering: feature implementation, debugging, and refactoring in large codebases",
+      "Long-running autonomous agent workflows spanning many tool calls and several hours",
+      "Graduate-level reasoning and research tasks using extended thinking",
+      "Maintaining task memory across long sessions via local file access, when given file-system tools"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 72.5, "source": "https://www.anthropic.com/news/claude-4"},
+      {"name": "Terminal-bench", "score": 43.2, "source": "https://www.anthropic.com/news/claude-4"},
+      {"name": "GPQA Diamond", "score": 74.9, "source": "https://www.anthropic.com/news/claude-4"},
+      {"name": "MMMLU", "score": 87.4, "source": "https://www.anthropic.com/news/claude-4"},
+      {"name": "MMMU", "score": 73.7, "source": "https://www.anthropic.com/news/claude-4"},
+      {"name": "AIME", "score": 33.9, "source": "https://www.anthropic.com/news/claude-4"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-4",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-4", "title": "Introducing Claude 4", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy", "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier) - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog's facts have no deprecation_date for claude-opus-4, but Anthropic's own docs mark claude-opus-4-20250514 Retired on both the Claude API (retired June 15, 2026) and the Amazon Bedrock legacy model table; a dedicated AWS Bedrock model-card page for it no longer exists (confirmed by direct fetch returning no content), consistent with retirement. The full Claude 4 system-card PDF could not be fetched directly (redirected to a PDF this tool couldn't open); benchmark figures and capability claims are from Anthropic's Claude 4 launch post instead."
+}

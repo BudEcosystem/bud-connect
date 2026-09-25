@@ -1,0 +1,38 @@
+{
+  "slug": "deep-research-preview-04-2026",
+  "canonical": "deep-research-preview-04-2026",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini Deep Research is Google's agentic research model, built on Gemini to autonomously plan, execute and synthesize multi-step research investigations into cited, interactive reports drawn from hundreds of sources. This deep-research-preview-04-2026 release, published in preview on April 21, 2026, updates the original Deep Research agent Google launched in preview in December 2025 and is tuned for speed and efficiency so results can stream back to a client UI as the agent works. It supports collaborative, multi-turn refinement of its research plan, built-in Google Search, URL context and code-execution tools, MCP server integration for external tools, and file search over user-supplied documents.",
+    "advantages": [
+      "Supports iterative, multi-step research using built-in Google Search, URL context and code-execution tools enabled by default, per Google's Deep Research documentation.",
+      "Offers collaborative planning, letting a user refine the agent's research plan across multiple turns before it runs, per Google's Deep Research documentation.",
+      "Integrates with external tools through MCP servers and can search user-supplied files, per Google's Deep Research documentation.",
+      "Tuned for speed and efficiency so its work can stream back to a client UI, per Google's Gemini API models page."
+    ],
+    "disadvantages": [
+      "Preview release, so behavior and availability may change, per Google's Gemini API models page.",
+      "Research tasks run in the background and take several minutes to complete, per Google's Deep Research documentation."
+    ],
+    "use_cases": [
+      "Producing cited, in-depth research reports drawn from hundreds of public web sources",
+      "Multi-step investigative research requiring iterative search and synthesis",
+      "Analyzing user-supplied documents alongside web research via file search",
+      "Agentic workflows that call external tools through MCP servers during research"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/deep-research-preview-04-2026",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/deep-research-preview-04-2026", "title": "Deep Research Preview - Gemini API Models", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deep-research", "title": "Deep Research | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API", "kind": "maker"}
+  ],
+  "notes": "Catalog facts give a 131,072-token input limit and 65,536-token output limit; Google's own model page instead states a 1,048,576-token input context window (output limit matches at 65,536). Catalog's modality list omits image output, but Google's docs describe 'visualization' generation and list 'Images' as an output type alongside cited-report text; kept the catalog's modality and limits as authoritative per instructions. Google's Deep Research documentation states the agent 'is exclusively available using the Interactions API. You cannot access it through generate_content,' which does not match the /v1/chat/completions, /v1/completions and /v1/batch endpoints the catalog lists for it -- noting this for catalog maintainers, not restated in the description. No independently verifiable accuracy-style benchmark score (0-100, higher-better) was found for this specific model, so evaluations is empty."
+}

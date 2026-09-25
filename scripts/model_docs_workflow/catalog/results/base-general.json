@@ -1,0 +1,63 @@
+{
+  "slug": "base-general",
+  "canonical": "base-general",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Base General is the default model in Deepgram's Base tier of speech-to-text models, tuned for everyday audio processing rather than a specific domain. Deepgram's Models & Languages Overview lists Base, together with Enhanced and Nova 1, under \"Legacy Models.\" Unlike the domain-specific Base variants (meeting, phonecall, finance, video), which are English only, Base General supports about twenty languages. It is built on Deepgram's end-to-end deep learning speech recognition architecture.",
+    "advantages": [
+      "Is the default Base-tier model, documented as \"(Default) Optimized for everyday audio processing.\"",
+      "Supports about twenty languages, including Chinese, Dutch, French, German, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese, Russian, Spanish, Swedish and Turkish, unlike the domain-specific Base variants, which are English only.",
+      "Deepgram describes Base-tier models as built on its \"signature end-to-end deep learning speech-to-text model architecture,\" offering \"a solid combination of accuracy and cost effectiveness in some cases.\""
+    ],
+    "disadvantages": [
+      "Deepgram lists the Base tier under \"Legacy Models\" in its Models & Languages Overview.",
+      "Deepgram states its Enhanced-tier \"general\" model is \"likely to be more accurate than any region-specific Base model for the language for which it is enabled.\"",
+      "Deepgram states its Enhanced-tier models \"generally have higher accuracy and better word recognition\" than Base models and \"handle uncommon words significantly better.\""
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio across the model's supported languages."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Chinese",
+      "Danish",
+      "Dutch",
+      "English",
+      "Flemish",
+      "French",
+      "German",
+      "Hindi",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Russian",
+      "Spanish",
+      "Swedish",
+      "Tamasheq",
+      "Turkish",
+      "Ukrainian"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to base-general were found on Deepgram's maker pages, so evaluations is left empty. Languages are as listed in Deepgram's Models & Languages Overview table for `base`/`base-general` (Deepgram lists Dutch and Flemish under the same code `nl`). Legacy status: developers.deepgram.com/docs/model does not use the word, but developers.deepgram.com/docs/models-languages-overview groups Nova (1), Enhanced and Base under a 'Legacy Models' heading. The catalog carries no deprecation_date."
+}

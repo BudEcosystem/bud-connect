@@ -1,0 +1,42 @@
+{
+  "slug": "phi-3-vision-128k-instruct",
+  "canonical": "phi-3-vision-128k-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Microsoft",
+  "details": {
+    "description": "Phi-3-vision-128k-instruct is a 4.2-billion-parameter multimodal model from Microsoft's Phi-3 family that combines an image encoder, connector and projector with the Phi-3 Mini language model so it can reason over combined image-and-text input. Microsoft released it on May 21, 2024, training it on about 500 billion vision-and-text tokens, and built it for general image understanding, optical character recognition, and chart or table analysis in memory- and latency-constrained deployments. Microsoft's Hugging Face listing for the Phi-3 family now also links to the newer Phi-3.5-vision-instruct model.",
+    "advantages": [
+      "Scores 90.8 on ScienceQA, 81.4 on ChartQA, and 80.5 on MMBench, per Microsoft's model card benchmark table.",
+      "Scores 70.9 on TextVQA and 44.5 on MathVista, per the model card, reflecting document/OCR and chart-and-diagram reasoning ability.",
+      "Combines an image encoder with the Phi-3 Mini language model to handle combined image-and-text prompts, per the model card."
+    ],
+    "disadvantages": [
+      "Reduced performance on non-English languages, per the model card.",
+      "Code generation support beyond Python is limited, per the model card.",
+      "Microsoft's Hugging Face page for the Phi-3 family now also links to the newer Phi-3.5-vision-instruct model."
+    ],
+    "use_cases": [
+      "General image understanding and visual question answering",
+      "Optical character recognition (OCR)",
+      "Chart and table analysis",
+      "Multimodal tasks in memory- or latency-constrained deployments"
+    ],
+    "evaluations": [
+      {"name": "ScienceQA", "score": 90.8, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"},
+      {"name": "ChartQA", "score": 81.4, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"},
+      {"name": "MMBench", "score": 80.5, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"},
+      {"name": "TextVQA", "score": 70.9, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"},
+      {"name": "MathVista", "score": 44.5, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"},
+      {"name": "MMMU", "score": 40.4, "source": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct", "title": "microsoft/Phi-3-vision-128k-instruct · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Two conflicts with the catalog facts, kept as authoritative per instructions: (1) catalog max_input_tokens/max_output_tokens is 32064, but Microsoft's model card states a 128,000-token context window -- the description avoids stating either number. (2) catalog modality is text_input/text_output only, but this model's entire purpose per the maker's own card is combined image-and-text (multimodal) input, so the description covers that functional capability (as done for other vision models in this catalog, e.g. firellava-13b, computer-use-preview) while the modality fact itself is left unrestated. Microsoft's page links to the newer Phi-3.5-vision-instruct model but does not explicitly call phi-3-vision-128k-instruct deprecated."
+}

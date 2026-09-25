@@ -1,0 +1,41 @@
+{
+  "slug": "gte-base",
+  "canonical": "gte-base",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba DAMO Academy",
+  "details": {
+    "description": "gte-base (General Text Embeddings, base) is a BERT-based English embedding model from Alibaba's DAMO Academy, trained with multi-stage contrastive learning on large-scale relevance text pairs. It maps text to 768-dimensional embeddings with a 512-token input limit and is built for retrieval, semantic similarity and reranking tasks. Alibaba-NLP has since released gte-base-en-v1.5, an upgraded model in the same family with an 8,192-token context length and a higher MTEB score, making the original gte-base an earlier-generation model.",
+    "advantages": [
+      "Scores 62.39 average across 56 tasks on the MTEB benchmark, per the model's Hugging Face card.",
+      "Scores 84.57 on MTEB Pair Classification and 82.3 on MTEB Semantic Textual Similarity, per the model's Hugging Face card.",
+      "Scores 73.01 on MTEB Classification and 58.61 on MTEB Reranking, per the model's Hugging Face card.",
+      "Compact 0.22GB model size compared to the larger gte-large model in the same family, per the model's Hugging Face card."
+    ],
+    "disadvantages": [
+      "512-token maximum input length; the model card states longer text is truncated to this limit.",
+      "English only; the model card states it 'exclusively caters to English texts.'",
+      "Superseded by Alibaba-NLP's gte-base-en-v1.5, which extends the context length to 8,192 tokens and scores 64.11 on MTEB, per that model's Hugging Face card.",
+      "Lower MTEB Clustering (46.2) and Summarization (31.17) scores than its other MTEB task categories, per the model's Hugging Face card."
+    ],
+    "use_cases": [
+      "Information retrieval and semantic search",
+      "Semantic textual similarity",
+      "Text reranking",
+      "General-purpose English text classification and clustering"
+    ],
+    "evaluations": [
+      {"name": "MTEB", "score": 62.39, "source": "https://huggingface.co/thenlper/gte-base"},
+      {"name": "MTEB Retrieval", "score": 51.14, "source": "https://huggingface.co/thenlper/gte-base"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/thenlper/gte-base",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/thenlper/gte-base", "title": "thenlper/gte-base", "kind": "maker"},
+    {"url": "https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5", "title": "Alibaba-NLP/gte-base-en-v1.5", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens (512) matches the model's Hugging Face card exactly. Noted the newer gte-base-en-v1.5 as a supersession/limitation, but wrote up gte-base itself since that is the model in the catalog's uris. No GitHub repo was confirmed specifically for this model, so github_url is null."
+}

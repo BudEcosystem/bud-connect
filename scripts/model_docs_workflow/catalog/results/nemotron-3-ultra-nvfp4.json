@@ -1,0 +1,43 @@
+{
+  "slug": "nemotron-3-ultra-nvfp4",
+  "canonical": "nemotron-3-ultra-nvfp4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "Nemotron 3 Ultra is the largest model in NVIDIA's Nemotron 3 family, released June 4, 2026 as a mixture-of-experts model with 550 billion total parameters and 55 billion active parameters per token, built on a hybrid Mamba-Transformer architecture with NVIDIA's LatentMoE design and multi-token-prediction layers for native speculative decoding. NVIDIA states it supports up to 1 million tokens of context and targets agentic and reasoning workloads. This catalog entry serves an NVFP4-quantized checkpoint, which NVIDIA describes as 'post-trained and NVFP4 quantized,' alongside its full-precision BF16 release.",
+    "advantages": [
+      "NVIDIA reports on-par accuracy with other state-of-the-art open LLMs across its benchmark suite.",
+      "NVIDIA reports up to 5.9x the inference throughput of GLM-5.1-754B-A40B and 4.8x that of Kimi-K2.6-1T-A32B, measured at matched 8K-input/64K-output token lengths.",
+      "Includes multi-token-prediction (MTP) layers for native speculative decoding and a LatentMoE design NVIDIA says improves accuracy over standard MoE routing.",
+      "An NVFP4-quantized checkpoint is offered alongside the full-precision release, aimed at lower-cost inference."
+    ],
+    "disadvantages": [
+      "A very large model at 550 billion total / 55 billion active parameters, requiring substantial multi-GPU infrastructure to serve even in NVFP4-quantized form.",
+      "NVIDIA's public research pages give only relative throughput comparisons, not specific accuracy benchmark percentages, for this model."
+    ],
+    "use_cases": [
+      "Agentic AI applications requiring long, multi-step reasoning and tool use",
+      "Long-context reasoning tasks",
+      "General-purpose reasoning and knowledge tasks at large model scale"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://research.nvidia.com/labs/nemotron/Nemotron-3-Ultra/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://research.nvidia.com/labs/nemotron/Nemotron-3-Ultra/",
+      "title": "NVIDIA Nemotron 3 Ultra",
+      "kind": "maker"
+    },
+    {
+      "url": "https://research.nvidia.com/labs/nemotron/Nemotron-3/",
+      "title": "NVIDIA Nemotron 3 Family of Models",
+      "kind": "maker"
+    }
+  ],
+  "notes": "NVIDIA's page states Nemotron 3 Ultra supports up to 1,000,000 tokens of context; the catalog's facts list a 262,144-token maximum for this NVFP4-hosted entry, so I kept the catalog's value per instructions rather than the maker's figure. No specific accuracy benchmark numbers (e.g. MMLU, GPQA) were found on the pages I opened, only relative throughput multipliers, so the evaluations list is empty. License was not stated on the pages I opened."
+}

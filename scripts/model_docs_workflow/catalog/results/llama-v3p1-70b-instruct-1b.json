@@ -1,0 +1,17 @@
+{
+  "slug": "llama-v3p1-70b-instruct-1b",
+  "canonical": "llama-v3p1-70b-instruct-1b",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p1-70b-instruct-1b",
+      "title": "Llama 3.1 70B Instruct 1B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks lists 'llama-v3p1-70b-instruct-1b' (accounts/fireworks/models/llama-v3p1-70b-instruct-1b) as a model distinct from their standard 'llama-v3p1-70b-instruct', but neither that page nor Fireworks' general docs explain what the '-1b' suffix means, and the page gives no context-length figure (listed as N/A) or any description of how it differs from the standard model. This catalog entry's facts show only a 4,096-token input/output window, far below the 131,072-token window Meta and Fireworks list for the standard Llama 3.1 70B Instruct model, which suggests this is a different variant or serving configuration, not simply the standard model under another name. I could not find a maker (Meta), host-docs, or third-party page identifying exactly what this variant is, so I'm not confident describing it as the standard Llama 3.1 70B Instruct model and am returning insufficient_sources rather than guess."
+}

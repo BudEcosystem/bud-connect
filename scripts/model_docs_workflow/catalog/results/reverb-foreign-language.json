@@ -1,0 +1,26 @@
+{
+  "slug": "reverb-foreign-language",
+  "canonical": "reverb-foreign-language",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Rev AI",
+  "details": {
+    "description": "Reverb Foreign Language is Rev AI's speech-to-text model for non-English audio, sold alongside the English-only Reverb model on Rev's (Rev.com) pricing page. Rev AI lists its support as \"Spanish, French, Chinese, Portuguese, and 53 more\" languages, for 57 in total. Unlike the English Reverb model, Rev has not published open-source code, model weights, or a model card for this foreign-language model.",
+    "advantages": [
+      "Covers 57 languages, including Spanish, French, Chinese, and Portuguese, in a single transcription product."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Transcribing non-English audio, including Spanish, French, Chinese, and Portuguese, through Rev AI's speech-to-text API."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://www.rev.ai/pricing",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.rev.ai/pricing", "title": "Rev AI Pricing", "kind": "maker"}
+  ],
+  "notes": "Only Rev AI's pricing page names and describes this model directly; it gives price, product name, and a language count (57) with 4 languages named explicitly, so the full language list was left empty per instructions rather than guessed from the general /languages page, which does not tie individual languages to this specific model. No WER benchmark, architecture description, or dedicated model card could be found for this variant, unlike the open-sourced English Reverb model, so evaluations and most detail were left out rather than assumed to match Reverb's English numbers."
+}

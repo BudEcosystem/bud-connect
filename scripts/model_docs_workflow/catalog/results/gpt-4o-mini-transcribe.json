@@ -1,0 +1,48 @@
+{
+  "slug": "gpt-4o-mini-transcribe",
+  "canonical": "gpt-4o-mini-transcribe",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-4o-mini-transcribe is OpenAI's smaller, faster automatic speech recognition model, built on GPT-4o mini as a modern alternative to OpenAI's original Whisper models for converting spoken audio into text. Microsoft's Azure OpenAI Foundry Models documentation still lists the current gpt-4o-mini-transcribe-2025-12-15 snapshot as a preview model, and Azure's December 2025 release notes report that it cuts word error rate on English benchmarks by about 50% versus the prior version while improving multilingual accuracy for Japanese, Indic, and other languages.",
+    "advantages": [
+      "Azure OpenAI reports the December 2025 update cuts word error rate on English benchmarks by about 50% versus the previous version of the model.",
+      "Improves multilingual transcription performance across Japanese, Indic, and other languages, per Microsoft's release notes.",
+      "Reduces hallucinated output during silence by up to 4x compared to the prior version, improving reliability on noisy audio.",
+      "Supports both the standard /v1/audio/transcriptions transcription endpoint and OpenAI's Realtime API."
+    ],
+    "disadvantages": [
+      "Still listed as a preview model on Microsoft Foundry (Azure OpenAI) as of September 2026.",
+      "Knowledge cutoff of June 1, 2024, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Real-time transcription for live captioning and monitoring",
+      "Offline transcription of recorded meetings and calls for archival workflows",
+      "Multilingual speech-to-text in noisy or real-world audio conditions"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe",
+      "title": "gpt-4o-mini-transcribe - OpenAI API docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/whats-new",
+      "title": "What's new in Azure OpenAI in Microsoft Foundry Models? (classic) - Microsoft Foundry (classic) portal | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "Context window (16,000) and max output tokens (2,000) on OpenAI's model page match the catalog facts. Microsoft's whats-new note names the prior version 'gpt-4o-transcribe-mini' (word order reversed from the catalog id 'gpt-4o-mini-transcribe'); this may be a documentation naming slip on Microsoft's side, so the WER-improvement claim is attributed as Azure OpenAI's own comparison rather than an absolute benchmark. Confirmed this is a one-off slip, not a separate model: Microsoft's own Foundry Models table lists both the 2025-03-20 and 2025-12-15 snapshots as 'gpt-4o-mini-transcribe' (correct order), and labels the current 2025-12-15 snapshot 'Preview' there -- the whats-new release-notes entry itself never uses the word 'preview', so the description was reworded to attribute the preview status to the Foundry Models page rather than the release notes. No specific language list is published, only named examples (Japanese, Indic languages) of improved coverage. A WebFetch summary of OpenAI's own docs page briefly and incorrectly claimed 'Anthropic' as the maker, sourced from stray boilerplate about the fetch tool itself rather than page content; re-fetching and cross-checking against the independently-sourced Azure snapshot date (gpt-4o-mini-transcribe-2025-12-15, which matches exactly) confirms the page is genuine OpenAI documentation and the model is OpenAI's."
+}

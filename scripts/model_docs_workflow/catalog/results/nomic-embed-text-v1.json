@@ -1,0 +1,56 @@
+{
+  "slug": "nomic-embed-text-v1",
+  "canonical": "nomic-embed-text-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Nomic AI",
+  "details": {
+    "description": "Nomic Embed Text v1 is an open-weight text embedding model from Nomic AI, built on a long-context BERT-style encoder with an 8192-token input length. It converts text into dense vectors for semantic search, retrieval-augmented generation, clustering, and classification, using task-specific prefixes such as `search_document` and `search_query`. Nomic reports it surpasses OpenAI's text-embedding-ada-002 and text-embedding-3-small on the MTEB benchmark, and releases the model weights, training code, and training data openly under Apache 2.0.",
+    "advantages": [
+      "Scores 62.39 on the MTEB benchmark, ahead of OpenAI's text-embedding-3-small at 62.26, per Nomic AI's own comparison.",
+      "Supports an 8192-token input length, matching or exceeding OpenAI's ada-002/text-embedding-3-small context (Nomic AI).",
+      "Model weights, training code, and training data are released openly under Apache 2.0 (Nomic AI)."
+    ],
+    "disadvantages": [
+      "Requires a task-specific prefix (e.g. `search_document`, `search_query`) before embedding, rather than working prefix-free (Nomic AI).",
+      "Documented as an English-language model (Nomic AI)."
+    ],
+    "use_cases": [
+      "Semantic search over documents",
+      "Retrieval-augmented generation (RAG) retrieval",
+      "Text clustering",
+      "Text classification feature extraction"
+    ],
+    "evaluations": [
+      {
+        "name": "MTEB",
+        "score": 62.39,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1"
+      },
+      {
+        "name": "LoCo",
+        "score": 85.53,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1"
+      },
+      {
+        "name": "Jina Long Context",
+        "score": 54.16,
+        "source": "https://huggingface.co/nomic-ai/nomic-embed-text-v1"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1",
+    "github_url": "https://github.com/nomic-ai/contrastors"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1",
+      "title": "nomic-ai/nomic-embed-text-v1 - Hugging Face",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Only source found and opened was the Hugging Face model card; no separate nomic.ai blog page could be located to fetch. The card does not state embedding output dimensions, so that is left out rather than guessed. Facts list max_input_tokens 8192, matching the card."
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "qwen3-1p7b-fp8-draft",
+  "canonical": "qwen3-1p7b-fp8-draft",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-1.7B-FP8-Draft is an FP8-quantized build of Alibaba Qwen team's Qwen3-1.7B dense language model that Fireworks AI packages specifically as a draft model for speculative decoding, where a small model proposes candidate tokens that a larger target model verifies to speed up inference. The underlying Qwen3-1.7B model, released April 2025, switches between a thinking mode for step-by-step reasoning and a non-thinking mode for fast dialogue, and is multilingual. This deployment lists a 262,144-token context window.",
+    "advantages": [
+      "Packaged by Fireworks specifically as a small, fast draft model to accelerate a larger target model via speculative decoding (Fireworks model page).",
+      "Supports LoRA fine-tuning for customization (Fireworks model page).",
+      "Built on Qwen3-1.7B, which switches between an explicit thinking mode and a fast non-thinking mode within a single model (Qwen3-1.7B-FP8 model card)."
+    ],
+    "disadvantages": [
+      "Fireworks states this deployment does not support function calling, embeddings, reranking, or image input (Fireworks model page).",
+      "Intended as an accelerator paired with a larger target model for speculative decoding, rather than for direct standalone chat use (Fireworks model page)."
+    ],
+    "use_cases": [
+      "Speculative-decoding draft model paired with a larger target model to reduce inference latency",
+      "General-purpose dialogue and step-by-step reasoning inherited from the underlying Qwen3-1.7B model",
+      "LoRA fine-tuning for task customization"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-1.7B-FP8",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-1p7b-fp8-draft", "title": "Qwen3 1.7B FP8 Draft - Fireworks AI", "kind": "host"},
+    {"url": "https://huggingface.co/Qwen/Qwen3-1.7B-FP8", "title": "Qwen/Qwen3-1.7B-FP8 · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen3/", "title": "Qwen3: Think Deeper, Act Faster - Qwen blog", "kind": "maker"}
+  ],
+  "notes": "This is a Fireworks-specific packaging (FP8-quantized Qwen3-1.7B, offered as a 'draft model' for speculative decoding) rather than a distinct model Qwen itself markets under this name; identified it via Fireworks' host page plus Qwen's own official Qwen3-1.7B-FP8 checkpoint on Hugging Face, which matches the parameter count and architecture. Qwen's Qwen3-1.7B-FP8 model card states a native context length of only 32,768 tokens, far smaller than the 262,144-token window the catalog facts and Fireworks host page both list for this deployment; kept the catalog's 262,144 value per instructions but flagged the large gap, which likely reflects Fireworks configuring the draft model's context to match a larger target model rather than a Qwen-documented extension. No numeric benchmark scores specific to this FP8/draft packaging were found."
+}

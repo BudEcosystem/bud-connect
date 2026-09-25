@@ -1,0 +1,42 @@
+{
+  "slug": "ministral-3-8b-2512",
+  "canonical": "ministral-3-8b-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 8B Instruct 2512 is Mistral AI's 8.4B-parameter instruction-tuned model from the Ministral 3 family, released December 2, 2025, paired with a 0.4B-parameter vision encoder for native image understanding. Released under the Apache 2.0 license, it targets efficient edge and local deployment -- Mistral says it fits in 12GB of VRAM in FP8, less when further quantized, and can run on a single H200 GPU -- with a 256K-token context window, native function calling, JSON output, and native multilingual and multimodal support. It sits in the middle of the Ministral 3 lineup, between the 3B and 14B sizes.",
+    "advantages": [
+      "Scores 87.6% on MATH Maj@1 and an Arena Hard score of 50.9, per Mistral's published instruct benchmark table.",
+      "Scores 66.8 on WildBench and 8.08 on MM MTBench (multimodal chat), per the same instruct benchmark table.",
+      "Includes a native 0.4B-parameter vision encoder for image understanding alongside the 8.4B-parameter language model.",
+      "Supports native function calling, JSON-constrained output, and both explicit and implicit prompt caching.",
+      "Released under the permissive Apache 2.0 license, allowing commercial use and modification."
+    ],
+    "disadvantages": [
+      "Mistral's deployment guidance recommends temperatures well under 0.1 for production use, which its model card notes can limit performance on creative tasks that benefit from more temperature exploration."
+    ],
+    "use_cases": [
+      "Local chat interfaces and on-device AI assistants",
+      "Image and document understanding",
+      "Translation and multilingual content generation",
+      "Agentic applications using function calling and tool use",
+      "Base for custom fine-tuning and post-training"
+    ],
+    "evaluations": [
+      {"name": "MATH Maj@1", "score": 87.6, "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"},
+      {"name": "Arena Hard", "score": 50.9, "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"},
+      {"name": "WildBench", "score": 66.8, "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"},
+      {"name": "MM MTBench", "score": 8.08, "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512", "title": "mistralai/Ministral-3-8B-Instruct-2512 · Hugging Face", "kind": "maker"},
+    {"url": "https://mistral.ai/news/mistral-3/", "title": "Introducing Mistral 3 | Mistral AI", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_output_tokens equals max_input_tokens (262,144); no source opened states a separate max-output limit distinct from the 256K context window, so the catalog figure was kept as-is. The Hugging Face model card has separate benchmark tables for the Base, Instruct and Reasoning variants of the 8B size; the evaluation scores above were taken only from the Instruct table to match this exact model (Ministral-3-8B-Instruct-2512). Mistral names 'English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean, Arabic' as example supported languages ('dozens' total, '40+' per the family announcement) without a closed list, so the languages field was left empty rather than presenting a partial list as complete."
+}

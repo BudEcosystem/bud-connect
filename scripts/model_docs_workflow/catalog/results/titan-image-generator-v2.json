@@ -1,0 +1,62 @@
+{
+  "slug": "titan-image-generator-v2",
+  "canonical": "titan-image-generator-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Titan Image Generator G1 v2 is Amazon's image generation and editing model on Amazon Bedrock, launched November 29, 2023. It generates images from text prompts and supports editing operations such as inpainting, outpainting, and image variations, plus v2-only features like reference-image conditioning, subject consistency, color-guided generation, and automatic background removal. AWS's Bedrock model card lists the model's lifecycle status as Legacy, meaning new customers can no longer start using it; the card's own EOL-date fields are inconsistent (Nov 2024 vs June 2026), and AWS's current Bedrock documentation still lists this model as supported and available in the us-east-1 and us-west-2 Regions as of this research.",
+    "advantages": [
+      "Generates images from natural-language text prompts (text-to-image), per AWS's documentation.",
+      "Supports inpainting, outpainting, and generating up to five-image-guided variations for editing existing images.",
+      "V2 adds reference-image conditioning so output aligns with a reference image's layout and composition while following the text prompt.",
+      "V2 adds a color-guided mode accepting 1 to 10 hex color codes to control a generated image's palette.",
+      "V2 adds automatic background removal that identifies multiple objects in an image without user input.",
+      "Adds an invisible watermark and C2PA metadata to every generated image for content provenance, per AWS's documentation."
+    ],
+    "disadvantages": [
+      "AWS's Bedrock model card lists this model's lifecycle status as Legacy, meaning new customers cannot start using it and no new Provisioned Throughput can be created for it, per AWS's model lifecycle policy.",
+      "Text prompts are limited to 512 characters, per AWS's documentation.",
+      "AWS's documentation lists English as the only supported prompt language.",
+      "Using a fine-tuned custom version of the model disables inpainting, outpainting, and color-palette features, per AWS's documentation."
+    ],
+    "use_cases": [
+      "Generating images from text prompts",
+      "Editing existing images with inpainting or outpainting",
+      "Generating stylistic variations of an existing image",
+      "Removing backgrounds from images with multiple objects",
+      "Preserving a specific subject (e.g. a product) across generated images via reference images",
+      "Applying a fixed color palette to generated images for brand consistency"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-image-generator-g1-v2.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-image-models.html",
+      "title": "Amazon Titan Image Generator G1 model",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-image-generator-g1-v2.html",
+      "title": "Titan Image Generator G1 v2 - Amazon Bedrock model card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html",
+      "title": "Model lifecycle (Legacy) - Amazon Bedrock",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+      "title": "Amazon - Amazon Bedrock model cards",
+      "kind": "maker"
+    }
+  ],
+  "notes": "AWS's Bedrock model card for this model gives two different EOL-date fields ('EOL no sooner than: Nov 29, 2024' vs 'Model EOL date: June 30, 2026') alongside a 'Legacy' lifecycle field. Checked against AWS's current Amazon model-card catalog (model-cards-amazon.html) and this model's own regional-availability table, both of which still list/show it as currently offered (us-east-1, us-west-2) as of 2026-09-24, so I did not assert either EOL date as an accurate retirement date or describe the model as already phased out."
+}

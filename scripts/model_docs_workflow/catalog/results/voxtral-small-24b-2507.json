@@ -1,0 +1,50 @@
+{
+  "slug": "voxtral-small-24b-2507",
+  "canonical": "voxtral-small-24b-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Voxtral Small 24B is Mistral AI's 24-billion-parameter speech-understanding model, released under the Apache 2.0 license on July 15, 2025 as an audio-capable enhancement of Mistral Small 3. It performs automatic speech transcription with language detection, answers questions about audio and summarizes it directly without a separate speech-recognition pipeline, supports function-calling from voice, and retains the text abilities of its Mistral Small 3.1 backbone. Mistral documents support for audio up to 30 minutes for transcription or 40 minutes for understanding, and names eight core languages: English, Spanish, French, Portuguese, Hindi, German, Dutch and Italian. Amazon Bedrock offers it as mistral.voxtral-small-24b-2507 and lists the model as Active with an end-of-life no sooner than October 2026.",
+    "advantages": [
+      "Mistral reports it comprehensively outperforms OpenAI's Whisper large-v3 on transcription benchmarks, beating GPT-4o mini Transcribe and Gemini 2.5 Flash across tasks (Mistral AI Voxtral blog).",
+      "Mistral reports state-of-the-art results on English short-form transcription and on Mozilla Common Voice, and that it outperforms Whisper on every FLEURS multilingual task (Mistral AI Voxtral blog).",
+      "On audio understanding and speech translation, Mistral reports performance competitive with GPT-4o-mini and Gemini 2.5 Flash (Mistral AI Voxtral blog).",
+      "Released under the Apache 2.0 license, permitting open commercial and research use (Mistral AI Voxtral blog; Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Documented for eight languages with strong performance (English, Spanish, French, Portuguese, Hindi, German, Dutch, Italian); Mistral's phrasing ('to name a few') implies broader coverage, but no fuller language list is given (Mistral AI Voxtral blog).",
+      "Mistral's transcription and understanding comparisons against Whisper, GPT-4o mini Transcribe and Gemini 2.5 Flash are its own reported results, not an independent third-party leaderboard for this exact model (Mistral AI Voxtral blog)."
+    ],
+    "use_cases": [
+      "High-accuracy speech transcription and voice understanding (Mistral AI Voxtral Small 24B 2507 model card, Amazon Bedrock model card).",
+      "Multi-turn voice Q&A and audio summarization (Mistral AI Voxtral blog).",
+      "Speech translation (Mistral AI Voxtral blog).",
+      "Triggering backend workflows via function calls extracted directly from voice input (Mistral AI Voxtral blog).",
+      "General text chat and instruction-following inherited from the Mistral Small 3.1 backbone (Hugging Face model card)."
+    ],
+    "evaluations": [],
+    "languages": ["English", "Spanish", "French", "Portuguese", "Hindi", "German", "Dutch", "Italian"],
+    "website_url": "https://huggingface.co/mistralai/Voxtral-Small-24B-2507",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Voxtral-Small-24B-2507",
+      "title": "mistralai/Voxtral-Small-24B-2507 - Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/voxtral",
+      "title": "Voxtral - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-voxtral-small-24b-2507.html",
+      "title": "Voxtral Small 24B 2507 - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens=128,000 and max_output_tokens=8,192, but both Mistral's own model card and Amazon Bedrock's model card state a 32K-token context window; kept the catalog's values per instructions and flag the conflict here rather than in the details. Mistral's blog states both Voxtral models were released July 15, 2025 under Apache 2.0, but Amazon Bedrock's own model card lists this model's 'Model launch date' as Oct 30, 2025, i.e. when AWS added it to Bedrock, not Mistral's original release date; noting both rather than picking one. Could not extract exact word-error-rate or other numeric benchmark figures from Mistral's blog: the benchmark section is embedded as chart images rather than text, and in any case WER is not an eligible evaluations metric per the brief, so evaluations is left empty despite Mistral's qualitative outperformance claims (captured in advantages instead)."
+}

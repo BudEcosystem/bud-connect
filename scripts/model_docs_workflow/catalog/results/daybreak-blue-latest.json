@@ -1,0 +1,38 @@
+{
+  "slug": "daybreak-blue-latest",
+  "canonical": "daybreak-blue-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Daybreak Blue is an OpenAI API alias, launched August 7, 2026 as part of OpenAI's Daybreak cybersecurity access program, for defensive security work such as vulnerability discovery, secure code review, detection engineering, incident response, malware analysis, and patch validation. Rather than a model with its own unique weights, it currently resolves to OpenAI's flagship GPT-5.6 Sol snapshot with safeguards calibrated for that defensive use, and the alias automatically follows updates to that underlying model over time. Using it requires an organization and project to first be approved and provisioned through the Daybreak program. It accepts text and image input and produces text output, with OpenAI's highest reasoning-effort setting.",
+    "advantages": [
+      "Provides access to OpenAI's flagship general-purpose models, currently GPT-5.6 Sol, for defensive security work including vulnerability discovery, secure code review, detection engineering, incident response, malware analysis, and patch validation (OpenAI's Daybreak changelog entry).",
+      "As a '-latest' alias it automatically follows updates to its underlying model rather than staying pinned to one snapshot (OpenAI's Daybreak Blue model page and Daybreak guide).",
+      "OpenAI's model page lists support for code interpreter, hosted shell, apply patch, skills, computer use, MCP, and tool search."
+    ],
+    "disadvantages": [
+      "Requires separate organization and project approval and provisioning through the Daybreak program before it can be used at all; access is not available by default (OpenAI's Daybreak Blue model page).",
+      "As an alias rather than a fixed model, its underlying model and behavior can change over time without a new model id (OpenAI's Daybreak guide)."
+    ],
+    "use_cases": [
+      "Vulnerability discovery in an organization's own systems.",
+      "Secure code review.",
+      "Detection engineering.",
+      "Incident response.",
+      "Malware analysis.",
+      "Patch validation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-daybreak-blue-latest",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-daybreak-blue-latest", "title": "Daybreak Blue Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/changelog", "title": "Changelog | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/daybreak", "title": "Use Daybreak in the Responses API | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "This is an access-program alias, not a standalone model: OpenAI's snapshot list for gpt-daybreak-blue-latest currently names gpt-5.6-sol as the underlying model. OpenAI's model page states a 1,050,000-token total context window with a separate 128,000 max output tokens, which is consistent with the catalog's 922,000 max_input_tokens + 128,000 max_output_tokens split; kept the catalog's values and did not restate a context-window figure in the write-up. That same page currently shows only the Responses endpoint as supported for this alias (Chat Completions, Live, Realtime, Assistants, Batch, Fine-tuning and Embeddings are all shown greyed out/unsupported there), which differs from the catalog's endpoints list including /v1/chat/completions; I did not make any endpoint-support claim in the write-up given this conflict. Web search was unavailable for this session (budget exhausted), so research relied on directly fetching OpenAI's own docs pages."
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "claude-3-5-haiku",
+  "canonical": "claude-3-5-haiku",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude 3.5 Haiku is Anthropic's fast, lightweight chat model in the Claude 3.5 family, released November 4, 2024 with a 200K-token context window. Anthropic positioned it as its next-generation fast model, with better coding and reasoning than Claude 3 Haiku at the same speed tier; it launched and has remained a text-only model, even though Anthropic's original announcement said image input was coming later. Anthropic's own platform lists claude-3-5-haiku-20241022 as retired since February 19, 2026; Amazon Bedrock's model card still shows Legacy status with a June 19, 2026 EOL date that has passed, but Anthropic's own Bedrock integration table instead lists the model as Deprecated (not Retired), still available in the us region, pointing to Claude Haiku 4.5 as the successor.",
+    "advantages": [
+      "Scored 40.6% on SWE-bench Verified at launch, ahead of the original Claude 3.5 Sonnet and GPT-4o, according to Anthropic's launch announcement.",
+      "Runs at the same low-latency, fast speed tier as Claude 3 Haiku while improving coding and reasoning, per Anthropic."
+    ],
+    "disadvantages": [
+      "Superseded by Claude Haiku 4.5, Anthropic's current fast-tier model.",
+      "Retired on Anthropic's own platform since February 19, 2026 (deprecated December 19, 2025).",
+      "Amazon Bedrock's own model card shows Legacy status with an EOL date of June 19, 2026 that has already passed, but Anthropic's current Bedrock integration table instead lists the model as Deprecated (not Retired), still available in the us region."
+    ],
+    "use_cases": [
+      "User-facing chat and support products needing fast responses",
+      "Specialized, low-latency sub-agent tasks inside larger agentic pipelines",
+      "High-volume, cost-sensitive text tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 40.6,
+        "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+      "title": "Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-3-5-haiku.html",
+      "title": "Claude 3.5 Haiku - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html",
+      "title": "Model lifecycle (Legacy) - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy",
+      "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date is empty, but Anthropic's model-deprecations page lists claude-3-5-haiku-20241022 as retired (Claude API) since Feb 19, 2026. On Amazon Bedrock, AWS's own model card shows lifecycle 'Legacy' with an EOL date of June 19, 2026 that has already passed, and the model is absent from AWS's current Legacy/pending-EOL table (which excludes models already past EOL) -- suggesting EOL. But Anthropic's own, more current Bedrock integration table (the claude-on-amazon-bedrock-legacy page) instead lists this model as 'Deprecated' rather than 'Retired', with the us region still marked available, so it appears not yet fully retired on Bedrock. The two Bedrock-adjacent sources disagree; deferring to Anthropic's own table as the more current signal, but flagging the conflict for confirmation. Also corrected: the original announcement said image input was coming to Claude 3.5 Haiku, but no current source (including Bedrock's modality table) shows it ever shipped, consistent with the catalog's own text-only modality for this entry."
+}

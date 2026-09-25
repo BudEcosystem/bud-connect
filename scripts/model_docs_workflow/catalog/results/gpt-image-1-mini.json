@@ -1,0 +1,49 @@
+{
+  "slug": "gpt-image-1-mini",
+  "canonical": "gpt-image-1-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT Image 1 Mini is OpenAI's smaller, cost-efficient sibling to GPT Image 1, released October 6, 2025. It is a natively multimodal model offered through OpenAI's image generation and image-edit endpoints, producing images across low, medium and high quality tiers at 1024x1024, 1024x1536 and 1536x1024 resolutions; OpenAI positions it as a lower-cost, production-ready alternative to GPT Image 1. OpenAI's own deprecations page schedules an API shutdown on December 1, 2026, recommending gpt-image-2 as the replacement, matching the catalog's deprecation date.",
+    "advantages": [
+      "Offers the same three quality tiers (low, medium, high) and three resolutions (1024x1024, 1024x1536, 1536x1024) as the full GPT Image 1 model, per OpenAI's model page."
+    ],
+    "disadvantages": [
+      "OpenAI's own deprecations page schedules gpt-image-1-mini for API shutdown on December 1, 2026, with gpt-image-2 as the recommended replacement."
+    ],
+    "use_cases": [
+      "Generating images from text prompts via OpenAI's Images API generation endpoint",
+      "Editing existing images via OpenAI's image-edit endpoint",
+      "Cost-sensitive production image-generation workflows as a lower-cost alternative to GPT Image 1"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-image-1-mini",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-1-mini",
+      "title": "GPT-Image-1 Mini Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://community.openai.com/t/devday-2025-apps-sdk-sora-2-gpt-5-pro-agentkit-new-image-generation-and-speech-to-speech-mini-models-and-more/1361279",
+      "title": "DevDay 2025: Apps SDK, Sora 2, GPT-5 Pro, AgentKit, new image generation and speech-to-speech mini models, and more - OpenAI Developer Community",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The catalog's modality list for this target (image_output, text_input only) omits image_input, yet the catalog's own endpoints fact includes v1/images/edits (which takes an image input) and OpenAI's model page states Image is 'Input and output' for gpt-image-1-mini -- flagging this internal inconsistency; kept the catalog's modality value per instructions but described both generation and editing since the endpoints fact routes both. OpenAI's own model catalog page also tags the gpt-image-1-mini snapshot 'Deprecated'. OpenAI's deprecations page confirms a Dec 1, 2026 API shutdown recommending gpt-image-2 (matching one of the catalog's two deprecation dates); Azure's model-retirement-schedule separately lists April 7, 2027 as the Azure GA snapshot's own retirement date, matching the catalog's second listed date -- the two dates appear to be OpenAI's API shutdown and Azure's separate GA retirement, not a conflict. No benchmark/evaluation figures were found for this model on any maker or host page. Correction: the disadvantage about trading off 'micro-detail and top-end photorealism' was not on the cited model page (which says only 'A cost-efficient version of GPT Image 1'), and I could not find it on any other maker page; OpenAI's own DevDay 2025 recap post instead describes gpt-image-1-mini as '~80% cheaper than gpt-image-1 but similar quality', which contradicts a quality trade-off, so the claim was removed (and the same unsupported photorealism/latency framing was trimmed from the description and a use_case). That post's Oct 6, 2025 timestamp also independently confirms the release date."
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "mistral-vibe-cli-with-tools",
+  "canonical": "mistral-vibe-cli-with-tools",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/vibe/code/cli/install-setup",
+      "title": "Install and set up the Vibe CLI - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/devstral-2-vibe-cli/",
+      "title": "Introducing: Devstral 2 and Mistral Vibe CLI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/mistral-vibe-2-0/",
+      "title": "Terminally online Mistral Vibe",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Could not pin down what model 'mistral-vibe-cli-with-tools' is. I fetched Mistral's models overview page's raw HTML directly (not just a rendered summary) and it lists no model id containing 'vibe-cli' anywhere, active or deprecated; the changelog and the Vibe CLI docs (install-setup, ZDR-and-Vibe-CLI page) don't name it either, and it has no dedicated model card page. Mistral's Vibe CLI is powered by the Devstral 2 family, and this target's facts (262,144-token context, image_input+text_input+text_output) numerically match Devstral 2's published 256K context window, but Devstral 2 itself is now listed as deprecated on Mistral's models overview (deprecation 2026-05-22, retirement 2026-07-31, recommended alternative Mistral Medium 3.5), so even that inference is stale. Sibling ids mistral-vibe-cli-fast and mistral-vibe-cli-latest suggest an internal Vibe-CLI routing/alias scheme that Mistral has not published details of. Returning insufficient_sources rather than guess which underlying model 'with-tools' now maps to."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "nova-2-drivethru",
+  "canonical": "nova-2-drivethru",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 Drive-Thru is a speech-to-text model in Deepgram's Nova-2 family, tuned for audio sourced from drive-thrus rather than general-purpose recordings. Deepgram's Model Options page describes it as \"optimized for audio sources from drivethrus,\" and its Models & Languages Overview lists it as English-only. Deepgram's newer Nova-3 generation currently ships only general, medical and pharma variants, so this drive-thru tuning has no Nova-3 counterpart in Deepgram's documentation.",
+    "advantages": [
+      "Tuned specifically for drive-thru audio, per Deepgram's Model Options page, rather than using the general-purpose Nova-2 model.",
+      "Deepgram's Models & Languages Overview does not group Nova-2 under its \"Legacy Models\" heading, unlike Nova 1, Enhanced and Base."
+    ],
+    "disadvantages": [
+      "Supports English only (en, en-US), per Deepgram's Models & Languages Overview, unlike the general-purpose nova-2-general model, which the same page lists as supporting 25+ additional languages.",
+      "Deepgram's documentation gives no domain-specific accuracy (word error rate) figures for this variant."
+    ],
+    "use_cases": [
+      "Transcribing audio from drive-thrus"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to nova-2-drivethru were found on Deepgram's maker pages, so evaluations is left empty. Catalog facts (audio_input/text_output modality, /v1/audio/transcriptions endpoint) match a batch transcription model; no deprecation_date is set in the catalog and none was found on Deepgram's pages."
+}

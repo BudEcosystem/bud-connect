@@ -1,0 +1,22 @@
+{
+  "slug": "zai-glm-5",
+  "canonical": "zai-glm-5",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview - Mistral AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.z.ai/guides/llm/glm-5",
+      "title": "GLM-5 - Z.AI Developer Document",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Not enough evidence to confirm what 'zai-glm-5' (no version suffix) refers to on Mistral's platform. I fetched Mistral's models overview page's raw HTML directly and it lists 'zai-glm-5-2' and 'zai-glm-5-3' as Z.ai GLM models Mistral hosts (both active, third-party, 1M-token context), but no bare 'zai-glm-5' appears in either the active or deprecated tables, the changelog has no GLM entries at all, and /models/zai-glm-5 404s. The naming pattern (zai-glm-<version>) suggests this was Mistral's listing for Z.ai's original 'GLM-5' model, but Z.ai's own current docs give GLM-5 a 200K-token context window and 128K max output, versus this target's catalog facts of 1,048,576 (1M) max input tokens - a 5x mismatch, unlike zai-glm-5-2 and zai-glm-5-3 whose 1M figures I could verify exactly against both Mistral's and Z.ai's own pages. Given the id is undocumented anywhere on Mistral's current site and the number conflict, I could not confidently confirm this is Z.ai's GLM-5 as currently specified, or whether it is stale/retired. Returning insufficient_sources rather than guess."
+}

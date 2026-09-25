@@ -1,0 +1,67 @@
+{
+  "slug": "qwen3-coder-next",
+  "canonical": "qwen3-coder-next",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-Coder-Next is Qwen's coding-focused model built on the Qwen3-Next hybrid architecture, combining Gated DeltaNet and gated-attention layers across 48 layers, with 80 billion total parameters and 3 billion activated per token (512 experts, 10 active). Qwen's model card describes it as achieving performance comparable to models with 10-20x more active parameters on agentic coding tasks, including long-horizon reasoning, complex tool usage, and recovery from execution failures. It has a native 262,144-token context window, runs in non-thinking mode only, and integrates with IDE agent tools such as Claude Code, Qwen Code, and Cline. Amazon Bedrock lists it as 'Qwen3 Coder Next' (model ID qwen.qwen3-coder-next), launched there February 4, 2026.",
+    "advantages": [
+      "Scores 70.6 on SWE-bench Verified, a software-engineering benchmark (Qwen's model card).",
+      "Scores 44.3 on SWE-bench Pro (Qwen's model card).",
+      "Scores 36.2 on Terminal-Bench 2.0 (Qwen's model card).",
+      "Qwen describes it as achieving performance 'comparable to models with 10-20x more active parameters' while using only 3B active parameters per token.",
+      "Integrates with Claude Code, Qwen Code, and Cline for IDE-based agentic coding.",
+      "Uses a hybrid Gated DeltaNet and Gated Attention architecture aimed at efficient long-horizon agentic tasks (Qwen's model card)."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; does not generate <think></think> reasoning blocks (Qwen's model card)."
+    ],
+    "use_cases": [
+      "Long-horizon agentic coding tasks requiring multi-step tool usage",
+      "Recovering from execution failures during autonomous coding runs",
+      "IDE-integrated coding agents (Claude Code, Qwen Code, Cline)",
+      "Local development workflows with a coding-focused open-weight model",
+      "Complex, repository-scale software engineering tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 70.6,
+        "source": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
+      },
+      {
+        "name": "SWE-bench Pro",
+        "score": 44.3,
+        "source": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
+      },
+      {
+        "name": "Terminal-Bench 2.0",
+        "score": 36.2,
+        "source": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+    "github_url": "https://github.com/QwenLM/Qwen3-Coder"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+      "title": "Qwen/Qwen3-Coder-Next · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3-Coder",
+      "title": "QwenLM/Qwen3-Coder - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-coder-next.md",
+      "title": "Qwen — Qwen3 Coder Next - Amazon Bedrock User Guide",
+      "kind": "host"
+    }
+  ],
+  "notes": "Amazon Bedrock's EULA link for this exact model ID points to the Qwen3-Coder-30B-A3B-Instruct license page rather than a Qwen3-Coder-Next-specific one; treated as a likely documentation artifact on AWS's page, not evidence the two are the same model. Facts list two max_input (256000/262144) and max_output (8192/16000) values, reflecting variation across the many regional Bedrock URIs in this group; AWS's current model card states 256K context / 16K max output for the in-region endpoints it lists (us-east-1, eu-west-2, ap-southeast-2), consistent with the larger of each pair. The catalog's 12 listed URIs span more regions than AWS's model card currently shows as in-region available; not investigated further, per instructions, since routes/regions are out of scope here."
+}

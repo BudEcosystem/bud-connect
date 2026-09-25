@@ -1,0 +1,53 @@
+{
+  "slug": "gemini-2.5-flash-preview-tts",
+  "canonical": "gemini-2.5-flash-preview-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 2.5 Flash TTS is Google's fast, low-latency, cost-efficient text-to-speech model in the Gemini family, built for real-time voice assistants, high-volume narration, and conversational use cases that need fine-grained control over voice style and pacing, per its Gemini API model page. It converts text (up to 8,192 tokens) into audio (up to 16,384 tokens) and remains a preview model, last updated December 2025. Google's current Text-to-Speech guide no longer lists it in its supported-models comparison table, and Google's deprecations page recommends migrating to gemini-3.1-flash-tts-preview.",
+    "advantages": [
+      "Designed for low-latency, cost-efficient audio generation suited to real-time assistants, per its Gemini API model page.",
+      "Supports fine-grained control over voice style and pacing for narration and conversational use, per its Gemini API model page.",
+      "Supports Batch API processing for text-to-speech jobs, per its Gemini API model page."
+    ],
+    "disadvantages": [
+      "Remains a preview model; Google's current Text-to-Speech guide no longer lists it in its supported-models comparison table.",
+      "Google's deprecations page recommends migrating to gemini-3.1-flash-tts-preview, though no shutdown date has been announced.",
+      "Its Gemini API model page lists an 8,192-token input limit, smaller than Gemini's general-purpose chat models."
+    ],
+    "use_cases": [
+      "Real-time voice assistants and conversational agents, per its Gemini API model page.",
+      "High-volume narration requiring fine-grained control over voice style and pacing, per its Gemini API model page.",
+      "Low-latency, cost-efficient speech generation, per its Gemini API model page."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-preview-tts",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-preview-tts",
+      "title": "Gemini 2.5 Flash text-to-speech | Gemini API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+      "title": "Text-to-speech generation (TTS) | Gemini API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "title": "Gemini deprecations | Gemini API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (8,192 input / 16,384 output tokens) match this model's own Gemini API model page exactly. Google's speech-generation guide's current 'Supported models' comparison table lists gemini-3.8-flash-tts, gemini-3.8-flash-lite-tts, gemini-3.1-flash-tts-preview and gemini-2.5-pro-preview-tts, but not this Flash model, and the deprecations page's Audio-models table gives it a release date of May 20, 2025 with recommended replacement gemini-3.1-flash-tts-preview and no shutdown date announced. No supported-language list or benchmark figures were found on the pages opened."
+}

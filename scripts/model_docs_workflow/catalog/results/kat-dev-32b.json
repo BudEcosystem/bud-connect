@@ -1,0 +1,36 @@
+{
+  "slug": "kat-dev-32b",
+  "canonical": "kat-dev-32b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Kwaipilot",
+  "details": {
+    "description": "KAT-Dev (published on Hugging Face as Kwaipilot/KAT-Dev) is a 33-billion-parameter open-weight coding model from Kwaipilot, Kuaishou's AI team, built on Qwen3-32B through supervised fine-tuning and reinforcement-learning stages for software-engineering tasks. Kwaipilot released it as the open-source counterpart to its proprietary KAT-Coder model, incorporating teacher trajectories annotated by human engineers during training. It is released under the Apache 2.0 license.",
+    "advantages": [
+      "Resolves 62.4% of tasks on SWE-bench Verified, ranking 5th among open-source models at the time of Kwaipilot's report.",
+      "Trained with teacher trajectories annotated by human engineers, which Kwaipilot says improves training stability.",
+      "Uses multi-level prefix caching and entropy-based trajectory pruning for efficient large-scale reinforcement learning, per Kwaipilot.",
+      "Released under the Apache 2.0 license, permitting broad reuse."
+    ],
+    "disadvantages": [
+      "Kwaipilot notes that extensive mid-training for tool use showed limited direct performance gains on current leaderboards for this model."
+    ],
+    "use_cases": [
+      "Code generation and completion for software-engineering tasks",
+      "Multi-turn, tool-using coding assistants",
+      "Instruction-following development workflows"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 62.4, "source": "https://huggingface.co/Kwaipilot/KAT-Dev"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Kwaipilot/KAT-Dev",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Kwaipilot/KAT-Dev", "title": "Kwaipilot/KAT-Dev · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/Kwaipilot", "title": "Kwaipilot · GitHub", "kind": "maker"}
+  ],
+  "notes": "The Hugging Face repository is named \"Kwaipilot/KAT-Dev\" (no size suffix); the catalog's slug/canonical \"kat-dev-32b\" refers to this same 33B model, served via Fireworks under that id. The model card text I could read did not state an explicit context-window figure, so the catalog's facts (131072) are kept without a comparable source figure."
+}

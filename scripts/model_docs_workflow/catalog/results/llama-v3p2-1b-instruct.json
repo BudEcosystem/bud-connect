@@ -1,0 +1,91 @@
+{
+  "slug": "llama-v3p2-1b-instruct",
+  "canonical": "llama-v3p2-1b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.2 1B Instruct is a 1.23-billion-parameter, instruction-tuned text model in Meta's Llama 3.2 family, released September 25, 2024. Meta pretrained it on up to 9 trillion tokens and distilled it from the larger Llama 3.1 8B and 70B models, then instruction-tuned it for lightweight multilingual assistant-style chat, agentic knowledge retrieval and summarization, and on-device or mobile writing assistants. Amazon Bedrock's model card lists this model's lifecycle as Legacy, with a listed EOL date of July 7, 2026 that has already passed as of this research date.",
+    "advantages": [
+      "Pretrained then distilled from the larger Llama 3.1 8B and 70B models to improve reasoning at a compact 1B size, per Meta's model card.",
+      "Officially supports 8 languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai, per Meta's model card.",
+      "Sized for on-device and edge deployment as a lightweight multilingual assistant and writing-assistant model, per Meta's model card."
+    ],
+    "disadvantages": [
+      "Scores lower than Meta's larger Llama 3.2 models on the same benchmark suite (49.3% MMLU vs 63.4% for Llama 3.2 3B Instruct), per Meta's model card.",
+      "Text-only; no image, audio, or video input or output, per Meta's model card.",
+      "Knowledge cutoff of December 2023, per Meta's model card.",
+      "Amazon Bedrock's model card lists this model's lifecycle as Legacy, with a listed EOL date of July 7, 2026 that has already passed as of this research date (2026-09-24).",
+      "Fireworks AI's hosted listing states the model does not support function/tool calling, fine-tuning, or serverless deployment on its platform."
+    ],
+    "use_cases": [
+      "Lightweight multilingual assistant-style chat",
+      "Agentic knowledge retrieval and summarization",
+      "Mobile and on-device AI writing assistants",
+      "Query and prompt rewriting"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 49.3,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM8K (CoT)",
+        "score": 44.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "name": "ARC-Challenge",
+        "score": 59.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "name": "IFEval",
+        "score": 59.5,
+        "source": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Hindi",
+      "Spanish",
+      "Thai"
+    ],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_2/MODEL_CARD.md at main",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+      "title": "meta-llama/Llama-3.2-1B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-1b-instruct.html",
+      "title": "Llama 3.2 1B Instruct - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p2-1b-instruct",
+      "title": "Llama 3.2 1B Instruct - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
+      "title": "Llama 3.2: Revolutionizing edge AI and vision with open, customizable models",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (16384) are lower than the 128K context / 4K max output that Meta's model card and AWS Bedrock both state for this model; kept the catalog's figures per instructions. Amazon Bedrock's own model card (fetched 2026-09-24) lists lifecycle as Legacy with Model EOL date July 7, 2026, already past as of this research date, though the page still labels it Legacy rather than EOL outright. The GitHub llama3_2 MODEL_CARD.md's own 'Model Release Date' field says Oct 24, 2024 (likely updated when the SpinQuant/QLoRA quantized 1B/3B were added), not the Sept 25, 2024 original launch date; Meta's Sept 25, 2024 Llama 3.2 announcement post confirms Sept 25, 2024 is correct, so that source was added rather than changing the date."
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "lyria-realtime-exp",
+  "canonical": "lyria-realtime-exp",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Lyria RealTime (lyria-realtime-exp) is Google DeepMind's experimental real-time music generation model, offered through the Gemini API over a persistent, bidirectional WebSocket connection similar to the Gemini Live API. It continuously streams instrumental music that responds live to weighted text prompts and adjustable parameters such as BPM, musical scale, density, and brightness, so a developer can steer the music as it plays rather than generating a fixed clip. Google released it in May 2025 and it is still labeled experimental rather than generally available.",
+    "advantages": [
+      "Streams audio in real time over a persistent, low-latency WebSocket connection, similar to the Gemini Live API",
+      "Accepts weighted text prompts, letting a developer blend multiple musical ideas by adjusting each prompt's weight",
+      "Exposes live controls for BPM (60-200), musical scale/key, density, brightness, and a guidance parameter (0.0-6.0) so the output can be steered while generating",
+      "Offers a music_generation_mode setting (QUALITY, DIVERSITY, or VOCALIZATION) to bias generation toward different goals",
+      "Outputs raw 16-bit PCM audio at 48kHz stereo"
+    ],
+    "disadvantages": [
+      "Generates instrumental music only, per Google's documentation",
+      "Still an experimental model; Google has not marked it generally available",
+      "Prompts that trigger safety filters are silently dropped from generation, surfaced only via a filtered_prompt field, per the docs"
+    ],
+    "use_cases": [
+      "Interactive, live music performance and steering, such as the Prompt DJ and MIDI DJ demo apps Google built on AI Studio"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation", "title": "Real-time music generation with Lyria RealTime", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Gemini API release notes", "kind": "maker"}
+  ],
+  "notes": "This is a real-time streaming/interactive music model accessed via WebSocket session, not a turn-based text chat model, even though the catalog classifies it as kind 'chat' with chat-style endpoints; kept the catalog's facts (modality, token limits, endpoints) as authoritative since Google's own docs do not publish context-window or token-limit figures for it to compare against. Output audio is always SynthID-watermarked per Google's docs, and the model is instrumental-only (no vocals/lyrics), which is why no language list is given."
+}

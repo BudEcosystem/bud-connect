@@ -1,0 +1,35 @@
+{
+  "slug": "gemini-2.0-flash-exp-image-generation",
+  "canonical": "gemini-2.0-flash-exp-image-generation",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 2.0 Flash Experimental Image Generation was Google's first native image generation model built into Gemini 2.0 Flash, launched experimentally on March 12, 2025. It combined multimodal input, reasoning and world knowledge to generate images from prompts and to conversationally edit them, preserving character and setting consistency across multi-turn revisions. Google's Gemini API changelog confirms this model was shut down on November 14, 2025, alongside its later preview-status successor, and it is no longer reachable through the Gemini API.",
+    "advantages": [
+      "Google's launch announcement reported that internal benchmarks showed stronger text rendering in generated images than leading competing models at the time.",
+      "Supported multi-turn conversational editing, letting users iteratively refine an image through dialogue while preserving character and setting consistency, per Google's launch announcement.",
+      "Combined multimodal input, reasoning and world knowledge to produce contextually accurate imagery, per Google's launch announcement."
+    ],
+    "disadvantages": [
+      "Shut down by Google on November 14, 2025, per Google's Gemini API changelog, and no longer accessible through the API.",
+      "An experimental release; Google's own announcement noted its knowledge is broad and general, not absolute or complete."
+    ],
+    "use_cases": [
+      "Generating images from text prompts with accompanying narrative text",
+      "Illustrating stories while keeping characters and settings consistent across scenes",
+      "Conversational, multi-turn editing of generated images",
+      "Creating images with legible rendered text, such as for social media graphics or invitations"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API", "kind": "maker"},
+    {"url": "https://developers.googleblog.com/en/experiment-with-gemini-20-flash-native-image-generation/", "title": "Experiment with Gemini 2.0 Flash native image generation", "kind": "maker"}
+  ],
+  "notes": "This model was shut down by Google on 2025-11-14 per its Gemini API changelog, in the same November 11, 2025 deprecation announcement that gave the shutdown date (the researcher's prior note of 2026-02-17 was wrong: that date belongs to an unrelated changelog entry, for gemini-2.5-flash-preview-09-25 and two Imagen 4 preview models). Its dedicated model documentation page (ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-exp-image-generation) now returns HTTP 404, confirmed directly, so website_url is left null. Description and advantages are drawn from Google's March 2025 launch blog post since no current model card remains. Despite still appearing in Bud's catalog with active routes, this model is discontinued and no longer callable on Google's side as of the research date. No independently verifiable accuracy-style benchmark score was found, so evaluations is empty."
+}

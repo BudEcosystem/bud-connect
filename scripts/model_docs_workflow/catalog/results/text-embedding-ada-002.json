@@ -1,0 +1,41 @@
+{
+  "slug": "text-embedding-ada-002",
+  "canonical": "text-embedding-ada-002",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "text-embedding-ada-002 is OpenAI's second-generation text embedding model, converting text into numerical vector representations for measuring semantic relatedness. OpenAI's own model documentation labels it an \"Older embedding model,\" and it is used for search, clustering, recommendations, anomaly detection, and classification. Microsoft's Azure OpenAI documentation states that text-embedding-3-large is \"the latest and most capable embedding model\" and that moving from text-embedding-ada-002 to a third-generation model requires regenerating embeddings rather than an in-place upgrade. It is offered by Microsoft on Azure as a Foundry model sold directly by Azure for use with the Embeddings API.",
+    "advantages": [
+      "Produces 1,536-dimension text embeddings usable with the Embeddings and Batch APIs, per OpenAI's model documentation and Microsoft's Azure OpenAI documentation.",
+      "Existing embeddings generated with this model remain usable as-is; Microsoft's Azure OpenAI documentation notes there is no in-place upgrade path between embedding models, only regenerating embeddings with a newer model when a user chooses to."
+    ],
+    "disadvantages": [
+      "OpenAI's own model page labels it an \"Older embedding model.\"",
+      "Scores lower on both MTEB (61.0 vs. 62.3/64.6) and MIRACL (31.4 vs. 44.0/54.9) than text-embedding-3-small/large, per OpenAI's reported testing as published in Microsoft's Azure OpenAI documentation.",
+      "Microsoft's Azure OpenAI documentation describes text-embedding-3-large as \"the latest and most capable embedding model,\" implying this model has been superseded.",
+      "Can only be used with Embedding API and Batch API requests, not chat completions, realtime, or assistants endpoints, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Semantic search",
+      "Text clustering",
+      "Recommendation systems",
+      "Anomaly detection",
+      "Text classification"
+    ],
+    "evaluations": [
+      {"name": "MTEB average (English)", "score": 61.0, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"},
+      {"name": "MIRACL average (multilingual retrieval)", "score": 31.4, "source": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/text-embedding-ada-002",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/text-embedding-ada-002", "title": "text-embedding-ada-002 Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models", "title": "Foundry Models sold by Azure - Microsoft Foundry", "kind": "host"}
+  ],
+  "notes": "OpenAI's deprecations page (developers.openai.com/api/docs/deprecations) does not list text-embedding-ada-002, so no shutdown date could be confirmed on an opened page despite the 'older' labeling on its model page. Microsoft's Azure documentation lists two request-size variants for this model -- 8,192 tokens (version 2) and 2,046 tokens (version 1) -- while the catalog's max_input_tokens is empty for this target; I did not state a specific token limit in the write-up. OpenAI's original announcement blog post (openai.com/index/new-embedding-models-and-api-updates/) returned HTTP 403 to automated fetches, so benchmark numbers are sourced from Microsoft's Azure OpenAI documentation. No specific supported-language list or release date was found on an opened page."
+}

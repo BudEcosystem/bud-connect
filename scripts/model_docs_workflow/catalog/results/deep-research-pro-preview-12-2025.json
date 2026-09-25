@@ -1,0 +1,36 @@
+{
+  "slug": "deep-research-pro-preview-12-2025",
+  "canonical": "deep-research-pro-preview-12-2025",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini Deep Research Pro was Google's original Deep Research agent, launched in preview on December 11, 2025 and powered by Gemini 3.1 Pro. It autonomously plans, executes and synthesizes multi-step research investigations into comprehensive, cited reports, drawing on hundreds of public web sources as well as, per its model page, private workspace data such as Gmail and Drive. As of 2026-09-24, Google's Gemini API models overview and Deep Research documentation pages no longer list this model, listing only the newer deep-research-preview-04-2026 and deep-research-max-preview-04-2026 releases from April 2026 in its place.",
+    "advantages": [
+      "Powered by Gemini 3.1 Pro and optimized for long-running, accuracy-critical research investigations, per its Google model page.",
+      "Can draw on a user's private workspace data, such as Gmail and Drive, alongside public web sources, per its Google model page.",
+      "Synthesizes complex information from hundreds of sources into comprehensive, cited reports, per its Google model page."
+    ],
+    "disadvantages": [
+      "No longer listed on Google's current Gemini API models or Deep Research documentation pages as of 2026-09-24, which instead list only the newer April 2026 Deep Research releases.",
+      "Preview release; Google's changelog shows Deep Research was given new versions about four months after this model's December 2025 launch."
+    ],
+    "use_cases": [
+      "Long-running, accuracy-critical research investigations across public web sources",
+      "Research that draws on a user's private Gmail and Drive data alongside the public web",
+      "Producing comprehensive, cited research reports"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025", "title": "Deep Research Pro Preview - Gemini API Models", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/changelog", "title": "Release notes | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deep-research", "title": "Deep Research | Gemini API", "kind": "maker"}
+  ],
+  "notes": "Catalog facts give a 65,536-token input limit and 32,768-token output limit; Google's own model page instead states a 1,048,576-token input context window and a 65,536-token output limit. Google's page describes text-only cited-report output, while the catalog's modality list includes image_output; kept the catalog's values and modality as authoritative per instructions. This model (launched December 2025) is absent from Google's current Gemini API models list and Deep Research overview page as of 2026-09-24 -- both checked directly, searching for '12-2025' and 'deep-research-pro' -- though no explicit deprecation or shutdown date was found on its own page (still reachable, not 404) or on Google's deprecations page, so I describe it as no longer listed rather than as formally deprecated."
+}

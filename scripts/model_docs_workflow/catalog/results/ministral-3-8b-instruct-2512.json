@@ -1,0 +1,93 @@
+{
+  "slug": "ministral-3-8b-instruct-2512",
+  "canonical": "ministral-3-8b-instruct-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 8B Instruct (version 25.12) is an 8-billion-parameter dense chat model from Mistral AI, released December 2, 2025 as part of the Ministral 3 family. Mistral's own model card reports strong reasoning, math and instruction-following scores for its size, a 256k-token context window, and native function calling with structured JSON output, aimed at edge and resource-constrained deployment. Mistral's models overview lists it as an Active generalist model that replaces the deprecated Mistral 7B Instruct line and the earlier Ministral 8B (v24.1).",
+    "advantages": [
+      "Scores 78.7% on AIME25 and 66.8% on GPQA Diamond, per Mistral's Hugging Face model card.",
+      "Scores 87.6% on MATH (Maj@1) and 76.1% on MMLU (5-shot), per Mistral's Hugging Face model card.",
+      "Supports native function calling and structured JSON outputs for tool-use and agentic workflows, per Mistral's docs.",
+      "Runs in FP8 format on devices with as little as 12GB of VRAM, per Mistral's Hugging Face model card, suiting edge and local deployment.",
+      "Released under the Apache 2.0 license, per Mistral's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Trails the larger Ministral 3 14B on the same reasoning benchmarks Mistral publishes, e.g. 78.7% vs. 85.0% on AIME25."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction-following assistants",
+      "Local or edge AI assistants deployable on devices with 12GB of VRAM in FP8 format, per Mistral's Hugging Face model card",
+      "Agentic and tool-calling applications via native function calling",
+      "Multilingual translation and content generation",
+      "Document question-answering, per Mistral's docs page"
+    ],
+    "evaluations": [
+      {
+        "name": "AIME25",
+        "score": 78.7,
+        "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
+      },
+      {
+        "name": "GPQA Diamond",
+        "score": 66.8,
+        "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
+      },
+      {
+        "name": "MATH (Maj@1)",
+        "score": 87.6,
+        "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
+      },
+      {
+        "name": "MMLU (5-shot)",
+        "score": 76.1,
+        "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
+      },
+      {
+        "name": "Multilingual MMLU",
+        "score": 70.6,
+        "source": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
+      }
+    ],
+    "languages": [
+      "English",
+      "French",
+      "Spanish",
+      "German",
+      "Italian",
+      "Portuguese",
+      "Dutch",
+      "Chinese",
+      "Japanese",
+      "Korean",
+      "Arabic"
+    ],
+    "website_url": "https://docs.mistral.ai/models/ministral-3-8b-25-12",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/ministral-3-8b-25-12",
+      "title": "Ministral 3 8B | Mistral AI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512",
+      "title": "mistralai/Ministral-3-8B-Instruct-2512 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.fireworks.ai/models/fireworks/ministral-3-8b-instruct-2512",
+      "title": "Ministral 3 8B Instruct 2512 | Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens/max_output_tokens of 256000, matching the 256k context window on both Mistral's docs page and Hugging Face card. Catalog facts list modality as text_input/text_output only for this route, but Mistral's Hugging Face card also describes a 0.4B vision encoder and image input for this model family; kept the catalog's text-only modality and left vision out of the write-up. Arena Hard and WildBench scores were on the Hugging Face card but excluded as win-rate/preference benchmarks rather than accuracy scores. Provider id says 'fireworks_ai-embedding-models' though this is a chat model per facts.kind; not commented on further as it concerns Bud's routing, not the model itself."
+}

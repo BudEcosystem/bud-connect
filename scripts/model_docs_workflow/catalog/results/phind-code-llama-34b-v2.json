@@ -1,0 +1,35 @@
+{
+  "slug": "phind-code-llama-34b-v2",
+  "canonical": "phind-code-llama-34b-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Phind",
+  "details": {
+    "description": "Phind-CodeLlama-34B-v2 is a code-generation model released by Phind in 2023, fine-tuned from Meta's CodeLlama-34B and building on Phind's own earlier Phind-CodeLlama-34B-v1. Phind trained it on about 1.5 billion tokens of high-quality programming problems and solutions, formatted as instruction-answer pairs rather than raw code completions, and instruction-tuned it in the Alpaca/Vicuna format so it is easier to prompt than the v1 model. It supports Python, C/C++, TypeScript, Java, and other languages.",
+    "advantages": [
+      "Scores 73.8% pass@1 on HumanEval, per Phind's own model card.",
+      "Trained on about 1.5 billion tokens of high-quality programming problems and solutions across multiple languages (Python, C/C++, TypeScript, Java, and more), per the model card.",
+      "Instruction-tuned in the Alpaca/Vicuna format, which Phind states makes it much easier to use than the earlier v1 model."
+    ],
+    "disadvantages": [
+      "Phind states the model 'has undergone very limited testing' and recommends additional safety testing before any real-world deployment.",
+      "Licensed under the Llama 2 license, per the model card, so use is subject to Meta's Llama 2 terms rather than a fully permissive license."
+    ],
+    "use_cases": [
+      "Code generation and completion across multiple programming languages (Python, C/C++, TypeScript, Java, and more).",
+      "Instruction-following coding assistance, given its Alpaca/Vicuna-style instruction tuning."
+    ],
+    "evaluations": [
+      {"name": "HumanEval pass@1", "score": 73.8, "source": "https://huggingface.co/Phind/Phind-CodeLlama-34B-v2"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Phind/Phind-CodeLlama-34B-v2",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Phind/Phind-CodeLlama-34B-v2", "title": "Phind/Phind-CodeLlama-34B-v2 · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Phind/Phind-CodeLlama-34B-v1", "title": "Phind/Phind-CodeLlama-34B-v1 · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list a 16,384-token max input/output for this model, but Phind's own model card states a 4096-token sequence length used in training (CodeLlama-34B base); kept the catalog's facts as instructed and flag the discrepancy here rather than in the description. Found no page indicating a public replacement newer than v2 on Phind's own pages."
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "recognition",
+  "canonical": "recognition",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/v1/transcription-model",
+      "title": "Transcription models (v1) | Cloud Speech-to-Text",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/docs/transcription-model",
+      "title": "Transcription models (v2) | Cloud Speech-to-Text",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Checked Google Cloud Speech-to-Text's current v1 model list (latest_long, latest_short, telephony, telephony_short, medical_dictation, medical_conversation, command_and_search, default, phone_call, video) and v2 model list (chirp_3, chirp_2, telephony); no model is named 'recognition' on either page, and 'recognition' only appears there as a generic term (e.g. 'streaming recognition', the Recognizer resource), never as a model identifier. Could not confirm which specific Google Cloud Speech-to-Text model google_speech/recognition refers to, so leaving it without details rather than guessing."
+}

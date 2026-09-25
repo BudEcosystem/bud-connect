@@ -1,0 +1,63 @@
+{
+  "slug": "base",
+  "canonical": "base",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Base (base-general) is Deepgram's general-purpose speech-to-text model within its Base tier, built on Deepgram's end-to-end deep learning speech recognition architecture. Deepgram's Models & Languages Overview lists Base, together with Enhanced and Nova (1), under \"Legacy Models\", while documenting it as supporting 21 languages including Chinese, Hindi, Russian, Portuguese and Tamasheq. Deepgram's Model Options page describes Base as offering a combination of accuracy and cost-effectiveness, though its Enhanced tier documentation states Enhanced has higher accuracy and better word recognition.",
+    "advantages": [
+      "Documented for 21 languages, per Deepgram's Models & Languages Overview, including Chinese, Hindi, Russian, Portuguese and Tamasheq.",
+      "Built on Deepgram's end-to-end deep learning speech-to-text architecture, per Deepgram's Model Options page.",
+      "Deepgram describes Base-tier models as offering a combination of accuracy and cost-effectiveness, per Deepgram's Model Options page."
+    ],
+    "disadvantages": [
+      "Deepgram lists the Base tier under \"Legacy Models\" in its Models & Languages Overview.",
+      "Deepgram describes its Enhanced tier as having higher accuracy and better word recognition than Base models, including significantly better handling of uncommon words, per Deepgram's Model Options page."
+    ],
+    "use_cases": [
+      "General-purpose transcription of everyday audio, per Deepgram's Model Options page (base-general is the default Base-tier variant).",
+      "Multilingual transcription across its 21 supported languages, per Deepgram's Models & Languages Overview."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Chinese",
+      "Danish",
+      "Dutch",
+      "English",
+      "Flemish",
+      "French",
+      "German",
+      "Hindi",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Korean",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Russian",
+      "Spanish",
+      "Swedish",
+      "Tamasheq",
+      "Turkish",
+      "Ukrainian"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figure specific to base/base-general was found on Deepgram's maker pages, so evaluations is left empty. Deepgram's Models & Languages Overview groups Base under 'Legacy Models', although the catalog carries no deprecation_date. The language list (including Tamasheq, code taq) is per developers.deepgram.com/docs/models-languages-overview, confirmed by two separate fetches of that page's Base row."
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "neural",
+  "canonical": "neural",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "AWS",
+  "details": {
+    "description": "Amazon Polly's Neural engine (NTTS) is one of four text-to-speech voice engines Polly offers, alongside Standard, Long-form, and Generative. Instead of concatenating recorded speech fragments like the Standard engine, it uses a sequence-to-sequence neural network to turn phonemes into spectrograms and a neural vocoder to render them as audio, producing more natural prosody, stress, and intonation. It is available across 36 languages and language variants, several with multiple named male and female voices.",
+    "advantages": [
+      "Produces more natural-sounding prosody, stress, and intonation than Polly's Standard concatenative-synthesis engine.",
+      "Available in 36 languages and language variants, several with multiple male and female voices.",
+      "Supports both real-time and asynchronous speech synthesis operations, plus most of Polly's supported SSML tags and all speech marks.",
+      "Four voices (Amy, Joanna, Lupe, and Matthew) support the Newscaster speaking style."
+    ],
+    "disadvantages": [
+      "Not available in all AWS Regions; supported in only 19 Regions, fewer than Standard voices.",
+      "For certain voices, Polly can automatically switch to the Standard engine when accuracy is critical, such as letter-by-letter spelling, producing an audible shift in voice quality.",
+      "Amazon Polly's newer Generative engine, described by AWS as its largest TTS model to date, produces more emotionally engaged, human-like speech than Neural for the subset of voices and regions it supports."
+    ],
+    "use_cases": [
+      "Interactive voice response (IVR) prompts for automated phone systems.",
+      "Voiceovers for animations, games, and other media generated directly from scripts.",
+      "Adding spoken audio to websites, videos, and RSS feeds for a global audience.",
+      "Newscaster-style narration using the four Newscaster-capable voices."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Arabic (Gulf)", "Dutch (Flemish)", "Catalan", "Czech", "Chinese (Cantonese)", "Chinese (Mandarin)",
+      "Danish", "Dutch", "English (Australian)", "English (British)", "English (Indian)",
+      "English (Irish)", "English (New Zealand)", "English (Singaporean)", "English (South African)",
+      "English (US)", "Finnish", "French (Belgian)", "French (Canadian)", "French", "German",
+      "German (Austrian)", "German (Swiss)", "Hindi", "Italian", "Japanese", "Korean", "Norwegian",
+      "Polish", "Portuguese (Brazilian)", "Portuguese (European)", "Spanish (Spain)", "Spanish (Mexican)",
+      "Spanish (US)", "Swedish", "Turkish"
+    ],
+    "website_url": "https://docs.aws.amazon.com/polly/latest/dg/neural-voices.html",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/polly/latest/dg/neural-voices.html", "title": "Neural voices - Amazon Polly", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/polly/latest/dg/voice-engines-polly.html", "title": "Amazon Polly voice engines - Amazon Polly", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/polly/latest/dg/generative-voices.html", "title": "Generative voices - Amazon Polly", "kind": "maker"},
+    {"url": "https://aws.amazon.com/polly/", "title": "Amazon Polly - AI Voice Generator and Text-to-Speech Tool", "kind": "maker"}
+  ],
+  "notes": "'neural' identifies the Polly voice engine/model family, not a single voice; the uri aws_polly/neural is used across many named voices and languages, so the description covers the engine's shared characteristics rather than one voice. No maker or third-party benchmark/WER numbers were found for the Neural engine specifically, so evaluations is empty."
+}

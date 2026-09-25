@@ -1,0 +1,46 @@
+{
+  "slug": "grok-4.5-latest",
+  "canonical": "grok-4.5-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "SpaceXAI",
+  "details": {
+    "description": "Grok 4.5 is SpaceXAI's coding- and agent-focused chat model, released July 16, 2026, which the maker describes as trained alongside Cursor for software-engineering workflows. It accepts text and image input with text-only output over a 500K-token context window, and offers configurable reasoning effort (low, medium, high, xhigh; high by default). xAI's launch post highlights end-to-end application development from a prompt to a working product, multi-sheet spreadsheet modelling with web research, and document and slide generation.",
+    "advantages": [
+      "Scores 83.3% on Terminal-Bench 2.1 (xAI's Grok 4.5 launch post).",
+      "Scores 64.7% on SWE-bench Pro and 62.0% on DeepSWE 1.0 (xAI's Grok 4.5 launch post).",
+      "Scores 39 on the Artificial Analysis Intelligence Index, ranking #52 of 211 models tracked (Artificial Analysis).",
+      "xAI reports using roughly 4.2 times fewer output tokens than comparable leading models on SWE-bench Pro tasks."
+    ],
+    "disadvantages": [
+      "Scores 53% on DeepSWE v1.1 and 29.0% on SWE Marathon, notably lower than its Terminal-Bench 2.1 score (xAI's Grok 4.5 launch post).",
+      "Accepts text and image input only, with text-only output; no audio input/output or native image generation.",
+      "Marked deprecated on Artificial Analysis as of September 2026, which recommends Grok 4.6 as a newer alternative; xAI's own docs still list Grok 4.5 as an available model with no deprecation notice."
+    ],
+    "use_cases": [
+      "Agentic software-engineering and coding workflows",
+      "End-to-end application development from a prompt to a working product",
+      "Complex spreadsheet modelling with multi-sheet formulas",
+      "Slide-deck and document generation",
+      "General coding and knowledge-work tasks"
+    ],
+    "evaluations": [
+      {"name": "Artificial Analysis Intelligence Index", "score": 39, "source": "https://artificialanalysis.ai/models/grok-4-5"},
+      {"name": "Terminal Bench 2.1", "score": 83.3, "source": "https://x.ai/news/grok-4-5"},
+      {"name": "SWE Bench Pro", "score": 64.7, "source": "https://x.ai/news/grok-4-5"},
+      {"name": "DeepSWE 1.0", "score": 62.0, "source": "https://x.ai/news/grok-4-5"},
+      {"name": "DeepSWE v1.1", "score": 53.0, "source": "https://x.ai/news/grok-4-5"},
+      {"name": "SWE Marathon", "score": 29.0, "source": "https://x.ai/news/grok-4-5"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.x.ai/developers/models/grok-4.5", "title": "Grok 4.5 | xAI Docs", "kind": "maker"},
+    {"url": "https://x.ai/news/grok-4-5", "title": "Introducing Grok 4.5 | SpaceXAI", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/models/grok-4-5", "title": "Grok 4.5 (high) - Intelligence, Performance & Price Analysis | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "grok-4.5-latest is an alias that points to grok-4.5 per xAI's docs (docs.x.ai/developers/models/grok-4.5 lists 'grok-4.5-latest' and 'grok-build-latest' as aliases of the same model), so this entry describes the same model as the grok-4.5 target. docs.x.ai and x.ai/news identify the company as 'SpaceXAI' (docs.x.ai/developers/models/grok-4.5 reads \"SpaceXAI's intelligent coding model\"; the launch post's title tag is 'Introducing Grok 4.5 | SpaceXAI'), so that name was used as maker instead of 'xAI'. No max-output-tokens value distinct from the 500K context window is given on xAI's docs, matching the catalog's facts."
+}

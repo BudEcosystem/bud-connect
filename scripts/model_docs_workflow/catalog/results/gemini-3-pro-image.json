@@ -1,0 +1,56 @@
+{
+  "slug": "gemini-3-pro-image",
+  "canonical": "gemini-3-pro-image",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3 Pro Image, marketed as Nano Banana Pro, is Google DeepMind's most advanced image generation and editing model, built on Gemini 3 Pro's reasoning to interpret prompts, real-world knowledge, and reference images with high fidelity. It generates images at 1K, 2K or 4K resolution across ten aspect ratios, renders legible text for posters, diagrams and infographics, and can localize or translate text within an image for international audiences. Thinking mode is enabled by default and cannot be turned off, and the model can weave interleaved text and illustrations into a single response. Released November 2025, its knowledge cutoff is January 2025.",
+    "advantages": [
+      "In Google DeepMind's own human evaluations, it leads every compared model (Gemini 2.5 Flash Image, GPT-Image 1, Seedream v4 4k, Flux Pro Kontext Max) on all measured capabilities, including a 1268\u00b117 Elo score for infographics and 1213\u00b116 for multi-character editing.",
+      "Supports up to 6 object reference images, 5 character reference images and 3 style reference images in a single generation, per Google's developer documentation.",
+      "Generates images at 1K, 2K or 4K resolution across ten aspect ratios, per Google's developer documentation.",
+      "Can produce interleaved text and illustrations within a single response, per Google's developer documentation.",
+      "Supports Google Search grounding so generated imagery can reflect real-time web data, per its model-specific developer docs page and the general image-generation guide."
+    ],
+    "disadvantages": [
+      "Google's own model card lists known limitations: hallucinations, occasional slowness or timeouts, poor rendering of small text, imperfect character consistency, and occasional confusion with spatial directions like left and right.",
+      "Thinking mode is always on and cannot be disabled, per Google's developer documentation.",
+      "Google's image-generation guide states it does not support video-to-image generation."
+    ],
+    "use_cases": [
+      "Studio-quality image creation and editing that requires professional levels of precision and control",
+      "Generating accurate infographics, diagrams, and text-heavy marketing assets",
+      "Localizing or translating text within images for international audiences",
+      "Maintaining character, object, and style consistency across multiple reference images"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-pro-image/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Image-Model-Card.pdf",
+      "title": "Gemini 3 Pro Image - Model Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+      "title": "Image generation | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image",
+      "title": "Gemini 3 Pro Image | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "title": "Deprecations | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's input/output token limits (65,536 / 32,768) match Google's per-request API limits on ai.google.dev/gemini-api/docs/models/gemini-3-pro-image exactly; the DeepMind model card separately describes a nominal 'up to 1M' input context / 64K output, which appears to describe the underlying Gemini 3 Pro context rather than this endpoint's per-call limit, so the catalog's figures were kept. Re-checked the model-specific docs page and the general image-generation guide's current text: both agree the model supports Search grounding (the model page lists it 'Supported'; the guide's 'New with Gemini 3 image models' section lists Grounding with Google Search as a base Gemini 3 image-model capability and names only Gemini 3.1 Flash Lite Image as the exception), so no conflict was found and the claim was added. Google's deprecations page lists gemini-3-pro-image under 'Gemini 3 models' with a release date of May 28, 2026 and 'No shutdown date announced'; the catalog's 2027-05-28 retirement date does not appear on any page opened, though it falls exactly one year after that listed release date."
+}

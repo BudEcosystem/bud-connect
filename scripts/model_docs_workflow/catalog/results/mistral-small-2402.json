@@ -1,0 +1,44 @@
+{
+  "slug": "mistral-small-2402",
+  "canonical": "mistral-small-2402",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Small (API id mistral-small-2402) is Mistral AI's cost- and latency-optimized chat model, released February 26, 2024 alongside Mistral Large, inheriting the larger model's retrieval-augmented-generation support, function calling and JSON-mode output. Mistral AI's own documentation now lists this snapshot as deprecated, with a deprecation date of November 30, 2024 and a retirement date of June 16, 2025, recommending migration to Mistral Small 4; it remains listed as available through Amazon Bedrock, where this catalog entry is hosted.",
+    "advantages": [
+      "Mistral AI reports it outperforms Mixtral 8x7B while having lower latency (Mistral AI launch post).",
+      "Supports function calling and JSON-format output, the same capability Mistral AI shipped with Mistral Large at the same launch (Mistral AI launch post)."
+    ],
+    "disadvantages": [
+      "Mistral AI's own model-selection documentation lists this snapshot (mistral-small-2402) as deprecated, with a June 16, 2025 retirement date and Mistral Small 4 as the recommended replacement."
+    ],
+    "use_cases": [
+      "High-volume, latency-sensitive chat and text completion",
+      "Retrieval-augmented generation (RAG) applications",
+      "Function-calling / tool-integrated applications",
+      "Classification, translation and customer-support tasks"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/mistral-large/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://mistral.ai/news/mistral-large/",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-small.md",
+      "title": "Mistral Small - Amazon Bedrock model card",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog gives max_output_tokens=8191, but Bedrock's own model card for mistral.mistral-small-2402-v1:0 lists 'Max output tokens: 4K' -- kept the catalog's value per instructions and flagging the conflict here. Bedrock's model card also shows internally inconsistent lifecycle dates for this entry (a 'Model launch date' of Dec 16, 2025 alongside a 'Model EOL date: No sooner than 5/24/2025', i.e. an EOL date before the stated launch date), so I relied on Mistral's own current models-overview page for deprecation status instead, which consistently shows this exact API id (mistral-small-2402) as deprecated Nov 30, 2024 / retiring Jun 16, 2025. No numeric benchmark scores specific to Mistral Small (as opposed to Mistral Large) were published in the launch post, so evaluations is left empty."
+}

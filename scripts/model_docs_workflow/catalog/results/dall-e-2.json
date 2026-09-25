@@ -1,0 +1,50 @@
+{
+  "slug": "dall-e-2",
+  "canonical": "dall-e-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "dall-e-2 is OpenAI's second-generation text-to-image model, historically offered at 256x256, 512x512 and 1024x1024 resolutions with support for image edits (inpainting with a transparency mask) and variations generated from an existing square image. OpenAI's own model page states plainly that DALL·E 2 has been deprecated and removed from its API and currently recommends GPT-Image-2.5 Sunburst for image generation and editing; OpenAI's Deprecations page separately records a May 12, 2026 shutdown for DALL·E 2, naming gpt-image-2, gpt-image-1 or gpt-image-1-mini as replacements in that original notice. Microsoft's Azure OpenAI documentation separately lists dall-e-2 among its retired models, with a retirement date of January 27, 2025 and gpt-image-1 as the suggested replacement, meaning existing Azure deployments of it are no longer functional.",
+    "advantages": [
+      "Supported image sizes of 256x256, 512x512 or 1024x1024, and was OpenAI's model for the image edits (inpainting) and variations endpoints, generating a new image from an existing square PNG (OpenAI DALL·E API guide)."
+    ],
+    "disadvantages": [
+      "Deprecated and removed from OpenAI's own API (shutdown May 12, 2026); OpenAI's model page recommends GPT-Image-2.5 Sunburst, though its Deprecations page originally named gpt-image-2, gpt-image-1 or gpt-image-1-mini (OpenAI dall-e-2 model page; OpenAI Deprecations page).",
+      "Retired on Azure OpenAI as of January 27, 2025, so existing Azure deployments are no longer functional; Microsoft's suggested replacement is gpt-image-1 (Microsoft Foundry retired models page)."
+    ],
+    "use_cases": [
+      "Generating images from a text prompt",
+      "Editing existing images via inpainting with a mask",
+      "Creating variations of an existing image"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/dall-e-2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/dall-e-2",
+      "title": "DALL·E 2 Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/cookbook/examples/dalle/image_generations_edits_and_variations_with_dall-e",
+      "title": "How to use the DALL·E API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/legacy-models",
+      "title": "Retired Microsoft Foundry Models - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "GROUPING and STATUS: this target's only URI is azure/standard/1024-x-1024/dall-e-2, and both the maker (OpenAI) and the host (Azure) currently list dall-e-2 as fully retired/removed rather than merely deprecated -- OpenAI's own model page says it 'has been deprecated and removed from the API', and Azure's retired-models page gives a retirement date of 2025-01-27. This conflicts with the catalog's empty deprecation_date for this target; flagging so the catalog can be checked, since Bud may be routing to a model neither OpenAI nor Azure currently serves. OpenAI's Deprecations page shows dall-e-3 was shut down on the same 2026-05-12 date with the same replacement list, so DALL·E 3 is also no longer available and was removed as a claimed current successor."
+}

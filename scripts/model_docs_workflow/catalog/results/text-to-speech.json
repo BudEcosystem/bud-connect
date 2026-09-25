@@ -1,0 +1,38 @@
+{
+  "slug": "text-to-speech",
+  "canonical": "text-to-speech",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Speechmatics",
+  "details": {
+    "description": "Speechmatics' Text-to-Speech API converts text into spoken audio for conversational and voice-agent use. It offers four built-in voices (Sarah and Megan, female English speakers with UK and US accents; Theo and Jack, male English speakers with UK and US accents) and is English-only today, with Speechmatics saying more languages are planned. Speechmatics states the first audio chunk typically returns in under 200ms, with later chunks generated faster than real time, and output can be streamed as it is generated rather than waiting for the full response. The service launched as a free preview and has since moved onto Speechmatics' standard paid pricing tiers.",
+    "advantages": [
+      "Speechmatics states the first audio chunk typically returns in under 200ms, with subsequent chunks generated faster than real time.",
+      "Supports streaming output so audio can start playing before the full response has finished generating.",
+      "Speechmatics' enterprise plan lists custom voice development and custom language development as available options."
+    ],
+    "disadvantages": [
+      "English only; Speechmatics says more languages are \"coming soon\" without a published date.",
+      "Only four fixed built-in voices (Sarah, Megan, Theo, Jack) are offered; there is no voice cloning.",
+      "No manual emotion, pitch or style controls; Speechmatics' own FAQ says fine-grained voice control \"may be added in future releases.\""
+    ],
+    "use_cases": [
+      "Voice assistants and chatbots",
+      "Real-time translation pipelines",
+      "Accessibility and screen-reading tools",
+      "Podcast and audiobook narration",
+      "Automated announcements"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://docs.speechmatics.com/text-to-speech/quickstart",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.speechmatics.com/text-to-speech/quickstart", "title": "Text-to-Speech quickstart | Speechmatics Docs", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/pricing", "title": "Pricing - Speechmatics", "kind": "maker"},
+    {"url": "https://www.speechmatics.com/text-to-speech", "title": "Free Text to Speech Online — Natural AI Voices in Real Time | Speechmatics", "kind": "maker"}
+  ],
+  "notes": "Speechmatics' quickstart docs still describe TTS as free during an initial preview with pricing to be announced in September 2025 and billing starting that October; the current pricing page now lists Text-to-Speech as a feature of its paid Free/Pro/Enterprise tiers, so that preview language on the quickstart page appears stale and TTS is treated here as a current paid offering rather than a preview. No 0-100 accuracy-style benchmark applicable to TTS was found, so evaluations is empty."
+}

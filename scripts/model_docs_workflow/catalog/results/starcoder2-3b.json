@@ -1,0 +1,67 @@
+{
+  "slug": "starcoder2-3b",
+  "canonical": "starcoder2-3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "BigCode",
+  "details": {
+    "description": "StarCoder2-3B is a 3-billion-parameter code generation model from the BigCode project, an open scientific collaboration led jointly by Hugging Face and ServiceNow, released alongside larger 7B and 15B siblings in the StarCoder2 family. It was pretrained with a Fill-in-the-Middle objective on 3+ trillion tokens from The Stack v2, spanning 17 programming languages, using grouped-query attention with a 16,384-token context window and 4,096-token sliding-window attention. It is a code-completion model rather than an instruction-following model, and is intended to continue or fill in code given as context rather than follow natural-language commands.",
+    "advantages": [
+      "Scores 31.7% pass@1 on HumanEval and 27.4% pass@1 on HumanEval+, per BigCode's model card.",
+      "Scores 71.19% edit-similarity on RepoBench-v1.1, per BigCode's model card.",
+      "Trained with a 16,384-token context window (4,096-token sliding-window attention) on 17 programming languages, per BigCode's model card."
+    ],
+    "disadvantages": [
+      "Not an instruction-following model; direct natural-language commands such as \"write a function that does X\" perform poorly, per BigCode's model card.",
+      "BigCode states generated code is not guaranteed to work as intended and may be inefficient, contain bugs, or reproduce code verbatim from its training data."
+    ],
+    "use_cases": [
+      "Code completion and fill-in-the-middle code infilling",
+      "Context-driven code generation across 17 programming languages"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval",
+        "score": 31.7,
+        "source": "https://huggingface.co/bigcode/starcoder2-3b"
+      },
+      {
+        "name": "HumanEval+",
+        "score": 27.4,
+        "source": "https://huggingface.co/bigcode/starcoder2-3b"
+      },
+      {
+        "name": "RepoBench-v1.1 (edit similarity)",
+        "score": 71.19,
+        "source": "https://huggingface.co/bigcode/starcoder2-3b"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/bigcode/starcoder2-3b",
+    "github_url": "https://github.com/bigcode-project/starcoder2"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/bigcode/starcoder2-3b",
+      "title": "bigcode/starcoder2-3b · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/bigcode-project/starcoder2",
+      "title": "bigcode-project/starcoder2",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/starcoder2-3b",
+      "title": "StarCoder2 3B - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/blog/starcoder2",
+      "title": "StarCoder2 and The Stack v2: The Next Generation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (16384-token max input/output, /v1/chat/completions endpoint) match BigCode's stated 16,384-token context window; Fireworks' host page confirms the same figure. Note this is a base code-completion model, not instruction- or chat-tuned, despite being served over the chat completions endpoint."
+}

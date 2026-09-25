@@ -1,0 +1,34 @@
+{
+  "slug": "stable-image-ultra-v1",
+  "canonical": "stable-image-ultra-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Ultra is Stability AI's flagship image generation model, available on Amazon Bedrock as stability.stable-image-ultra-v1:1. Stability AI describes it as its most advanced text-to-image service, built for the highest image quality and prompt understanding, and states it excels at typography, complex compositions, dynamic lighting, and vibrant color. It supports both text-to-image generation from a prompt and image-to-image generation using an existing image as a starting point.",
+    "advantages": [
+      "Stability AI describes it as its most advanced text-to-image service, built for 'the highest quality images with unprecedented prompt understanding' (Stability AI API reference).",
+      "Stability AI states the model 'excels in typography, complex compositions, dynamic lighting, vibrant hues, and overall cohesion and structure of an art piece' (Stability AI API reference).",
+      "Supports both text-to-image generation and image-to-image generation from a starting image, with an adjustable strength parameter for how closely the output follows the source image (AWS Bedrock documentation)."
+    ],
+    "disadvantages": [
+      "Output images are limited to 640-1,536 pixels on each side (AWS Bedrock documentation)."
+    ],
+    "use_cases": [
+      "Text-to-image generation from a descriptive prompt",
+      "Image-to-image generation using an existing image as a starting point",
+      "Photorealistic, large-scale visuals for brand and marketing campaigns"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://platform.stability.ai/docs/api-reference", "title": "API Reference - Stability AI Developer Platform", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-diffusion-stable-ultra-text-image-request-response.html", "title": "Stable Image Ultra request and response - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-stability-diffusion.html", "title": "Stability AI models - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "The catalog's max_input_tokens (77) does not match either source: Stability AI's own API reference and AWS Bedrock's request docs both give the prompt limit as 0-10,000 characters, not a 77-token count; kept the catalog's value as instructed. No accuracy-style (0-100, higher-is-better) benchmark scores were found on Stability AI's or AWS's pages, so evaluations is empty. Stable Image Ultra is listed as a currently supported model on Bedrock's Stability AI models page (uris only cover the Bedrock host, so no separate maker-side deprecation status page was checked)."
+}

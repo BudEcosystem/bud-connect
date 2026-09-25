@@ -1,0 +1,77 @@
+{
+  "slug": "llama-v3p1-405b-instruct-long",
+  "canonical": "llama-v3p1-405b-instruct-long",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "This target is Fireworks AI's '-long' build of Meta's Llama 3.1 405B Instruct, the same multilingual, instruction-tuned 405-billion-parameter model Meta released July 23, 2024, offered as a separate on-demand deployment on Fireworks' infrastructure. Meta's model card gives the Llama 3.1 405B Instruct family a December 2023 knowledge cutoff and names English, German, French, Italian, Portuguese, Hindi, Spanish and Thai as supported languages. Fireworks' page for this specific '-long' variant does not explain the naming or state a separate context-length figure, and lists it as available only through on-demand, dedicated-GPU deployment.",
+    "advantages": [
+      "As the same underlying model, it scores 87.3 on MMLU, 89.0% on HumanEval and 96.8% on GSM-8K (CoT), per Meta's Llama 3.1 model card.",
+      "Scores 92.0% on the API-Bank tool-use benchmark and 88.6 on IFEval, per Meta's Llama 3.1 model card."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of December 2023, per Meta's Llama 3.1 model card.",
+      "This deployment's context window is only 4,096 tokens per the catalog's facts, far short of the 128,000 tokens Meta documents for the general Llama 3.1 405B Instruct family; neither Meta nor Fireworks' page for this '-long' build explains the smaller figure or the variant's naming."
+    ],
+    "use_cases": [
+      "Long-form text summarization",
+      "Multilingual conversational agents across the eight supported languages",
+      "Coding assistants and agentic systems using function calling and external tools",
+      "Synthetic data generation and distillation into smaller models"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 87.3,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "HumanEval",
+        "score": 89.0,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM-8K (CoT)",
+        "score": 96.8,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "GPQA",
+        "score": 50.7,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Hindi",
+      "Spanish",
+      "Thai"
+    ],
+    "website_url": "https://ai.meta.com/blog/meta-llama-3-1/",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+      "title": "Introducing Llama 3.1",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_1/MODEL_CARD.md",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p1-405b-instruct-long",
+      "title": "Llama 3.1 405B Instruct Long - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks' page for this '-long' variant lists context length as 'N/A' and gives no explanation of the suffix or how it differs from llama-v3p1-405b-instruct; description and evaluations use Meta's published figures for the underlying 405B Instruct model, which Fireworks confirms this is. The catalog's own facts show a 4,096-token max input/output for this target, smaller than the 128,000 shown for the plain llama-v3p1-405b-instruct target despite the '-long' name (now stated in disadvantages) -- worth checking against Bud's own deployment config, since no source explains the discrepancy."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "codegemma-2b",
+  "canonical": "codegemma-2b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "CodeGemma 2B is a lightweight, code-focused pretrained model in Google's open Gemma family, built for fill-in-the-middle (FIM) code completion and code generation rather than open-ended chat. It was pretrained on top of Gemma with an additional 500 billion tokens weighted toward code, mathematics and synthetically generated examples, and supports code in Python, Java, JavaScript, Kotlin, C++, C# and other languages. Google's documentation describes it as delivering up to 2x faster code completion than other CodeGemma models, and, unlike the 7B model, Google has not published an instruction-tuned chat variant of the 2B model.",
+    "advantages": [
+      "Scores 31.1% pass@1 on HumanEval and 43.6% on MBPP, per Google's Hugging Face model card.",
+      "Scores 78.41% on the HumanEval Single Line fill-in-the-middle benchmark, per Google's Hugging Face model card.",
+      "Google's documentation states it delivers up to 2x faster code completion than other CodeGemma models."
+    ],
+    "disadvantages": [
+      "Pretrained completion model only; Google has not released an instruction-tuned chat ('it') variant of CodeGemma 2B, unlike the 7B model.",
+      "Trails the larger CodeGemma 7B on HumanEval (31.1% vs 44.5%) and MBPP (43.6% vs 56.2%), per Google's model card."
+    ],
+    "use_cases": [
+      "Fill-in-the-middle code completion in IDEs",
+      "Code generation from natural-language prompts",
+      "Multi-file code context completion"
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 31.1, "source": "https://huggingface.co/google/codegemma-2b"},
+      {"name": "MBPP", "score": 43.6, "source": "https://huggingface.co/google/codegemma-2b"},
+      {"name": "HumanEval Single Line (FIM)", "score": 78.41, "source": "https://huggingface.co/google/codegemma-2b"},
+      {"name": "HumanEval Multi Line (FIM)", "score": 51.44, "source": "https://huggingface.co/google/codegemma-2b"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/google/codegemma-2b",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/codegemma-2b", "title": "google/codegemma-2b · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/codegemma", "title": "CodeGemma | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Google's model card does not state a context window or knowledge cutoff for this checkpoint, so none is claimed beyond the catalog's own facts (8,192 tokens). 'Languages' here means programming languages (Python, Java, etc.), not natural languages, so the languages field is left empty per the research brief."
+}

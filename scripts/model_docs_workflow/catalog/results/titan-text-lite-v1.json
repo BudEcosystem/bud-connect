@@ -1,0 +1,58 @@
+{
+  "slug": "titan-text-lite-v1",
+  "canonical": "titan-text-lite-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Titan Text Lite is one of Amazon's first-generation Titan large language models for text generation on Amazon Bedrock (model ID amazon.titan-text-lite-v1). AWS's prompt engineering guide documents it for building chatbot conversations and for Text2SQL (converting natural-language questions into SQL queries), using a stateless User:/Bot: prompt format. As of this research, AWS's current Bedrock documentation no longer lists this model among its supported Titan models, and its dedicated model page has been removed, indicating it has been retired or is being phased out from Amazon's actively supported Titan lineup.",
+    "advantages": [
+      "AWS's prompt engineering guide documents Titan Text Lite for building multi-turn chatbot applications using a stateless User:/Bot: prompt format.",
+      "AWS's prompt engineering guide documents Titan Text Lite for Text2SQL tasks that convert natural-language questions into SQL queries.",
+      "AWS's live Bedrock parameter documentation shows a lower maximum output-token ceiling for Titan Text Lite than for its sibling, Titan Text Express, within the same Titan Text model family."
+    ],
+    "disadvantages": [
+      "As of this research, AWS's current Titan model overview and Amazon model-card catalog no longer list this model among supported Bedrock models, and its dedicated documentation page has been removed, indicating it has been retired or is being phased out.",
+      "AWS's documentation states the model is stateless and does not retain conversation history between turns, so callers must resend prior turns for multi-turn use.",
+      "No tool use, vision, or reasoning-mode capability is documented for this model."
+    ],
+    "use_cases": [
+      "Building multi-turn chatbot conversations",
+      "Converting natural-language questions into SQL queries (Text2SQL)",
+      "General open-ended text generation from a prompt"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-text.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-text.html",
+      "title": "Amazon Titan Text models - request parameters",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html",
+      "title": "Overview of Amazon Titan models",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-amazon.html",
+      "title": "Amazon - Amazon Bedrock model cards",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
+      "title": "Regional availability by models - Amazon Bedrock",
+      "kind": "maker"
+    },
+    {
+      "url": "https://d2eo22ngex1n9g.cloudfront.net/Documentation/User+Guides/Titan/Amazon+Titan+Text+Prompt+Engineering+Guidelines.pdf",
+      "title": "Amazon Titan Text: Prompt Engineering Guidelines",
+      "kind": "maker"
+    }
+  ],
+  "notes": "As of this research (2026-09-24), AWS's current Bedrock documentation no longer lists this model: it is absent from the 'Overview of Amazon Titan models' page (which now names only Titan Text Embeddings V2, Titan Multimodal Embeddings G1, and Titan Image Generator G1 v2), from the current Amazon model-card catalog, and from the regional-availability page; its old dedicated documentation page (titan-text-models.html) no longer resolves. I could not find an explicit retirement or EOL date - only a still-live shared inference-parameters page that keeps the model ID and request format documented. That live page shows a maxTokenCount ceiling of 4,096 output tokens for this model, slightly different from Bud's catalog fact of 4,000 output tokens; I kept the catalog's figure and did not restate a number in the write-up. Bud's catalog also lists this model's URIs only in AWS GovCloud regions, which may lag commercial-region retirements."
+}

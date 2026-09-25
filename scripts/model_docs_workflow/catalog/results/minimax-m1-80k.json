@@ -1,0 +1,41 @@
+{
+  "slug": "minimax-m1-80k",
+  "canonical": "minimax-m1-80k",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax-M1 is MiniMax's open-weight reasoning model, released June 16, 2025, which MiniMax describes as the first open-weight, large-scale hybrid-attention reasoning model. It combines a mixture-of-experts architecture (456 billion total parameters, 45.9 billion activated per token) with a lightning-attention mechanism for more compute-efficient scaling at long generation lengths. This is the '80k' checkpoint, trained with a longer extended-reasoning token budget than MiniMax's '40k' variant of the same model. It serves chat completions with a 4,096-token context window and is licensed Apache 2.0.",
+    "advantages": [
+      "Scores 86.0% on AIME 2024, 96.8% on MATH-500, 70.0% on GPQA Diamond, 65.0% (pass@1) on LiveCodeBench, and 56.0% on SWE-bench Verified for this checkpoint, per MiniMax's GitHub repository.",
+      "MiniMax reports the M1 series ranks second globally on long-context evaluations, trailing only Gemini 2.5 Pro.",
+      "MiniMax reports its CISPO reinforcement-learning algorithm converges about twice as fast as competing RL methods such as DAPO and GRPO, letting the RL training phase finish using just 512 H800 GPUs over three weeks (about $534,700)."
+    ],
+    "disadvantages": [
+      "4,096-token context window in this listing, small for a model built around extended multi-step reasoning."
+    ],
+    "use_cases": [
+      "Complex reasoning tasks such as mathematics and multi-step problem solving",
+      "Software engineering and coding assistance",
+      "Agentic tool-use workflows"
+    ],
+    "evaluations": [
+      {"name": "AIME 2024", "score": 86.0, "source": "https://github.com/MiniMax-AI/MiniMax-M1"},
+      {"name": "MATH-500", "score": 96.8, "source": "https://github.com/MiniMax-AI/MiniMax-M1"},
+      {"name": "GPQA Diamond", "score": 70.0, "source": "https://github.com/MiniMax-AI/MiniMax-M1"},
+      {"name": "LiveCodeBench", "score": 65.0, "source": "https://github.com/MiniMax-AI/MiniMax-M1"},
+      {"name": "SWE-bench Verified", "score": 56.0, "source": "https://github.com/MiniMax-AI/MiniMax-M1"}
+    ],
+    "languages": [],
+    "website_url": "https://www.minimax.io/news/minimaxm1",
+    "github_url": "https://github.com/MiniMax-AI/MiniMax-M1"
+  },
+  "sources": [
+    {"url": "https://www.minimax.io/news/minimaxm1", "title": "MiniMax-M1 - MiniMax", "kind": "maker"},
+    {"url": "https://github.com/MiniMax-AI/MiniMax-M1", "title": "MiniMax-AI/MiniMax-M1", "kind": "third_party"},
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M1-80k", "title": "MiniMaxAI/MiniMax-M1-80k", "kind": "third_party"},
+    {"url": "https://fireworks.ai/models/fireworks/minimax-m1-80k", "title": "MiniMax-M1-80k - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts list a 4,096-token context/output limit for this entry. MiniMax's own GitHub and Hugging Face pages describe MiniMax-M1-80k as natively supporting a 1,000,000-token context window with an 80,000-token extended-reasoning ('thinking') output budget (double the 40k variant's 40,000 tokens) -- both figures are far above the catalog's 4,096, and the '80k' in the model's own name refers to that reasoning-output budget. Kept the catalog's value in the visible write-up per instructions and flagged the large gap here for review. Modality (text-only) does match: MiniMax-M1 has no documented image/audio input. Verification pass: the TAU-bench 'leads all open-weight models' claim on minimax.io is stated specifically for the MiniMax-M1-40k variant ('MiniMax-M1-40k also leads all open-weight models and outperforms Gemini-2.5 Pro'), not for M1-80k (the model this file describes), so it was removed as a sibling-model claim; GitHub's per-variant table also shows the two checkpoints splitting TAU-bench Retail (40k: 67.8 vs 80k: 63.5). Also corrected the training-efficiency claim: minimax.io's '$534,700' training cost figure is compared only to MiniMax's own prior internal estimate ('an order of magnitude less than initially anticipated'), not to other reasoning models' training cost as the draft implied; replaced with the page's actual supported comparison, that CISPO converges faster than DAPO and GRPO."
+}

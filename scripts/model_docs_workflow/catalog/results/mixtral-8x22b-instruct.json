@@ -1,0 +1,43 @@
+{
+  "slug": "mixtral-8x22b-instruct",
+  "canonical": "mixtral-8x22b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mixtral 8x22B Instruct is Mistral AI's instruction-tuned version of the Mixtral 8x22B sparse mixture-of-experts model, released April 17, 2024 under an Apache 2.0 license. It has 141 billion total parameters with 39 billion active per token, a 64K-token context window, and supports native function calling through dedicated tool-call tokens. Mistral's launch post reports fluency in English, French, Italian, German and Spanish, with a focus on mathematics, coding and reasoning. Mistral deprecated the Mixtral 8x22B family on its own hosted platform (La Plateforme) on November 30, 2024 and retired it March 30, 2025, recommending Mistral Small 4 as a replacement; the open weights remain available through third-party hosts such as Fireworks AI.",
+    "advantages": [
+      "Scores 90.8% on GSM8K (maj@8) and 44.6% on MATH (maj@4), per Mistral's launch announcement.",
+      "Scores 56.33 on MMLU-Pro, per its Hugging Face model card evaluation results.",
+      "Supports native function calling with dedicated [TOOL_CALLS], [AVAILABLE_TOOLS] and [TOOL_RESULTS] tokens, per its Hugging Face model card.",
+      "Released under the permissive Apache 2.0 license, allowing unrestricted self-hosting and fine-tuning."
+    ],
+    "disadvantages": [
+      "Deprecated on Mistral's own hosted API as of November 30, 2024 and retired March 30, 2025, with Mistral recommending Mistral Small 4 as a replacement.",
+      "Fireworks AI's hosting of this model does not support fine-tuning, embeddings, reranking or image input."
+    ],
+    "use_cases": [
+      "Tool-use and function-calling agent workflows",
+      "Multilingual conversational assistants (English, French, Italian, German, Spanish)",
+      "Mathematics and coding tasks",
+      "General instruction-following chat"
+    ],
+    "evaluations": [
+      {"name": "GSM8K maj@8", "score": 90.8, "source": "https://mistral.ai/news/mixtral-8x22b"},
+      {"name": "MATH maj@4", "score": 44.6, "source": "https://mistral.ai/news/mixtral-8x22b"},
+      {"name": "MMLU-Pro", "score": 56.33, "source": "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1"}
+    ],
+    "languages": ["English", "French", "Italian", "German", "Spanish"],
+    "website_url": "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1",
+    "github_url": "https://github.com/mistralai/mistral-inference"
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mixtral-8x22b", "title": "Cheaper, Better, Faster, Stronger | Mistral AI", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1", "title": "mistralai/Mixtral-8x22B-Instruct-v0.1 · Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/mixtral-8x22b-instruct", "title": "Mixtral MoE 8x22B Instruct - Fireworks AI", "kind": "host"},
+    {"url": "https://github.com/mistralai/mistral-inference", "title": "mistralai/mistral-inference", "kind": "maker"}
+  ],
+  "notes": "Fireworks AI's own listing states 143B total parameters for this model, which conflicts with Mistral's and Hugging Face's figure of 141B total / 39B active; the maker's figure was used."
+}

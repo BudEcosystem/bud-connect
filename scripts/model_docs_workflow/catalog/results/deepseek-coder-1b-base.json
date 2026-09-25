@@ -1,0 +1,50 @@
+{
+  "slug": "deepseek-coder-1b-base",
+  "canonical": "deepseek-coder-1b-base",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek AI",
+  "details": {
+    "description": "DeepSeek-Coder-1.3B-Base is a 1.3-billion-parameter code-focused language model from DeepSeek AI, trained on 1 trillion tokens (the DeepSeek Coder family overall was trained on a 2-trillion-token corpus, 87% code and 13% natural language in English and Chinese) with a 16K-token context window. It is part of the DeepSeek Coder family (1.3B, 5.7B, 6.7B and 33B sizes) built for project-level code completion and fill-in-the-middle infilling. This is the base checkpoint, not an instruction-tuned chat model.",
+    "advantages": [
+      "Supports project-level code completion and fill-in-the-blank (infilling) tasks across a repository, per DeepSeek's model card.",
+      "Pretrained on 1 trillion tokens spanning code and natural language in both English and Chinese, per DeepSeek's model card.",
+      "DeepSeek's model license supports commercial use."
+    ],
+    "disadvantages": [
+      "This is a base checkpoint, not instruction-tuned, so it is built for code completion and infilling rather than following chat instructions.",
+      "DeepSeek's model card names the benchmarks it was tested on (HumanEval, MultiPL-E, MBPP, DS-1000, APPS) but does not publish numeric scores for this specific 1.3B size."
+    ],
+    "use_cases": [
+      "Code completion within a single file or across a repository.",
+      "Fill-in-the-middle code infilling.",
+      "As a base checkpoint for further fine-tuning into a coding assistant."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Chinese"
+    ],
+    "website_url": "https://huggingface.co/deepseek-ai/deepseek-coder-1.3b-base",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/deepseek-coder-1.3b-base",
+      "title": "deepseek-ai/deepseek-coder-1.3b-base",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+      "title": "deepseek-ai/DeepSeek-Coder",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-coder-1b-base",
+      "title": "DeepSeek Coder 1.3B Base - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list max tokens as 16384 (16K), matching the model card's 16K context window, so kept as-is. No numeric benchmark scores are published on the model card for this specific 1.3B size, only benchmark names, so evaluations is left empty. This is a base (non-instruction-tuned) checkpoint despite the catalog's 'chat' kind; flagging since users choosing it for chat/instruction use should know it is not RLHF/instruct-tuned. The model card page mixes two token counts: its generic family intro says every size is 'trained from scratch on 2T tokens,' but its model-specific 'Model Summary' section states plainly 'deepseek-coder-1.3b-base is a 1.3B parameter model with Multi-Head Attention trained on 1 trillion tokens.' Corrected description/advantages to the model-specific 1T figure and noted the family-wide 2T figure separately, since the family-wide 2T total (1.8T pretrain + 0.2T context extension per the GitHub README) applies to the larger checkpoints, not confirmed for the 1.3B."
+}

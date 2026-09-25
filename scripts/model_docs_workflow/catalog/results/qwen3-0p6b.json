@@ -1,0 +1,38 @@
+{
+  "slug": "qwen3-0p6b",
+  "canonical": "qwen3-0p6b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-0.6B is the smallest dense model in Alibaba's Qwen team's Qwen3 series, released in April 2025. It is a 0.6-billion-parameter (28-layer) causal language model that switches between a thinking mode for step-by-step reasoning on math, coding and logic tasks and a non-thinking mode for fast, general dialogue within a single model, and it supports tool calling through the Qwen-Agent framework. This deployment lists a 40,960-token context window and is multilingual.",
+    "advantages": [
+      "Switches between an explicit thinking mode (reasoning wrapped in <think> blocks) and a fast non-thinking mode within a single model, controllable via an enable_thinking parameter or /think and /no_think commands (Qwen3-0.6B model card).",
+      "Supports tool calling and MCP-based agentic workflows via the Qwen-Agent framework (Qwen3-0.6B model card).",
+      "Qwen states Qwen3 models support over 119 languages and dialects (Qwen3 launch blog)."
+    ],
+    "disadvantages": [
+      "At 0.6B parameters, it is the smallest model in the Qwen3 dense lineup (0.6B-32B, plus larger mixture-of-experts models), with less reasoning capacity than its larger siblings (Qwen3 GitHub repository).",
+      "In thinking mode, the model card notes a known failure mode of endless repetition when using greedy decoding, and recommends sampling-based decoding instead (Qwen3-0.6B model card)."
+    ],
+    "use_cases": [
+      "Lightweight conversational assistants and chatbots",
+      "Step-by-step math, coding, and logic reasoning via thinking mode",
+      "Tool-calling agents and MCP-based agentic workflows",
+      "Multilingual instruction following",
+      "Resource-constrained or edge deployment scenarios"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-0.6B",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-0.6B", "title": "Qwen/Qwen3-0.6B · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-0p6b", "title": "Qwen3 0.6B - Fireworks AI", "kind": "host"},
+    {"url": "https://qwenlm.github.io/blog/qwen3/", "title": "Qwen3: Think Deeper, Act Faster - Qwen blog", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3", "title": "QwenLM/Qwen3 · GitHub", "kind": "maker"}
+  ],
+  "notes": "Qwen's own Qwen3-0.6B model card states a native context length of 32,768 tokens (no YaRN extension is documented for this size); the catalog facts and Fireworks' host page both list a larger 40,960-token window for this deployment. Kept the catalog's 40,960 value per instructions and did not restate 32,768. Languages: the Qwen3 launch blog states 'over 119 languages and dialects' (a count, not a named list), so the languages field is left empty per instructions and the count is given in the description instead; the Hugging Face card itself only says '100+ languages'. No numeric benchmark scores for the 0.6B model specifically were found on its model card, the Qwen3 blog, or the GitHub README (only qualitative Base-model comparisons for the larger 1.7B+ sizes), so evaluations is left empty rather than guessed."
+}

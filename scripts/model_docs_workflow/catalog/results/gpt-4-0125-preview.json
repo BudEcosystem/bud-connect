@@ -1,0 +1,51 @@
+{
+  "slug": "gpt-4-0125-preview",
+  "canonical": "gpt-4-0125-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-4-0125-preview is the January 25, 2024 snapshot of OpenAI's GPT-4 Turbo preview series. OpenAI released it to complete tasks such as code generation more thoroughly than the earlier November 2023 (1106) preview, reducing cases where that snapshot left a task unfinished -- behavior widely described at the time as the model being 'lazy.' It offers a 128K-token context window with text-only input and output, through the chat completions API. OpenAI's deprecations page lists this snapshot as shut down on March 26, 2026, recommending gpt-5 or gpt-4.1 as replacements, and Azure's current GPT-4 documentation no longer lists it as an active snapshot, having folded all 2023-era GPT-4 preview snapshots into the GA gpt-4 (turbo-2024-04-09) release.",
+    "advantages": [
+      "OpenAI released it specifically to complete tasks like code generation more thoroughly, reducing instances where the prior (1106) preview left a task unfinished.",
+      "Offers a 128K-token context window, per OpenAI's model documentation."
+    ],
+    "disadvantages": [
+      "Shut down by OpenAI on March 26, 2026, per OpenAI's deprecations page, which recommends gpt-5 or gpt-4.1 as replacements.",
+      "Azure's current GPT-4 documentation lists the GA gpt-4 (turbo-2024-04-09) release as the replacement for all previous GPT-4 preview models, including this one.",
+      "Text-only input and output -- no image/vision support in this snapshot, per OpenAI's model documentation."
+    ],
+    "use_cases": [
+      "Chat and text-generation tasks requiring a 128K-token context window",
+      "Code-generation tasks needing more complete, less-truncated output than the prior preview snapshot"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4-turbo-preview",
+      "title": "GPT-4 Turbo Preview Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.ciodive.com/news/openai-laziness-gpt4-turbo-model-updates/705664/",
+      "title": "OpenAI updates GPT-4 Turbo preview model to combat laziness",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "Catalog's deprecation_date for this target is empty, but OpenAI's own deprecations page gives a shutdown date of 2026-03-26 (already past as of this research date) and Azure's current model docs no longer list this snapshot as active -- flagging since the catalog carries no date for it. Could not reach openai.com's original January 2024 announcement post directly (403 on fetch); the 'laziness' fix is corroborated via CIO Dive's contemporaneous reporting of OpenAI's announcement."
+}

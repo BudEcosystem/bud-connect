@@ -1,0 +1,39 @@
+{
+  "slug": "scribe_v2",
+  "canonical": "scribe_v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "ElevenLabs",
+  "details": {
+    "description": "Scribe v2 is ElevenLabs' speech-to-text model for batch (non-realtime) transcription, supporting 90+ languages with automatic language detection within a single audio file, word-level timestamps, and speaker diarization for up to 32 speakers. It is built for long-form audio such as recordings, meetings, and subtitling; ElevenLabs offers a separate Scribe v2 Realtime model for low-latency streaming use cases. It also tags non-speech audio events (e.g. laughter, footsteps) and flags named entities such as PII, health, and payment information with timestamps.",
+    "advantages": [
+      "Independent testing by Artificial Analysis measured a 2.2% word error rate (AA-WER, an audio-duration-weighted average across English-heavy benchmark datasets) among 59 tested speech-to-text models.",
+      "ElevenLabs' own per-language testing found word error rate of 5% or lower for 36 of its supported languages.",
+      "Supports speaker diarization for up to 32 speakers and precise word-level timestamps for subtitle/caption alignment.",
+      "Detects named entities across dozens of categories (PII, health data, payment details) with timestamps, according to ElevenLabs' docs.",
+      "Supports keyterm prompting to bias transcription toward custom words or phrases (e.g. product names) not common in the audio."
+    ],
+    "disadvantages": [
+      "Word error rate exceeds 25% for 19 of ElevenLabs' listed supported languages, per its own accuracy tiers.",
+      "Not designed for real-time use; ElevenLabs offers a separate Scribe v2 Realtime model for low-latency streaming transcription."
+    ],
+    "use_cases": [
+      "Batch transcription of recorded audio and video",
+      "Meeting documentation",
+      "Subtitle and caption generation, including alignment of audio with video",
+      "Multilingual transcription of mixed-language recordings"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://elevenlabs.io/docs/overview/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://elevenlabs.io/blog/introducing-scribe-v2", "title": "Introducing Scribe v2", "kind": "maker"},
+    {"url": "https://elevenlabs.io/docs/overview/models", "title": "Models | ElevenLabs Documentation", "kind": "maker"},
+    {"url": "https://elevenlabs.io/docs/overview/capabilities/speech-to-text", "title": "Transcription | ElevenLabs Documentation", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/speech-to-text/models/elevenlabs-scribe-v2", "title": "ElevenLabs Scribe v2 - Artificial Analysis Word Error Rate Index, Speed & Price Analysis", "kind": "third_party"}
+  ],
+  "notes": "ElevenLabs' pages disagree with each other on two details: the launch blog post cites '56 named entity types' and 'up to 100' keyterms, while the current docs page cites '65 entity types' and 'up to 1000 keyterms (50 characters each)' for batch. I used the docs page figures as the more current source and omitted both from the advantages list to avoid overstating a number that may still be in flux; only left qualitative claims in. Left languages list empty since ElevenLabs states only a count ('90+ languages') without naming them. A FLEURS-benchmark WER figure for Scribe v2 (batch) surfaced in search snippets but I could not confirm it on an opened page, so it is omitted per the no-snippet-only rule."
+}

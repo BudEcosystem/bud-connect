@@ -1,0 +1,45 @@
+{
+  "slug": "claude-opus-4-7",
+  "canonical": "claude-opus-4-7",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Opus 4.7 is Anthropic's most capable Opus model at its April 16, 2026 general-availability release, built for advanced, long-running software engineering and high-resolution image understanding. It is the first Claude model with high-resolution vision, accepting images up to about 3.75 megapixels versus roughly 1.15 megapixels on prior Claude models, and it adds a new 'xhigh' effort level between 'high' and 'max' for finer control over the reasoning-versus-latency trade-off. Anthropic ships it with safeguards that automatically detect and block high-risk cybersecurity requests, as part of a staged approach toward broader release of its more capable, access-restricted Mythos-class models.",
+    "advantages": [
+      "Scores 87.6% on SWE-bench Verified, Anthropic's software-engineering benchmark (AWS Bedrock launch blog).",
+      "Scores 69.4% on Terminal-Bench 2.0, an agentic-coding benchmark (AWS Bedrock launch blog).",
+      "Scores 64.3% on SWE-bench Pro (AWS Bedrock launch blog).",
+      "First Claude model with high-resolution image support, accepting images Anthropic describes as more than three times larger than prior Claude versions could handle (Anthropic launch post)."
+    ],
+    "disadvantages": [
+      "Anthropic states it is less broadly capable than the access-restricted Claude Mythos Preview model (Anthropic launch post).",
+      "Anthropic states it is 'modestly weaker' than its predecessor on harm-reduction advice about controlled substances (Anthropic launch post).",
+      "Instruction-following changes mean prompts tuned for earlier Claude models can now produce unexpected results (Anthropic launch post).",
+      "Superseded within Anthropic's own Opus line by Opus 4.8, Opus 5 and Opus 5.5, all released within six months of Opus 4.7's launch (Anthropic model deprecations page)."
+    ],
+    "use_cases": [
+      "Advanced, long-running software engineering, including production-scale coding tasks",
+      "High-resolution visual analysis of charts, technical diagrams, and chemical structures",
+      "Finance and research agents for knowledge work such as financial analysis",
+      "Defensive cybersecurity work by users verified through the Cyber Verification Program",
+      "Legal document review and analysis"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 87.6, "source": "https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/"},
+      {"name": "Terminal-Bench 2.0", "score": 69.4, "source": "https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/"},
+      {"name": "SWE-bench Pro", "score": 64.3, "source": "https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-opus-4-7",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-opus-4-7", "title": "Introducing Claude Opus 4.7", "kind": "maker"},
+    {"url": "https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/", "title": "Introducing Anthropic's Claude Opus 4.7 model in Amazon Bedrock", "kind": "host"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/build-with-claude/vision", "title": "Vision - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1M max input tokens, 128K max output tokens, deprecation_date 2027-04-16, anthropic/bedrock/vertex_ai-anthropic_models providers) match Anthropic's model-deprecations table entry for claude-opus-4-7 (Active, tentative retirement not sooner than April 16, 2027). Anthropic's own launch post presents most benchmark scores as chart images without text values, so SWE-bench Verified, Terminal-Bench 2.0, and SWE-bench Pro are sourced to AWS's Bedrock launch blog, which republishes Anthropic's figures. The 90.9% BigLaw Bench figure on Anthropic's post is Harvey's own customer-testimonial score, not an Anthropic- or leaderboard-reported benchmark, so it was dropped from advantages and evaluations. The vision docs page's high-resolution/standard visual-token limits (4784 and 1568 tokens, 784 px^2/token) work out to about 3.75 and 1.23 megapixels, supporting the description's 'more than three times' comparison. The system-card PDF exceeded the size this tool can fetch."
+}

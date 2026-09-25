@@ -1,0 +1,42 @@
+{
+  "slug": "llama-3.2-3b-instruct",
+  "canonical": "llama-3.2-3b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.2 3B Instruct is a small, instruction-tuned model in Meta's Llama 3.2 multilingual text family, released September 25, 2024. At 3.21 billion parameters it targets assistant-like chat and agentic uses such as knowledge retrieval and summarization, and was trained in part through knowledge distillation from larger Llama 3.1 models. Meta officially supports eight languages for this model.",
+    "advantages": [
+      "Meta reports 77.7% accuracy on GSM8K and 78.6% on ARC-Challenge for the instruction-tuned model.",
+      "Meta reports 77.4% on IFEval, an instruction-following benchmark, for the instruction-tuned model.",
+      "Compact at 3.21 billion parameters, with knowledge distilled from larger Llama 3.1 models according to Meta.",
+      "Meta officially trained and supports eight languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai."
+    ],
+    "disadvantages": [
+      "Meta states model outputs may contain inaccuracies or biases and require developer testing and system-level safeguards before deployment.",
+      "Meta's model card lists a knowledge cutoff of December 2023."
+    ],
+    "use_cases": [
+      "Assistant-like multilingual chat",
+      "Agentic applications such as knowledge retrieval and summarization",
+      "Query rewriting",
+      "Mobile and on-device AI applications"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 63.4, "source": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"},
+      {"name": "IFEval", "score": 77.4, "source": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"},
+      {"name": "GSM8K", "score": 77.7, "source": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"},
+      {"name": "MATH", "score": 48.0, "source": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"},
+      {"name": "ARC-Challenge", "score": 78.6, "source": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"}
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct", "title": "meta-llama/Llama-3.2-3B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama-models", "title": "meta-llama/llama-models · GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog facts cap this model at 32768 max input/output tokens, but Meta's model card states a 128k (131072) token context window for Llama 3.2 3B Instruct. Kept the catalog's value and left the specific figure out of the description per instructions; flagging the conflict since Hyperbolic may be serving a reduced context window."
+}

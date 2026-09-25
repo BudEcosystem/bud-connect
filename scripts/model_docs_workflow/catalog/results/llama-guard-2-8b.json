@@ -1,0 +1,37 @@
+{
+  "slug": "llama-guard-2-8b",
+  "canonical": "llama-guard-2-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama Guard 2 is an 8-billion-parameter safeguard classifier built on Llama 3 by Meta, released in April 2024 under the Llama 3 Community License. Rather than holding a conversation, it classifies a user prompt or a model's response as 'safe' or 'unsafe' against an 11-category taxonomy adapted from the MLCommons hazards taxonomy, covering categories such as violent and non-violent crimes, sexual exploitation, privacy, weapons, hate speech, and self-harm. Meta reports an F1 score of 0.915 and an AUPRC of 0.974 on its internal test set, a substantial improvement over the original Llama Guard's F1 of 0.665. Meta's current AI trust-and-safety page names Llama Guard 4 as its latest safeguard model and does not mention Llama Guard 2, though it does not explicitly label Llama Guard 2 as deprecated.",
+    "advantages": [
+      "Meta reports an F1 score of 0.915 and AUPRC of 0.974 on its internal test set, outperforming the original Llama Guard (F1 0.665) and competing with GPT-4 and moderation APIs from OpenAI, Azure, and Perspective, per its Hugging Face model card.",
+      "Maintains a low false positive rate of 0.040 on Meta's internal test set, per its Hugging Face model card.",
+      "Classifies against an 11-category taxonomy adapted from the MLCommons hazards taxonomy, covering categories including violent and non-violent crimes, sexual exploitation, privacy, intellectual property, weapons, hate, self-harm, and sexual content, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Built on Llama 3, which Meta's model card states is intended for use in English, and Llama Guard 2's own model card notes multilingual performance may be limited by the underlying training data.",
+      "Does not cover election-related or defamation content, which its model card says require access to up-to-date, factual information and the ability to determine veracity, beyond the model's scope.",
+      "Meta's current AI trust-and-safety page names Llama Guard 4 as its latest safeguard model and does not list Llama Guard 2 by name."
+    ],
+    "use_cases": [
+      "Classifying chatbot prompts and model responses as safe or unsafe before or after generation",
+      "Content moderation pipelines that need category-level harm labels rather than a single safe/unsafe flag",
+      "Guardrails for LLM applications built on the Llama 3 model family"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/meta-llama/Meta-Llama-Guard-2-8B",
+    "github_url": "https://github.com/meta-llama/PurpleLlama/tree/main/Llama-Guard2"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Meta-Llama-Guard-2-8B", "title": "meta-llama/Meta-Llama-Guard-2-8B · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/PurpleLlama", "title": "meta-llama/PurpleLlama - GitHub", "kind": "maker"},
+    {"url": "https://dev.meta.ai/llama/llama-protections/", "title": "Llama Protections - Meta AI Developer", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B", "title": "meta-llama/Meta-Llama-3-8B · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "F1/AUPRC/false-positive-rate are classifier metrics on a 0-1 scale, not accuracy-style 0-100 benchmark scores, so they were put in advantages sentences rather than the evaluations list, consistent with the research brief's treatment of non-accuracy figures. No opened source stated an explicit context-length figure for Llama Guard 2 itself (it is Llama-3-8B based, whose base context is commonly cited as 8K, matching the catalog's 8192 facts), so no context-length claim is asserted in the description beyond the catalog's own facts. Current status is inferred from Llama Guard 2's absence from Meta's present trust-and-safety page (which instead highlights Llama Guard 4) rather than from an explicit deprecation notice."
+}

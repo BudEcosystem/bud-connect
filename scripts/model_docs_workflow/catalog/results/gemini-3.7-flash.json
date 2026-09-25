@@ -1,0 +1,52 @@
+{
+  "slug": "gemini-3.7-flash",
+  "canonical": "gemini-3.7-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.7 Flash is Google DeepMind's Flash-tier model in the Gemini 3 family, published 13 August 2026 and built on Gemini 3.6 Flash with algorithmic improvements to its reasoning and added support for agentic video understanding. It accepts text, image, audio and video input over up to a 1M-token context window and supports customizable thinking configurations to trade off response quality, cost and latency. Google's Gemini API docs now list it as their \"previous-generation Flash model\", having been superseded by Gemini 3.8 Flash the following month.",
+    "advantages": [
+      "Scores 85.8% on Terminal-bench 2.1 for agentic terminal coding, per its Google DeepMind model card.",
+      "Scores 97.0% on the GDM-MRCR v2 (8-needle) long-context benchmark at 128k tokens, per its Google DeepMind model card.",
+      "Scores 85.4% on LVBench for long video understanding, per its Google DeepMind model card.",
+      "Scores 90.7% on the Harvey LAB-AA complex legal workflows benchmark, per its Google DeepMind model card.",
+      "Adds support for agentic video understanding not present in the prior Gemini 3.6 Flash, per its Google DeepMind model card.",
+      "Supports customizable thinking configurations to control the mix of response quality, cost and latency, per its Google DeepMind model card."
+    ],
+    "disadvantages": [
+      "Superseded as Google's top Flash-tier model by Gemini 3.8 Flash, released about three weeks later; Google's Gemini API docs now label it \"previous-generation\".",
+      "Knowledge cutoff of March 2026, with some domains limited to January 2025, per its Google DeepMind model card.",
+      "Its model card lists hallucinations typical of foundation models and occasional slowness or timeout issues as known limitations."
+    ],
+    "use_cases": [
+      "Agentic workflows involving tool use and reliable multi-step execution",
+      "Complex video reasoning and understanding",
+      "Coding and software-engineering tasks",
+      "Enterprise workflow automation",
+      "Long-context document analysis"
+    ],
+    "evaluations": [
+      {"name": "FrontierCode 1.1", "score": 43.6, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "DeepSWE v1.1", "score": 65.3, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "Terminal-bench 2.1", "score": 85.8, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "Harvey LAB-AA", "score": 90.7, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "LVBench", "score": 85.4, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "GDM-MRCR v2 (8-needle, 128k average)", "score": 97.0, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "HLE-Verified", "score": 53.6, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "LABBench2", "score": 82.1, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "OSWorld-2.0", "score": 47.9, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"},
+      {"name": "CharXiv Reasoning (no tools)", "score": 84.5, "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"}
+    ],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/", "title": "Gemini 3.7 Flash - Model Card — Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Models | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1,048,576 input tokens, 65,536 output tokens, audio+image+text input) match the model card's 'up to 1M' input / '64K' output figures, but the card also lists video file input, which the catalog's modality list does not include. ai.google.dev/gemini-api/docs/models (last updated 2026-09-24) labels Gemini 3.7 Flash 'Stable' and 'previous-generation', one release behind the newer Gemini 3.8 Flash; the deprecations page lists a release date of August 13, 2026 and no shutdown date, matching the catalog's empty deprecation_date. Benchmark scores were taken only from the 'Gemini 3.7 Flash' column of the model card's comparison table, not the sibling Gemini 3.6 Flash, Claude Sonnet 5, GPT-5.6 or Terra Muse Spark columns shown alongside it."
+}

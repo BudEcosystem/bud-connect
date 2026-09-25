@@ -1,0 +1,11 @@
+{
+  "slug": "glm-5p1-fast",
+  "canonical": "glm-5p1-fast",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find a maker (Z.ai) or host (Fireworks) page describing a 'GLM-5.1-Fast' variant of GLM-5.1. Z.ai's release notes and GLM-5.1 docs make no mention of a fast/flash variant of GLM-5.1 (only GLM-4.7-Flash and GLM-5.3-Flash exist as named lightweight variants of other generations), and the Fireworks model page for this id (fireworks.ai/models/fireworks/glm-5p1-fast) returns 404. This target's URI lives under Fireworks' 'routers/' path rather than 'models/'; Fireworks' FireRouter product (docs.fireworks.ai/ecosystem/firerouter/overview) is a routing layer that dispatches each request to one of several underlying models rather than a single fixed model, but FireRouter's own documented naming pattern (firerouter/..., firerouter/opus/glm-5p3, etc.) does not match 'glm-5p1-fast' either, and no Fireworks page names or documents this specific router. Not enough to identify or describe this target with confidence. GROUPING: both of its URIs (accounts/fireworks/routers/glm-5p1-fast and fireworks_ai/glm-5p1-fast) point to the same unidentified Fireworks router, so no split is needed if it is researched later with better sources."
+}

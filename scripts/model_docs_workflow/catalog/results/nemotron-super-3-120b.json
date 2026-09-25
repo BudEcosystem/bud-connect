@@ -1,0 +1,51 @@
+{
+  "slug": "nemotron-super-3-120b",
+  "canonical": "nemotron-super-3-120b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron 3 Super 120B is an open, hybrid mixture-of-experts language model with 120 billion total parameters that activates about 12 billion parameters per token, built for cost-efficient multi-agent and agentic applications. AWS Bedrock lists it as launched March 11, 2026, with a 256K-token context window and up to 32K output tokens, and describes it as fully open, with public weights, training datasets and recipes for customization.",
+    "advantages": [
+      "Activates only about 12B of its 120B total parameters through a hybrid mixture-of-experts design, which AWS's model card says delivers up to 7x higher inference throughput for agentic tasks.",
+      "Ships fully open, with public weights, datasets and training recipes rather than access limited to an API (AWS Bedrock model card).",
+      "Supports client-side tool calling on the bedrock-mantle endpoint (AWS Bedrock model card).",
+      "Provides a 256K-token context window described as giving agents long-term memory so they do not lose focus on long, multi-step tasks (AWS Bedrock model card).",
+      "Scores 83.73 on MMLU-Pro and 81.19 on LiveCodeBench, per NVIDIA's own model card (build.nvidia.com)."
+    ],
+    "disadvantages": [
+      "Text-only model: the Bedrock model card lists no support for image, audio or video input or output.",
+      "Server-side tool calling is not supported on the bedrock-mantle endpoint, only client-side tool calling (AWS Bedrock model card)."
+    ],
+    "use_cases": [
+      "Multi-agent and agentic applications",
+      "Long, multi-step reasoning tasks that need extended context",
+      "Cost- and compute-efficient text inference at scale",
+      "General-purpose chat and text completion"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 83.73, "source": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"},
+      {"name": "GPQA (no tools)", "score": 79.23, "source": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"},
+      {"name": "AIME25 (no tools)", "score": 90.21, "source": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"},
+      {"name": "LiveCodeBench", "score": 81.19, "source": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"},
+      {"name": "SWE-Bench (OpenHands)", "score": 60.47, "source": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nemotron-super-3-120b.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nemotron-super-3-120b.html",
+      "title": "NVIDIA Nemotron 3 Super 120B model card - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b",
+      "title": "nemotron-3-super-120b-a12b Model by NVIDIA - build.nvidia.com",
+      "kind": "maker"
+    }
+  ],
+  "notes": "NVIDIA's own build.nvidia.com model page (without the /modelcard suffix the AWS page links to) loads and lists benchmark scores and a license/modality summary; the /modelcard sub-route itself is still JS-rendered/empty, and the Hugging Face card still returns 401. Added 5 accuracy-style benchmark scores from that page; excluded Arena-Hard-V2 as an arena/win-rate score, not an accuracy score. That page also states a 1-million-token 'maximum context length', which conflicts with AWS Bedrock's 256K and the catalog's max_input_tokens fact of 256000 -- kept the catalog value per the facts-are-authoritative rule. Removed the 'bedrock-runtime' half of the tool-calling advantage: the Bedrock model card's per-endpoint feature table lists client-side tool calling only under bedrock-mantle features; the bedrock-runtime features table does not mention tool calling at all. Catalog's max_output_tokens facts list both 32000 and 32768; the source only states '32K', which does not resolve which is exact, so I kept the catalog values as-is."
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "grok-4.20-multi-agent",
+  "canonical": "grok-4.20-multi-agent",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 Multi-Agent is a multi-agent deployment mode of xAI's Grok 4.20, whose system card is dated April 7, 2026, documented with a 1,000,000-token context window. xAI's docs describe it as running 'multiple agents [that] collaborate in parallel to perform deep research tasks,' as an alternative to the model's single-agent (reasoning) mode. It takes text and image input and produces text output. This catalog id (grok-4.20-multi-agent) is one of several aliases xAI's own docs list for the model, all resolving to the dated checkpoint grok-4.20-multi-agent-0309. xAI's docs describe two agent-count configurations, 4 agents or 16 agents, with a designated leader agent synthesizing the sub-agents' work into the final answer.",
+    "advantages": [
+      "Runs a parallel multi-agent architecture that xAI's docs describe as letting multiple agents collaborate in parallel to perform deep research tasks.",
+      "Supports reasoning, function calling and structured outputs alongside text and image input, per xAI's docs.",
+      "xAI's system card reports a 0.00 violation rate on its internal chat-refusal safety evaluation in multi-agent mode, rising to 0.02 under a user jailbreak and 0.00 under a system jailbreak."
+    ],
+    "disadvantages": [
+      "Not designed or intended for high-risk applications such as autonomous medical, legal, financial or safety-critical decisions without human oversight, per xAI's Grok 4.20 system card.",
+      "xAI's system card does not report deception (MASK) results for multi-agent mode, stating the required system-prompt overrides interfere with each subagent's instructions."
+    ],
+    "use_cases": [
+      "Deep research tasks that benefit from multiple agents working in parallel, per xAI's docs",
+      "Complex, multi-step research and synthesis",
+      "Agentic tool-calling workflows requiring parallel exploration"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-0309",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-0309",
+      "title": "Grok 4.20 Multi-Agent 0309 | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-beta-0309",
+      "title": "Grok 4.20 Multi Agent Beta 0309 | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Models | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/multi-agent",
+      "title": "Multi Agent | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "title": "Grok 4.20 System Card, xAI, April 7, 2026",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/release-notes",
+      "title": "Release Notes | xAI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The catalog id 'grok-4.20-multi-agent' is one of several aliases xAI's docs explicitly list for the model id grok-4.20-multi-agent-0309 (confirmed on docs.x.ai/developers/models/grok-4.20-multi-agent-0309, which names this exact alias string). xAI's release notes announce 'Grok 4.20 and Grok 4.20 Multi-agent are live' but a reliable calendar date for that announcement could not be pinned down from the page, so no specific release date is asserted beyond the April 7, 2026 date on the system card. No Artificial Analysis page for the multi-agent variant could be found (artificialanalysis.ai/models/grok-4-20-multi-agent returns 404), so evaluations is empty rather than reusing the single-agent variant's score. The original pass said agent count and mechanics were undisclosed; docs.x.ai/developers/model-capabilities/text/multi-agent (linked from the sidebar of the model's own page) in fact documents them: 4 agents for quick/focused queries or 16 for deep research, with a leader agent synthesizing the sub-agents' output. Languages are only given as examples plus 'several dozen others' with no closed list, so languages is left empty."
+}

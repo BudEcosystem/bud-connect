@@ -1,0 +1,53 @@
+{
+  "slug": "aura-2",
+  "canonical": "aura-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Aura-2 is Deepgram's second-generation text-to-speech model, positioned for enterprise voice agents and conversational AI. Deepgram's TTS Models documentation lists Aura-2 voices in English, Spanish, German, French, Dutch, Italian and Japanese, each tagged with characteristics and a recommended use case such as customer service, healthcare or IVR. Deepgram's Text-to-Speech product page features a case study describing Aura-2 powering a healthcare customer's voice agents with natural, low-latency, cost-predictable speech.",
+    "advantages": [
+      "Offers voices across seven documented languages, each tagged with characteristics and a recommended use case, per Deepgram's TTS Models documentation.",
+      "Five Spanish voices (Aquila, Carina, Diana, Javier and Selena) code-switch between English and Spanish, per Deepgram's TTS Models documentation."
+    ],
+    "disadvantages": [
+      "Limited to 2000 characters per request, the same limit as Aura (v1), per Deepgram's Text-to-Speech guide."
+    ],
+    "use_cases": [
+      "Healthcare voice agents, per Deepgram's Text-to-Speech product page.",
+      "Interactive voice response (IVR) and conversational AI applications, per Deepgram's TTS Models documentation voice use-case tags.",
+      "Customer service voice agents, per Deepgram's TTS Models documentation voice use-case tags."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish",
+      "German",
+      "French",
+      "Dutch",
+      "Italian",
+      "Japanese"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/tts-models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/tts-models",
+      "title": "Text-to-Speech Models | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://deepgram.com/product/text-to-speech",
+      "title": "Text-to-Speech | Deepgram",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/text-to-speech",
+      "title": "Text-to-Speech | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's TTS Models docs enumerate Aura-2 voices in seven named languages (English, Spanish, German, French, Dutch, Italian, Japanese); this is complete, not a gap. The prior draft's '80ms latency', 'lowest word error rate', '24kHz/no SSML' and 'ten languages' claims were pulled from deepgram.com/product/text-to-speech, but that page's current title and hero copy ('Deepgram Flux TTS: Text-to-Speech for Enterprise Deployment', cross-turn context, interruption handling) show those figures describe Flux TTS, a separate, newer Deepgram model launched Aug 2026 (confirmed via the same page's linked press release, which is entirely about Flux TTS and never mentions Aura-2) -- not Aura-2. Removed as WRONG_MODEL. The page's Vida case study does explicitly name Aura-2 for healthcare voice agents, so that use case and source are kept. Catalog carries no deprecation_date; no source marks Aura-2 as legacy or deprecated."
+}

@@ -1,0 +1,66 @@
+{
+  "slug": "llama3-2-1b-instruct",
+  "canonical": "llama3-2-1b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.2 1B Instruct is the smallest model in Meta's Llama 3.2 collection, released September 25, 2024, with about 1.23 billion parameters and a 128K-token context window (8K when quantized). It's an instruction-tuned, text-only, multilingual model built for lightweight assistant-style chat, agentic retrieval, summarization, and on-device or edge deployment, with a knowledge cutoff of December 2023. Amazon Bedrock's current model card lists this model's lifecycle status as Legacy, with a listed model EOL date of July 7, 2026 that has already passed as of this research date.",
+    "advantages": [
+      "SpinQuant and QLoRA quantized variants cut model size by 52-54% and roughly double decode speed for on-device deployment, per Meta's model card.",
+      "128K-token context window despite its 1.23-billion-parameter size.",
+      "Officially supports 8 languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai."
+    ],
+    "disadvantages": [
+      "Text-only; no image, audio, or video input or output.",
+      "Amazon Bedrock's model card lists client-side tool calling as not supported for this model.",
+      "Knowledge cutoff of December 2023.",
+      "Marked Legacy on Amazon Bedrock's model card, with a listed model EOL date of July 7, 2026 that has already passed as of this research date."
+    ],
+    "use_cases": [
+      "Lightweight multilingual assistant-style chat.",
+      "Agentic retrieval and summarization tasks.",
+      "Query and prompt rewriting.",
+      "On-device deployment on mobile and other resource-constrained hardware."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 49.3,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM8K (CoT)",
+        "score": 44.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      },
+      {
+        "name": "ARC-Challenge",
+        "score": 59.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md"
+      }
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct",
+      "title": "meta-llama/Llama-3.2-1B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_2/MODEL_CARD.md at main",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-1b-instruct.md",
+      "title": "Llama 3.2 1B Instruct - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's deprecation_date is empty for this target, but Amazon Bedrock's own model card marks this model's lifecycle status as Legacy with a listed model EOL date of July 7, 2026, already past as of the 2026-09-24 research date. Catalog's max_output_tokens (4096) matches Bedrock's listed 4K max output. Meta's own llama.com/developer.meta.com model-card pages redirected to a login screen and could not be read directly, so this write-up relies on Meta's GitHub and Hugging Face model cards plus AWS Bedrock's status page."
+}

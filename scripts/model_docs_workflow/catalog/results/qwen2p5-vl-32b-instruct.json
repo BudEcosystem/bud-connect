@@ -1,0 +1,43 @@
+{
+  "slug": "qwen2p5-vl-32b-instruct",
+  "canonical": "qwen2p5-vl-32b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-VL-32B-Instruct is a 32-billion-parameter vision-language model from Alibaba's Qwen team. Qwen's model card states this size was produced by applying reinforcement learning on top of the original Qwen2.5-VL-32B to improve its mathematical and problem-solving ability and to align its response style more closely with human preferences, on top of the core Qwen2.5-VL family's document parsing, visual object localization (bounding boxes or points), and long-video (over one hour) understanding with agentic computer- and phone-use support. Its published configuration gives a native 128,000-token context window, matching this catalog's limits. Bud's catalog records this route's modality as text input and output only, which does not include the image or video input Qwen documents for this model; see notes.",
+    "advantages": [
+      "Scores 70.0 on MMMU and 74.7 on MathVista, per Qwen's model card benchmark table.",
+      "Scores 94.8 on DocVQA, per Qwen's model card.",
+      "Scores 91.5 on HumanEval (text/coding benchmark), per Qwen's model card.",
+      "Qwen's model card states this 32B size was further trained with reinforcement learning specifically to improve mathematical/problem-solving ability and align responses with human preferences, versus the original Qwen2.5-VL-32B.",
+      "Supports long-video understanding over one hour with dynamic frame-rate sampling and event/timestamp localization, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Bud's catalog records this route's modality as text input and output only, without image or video input, unlike the vision-language capability the model is designed for (see notes).",
+      "Qwen's model card states that extending context beyond the native range via YaRN significantly reduces temporal and spatial localization accuracy for video and grounding tasks."
+    ],
+    "use_cases": [
+      "Document and form parsing into structured output (e.g. JSON) from images",
+      "Visual object localization via bounding boxes or points",
+      "Long-video understanding and event/timestamp localization",
+      "Agentic computer-use and phone-use tasks with visual tool direction",
+      "General text reasoning and coding, per its text benchmark results"
+    ],
+    "evaluations": [
+      {"name": "MMMU", "score": 70.0, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"},
+      {"name": "MathVista", "score": 74.7, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"},
+      {"name": "DocVQA", "score": 94.8, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"},
+      {"name": "HumanEval", "score": 91.5, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct", "title": "Qwen/Qwen2.5-VL-32B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-VL", "title": "QwenLM/Qwen2.5-VL now redirects to QwenLM/Qwen3-VL · GitHub", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog records this route's modality as text_input/text_output only, but Qwen documents Qwen2.5-VL-32B-Instruct as a vision-language model that also takes image and video input; flagged above as a disadvantage per RESEARCH_PROMPT's guidance to note when facts show no image/video input (analogous to its 'no audio input' example). Catalog's 128,000-token max_input_tokens/max_output_tokens match the model's published config.json max_position_embeddings exactly, so no conflict there. No precise release date was found on the pages opened; Qwen's model card states only that this 32B size was released some months after Qwen2-VL and enhanced via reinforcement learning over the original Qwen2.5-VL-32B, so no specific date is asserted in the description. Qwen's GitHub repository for the Qwen2.5-VL project (github.com/QwenLM/Qwen2.5-VL) now redirects (HTTP 301, confirmed by fetching) to the newer Qwen3-VL repository, so github_url was left null; this supersession signal is also reflected in the earlier note that Qwen3-VL is now Qwen's most capable vision-language line."
+}

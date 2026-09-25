@@ -1,0 +1,50 @@
+{
+  "slug": "nova-micro-v1",
+  "canonical": "nova-micro-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Nova Micro is Amazon's text-only foundation model, launched December 5, 2024 and accessed through Amazon Bedrock. It takes text input and generates text output only, with a 128K-token context window, and does not accept image, video or document inputs. It supports the Converse API, response streaming and client-side tool calling, and Amazon positions it for interactive chat, retrieval-augmented generation and agentic applications where speed and cost matter more than multimodal input. AWS's Bedrock model card lists this v1 snapshot as Active, with no end-of-life date announced as of this research.",
+    "advantages": [
+      "Supports client-side tool calling, response streaming and Amazon Bedrock Guardrails (AWS Bedrock model card).",
+      "Supports explicit prompt caching, with a minimum of 1K tokens per cache checkpoint and up to 4 checkpoints per request (AWS Bedrock model card).",
+      "Supports fine-tuning and provisioned throughput for dedicated capacity (AWS Bedrock model card).",
+      "Optimized for 15 named languages within a training set Amazon says spans up to 200 languages (Amazon Nova user guide)."
+    ],
+    "disadvantages": [
+      "Text-only: does not accept image, video or document inputs, unlike Nova Lite and Nova Pro (Amazon Nova user guide).",
+      "Does not support structured outputs via the bedrock-runtime API (AWS Bedrock model card).",
+      "Knowledge cutoff of October 2024 (AWS Bedrock model card)."
+    ],
+    "use_cases": [
+      "Interactive chat interfaces",
+      "Retrieval-augmented generation (RAG) systems",
+      "Text summarization, translation and classification",
+      "Agentic applications requiring fast, low-latency text responses"
+    ],
+    "evaluations": [],
+    "languages": ["English", "German", "Spanish", "French", "Italian", "Japanese", "Korean", "Arabic", "Simplified Chinese", "Russian", "Hindi", "Portuguese", "Dutch", "Turkish", "Hebrew"],
+    "website_url": "https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html",
+      "title": "What is Amazon Nova? - Amazon Nova User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-micro.html",
+      "title": "Nova Micro model card - Amazon Bedrock User Guide",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/ai/responsible-ai/nova-micro-lite-pro/overview.html",
+      "title": "Amazon Nova Micro, Lite, Pro, and Premier - AWS AI Service Card",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens (10000) matches the Nova user guide's model-specifications table (10K), but AWS's Bedrock model card for amazon.nova-micro-v1:0 separately states 'Max output tokens: 5K' -- kept the catalog's value and flagged this source disagreement. Found no accuracy-style benchmark scores from Amazon or a named leaderboard for this exact model."
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "deepseek-v3p1-terminus",
+  "canonical": "deepseek-v3p1-terminus",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V3.1-Terminus is DeepSeek's September 22, 2025 update to DeepSeek-V3.1, per DeepSeek's own API changelog, targeting user-reported issues: mixed Chinese-English text and stray characters, plus further tuning of its Code Agent and Search Agent tool use. Per its Hugging Face model card it keeps V3.1's hybrid thinking/non-thinking Mixture-of-Experts architecture and MIT license. DeepSeek's own changelog shows the deepseek-chat/deepseek-reasoner endpoint names have since moved on through DeepSeek-V3.2-Exp and V3.2 to newer DeepSeek-V4 models.",
+    "advantages": [
+      "Scores 85.0 on MMLU-Pro, per its Hugging Face model card.",
+      "Scores 80.7 on GPQA-Diamond, per its Hugging Face model card.",
+      "Scores 68.4 on SWE-bench Verified, up from 66.0 for DeepSeek-V3.1, per its Hugging Face model card.",
+      "Scores 96.8 on SimpleQA, up from 93.4 for DeepSeek-V3.1, per its Hugging Face model card.",
+      "Reduces mixed Chinese-English text and improves Code Agent and Search Agent performance over DeepSeek-V3.1, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "DeepSeek's own changelog shows the deepseek-chat/deepseek-reasoner endpoint names have since moved on to newer DeepSeek-V4 models, so this checkpoint is no longer served under those default aliases.",
+      "Superseded about a week later by the experimental DeepSeek-V3.2-Exp, and roughly ten weeks after that by DeepSeek-V3.2, per DeepSeek's own changelog.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "General-purpose chat with a switchable thinking/non-thinking mode.",
+      "Agentic coding and web-search tool use via its Code Agent and Search Agent.",
+      "Enterprise retrieval-augmented generation, per Fireworks AI's hosting page."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 85.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 80.7,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 68.4,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus"
+      },
+      {
+        "name": "SimpleQA",
+        "score": 96.8,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus"
+      },
+      {
+        "name": "Humanity's Last Exam",
+        "score": 21.7,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
+      "title": "deepseek-ai/DeepSeek-V3.1-Terminus · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/deepseek-ai/deepseek-v3p1-terminus",
+      "title": "DeepSeek V3.1 Terminus - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's facts for this target (max_input_tokens 128000, max_output_tokens 8192) come from its single Fireworks listing, but Fireworks' own product page for this exact model states a 163,840-token context length, which conflicts with the catalog value; the catalog's figure is kept per instructions. This checkpoint's own Hugging Face model card does not restate a context-length figure, but DeepSeek-V3.1's own card (the shared base architecture) lists 128K, matching the catalog value; the 163,840 figure appears to be a Fireworks-specific serving limit rather than a maker-stated figure for this exact checkpoint. Total parameter count also differs by source: 685B on Fireworks' page vs 671B/37B-activated in DeepSeek-V3.1's own model card for the shared base architecture; no figure is stated in the description. No public GitHub repository specific to this checkpoint was found."
+}

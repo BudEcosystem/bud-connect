@@ -1,0 +1,11 @@
+{
+  "slug": "gemini-3.8-flash-cyber",
+  "canonical": "gemini-3.8-flash-cyber",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find a maker, host, or credible third-party page for a model called 'gemini-3.8-flash-cyber'. Google's current Gemini API models page (ai.google.dev/gemini-api/docs/models), its pricing page listing every current model ID (ai.google.dev/gemini-api/docs/pricing), its changelog (ai.google.dev/gemini-api/docs/changelog), its deprecations page, and Vertex AI's release notes (docs.cloud.google.com/vertex-ai/generative-ai/docs/release-notes) were all checked directly and none mention any model containing 'cyber'. The pricing page lists many real gemini-3.8-* variants (gemini-3.8-flash, gemini-3.8-flash-tts, gemini-3.8-flash-lite-tts, gemini-3.8-live, gemini-3.8-live-extended-thinking) but no '-cyber' suffix appears anywhere in Google's Gemini lineup. Recommend confirming with whoever supplied this target whether the model id is correct."
+}

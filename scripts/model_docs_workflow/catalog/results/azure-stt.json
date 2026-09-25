@@ -1,0 +1,40 @@
+{
+  "slug": "azure-stt",
+  "canonical": "azure-stt",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Microsoft",
+  "details": {
+    "description": "Azure AI Speech's speech-to-text service, part of Microsoft's Azure AI Foundry Tools, converts spoken audio into text using a pretrained Universal Language Model, with optional custom speech models for domain-specific accuracy. It supports real-time transcription for live audio, a fast transcription API for near-synchronous results, and asynchronous batch transcription for large volumes of prerecorded audio, across many supported languages and locales.",
+    "advantages": [
+      "Offers three transcription modes (real-time, fast near-synchronous, and asynchronous batch) to match different latency needs.",
+      "Diarization can identify and separate up to 35 different speakers in a single audio recording.",
+      "Real-time multichannel transcription (preview) can transcribe up to two audio channels independently and tag results by source channel.",
+      "Custom speech lets you fine-tune the base recognition model with domain-specific vocabulary and audio conditions to improve accuracy.",
+      "Phrase lists and automatic language detection help the model better recognize domain-specific terminology and multilingual audio content."
+    ],
+    "disadvantages": [
+      "Real-time multichannel transcription is still in preview."
+    ],
+    "use_cases": [
+      "Live captioning and accessibility transcription",
+      "Call center conversation analytics",
+      "Meeting and lecture transcription",
+      "Healthcare dictation with custom medical vocabulary",
+      "Generating subtitles for prerecorded video"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-to-text",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-to-text",
+      "title": "Speech to Text Overview - Speech Service - Foundry Tools | Microsoft Learn",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This catalog entry (azure/speech/azure-stt) is a generic name for Azure's speech-to-text service rather than one named model, so the description covers the service's default Universal Language Model and capabilities rather than a single dated model. The overview page does not state a total language/locale count, so no language list or count is given."
+}

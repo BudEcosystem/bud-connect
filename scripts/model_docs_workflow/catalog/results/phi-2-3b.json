@@ -1,0 +1,70 @@
+{
+  "slug": "phi-2-3b",
+  "canonical": "phi-2-3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Microsoft",
+  "details": {
+    "description": "Phi-2 is a 2.7-billion-parameter Transformer language model from Microsoft, trained with a next-word prediction objective on 1.4 trillion tokens combining synthetic \"textbook-quality\" data generated with GPT-3.5 and filtered web content. Microsoft's model card says it \"showcased a nearly state-of-the-art performance among models with less than 13 billion parameters\" on benchmarks of common sense, language understanding and reasoning, and describes it as intended for research exploration of language-model safety topics rather than as a production-ready assistant. It has not been instruction fine-tuned, so Microsoft recommends QA-, chat-, or code-formatted prompts rather than open-ended instructions.",
+    "advantages": [
+      "Microsoft's model card reports it \"showcased a nearly state-of-the-art performance among models with less than 13 billion parameters\" on common sense, language understanding and reasoning benchmarks.",
+      "Trained on 1.4 trillion tokens including synthetic \"textbook-quality\" data intended to teach common sense and general knowledge, per the model card."
+    ],
+    "disadvantages": [
+      "Has not been instruction fine-tuned, so it can struggle to follow complex or open-ended instructions, per the model card.",
+      "Coding ability is limited primarily to Python, per the model card.",
+      "Designed primarily for standard English and may not handle other languages or informal/slang text well, per the model card.",
+      "May generate inaccurate code or facts, and can produce biased or toxic content if explicitly prompted, per the model card."
+    ],
+    "use_cases": [
+      "Research exploration of language model safety topics such as bias and toxicity",
+      "QA-format question answering",
+      "Chat-format conversational prompts",
+      "Python code generation and completion"
+    ],
+    "evaluations": [
+      {
+        "name": "BigBench Hard",
+        "score": 59.3,
+        "source": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/"
+      },
+      {
+        "name": "MMLU",
+        "score": 56.7,
+        "source": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/"
+      },
+      {
+        "name": "GSM8K",
+        "score": 61.1,
+        "source": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/"
+      },
+      {
+        "name": "MBPP",
+        "score": 59.1,
+        "source": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/"
+      },
+      {
+        "name": "BoolQ",
+        "score": 83.3,
+        "source": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/microsoft/phi-2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/microsoft/phi-2",
+      "title": "microsoft/phi-2 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/",
+      "title": "Phi-2: The surprising power of small language models - Microsoft Research",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens/max_output_tokens (2048) match the model card's stated 2,048-token context length. The Hugging Face model card has no numeric benchmark table, but Microsoft's research blog post (a maker page not checked by the initial research pass) publishes numeric scores for Phi-2 (2.7B): BigBench Hard, MMLU, GSM8K (reported as the blog's 'Math' category, which comprises only GSM8K), MBPP and BoolQ are single-benchmark scores taken from there. The blog's 'Commonsense Reasoning', 'Language Understanding' and 'Coding' columns are multi-benchmark averages, not single named benchmarks, so they are left out rather than guessed. The catalog slug rounds Phi-2's actual 2.7B parameter count to '3b'."
+}

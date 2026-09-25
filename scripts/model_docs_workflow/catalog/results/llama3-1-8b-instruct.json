@@ -1,0 +1,71 @@
+{
+  "slug": "llama3-1-8b-instruct",
+  "canonical": "llama3-1-8b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 8B Instruct is Meta's smallest instruction-tuned model in the Llama 3.1 family, released July 23, 2024 and trained on about 15 trillion tokens of publicly available data. It's an 8-billion-parameter auto-regressive transformer with a 128K-token context window, built for multilingual assistant-style chat, tool calling, and lightweight fine-tuning or edge deployment, with a knowledge cutoff of December 2023. Amazon Bedrock's current model card lists this model's lifecycle status as Active.",
+    "advantages": [
+      "Scores 84.5% on GSM8K (grade-school math with chain-of-thought), per Meta's model card.",
+      "Scores 72.6% on HumanEval for code generation, per Meta's model card.",
+      "Supports tool/function calling, scoring 76.1% on the Berkeley Function-Calling Leaderboard (BFCL) and 82.6% on API-Bank, per Meta's model card.",
+      "128K-token context window despite its compact 8-billion-parameter size, making it suitable for fine-tuning and edge deployment."
+    ],
+    "disadvantages": [
+      "Text-only; no image, audio, or video input or output.",
+      "Officially supports only 8 languages (English, German, French, Italian, Portuguese, Hindi, Spanish, Thai) despite training on a broader language collection, per Meta's model card.",
+      "Knowledge cutoff of December 2023."
+    ],
+    "use_cases": [
+      "Multilingual assistant-style chat and dialogue.",
+      "Tool-calling and agentic applications.",
+      "Code generation and mathematical problem-solving.",
+      "Fine-tuning for specialized or on-device/edge deployments."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU (5-shot)",
+        "score": 69.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM8K (CoT)",
+        "score": 84.5,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "HumanEval",
+        "score": 72.6,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "IFEval",
+        "score": 80.4,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      }
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+      "title": "meta-llama/Llama-3.1-8B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_1/MODEL_CARD.md at main",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-8b-instruct.md",
+      "title": "Llama 3.1 8B Instruct - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_output_tokens is 2048; Amazon Bedrock's own model card for this exact Bedrock model ID (meta.llama3-1-8b-instruct-v1:0 / us.meta.llama3-1-8b-instruct-v1:0) lists a 4K max output token limit instead, but the catalog value was kept per instructions. AWS Bedrock lists this model's lifecycle status as Active, consistent with the catalog's empty deprecation_date. Meta's own llama.com/developer.meta.com model-card pages redirected to a login screen and could not be read directly, so this write-up relies on Meta's GitHub and Hugging Face model cards plus AWS Bedrock's status page."
+}

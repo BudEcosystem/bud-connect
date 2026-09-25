@@ -1,0 +1,33 @@
+{
+  "slug": "gemini-flash-lite-latest",
+  "canonical": "gemini-flash-lite-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "gemini-flash-lite-latest is Google's rolling alias for the current release of its Gemini Flash-Lite-tier model on the Gemini Developer API, rather than a fixed, dated model. Google's Gemini API documentation describes a 'latest' name as pointing 'to the latest release for a specific model variation', an alias that 'will get hot-swapped with every new release of a specific model variation'; Google gives at least two weeks' email notice before a breaking change to the model behind the alias. As of 24 September 2026, Google's Gemini API models page lists Gemini 3.5 Flash-Lite as the newest stable Flash-Lite-tier release, though Google does not publish an explicit statement that the alias currently names that exact snapshot.",
+    "advantages": [
+      "Always resolves to Google's current release for the Flash-Lite variation, so applications keep getting model improvements without changing the model string, per Google's Gemini API documentation.",
+      "Google commits to at least two weeks' email notice before a breaking change to the model behind the alias, per Google's Gemini API documentation."
+    ],
+    "disadvantages": [
+      "Because the alias is hot-swapped with each new release, the exact underlying model version, and its behavior and benchmark scores, can change without any corresponding change to application code, per Google's Gemini API documentation.",
+      "Google's own naming-convention guidance recommends most production apps use a specific stable model string rather than a rolling alias like this one."
+    ],
+    "use_cases": [
+      "High-throughput, latency-sensitive tasks such as classification or translation at the Flash-Lite tier's cost point",
+      "Development and prototyping that should always track Google's newest Flash-Lite release without needing to update the model string"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Models | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-5-flash-lite/", "title": "Gemini 3.5 Flash-Lite - Model Card — Google DeepMind", "kind": "maker"}
+  ],
+  "notes": "This id names a moving-target alias, not a fixed model, so no benchmark page reports scores for 'gemini-flash-lite-latest' itself; evaluations was left empty rather than borrowing scores from whichever dated model it currently resolves to. Catalog facts (1,048,576 input / 65,536 output tokens, audio+image+text input, text output) match every recent Gemini 3.x Flash-Lite model, including the current newest stable release Gemini 3.5 Flash-Lite, whose own model card gives the same 'up to 1M' input / '64K' output figures plus video file input (not in the catalog's modality list). The deprecations page does not list gemini-flash-lite-latest as a separately tracked model id, consistent with it being a rolling alias rather than a pinned release."
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "mistral-large-2402",
+  "canonical": "mistral-large-2402",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Large (24.02) was Mistral AI's first flagship model, launched in February 2024 with a 32,000-token context window, native function calling, and a JSON-format output mode. At launch, Mistral AI positioned it as the second-ranked model then generally available via API, behind GPT-4, based on its own benchmark comparisons. On Mistral AI's own La Plateforme, where its API name is mistral-large-2402, the model has been deprecated since November 30, 2024 and retired since June 16, 2025, replaced by Mistral Large 3. It remains available through Amazon Bedrock.",
+    "advantages": [
+      "Natively fluent in English, French, Spanish, German, and Italian, per Mistral AI's launch post.",
+      "Supports native function calling and a JSON-format output mode (Mistral AI launch post)."
+    ],
+    "disadvantages": [
+      "Deprecated and retired on Mistral AI's own platform, replaced by Mistral Large 3 (Mistral AI documentation)."
+    ],
+    "use_cases": [
+      "Complex multilingual reasoning",
+      "Text understanding, transformation, and generation",
+      "Code generation",
+      "Function calling for agentic and tool-use workflows",
+      "Content moderation policy design"
+    ],
+    "evaluations": [],
+    "languages": ["English", "French", "Spanish", "German", "Italian"],
+    "website_url": "https://mistral.ai/news/mistral-large",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mistral-large", "title": "Au Large - Mistral AI", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-large.md", "title": "Mistral Large - Amazon Bedrock model card", "kind": "host"}
+  ],
+  "notes": "The deprecation/retirement dates found apply to Mistral AI's own La Plateforme API (mistral-large-2402). Amazon Bedrock's own model card for this exact model (model ID mistral.mistral-large-2402-v1:0) lists its lifecycle as 'Active' with no EOL date, directly confirming that the catalog's empty deprecation_date is correct for this Bedrock-hosted entry even though Mistral AI deprecated and retired the model on its own platform. That Bedrock page also states a 4K max-output-token limit versus the catalog's 8,191; kept the catalog's value per instructions. The launch post's benchmark claims (MMLU, HellaSwag, HumanEval, GSM8K, etc.) were described qualitatively, without a readable numeric table, so evaluations were left empty rather than guessed."
+}

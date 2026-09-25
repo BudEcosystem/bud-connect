@@ -1,0 +1,76 @@
+{
+  "slug": "gpt-5.1-codex",
+  "canonical": "gpt-5.1-codex",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-5.1-Codex is OpenAI's version of GPT-5.1 optimized for agentic coding tasks in Codex and similar harnesses, released November 13, 2025 alongside GPT-5.1. It is available only through OpenAI's Responses API, accepts text and image input with text-only output, supports configurable reasoning effort, and has a knowledge cutoff of September 30, 2024. OpenAI replaced it as Codex's default model with GPT-5.1-Codex-Max on November 19, 2025, though GPT-5.1-Codex remains generally available for agentic coding work.",
+    "advantages": [
+      "OpenAI reports 73.7% on SWE-bench Verified (n=500) at high reasoning effort (OpenAI's GPT-5.1-Codex-Max launch post).",
+      "OpenAI reports 66.3% on SWE-Lancer IC SWE at high reasoning effort (OpenAI's GPT-5.1-Codex-Max launch post).",
+      "Purpose-trained for long-running, agentic coding tasks such as PR creation, code review and multi-file projects, unlike the general-purpose GPT-5.1 (OpenAI documentation).",
+      "Supports function calling and web search via the Responses API (OpenAI documentation)."
+    ],
+    "disadvantages": [
+      "Superseded as Codex's default model by GPT-5.1-Codex-Max on November 19, 2025, which OpenAI reports reaches a higher 77.9% on SWE-bench Verified while using 30% fewer thinking tokens at comparable effort (OpenAI launch post).",
+      "Available only through the Responses API, with no Chat Completions, Assistants, fine-tuning or Batch support (OpenAI documentation).",
+      "OpenAI's own direct API already shut down this exact model id on July 23, 2026, recommending gpt-5.6-sol; it remains generally available on Azure OpenAI, not expected to retire before May 15, 2027 (OpenAI deprecations page; Microsoft Foundry schedule).",
+      "Knowledge cutoff of September 30, 2024."
+    ],
+    "use_cases": [
+      "Long-running agentic coding tasks in the Codex CLI, IDE extension or cloud environments",
+      "Automated PR creation, code review and multi-file refactors",
+      "Coding agents that need apply_patch-based diffs and shell command execution"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 73.7,
+        "source": "https://openai.com/index/gpt-5-1-codex-max/"
+      },
+      {
+        "name": "SWE-Lancer IC SWE",
+        "score": 66.3,
+        "source": "https://openai.com/index/gpt-5-1-codex-max/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.1-codex",
+      "title": "GPT-5.1-Codex Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1-codex-max/",
+      "title": "Building more with GPT-5.1-Codex-Max | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://openai.com/index/gpt-5-1-for-developers/",
+      "title": "Introducing GPT-5.1 for developers | OpenAI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-apply-patch",
+      "title": "Apply patch | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "All of this target's URIs are Azure-hosted. Catalog's deprecation_date (2027-05-15) matches Microsoft Foundry's retirement-schedule listing for gpt-5.1-codex (version 2025-11-13, lifecycle 'GA', retirement date 2027-05-15) exactly. Separately, OpenAI's own direct-API deprecations page shows this same model id already shut down on July 23, 2026 (announced April 22, 2026) -- a real divergence between OpenAI-direct and Azure, though the Azure-hosted date the catalog uses is unaffected and still current as of this research date. Catalog's endpoints list only /v1/responses, matching OpenAI's own documentation exactly. The model's own 'Supported tools' listing (developers.openai.com) shows only function_calling and web_search for gpt-5.1-codex, and OpenAI's apply_patch tool guide names only GPT-5.1, GPT-5.2, GPT-5.4 and GPT-5.5 as supported models (not the Codex variants), so an earlier draft's apply_patch/shell claim for this model was corrected."
+}

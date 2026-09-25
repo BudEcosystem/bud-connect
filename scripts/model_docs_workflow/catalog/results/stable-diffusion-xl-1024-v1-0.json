@@ -1,0 +1,48 @@
+{
+  "slug": "stable-diffusion-xl-1024-v1-0",
+  "canonical": "stable-diffusion-xl-1024-v1-0",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "SDXL 1.0 (Stable Diffusion XL 1.0) is Stability AI's text-to-image diffusion model, released July 26, 2023 and described by Stability AI as its flagship open image-generation model at the time. It natively generates images at 1024x1024 resolution using two fixed text encoders (OpenCLIP-ViT/G and CLIP-ViT/L), and Stability AI says it needs simpler prompts than earlier Stable Diffusion versions. It is distributed under the CreativeML Open RAIL++-M license.",
+    "advantages": [
+      "In Stability AI's own preference testing, users favored SDXL 1.0 outputs over its prior open Stable Diffusion models, per the launch announcement.",
+      "Handles challenging concepts such as hands and spatial arrangements better than earlier Stable Diffusion versions, per Stability AI's announcement.",
+      "Supports image-to-image transformation and inpainting in addition to text-to-image generation, per Replicate's model page."
+    ],
+    "disadvantages": [
+      "The Hugging Face model card states it cannot render legible text and struggles with compositional tasks such as spatial relationships.",
+      "The model card notes it does not achieve perfect photorealism and may not generate faces or people accurately.",
+      "Dedicated image-control/editing features were not part of the 1.0 launch; Stability AI's announcement says they were 'forthcoming.'"
+    ],
+    "use_cases": [
+      "Generating artworks and concept images from text prompts",
+      "Design and other artistic creative processes, per the model card's stated intended use",
+      "Research on generative image models and safe deployment of such technology"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+      "title": "stabilityai/stable-diffusion-xl-base-1.0 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://stability.ai/news-updates/stable-diffusion-sdxl-1-announcement",
+      "title": "Announcing SDXL 1.0 - Stability AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://replicate.com/stability-ai/sdxl",
+      "title": "stability-ai/sdxl - Replicate",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "The URI's model id 'stable-diffusion-xl-1024-v1-0' matches Stability AI's REST API engine naming for SDXL 1.0 at 1024px resolution; the same model's Hugging Face repo is named stable-diffusion-xl-base-1.0. No maker page states a token-based input/output limit for this image model, so the catalog's max_input/max_output_tokens of 4096 could not be independently confirmed or contradicted."
+}

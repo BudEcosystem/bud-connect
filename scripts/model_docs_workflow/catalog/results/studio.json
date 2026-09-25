@@ -1,0 +1,49 @@
+{
+  "slug": "studio",
+  "canonical": "studio",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Studio voices are a Google Cloud Text-to-Speech voice type designed for news reading and broadcast content, and are intended for use with long-form texts such as narration and news reading, per Google's Voice Types and release-note documentation. They reached general availability in February 2024. Google's Voices list documents Studio voices for English (UK), English (US), and French (France), with named voices such as en-GB-Studio-B and fr-FR-Studio-A; a related Studio multispeaker voice type for discussions and interviews remains experimental.",
+    "advantages": [
+      "Reached general availability (GA) as a voice type purpose-built for news reading and broadcast content, per Google's Voice Types documentation and February 2024 release notes.",
+      "Designed specifically for long-form texts such as narration and news reading, per Google's Text-to-Speech release notes.",
+      "Supports SSML markup for controlling speech output, per Google's Voice Types documentation."
+    ],
+    "disadvantages": [
+      "Documented for only three languages/locales (English UK, English US, and French France), per Google's Voices documentation, far fewer than Google's Standard or WaveNet voice types.",
+      "Does not support the <mark>, <emphasis>, <prosody pitch>, or <lang> SSML tags that other voice types allow, per Google's Voice Types documentation."
+    ],
+    "use_cases": [
+      "News reading and broadcast-style content, per Google's Voice Types documentation.",
+      "Long-form narration, per Google's Text-to-Speech release notes."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "French"
+    ],
+    "website_url": "https://cloud.google.com/text-to-speech/docs/voice-types",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/voice-types",
+      "title": "Voice types | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/voices",
+      "title": "Supported voices and languages | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/release-notes",
+      "title": "Release notes | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This catalog entry (google_speech/studio) covers the single-speaker Studio voice type as a group, not one named voice; the separate Studio multispeaker type is still experimental per Google's docs and is not what this entry describes. Catalog facts carry no deprecation_date, and no deprecation is documented."
+}

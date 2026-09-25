@@ -1,0 +1,41 @@
+{
+  "slug": "nova-2-voicemail",
+  "canonical": "nova-2-voicemail",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 Voicemail is a domain-specific variant of Deepgram's Nova-2 speech-to-text model, tuned for low-bandwidth audio clips with a single speaker; Deepgram's documentation describes it as derived from the Nova-2 Phonecall model. It shares the Nova-2 generation's architecture, which Deepgram says expands on Nova-1 with speech-specific Transformer optimizations, advanced data curation, and multi-stage training that improve word error rate, entity recognition, punctuation, and capitalization. Deepgram's docs currently list Nova-2 as a supported, non-legacy generation, with the newer Nova-3 generation recommended for most general transcription use cases.",
+    "advantages": [
+      "Purpose-built for low-bandwidth, single-speaker audio and derived from Deepgram's Phonecall model, per Deepgram's documentation.",
+      "Built on Deepgram's Nova-2 architecture, which the company says adds speech-specific Transformer optimizations, advanced data curation, and multi-stage training that reduce word error rate versus the earlier Nova-1 generation."
+    ],
+    "disadvantages": [
+      "Supports English audio only (en, en-US), per Deepgram's language table.",
+      "Deepgram's newer Nova-3 generation is now its recommended default for most transcription, though Nova-3 does not currently offer a dedicated voicemail domain variant to directly replace this one."
+    ],
+    "use_cases": [
+      "Transcribing voicemail messages and other low-bandwidth, single-speaker audio clips."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No word-error-rate or other accuracy figures specific to the voicemail variant were published; the 'speech-specific optimizations' description on developers.deepgram.com/docs/model applies to the whole Nova-2 generation, not a voicemail-specific benchmark, so it is described as architecture context rather than a measured result for this variant. Catalog facts (empty deprecation_date, audio_input->text_output, /v1/audio/transcriptions endpoint) are consistent with the maker's docs. Nova-2 is not under Deepgram's 'Legacy Models' heading (only Nova/Enhanced/Base are), so it is not described as deprecated."
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "grok-imagine-image-quality-latest",
+  "canonical": "grok-imagine-image-quality-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "grok-imagine-image-quality-latest is xAI's rolling alias for its grok-imagine-image-quality model, one of three image models in xAI's Grok Imagine image family; xAI's documentation lists it alongside the aliases grok-imagine-image-quality-20260403 and grok-imagine-image-pro for the same underlying model. Per xAI's own model documentation, the underlying model is a text-to-image generation system that also accepts an image input, so it can generate new images from a prompt or edit a supplied image from a natural-language description. xAI's own model-selection guide recommends its sibling model, grok-imagine-image-2.0, rather than this quality tier, as the default choice for image generation tasks. xAI has scheduled the underlying grok-imagine-image-quality model for retirement on November 2, 2026, after which requests will automatically be served by grok-imagine-image-2.0 at low quality, per xAI's migration guide.",
+    "advantages": [
+      "Accepts both a text prompt and an image input to the same endpoint, so it can generate a new image or edit a supplied one, per xAI's grok-imagine-image-quality model documentation.",
+      "As a 'latest' alias, always resolves to xAI's current grok-imagine-image-quality model rather than a fixed dated snapshot, per xAI's model documentation.",
+      "Generates images at three selectable resolutions -- 1024x1024, 1408x1408 and 2048x2048 -- per xAI's model documentation."
+    ],
+    "disadvantages": [
+      "xAI's own model-selection guide recommends grok-imagine-image-2.0 rather than this quality tier as the default model for image generation, per docs.x.ai.",
+      "Does not support xAI's Batch API, unlike the grok-imagine-image-2.0 model, per xAI's model documentation.",
+      "Rate-limited to 6 requests per second, per xAI's model documentation.",
+      "xAI is retiring the underlying grok-imagine-image-quality model on November 2, 2026; after that date, requests are automatically served by grok-imagine-image-2.0 at low quality, per xAI's migration guide."
+    ],
+    "use_cases": [
+      "Generating a new image from a text prompt.",
+      "Editing a supplied image from a natural-language description."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.x.ai/docs/models/grok-imagine-image-quality",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/docs/models/grok-imagine-image-quality",
+      "title": "grok-imagine-image-quality | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/models",
+      "title": "Models | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/migration/imagine-image-quality-nov-2",
+      "title": "grok-imagine-image-quality Retirement (Nov 2, 2026) | xAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/docs/models/grok-imagine-image-2.0",
+      "title": "grok-imagine-image-2.0 | xAI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This id is documented by xAI as a 'latest' alias for the same grok-imagine-image-quality model covered by the separate grok-imagine-image-quality target; description and sourcing are shared. xAI's migration guide (docs.x.ai/docs/migration/imagine-image-quality-nov-2) confirms the catalog's 2026-11-02 deprecation_date: xAI is retiring the underlying grok-imagine-image-quality model on that date and will then serve its requests with grok-imagine-image-2.0 at low quality. This corrects the prior note that no deprecation notice could be found. The cited grok-imagine-image-quality model page also lists per-resolution pricing (1024x1024, 1408x1408, 2048x2048), so resolution is no longer omitted; text-rendering details are still not stated anywhere in xAI's current docs and remain omitted. The grok-imagine-image-2.0 model page was checked to confirm it supports the Batch API, unlike this model. Per the brief, no price figures are included even though xAI's pages list them."
+}

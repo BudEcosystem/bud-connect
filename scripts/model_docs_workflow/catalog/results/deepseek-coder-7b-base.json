@@ -1,0 +1,44 @@
+{
+  "slug": "deepseek-coder-7b-base",
+  "canonical": "deepseek-coder-7b-base",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-Coder-7B-Base, served by Fireworks AI under this id, is DeepSeek AI's 6.7-billion-parameter base code model from the original DeepSeek-Coder series; its canonical Hugging Face repository is named deepseek-coder-6.7b-base. It was trained from scratch on 2 trillion tokens (87% code, 13% natural language in English and Chinese) with a native 16K-token context window, though Fireworks serves it at 4,096 tokens. As a base model it is built for code completion and fill-in-the-middle infilling rather than instruction-following chat, and DeepSeek's current API no longer lists any DeepSeek-Coder v1 model.",
+    "advantages": [
+      "Averages 44.7% pass@1 across eight languages on DeepSeek's multilingual HumanEval benchmark and scores 60.6% on MBPP, per DeepSeek's technical report.",
+      "DeepSeek's technical report states this 6.7B model \"surpasses the performance of CodeLlama-Base 34B\" despite having roughly five times fewer parameters.",
+      "Trained with a fill-in-the-middle (FIM) objective in addition to next-token prediction, supporting code infilling as well as completion, per DeepSeek's model card."
+    ],
+    "disadvantages": [
+      "A base model, not instruction-tuned, so it is built for code completion rather than chat-style dialogue.",
+      "DeepSeek's own current API no longer lists any DeepSeek-Coder v1 model; available only as open weights or via third-party hosts such as Fireworks.",
+      "Fireworks serves it with a 4,096-token context window, well short of the model's native 16K-token design.",
+      "Natural-language training data covers only English and Chinese, per DeepSeek's model card."
+    ],
+    "use_cases": [
+      "Code completion and autocomplete",
+      "Fill-in-the-middle code infilling",
+      "Repository-level (cross-file) code completion",
+      "Base model for further fine-tuning"
+    ],
+    "evaluations": [
+      {"name": "HumanEval (multilingual average)", "score": 44.7, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MBPP", "score": 60.6, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "GSM8K", "score": 43.2, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MMLU", "score": 36.6, "source": "https://arxiv.org/abs/2401.14196"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base", "title": "deepseek-ai/deepseek-coder-6.7b-base · Hugging Face", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2401.14196", "title": "DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/deepseek-coder-7b-base", "title": "DeepSeek Coder 7B Base - Fireworks AI", "kind": "host"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"}
+  ],
+  "notes": "Fireworks' id 'deepseek-coder-7b-base' maps to DeepSeek's deepseek-coder-6.7b-base: huggingface.co/deepseek-ai/deepseek-coder-7b-base 307-redirects to huggingface.co/deepseek-ai/deepseek-coder-6.7b-base, and DeepSeek's own benchmark tables label this size '6.7B'. Catalog facts of 4096 max input/output tokens match Fireworks' listed context window (the model's native pretraining window is 16K, per DeepSeek's paper). DeepSeek's current API pricing page (checked 2026-09-24) no longer lists this or any DeepSeek-Coder v1 model."
+}

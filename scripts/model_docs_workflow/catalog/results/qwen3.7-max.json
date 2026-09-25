@@ -1,0 +1,45 @@
+{
+  "slug": "qwen3.7-max",
+  "canonical": "qwen3.7-max",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3.7-Max is a closed, proprietary Alibaba Qwen chat model hosted by Fireworks AI and Together AI. Fireworks AI describes it as \"Alibaba's latest proprietary model designed for the agent era.\" It does not appear in Alibaba Cloud Model Studio's current text-generation model catalog, which lists Qwen3.7-Plus, Qwen3.8-Max and Qwen3.8-Flash instead. Alibaba does not publish parameter counts or benchmark scores for it; Fireworks AI's listing states it is not a Mixture-of-Experts (MoE) model.",
+    "advantages": [
+      "Supports function calling (tool use) on Fireworks AI's hosted API, per Fireworks AI's model page."
+    ],
+    "disadvantages": [
+      "Does not appear in Alibaba Cloud Model Studio's current text-generation model catalog (which lists Qwen3.7-Plus, Qwen3.8-Max and Qwen3.8-Flash instead), so its current status on Alibaba's own platform could not be confirmed.",
+      "Closed, proprietary model: no parameter count or independently verifiable benchmark scores are published for it on the pages available.",
+      "Together AI's own documentation lists function calling as not supported for this model, conflicting with Fireworks AI's listing, which shows it as supported."
+    ],
+    "use_cases": [
+      "Agentic and tool-using workflows, per Fireworks AI's description of the model as built \"for the agent era.\"",
+      "General-purpose text generation and chat via Together AI's and Fireworks AI's hosted APIs."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3p7-max",
+      "title": "Qwen 3.7 Max - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.together.ai/docs/serverless-models",
+      "title": "Serverless Models - Together AI Docs",
+      "kind": "host"
+    },
+    {
+      "url": "https://www.alibabacloud.com/help/en/model-studio/models",
+      "title": "Models - Alibaba Cloud Model Studio",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No Alibaba (maker) page describing Qwen3.7-Max was found, and it is absent from Alibaba's current Model Studio text-generation listing; used Fireworks AI's and Together AI's host pages per the research prompt's guidance to use host pages when the maker has none. Catalog's text-only modality is consistent with Fireworks AI's page, which lists image input as not supported for this model. Together AI's serverless-models table lists no context length for this model (dash), so the earlier claim of a ~1M-token context via Together was removed as unsupported; the catalog's own max_input_tokens fact (1,000,000) is authoritative regardless."
+}

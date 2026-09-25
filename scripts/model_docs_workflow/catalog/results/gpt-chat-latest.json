@@ -1,0 +1,75 @@
+{
+  "slug": "gpt-chat-latest",
+  "canonical": "gpt-chat-latest",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-chat-latest is Microsoft Foundry's Azure-branded name for OpenAI's chat-latest alias, a continuously-updated pointer to OpenAI's current Instant-tier chat model (currently built on the GPT-5.4 and GPT-5.3-chat line). It replaced OpenAI's discrete gpt-5-chat and gpt-5.3-chat snapshots, which Azure's own retirement schedule lists as retired in favor of this rolling alias. It accepts text and image input and produces text output, with step-by-step reasoning available when useful, and is aimed at multi-turn assistants, tool-calling agentic systems and retrieval-grounded chat rather than deep, deliberate reasoning tasks. Azure lists it under a Preview lifecycle, and OpenAI's own docs for the alias recommend GPT-6 Astra instead of chat-latest for production API workloads.",
+    "advantages": [
+      "OpenAI reports 52.5% fewer hallucinations and a 37.3% reduction in hallucinated claims on previously-flagged conversations, versus the prior GPT-5.3-chat snapshot, per Microsoft's Foundry launch announcement.",
+      "Produced roughly 25-30% fewer words than GPT-5.3-chat across common prompts while preserving response quality, per OpenAI's testing cited in the same announcement.",
+      "Supports step-by-step reasoning, function/tool calling, web and file search, and code interpreter tools through the Responses API (OpenAI's chat-latest model page)."
+    ],
+    "disadvantages": [
+      "OpenAI's own chat-latest documentation recommends using GPT-6 Astra instead of this alias for production API usage.",
+      "Is a continuously-updated alias: OpenAI states the underlying model snapshot will be regularly updated, so behavior can change without a version change.",
+      "Listed under a Preview lifecycle on Azure, not general availability; Azure's model retirement schedule shows the current August 2026 snapshot retiring December 2, 2026, matching the catalog's deprecation date."
+    ],
+    "use_cases": [
+      "Multi-turn conversational assistants and customer-facing chat experiences",
+      "Tool-calling agentic workflows that orchestrate search, retrieval, ticketing or CRM systems",
+      "Retrieval-augmented generation (RAG) applications needing grounded, context-aware synthesis",
+      "Customer support, IT helpdesk, HR and sales-enablement assistants (Azure Foundry use cases)"
+    ],
+    "evaluations": [
+      {
+        "name": "GPQA",
+        "score": 85.6,
+        "source": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-newest-chat-model-in-microsoft-foundry/4516848"
+      },
+      {
+        "name": "AIME 2025",
+        "score": 81.2,
+        "source": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-newest-chat-model-in-microsoft-foundry/4516848"
+      },
+      {
+        "name": "MMMU-Pro",
+        "score": 76.0,
+        "source": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-newest-chat-model-in-microsoft-foundry/4516848"
+      },
+      {
+        "name": "CharXiv-reasoning",
+        "score": 81.6,
+        "source": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-newest-chat-model-in-microsoft-foundry/4516848"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/chat-latest",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/chat-latest",
+      "title": "Chat Latest Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-openais-newest-chat-model-in-microsoft-foundry/4516848",
+      "title": "Introducing OpenAI's newest chat model in Microsoft Foundry | Microsoft Community Hub",
+      "kind": "host"
+    },
+    {
+      "url": "https://ai.azure.com/catalog/models/gpt-chat-latest",
+      "title": "gpt-chat-latest | Model Catalog | Microsoft Foundry",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "This Azure-only target (providers: azure) has no dedicated OpenAI docs page under the Azure product name 'gpt-chat-latest'; researched via OpenAI's own 'chat-latest' page (the underlying alias, confirmed to be the same model by Microsoft's launch blog: 'GPT-5.5 Instant (or Chat-latest in the API) ... as GPT-chat-latest'), Microsoft's launch blog, and Azure's model catalog/retirement schedule. OpenAI's chat-latest page gives a 400K-token context window and 128K max output tokens (400K-128K=272K input, matching the catalog's max_input_tokens exactly). Azure's own catalog quick-facts page separately states 'Context window 200k', which disagrees with the 272K figure derived from OpenAI's page; kept the catalog's 272000 value per instructions. Azure's retirement schedule independently confirms the current 2026-08-06 snapshot retires 2026-12-02, matching the catalog's deprecation_date exactly. The GPQA/AIME/MMMU-Pro/CharXiv-reasoning scores are OpenAI's own testing as relayed by Microsoft's blog (explicitly captioned 'Data shown comes from OpenAI's testing'); no independent leaderboard numbers for this specific alias were found."
+}

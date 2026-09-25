@@ -1,0 +1,47 @@
+{
+  "slug": "qwen2.5-72b-instruct",
+  "canonical": "qwen2.5-72b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-72B-Instruct is a 72.7-billion-parameter (70.0B non-embedding) instruction-tuned chat model from Alibaba's Qwen team, with 80 transformer layers and grouped-query attention (64 query heads, 8 key-value heads), released September 19, 2024. Unlike most other Qwen2.5 sizes it is released under Qwen's own license rather than Apache 2.0. Qwen states the 2.5 generation was trained on up to 18 trillion tokens (up from 7 trillion for Qwen2) and brings large gains in knowledge, coding, math, instruction-following and structured-data/JSON output over Qwen2. Alibaba has since released the newer Qwen3 model generation.",
+    "advantages": [
+      "Scores 86.8 on MMLU-redux, up from 81.6 for Qwen2-72B-Instruct, per Qwen's Qwen2.5 announcement.",
+      "Scores 86.6 on HumanEval and 88.2 on MBPP for code generation, per Qwen's Qwen2.5 announcement.",
+      "Scores 83.1 on MATH and 95.8 on GSM8K, per Qwen's Qwen2.5 announcement.",
+      "Qwen reports an Arena-Hard score of 81.2, up sharply from 48.1 for Qwen2-72B-Instruct, per its Qwen2.5 announcement."
+    ],
+    "disadvantages": [
+      "Released under Qwen's own license rather than Apache 2.0, unlike most other Qwen2.5 model sizes, per Qwen's Hugging Face model card.",
+      "Alibaba has since released the newer Qwen3 generation of models, per the QwenLM/Qwen3 GitHub repository."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and chat",
+      "Code generation and software engineering assistance",
+      "Mathematical reasoning",
+      "Structured data understanding and JSON output generation",
+      "Multilingual conversation"
+    ],
+    "evaluations": [
+      {"name": "MMLU-redux", "score": 86.8, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "MMLU-Pro", "score": 71.1, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "GPQA", "score": 49.0, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "MATH", "score": 83.1, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "GSM8K", "score": 95.8, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "HumanEval", "score": 86.6, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"},
+      {"name": "MBPP", "score": 88.2, "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen2.5"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct", "title": "Qwen/Qwen2.5-72B-Instruct - Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-llm/", "title": "Qwen2.5-LLM: Extending the boundary of LLMs", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5", "title": "QwenLM/Qwen2.5 - GitHub", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3", "title": "QwenLM/Qwen3 - GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list max_input_tokens and max_output_tokens as 131,072 for this Hyperbolic-served deployment. Qwen's own Hugging Face model card confirms a 131,072-token max input (native 32,768, extendable via YaRN) but caps max generation at 8,192 tokens; the catalog's 131,072 max_output figure could not be corroborated on any page opened, so it is kept per instructions and flagged here rather than in the description. Qwen's model card states support for 'over 29 languages' with a partial, non-exhaustive list (Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more); since only a count plus a partial list is given, languages is left empty per instructions. Could not confirm Hyperbolic-specific details directly -- hyperbolic.xyz/hyperbolic.ai's docs and model-listing pages returned 404s or generic marketing content with no per-model page found, so only maker sources are cited."
+}

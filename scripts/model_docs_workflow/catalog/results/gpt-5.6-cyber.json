@@ -1,0 +1,47 @@
+{
+  "slug": "gpt-5.6-cyber",
+  "canonical": "gpt-5.6-cyber",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-5.6-cyber (GPT-5.6 Cyber) is OpenAI's most advanced purpose-trained cybersecurity model, built for approved defenders doing authorized vulnerability research, exploit validation and security testing. It takes text and image input, supports reasoning tokens, and its knowledge cutoff is February 16, 2026. Use requires separate approval and provisioning through OpenAI's Daybreak program; it is also the current snapshot behind the gpt-daybreak-red-latest alias.",
+    "advantages": [
+      "OpenAI describes it as its most advanced purpose-trained cybersecurity model, for authorized vulnerability research, exploit validation and security testing (OpenAI gpt-5.6-cyber model page).",
+      "Supports reasoning tokens, streaming, function calling, structured outputs, code interpreter, hosted shell, apply patch, computer use, MCP and tool search (OpenAI gpt-5.6-cyber model page).",
+      "Is the current snapshot OpenAI's gpt-daybreak-red-latest alias resolves to (OpenAI gpt-daybreak-red-latest model page)."
+    ],
+    "disadvantages": [
+      "Requires separate OpenAI approval and provisioning through the Daybreak program before it can be used (OpenAI gpt-5.6-cyber model page).",
+      "Does not support audio or video input, or fine-tuning (OpenAI gpt-5.6-cyber model page)."
+    ],
+    "use_cases": [
+      "Authorized vulnerability research",
+      "Exploit validation for approved security teams",
+      "Security testing under OpenAI's Daybreak program"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-5.6-cyber",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-cyber",
+      "title": "gpt-5.6-cyber Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-daybreak-red-latest",
+      "title": "gpt-daybreak-red-latest Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "Models | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts (400,000 input / 128,000 output tokens, image_input+text_input+text_output, /v1/chat/completions and /v1/responses) match the OpenAI model page. This model requires Daybreak program approval, so most of the public docs page is a short capability summary rather than a full model card; no benchmark table was published on the pages opened, so evaluations is left empty."
+}

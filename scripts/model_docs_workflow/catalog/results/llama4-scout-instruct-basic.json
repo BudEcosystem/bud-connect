@@ -1,0 +1,39 @@
+{
+  "slug": "llama4-scout-instruct-basic",
+  "canonical": "llama4-scout-instruct-basic",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 4 Scout is Meta's Llama 4 chat model, released April 5, 2025 alongside Maverick. It uses a mixture-of-experts architecture with 17 billion active parameters across 16 experts (about 109 billion total parameters), and, like Maverick, was pretrained on roughly 200 languages, including more than 100 with over a billion tokens each. It serves chat completions with a 131,072-token context window. Meta reports it outperforms Gemma 3, Gemini 2.0 Flash-Lite, and Mistral 3.1 across benchmarks for its size class, with particular strength in multi-document summarization and large-codebase analysis.",
+    "advantages": [
+      "Scores 74.3 on MMLU Pro and 57.2 on GPQA Diamond, per its Hugging Face model card.",
+      "Meta reports it outperforms Gemma 3, Gemini 2.0 Flash-Lite, and Mistral 3.1 across benchmarks for its size class.",
+      "Pretrained on roughly 200 languages, including more than 100 with over a billion tokens each, per Meta's Llama 4 launch post."
+    ],
+    "disadvantages": [
+      "Static model with an August 2024 knowledge cutoff, per its model card."
+    ],
+    "use_cases": [
+      "Multi-document summarization",
+      "Large-codebase analysis and coding tasks",
+      "Multilingual instruction-following chat",
+      "Agentic decision-making workflows"
+    ],
+    "evaluations": [
+      {"name": "MMLU Pro", "score": 74.3, "source": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"},
+      {"name": "GPQA Diamond", "score": 57.2, "source": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"}
+    ],
+    "languages": ["Arabic", "English", "French", "German", "Hindi", "Indonesian", "Italian", "Portuguese", "Spanish", "Tagalog", "Thai", "Vietnamese"],
+    "website_url": "https://dev.meta.ai/llama/models/llama-4/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://dev.meta.ai/llama/models/llama-4/", "title": "Llama 4 - Meta AI Developers", "kind": "maker"},
+    {"url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", "title": "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct", "title": "meta-llama/Llama-4-Scout-17B-16E-Instruct", "kind": "third_party"},
+    {"url": "https://fireworks.ai/models/fireworks/llama4-scout-instruct-basic", "title": "Llama 4 Scout Instruct (Basic) - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts list a 131,072-token context window and text-only (text_input/text_output) modality for this entry, so that is what I described. Meta's own pages describe the base Llama 4 Scout model as natively multimodal (text + image input) with an industry-leading 10,000,000-token context window -- both notably larger/different than the catalog facts. Kept the catalog's values per instructions; flagging the gap for review. Language list (12 names) and the 'pretrained on ~200 languages' figure both come from Meta's own sources and describe two different things (officially supported chat languages vs. pretraining-corpus diversity), so both are included. Verification pass: the original 79.6 MMLU (5-shot) / 50.3 MATH (4-shot) scores were the pretrained BASE checkpoint's numbers from the Hugging Face card's other table (compared there against Llama 3.1 70B/405B), not the Instruct model's; replaced with the Instruct-tuned model's own MMLU Pro (74.3) and GPQA Diamond (57.2) scores from the same card."
+}

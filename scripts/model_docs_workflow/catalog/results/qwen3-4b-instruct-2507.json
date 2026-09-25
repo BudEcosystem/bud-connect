@@ -1,0 +1,87 @@
+{
+  "slug": "qwen3-4b-instruct-2507",
+  "canonical": "qwen3-4b-instruct-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-4B-Instruct-2507 is a 4-billion-parameter (3.6B non-embedding) instruction-tuned language model from Alibaba's Qwen team, released August 6, 2025 as an update to the original April 2025 Qwen3-4B. It runs in non-thinking mode only, with a native 262,144-token context window, and Qwen's model card reports 'significant improvements in general capabilities' plus 'substantial gains in long-tail knowledge coverage across multiple languages' compared with the original Qwen3-4B. It supports tool-calling through the Qwen-Agent framework, and Qwen states the broader Qwen3 model family covers 119 languages and dialects.",
+    "advantages": [
+      "Scores 69.6 on MMLU-Pro, a multitask knowledge benchmark (Qwen's model card).",
+      "Scores 47.4 on AIME25, a competition math benchmark (Qwen's model card).",
+      "Scores 83.4 on IFEval, an instruction-following benchmark (Qwen's model card).",
+      "Scores 61.9 on BFCL-v3, a tool/function-calling benchmark (Qwen's model card).",
+      "Native 262,144-token context window (Qwen's model card).",
+      "Qwen's model card reports 'substantial gains in long-tail knowledge coverage across multiple languages' compared with the original Qwen3-4B."
+    ],
+    "disadvantages": [
+      "Non-thinking mode only; does not generate <think></think> reasoning blocks, and specifying enable_thinking=False is no longer required (Qwen's model card)."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction following",
+      "Long-context document understanding up to 262K tokens",
+      "Tool-calling and agentic workflows via the Qwen-Agent framework",
+      "Coding assistance and code generation",
+      "Multilingual tasks including long-tail knowledge queries across languages"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 69.6,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      },
+      {
+        "name": "MMLU-Redux",
+        "score": 84.2,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      },
+      {
+        "name": "GPQA",
+        "score": 62.0,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      },
+      {
+        "name": "AIME25",
+        "score": 47.4,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      },
+      {
+        "name": "IFEval",
+        "score": 83.4,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      },
+      {
+        "name": "BFCL-v3",
+        "score": 61.9,
+        "source": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+      "title": "Qwen/Qwen3-4B-Instruct-2507 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/QwenLM/Qwen3",
+      "title": "QwenLM/Qwen3 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen3/",
+      "title": "Qwen3: Think Deeper, Act Faster - Qwen Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen3-4b-instruct-2507",
+      "title": "Qwen3 4B Instruct 2507 - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts (262,144 max input/output tokens) match Qwen's stated native context window, so no conflict to flag. Language count (119 languages and dialects) is stated for the Qwen3 family generally on Qwen's blog, not repeated on this specific model's card, so the full list is left empty per instructions and the count is given in the description instead."
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "gemini-3.1-flash-image",
+  "canonical": "gemini-3.1-flash-image",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.1 Flash Image, marketed as Nano Banana 2, is Google DeepMind's Flash-tier image generation and editing model, built on Gemini 3 Flash to pair professional-grade output with low latency for high-volume, developer-focused use. It generates images up to 4K resolution, supports Google Search grounding so generated content can reflect real-time web and image search results, and can create images from YouTube URLs or uploaded video files. Thinking mode can be set to 'high' or 'minimal' to trade off quality against latency. Released February 2026, its knowledge cutoff is January 2025.",
+    "advantages": [
+      "In Google DeepMind's own human evaluations, it scores an Elo of 1073\u00b15 for overall text-to-image preference, 1129\u00b16 for visual quality, 1047\u00b19 for general image editing and 1049\u00b17 for character editing, per its model card.",
+      "Supports Google Search grounding, integrating web and image search results into generated images, and works with or without Thinking mode, per Google's developer documentation.",
+      "Can generate images from YouTube URLs or uploaded video files, per Google's developer documentation.",
+      "Supports up to 10 object reference images, 4 character reference images and 3 style reference images in a single generation, per Google's developer documentation."
+    ],
+    "disadvantages": [
+      "Google's own model card lists known limitations: poor rendering of small text (often blurry at 1K resolution), long paragraphs and page-length text, imperfect character consistency, limited instruction-following for doodle-based editing, and occasional spatial-localization confusion.",
+      "The model card states it remains limited in advanced world knowledge, 3D reasoning and factuality."
+    ],
+    "use_cases": [
+      "General-purpose, professional-grade image generation and editing at Flash-level speed",
+      "Multi-turn conversational image editing, including object, environment, character and style edits",
+      "Generating infographics and diagrams with legible rendered text",
+      "Creating images grounded in real-time web content or video sources"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-1-flash-image/",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://deepmind.google/models/model-cards/gemini-3-1-flash-image/",
+      "title": "Gemini 3.1 Flash Image - Model Card",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+      "title": "Image generation | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image",
+      "title": "Gemini 3.1 Flash Image | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens lists both 65,536 and 131,072; Google's per-model API page (ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) lists 131,072 input / 32,768 output, matching the catalog's higher input figure and its output figure exactly. The DeepMind model card separately describes a nominal 'up to 1M' input context, which appears to describe the underlying Gemini 3 Flash context rather than this image endpoint's per-call limit, so the catalog's figures were kept. No deprecation or successor was found on pages opened; the catalog's 2027-05-28 retirement date is not mentioned on any source. The model card lists two Elo columns per capability, a plain 'Gemini 3.1 Flash Image' column and a '(Thinking + Text Search + Image Search)' column; the general/character editing figures now cited are read from the same plain column as the overall-preference and visual-quality figures (1047±9 and 1049±7), which do not exceed Gemini 3 Pro Image's scores in those two rows (1051±10 and 1050±8)."
+}

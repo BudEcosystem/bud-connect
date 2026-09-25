@@ -1,0 +1,39 @@
+{
+  "slug": "glm-5.3-flash",
+  "canonical": "glm-5.3-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Z.ai",
+  "details": {
+    "description": "GLM-5.3-Flash is Z.ai's first natively multimodal model in the GLM-5 series, accepting image, video, text and file input and producing text output. It is a mixture-of-experts model with 320 billion total and 18 billion active parameters, using a hybrid sparse-and-linear attention design that Z.ai says cuts attention computation by about 3.0x and KV-cache size by about 4.4x compared with GLM-5.3. It supports a 1M-token context window, always-on reasoning with adjustable thinking effort, function calling, and native visual understanding aimed at coding, UI and frontend review, and document or chart analysis. Z.ai launched it August 25, 2026 as a faster sibling to GLM-5.3 that it says outperforms the prior-generation GLM-5.2 across most evaluations.",
+    "advantages": [
+      "Scores 63.4 on DeepSWE v1.1, up from GLM-5.2's 46.2, per Z.ai's documentation.",
+      "Scores 57 on the Artificial Analysis Intelligence Index v4.1.1, per Together AI's model listing.",
+      "Z.ai reports cutting attention computation by about 3.0x and KV cache by about 4.4x versus GLM-5.3.",
+      "Natively processes image, video, text and file input for tasks such as reviewing rendered UI output and analyzing charts, per Z.ai's documentation."
+    ],
+    "disadvantages": [
+      "Reasoning is always on and cannot be disabled, per Z.ai's documentation."
+    ],
+    "use_cases": [
+      "Vision-driven UI and frontend coding, including reviewing rendered results and iterating",
+      "General agentic coding",
+      "Document, chart and financial analysis combining text and images",
+      "Game and 3D scene development workflows"
+    ],
+    "evaluations": [
+      {"name": "DeepSWE v1.1", "score": 63.4, "source": "https://docs.z.ai/guides/llm/glm-5.3-flash"},
+      {"name": "Artificial Analysis Intelligence Index v4.1.1", "score": 57, "source": "https://www.together.ai/models/glm-5-3-flash"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://docs.z.ai/guides/llm/glm-5.3-flash",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.z.ai/guides/llm/glm-5.3-flash", "title": "GLM-5.3-Flash - Z.ai docs", "kind": "maker"},
+    {"url": "https://huggingface.co/zai-org/GLM-5.3-Flash", "title": "zai-org/GLM-5.3-Flash · Hugging Face", "kind": "maker"},
+    {"url": "https://www.together.ai/models/glm-5-3-flash", "title": "GLM-5.3-Flash - Together AI", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (1,048,575) and max_output_tokens (128,000) match Z.ai's own docs (1M context / 128K output) and Together AI's listing exactly. An initial Hugging Face card summary returned a conflicting '300,000 token' context figure, but two independent maker/host pages (docs.z.ai and Together AI) agree with the catalog's 1M figure, so the 300K figure looks like an extraction error and was not used. Catalog's image+text-input/text-output modality matches Z.ai's description of native multimodal (image/video/text/file) input."
+}

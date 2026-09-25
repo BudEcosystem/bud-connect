@@ -1,0 +1,57 @@
+{
+  "slug": "o3-deep-research",
+  "canonical": "o3-deep-research",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "o3-deep-research is OpenAI's model for agentic deep research, built to plan and carry out complex, multi-step research tasks and synthesize findings from many sources into a structured, analyst-level report. Released as the o3-deep-research-2025-06-26 snapshot, it autonomously plans sub-questions and can call web search, a code interpreter, file search over internal vector stores, and remote MCP connectors while producing its answer. OpenAI's deprecations page lists this snapshot for shutdown on its direct API, with gpt-5.6-sol as the recommended replacement.",
+    "advantages": [
+      "OpenAI describes it as able to find, analyze, and synthesize hundreds of sources into a report at the level of a research analyst.",
+      "Can combine web search, code interpretation, internal file search across up to two vector stores, and remote MCP connectors within a single research task, per OpenAI's documentation.",
+      "OpenAI recommends it for research-intensive work such as legal and scientific research, market analysis, and reporting on large datasets."
+    ],
+    "disadvantages": [
+      "Requires at least one data source (web search, file search, or an MCP connector) to run, and does not support traditional function calling, per OpenAI's documentation.",
+      "OpenAI's deprecations page lists this model's snapshot for shutdown on its direct API, with gpt-5.6-sol as the recommended replacement."
+    ],
+    "use_cases": [
+      "Multi-step research that finds, analyzes, and synthesizes many sources into a structured report",
+      "Legal and scientific research and market analysis",
+      "Reporting over large datasets, including proprietary data connected via file search or MCP"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/o3-deep-research",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/o3-deep-research",
+      "title": "o3-deep-research Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/deep-research",
+      "title": "Deep research | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/cookbook/examples/deep_research_api/introduction_to_deep_research_api",
+      "title": "Introduction to the Deep Research API | OpenAI Cookbook",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry",
+      "kind": "host"
+    }
+  ],
+  "notes": "FACT CONFLICT: the catalog lists text-only modality and only /v1/chat/completions as an endpoint, with no max_input/max_output tokens given. OpenAI's own model reference page for o3-deep-research instead states a 200,000-token context window, 100,000 max output tokens, text AND image input, and access only via the Responses (v1/responses) and Batch (v1/batch) endpoints -- it explicitly does not support Chat Completions. Kept the catalog's modality and endpoint per instructions and left context/output limits out of the description rather than restate OpenAI's numbers. No evaluation/benchmark numbers specific to this model were found on OpenAI's pages, so evaluations is empty. Removed the claim that every request always invokes web search: the deep research guide and cookbook pages instead say a request must include at least one of web search, file search or an MCP connector, not that web search itself is mandatory or always run, and neither page discusses added cost/latency from it. This catalog entry's only provider is Azure (facts.providers = ['azure']). OpenAI's direct-API deprecations page (opened 2026-09-24) lists o3-deep-research-2025-06-26 with a shutdown date of July 23, 2026 -- already past as of this research date -- and gpt-5.6-sol as the recommended replacement. Checked Azure's own Model Retirement Schedule (the applicable source for this entry, since it is Azure-only): it lists o3-deep-research-2025-06-26 as Deprecated with a retirement date of 2026-11-19 (not yet past) and gpt-5.6-sol as the replacement -- an exact match to the catalog's date, resolving the apparent already-past conflict as a cross-host scheduling difference."
+}

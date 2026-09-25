@@ -1,0 +1,39 @@
+{
+  "slug": "flux-1-schnell",
+  "canonical": "flux-1-schnell",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Black Forest Labs",
+  "details": {
+    "description": "FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer from Black Forest Labs that generates images from text descriptions. It is trained with latent adversarial diffusion distillation so it \"can generate high-quality images in only 1 to 4 steps,\" and is released under the Apache 2.0 license for personal, scientific, and commercial use. Fireworks AI hosts it (accounts/fireworks/models/flux-1-schnell) for on-demand, dedicated-GPU deployment. As of September 2026, Black Forest Labs' current models page and docs are centered on the newer FLUX.2 and FLUX 3 families and no longer list FLUX.1 [schnell], though the Hugging Face model card remains published with no deprecation notice.",
+    "advantages": [
+      "Trained with latent adversarial diffusion distillation, letting it \"generate high-quality images in only 1 to 4 steps\" per the model card, far fewer than typical diffusion models.",
+      "Released under the Apache 2.0 license, permitting personal, scientific, and commercial use without the restrictions of the FLUX.1 [dev] non-commercial license.",
+      "Black Forest Labs describes its output as \"cutting-edge output quality and competitive prompt following, matching the performance of closed source alternatives\"."
+    ],
+    "disadvantages": [
+      "The model card states it is not designed for factual information generation.",
+      "The model card notes it may amplify existing societal biases.",
+      "The model card notes prompt-following performance varies depending on prompt style.",
+      "Fireworks lists fine-tuning, serverless deployment, function calling, embeddings, reranking, and image input as not supported for this model.",
+      "Does not appear on Black Forest Labs' current models listing, which as of September 2026 is centered on the newer FLUX.2 and FLUX 3 generations."
+    ],
+    "use_cases": [
+      "Fast text-to-image generation where low step count/latency matters",
+      "Commercial and personal image-generation applications under the Apache 2.0 license"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell",
+    "github_url": "https://github.com/black-forest-labs/flux"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell", "title": "black-forest-labs/FLUX.1-schnell · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/flux-1-schnell", "title": "FLUX.1 [schnell] - Fireworks AI", "kind": "host"},
+    {"url": "https://bfl.ai/models", "title": "Models - Black Forest Labs", "kind": "maker"},
+    {"url": "https://docs.bfl.ai/", "title": "Black Forest Labs Docs", "kind": "maker"},
+    {"url": "https://github.com/black-forest-labs/flux", "title": "black-forest-labs/flux - GitHub", "kind": "maker"}
+  ],
+  "notes": "GROUPING/kind conflict: the catalog lists this entry as kind \"chat\" with endpoint /v1/chat/completions and modality [text_input, text_output], max_input/output_tokens 4096. The maker (Hugging Face card) and host (Fireworks model page, created 2024-10-22 per that page) both confirm this is a text-to-image diffusion model, not a chat/text model, and Fireworks' own fp8 variant of this model (flux-1-schnell-fp8) uses /v1/images/generations with image_output modality instead. Catalog facts were kept as authoritative per instructions; this is flagged as a likely data/routing mismatch rather than restated as a chat capability. No specific benchmark scores were found stated by Black Forest Labs on the pages opened, so evaluations is empty. Superseded status is inferred from BFL's current bfl.ai/models and docs.bfl.ai pages not listing FLUX.1 [schnell] at all (lineup now leads with FLUX.2/FLUX 3); no explicit deprecation notice was found on the Hugging Face card itself."
+}

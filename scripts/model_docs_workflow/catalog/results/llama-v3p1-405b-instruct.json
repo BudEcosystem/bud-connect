@@ -1,0 +1,83 @@
+{
+  "slug": "llama-v3p1-405b-instruct",
+  "canonical": "llama-v3p1-405b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 405B Instruct is the largest, instruction-tuned model in Meta's Llama 3.1 family, a multilingual large language model Meta released July 23, 2024. It has a 128,000-token context window and a knowledge cutoff of December 2023, and Meta names English, German, French, Italian, Portuguese, Hindi, Spanish and Thai as its officially supported languages. It is built for assistant-style chat, complex reasoning, coding and agentic tool use, and Meta says its evaluation across more than 150 benchmark datasets found it competitive with leading models including GPT-4o and Claude 3.5 Sonnet.",
+    "advantages": [
+      "Scores 87.3 on MMLU, 89.0% on HumanEval, 96.8% on GSM-8K (CoT) and 50.7% on GPQA, per Meta's Llama 3.1 model card.",
+      "Scores 92.0% on the API-Bank tool-use benchmark and 88.6 on IFEval, per Meta's Llama 3.1 model card.",
+      "128,000-token context window, versus 8,192 tokens in the original Llama 3 models, per Meta's Llama 3.1 launch post."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of December 2023, per Meta's Llama 3.1 model card.",
+      "Officially supported for only eight languages; other languages are not covered by Meta's safety and helpfulness evaluations."
+    ],
+    "use_cases": [
+      "Long-form text summarization",
+      "Multilingual conversational agents across the eight supported languages",
+      "Coding assistants and agentic systems using function calling and external tools",
+      "Synthetic data generation and distillation into smaller models"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 87.3,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "HumanEval",
+        "score": 89.0,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "GSM-8K (CoT)",
+        "score": 96.8,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "GPQA",
+        "score": 50.7,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      },
+      {
+        "name": "IFEval",
+        "score": 88.6,
+        "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md"
+      }
+    ],
+    "languages": [
+      "English",
+      "German",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Hindi",
+      "Spanish",
+      "Thai"
+    ],
+    "website_url": "https://ai.meta.com/blog/meta-llama-3-1/",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+      "title": "Introducing Llama 3.1",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+      "title": "llama-models/models/llama3_1/MODEL_CARD.md",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3p1-405b-instruct",
+      "title": "Llama 3.1 405B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks' own model page lists a 131,100-token context length; kept the catalog's 128,000-token facts value, which matches Meta's own published figure, instead."
+}

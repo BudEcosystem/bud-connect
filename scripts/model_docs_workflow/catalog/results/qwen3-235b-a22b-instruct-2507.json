@@ -1,0 +1,42 @@
+{
+  "slug": "qwen3-235b-a22b-instruct-2507",
+  "canonical": "qwen3-235b-a22b-instruct-2507",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Alibaba (Qwen team)",
+  "details": {
+    "description": "Qwen3-235B-A22B-Instruct-2507 is Alibaba's Qwen team's updated instruction-tuned release of its 235-billion-parameter (22B active) mixture-of-experts model, published under the Apache 2.0 license. Unlike the original Qwen3-235B-A22B, this version runs only in non-thinking mode and does not generate <think> reasoning blocks; Qwen's model card describes it as delivering significant improvements in general capabilities, instruction following, and alignment with user preferences. It natively supports 262,144 tokens of context, extendable to about 1,010,000 tokens using Dual Chunk Attention and MInference sparse attention, and integrates with the Qwen-Agent framework for tool calling with MCP support.",
+    "advantages": [
+      "Scores 70.3 on AIME25 and 51.8 on LiveCodeBench v6, per its model card.",
+      "Scores 83.0 on MMLU-Pro and 77.5 on GPQA, per its model card.",
+      "Scores 79.2 on Arena-Hard v2 and 70.9 on BFCL-v3 for agentic tool-calling, per its model card.",
+      "Natively supports 262,144 tokens of context, extendable to about 1,010,000 tokens using Dual Chunk Attention and MInference sparse attention, per its model card.",
+      "Integrates with the Qwen-Agent framework, including MCP configuration support, per its model card."
+    ],
+    "disadvantages": [
+      "Runs only in non-thinking mode and does not generate <think> reasoning blocks, unlike the original hybrid Qwen3-235B-A22B."
+    ],
+    "use_cases": [
+      "General-purpose chat, instruction-following and creative writing without an explicit reasoning phase.",
+      "Agentic tool-calling and MCP-based workflows via the Qwen-Agent framework.",
+      "Long-context tasks spanning hundreds of thousands of tokens.",
+      "Multilingual tasks that benefit from improved long-tail language knowledge coverage."
+    ],
+    "evaluations": [
+      {"name": "AIME25", "score": 70.3, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"},
+      {"name": "LiveCodeBench v6", "score": 51.8, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"},
+      {"name": "MMLU-Pro", "score": 83.0, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"},
+      {"name": "GPQA", "score": 77.5, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"},
+      {"name": "Arena-Hard v2", "score": 79.2, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"},
+      {"name": "BFCL-v3", "score": 70.9, "source": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507", "title": "Qwen/Qwen3-235B-A22B-Instruct-2507 · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Native context (262,144 tokens) matches the catalog facts exactly. The 1,010,000-token extended context and multilingual benchmark table entries (MultiIF, MMLU-ProX, INCLUDE, PolyMATH) were left out of evaluations/description detail for brevity but are on the same model card."
+}

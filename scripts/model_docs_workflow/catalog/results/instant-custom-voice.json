@@ -1,0 +1,63 @@
+{
+  "slug": "instant-custom-voice",
+  "canonical": "instant-custom-voice",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Chirp 3: Instant Custom Voice is a Google Cloud Text-to-Speech feature that clones a voice from a short audio sample and lets that cloned voice be used to synthesize new speech from text. Google's documentation describes providing up to 10 seconds of clean, single-channel consent and reference audio, from which the service generates a text-string 'voice cloning key' that can later be used to synthesize speech. Access is restricted to allow-listed users, who must contact Google's sales team.",
+    "advantages": [
+      "Clones a voice from as little as up to 10 seconds of reference audio, according to Google's documentation.",
+      "Supports 25 languages, including multiple English and French locale variants, German, Chinese, Japanese, Korean, Arabic, Russian and several Indian regional languages, per Google's documentation.",
+      "Multilingual transfer lets an en-US voice cloning key synthesize speech in German, Spanish, French and Portuguese.",
+      "Supports text-based prompting, pace control from 0.25x to 2x speed, pause tags, and custom pronunciation via phonetic encoding."
+    ],
+    "disadvantages": [
+      "Access is restricted to allow-listed users and requires contacting Google's sales team, rather than being generally available.",
+      "Reference audio must be close to 10 seconds with no background noise, limiting usable source recordings."
+    ],
+    "use_cases": [
+      "Personalized audio content creation from a cloned voice",
+      "Multilingual voice synthesis from a single voice sample"
+    ],
+    "evaluations": [],
+    "languages": [
+      "Arabic",
+      "Bengali",
+      "Chinese",
+      "Dutch",
+      "English",
+      "French",
+      "German",
+      "Gujarati",
+      "Hindi",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Kannada",
+      "Korean",
+      "Malayalam",
+      "Marathi",
+      "Polish",
+      "Portuguese",
+      "Russian",
+      "Spanish",
+      "Tamil",
+      "Telugu",
+      "Thai",
+      "Turkish",
+      "Vietnamese"
+    ],
+    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-instant-custom-voice",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-instant-custom-voice",
+      "title": "Chirp 3: Instant Custom Voice",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The docs page's 'Available languages' table names all 25 supported languages explicitly (no '38 languages' figure appears on the page); all of them are listed here. Access is limited-availability (allow-list plus sales contact), not GA, which is called out in the description and disadvantages."
+}

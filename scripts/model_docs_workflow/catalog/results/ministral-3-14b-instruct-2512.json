@@ -1,0 +1,40 @@
+{
+  "slug": "ministral-3-14b-instruct-2512",
+  "canonical": "ministral-3-14b-instruct-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 14B Instruct (2512) is the largest model in Mistral AI's Ministral 3 family, an instruction-tuned dense (non-mixture-of-experts) chat model with about 13.5 billion language-model parameters, released in December 2025 as part of Mistral's v25.12 release line. Mistral positions it as offering frontier-level capability comparable to its larger Mistral Small 3.2 24B model, and describes it as superseding its earlier Pixtral 12B model. It supports function calling and JSON-format structured output, and Mistral's FP8 build is designed to run on a single 24GB-VRAM GPU.",
+    "advantages": [
+      "Scores 85.0% on AIME25 and 90.4% on MATH (Maj@1), per Mistral's model card.",
+      "Scores 89.8% on AIME24 and 79.4% on MMLU (5-shot), per Mistral's model card.",
+      "Mistral describes its capabilities as comparable to its larger Mistral Small 3.2 24B model, per Mistral's official models overview.",
+      "Mistral's FP8 build is designed to fit on a single 24GB-VRAM GPU, per its model card."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "General-purpose chat and instruction-following tasks",
+      "Function-calling and tool-use workflows with structured JSON output",
+      "Single-GPU or resource-constrained deployment where a smaller high-capability model is needed",
+      "Multilingual tasks across the model's documented language set"
+    ],
+    "evaluations": [
+      {"name": "AIME25", "score": 85.0, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "AIME24", "score": 89.8, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "GPQA Diamond", "score": 71.2, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "LiveCodeBench", "score": 64.6, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "MATH (Maj@1)", "score": 90.4, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"}
+    ],
+    "languages": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Dutch", "Chinese", "Japanese", "Korean", "Arabic"],
+    "website_url": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512", "title": "mistralai/Ministral-3-14B-Instruct-2512 · Hugging Face", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview", "title": "Models Overview - Mistral AI Documentation", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/ministral-3-14b-instruct-2512", "title": "Ministral 3 14B Instruct 2512 - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Mistral's own model card pairs this 13.5B language model with a 0.4B-parameter vision encoder for image input, but Bud's catalog lists this route as text-only (text_input/text_output only, no image_input), so vision capability is not described here; the catalog's modality is kept as authoritative. Release date confirmed as December 2, 2025 on both the Hugging Face page and Fireworks' listing (matches the 'v25.12' release line on Mistral's models-overview page). Removed an 'MMLU (5-shot): 79.4' evaluation the original write-up sourced to this model's Hugging Face card: that score is in the README's 'Base' comparison table (Ministral 3 14B Base vs. Qwen3 14B Base, Gemma 3 12B Base), not the Instruct model this file describes, and no Instruct-specific MMLU score was found on any source checked (HF, Fireworks, Mistral docs)."
+}

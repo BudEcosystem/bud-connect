@@ -1,0 +1,11 @@
+{
+  "slug": "lyria-3.5-clip-preview",
+  "canonical": "lyria-3.5-clip-preview",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "No maker page describes a model called 'lyria-3.5-clip-preview'. Checked Google's Gemini API models list (ai.google.dev/gemini-api/docs/models), the music-generation overview, the changelog, the deprecations page, and the pricing page -- all list only lyria-3.5 (flagship, covers both full songs and short clips), lyria-3-clip-preview and lyria-3-pro-preview (preview generation, both pointed at lyria-3.5 as the replacement), and lyria-realtime-exp. Requesting the guessed model-page URL ai.google.dev/gemini-api/docs/models/lyria-3.5-clip-preview did not return a page about that id; it surfaced content about lyria-3-clip-preview instead. WebSearch was unavailable this session (session search budget exhausted before this target), so could not search further to confirm whether this id is a planned/unreleased model or a data error in the catalog. Leaving as insufficient_sources rather than guessing it is the same as lyria-3-clip-preview or lyria-3.5."
+}

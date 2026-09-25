@@ -1,0 +1,47 @@
+{
+  "slug": "long-form",
+  "canonical": "long-form",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Long-form is an Amazon Polly text-to-speech engine built to sustain natural, expressive narration over lengthy content such as news articles, training materials, and marketing videos. It uses text embeddings to interpret the meaning of the text and generate matching emphasis, pauses, and tone, and Amazon says the result is a voice that differentiates dialogue from narration and mimics elements such as surprise. Polly currently offers six Long-form voices: four in English (US) and two in Spanish (Spain).",
+    "advantages": [
+      "Amazon designed the engine specifically to hold listener attention over long-form content such as news articles, training materials, and marketing videos.",
+      "Uses text embeddings to interpret meaning and generate matching emphasis, pauses, and tone, including differentiating dialogue from narration.",
+      "Supports all Amazon Polly speech marks, unlike Polly's Generative engine.",
+      "Supports both real-time and asynchronous speech synthesis, and MP3, OGG (Vorbis), and raw PCM output formats."
+    ],
+    "disadvantages": [
+      "Available in only two languages, English (US) and Spanish (Spain), with six voices total.",
+      "Available only in the US East (N. Virginia) AWS region, per Amazon's region list.",
+      "Amazon warns that updates to the model's training data can cause slight variations in how a voice sounds over time, which can affect projects synthesized in parts over a long period, such as a season of podcasts."
+    ],
+    "use_cases": [
+      "Narrating news articles",
+      "Producing training and e-learning materials",
+      "Voicing marketing and video content"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "website_url": "https://docs.aws.amazon.com/polly/latest/dg/long-form-voices.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/long-form-voices.html",
+      "title": "Long-form voices - Amazon Polly",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/generative-voices.html",
+      "title": "Generative voices - Amazon Polly",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No accuracy-style benchmark scores for the Long-form engine were found on Amazon's pages, so evaluations is left empty. Three of the six voices (Daniel, Gregory, Ruth per Amazon's page) are also offered in a conversational neural variant, but that is a separate Polly engine, not this one."
+}

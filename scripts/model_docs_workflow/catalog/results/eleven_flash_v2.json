@@ -1,0 +1,32 @@
+{
+  "slug": "eleven_flash_v2",
+  "canonical": "eleven_flash_v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "ElevenLabs",
+  "details": {
+    "description": "Eleven Flash v2 is ElevenLabs' first-generation ultra-fast text-to-speech model, built for real-time and conversational use with latency of about 75ms, excluding application and network latency. It supports English only and generates up to 30,000 characters (about 30 minutes of audio) in a single request. ElevenLabs' current models documentation lists it, alongside Eleven Flash v2.5 and Eleven Multilingual v2, as suitable for Agents Platform voice agents and chatbots.",
+    "advantages": [
+      "Ultra-low latency of about 75ms, excluding application and network latency, per ElevenLabs' model documentation.",
+      "Supports up to 30,000 characters (about 30 minutes of audio) in a single text-to-speech request.",
+      "Listed by ElevenLabs as suitable for real-time Agents Platform voice agents and chatbots."
+    ],
+    "disadvantages": [
+      "Supports English only, unlike the 32-language Eleven Flash v2.5.",
+      "Lower per-request character limit (30,000) than Eleven Flash v2.5 (40,000)."
+    ],
+    "use_cases": [
+      "Real-time voice agents and chatbots",
+      "Low-latency speech synthesis for English-only applications"
+    ],
+    "evaluations": [],
+    "languages": ["English"],
+    "website_url": "https://elevenlabs.io/docs/overview/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://elevenlabs.io/docs/overview/models", "title": "Models | ElevenLabs Documentation", "kind": "maker"}
+  ],
+  "notes": "ElevenLabs' models page has no dedicated section for eleven_flash_v2 (unlike Flash v2.5, which has its own '## Flash v2.5' section); its details come from the models-overview table, the flagship-cards summary, and the 'Agents Platform' use-case card. The page's explicit Deprecated models table lists only eleven_turbo_v2, eleven_turbo_v2_5, and scribe_v1 as deprecated, so Flash v2 is a current model, not deprecated, despite being superseded in capability by Flash v2.5."
+}

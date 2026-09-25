@@ -1,0 +1,35 @@
+{
+  "slug": "command-text-v14",
+  "canonical": "command-text-v14",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cohere",
+  "details": {
+    "description": "Command (Amazon Bedrock model ID cohere.command-text-v14) is Cohere's original instruction-following conversational model. Cohere deprecated and shut down this legacy 'command' model on September 15, 2025, directing users to command-r-08-2024, command-r-plus-08-2024, or command-a-03-2025 instead, and it no longer appears among the Cohere models Amazon Bedrock's current model catalog lists (Command R, Command R+, Embed, and Rerank models only). It supports a 4,096-token context window with up to 4,096 output tokens over a text-only chat endpoint.",
+    "advantages": [
+      "Cohere describes it as an instruction-following conversational model that performs language tasks with higher quality, more reliably, and with longer context than Cohere's base generative models."
+    ],
+    "disadvantages": [
+      "Deprecated and shut down by Cohere on September 15, 2025; Cohere directs users to command-r-08-2024, command-r-plus-08-2024, or command-a-03-2025 instead.",
+      "No longer offered as a current model in Cohere's own model list or in Amazon Bedrock's current Cohere model catalog.",
+      "4,096-token context window and 4,096-token output limit, far smaller than Cohere's current Command models (128K-256K context).",
+      "No function/tool-calling support noted for this model."
+    ],
+    "use_cases": [
+      "General-purpose instruction-following chat and text generation, per Cohere's description of the model."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.cohere.com/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cohere.com/docs/models", "title": "An Overview of Cohere's Models | Cohere", "kind": "maker"},
+    {"url": "https://docs.cohere.com/docs/deprecations", "title": "Deprecations | Cohere", "kind": "maker"},
+    {"url": "https://docs.cohere.com/changelog/2025-09-15-major-command-deprecations", "title": "Announcing Major Command Deprecations | Cohere", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-cohere.html", "title": "Cohere - Amazon Bedrock", "kind": "host"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-runtime_example_bedrock-runtime_InvokeModel_CohereCommand_section.html", "title": "Invoke Cohere Command on Amazon Bedrock using the Invoke Model API - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog's facts (4,096 max input and max output tokens) match Cohere's documented context/output limits for the legacy 'command' model. Catalog's deprecation_date fact is empty, but Cohere's own deprecations page and its Sept 15 2025 changelog state this model (API name 'command', Bedrock ID cohere.command-text-v14, per Cohere's own docs/models page) was deprecated and shut down 2025-09-15; it is also absent from AWS Bedrock's current Cohere model-cards listing (fetched twice, consistently). The two URIs in this group (1-month-commitment and 6-month-commitment) are the same underlying model under different Bedrock Provisioned Throughput commitment terms, not different models, so they were described together."
+}

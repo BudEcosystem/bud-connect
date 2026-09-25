@@ -1,0 +1,61 @@
+{
+  "slug": "claude-haiku-4-5",
+  "canonical": "claude-haiku-4-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Haiku 4.5 is Anthropic's fastest model, released October 15, 2025 for low-latency, real-time use at near-frontier intelligence. It takes text and image input, supports manual extended thinking and tool use (including coding, bash, web search, and computer-use tools), and offers a 200K-token context window with a 64K-token max output. Anthropic reports coding performance similar to the earlier Claude Sonnet 4 at about one-third the cost and more than twice the speed, and released it under AI Safety Level 2, its lowest current safety level.",
+    "advantages": [
+      "Scored 73.3% on SWE-bench Verified at launch, per Anthropic's announcement.",
+      "Scored 41.75% on Terminal-Bench with thinking enabled, per Anthropic's announcement.",
+      "Anthropic reports coding performance similar to Claude Sonnet 4 at about one-third the cost and more than twice the speed.",
+      "Anthropic's announcement reports lower rates of misaligned behavior in testing than both Claude Sonnet 4.5 and Claude Opus 4.1."
+    ],
+    "disadvantages": [
+      "Reliable knowledge cutoff of February 2025, the oldest among Anthropic's current models, per Anthropic's model page.",
+      "200K-token context window and 64K-token max output, smaller than the 1M-token/128K-token limits on Claude Fable 5.1, Opus 5.5, and Sonnet 5.",
+      "Uses manual extended thinking (thinking.type: 'enabled' with a token budget) rather than the adaptive thinking on Anthropic's newer flagship models."
+    ],
+    "use_cases": [
+      "Low-latency chat assistants and customer service agents",
+      "Pair programming and rapid prototyping",
+      "Multi-agent orchestration, running many parallel Haiku sub-agents under a larger coordinating model",
+      "Computer-use automation"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 73.3,
+        "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+      },
+      {
+        "name": "Terminal-Bench",
+        "score": 41.75,
+        "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-haiku-4-5",
+      "title": "Introducing Claude Haiku 4.5",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+      "title": "Claude Haiku 4.5 - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date (2026-10-15) matches Anthropic's own retirement date of 'not sooner than October 15, 2026' exactly. Catalog's 200K input / 64K output token facts and image+text/text modality match Anthropic's model page exactly."
+}

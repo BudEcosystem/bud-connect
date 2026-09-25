@@ -1,0 +1,84 @@
+{
+  "slug": "claude-3-5-sonnet",
+  "canonical": "claude-3-5-sonnet",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude 3.5 Sonnet is Anthropic's mid-tier chat model, first released June 21, 2024 with a 200K-token context window and vision support. Anthropic updated it on October 22, 2024 under the same name (informally 'v2' or the 'new' Claude 3.5 Sonnet) with a public-beta computer-use capability and a higher SWE-bench Verified score. Anthropic's platform now lists both dated snapshots as retired since October 28, 2025, superseded by newer Sonnet models (currently Claude Sonnet 5).",
+    "advantages": [
+      "Scored 92.0% on HumanEval, 90.4% on MMLU (5-shot CoT) and 59.4% on GPQA Diamond at its original June 2024 launch, per Anthropic's published evaluation table.",
+      "The October 2024 update raised SWE-bench Verified from 33.4% to 49.0%, which Anthropic said was higher than all publicly available models at the time.",
+      "The October 2024 update added a public-beta computer-use capability, letting the model view screenshots and control a cursor and keyboard, per Anthropic's launch post."
+    ],
+    "disadvantages": [
+      "Superseded by later Sonnet models; Anthropic's model-deprecations page lists both the June 2024 and October 2024 snapshots as retired since October 28, 2025.",
+      "Computer use was an experimental public beta at launch; Anthropic said basic actions like scrolling, dragging and zooming were still challenging."
+    ],
+    "use_cases": [
+      "Context-sensitive customer support",
+      "Multi-step workflow orchestration and coding agents",
+      "Code translation and legacy codebase migration",
+      "Computer-use automation (October 2024 version, public beta)"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval",
+        "score": 92.0,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "MMLU (5-shot CoT)",
+        "score": 90.4,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "GPQA Diamond (0-shot CoT)",
+        "score": 59.4,
+        "source": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf"
+      },
+      {
+        "name": "SWE-bench Verified (original, June 2024)",
+        "score": 33.4,
+        "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+      },
+      {
+        "name": "SWE-bench Verified (upgraded, October 2024)",
+        "score": 49.0,
+        "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+      "title": "Introducing Claude 3.5 Sonnet",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+      "title": "Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf",
+      "title": "Claude 3.5 Sonnet Model Card Addendum",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations - Claude Platform Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+      "title": "Claude Sonnet 5",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This target groups two distinct dated snapshots under one canonical id: the original Claude 3.5 Sonnet (20240620, June 2024) and the October 2024 upgrade (20241022-v2), matching the catalog's two max_output_tokens values (4096 vs 8192). Both are named 'Claude 3.5 Sonnet' by Anthropic rather than given a distinct model name, so I described them together and attributed each snapshot's own numbers separately. Catalog's deprecation_date is empty, but Anthropic's model-deprecations page lists both claude-3-5-sonnet-20240620 and claude-3-5-sonnet-20241022 as retired on the Claude API since October 28, 2025; as of this research, Amazon Bedrock (the provider for this catalog entry) no longer lists any Claude 3.5 Sonnet model card at all, consistent with it also being past its Bedrock EOL date, though I could not find an exact Bedrock EOL date for it. Also corrected: Claude Sonnet 4.6 has since been superseded by Claude Sonnet 5 (released June 30, 2026, marked 'Active (latest)' on Anthropic's own model page), so the description's 'currently' successor reference was updated."
+}

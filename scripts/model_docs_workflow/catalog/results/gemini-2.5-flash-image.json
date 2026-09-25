@@ -1,0 +1,51 @@
+{
+  "slug": "gemini-2.5-flash-image",
+  "canonical": "gemini-2.5-flash-image",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 2.5 Flash Image, nicknamed 'Nano Banana', is Google DeepMind's native image generation and editing model, launched in preview on August 26, 2025 with a stable version following soon after. Built on the Gemini 2.5 Flash multimodal backbone, it generates images from text and performs prompt-based edits -- background changes, object removal, pose changes, colorizing old photos -- while keeping a consistent character or subject across turns and blending multiple input images into one output. Google's current image-generation documentation calls it 'the legacy pioneer of the Nano Banana series' and recommends customers move to its newer Nano Banana models for better quality, speed and pricing.",
+    "advantages": [
+      "Multi-turn conversational image editing: users can keep refining an image with follow-up natural-language instructions.",
+      "Blends multiple input images into a single output image while keeping character/subject consistency across prompts.",
+      "Supports natural-language local edits such as background blurring, object removal, pose changes and colorizing black-and-white photos.",
+      "Every generated image carries an invisible SynthID watermark for provenance."
+    ],
+    "disadvantages": [
+      "Google's own documentation calls it 'the legacy pioneer of the Nano Banana series' and recommends customers transition to newer Nano Banana models for better quality, faster generation and lower pricing.",
+      "Google's own deprecations page lists this exact model id as released October 2, 2025 with an announced shutdown date of October 2, 2026, replaced by gemini-3.1-flash-image-preview.",
+      "At launch Google said it was still improving long-form text rendering, character consistency, and fine factual detail in generated images.",
+      "Text-only interface for prompting; no dedicated resolution or aspect-ratio controls are documented for this model, unlike its Nano Banana Pro successor."
+    ],
+    "use_cases": [
+      "Text-to-image generation from natural-language prompts",
+      "Prompt-guided photo editing (background swaps, object removal, retouching, colorization)",
+      "Product mockups, real-estate listing images and home-design visualization",
+      "Multi-image blending for consistent-character illustrations"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/image-generation",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/",
+      "title": "Introducing Gemini 2.5 Flash Image - Google Developers Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+      "title": "Image generation | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "title": "Deprecated models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No accuracy-style (0-100, higher-is-better) benchmark for this model was found on the maker pages I opened, so evaluations is left empty. Google's current image-generation docs (checked 2026-09-24) label this model 'legacy' and push users toward newer Nano Banana models. CORRECTION: the earlier version of this note called the catalog's 2027-03-15 deprecation_date merely 'further out than the plain chat 2.5 models' without checking the specific announced date. Google's own deprecations page (ai.google.dev/gemini-api/docs/deprecations, checked 2026-09-24) states `gemini-2.5-flash-image` was released October 2, 2025 and has an announced shutdown date of October 2, 2026 -- about a week after today's research date, and over five months EARLIER than the catalog's 2027-03-15 deprecation_date -- with gemini-3.1-flash-image-preview as the recommended replacement. Kind is 'chat' per the target's Bud routing, but the model's actual function is native image generation/editing, so the description covers that rather than generic chat traits."
+}

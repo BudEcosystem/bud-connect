@@ -1,0 +1,60 @@
+{
+  "slug": "claude-sonnet-4",
+  "canonical": "claude-sonnet-4",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Sonnet 4 is Anthropic's mid-tier hybrid reasoning model, released May 22, 2025 as an upgrade to Claude Sonnet 3.7 with improvements in coding, reasoning, and instruction-following. It takes text and image input, offers both near-instant responses and an extended-thinking mode, and can use tools such as web search during that thinking. Anthropic retired Claude Sonnet 4 on its own Claude API on June 15, 2026 in favor of Claude Sonnet 4.6; Amazon Bedrock, which sets its own lifecycle, separately lists the model as deprecated with an October 14, 2026 end-of-life date.",
+    "advantages": [
+      "Scores 72.7% on SWE-bench Verified for real-world software engineering tasks, per Anthropic's Claude 4 launch announcement.",
+      "Hybrid model offering both near-instant responses and an extended-thinking mode for deeper reasoning, per Anthropic.",
+      "Can use tools, such as web search, during extended thinking, alternating between reasoning and tool use, per Anthropic.",
+      "65% less likely to use shortcuts or loopholes on agentic tasks than Claude Sonnet 3.7, per Anthropic's launch announcement."
+    ],
+    "disadvantages": [
+      "Retired on Anthropic's own Claude API on June 15, 2026; Anthropic recommends migrating to Claude Sonnet 4.6.",
+      "Amazon Bedrock separately lists Claude Sonnet 4 as deprecated, with an end-of-life date of October 14, 2026.",
+      "Anthropic's own launch announcement says Claude Opus 4 delivers sustained performance on long-running tasks requiring thousands of steps, dramatically outperforming all Sonnet models."
+    ],
+    "use_cases": [
+      "User-facing AI assistants and high-volume tasks where practical efficiency matters, per Anthropic.",
+      "Agentic coding and software engineering tasks.",
+      "Research or workflows that alternate between extended thinking and tool use, such as web search, per Anthropic."
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-bench Verified",
+        "score": 72.7,
+        "source": "https://www.anthropic.com/news/claude-4"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-4",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.anthropic.com/news/claude-4",
+      "title": "Introducing Claude 4",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy",
+      "title": "Claude on Amazon Bedrock (Opus 4.6 and earlier)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html",
+      "title": "Model lifecycle (Legacy) - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog lists max_input_tokens as 1,000,000, but Anthropic's Bedrock docs state 'Other Claude models, including Sonnet 4.5 and Sonnet 4 (deprecated), have a 200k-token context window' on Amazon Bedrock; kept the catalog's value per instructions since it may reflect a different endpoint or beta context option. Anthropic's model-deprecations page retired claude-sonnet-4-20250514 from the Claude API on June 15, 2026 (already past today's date); its Bedrock legacy-endpoint table separately marks the model 'Deprecated' with Bedrock's own October 14, 2026 EOL date, which matches the catalog's deprecation_date."
+}

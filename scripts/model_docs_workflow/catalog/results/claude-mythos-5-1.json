@@ -1,0 +1,46 @@
+{
+  "slug": "claude-mythos-5-1",
+  "canonical": "claude-mythos-5-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Mythos 5.1 is Anthropic's invitation-only model for vetted cybersecurity and life-sciences organizations, released September 1, 2026 through Anthropic's Project Glasswing. It shares its underlying model, 1-million-token context window, and 128,000-token max output with the publicly available Claude Fable 5.1, but runs with more permissive safeguards for defensive security research and biology work. Anthropic describes it as the strongest cyber-capable model it has released to date, while stating it still falls within the lower risk category of its Frontier Compliance Framework.",
+    "advantages": [
+      "Anthropic states it demonstrates the strongest cyber capabilities of any model it has released, while still falling within the lower risk category of its Frontier Compliance Framework (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Scores 60.9% on the Terminal-Bench 4.0 agentic-coding benchmark, ahead of the 55.8% Anthropic reports for Claude Fable 5.1 (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Anthropic reports designing protein binders with binding affinities up to 10 times higher than the best entries in Adaptyv Bio's protein design competitions across three targets (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Anthropic reports a hit rate of nearly 50% across 12 protein-design targets, compared with the 10-15% it says is typical today (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Anthropic reports optimizing seven open-source biology deep-learning models for up to 2.5x faster inference, cutting estimated GPU costs by 30-60% on genome-wide analyses (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Supports a 1-million-token context window with always-on adaptive thinking and 128,000 max output tokens (Claude Mythos 5.1 model overview)."
+    ],
+    "disadvantages": [
+      "Available only by invitation through Anthropic's Project Glasswing, limited to vetted US cybersecurity and life-sciences organizations (Claude Mythos 5.1 model overview).",
+      "Anthropic's own documentation recommends starting with Claude Opus 5 for most workloads and reserving this model tier for demanding reasoning or long-horizon agentic work (Claude Fable 5.1 what's new documentation).",
+      "Even for approved users, Anthropic still restricts penetration testing, exploit generation, and binary-based vulnerability scanning (Anthropic Fable 5.1 & Mythos 5.1 announcement).",
+      "Reliable knowledge cutoff of June 2026 (Claude Mythos 5.1 model overview)."
+    ],
+    "use_cases": [
+      "Defensive cybersecurity vulnerability research for organizations vetted through the Cyber Verification Program",
+      "Biology and life-sciences research such as protein design, via the Life Sciences Verification Program",
+      "Long-running agentic coding across large codebases and multi-hour sessions",
+      "Multistep research and analysis, and building documents, spreadsheets, and slides",
+      "Powers Anthropic's own Claude Security vulnerability-scanning product"
+    ],
+    "evaluations": [
+      {"name": "Terminal-Bench 4.0", "score": 60.9, "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"}
+    ],
+    "languages": [],
+    "website_url": "https://platform.claude.com/docs/en/models/mythos-5-1/overview",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/claude/mythos", "title": "Claude Mythos", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/models/mythos-5-1/overview", "title": "Claude Mythos 5.1 - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://www.anthropic.com/claude-fable-and-mythos-5-1", "title": "Introducing Claude Fable 5.1 and Claude Mythos 5.1", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1", "title": "What's new in Claude Fable 5.1", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1M max input tokens, 128K max output tokens, image_input + text_input + text_output modality, anthropic/bedrock providers, no deprecation date) match Anthropic's Mythos 5.1 model-overview page (1M context, 128K output, 'Text and images -> text') and its model-deprecations table (Active, invite only, tentative retirement not sooner than September 1, 2027). Mythos 5.1 is not an openly purchasable API model: Anthropic offers it only to Project Glasswing participants vetted through its Cyber Verification Program or Life Sciences Verification Program, which is unusual for a catalog entry and is called out in disadvantages since it directly affects who can use it. The full system-card PDF (with additional safety-evaluation detail) exceeded the size this tool can fetch."
+}

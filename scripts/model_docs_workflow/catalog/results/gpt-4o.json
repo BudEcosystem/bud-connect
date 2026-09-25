@@ -1,0 +1,45 @@
+{
+  "slug": "gpt-4o",
+  "canonical": "gpt-4o",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o (\"omni\") is OpenAI's natively multimodal flagship model, first released May 13, 2024 with later dated snapshots through November 20, 2024. OpenAI's own model page describes it as its versatile, high-intelligence flagship model and the best model for most tasks outside the o-series reasoning line. As served through the Chat Completions API it takes text and image input and returns text output, with a 128,000-token context window and a knowledge cutoff of October 1, 2023. OpenAI retired GPT-4o from ChatGPT in February 2026, but it remains available through the API, where only the original 2024-05-13 snapshot is scheduled for shutdown, on October 23, 2026.",
+    "advantages": [
+      "Scores 85.7% on MMLU and 33.2% on SWE-bench Verified (OpenAI's GPT-4.1 announcement, gpt-4o-2024-11-20 snapshot).",
+      "Scores 68.7% on the MMMU vision benchmark and 61.4% on MathVista (OpenAI).",
+      "OpenAI's original announcement reports response speed and non-English text handling improved over GPT-4 Turbo (OpenAI).",
+      "Supports function calling, web search, file search, code interpretation and MCP tool use through the Responses API (OpenAI API model docs)."
+    ],
+    "disadvantages": [
+      "Retired from ChatGPT in February 2026 after usage shifted to newer models; OpenAI's retirement post says only 0.1% of ChatGPT users were still choosing GPT-4o daily (OpenAI).",
+      "Knowledge cutoff of October 1, 2023, older than the GPT-4.1 family's June 2024 cutoff (OpenAI API model docs).",
+      "The Chat Completions model covered here takes text and image input and produces text-only output; the audio, video and native voice capabilities from OpenAI's original GPT-4o announcement are served through separate Realtime and Audio-preview model families, not this one."
+    ],
+    "use_cases": [
+      "Complex, multi-step reasoning and analysis tasks",
+      "Vision-based tasks such as image understanding and interpretation",
+      "General-purpose assistant and chat applications",
+      "Tool- and function-calling agent workflows"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 85.7, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "GPQA Diamond", "score": 46.0, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "SWE-bench Verified", "score": 33.2, "source": "https://openai.com/index/gpt-4-1/"},
+      {"name": "MMMU", "score": 68.7, "source": "https://openai.com/index/gpt-4-1/"}
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://openai.com/index/gpt-4-1/", "title": "Introducing GPT-4.1 in the API | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4o", "title": "GPT-4o Model | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/hello-gpt-4o/", "title": "Hello GPT-4o | OpenAI", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"},
+    {"url": "https://openai.com/index/retiring-gpt-4o-and-older-models/", "title": "Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT | OpenAI", "kind": "maker"}
+  ],
+  "notes": "This group's URIs span three gpt-4o snapshots (2024-05-13, 2024-08-06, 2024-11-20) across Azure regions and OpenAI direct; benchmark scores above are for the 2024-11-20 snapshot, the newest in the group, from OpenAI's GPT-4.1 comparison table. OpenAI's API deprecations page (raw HTML checked directly) schedules only the gpt-4o-2024-05-13 snapshot for shutdown, on October 23, 2026, substitute gpt-5.6-sol; the 2024-08-06 and 2024-11-20 snapshots in this group are not on that shutdown list. This roughly matches the catalog's earlier deprecation_date fact (2026-10-01) but the group also carries a later 2027-04-14 fact that no primary source confirmed. The ChatGPT-product retirement (Feb 2026) is separate from API availability and does not affect this API-served model directly. Pages under openai.com returned HTTP 403 to direct fetch and were read via the r.jina.ai reader proxy; cited URLs are the original OpenAI pages."
+}

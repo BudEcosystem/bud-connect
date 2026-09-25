@@ -1,0 +1,84 @@
+{
+  "slug": "qwen2p5-1p5b-instruct",
+  "canonical": "qwen2p5-1p5b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-1.5B-Instruct is a 1.5-billion-parameter (1.54B total, 1.31B non-embedding) instruction-tuned chat model from Alibaba's Qwen team, released September 2024, one of the smallest general-purpose models in the Qwen2.5 lineup (only the 0.5B-Instruct model is smaller). It is licensed under Apache 2.0 and, per Qwen's model card, supports a 32,768-token context window. Qwen states the 2.5 generation adds more knowledge and improved coding, math, structured-data understanding, and JSON output generation over Qwen2.",
+    "advantages": [
+      "Scores 73.2 on GSM8K and 55.2 on MATH, per Qwen's published Qwen2.5 evaluation results.",
+      "Scores 61.6 on HumanEval and 63.2 on MBPP for code generation, per Qwen's evaluation results.",
+      "Qwen's model card states it supports over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai and Arabic."
+    ],
+    "disadvantages": [
+      "One of the smallest chat models in the Qwen2.5 family (only the 0.5B-Instruct model is smaller); scores lower than larger Qwen2.5 siblings on knowledge and reasoning benchmarks such as MMLU-Pro (32.4) and GPQA (29.8), per Qwen's evaluation results."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and chat",
+      "Lightweight code generation and code understanding",
+      "Basic mathematical reasoning",
+      "Structured data understanding and JSON output generation",
+      "Multilingual conversation"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 32.4,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "GPQA",
+        "score": 29.8,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "MATH",
+        "score": 55.2,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "GSM8K",
+        "score": 73.2,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "HumanEval",
+        "score": 61.6,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "MBPP",
+        "score": 63.2,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      },
+      {
+        "name": "IFEval strict-prompt",
+        "score": 42.5,
+        "source": "https://qwenlm.github.io/blog/qwen2.5-llm/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen2.5"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
+      "title": "Qwen/Qwen2.5-1.5B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+      "title": "Qwen2.5-LLM: Extending the boundary of LLMs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen2p5-1p5b-instruct",
+      "title": "Qwen2.5 1.5B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's 32,768-token context length matches Qwen's model-card spec and Fireworks AI's listed context length for this deployment. Qwen's model card additionally states a max generation length of 8,192 tokens, which conflicts with catalog's max_output_tokens (32,768); the catalog value is kept and the maker's generation cap is not restated in the description. Corrected: Qwen2.5-1.5B-Instruct is not the smallest chat model in the Qwen2.5 lineup — Qwen2.5-0.5B-Instruct is smaller and is benchmarked alongside it on Qwen's Qwen2.5-LLM blog. Only examples of the 29+ supported languages are named on Qwen's card (not an exhaustive list), so languages is left empty and the count is in the description instead."
+}

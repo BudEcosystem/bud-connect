@@ -1,0 +1,44 @@
+{
+  "slug": "qwen2p5-coder-1p5b",
+  "canonical": "qwen2p5-coder-1p5b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-1.5B is the 1.5-billion-parameter base checkpoint in Alibaba's Qwen2.5-Coder family, first open-sourced by the Qwen team on September 19, 2024, alongside the 7B size. It was pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data. As a base (non-instruct) model, Qwen states it is not meant for direct conversational use and instead serves as a foundation for fine-tuning, reinforcement learning, or continued pretraining.",
+    "advantages": [
+      "Pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card.",
+      "Supports a full 32,768-token context window despite its compact 1.5B parameter size, per Qwen's model card.",
+      "Released under the Apache 2.0 license, permitting commercial use and redistribution."
+    ],
+    "disadvantages": [
+      "Is a base model, not tuned for instructions; Qwen states it does not recommend using base language models for conversations and instead recommends fine-tuning, RLHF, or continued pretraining.",
+      "Text-only input and output, with no vision or audio support.",
+      "At 1.5B parameters, it is one of the smaller checkpoints in the six-size Qwen2.5-Coder family (0.5B to 32B), trading model capacity for lower resource use."
+    ],
+    "use_cases": [
+      "Fine-tuning into lightweight, latency-sensitive coding assistants or on-device coding tools.",
+      "Continued pretraining or RLHF starting point for building smaller custom code models.",
+      "Code completion and generation research or benchmarking on resource-constrained hardware."
+    ],
+    "evaluations": [
+      {"name": "HumanEval", "score": 43.9, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "HumanEval+", "score": 36.6, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP", "score": 69.2, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "MBPP+", "score": 58.6, "source": "https://arxiv.org/html/2409.12186"},
+      {"name": "BigCodeBench-Complete (Full)", "score": 34.6, "source": "https://arxiv.org/html/2409.12186"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B", "title": "Qwen/Qwen2.5-Coder-1.5B · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Family: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder/", "title": "Qwen2.5-Coder: Code More, Learn More!", "kind": "maker"},
+    {"url": "https://arxiv.org/html/2409.12186", "title": "Qwen2.5-Coder Technical Report", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-1p5b", "title": "qwen2p5-coder-1p5b - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Base (non-instruct) checkpoint. Corrected the open-source date: the Nov 12, 2024 family post explicitly says 1.5B/7B were already open-sourced before that post; the original Qwen2.5-Coder launch post dates the 1.5B/7B release to September 19, 2024. Also added base-model benchmark scores (HumanEval, HumanEval+, MBPP, MBPP+, BigCodeBench-Complete) from the Qwen2.5-Coder Technical Report (arXiv 2409.12186), which reports per-size scores for base checkpoints that the family blog post omits."
+}

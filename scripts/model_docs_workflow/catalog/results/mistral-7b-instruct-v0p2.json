@@ -1,0 +1,56 @@
+{
+  "slug": "mistral-7b-instruct-v0p2",
+  "canonical": "mistral-7b-instruct-v0p2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral 7B Instruct v0.2 is Mistral AI's second instruction-tuned release of Mistral 7B, published December 11, 2023. Compared with v0.1, its Hugging Face model card describes an expanded 32k-token context window (up from 8k), a Rope-theta value of 1e6, and the removal of sliding-window attention. It is a 7.24-billion-parameter dense transformer released under the Apache 2.0 license. Mistral AI's models overview lists Mistral 7B Instruct as deprecated and replaced by Ministral 3 8B, and lists Mistral 7B (v0.1-v0.3) with a deprecation date of November 30, 2024 and a retirement date of March 30, 2025.",
+    "advantages": [
+      "Expands the context window to 32k tokens, up from 8k in v0.1, per its Hugging Face model card.",
+      "Scores 30.84 on the MMLU-Pro benchmark, per its Hugging Face model card.",
+      "Released under the Apache 2.0 license."
+    ],
+    "disadvantages": [
+      "Mistral states the model has no built-in moderation mechanisms.",
+      "Mistral AI's models overview (docs.mistral.ai/getting-started/models/) lists Mistral 7B Instruct as deprecated and replaced by Ministral 3 8B, and lists Mistral 7B (v0.1-v0.3) with a deprecation date of November 30, 2024 and a retirement date of March 30, 2025."
+    ],
+    "use_cases": [
+      "General-purpose conversational chat and instruction-following over longer documents, given its 32k-token context window"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 30.84,
+        "source": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2",
+      "title": "mistralai/Mistral-7B-Instruct-v0.2 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.fireworks.ai/models/fireworks/mistral-7b-instruct-v0p2",
+      "title": "Mistral 7B Instruct v0.2 | Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/la-plateforme",
+      "title": "La plateforme | Mistral AI",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens/max_output_tokens of 32768 with no deprecation_date, matching both the Hugging Face card's 32k context window and Fireworks' 32.7k host figure. The MMLU-Pro score of 30.84 was confirmed on two separate fetches of the Hugging Face page. Mistral's own docs state the v0.1-v0.3 line is deprecated (11/30/2024) and retired (3/30/2025), which the catalog's empty deprecation_date does not reflect. Verify pass: the description's publication date was corrected from February 29, 2024 to December 11, 2023 \u2014 the Hugging Face repo was created 2023-12-11 and Mistral's mistral.ai/news/la-plateforme post (published 2023-12-11) launched this model as 'mistral-tiny'; no page supports a February 29, 2024 date."
+}

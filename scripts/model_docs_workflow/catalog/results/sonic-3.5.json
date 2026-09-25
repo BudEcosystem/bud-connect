@@ -1,0 +1,43 @@
+{
+  "slug": "sonic-3.5",
+  "canonical": "sonic-3.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cartesia",
+  "details": {
+    "description": "Sonic-3.5 is Cartesia's text-to-speech model for low-latency, multilingual voice agents, reporting sub-90ms time-to-first-audio latency. It natively supports 42 languages and handles alphanumerics, order numbers, phone numbers, emails, and context-aware English heteronym pronunciation without requiring transcript preprocessing. Cartesia's docs note that its newer Sonic-3.6 model is now generally available, making Sonic-3.5 the prior generation in the Sonic line.",
+    "advantages": [
+      "Sub-90ms time-to-first-audio latency, aimed at real-time voice agents.",
+      "Natively supports 42 languages.",
+      "Parses alphanumerics such as order numbers, phone numbers, IDs, and emails, and applies context-aware pronunciation for English heteronyms (e.g. 'read', 'bass', 'bow') without manual preprocessing.",
+      "Scores an Elo of 1185 (rank #13) on Artificial Analysis's Provider Voice speech arena leaderboard."
+    ],
+    "disadvantages": [
+      "Superseded within Cartesia's own lineup: the docs point users to Sonic-3.6, now generally available, as the newest model.",
+      "No voice cloning, Custom Pronunciation Dictionaries, or fine-grained emotion/style control is documented on the model-specific Sonic-3.5 page."
+    ],
+    "use_cases": [
+      "Real-time conversational voice agents.",
+      "Customer support and agent call transcripts read aloud.",
+      "Multilingual voice products needing native-quality delivery across 42 languages.",
+      "Reading structured data such as phone numbers, order IDs, and emails aloud accurately."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English", "French", "German", "Spanish", "Portuguese", "Chinese", "Japanese", "Hindi", "Italian",
+      "Korean", "Dutch", "Polish", "Russian", "Swedish", "Turkish", "Tagalog", "Bulgarian", "Romanian",
+      "Arabic", "Czech", "Greek", "Finnish", "Croatian", "Malay", "Slovak", "Danish", "Tamil", "Ukrainian",
+      "Hungarian", "Norwegian", "Vietnamese", "Bengali", "Thai", "Hebrew", "Georgian", "Indonesian",
+      "Telugu", "Gujarati", "Kannada", "Malayalam", "Marathi", "Punjabi"
+    ],
+    "website_url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/sonic-3-5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/tts-models/sonic-3-5", "title": "Sonic 3.5 - Cartesia Docs", "kind": "maker"},
+    {"url": "https://www.cartesia.ai/sonic", "title": "Sonic: The fastest and most natural text to speech model", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice", "title": "Text to Speech Leaderboard - Top AI Speech Models | Artificial Analysis", "kind": "third_party"}
+  ],
+  "notes": "Voice cloning ('clone any voice with 10 seconds of audio') is described on Cartesia's general Sonic product page, not on the Sonic-3.5-specific docs page, so I left it out of advantages rather than assume it applies unchanged to this exact snapshot. The model-specific docs page shows a dated snapshot id 'sonic-3.5-2026-05-04'; the leaderboard ranking will shift over time."
+}

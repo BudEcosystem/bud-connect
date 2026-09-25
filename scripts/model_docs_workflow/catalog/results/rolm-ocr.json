@@ -1,0 +1,34 @@
+{
+  "slug": "rolm-ocr",
+  "canonical": "rolm-ocr",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Reducto AI",
+  "details": {
+    "description": "RolmOCR is an open-source optical character recognition model published by Reducto AI, built by fine-tuning Qwen/Qwen2.5-VL-7B-Instruct on the full allenai/olmOCR-mix-0225 dataset. Reducto AI describes it as a faster, lighter, drop-in alternative to the Allen Institute for AI's olmOCR that uses less memory while still performing well across a variety of document types, and releases it under the Apache 2.0 license. Compared with the original olmOCR approach, RolmOCR drops PDF-derived metadata from its input (reducing prompt length, processing time, and VRAM usage) and rotates about 15% of its training data to improve robustness on off-angle document images.",
+    "advantages": [
+      "Reducto AI reports it is faster and uses less memory than olmOCR, the tool it was designed to replace, while still performing well on a variety of document types, per the model card.",
+      "Drops PDF-derived metadata from the input prompt, which Reducto AI says lowers processing time and VRAM usage without hurting accuracy in most cases, per the model card.",
+      "About 15% of its training data was rotated during fine-tuning to improve robustness to off-angle (rotated) document images, per the model card.",
+      "Released under the Apache 2.0 license, per the model card."
+    ],
+    "disadvantages": [
+      "Like other VLM-based OCR models, it can hallucinate or drop content, per the model card's Limitations section.",
+      "Cannot output layout bounding boxes, unlike Reducto AI's commercial Parsing API, per the model card.",
+      "Reducto AI states it has not evaluated the performance of quantized versions of the model, per the model card."
+    ],
+    "use_cases": [
+      "Extracting plain text from scanned documents and images, including off-angle pages",
+      "Drop-in replacement for olmOCR-based document OCR pipelines"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/reducto/RolmOCR",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/reducto/RolmOCR", "title": "reducto/RolmOCR · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "The catalog's modality facts for this target list only text_input/text_output, but Reducto AI's model card describes RolmOCR as an image-text-to-text vision-language model fine-tuned from Qwen2.5-VL-7B-Instruct that takes document images as input -- that is the model's entire purpose. Kept the catalog's modality as authoritative per instructions and flag the discrepancy here rather than restating a different modality in the details. No numeric accuracy/benchmark figures were found on the model card, so evaluations is left empty. No deprecation or legacy notice was found; the model card was last modified 2025-04-02."
+}

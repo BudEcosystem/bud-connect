@@ -1,0 +1,11 @@
+{
+  "slug": "mistral-code-agent-latest",
+  "canonical": "mistral-code-agent-latest",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find any Mistral documentation, changelog entry, product page, or API reference using the id 'mistral-code-agent-latest'. Mistral's current models overview (docs.mistral.ai/getting-started/models/models_overview) lists only 'Codestral' under Code models, with dated API ids like codestral-2508 and the alias codestral-latest; its FIM endpoint reference defaults to codestral-2404/codestral-latest. Mistral's agentic coding product (branded 'Mistral Code' in 2025, now folded into 'Vibe for code') is described as bundling Codestral (FIM), Codestral Embed (search), Devstral/Devstral 2 (the actual agent model, 256K context, which matches this target's 256000 max_input/output facts), and Mistral Medium (chat) -- but no source names a distinct model called 'mistral-code-agent' or gives it that id. Without a page that uses this exact id, I cannot confirm whether it maps to Devstral 2 specifically or to something else."
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "qwen2p5-coder-32b-instruct-128k",
+  "canonical": "qwen2p5-coder-32b-instruct-128k",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen2.5-Coder-32B-Instruct is the flagship instruction-tuned model in Alibaba's Qwen2.5-Coder family, open-sourced by the Qwen team on November 12, 2024. This entry covers it with its extended 131,072-token context window, reached via YaRN scaling from a 32,768-token native window, per Qwen's model card. It is tuned for code generation, code reasoning, and code fixing while retaining general language and math ability.",
+    "advantages": [
+      "Supports up to 131,072 tokens of context via YaRN scaling, extended from a 32,768-token native window, per Qwen's model card.",
+      "Scores 73.7 on the Aider code-editing benchmark, per Qwen's Qwen2.5-Coder family announcement.",
+      "Scores 65.9 on McEval, a multi-programming-language code generation benchmark, per Qwen's family announcement.",
+      "Scores 75.2 on MdEval, a multi-language code-debugging benchmark, per Qwen's family announcement.",
+      "Pretrained on 5.5 trillion tokens of source code, text-code grounding data, and synthetic data, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Text-only input and output, with no vision or audio support.",
+      "Qwen's own documentation notes vLLM's static YaRN implementation may affect performance on shorter texts once long-context scaling is enabled."
+    ],
+    "use_cases": [
+      "Understanding, reviewing, or refactoring large codebases and multi-file repositories that need long context.",
+      "Code generation, completion, and refactoring across multiple programming languages.",
+      "Building coding agents and code-focused conversational assistants."
+    ],
+    "evaluations": [
+      {"name": "Aider", "score": 73.7, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "McEval", "score": 65.9, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"},
+      {"name": "MdEval", "score": 75.2, "source": "https://qwenlm.github.io/blog/qwen2.5-coder-family/"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct", "title": "Qwen/Qwen2.5-Coder-32B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/", "title": "Qwen2.5-Coder Family: Powerful, Diverse, Practical", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct-128k", "title": "qwen2p5-coder-32b-instruct-128k - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Same underlying model as qwen2p5-coder-32b-instruct, served here with the extended 131,072-token context window, which matches this entry's catalog facts."
+}

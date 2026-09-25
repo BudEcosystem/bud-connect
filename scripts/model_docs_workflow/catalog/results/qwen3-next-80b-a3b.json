@@ -1,0 +1,46 @@
+{
+  "slug": "qwen3-next-80b-a3b",
+  "canonical": "qwen3-next-80b-a3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen3-Next-80B-A3B is a large language model from Alibaba's Qwen team, using a high-sparsity Mixture-of-Experts design with 80 billion total parameters and about 3 billion active per token, combined with a hybrid Gated DeltaNet/Gated Attention architecture built for efficient long-context inference. It launched September 11, 2025 and is listed by AWS as an Active model on Amazon Bedrock. It is the non-thinking Instruct variant: a text-only chat model with tool-calling support that does not generate <think></think> reasoning output, distinct from the separately released Qwen3-Next-80B-A3B-Thinking checkpoint.",
+    "advantages": [
+      "Reports 80.6 on the MMLU-Pro knowledge benchmark and 72.9 on GPQA (Hugging Face model card).",
+      "Reports 69.5 on the AIME25 math-reasoning benchmark and 56.6 pass rate on LiveCodeBench (Hugging Face model card).",
+      "Reports 82.7 on Arena-Hard v2 and 87.6 on IFEval instruction-following (Hugging Face model card).",
+      "Uses 512 total experts with 10 activated per token plus 1 shared expert, reaching a native 262,144-token context window extensible to about 1,010,000 tokens via YaRN scaling (Hugging Face model card).",
+      "AWS's Bedrock model card lists support for client-side tool calling, Agents, Flows and structured outputs on this model."
+    ],
+    "disadvantages": [
+      "Text-only: no image, audio or video input or output support (AWS Bedrock model card).",
+      "Does not support extended thinking/reasoning mode: Qwen's own Instruct model card states it supports only non-thinking mode and offers no parameter to enable reasoning output (Hugging Face model card)."
+    ],
+    "use_cases": [
+      "Agentic workflows and tool-calling assistants",
+      "Long-document processing and summarization using the extended context window",
+      "Coding assistance and code generation",
+      "Multi-step math and logical reasoning tasks",
+      "Multilingual instruction-following tasks"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 80.6, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"},
+      {"name": "GPQA", "score": 72.9, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"},
+      {"name": "MMLU-Redux", "score": 90.9, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"},
+      {"name": "AIME25", "score": 69.5, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"},
+      {"name": "Arena-Hard v2", "score": 82.7, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"},
+      {"name": "IFEval", "score": 87.6, "source": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen3-Next"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct", "title": "Qwen/Qwen3-Next-80B-A3B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-Next", "title": "QwenLM/Qwen3-Next", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-next-80b-a3b.html", "title": "Qwen3 Next 80B A3B - Amazon Bedrock model card", "kind": "host"}
+  ],
+  "notes": "Catalog facts list max_input_tokens [128000, 256000] and max_output_tokens [8000, 8192]; AWS's current Bedrock model card for qwen.qwen3-next-80b-a3b states a 256K context window and 8K max output, matching the upper end of both arrays, so no correction was made. VERIFY PASS: AWS's Bedrock capability matrix marks 'Reasoning: Supported' for this model ID, but its own EULA field links to the Instruct checkpoint's license (huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct/blob/main/LICENSE), and the Instruct model card explicitly states it 'supports only instruct (non-thinking) mode' with no enable_thinking-style parameter to turn reasoning on; Qwen ships Qwen3-Next-80B-A3B-Thinking as a separate, distinctly-named checkpoint, and AWS's own model listing (docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html) has no separate 'Qwen3 Next 80B A3B Thinking' entry, so no thinking-capable deployment is offered under this Bedrock model ID. Per RESEARCH_PROMPT's maker-over-host hierarchy, the maker's explicit statement is treated as authoritative over AWS's capability-matrix flag, and the file was corrected accordingly (description and disadvantages). No evaluations tables gave explicit supported-language names, so languages is left empty."
+}

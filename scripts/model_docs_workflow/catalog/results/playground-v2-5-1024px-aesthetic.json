@@ -1,0 +1,31 @@
+{
+  "slug": "playground-v2-5-1024px-aesthetic",
+  "canonical": "playground-v2-5-1024px-aesthetic",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Playground",
+  "details": {
+    "description": "Playground v2.5 (1024px Aesthetic) is Playground's follow-up to Playground v2: a diffusion-based text-to-image model that generates 1024x1024 images, with support for multiple aspect ratios, from text prompts. It shares Stable Diffusion XL's architecture, using two fixed pretrained text encoders (OpenCLIP-ViT/G and CLIP-ViT/L), and is documented in Playground's technical report (arXiv:2402.17245). Playground reports it outperforms SDXL, Playground v2, PixArt-alpha, DALL-E 3, and Midjourney 5.2 in aesthetic-quality user studies.",
+    "advantages": [
+      "Playground reports the model outperforms SDXL, Playground v2, PixArt-alpha, DALL-E 3, and Midjourney 5.2 in aesthetic-quality user studies, per the model card.",
+      "Scores 4.48 FID on the MJHQ-30K benchmark at 1024x1024, improved from Playground v2's 7.07 and SDXL-1.0-refiner's 9.55, per Playground's model card.",
+      "Supports multiple aspect ratios, not just square 1024x1024, and Playground reports it significantly outperforms SDXL across them.",
+      "Documented in a technical report (arXiv:2402.17245) covering training and alignment methodology, and compatible with the Diffusers library."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Text-to-image generation for aesthetically polished images at 1024x1024 and other supported aspect ratios.",
+      "Use via the Diffusers library or downloadable safetensors checkpoints, per the model card."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/playgroundai/playground-v2.5-1024px-aesthetic",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/playgroundai/playground-v2.5-1024px-aesthetic", "title": "playgroundai/playground-v2.5-1024px-aesthetic · Hugging Face", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2402.17245", "title": "Playground v2.5: Three Insights towards Enhancing Aesthetic Quality in Text-to-Image Generation", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (4096 max input/output tokens, image_output+text_input modality) match the model card. FID scores are lower-is-better, not the 0-100 higher-is-better accuracy figures this tool's evaluations list requires, so they are reported in advantages text instead of the evaluations list. Verification pass: removed an 'about 3 billion parameters' claim from the description -- not stated on the HF model card, the technical report abstract, or the original Playground v2.5 announcement; confirmed the technical report covers training/alignment methodology and added it to sources."
+}

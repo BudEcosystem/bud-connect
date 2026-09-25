@@ -1,0 +1,46 @@
+{
+  "slug": "gemini-3.6-flash",
+  "canonical": "gemini-3.6-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.6 Flash is Google DeepMind's workhorse model in the Gemini 3 series, published July 21, 2026 and built on Gemini 3.5 Flash, delivering better coding, knowledge-work and multimodal performance with improved token efficiency over its predecessor. It accepts text, image, audio and video input over up to a 1M-token context window with 64K-token text output. As of September 2026 it remains Stable and actively served with no shutdown date announced, though Google's Gemini API documentation now describes it as its 'previous-generation' Flash model following the later releases of Gemini 3.7 Flash and Gemini 3.8 Flash.",
+    "advantages": [
+      "Scores 83.0% on OSWorld-Verified, an agentic computer-use benchmark, per Google DeepMind's model card.",
+      "Scores 89.4% on CharXiv Reasoning, a chart-based information synthesis benchmark, with tools, per Google DeepMind's model card.",
+      "Scores 91.8% on the GDM-MRCR v2 8-needle long-context benchmark at 128k tokens, per Google DeepMind's model card.",
+      "Scores 78.0% on Terminal-bench 2.1, an agentic terminal-coding benchmark, per Google DeepMind's model card.",
+      "Scores 63.9% on MLE-Bench, a machine-learning-engineering benchmark, per Google DeepMind's model card."
+    ],
+    "disadvantages": [
+      "Superseded within Google's own Flash line by Gemini 3.7 Flash (August 13, 2026) and Gemini 3.8 Flash (September 2, 2026); Google's documentation now labels it a 'previous-generation' Flash model.",
+      "Text-only output; does not generate audio or images, per Google's Gemini API model documentation.",
+      "Knowledge cutoff of March 2026, with some domains limited to January 2025, per Google DeepMind's model card."
+    ],
+    "use_cases": [
+      "Agentic workflows and coding tasks",
+      "Complex video reasoning",
+      "Enterprise knowledge-work workflows",
+      "Rapid, iterative agentic coding loops"
+    ],
+    "evaluations": [
+      {"name": "OSWorld-Verified", "score": 83.0, "source": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"},
+      {"name": "CharXiv Reasoning", "score": 89.4, "source": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"},
+      {"name": "GDM-MRCR v2 (128k)", "score": 91.8, "source": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"},
+      {"name": "Terminal-bench 2.1", "score": 78.0, "source": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"},
+      {"name": "MLE-Bench", "score": 63.9, "source": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"}
+    ],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-6-flash/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-6-flash/", "title": "Gemini 3.6 Flash - Model Card — Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash", "title": "Gemini 3.6 Flash | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Models | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1,048,576 input / 65,536 output tokens; gemini + vertex_ai-gemini-models providers) match Google's model card (1M input / 64K output) and its Gemini API / Google Cloud distribution channels. Catalog has no deprecation_date; Google's deprecations page lists release July 21, 2026 with 'No shutdown date announced,' consistent. The 'previous-generation' phrasing is quoted verbatim from Google's live models overview page (ai.google.dev/gemini-api/docs/models), confirmed against the raw page HTML; Gemini 3.7 Flash and Gemini 3.8 Flash release dates (Aug 13 and Sep 2, 2026) are from the same deprecations page. Elo-style benchmark (GDPVal-AA v2) excluded as not an accuracy score."
+}

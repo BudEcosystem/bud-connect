@@ -1,0 +1,45 @@
+{
+  "slug": "llama4-maverick-17b-instruct",
+  "canonical": "llama4-maverick-17b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 4 Maverick is Meta's natively multimodal, mixture-of-experts chat model, released April 5, 2025 alongside Llama 4 Scout. It activates 17 billion of its 400 billion total parameters across 128 experts per token, and accepts text and image input to produce text and code output in 12 documented languages. It sits below the unreleased, larger Llama 4 Behemoth in Meta's Llama 4 lineup and is deployable on a single NVIDIA H100 DGX host.",
+    "advantages": [
+      "Scores 80.5 on the MMLU Pro reasoning benchmark and 84.6 on multilingual MMLU (Meta's Llama 4 model page).",
+      "Scores 43.4 on LiveCodeBench, Meta's coding benchmark (Meta's Llama 4 model page).",
+      "Scores 73.4 on the MMMU vision-reasoning benchmark and 90 on ChartQA (Meta's Llama 4 model page).",
+      "Meta reports it beats GPT-4o and Gemini 2.0 Flash across a broad range of benchmarks while matching DeepSeek v3 on reasoning and coding with about half the active parameters (Meta's Llama 4 launch post).",
+      "Supports client-side tool calling and response streaming through Amazon Bedrock's bedrock-runtime API (AWS Bedrock model card)."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of August 2024 (Bedrock model card).",
+      "No audio or video input/output modality."
+    ],
+    "use_cases": [
+      "Multimodal chat and virtual assistants",
+      "Visual question answering and image reasoning",
+      "Multilingual text generation",
+      "Coding assistance",
+      "Agentic workflows using tool calling"
+    ],
+    "evaluations": [
+      {"name": "MMLU Pro", "score": 80.5, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "Multilingual MMLU", "score": 84.6, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "LiveCodeBench", "score": 43.4, "source": "https://dev.meta.ai/llama/models/llama-4/"},
+      {"name": "MMMU", "score": 73.4, "source": "https://dev.meta.ai/llama/models/llama-4/"}
+    ],
+    "languages": ["Arabic", "English", "French", "German", "Hindi", "Indonesian", "Italian", "Portuguese", "Spanish", "Tagalog", "Thai", "Vietnamese"],
+    "website_url": "https://dev.meta.ai/llama/models/llama-4/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://dev.meta.ai/llama/models/llama-4/", "title": "Llama 4 - Models", "kind": "maker"},
+    {"url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/", "title": "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation", "kind": "maker"},
+    {"url": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct", "title": "meta-llama/Llama-4-Maverick-17B-128E-Instruct", "kind": "third_party"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-4-maverick-17b-instruct.html", "title": "Llama 4 Maverick 17B Instruct - Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog facts list max_input_tokens 128000 and max_output_tokens 4096 for this Bedrock offering; Meta's own model page and the Bedrock model card instead describe a 1,000,000-token context window and an 8K output limit — kept the catalog's figures per instructions and flag the gap here. Bedrock's model card lists this model as 'Active' lifecycle with a tentative EOL no sooner than April 2026 (already past as of the research date); Meta's current dev.meta.ai homepage now promotes separate 'Muse' products, but the dedicated Llama 4 model page still lists Maverick as current with no named successor."
+}

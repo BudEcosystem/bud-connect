@@ -1,0 +1,46 @@
+{
+  "slug": "gemma-7b-it",
+  "canonical": "gemma-7b-it",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemma 7B-IT is a 7-billion-parameter, instruction-tuned, decoder-only text model from Google's original Gemma family, built from the same research used to create the Gemini models. It was trained on 6 trillion tokens of web documents, code and mathematical text, and takes text input to produce English text output. Google's current Gemma documentation groups this first-generation family, together with Gemma 2 and Gemma 3, under a \"Legacy Gemma setup\" section, with Gemma 4 presented as the current flagship generation.",
+    "advantages": [
+      "Scores 64.3 on MMLU (5-shot), per Google's Gemma 7B-it model card.",
+      "Scores 81.2 on HellaSwag, per the model card.",
+      "Scores 32.3 (pass@1) on HumanEval for code generation, per the model card.",
+      "Scores 46.4 (maj@1) on GSM8K grade-school math, per the model card."
+    ],
+    "disadvantages": [
+      "Google's Gemma documentation groups this Gemma 1 family, along with Gemma 2 and 3, under a \"Legacy Gemma setup\" section, with Gemma 4 as the current flagship generation.",
+      "English only, per the model card.",
+      "The model card states it has limited common-sense reasoning and difficulty grasping sarcasm and figurative language.",
+      "The model card states it may generate factually incorrect or outdated information."
+    ],
+    "use_cases": [
+      "Question answering and text summarization",
+      "Code generation and explanation",
+      "Content creation such as poems, scripts and marketing copy",
+      "Chatbots and conversational AI",
+      "Language-learning support tools"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 64.3, "source": "https://huggingface.co/google/gemma-7b-it"},
+      {"name": "HellaSwag", "score": 81.2, "source": "https://huggingface.co/google/gemma-7b-it"},
+      {"name": "HumanEval", "score": 32.3, "source": "https://huggingface.co/google/gemma-7b-it"},
+      {"name": "GSM8K", "score": 46.4, "source": "https://huggingface.co/google/gemma-7b-it"},
+      {"name": "MATH", "score": 24.3, "source": "https://huggingface.co/google/gemma-7b-it"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://ai.google.dev/gemma/docs/core/model_card",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/google/gemma-7b-it", "title": "google/gemma-7b-it · Hugging Face", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs/core/model_card", "title": "Gemma model card | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemma/docs", "title": "Gemma models overview | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "ai.google.dev/gemma/docs navigation literally reads \"Legacy Gemma setup [Gemma 1, 2, and 3]\", with Gemma 4 shown as the current flagship; no page explicitly calls Gemma 1 'deprecated'. Catalog facts (8192/8192 tokens, text-only chat) match the model card and are unchanged. Benchmark numbers taken from the Hugging Face model card table, which mirrors Google's own release figures."
+}

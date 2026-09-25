@@ -1,0 +1,31 @@
+{
+  "slug": "japanese-stable-diffusion-xl",
+  "canonical": "japanese-stable-diffusion-xl",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Japanese Stable Diffusion XL is a text-to-image diffusion model from Stability AI, fine-tuned from SDXL 1.0 using Orthogonal Fine-tuning (OFT) so it can take prompts written in Japanese and generate images reflecting Japanese language and cultural expression. Stability AI's model card notes it shares SDXL's known limitation of not being able to render legible text in images. It is released under the Stability AI Community License, with commercial use requiring a separate agreement.",
+    "advantages": [
+      "Fine-tuned from SDXL 1.0 using Orthogonal Fine-tuning (OFT), which Stability AI says improves training stability while preserving the base model's general capabilities.",
+      "Accepts prompts written directly in Japanese, aimed at capturing Japanese cultural and linguistic expression, per Stability AI."
+    ],
+    "disadvantages": [
+      "Cannot render legible text in generated images, per Stability AI's model card.",
+      "Commercial use requires a separate license agreement under the Stability AI Community License."
+    ],
+    "use_cases": [
+      "Generating images from Japanese-language text prompts",
+      "Creative and artistic image generation reflecting Japanese cultural expression"
+    ],
+    "evaluations": [],
+    "languages": ["Japanese"],
+    "website_url": "https://huggingface.co/stabilityai/japanese-stable-diffusion-xl",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/stabilityai/japanese-stable-diffusion-xl", "title": "stabilityai/japanese-stable-diffusion-xl · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "The model card text I could access did not state an explicit output resolution, so none is claimed here even though the SDXL 1.0 base typically generates at 1024x1024."
+}

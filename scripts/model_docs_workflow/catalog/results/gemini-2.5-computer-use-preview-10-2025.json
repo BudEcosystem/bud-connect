@@ -1,0 +1,41 @@
+{
+  "slug": "gemini-2.5-computer-use-preview-10-2025",
+  "canonical": "gemini-2.5-computer-use-preview-10-2025",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 2.5 Computer Use is a specialized preview model from Google DeepMind, built on Gemini 2.5 Pro, for agents that interact directly with graphical user interfaces. Given a screenshot, the user's goal and prior actions, it returns the next UI action -- such as a click, keystroke, scroll or drag -- which the host application executes before capturing the next screenshot, in an iterative loop. Google released it in preview in October 2025 through a computer_use tool in the Gemini API, Google AI Studio and Vertex AI. Google's current Gemini API documentation notes that Gemini 3 Pro and Flash models now include built-in computer use without a separate model, and this dedicated model no longer appears on Google DeepMind's current Gemini model overview page.",
+    "advantages": [
+      "Reports 70%+ accuracy at about 225 seconds of latency on the Online-Mind2Web browser-control benchmark, per Google's launch blog post.",
+      "Outperforms competing computer-use models on the WebVoyager and AndroidWorld benchmarks, per Google's launch blog post.",
+      "Supports a defined set of UI actions -- click, hover, type, scroll, drag-and-drop, navigate, key combinations -- and lets developers exclude actions or add custom ones, per Google's Gemini API documentation.",
+      "Can operate behind login screens and manipulate interactive elements such as dropdowns, per Google's launch blog post."
+    ],
+    "disadvantages": [
+      "Preview release, marked by a dated snapshot suffix (-10-2025) in its model id.",
+      "Uses a normalized 0-999 coordinate system that requires client-side scaling, per Google's documentation.",
+      "Limited to browser automation; desktop and mobile UI control were added only with later Gemini 3.x models, per Google's documentation.",
+      "No longer listed on Google DeepMind's current Gemini model overview page; Google's Gemini API docs state Gemini 3 Pro and Flash now support computer use natively, without a separate model."
+    ],
+    "use_cases": [
+      "Automating multi-step browser tasks such as filling forms and navigating dropdown menus, including behind login screens",
+      "UI testing for software development",
+      "Personal-assistant and workflow-automation agents",
+      "Integrated into Firebase Testing Agent and AI Mode in Search, per Google's launch blog post"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/computer-use", "title": "Computer use | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025", "title": "Gemini 2.5 Computer Use Preview | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API", "kind": "maker"},
+    {"url": "https://blog.google/technology/google-deepmind/gemini-computer-use-model/", "title": "Gemini 2.5 Computer Use model", "kind": "maker"},
+    {"url": "https://deepmind.google/models/gemini/", "title": "Gemini models overview | Google DeepMind", "kind": "maker"}
+  ],
+  "notes": "Exact percentage figures for the Online-Mind2Web, WebVoyager and AndroidWorld benchmarks are shown only in a chart image on Google's launch blog post and were not extractable as text; the page's own text states '70%+ accuracy, ~225 sec latency' for Online-Mind2Web, which I used verbatim rather than guessing a precise number. Google DeepMind's current Gemini model overview page (deepmind.google/models/gemini/) no longer lists this model, consistent with Gemini API docs stating Gemini 3 Pro/Flash now support computer use built in."
+}

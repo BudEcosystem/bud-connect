@@ -1,0 +1,40 @@
+{
+  "slug": "nova-3-medical",
+  "canonical": "nova-3-medical",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-3 Medical is Deepgram's healthcare-specialized speech-to-text model, fine-tuned from its Nova-3 base model on clinical and healthcare audio to accurately capture medication names, diagnoses, procedures, and other medical terminology. Announced in March 2025, it supports both pre-recorded and real-time transcription for telemedicine, clinical documentation, and EHR-integration workflows. It offers keyterm prompting for up to 100 custom terms so teams can tune vocabulary for specific specialties (e.g. cardiology, neurology, oncology) without retraining, and Deepgram describes it as built with a HIPAA-compliant architecture, including encryption at rest and in transit and access controls.",
+    "advantages": [
+      "Deepgram measured a 3.44% median word error rate on its medical transcription benchmark, a 63.7% improvement over the next-best competitor it tested.",
+      "Deepgram measured a 6.79% keyword error rate, a 40.35% reduction in errors versus the next-best competitor it tested.",
+      "Deepgram measured a 93.99% keyword recall rate, a 10.6% improvement over its earlier Nova-2 Medical model's 84.97%.",
+      "Supports keyterm prompting for up to 100 custom terms to adapt to specialty-specific vocabulary without retraining.",
+      "Available for both pre-recorded and real-time transcription, and offers managed cloud, on-premises, and VPC deployment options."
+    ],
+    "disadvantages": [
+      "Deepgram's documentation lists support only for English, across regional variants (en, en-US, en-AU, en-CA, en-GB, en-IE, en-IN, en-NZ).",
+      "Deepgram's published accuracy figures are self-reported comparisons against unnamed competitors; no independent third-party benchmark was found."
+    ],
+    "use_cases": [
+      "Telemedicine visit transcription",
+      "Clinical note documentation and EHR integration",
+      "Clinical decision support",
+      "Specialty-specific medical transcription (e.g. cardiology, neurology, oncology)",
+      "Healthcare voice AI applications"
+    ],
+    "evaluations": [
+      {"name": "Keyword Recall Rate (Deepgram medical transcription benchmark)", "score": 93.99, "source": "https://deepgram.com/learn/introducing-nova-3-medical-speech-to-text-api"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://deepgram.com/learn/introducing-nova-3-medical-speech-to-text-api",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://deepgram.com/learn/introducing-nova-3-medical-speech-to-text-api", "title": "Introducing Nova-3 Medical: The Future of AI-Powered Medical Transcription", "kind": "maker"},
+    {"url": "https://developers.deepgram.com/docs/models-languages-overview", "title": "Models & Languages Overview | Deepgram's Docs", "kind": "maker"}
+  ],
+  "notes": "Accuracy figures (WER/KER/KRR and the 'improvement over next-best competitor' percentages) are Deepgram's own self-reported comparison; the article does not name which competitor models were tested. Listed 'English' once rather than eight times for the regional variants (en, en-US, en-AU, en-CA, en-GB, en-IE, en-IN, en-NZ) that Deepgram's docs enumerate. Left out the per-minute price figure from the announcement per the no-prices rule."
+}

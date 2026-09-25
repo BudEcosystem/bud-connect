@@ -1,0 +1,46 @@
+{
+  "slug": "gemini-3.1-pro-preview",
+  "canonical": "gemini-3.1-pro-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 3.1 Pro Preview is the next iteration of Google DeepMind's Gemini 3 Pro reasoning model, published February 19, 2026 and built on Gemini 3 Pro. It is a natively multimodal model that can work over vast, multimodal information sources including text, audio, images, video and entire code repositories, and is aimed at agentic performance, advanced coding, long-context and multimodal understanding, and algorithmic development. As of September 2026 it remains in preview, with no shutdown date announced.",
+    "advantages": [
+      "Scores 94.3% on GPQA Diamond (scientific knowledge, no tools), per Google DeepMind's model card.",
+      "Scores 80.6% on SWE-bench Verified (agentic coding, single attempt), per Google DeepMind's model card.",
+      "Scores 85.9% on BrowseComp, an agentic search benchmark using search, Python and browsing tools, per Google DeepMind's model card.",
+      "Scores 80.5% on MMMU-Pro, a multimodal understanding and reasoning benchmark, per Google DeepMind's model card.",
+      "Comes with a separate gemini-3.1-pro-preview-customtools API endpoint tuned to prioritize a developer's own custom tools, per Google's Gemini API documentation."
+    ],
+    "disadvantages": [
+      "Preview status; not yet generally available, per Google's Gemini API model deprecations page.",
+      "Text-only output; does not generate audio or images, per Google's Gemini API model documentation.",
+      "No Live API support, per Google's Gemini API model documentation."
+    ],
+    "use_cases": [
+      "Agentic coding and multi-step tool use",
+      "Advanced and algorithmic software development",
+      "Long-context understanding across text, audio, image, video and code repositories",
+      "Scientific and abstract reasoning tasks",
+      "Agentic web search and research"
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 94.3, "source": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"},
+      {"name": "SWE-bench Verified", "score": 80.6, "source": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"},
+      {"name": "ARC-AGI-2", "score": 77.1, "source": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"},
+      {"name": "BrowseComp", "score": 85.9, "source": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"},
+      {"name": "MMMU-Pro", "score": 80.5, "source": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"}
+    ],
+    "languages": [],
+    "website_url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/", "title": "Gemini 3.1 Pro - Model Card — Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview", "title": "Gemini 3.1 Pro preview | Gemini API | Google AI for Developers", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Gemini deprecations | Gemini API | Google AI for Developers", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (1,048,576 input tokens, 65,536 output tokens; gemini + vertex_ai-gemini-models providers) match the model card's 1M input / 64K output tokens and its listed Gemini API and Vertex AI distribution channels. Catalog has no deprecation_date; Google's deprecations page confirms release February 19, 2026 with 'No shutdown date announced.' The model card states Gemini 3.1 Pro was Google's most advanced model 'as of this model card's date of publication' (Feb 2026); by September 2026 deepmind.google also lists a 'Gemini 3.5 Pro' as 'Coming Soon,' so that superlative is not restated here as still current. Benchmark table also lists Elo-style scores (LiveCodeBench Pro, GDPval-AA) that were excluded as not accuracy scores."
+}

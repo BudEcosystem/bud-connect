@@ -1,0 +1,44 @@
+{
+  "slug": "ministral-3-14b-2512",
+  "canonical": "ministral-3-14b-2512",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Ministral 3 14B is the largest model in Mistral AI's Ministral 3 family, an edge-optimized model line released December 2, 2025 under the Apache 2.0 license. It pairs a 13.5B-parameter language model with a 0.4B-parameter vision encoder for combined text and image input, and Mistral says its capabilities are comparable to its larger Mistral Small 3.2 24B model. The instruction-tuned FP8 build supports native function calling and JSON-constrained output, and Mistral's FP8 build is designed to fit on a single 24GB-VRAM GPU.",
+    "advantages": [
+      "Scores 90.4% on MATH Maj@1 and an Arena Hard score of 55.1, per Mistral's instruct-model benchmark table on its Hugging Face model card.",
+      "Scores 68.5 on WildBench and 8.49 on MM MTBench (multimodal chat), per the same benchmark table.",
+      "Mistral says its capabilities are comparable to its larger Mistral Small 3.2 24B model.",
+      "Supports native function calling and JSON-constrained output, per its Hugging Face model card.",
+      "Its FP8 build is designed to fit in 24GB of VRAM, and less when further quantized, per its model card.",
+      "Released under the Apache 2.0 license, allowing commercial and derivative use."
+    ],
+    "disadvantages": [
+      "Text and image input only; Mistral's model card does not describe audio or video input support."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction-following at near-24B-class capability in a smaller footprint",
+      "Combined vision-and-text tasks such as image analysis and document understanding",
+      "Agentic applications using native function calling and JSON-constrained output",
+      "Single-GPU or edge deployment where a larger model would not fit",
+      "Multilingual chat and assistant applications"
+    ],
+    "evaluations": [
+      {"name": "MATH Maj@1", "score": 90.4, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "Arena Hard", "score": 55.1, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "WildBench", "score": 68.5, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"},
+      {"name": "MM MTBench", "score": 8.49, "source": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/models/ministral-3-14b-25-12",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/models/ministral-3-14b-25-12", "title": "Ministral 3 14B - Mistral AI | Mistral Docs", "kind": "maker"},
+    {"url": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512", "title": "mistralai/Ministral-3-14B-Instruct-2512 · Hugging Face", "kind": "maker"},
+    {"url": "https://mistral.ai/news/mistral-3", "title": "Introducing Mistral 3 | Mistral AI", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog id 'ministral-3-14b-2512' does not literally match Mistral's own advertised La Plateforme API id for this model, which its docs page lists as 'ministral-14b-2512' (alias 'ministral-14b-latest'), with no '-3-' infix anywhere in that page's alias list. Treated as the same Ministral 3 14B model based on matching size (14B), the '2512'/v25.12 release wave, provider (mistral), and the fact no other Mistral model of this name and date exists. Catalog's 262,144-token input/output limits match the 256K context window stated on both Mistral's docs page and Hugging Face model card exactly, so no conflict there."
+}

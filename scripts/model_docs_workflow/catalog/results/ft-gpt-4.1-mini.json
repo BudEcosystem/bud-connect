@@ -1,0 +1,32 @@
+{
+  "slug": "ft-gpt-4.1-mini",
+  "canonical": "ft:gpt-4.1-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4.1 mini is OpenAI's smaller, faster version of GPT-4.1, built for instruction following and tool calling with low latency and no reasoning step. This catalog entry is the gpt-4.1-mini-2025-04-14 snapshot as OpenAI's fine-tuning API exposes it, letting a user create a custom fine-tuned model on top of it via supervised fine-tuning or direct preference optimization. Its knowledge cutoff is June 1, 2024.",
+    "advantages": [
+      "OpenAI's fine-tuning guide lists gpt-4.1-mini-2025-04-14 as supporting both supervised fine-tuning (SFT) and direct preference optimization (DPO).",
+      "OpenAI's model page describes it as excelling at instruction following and tool calling with low latency and no reasoning step."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of June 1, 2024.",
+      "OpenAI's model page recommends starting with GPT-5 mini instead for more complex tasks."
+    ],
+    "use_cases": [
+      "Creating a custom fine-tuned model (via SFT or DPO) for narrower tasks such as classification, specialized translation, or consistent formatting.",
+      "General instruction-following and tool-calling tasks where low latency matters."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini", "title": "GPT-4.1 Mini Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/model-optimization", "title": "Model optimization guide | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list only text_input/text_output modality for this fine-tuning-specific entry, while OpenAI's general gpt-4.1-mini model page also lists image input support for normal chat use; kept the catalog's modality per instructions and did not restate image input. No deprecation notice found for this snapshot on OpenAI's deprecations page."
+}

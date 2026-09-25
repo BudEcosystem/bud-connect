@@ -1,0 +1,53 @@
+{
+  "slug": "nemotron-lightning-3p5-30b-a3b",
+  "canonical": "nemotron-lightning-3p5-30b-a3b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "Nemotron Lightning 3.5 30B A3B is a 30-billion-parameter mixture-of-experts language model from NVIDIA's Nemotron 3.5 family, with about 3 billion parameters active per token. It uses a hybrid architecture interleaving Mamba-2, mixture-of-experts and attention layers for efficient long-context inference, and includes multi-token-prediction (MTP) among its speculative-decoding options for low-latency serving. NVIDIA's model card states the model produces an explicit reasoning trace before its final response, with reasoning behavior configurable through the chat template, and that it supports function calling but not image input.",
+    "advantages": [
+      "Activates only about 3B of its 30B parameters per token via its mixture-of-experts design, reducing inference cost relative to a dense model of the same size.",
+      "Includes multi-token-prediction (MTP) among its speculative-decoding options, per NVIDIA's model card, aimed at low-latency serving.",
+      "Supports a 262,000-token context length and function calling, per NVIDIA's model card and its Fireworks listing.",
+      "Scores 81.94 on MMLU Pro and 75.44 on GPQA Diamond, per NVIDIA's model card."
+    ],
+    "disadvantages": [
+      "Does not support image input or embeddings via its Fireworks hosted listing.",
+      "NVIDIA describes this BF16 release as reference weights intended primarily for customization, post-training and research rather than direct production inference, recommending its NVFP4-quantized release for production use instead."
+    ],
+    "use_cases": [
+      "Reasoning tasks that benefit from an explicit chain-of-thought trace",
+      "Function-calling and tool-use agent workflows",
+      "Long-context inference given its hybrid Mamba/MoE/attention design",
+      "Post-training customization (SFT, reinforcement learning, distillation) and domain adaptation on the full-precision reference weights, per NVIDIA's model card"
+    ],
+    "evaluations": [
+      {"name": "MMLU Pro", "score": 81.94, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "GPQA Diamond", "score": 75.44, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "SWE-bench Verified", "score": 51.56, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "IFBench (loose)", "score": 71.88, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "AA-LCR", "score": 52.0, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "SciCode", "score": 32.6, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "Terminal-Bench 2.1", "score": 24.58, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"},
+      {"name": "HLE (text-only)", "score": 11.72, "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"}
+    ],
+    "languages": ["English", "Spanish", "French", "German", "Italian", "Japanese"],
+    "website_url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/nemotron-lightning-3p5-30b-a3b",
+      "title": "Nemotron Lightning 3.5 30B A3B API & Playground | Fireworks",
+      "kind": "host"
+    },
+    {
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "title": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 · Hugging Face",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Found NVIDIA's own model card (linked from the Fireworks listing as its Hugging Face source), which resolves the prior uncertainty: this is NVIDIA's own 'Nemotron 3.5 Lightning' model, GA as of 2026-08-11, not the 'Nemotron-H' family Fireworks' listing implied. NVIDIA's own Nemotron 3 family blog (research.nvidia.com/labs/nemotron/Nemotron-3/, dated Dec 2025) predates this 3.5 release, so it isn't listed there. NVIDIA states up to 1M tokens of context but caps single-H100 deployment at 256K (262,144), matching the catalog's facts exactly, so no conflict to flag. NVIDIA's card covers the BF16 reference-weights release specifically; it says this release targets customization/post-training/research and points production users to an NVFP4-quantized release instead, which is now reflected in disadvantages rather than treated as a blanket 'no fine-tuning' limitation (the original Fireworks-derived claim that the model lacks fine-tuning support is dropped as contradicted by NVIDIA's own card)."
+}

@@ -1,0 +1,65 @@
+{
+  "slug": "llama-v3-8b",
+  "canonical": "llama-v3-8b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3 8B is Meta's smallest base, pretrained (not instruction-tuned) language model in the Llama 3 family, released April 18, 2024. Meta pretrained it on over 15 trillion tokens of publicly available data with an optimized transformer architecture and grouped-query attention, giving it an 8,192-token context window and a knowledge cutoff of March 2023. As a base model it produces free-form text continuations rather than following chat instructions, and Meta positions it mainly as a starting point for further fine-tuning rather than for direct assistant use.",
+    "advantages": [
+      "Scores 66.6 on MMLU and 72.6 on CommonSenseQA as the pretrained (base) 8B model, per Meta's official Llama 3 model card.",
+      "Pretrained on over 15 trillion tokens of data, about seven times the training data Meta used for Llama 2, per Meta's Llama 3 launch post."
+    ],
+    "disadvantages": [
+      "Is a base, non-instruction-tuned checkpoint, so it is not optimized for chat or assistant-style interaction the way the Instruct version is.",
+      "Context window is limited to 8,192 tokens, far short of the 128,000-token window Meta introduced with the later Llama 3.1 family.",
+      "Meta's model card states intended use is commercial and research use in English; using it in other languages requires developers to fine-tune and safety-test it themselves."
+    ],
+    "use_cases": [
+      "Serving as a base checkpoint for supervised fine-tuning or RLHF into custom chat or assistant models",
+      "General-purpose natural language generation and text completion tasks",
+      "Research and benchmarking of base (pre-alignment) language model capabilities"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 66.6,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      },
+      {
+        "name": "CommonSenseQA",
+        "score": 72.6,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      },
+      {
+        "name": "ARC-Challenge",
+        "score": 78.6,
+        "source": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://ai.meta.com/blog/meta-llama-3/",
+    "github_url": "https://github.com/meta-llama/llama3"
+  },
+  "sources": [
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3/",
+      "title": "Introducing Meta Llama 3",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+      "title": "llama3/MODEL_CARD.md",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/llama-v3-8b",
+      "title": "Llama 3 8B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Bud's catalog serves this base model over /v1/chat/completions, but Meta's own model card describes the un-suffixed 8B checkpoint as the pretrained/base model, distinct from the Instruct version (covered separately as llama-v3-8b-instruct-hf). Benchmarked as a base model accordingly."
+}

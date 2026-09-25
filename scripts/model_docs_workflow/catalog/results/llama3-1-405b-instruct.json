@@ -1,0 +1,82 @@
+{
+  "slug": "llama3-1-405b-instruct",
+  "canonical": "llama3-1-405b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 405B Instruct is Meta's largest Llama 3.1 model, an auto-regressive transformer with grouped-query attention, instruction-tuned via supervised fine-tuning and RLHF for assistant-style chat, and released July 23, 2024. It was trained on roughly 15 trillion tokens of publicly available data (knowledge cutoff December 2023) and supports a 128K-token context window, multilingual generation across eight languages, and tool use for agentic and RAG workloads. Meta describes it as its first openly available frontier-level model. Amazon Bedrock now lists this snapshot's lifecycle as Legacy, with an end-of-life date of July 7, 2026.",
+    "advantages": [
+      "Scores 89.0% pass@1 on HumanEval and 96.8% on GSM-8K (chain-of-thought), per Meta's own reported benchmarks (Hugging Face model card).",
+      "Scores 92.0% on the API-Bank tool-use benchmark and 88.5% on BFCL, per Meta's own reported benchmarks (Hugging Face model card).",
+      "Scores 91.6% on the multilingual MGSM benchmark (chain-of-thought), per Meta's own reported benchmarks (Hugging Face model card).",
+      "Meta reports the model enables synthetic data generation and model distillation workflows at scale (Meta Llama 3.1 launch post)."
+    ],
+    "disadvantages": [
+      "Amazon Bedrock lists this model's lifecycle status as Legacy, with an end-of-life date of July 7, 2026 (Amazon Bedrock model card).",
+      "Knowledge cutoff of December 2023 (Hugging Face model card).",
+      "Its 405B parameter size requires quantization (16-bit to 8-bit) for practical single-node inference, per Meta's own description (Meta Llama 3.1 launch post)."
+    ],
+    "use_cases": [
+      "Long-form text summarization over the 128K-token context window",
+      "Multilingual conversational agents across eight languages",
+      "Coding assistance and code generation",
+      "Tool-use and agentic RAG workflows",
+      "Synthetic data generation and model distillation for smaller models"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 87.3,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct"
+      },
+      {
+        "name": "HumanEval",
+        "score": 89.0,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct"
+      },
+      {
+        "name": "GSM-8K (CoT)",
+        "score": 96.8,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct"
+      },
+      {
+        "name": "ARC-C",
+        "score": 96.9,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct"
+      },
+      {
+        "name": "GPQA",
+        "score": 50.7,
+        "source": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct"
+      }
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct",
+      "title": "meta-llama/Llama-3.1-405B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+      "title": "Introducing Llama 3.1: Our most capable models to date",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-405b-instruct.html",
+      "title": "Llama 3.1 405B Instruct - Amazon Bedrock model card",
+      "kind": "host"
+    },
+    {
+      "url": "https://github.com/meta-llama/llama-models",
+      "title": "meta-llama/llama-models - GitHub",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's deprecation_date is empty for this snapshot, but Amazon Bedrock's own model card marks its lifecycle 'Legacy' with a 'Model EOL date' of July 7, 2026 (the page's separate 'EOL no sooner than' field is a different, earlier date, Jul 23, 2025) -- flagging this conflict since it directly affects the model's current status. Catalog's context window (128000) and max output tokens (4096) match Bedrock's model card (128K / 4K). No Hugging Face 'newer version' banner was shown on this specific 405B card, unlike the 70B Instruct card."
+}

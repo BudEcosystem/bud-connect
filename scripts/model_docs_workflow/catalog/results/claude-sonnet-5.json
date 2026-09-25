@@ -1,0 +1,45 @@
+{
+  "slug": "claude-sonnet-5",
+  "canonical": "claude-sonnet-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Sonnet 5 is Anthropic's current Sonnet-tier model, released June 30, 2026 as a drop-in upgrade to Claude Sonnet 4.6. Anthropic describes it as the most agentic Sonnet model yet, able to make plans and use tools such as browsers and terminals autonomously at a level that previously required larger, more expensive models. It has a 1-million-token context window, vision input, and adaptive thinking on by default, and Anthropic positions it close to the larger Claude Opus 4.8 on knowledge work and agentic coding at a lower price.",
+    "advantages": [
+      "Scores 63.2% on SWE-bench Pro, an agentic coding benchmark (DataCamp, reporting Anthropic's benchmark results; independently corroborated by other reporting on Anthropic's figures).",
+      "Scores 80.4% on Terminal-Bench 2.1 and 81.2% on OSWorld-Verified, an agentic terminal-use and a computer-use benchmark respectively (DataCamp, reporting Anthropic's benchmark results).",
+      "Scores 57.4% (with tools) on Humanity's Last Exam, a multidisciplinary reasoning evaluation (DataCamp, reporting Anthropic's benchmark results).",
+      "Anthropic reports testers found it 'checks its own output without explicitly being asked' and finishes complex tasks where earlier versions stopped short (Anthropic launch post)."
+    ],
+    "disadvantages": [
+      "Anthropic states it has 'much lower ability to perform cybersecurity tasks than current Opus models' and recommends Claude Opus 4.8 for cybersecurity work needing reduced guardrails (Anthropic launch post).",
+      "Neither Sonnet model Anthropic tested could develop a working exploit in its cybersecurity evaluation, scoring 0.0% (Anthropic launch post).",
+      "Shows somewhat higher rates of misaligned behavior than Claude Opus 4.8, per Anthropic's own alignment assessment (Anthropic launch post).",
+      "Uses an updated tokenizer that can map the same input to roughly 1.0-1.35x more tokens than Sonnet 4.6, depending on content type (Anthropic launch post)."
+    ],
+    "use_cases": [
+      "Agentic planning and autonomous multi-step task execution",
+      "Tool use with browsers and terminals",
+      "Software engineering and debugging",
+      "Computer-use automation",
+      "Agentic search and knowledge work"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Pro", "score": 63.2, "source": "https://www.datacamp.com/blog/claude-sonnet-5"},
+      {"name": "Terminal-Bench 2.1", "score": 80.4, "source": "https://www.datacamp.com/blog/claude-sonnet-5"},
+      {"name": "OSWorld-Verified", "score": 81.2, "source": "https://www.datacamp.com/blog/claude-sonnet-5"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-sonnet-5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-sonnet-5", "title": "Introducing Claude Sonnet 5", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/models/sonnet-5/overview", "title": "Claude Sonnet 5 - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://www.datacamp.com/blog/claude-sonnet-5", "title": "Claude Sonnet 5: Features, Benchmarks, and Pricing", "kind": "third_party"}
+  ],
+  "notes": "Catalog's deprecation_date fact (2026-12-24) does not match Anthropic's own model-deprecations table and platform.claude.com overview page, which both give a tentative retirement 'Not sooner than June 30, 2027' (exactly one year after the June 30, 2026 release -- the same pattern seen on every other Claude snapshot checked in this batch). Kept the catalog's value per instructions but flagging the roughly six-month discrepancy. Catalog's 1M max input / 128K max output tokens and image+text-in/text-out modality match platform.claude.com's specs table exactly. Anthropic's own launch post's readable prose and footnotes gave only one hard number (0.0% on a cybersecurity exploit-development eval); its main capability benchmark table is an unreadable chart image and its system-card PDF was too large to fetch, so the coding/reasoning scores above are sourced to DataCamp's write-up of the same system card instead. The 63.2% SWE-bench Pro figure was independently corroborated by other reporting."
+}

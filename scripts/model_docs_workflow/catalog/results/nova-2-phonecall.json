@@ -1,0 +1,41 @@
+{
+  "slug": "nova-2-phonecall",
+  "canonical": "nova-2-phonecall",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Nova-2 Phonecall is a Deepgram speech-to-text model in the Nova-2 tier, described by Deepgram's docs as optimized for low-bandwidth audio phone calls. It shares Nova-2's underlying architecture, which Deepgram says improves entity recognition, punctuation, and capitalization over the earlier Nova-1 model through speech-specific Transformer optimizations, advanced data curation, and multi-stage training. It supports English only. Deepgram's separate voicemail-tuned Nova-2 model is derived from this phonecall model.",
+    "advantages": [
+      "Deepgram tunes Nova-2 Phonecall specifically for low-bandwidth audio phone calls.",
+      "Deepgram says Nova-2 improves entity recognition (e.g. proper nouns, alphanumerics), punctuation, and capitalization over its Nova-1 predecessor through speech-specific Transformer optimizations, advanced data curation, and multi-stage training."
+    ],
+    "disadvantages": [
+      "Supports English only, per Deepgram's language documentation.",
+      "Deepgram's current models overview table recommends Nova-2 mainly for languages not yet supported by its newer Nova-3 tier and for filler-word identification, rather than as its default general recommendation."
+    ],
+    "use_cases": [
+      "Transcribing low-bandwidth telephone call audio, such as call-center or customer-service recordings, per Deepgram's documentation."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/model",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "title": "Models & Languages Overview | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's Nova-2 launch article (deepgram.com/learn/nova-2-speech-to-text-api) reports WER figures for the Nova-2 model tested across four generic audio domains including 'phone call', but does not attribute them to this domain-tuned phonecall option specifically, so no evaluation figure is used (WER is also excluded from the evaluations schema). Catalog carries no deprecation_date, consistent with Nova-2 not appearing under Deepgram's 'Legacy Models' heading (Nova 1, Enhanced, Base)."
+}

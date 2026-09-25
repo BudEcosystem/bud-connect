@@ -1,0 +1,39 @@
+{
+  "slug": "bge-base-en-v1.5",
+  "canonical": "bge-base-en-v1.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "BAAI",
+  "details": {
+    "description": "bge-base-en-v1.5 is a base-scale English text embedding model from BAAI's (Beijing Academy of Artificial Intelligence) BGE (BAAI General Embedding) series, built on a BERT architecture and offered on Together AI. It maps English text into 768-dimensional dense vectors for semantic similarity and retrieval, and version 1.5 improves the similarity-score distribution over earlier BGE releases without requiring an instruction prefix on the sentence-similarity task. It accepts inputs up to 512 tokens and is released under the MIT license.",
+    "advantages": [
+      "Scores 63.55 average across 56 tasks on the MTEB English benchmark, per its Hugging Face model card.",
+      "Scores 53.25 on MTEB Retrieval and 82.4 on MTEB STS (semantic textual similarity), per its Hugging Face model card.",
+      "Released under the permissive MIT license, per its Hugging Face model card.",
+      "Downloaded over 10 million times on Hugging Face, indicating wide production use."
+    ],
+    "disadvantages": [
+      "Maximum input length of 512 tokens, short relative to newer long-context embedding models.",
+      "English only; BAAI publishes separate Chinese (bge-base-zh-v1.5) and multilingual (bge-m3) models for other languages, per its Hugging Face model card."
+    ],
+    "use_cases": [
+      "Passage retrieval for retrieval-augmented generation (RAG) pipelines",
+      "Semantic similarity and text matching",
+      "Document and passage embedding for search"
+    ],
+    "evaluations": [
+      {"name": "MTEB (English, 56 tasks) Average", "score": 63.55, "source": "https://huggingface.co/BAAI/bge-base-en-v1.5"},
+      {"name": "MTEB Retrieval", "score": 53.25, "source": "https://huggingface.co/BAAI/bge-base-en-v1.5"},
+      {"name": "MTEB STS", "score": 82.4, "source": "https://huggingface.co/BAAI/bge-base-en-v1.5"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/BAAI/bge-base-en-v1.5",
+    "github_url": "https://github.com/FlagOpen/FlagEmbedding"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/BAAI/bge-base-en-v1.5", "title": "BAAI/bge-base-en-v1.5 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/FlagOpen/FlagEmbedding", "title": "FlagOpen/FlagEmbedding: Retrieval and Retrieval-augmented LLMs", "kind": "maker"}
+  ],
+  "notes": "Catalog facts (max_input_tokens 512, text_input/text_output modality) match the model's 512-token max sequence length and its role as a text-only embedding model. The Hugging Face card recommends adding the instruction 'Represent this sentence for searching relevant passages:' to queries only (not passages) for retrieval use, which is an implementation detail rather than a strength/weakness so was left out of advantages/disadvantages."
+}

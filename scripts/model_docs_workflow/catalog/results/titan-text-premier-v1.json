@@ -1,0 +1,53 @@
+{
+  "slug": "titan-text-premier-v1",
+  "canonical": "titan-text-premier-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Titan Text Premier (amazon.titan-text-premier-v1:0) was one of three models in AWS's original Titan Text family, alongside Titan Text Lite and Titan Text Express, built by AWS for general-purpose text generation through Amazon Bedrock's InvokeModel API. AWS's own code example for the model shows it used to turn a meeting transcript into a list of per-person action items. As of September 2026, AWS's Overview of Amazon Titan models, its Bedrock model catalog, and its regional-availability pages no longer list Titan Text Premier among Amazon's supported models, and it is also absent from Bedrock's table of models currently in Legacy or pending end-of-life status, evidence that AWS has already withdrawn it from Bedrock.",
+    "advantages": [
+      "Was one of three tiers in AWS's original Titan Text family (with Titan Text Lite and Titan Text Express), documented for tasks such as turning a meeting transcript into a per-person action-item list (Amazon Bedrock Titan Text models parameter reference)."
+    ],
+    "disadvantages": [
+      "As of September 2026, AWS no longer lists Titan Text Premier on its Titan model overview, Bedrock model catalog, or regional-availability pages, nor in its Legacy/pending-EOL table, indicating it has already been retired from Bedrock (AWS Bedrock documentation)."
+    ],
+    "use_cases": [
+      "General-purpose text generation via Amazon Bedrock's InvokeModel API (Amazon Bedrock Titan Text models parameter reference).",
+      "Generating a list of per-person action items from a meeting transcript (Amazon Bedrock Titan Text models parameter reference code example)."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-text.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-text.html",
+      "title": "Amazon Titan Text models - Amazon Bedrock",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html",
+      "title": "Overview of Amazon Titan models - Amazon Bedrock",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
+      "title": "Regional availability by models - Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html",
+      "title": "Model lifecycle (Legacy) - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "The catalog's facts list max_input_tokens=42,000 and max_output_tokens=32,000, but AWS's live Titan Text parameter reference caps Titan Text Premier's response at 3,072 tokens (default 512, min 0) and states no separate input/context-window figure for this model; kept the catalog's values per instructions and flag the conflict here rather than in the details. This target's two URIs are both AWS GovCloud regions (us-gov-east-1, us-gov-west-1); Titan Text Premier no longer appears in any current commercial-region AWS listing I checked (Titan overview, Models at a glance, regional availability, Legacy/EOL table), which may mean it persists only in GovCloud or that AWS's public docs simply dropped a retired model without a dedicated announcement I could find. No maker or host page with a narrative description (intended use, RAG/agent support, languages) was found; only the technical parameter reference and a code sample were available, so advantages/use_cases are limited to what those show. Verify pass: removed the 'largest model' ranking and 'Converse APIs' claims from the description/use_cases — none of the five cited pages state either; the parameter reference documents only InvokeModel/InvokeModelWithResponseStream for this model, and no page compares Premier's size or capability to Lite/Express."
+}

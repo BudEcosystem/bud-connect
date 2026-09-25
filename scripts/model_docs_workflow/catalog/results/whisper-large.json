@@ -1,0 +1,41 @@
+{
+  "slug": "whisper-large",
+  "canonical": "whisper-large",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "Whisper Large (1550M parameters) is the biggest and, per OpenAI's README, most accurate checkpoint in OpenAI's open-source Whisper family of speech recognition models, trained on 680,000 hours of multilingual, multitask audio and able to transcribe speech and translate it into English. It is offered as a multilingual-only checkpoint (no English-only variant). Deepgram hosts it as part of its \"Whisper Cloud\" offering, where model=whisper-large defaults to OpenAI's Whisper large-v2, layering diarization and word timings on top of the open model for pre-recorded audio. Rev AI separately offers a hosted \"Whisper Large Transcription\" option, limited to English.",
+    "advantages": [
+      "The largest Whisper checkpoint; OpenAI's README describes the six sizes as offering \"speed and accuracy tradeoffs,\" with large positioned as the most accurate, at the cost of speed (about 10 GB VRAM, the slowest of the family).",
+      "Deepgram pairs Whisper Cloud with diarization and word timings, which Deepgram says are not available through OpenAI's own API.",
+      "Trained on 680,000 hours of audio covering 98 languages per OpenAI's model card, giving it broad multilingual coverage."
+    ],
+    "disadvantages": [
+      "Deepgram does not support live streaming with Whisper Cloud; only pre-recorded audio up to 20 minutes of processing time is supported.",
+      "Deepgram calls its Whisper models \"less scalable than all other Deepgram models\" and caps Whisper requests at 15 concurrent calls on paid plans (5 on pay-as-you-go), recommending a Deepgram model such as Nova instead if it meets the need.",
+      "The slowest of the Whisper sizes per OpenAI's README, at roughly 1x relative inference speed versus up to about 10x for the tiny checkpoint.",
+      "Deepgram's Whisper Cloud defaults whisper-large to OpenAI's Whisper large-v2 rather than a newer large checkpoint.",
+      "Rev AI's hosted Whisper Large Transcription option supports English only, unlike Rev AI's own Reverb offering which covers Spanish, French, Chinese, Portuguese and more.",
+      "OpenAI's model card reports the Whisper family is prone to hallucination and shows disparate performance across accents and dialects."
+    ],
+    "use_cases": [
+      "Transcription of pre-recorded audio where maximum accuracy matters more than latency or cost",
+      "Multilingual speech-to-text transcription"
+    ],
+    "evaluations": [],
+    "languages": ["English", "Chinese", "German", "Spanish", "Russian", "Korean", "French", "Japanese", "Portuguese", "Turkish", "Polish", "Catalan", "Dutch", "Arabic", "Swedish", "Italian", "Indonesian", "Hindi", "Finnish", "Vietnamese", "Hebrew", "Ukrainian", "Greek", "Malay", "Czech", "Romanian", "Danish", "Hungarian", "Tamil", "Norwegian", "Thai", "Urdu", "Croatian", "Bulgarian", "Lithuanian", "Latin", "Maori", "Malayalam", "Welsh", "Slovak", "Telugu", "Persian", "Latvian", "Bengali", "Serbian", "Azerbaijani", "Slovenian", "Kannada", "Estonian", "Macedonian", "Breton", "Basque", "Icelandic", "Armenian", "Nepali", "Mongolian", "Bosnian", "Kazakh", "Albanian", "Swahili", "Galician", "Marathi", "Punjabi", "Sinhala", "Khmer", "Shona", "Yoruba", "Somali", "Afrikaans", "Occitan", "Georgian", "Belarusian", "Tajik", "Sindhi", "Gujarati", "Amharic", "Yiddish", "Lao", "Uzbek", "Faroese", "Haitian Creole", "Pashto", "Turkmen", "Nynorsk", "Maltese", "Sanskrit", "Luxembourgish", "Myanmar", "Tibetan", "Tagalog", "Malagasy", "Assamese", "Tatar", "Hawaiian", "Lingala", "Hausa", "Bashkir", "Javanese", "Sundanese"],
+    "website_url": "https://github.com/openai/whisper",
+    "github_url": "https://github.com/openai/whisper"
+  },
+  "sources": [
+    {"url": "https://github.com/openai/whisper", "title": "openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision", "kind": "maker"},
+    {"url": "https://github.com/openai/whisper/blob/main/model-card.md", "title": "Whisper Model Card", "kind": "maker"},
+    {"url": "https://developers.deepgram.com/docs/deepgram-whisper-cloud", "title": "Deepgram Whisper Cloud", "kind": "host"},
+    {"url": "https://developers.deepgram.com/docs/model", "title": "Model Options | Deepgram's Docs", "kind": "host"},
+    {"url": "https://developers.deepgram.com/docs/models-languages-overview", "title": "Models & Languages Overview | Deepgram's Docs", "kind": "host"},
+    {"url": "https://www.rev.ai/pricing", "title": "Rev AI Pricing", "kind": "host"}
+  ],
+  "notes": "Re-checked the Deepgram Whisper Cloud page directly: its \"Supported languages\" section names all 99 language codes inline (en, zh, de, ... jw, su), not just 56, so the list has been mapped to English names and filled in rather than left empty. Also re-checked Rev AI directly: rev.ai/pricing currently lists a \"Whisper Large Transcription\" offering at English only, so the earlier note that no Rev AI page could be found was wrong; that page is now cited and its English-only limitation is noted as a disadvantage (no docs.rev.ai API reference page was found that names a distinct \"whisper\" model parameter, only the pricing page). No WER or other accuracy figures specific to the large checkpoint were found on maker or host pages, so evaluations remains empty."
+}

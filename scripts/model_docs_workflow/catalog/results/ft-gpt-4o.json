@@ -1,0 +1,32 @@
+{
+  "slug": "ft-gpt-4o",
+  "canonical": "ft:gpt-4o",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o (\"omni\") is OpenAI's multimodal flagship chat model, accepting text and image input and producing text output, including structured outputs. This catalog entry covers the gpt-4o-2024-08-06 and gpt-4o-2024-11-20 snapshots as exposed through OpenAI's fine-tuning API: OpenAI's fine-tuning guide lists gpt-4o-2024-08-06 specifically as supporting vision fine-tuning, letting a user fine-tune the model on both text and image examples. Knowledge cutoff is October 1, 2023.",
+    "advantages": [
+      "OpenAI's fine-tuning guide lists gpt-4o-2024-08-06 as supporting vision fine-tuning, i.e. training on image inputs in addition to text.",
+      "OpenAI's model page describes it as the best model for most tasks outside of the o-series reasoning models, combining text and image understanding."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of October 1, 2023."
+    ],
+    "use_cases": [
+      "Fine-tuning a custom model on image-and-text examples (vision fine-tuning) using the gpt-4o-2024-08-06 snapshot.",
+      "General-purpose multimodal chat tasks combining text and image understanding."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4o", "title": "GPT-4o Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/model-optimization", "title": "Model optimization guide | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "No deprecation notice found for gpt-4o-2024-08-06 or gpt-4o-2024-11-20 on OpenAI's deprecations page; an older snapshot, gpt-4o-2024-05-13, is scheduled for shutdown October 23, 2026, but that snapshot is not among this target's URIs. The fine-tuning guide names vision fine-tuning support only for the 2024-08-06 snapshot, not 2024-11-20; could not confirm fine-tuning support for 2024-11-20 specifically."
+}

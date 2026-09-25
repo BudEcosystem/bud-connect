@@ -1,0 +1,65 @@
+{
+  "slug": "code-llama-13b",
+  "canonical": "code-llama-13b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Code Llama 13B is the base, 13-billion-parameter model in Meta's Code Llama family, an auto-regressive transformer built by further training Llama 2 on code, trained between January and July 2023 per Meta's model card. It is designed for general code synthesis, completion, infilling and understanding across multiple programming languages, and serves as the foundation for the Python-specialized and Instruct-tuned 13B variants. Meta's Code Llama models are trained on 16k-token sequences and show improvements on inputs up to 100,000 tokens, per Meta's Code Llama research paper.",
+    "advantages": [
+      "Supports code infilling in addition to completion, per its Hugging Face model card capability list.",
+      "Trained on 16k-token sequences and reported by Meta to show improvements on inputs with up to 100,000 tokens."
+    ],
+    "disadvantages": [
+      "Scores 36.0% pass@1 on HumanEval, lower than the same-size Python-specialized (43.3%) and Instruct-tuned (42.7%) variants, per Meta's Code Llama research paper (Table 2).",
+      "Base model only; not instruction-tuned, so Meta positions the Instruct variant as safer for code-assistant and generation applications.",
+      "Meta's model card states it is intended for commercial and research use in English and relevant programming languages."
+    ],
+    "use_cases": [
+      "General code synthesis, completion and understanding across supported programming languages",
+      "Code infilling (completing code given surrounding context)",
+      "Base for further fine-tuning or research"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 36.0,
+        "source": "https://arxiv.org/abs/2308.12950"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 47.0,
+        "source": "https://arxiv.org/abs/2308.12950"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/meta-llama/CodeLlama-13b-hf",
+    "github_url": "https://github.com/facebookresearch/codellama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/CodeLlama-13b-hf",
+      "title": "meta-llama/CodeLlama-13b-hf \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/facebookresearch/codellama",
+      "title": "facebookresearch/codellama",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+      "title": "Code Llama: Meta's state-of-the-art LLM for coding",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code (arXiv:2308.12950)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The huggingface.co/blog/codellama table (previously cited for the 35.07/42.89/50.6 HumanEval figures) is explicitly labeled on the page as sourced from Hugging Face's own multilingual code leaderboard ('scores presented in the table above were sourced from our code leaderboard at the time of publication'), not from Meta's official release numbers, so it has been dropped per the verify pass's rule against a blog's own test runs. Meta's own paper (arXiv:2308.12950, Table 2) gives the correct per-13B-variant HumanEval and MBPP pass@1 scores and is now cited instead; it also shows Code Llama - Python 13B (43.3%) slightly ahead of Code Llama - Instruct 13B (42.7%) on HumanEval, the reverse of the leaderboard ordering used previously. The maker's Hugging Face repo for this model now carries a 'non-official' notice pointing to the meta-llama org, so website_url and the maker source were updated to https://huggingface.co/meta-llama/CodeLlama-13b-hf. Catalog facts (16384 max input/output tokens) are consistent with Fireworks' listed '16.3k tokens' context."
+}

@@ -1,0 +1,76 @@
+{
+  "slug": "grok-4.6",
+  "canonical": "grok-4.6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.6 is xAI's frontier model, released August 12, 2026 as an update to Grok 4.5, built for long-running agents, coding, and knowledge work, with particular emphasis on ambitious interactive and visual projects such as establishing an application's structure in a single pass. It offers a 500K-token context window and four configurable reasoning-effort levels (low, medium, high, xhigh, with reasoning active by default), and accepts text and image input with text output. It became available on Amazon Bedrock on August 18, 2026 via the Responses, Chat Completions, and Converse APIs.",
+    "advantages": [
+      "Scores 61 on the Artificial Analysis Intelligence Index, a composite of nine benchmarks (xAI Grok 4.6 launch post).",
+      "Scores 69.9% on CursorBench v3.2 (xAI Grok 4.6 launch post).",
+      "Scores 65.9% on DeepSWE v1.1 (xAI Grok 4.6 launch post).",
+      "Scores 57.5% on APEX-Agents (xAI Grok 4.6 launch post).",
+      "Supports four reasoning-effort levels (low, medium, high, xhigh) to tune depth against latency, with reasoning on by default (xAI Grok 4.6 launch post; AWS Bedrock model card).",
+      "500K-token context window (xAI Grok 4.6 launch post; AWS Bedrock model card)."
+    ],
+    "disadvantages": [
+      "No audio input or output, and no image-generation output; accepts text and image input only."
+    ],
+    "use_cases": [
+      "Long-running autonomous agents",
+      "Software engineering and coding tasks",
+      "Research and multi-step knowledge work",
+      "Interactive and visual application development"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index",
+        "score": 61,
+        "source": "https://x.ai/news/grok-4-6"
+      },
+      {
+        "name": "CursorBench v3.2",
+        "score": 69.9,
+        "source": "https://x.ai/news/grok-4-6"
+      },
+      {
+        "name": "DeepSWE v1.1",
+        "score": 65.9,
+        "source": "https://x.ai/news/grok-4-6"
+      },
+      {
+        "name": "APEX-Agents",
+        "score": 57.5,
+        "source": "https://x.ai/news/grok-4-6"
+      },
+      {
+        "name": "FrontierCode v1.1 (Extended)",
+        "score": 61.3,
+        "source": "https://x.ai/news/grok-4-6"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://x.ai/news/grok-4-6",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://x.ai/news/grok-4-6",
+      "title": "Grok 4.6",
+      "kind": "maker"
+    },
+    {
+      "url": "https://x.ai/news/grok-4-6-amazon-bedrock",
+      "title": "Grok 4.6 on Amazon Bedrock",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-6.html",
+      "title": "Grok 4.6 - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "xAI's main announcement (x.ai/news/grok-4-6) gives the model's release date as August 12, 2026; the separate x.ai/news/grok-4-6-amazon-bedrock post and the AWS Bedrock model card both give August 18-19, 2026 as when it became available specifically on Amazon Bedrock -- these are not in conflict, just two different dates for two different events. Catalog's 500K/500K max_input/max_output_tokens facts match the 500K context window stated by both xAI and AWS; neither source states a separate, smaller output-token cap."
+}

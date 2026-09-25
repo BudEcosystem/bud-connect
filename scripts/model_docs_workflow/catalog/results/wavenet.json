@@ -1,0 +1,48 @@
+{
+  "slug": "wavenet",
+  "canonical": "wavenet",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "WaveNet voices are a premium Google Cloud Text-to-Speech voice type built from models trained on raw audio samples of actual humans speaking, which Google's documentation says lets them generate synthetic speech with more human-like emphasis and inflection on syllables, phonemes and words than other synthetic voices. WaveNet is generally available and is offered in dozens of languages and regional variants, including confirmed entries for Arabic, Bengali (India), Czech, Danish, Dutch (Belgium and Netherlands), English (Australia, India, UK and US), Filipino, Finnish, and French (Canada and France), per Google's Voices documentation. Google introduced WaveNet in July 2018, per its Text-to-Speech release notes, and its Voice Types documentation now also offers the newer Neural2 and Chirp 3: HD premium voice types, the latter described by Google as its latest generation of speech technology.",
+    "advantages": [
+      "Trained on raw audio samples of real human speech, producing more human-like emphasis and inflection on syllables, phonemes and words than other synthetic voices, per Google's Voice Types documentation.",
+      "Offered across dozens of languages and regional variants, including Arabic, Bengali, Czech, Danish, Dutch, English, Filipino, Finnish, and French, per Google's Voices documentation."
+    ],
+    "disadvantages": [
+      "WaveNet was introduced in 2018, per Google's Text-to-Speech release notes, predating the newer Neural2 and Chirp 3: HD voice types; Google's documentation describes Chirp 3: HD as its latest generation of speech technology."
+    ],
+    "use_cases": [
+      "General-purpose speech synthesis needing more natural-sounding, human-like speech than other synthetic voices, per Google's Voice Types documentation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://cloud.google.com/text-to-speech/docs/voice-types",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/voice-types",
+      "title": "Voice types | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/voices",
+      "title": "Supported voices and languages | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/release-notes",
+      "title": "Release notes | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://cloud.google.com/text-to-speech/docs/chirp3-hd",
+      "title": "Chirp 3: HD voices | Cloud Text-to-Speech Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The full voices table on Google's Voices page is very large and the page tool truncated it before the language list finished (confirmed entries stop at French); rather than claim a total language count or an exhaustive list, `languages` is left empty and only the confirmed subset is named in the description/advantages. WaveNet still appears as an available, non-deprecated voice type in current release notes and the Voice Types overview table (listed there as GA, same as Neural2 and Chirp 3: HD); Google's Voice Types documentation itself does not rank the voice types by generation, so the entry instead grounds WaveNet's relative age in its confirmed July 2018 launch date and Chirp 3: HD's own 'latest generation' description."
+}

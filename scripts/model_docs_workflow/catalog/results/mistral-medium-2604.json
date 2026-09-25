@@ -1,0 +1,60 @@
+{
+  "slug": "mistral-medium-2604",
+  "canonical": "mistral-medium-2604",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Medium 3.5 (API version 26.04) is Mistral AI's current mid-tier flagship model, a dense 128B-parameter model released as open weights under a Modified MIT license. Mistral AI's documentation dates its release April 28, 2026, and its public launch post is dated May 22, 2026. It unifies instruction-following, reasoning and coding in a single model, with a 256K-token context window, per-request configurable reasoning effort, and vision input, and is built for long-horizon agentic tasks that call multiple tools reliably. It is now the default model behind Mistral's Le Chat assistant and replaces Devstral 2 as the default in Mistral's Vibe coding agent.",
+    "advantages": [
+      "Scores 77.6% on SWE-Bench Verified (Mistral AI launch post).",
+      "Scores 91.4 on the τ³-Telecom agentic benchmark (Mistral AI launch post).",
+      "Reasoning effort is configurable per request, for long-horizon tasks that call multiple tools reliably (Mistral AI launch post).",
+      "Unifies instruction-following, reasoning and coding in a single dense 128B-parameter model (Mistral AI launch post).",
+      "Released as open weights under a Modified MIT license (Mistral AI documentation)."
+    ],
+    "disadvantages": [
+      "Supersedes Mistral Medium 3 and Mistral Medium 3.1, which Mistral AI's models overview page lists as deprecated with retirement on August 31, 2026."
+    ],
+    "use_cases": [
+      "Agentic coding and remote coding agents (Mistral Vibe)",
+      "Long-horizon, multi-tool agentic workflows",
+      "General chat and reasoning tasks (default model for Le Chat)",
+      "Image understanding combined with text"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-Bench Verified",
+        "score": 77.6,
+        "source": "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/"
+      },
+      {
+        "name": "τ³-Telecom",
+        "score": 91.4,
+        "source": "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/models/mistral-medium-3-5-26-04",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.mistral.ai/models/mistral-medium-3-5-26-04",
+      "title": "Mistral Medium 3.5 (26.04) - Mistral AI Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/",
+      "title": "Vibe remote agents and Mistral Medium 3.5 - Mistral AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "title": "Models Overview - Mistral AI Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Mistral AI's own docs page for this model (docs.mistral.ai/models/mistral-medium-3-5-26-04) explicitly lists 'mistral-medium-2604' as an alias alongside 'mistral-medium-3.5' and 'mistral-medium-latest', confirming this target and mistral-medium-3-5/mistral-medium-3.5 in the same batch are the same model. That docs page also lists audio as a supported modality, which the catalog's facts do not include (catalog lists only image_input, text_input, text_output); kept the catalog's modality per instructions. Context window (256K = 262,144 tokens) matches the catalog's facts exactly. Mistral's docs give an April 28, 2026 release date while the public launch blog post is dated May 22, 2026; both are noted rather than resolved to one date."
+}

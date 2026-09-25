@@ -1,0 +1,37 @@
+{
+  "slug": "palmyra-x5",
+  "canonical": "palmyra-x5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Writer",
+  "details": {
+    "description": "Palmyra X5 is Writer's enterprise foundation model, built for adaptive reasoning and agentic workflows over large enterprise data sets. Writer announced it on Amazon Bedrock in April 2025, though Amazon's own Bedrock model card for this listing gives a January 21, 2026 model launch date. Writer describes it as offering a 1-million-token context window with built-in tool calling and a 'deep thinking' mode intended for more predictable multi-step tool use, and states it supports over 30 languages. Writer's own developer documentation already lists Palmyra X5 as deprecated effective December 14, 2026, and Writer has since positioned its newer Palmyra X6 as the platform's default agent model.",
+    "advantages": [
+      "Writer states Palmyra X5 offers a 1-million-token context window for reasoning over large enterprise data sets (Writer engineering blog).",
+      "Includes built-in tool calling paired with a 'deep thinking' mode intended to make multi-step tool use more predictable (Writer engineering blog).",
+      "Demonstrated converting natural-language questions into SQL queries against enterprise datasets for business-intelligence tasks (Writer engineering blog)."
+    ],
+    "disadvantages": [
+      "Writer's developer documentation lists Palmyra X5 as deprecated effective December 14, 2026, less than a year after its January 2026 launch, recommending migration to Palmyra X6.",
+      "No vision or image input is documented for this model on Amazon Bedrock.",
+      "No independent or published benchmark scores were found for this model."
+    ],
+    "use_cases": [
+      "Text-to-SQL generation over enterprise data warehouses",
+      "Long-context agentic workflows that reason across large enterprise data sets",
+      "Multi-step tool-calling workflows requiring predictable execution"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://writer.com/engineering/bedrock/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://writer.com/engineering/bedrock/", "title": "WRITER's Palmyra X5 on Amazon Bedrock: Unlock long context AI for enterprise", "kind": "maker"},
+    {"url": "https://dev.writer.com/home/models", "title": "Models - Writer Developer Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-x5.md", "title": "Writer — Palmyra X5 model card (Amazon Bedrock)", "kind": "host"},
+    {"url": "https://aws.amazon.com/bedrock/writer/", "title": "Writer models on Amazon Bedrock", "kind": "host"}
+  ],
+  "notes": "Catalog's max_input_tokens (1,000,000) matches Writer's own general claims for Palmyra X5 (both writer.com/engineering/bedrock and dev.writer.com/home/models describe a 1M-token context window), and max_output_tokens (8,192) matches Bedrock's card. However, Amazon Bedrock's own model card for this exact model (the specific host behind these URIs) lists 'Context window: 128K tokens' rather than 1M — I kept the catalog's 1,000,000 value per instructions and flag this Bedrock-specific discrepancy here. Catalog's deprecation_date is empty, but Writer's developer docs plainly list Palmyra X5 as 'Deprecated December 14, 2026' with a migration note toward Palmyra X6, while Amazon Bedrock's own card currently still shows lifecycle 'Active'. No benchmark scores were found on any page I opened, so evaluations is empty rather than guessed. Both us.writer.palmyra-x5-v1:0 and writer.palmyra-x5-v1:0 map to the same Bedrock model ID per AWS's card, so no grouping issue."
+}

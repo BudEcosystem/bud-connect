@@ -1,0 +1,49 @@
+{
+  "slug": "deepseek-v4-flash-0731",
+  "canonical": "deepseek-v4-flash-0731",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V4-Flash-0731 is the July 31, 2026 production release of DeepSeek-V4-Flash, DeepSeek's mid-sized mixture-of-experts chat model, superseding an earlier April 2026 preview with 'substantially enhanced agentic capabilities' and 304 billion total parameters, per DeepSeek's Hugging Face model card, which does not give a separate active-parameter figure for this release. It uses a hybrid Compressed Sparse Attention and Heavily Compressed Attention design for a 1,000,000-token context window, three reasoning-effort levels (low, high, max), and a DSpark speculative-decoding module, with native support for OpenAI's Responses API adapted for Codex integration. DeepSeek retired the model on September 10, 2026, routing requests to the model id deepseek-flash (or the legacy deepseek-v4-flash id) to the newer, multimodal DeepSeek-V4.1-Flash instead.",
+    "advantages": [
+      "Scores 82.7 on Terminal-Bench 2.1, an agentic terminal-use benchmark, per DeepSeek's Hugging Face model card.",
+      "Resolves 76.7% of tasks on CyberGym, a cybersecurity-research agent benchmark.",
+      "Resolves 54.4% of tasks on DeepSWE, a software-engineering agent benchmark.",
+      "304 billion total parameters per DeepSeek's Hugging Face model card, with additional post-training and a DSpark speculative-decoding module added over the April 2026 preview for enhanced agentic performance.",
+      "Supports a 1,000,000-token context window with three reasoning-effort levels (low, high, max)."
+    ],
+    "disadvantages": [
+      "Text only; no image or audio input, per the catalog's recorded modality and Together AI's model page.",
+      "DeepSeek retired this model on September 10, 2026, routing its API traffic to the newer DeepSeek-V4.1-Flash.",
+      "This dated snapshot is scheduled for removal from third-party hosts, per the catalog's provider deprecation dates."
+    ],
+    "use_cases": [
+      "Agentic coding and terminal/command-line automation, with native support for OpenAI's Responses API format adapted for Codex.",
+      "Software-engineering agent tasks that resolve repository bugs (DeepSWE).",
+      "Cybersecurity-research agent tasks (CyberGym).",
+      "Full-stack development agent tasks (DSBench-FullStack).",
+      "Long-context document or codebase analysis using up to a 1,000,000-token context window."
+    ],
+    "evaluations": [
+      {"name": "Terminal-Bench 2.1", "score": 82.7, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"},
+      {"name": "CyberGym", "score": 76.7, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"},
+      {"name": "DeepSWE", "score": 54.4, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"},
+      {"name": "NL2Repo", "score": 54.2, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"},
+      {"name": "DSBench-FullStack", "score": 68.7, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"},
+      {"name": "DSBench-Hard", "score": 59.6, "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731", "title": "deepseek-ai/DeepSeek-V4-Flash-0731 · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash", "title": "deepseek-ai/DeepSeek-V4-Flash · Hugging Face", "kind": "maker"},
+    {"url": "https://api-docs.deepseek.com/updates/", "title": "Change Log | DeepSeek API Docs", "kind": "maker"},
+    {"url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/", "title": "Introducing DeepSeek-V4.1-Flash", "kind": "maker"},
+    {"url": "https://www.together.ai/models/deepseek-v4-flash-0731", "title": "DeepSeek V4 Flash 0731 | Together AI", "kind": "host"}
+  ],
+  "notes": "Catalog's modality (text only) and max_input_tokens (1,048,576) match both DeepSeek's own card and Together AI's page; catalog's max_output_tokens (131,072) is the provider-side cap and is lower than the 384K DeepSeek recommends for high/max reasoning effort, so the description covers context window only and avoids restating an output figure. Corrected on verification: the 0731 Hugging Face card's own 'Model size' field states 304B params (not 284B), and the card gives no separate active-parameter number for this release -- it only says the model has 'a far smaller activated parameter count' than the total. The 284B/13B pairing belongs to the generic (April 2026 preview / Base) DeepSeek-V4-Flash card, which the 0731 card references only for sharing 'the same model structure as DeepSeek-V4-Flash-DSpark' (i.e. the speculative-decoding module), not for parameter count; that likely explains the extra ~20B on this dated release. Together AI's host page still shows the generic 284B/13B figure for this exact model id, conflicting with the maker's own card; the maker's card is used per source priority. The hybrid Compressed Sparse Attention / Heavily Compressed Attention design is stated on the generic DeepSeek-V4-Flash card (now added to sources) as a DeepSeek-V4-series-wide architecture feature, not on the 0731 card itself. Evaluation scores are the model-specific agentic-benchmark table on the 0731 Hugging Face card; a Codeforces-style rating was not present on this table so none was excluded."
+}

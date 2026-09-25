@@ -1,0 +1,82 @@
+{
+  "slug": "deepseek-v3p1",
+  "canonical": "deepseek-v3p1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V3.1 is DeepSeek's hybrid-reasoning chat model, released August 21, 2025 per DeepSeek's own API changelog. Per its Hugging Face model card it combines 'thinking' and 'non-thinking' response modes in one model, selected via the chat template, built on the same Mixture-of-Experts architecture as DeepSeek-V3, with added post-training for tool use, a Code Agent and a Search Agent. DeepSeek's own changelog shows the deepseek-chat/deepseek-reasoner endpoints have since moved on through DeepSeek-V3.1-Terminus and V3.2 to newer DeepSeek-V4 models.",
+    "advantages": [
+      "Scores 84.8 on MMLU-Pro in thinking mode, per its Hugging Face model card.",
+      "Scores 80.1 on GPQA-Diamond, per its Hugging Face model card.",
+      "Scores 93.1 on AIME, per its Hugging Face model card.",
+      "Scores 66.0 on SWE-bench Verified in agent mode, per its Hugging Face model card.",
+      "Combines a 'thinking' and a 'non-thinking' response mode in one model, selectable via the chat template, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "DeepSeek's own changelog shows the deepseek-chat/deepseek-reasoner endpoint names have since moved on to newer DeepSeek-V4 models, so this checkpoint is no longer served under those default aliases.",
+      "Superseded about a month later by DeepSeek-V3.1-Terminus, which DeepSeek's own changelog credits with better language consistency and agent performance.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "General-purpose chat with a switchable thinking/non-thinking mode.",
+      "Agentic workflows using a Code Agent and a Search Agent for tool use.",
+      "Coding and software-engineering tasks.",
+      "Enterprise retrieval-augmented generation, per Fireworks AI's hosting page."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 84.8,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 80.1,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+      },
+      {
+        "name": "AIME",
+        "score": 93.1,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+      },
+      {
+        "name": "SWE-bench Verified",
+        "score": 66.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+      },
+      {
+        "name": "BrowseComp",
+        "score": 30.0,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1",
+      "title": "deepseek-ai/DeepSeek-V3.1 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-v3p1",
+      "title": "DeepSeek V3.1 - Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's facts for this target (max_input_tokens 128000, max_output_tokens 8192) are corroborated by DeepSeek's own Hugging Face model card, whose download table lists a 128K context length for DeepSeek-V3.1, matching the catalog value. Fireworks' own product page states a larger 163,840-token context length for its own hosted deployment of this model; that is a host-specific serving limit, not a contradiction of the maker's stated figure, so no conflict remains. Total parameter count also differs by source: the Hugging Face model card text states 671B total / 37B activated, while Fireworks' page and Hugging Face's own metadata sidebar show 685B; likely reflects whether the multi-token-prediction module is counted, so no figure is stated in the description. No public GitHub repository specific to V3.1 was found."
+}

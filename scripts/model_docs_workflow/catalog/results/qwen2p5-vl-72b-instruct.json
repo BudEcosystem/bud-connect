@@ -1,0 +1,44 @@
+{
+  "slug": "qwen2p5-vl-72b-instruct",
+  "canonical": "qwen2p5-vl-72b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2.5-VL-72B-Instruct is the largest member of Alibaba Qwen's Qwen2.5-VL vision-language family, released January 26, 2025 with roughly 72-73 billion parameters per its Hugging Face card. Qwen's model card describes it as capable of document and form parsing into structured output, visual object localization by bounding boxes or points, long-video (over one hour) understanding with event/timestamp localization, and agentic computer- and phone-use with visual tool direction. Its published configuration gives a native 128,000-token context window, matching this catalog's limits. Bud's catalog records this route's modality as text input and output only, which does not include the image or video input Qwen documents for this model; see notes.",
+    "advantages": [
+      "Scores 70.2 on MMMU (val) and 74.8 on MathVista-mini, per Qwen's model card.",
+      "Scores 96.4 on DocVQA (val) and 89.5 on ChartQA (test), per Qwen's model card.",
+      "Scores 79.1 on VideoMME (with subtitles) for long-video comprehension, per Qwen's model card.",
+      "As the largest model in the Qwen2.5-VL family, it scores higher than the 3B and 32B siblings on several of the same vision benchmarks, e.g. 96.4 on DocVQA versus 94.8 for the 32B model, per Qwen's model card."
+    ],
+    "disadvantages": [
+      "Bud's catalog records this route's modality as text input and output only, without image or video input, unlike the vision-language capability the model is designed for (see notes).",
+      "Qwen's model card states that extending context beyond the native range via YaRN significantly reduces temporal and spatial localization accuracy.",
+      "At roughly 72-73 billion parameters, it has substantially higher compute and memory requirements than the 3B and 32B models in the same family."
+    ],
+    "use_cases": [
+      "Document and form parsing into structured output (e.g. JSON) from images",
+      "Chart, icon, and layout understanding in images",
+      "Long-video understanding and event/timestamp localization",
+      "Agentic computer-use and phone-use tasks with visual tool direction"
+    ],
+    "evaluations": [
+      {"name": "MMMU", "score": 70.2, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"},
+      {"name": "MathVista", "score": 74.8, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"},
+      {"name": "DocVQA", "score": 96.4, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"},
+      {"name": "ChartQA", "score": 89.5, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"},
+      {"name": "VideoMME", "score": 79.1, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct", "title": "Qwen/Qwen2.5-VL-72B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-vl/", "title": "Qwen2.5-VL! Qwen2.5-VL! Qwen2.5-VL!", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3-VL", "title": "QwenLM/Qwen2.5-VL now redirects to QwenLM/Qwen3-VL · GitHub", "kind": "maker"}
+  ],
+  "notes": "Bud's catalog records this route's modality as text_input/text_output only, but Qwen documents Qwen2.5-VL-72B-Instruct as a vision-language model that also takes image and video input; flagged above as a disadvantage per RESEARCH_PROMPT's guidance to note when facts show no image/video input (analogous to its 'no audio input' example). Catalog's 128,000-token max_input_tokens/max_output_tokens match the model's published config.json max_position_embeddings exactly, so no conflict there. Qwen's blog dates the Qwen2.5-VL family launch (3B/7B/72B) to January 26, 2025; the model's Hugging Face card and its own README round the parameter count to '73B' rather than '72B'. Qwen's GitHub repository for the Qwen2.5-VL project (github.com/QwenLM/Qwen2.5-VL) now redirects (HTTP 301, confirmed by fetching) to the newer Qwen3-VL repository, so github_url was left null; this supersession signal is also reflected in the earlier note that Qwen3-VL is now Qwen's most capable vision-language line."
+}

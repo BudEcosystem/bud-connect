@@ -1,0 +1,33 @@
+{
+  "slug": "ft-gpt-4.1-nano",
+  "canonical": "ft:gpt-4.1-nano",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4.1 nano is OpenAI's fastest and most cost-efficient GPT-4.1 variant, built for instruction following and tool calling with minimal latency and no reasoning step. This catalog entry is the gpt-4.1-nano-2025-04-14 snapshot as exposed for fine-tuning, supporting supervised fine-tuning and direct preference optimization to create a custom model on top of it. OpenAI's deprecations page lists this fine-tuning base for shutdown on October 23, 2026, with gpt-5.6-luna named as the recommended replacement; because the underlying gpt-4.1-nano-2025-04-14 snapshot itself is deprecated on that same date, inference on fine-tuned models built from it stops then too, per OpenAI's fine-tuning deprecation policy. Knowledge cutoff is June 1, 2024.",
+    "advantages": [
+      "OpenAI's fine-tuning guide lists gpt-4.1-nano-2025-04-14 as supporting both supervised fine-tuning (SFT) and direct preference optimization (DPO).",
+      "OpenAI's model page positions it as the fastest, most cost-efficient GPT-4.1 model for instruction following and tool calling."
+    ],
+    "disadvantages": [
+      "OpenAI's deprecations page schedules this fine-tuning base model (ft-gpt-4.1-nano-2025-04-14) for shutdown on October 23, 2026, after which new fine-tuning jobs on it are no longer possible.",
+      "Knowledge cutoff of June 1, 2024.",
+      "OpenAI's model page recommends starting with GPT-5 nano instead for more complex tasks."
+    ],
+    "use_cases": [
+      "Creating a lightweight custom fine-tuned model for simple, latency-sensitive instruction-following or tool-calling tasks."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4.1-nano",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://developers.openai.com/api/docs/models/gpt-4.1-nano", "title": "GPT-4.1 nano Model | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/guides/model-optimization", "title": "Model optimization guide | OpenAI API", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/deprecations", "title": "Deprecations | OpenAI API", "kind": "maker"}
+  ],
+  "notes": "Deprecations page lists this exact fine-tuning base under 'We are also removing fine-tuned versions as below' as ft-gpt-4.1-nano-2025-04-14, shutdown October 23, 2026, matching the catalog's deprecation_date. Recommended replacement gpt-5.6-luna is named on that page but I could not find an independent page describing gpt-5.6-luna itself, so did not describe it further. Catalog facts list only text_input/text_output modality for this fine-tuning entry, while the general gpt-4.1-nano model page also lists image input for normal chat use; kept the catalog's modality per instructions."
+}

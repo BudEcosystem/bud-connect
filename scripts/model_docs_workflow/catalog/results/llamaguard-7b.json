@@ -1,0 +1,39 @@
+{
+  "slug": "llamaguard-7b",
+  "canonical": "llamaguard-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama Guard is Meta's original input-output safety-classification model for human-AI conversations, fine-tuned from the 7-billion-parameter Llama 2 base and released in December 2023 (arXiv:2312.06674, GenAI at Meta). Given a conversation, it classifies a user prompt or an LLM response as 'safe' or 'unsafe' against a six-category taxonomy -- violence & hate, sexual content, guns & illegal weapons, regulated substances, suicide & self-harm, and criminal planning -- rather than holding open-ended conversation. Meta has since released newer Llama Guard versions (3-8B, 3-11B-vision, and the multimodal Llama Guard 4-12B); Meta's current Llama Protections developer page promotes Llama Guard 4 and does not list this original 7B model.",
+    "advantages": [
+      "Meta reports 0.945 AUPRC on prompt classification and 0.953 AUPRC on response classification on its own zero-shot test set, each the best score among the classifiers it compared (OpenAI Moderation API, Perspective API), per the Llama Guard paper.",
+      "Meta reports 0.626 AUPRC on the third-party ToxicChat benchmark without being trained on it, ahead of the OpenAI Moderation API (0.588) and Perspective API (0.532) it compared against, per the same paper.",
+      "Supports adapting to a different safety taxonomy through zero-shot or few-shot prompting, or fine-tuning, without retraining from scratch, per the paper."
+    ],
+    "disadvantages": [
+      "Superseded within Meta's own lineup: its current Llama Protections developer page promotes Llama Guard 4 (12B, multimodal) and no longer lists this original 7B model.",
+      "Built on the older Llama 2 base and a fixed 6-category taxonomy, rather than a general-purpose chat model.",
+      "4,096-token context window, per the paper's training setup."
+    ],
+    "use_cases": [
+      "Classifying whether a user prompt to an LLM violates a safety policy (prompt classification)",
+      "Classifying whether an LLM's response violates a safety policy (response classification)",
+      "Adapting to a custom safety taxonomy via zero-shot or few-shot prompting, or fine-tuning"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/meta-llama/LlamaGuard-7b",
+    "github_url": "https://github.com/facebookresearch/PurpleLlama/tree/main/Llama-Guard"
+  },
+  "sources": [
+    {"url": "https://arxiv.org/abs/2312.06674", "title": "Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations", "kind": "third_party"},
+    {"url": "https://huggingface.co/meta-llama/LlamaGuard-7b", "title": "meta-llama/LlamaGuard-7b", "kind": "third_party"},
+    {"url": "https://dev.meta.ai/llama/llama-protections/", "title": "Llama Protections - Meta AI Developers", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/llamaguard-7b", "title": "Llama Guard 7B - Fireworks AI", "kind": "host"},
+    {"url": "https://huggingface.co/meta-llama/Llama-Guard-3-8B", "title": "meta-llama/Llama-Guard-3-8B", "kind": "third_party"},
+    {"url": "https://huggingface.co/meta-llama/Llama-Guard-3-11B-Vision", "title": "meta-llama/Llama-Guard-3-11B-Vision", "kind": "third_party"}
+  ],
+  "notes": "Left evaluations empty: the paper's headline numbers (0.945/0.953 on its own test set, 0.626 on ToxicChat) are AUPRC (area under the precision-recall curve), not an accuracy score, so they don't fit the evaluations schema; I put them in advantages instead with the correct metric name. Fireworks' model page mislabels these same AUPRC numbers as 'F1-score' -- I used the paper's own terminology. Catalog's 4,096-token context matches the paper's stated training sequence length, so no conflict there. Target `kind` is 'chat', but this model is a safety classifier, not a general chat model -- flagging in case that miscategorizes it in the catalog. Verification pass: re-derived the AUPRC/ToxicChat numbers directly from the paper's PDF (Table 2) and they match exactly (0.945/0.953/0.626, vs OpenAI 0.764/0.769/0.588 and Perspective 0.728/0.699/0.532) -- no change needed. Confirmed the description's 'Llama Guard 3-8B' and 'Llama Guard 3-11B-Vision' both exist as named on Hugging Face and added them to sources."
+}

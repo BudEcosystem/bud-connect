@@ -1,0 +1,71 @@
+{
+  "slug": "grok-4.20-experimental-beta-0304-reasoning",
+  "canonical": "grok-4.20-experimental-beta-0304-reasoning",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok 4.20 is a chat model from xAI, whose API docs now brand the company SpaceXAI, released on the xAI API on March 10, 2026 alongside a separate Grok 4.20 Multi-agent model. This id is a legacy alias: xAI's model registry lists it among the aliases for the endpoint it now documents as grok-4.20 (also grok-4.20-0309-reasoning), the reasoning-enabled variant of the model. It accepts text and image input and produces text output, and supports function calling and structured outputs. It reasons before answering by default, with no adjustable reasoning-effort setting documented for it. Artificial Analysis, an independent benchmark, marks this snapshot ('Grok 4.20 0309 v2') deprecated in favor of xAI's newer Grok 4.3, though it remains live and priced on xAI's current models page as of September 2026.",
+    "advantages": [
+      "Accepts both text and image input over a 1,000,000-token context window, per xAI's model documentation.",
+      "Supports native function calling and structured outputs for tool-use and agentic workflows, per xAI's documentation.",
+      "Reasons through a problem before producing its final answer by default, per xAI's Reasoning documentation."
+    ],
+    "disadvantages": [
+      "Has no adjustable reasoning-effort setting documented, unlike xAI's grok-4.5, grok-4.6, grok-4.7 and grok-4.20-multi-agent models, per xAI's Reasoning documentation.",
+      "Artificial Analysis measured a median time-to-first-token of about 21.5 seconds for this model in its independent benchmark.",
+      "Artificial Analysis marks this snapshot (Grok 4.20 0309 v2) deprecated, naming xAI's Grok 4.3 as a newer alternative.",
+      "No longer listed in xAI's current Reasoning-capability comparison table, which now covers grok-4.5, grok-4.6, grok-4.7 and grok-4.20-multi-agent."
+    ],
+    "use_cases": [
+      "General-purpose chat and question answering with a reasoning step before the final answer",
+      "Agentic workflows that call external tools or functions",
+      "Tasks that combine image and text input, such as visual question answering",
+      "Structured-output generation for downstream systems"
+    ],
+    "evaluations": [
+      {
+        "name": "Artificial Analysis Intelligence Index",
+        "score": 26,
+        "source": "https://artificialanalysis.ai/models/grok-4-20"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://docs.x.ai/developers/models/grok-4.20",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Grok Models & Pricing | SpaceXAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models/grok-4.20",
+      "title": "Grok 4.20 | SpaceXAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/release-notes",
+      "title": "Release Notes | SpaceXAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/reasoning",
+      "title": "Reasoning | SpaceXAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/model-capabilities/text/multi-agent",
+      "title": "Multi Agent | SpaceXAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/grok-4-20",
+      "title": "Grok 4.20 0309 v2 (Reasoning) - Intelligence, Performance & Price Analysis | Artificial Analysis",
+      "kind": "third_party"
+    }
+  ],
+  "notes": "This slug does not have its own maker page; it is a legacy alias name in xAI's model registry that resolves to the same canonical model documented as grok-4.20 / grok-4.20-0309-reasoning. This explicit '-reasoning' suffix is redundant here: xAI's registry maps it to the same canonical model as grok-4.20-experimental-beta-0304 and grok-4.20-experimental-beta-latest. The catalog's 1,000,000-token context window matches xAI's own docs, but Artificial Analysis' page for this model states a 2,000,000-token context window; the catalog figure was kept as authoritative. xAI's own per-model page repeats unattributed superlatives ('industry-leading speed', 'lowest hallucination rate on the market') that were left out per the no-unattributed-marketing rule."
+}

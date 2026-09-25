@@ -1,0 +1,39 @@
+{
+  "slug": "kimi-k3",
+  "canonical": "kimi-k3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "Kimi K3 is Moonshot AI's flagship open-weight, natively multimodal agentic model, released July 16, 2026. It uses a Mixture-of-Experts architecture with 2.8 trillion total parameters and 104 billion activated per token, combining 69 Kimi Delta Attention layers with 24 Gated Multi-head Latent Attention layers and a 401-million-parameter MoonViT-V2 vision encoder, and it supports a 1,048,576-token context window with native text, image, and video understanding. Moonshot AI describes it as built for long-horizon coding, agentic knowledge work, and deep reasoning, with configurable reasoning-effort levels and native thinking.",
+    "advantages": [
+      "Scores 93.5 on GPQA Diamond, per its Hugging Face model card.",
+      "Scores 88.3 on Terminal-Bench 2.1 and 91.2 on BrowseComp, indicating strong agentic tool-use and research capability, per its Hugging Face model card.",
+      "Supports native thinking with configurable reasoning-effort levels alongside a 1,048,576-token context window, per its Hugging Face model card.",
+      "Processes text, images, and video natively within a single model via its MoonViT-V2 vision encoder, per its Hugging Face model card and Moonshot AI's launch page."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "Long-horizon coding across large repositories and terminal-based tools",
+      "Agentic deep research and multi-step knowledge work with interactive visualizations",
+      "Multimodal reasoning over text, images, and video in extended contexts up to 1M tokens",
+      "Function calling and tool integration for agentic workflows"
+    ],
+    "evaluations": [
+      {"name": "GPQA Diamond", "score": 93.5, "source": "https://huggingface.co/moonshotai/Kimi-K3"},
+      {"name": "DeepSWE", "score": 67.5, "source": "https://huggingface.co/moonshotai/Kimi-K3"},
+      {"name": "Terminal-Bench 2.1", "score": 88.3, "source": "https://huggingface.co/moonshotai/Kimi-K3"},
+      {"name": "BrowseComp", "score": 91.2, "source": "https://huggingface.co/moonshotai/Kimi-K3"}
+    ],
+    "languages": [],
+    "website_url": "https://www.moonshot.ai/kimi-k3",
+    "github_url": "https://github.com/MoonshotAI/Kimi-K3"
+  },
+  "sources": [
+    {"url": "https://www.moonshot.ai/kimi-k3", "title": "Kimi K3 - Moonshot AI", "kind": "maker"},
+    {"url": "https://huggingface.co/moonshotai/Kimi-K3", "title": "moonshotai/Kimi-K3 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/MoonshotAI/Kimi-K3", "title": "MoonshotAI/Kimi-K3 - GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens includes both 1000000 and 1048576 across providers; the Hugging Face card's precise figure (1,048,576) matches one of these exactly, so kept as-is. Catalog's max_output_tokens includes both 131072 and 1048576 across providers -- no opened source explained why one provider reports a 1,048,576-token output limit equal to the input window, so this is left unresolved and the catalog's values were kept as authoritative."
+}

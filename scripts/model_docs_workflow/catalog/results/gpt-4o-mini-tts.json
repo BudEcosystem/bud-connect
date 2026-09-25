@@ -1,0 +1,54 @@
+{
+  "slug": "gpt-4o-mini-tts",
+  "canonical": "gpt-4o-mini-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "GPT-4o mini TTS is OpenAI's text-to-speech model built on GPT-4o mini, converting written text into spoken audio through the Speech API (/v1/audio/speech). It offers 13 built-in voices (alloy, ash, ballad, coral, echo, fable, nova, onyx, sage, shimmer, verse, marin and cedar) and can be instructed, via a text prompt, to control accent, emotion, intonation, pacing, tone and whispering. OpenAI describes it as its newest and most reliable text-to-speech model, ahead of the older tts-1 and tts-1-hd models, and recommends the marin or cedar voices for the best quality. OpenAI's text-to-speech guide lists 57 supported languages, following the Whisper model's language coverage, though its voices are optimized for English.",
+    "advantages": [
+      "Offers 13 built-in voices, more than the 9 voices on OpenAI's older tts-1 and tts-1-hd models, per OpenAI's text-to-speech guide.",
+      "Accepts natural-language prompt instructions to control accent, emotion, intonation, pacing, tone and whispering, per OpenAI's text-to-speech guide.",
+      "Supports realtime audio streaming via chunked transfer encoding, letting playback start before the full audio file is generated, per OpenAI's text-to-speech guide.",
+      "Supports 57 languages, following the Whisper model's language coverage, per OpenAI's text-to-speech guide."
+    ],
+    "disadvantages": [
+      "Voices are optimized for English even though the model follows Whisper's broader language coverage, per OpenAI's text-to-speech guide.",
+      "Limited to the Speech Generation endpoint; does not support chat completions, fine-tuning or other API endpoints, per OpenAI's model page.",
+      "Text input is limited to 2,000 tokens per request, per OpenAI's model page."
+    ],
+    "use_cases": [
+      "Narrating written blog posts and articles as spoken audio, per OpenAI's text-to-speech guide.",
+      "Producing multilingual spoken audio output, per OpenAI's text-to-speech guide.",
+      "Realtime voice output for conversational or interactive applications via audio streaming, per OpenAI's text-to-speech guide."
+    ],
+    "evaluations": [],
+    "languages": ["Afrikaans", "Arabic", "Armenian", "Azerbaijani", "Belarusian", "Bosnian", "Bulgarian", "Catalan", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Finnish", "French", "Galician", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Italian", "Japanese", "Kannada", "Kazakh", "Korean", "Latvian", "Lithuanian", "Macedonian", "Malay", "Marathi", "Maori", "Nepali", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Serbian", "Slovak", "Slovenian", "Spanish", "Swahili", "Swedish", "Tagalog", "Tamil", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese", "Welsh"],
+    "website_url": "https://developers.openai.com/api/docs/models/gpt-4o-mini-tts",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o-mini-tts",
+      "title": "GPT-4o mini TTS Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/text-to-speech",
+      "title": "Text to speech guide | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "OpenAI's model page and text-to-speech guide describe gpt-4o-mini-tts as text-in/audio-out only (no audio input), which conflicts with the catalog's audio_input modality fact; kept the catalog's modality as instructed. OpenAI's deprecations page does not list gpt-4o-mini-tts, unlike the catalog's 2027-06-15 deprecation_date, so that date could not be confirmed from a source. The text-to-speech guide's 'Supported languages' section names 57 languages for this model (not '100+' as originally written); the languages field now lists them and the description/advantages were corrected to match."
+}

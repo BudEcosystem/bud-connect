@@ -1,0 +1,47 @@
+{
+  "slug": "minimax-m2.5",
+  "canonical": "minimax-m2.5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax-M2.5 is MiniMax's mixture-of-experts chat model for agentic and office-productivity work, with 229 billion total parameters and 10 billion active per token, an iterative update to the M2/M2.1 family. It was trained largely through reinforcement learning across more than 200,000 real-world environments and is tuned for coding, tool calling and web search, and document work in Word, Excel and PowerPoint. MiniMax released it on February 12, 2026 under a Modified MIT license; a faster 'M2.5-Lightning' variant trades a higher price for higher throughput.",
+    "advantages": [
+      "Scores 80.2% on SWE-Bench Verified.",
+      "Scores 51.3% on Multi-SWE-Bench.",
+      "Scores 76.3% on BrowseComp with context management.",
+      "Scores 86.3% on AIME25.",
+      "Scores 85.2% on GPQA-Diamond.",
+      "M2.5-Lightning sustains 100 output tokens/second, which MiniMax says is twice the throughput of other frontier models."
+    ],
+    "disadvantages": [
+      "Text only; no image or audio input.",
+      "Artificial Analysis measured a higher hallucination rate (88%) than the prior M2.1 (67%), alongside only a modest accuracy gain (25% vs. 22%)."
+    ],
+    "use_cases": [
+      "Agentic coding across languages including Python, TypeScript, Go, Rust and Java.",
+      "Tool-calling and web-search agents.",
+      "Office productivity tasks in Word, Excel and PowerPoint, including financial modeling.",
+      "Long-running autonomous agent tasks."
+    ],
+    "evaluations": [
+      {"name": "SWE-Bench Verified", "score": 80.2, "source": "https://www.minimax.io/news/minimax-m25"},
+      {"name": "Multi-SWE-Bench", "score": 51.3, "source": "https://www.minimax.io/news/minimax-m25"},
+      {"name": "BrowseComp", "score": 76.3, "source": "https://www.minimax.io/news/minimax-m25"},
+      {"name": "MMLU-Pro", "score": 80.1, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5"},
+      {"name": "GPQA-Diamond", "score": 85.2, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5"},
+      {"name": "AIME25", "score": 86.3, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5"}
+    ],
+    "languages": [],
+    "website_url": "https://www.minimax.io/news/minimax-m25",
+    "github_url": "https://github.com/MiniMax-AI/MiniMax-M2.5"
+  },
+  "sources": [
+    {"url": "https://www.minimax.io/news/minimax-m25", "title": "MiniMax M2.5: Built for Real-World Productivity", "kind": "maker"},
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5", "title": "MiniMaxAI/MiniMax-M2.5 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/MiniMax-AI/MiniMax-M2.5", "title": "GitHub - MiniMax-AI/MiniMax-M2.5", "kind": "maker"},
+    {"url": "https://artificialanalysis.ai/articles/minimax-m2-5-everything-you-need-to-know", "title": "MiniMax-M2.5: Everything you need to know", "kind": "third_party"}
+  ],
+  "notes": "Catalog facts give conflicting max_input_tokens across snapshots (196,000 and 1,000,000) and max_output_tokens (8,000 and 8,192). Artificial Analysis states a 200K-token context window, matching the smaller catalog figure; no source found confirms the 1,000,000 figure, so the description avoids stating a specific context-window number. Total/active parameter counts (229B/10B) are corroborated by both MiniMax's own announcement and Artificial Analysis."
+}

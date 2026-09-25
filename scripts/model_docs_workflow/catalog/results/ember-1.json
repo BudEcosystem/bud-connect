@@ -1,0 +1,54 @@
+{
+  "slug": "ember-1",
+  "canonical": "ember-1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Fireworks AI",
+  "details": {
+    "description": "Ember-1 is a reasoning-focused language model from Fireworks AI's research team, built on Moonshot AI's Kimi K3 foundation using a mixture-of-experts architecture. It is trained to reproduce Kimi K3's response quality while spending far fewer tokens on internal reasoning, and it accepts both text and image input alongside function calling. Fireworks positions it for agentic coding and other multi-turn, reasoning-heavy production workloads where long chain-of-thought traces inflate token usage and cost. As of September 2026 it is offered as a Research Preview on Fireworks Serverless, with enterprise fine-tuning support still being rolled out.",
+    "advantages": [
+      "Fireworks reports Ember-1 uses 35-50% fewer tokens than Kimi K3 for comparable quality across benchmarks, and about 35% fewer tokens per task in live customer A/B tests.",
+      "Fireworks reports a score of 82.0% on Terminal Bench 2.1.",
+      "Fireworks reports that Ember-1 set a new Pareto frontier on its Bedside Bench clinical-case benchmark against GPT-5.6 Sol, GPT-6 Astra, and Claude Opus 5.",
+      "Supports image input and function calling in addition to text, alongside a very long context window."
+    ],
+    "disadvantages": [
+      "Offered only as a Research Preview as of September 2026, so behavior, pricing, and availability may still change.",
+      "Fireworks' model listing states fine-tuning, embeddings, and reranker functionality are not supported for this model."
+    ],
+    "use_cases": [
+      "Agentic coding tasks",
+      "Multi-turn agent interactions where lengthy reasoning traces would otherwise be costly",
+      "Production workloads needing long-context reasoning together with image input"
+    ],
+    "evaluations": [
+      {
+        "name": "Terminal Bench 2.1",
+        "score": 82.0,
+        "source": "https://fireworks.ai/blog/ember-1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://fireworks.ai/models/fireworks/ember-1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://fireworks.ai/models/fireworks/ember-1",
+      "title": "Ember-1 - Fireworks AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/blog/ember-1",
+      "title": "Introducing Ember-1",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/kimi-k3",
+      "title": "Kimi K3 - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "The model id and its Bud provider grouping ('fireworks_ai-embedding-models') suggest an embedding model, but Fireworks' own product page explicitly states embeddings and reranking are NOT supported here; this is a chat/reasoning generation model, matching the target's kind. Catalog's max_input_tokens (1,048,576) is consistent with Fireworks' stated 'just over 1 million token' context. Very recently announced (2026-09-23), so no third-party coverage exists yet. Neither Ember-1 page names Kimi K3's maker; confirmed via Fireworks' own Kimi K3 model page ('Kimi K3 is an open-weight, natively multimodal Mixture-of-Experts model from Moonshot AI'). The blog's 'launching training support for Ember-1, enabling enterprises to build customized...models' supports the fine-tuning-rollout claim, even though the model listing page's Fine-tuning toggle currently reads 'Not supported'."
+}

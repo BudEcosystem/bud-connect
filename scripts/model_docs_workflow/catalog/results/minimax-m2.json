@@ -1,0 +1,46 @@
+{
+  "slug": "minimax-m2",
+  "canonical": "minimax-m2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "MiniMax",
+  "details": {
+    "description": "MiniMax-M2 is a text-only Mixture-of-Experts language model from MiniMax, released October 27, 2025, built for coding and long-horizon agentic tool-use workflows. It has 230 billion total parameters with only 10 billion activated per token, an architecture aimed at fast, cost-efficient inference while running shell, browser, retrieval, and code-execution tool chains. It supports function calling and multi-step tool orchestration. MiniMax has since released newer text models (M2.1, M2.5, M2.7, and M3) that supersede it in its own lineup.",
+    "advantages": [
+      "Scores 69.4% on SWE-bench Verified, per MiniMax's model card.",
+      "Scores 83 on LiveCodeBench and 82 on MMLU-Pro, per MiniMax's model card.",
+      "Ranked #1 among open-weight models on Artificial Analysis's composite intelligence benchmark at launch, per MiniMax's model card.",
+      "MiniMax reports the model generates at roughly 100 tokens per second, nearly double the speed it attributes to comparable larger models, in its launch announcement."
+    ],
+    "disadvantages": [
+      "Text-only model that does not accept image or other non-text input, per MiniMax's model card and Fireworks AI's model listing.",
+      "MiniMax has since released newer text models (M2.1, M2.5, M2.7, and M3); M2 is no longer featured among MiniMax's current models on its site."
+    ],
+    "use_cases": [
+      "Coding tasks such as multi-file edits, run-fix loops, and test-validated repairs",
+      "Agentic tool use across shell, browser, retrieval, and code-execution tools",
+      "Long-horizon agent workflows that require stable, multi-step tool calling"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 69.4, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "LiveCodeBench", "score": 83, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "MMLU-Pro", "score": 82, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "Terminal-Bench", "score": 46.3, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "AIME25", "score": 78, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "BrowseComp", "score": 44, "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2"},
+      {"name": "GAIA (text only)", "score": 75.7, "source": "https://github.com/MiniMax-AI/MiniMax-M2"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/MiniMaxAI/MiniMax-M2",
+    "github_url": "https://github.com/MiniMax-AI/MiniMax-M2"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/MiniMaxAI/MiniMax-M2", "title": "MiniMaxAI/MiniMax-M2 · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/MiniMax-AI/MiniMax-M2", "title": "MiniMax-AI/MiniMax-M2", "kind": "maker"},
+    {"url": "https://www.minimax.io/news/minimax-m2", "title": "MiniMax M2 launch announcement", "kind": "maker"},
+    {"url": "https://www.minimax.io/models/text/m3", "title": "MiniMax M3 model page (current MiniMax text models listing)", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/minimax-m2", "title": "MiniMax-M2 - Fireworks AI", "kind": "host"}
+  ],
+  "notes": "Catalog facts list max_input_tokens up to 1,000,000 and max_output_tokens up to 8,000 across this model's providers, while MiniMax's and Fireworks' own pages describe a roughly 196K-token context window instead; kept the catalog's values as authoritative and did not restate a specific context figure. Release-date and supersession claims rely on minimax.io and GitHub pages that were paraphrased by an automated page-summarization step; the core benchmark numbers were corroborated across three independently fetched pages (Hugging Face rendered page, Hugging Face raw README, GitHub README)."
+}

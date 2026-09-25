@@ -1,0 +1,76 @@
+{
+  "slug": "nemotron-nano-v2-12b-vl",
+  "canonical": "nemotron-nano-v2-12b-vl",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "NVIDIA",
+  "details": {
+    "description": "NVIDIA Nemotron Nano 12B v2 VL is an open, roughly 13-billion-parameter multimodal model built for document intelligence and video understanding, combining a CRadioV2-H vision encoder with NVIDIA's hybrid Mamba-Transformer Nemotron-Nano-12B-v2 language backbone. It reasons over up to five document images per request (invoices, receipts, manuals), answers visual questions, and summarizes long videos, with an optional reasoning mode toggled through a `/think` or `/no_think` system prompt. NVIDIA released it on 10/28/2025 under the NVIDIA Open Model License Agreement for commercial use.",
+    "advantages": [
+      "NVIDIA reports 94.39 on DocVQA, 89.72 on ChartQA, 87.11 on AI2D, and 85.6 on OCRBench for document and chart understanding.",
+      "Scores 68 on MMMU and 76.9 on MathVista per NVIDIA's published vision benchmarks.",
+      "Supports multi-image reasoning across up to 5 document images plus long-video summarization (NVIDIA).",
+      "Includes a toggleable reasoning mode, switched on or off via a `/think` or `/no_think` system prompt (NVIDIA)."
+    ],
+    "disadvantages": [
+      "Performance can degrade on text-only reasoning tasks after vision-focused training, per NVIDIA's model card.",
+      "Image input is capped at a 12-tile layout and up to 5 images per request, limiting resolution and multi-image scale (NVIDIA).",
+      "Reasoning mode can fall into repetition loops on out-of-distribution tasks, per NVIDIA's model card."
+    ],
+    "use_cases": [
+      "Multi-modal document intelligence for invoices, receipts, and manuals",
+      "Multi-image visual question answering",
+      "Long-video understanding and summarization",
+      "Chart and diagram reading"
+    ],
+    "evaluations": [
+      {
+        "name": "MMMU",
+        "score": 68,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      },
+      {
+        "name": "MathVista",
+        "score": 76.9,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      },
+      {
+        "name": "AI2D",
+        "score": 87.11,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      },
+      {
+        "name": "DocVQA",
+        "score": 94.39,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      },
+      {
+        "name": "ChartQA",
+        "score": 89.72,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      },
+      {
+        "name": "OCRBench",
+        "score": 85.6,
+        "source": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://build.nvidia.com/nvidia/nemotron-nano-12b-v2-vl",
+      "title": "Nemotron Nano 12B v2 VL Model Card - NVIDIA Build",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/nemotron-nano-v2-12b-vl",
+      "title": "Nemotron Nano v2 12B VL - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "NVIDIA documents a 131,072-token combined context window and native image/video input; Bud's catalog facts for this route list a 4096-token input/output limit and text-only modality, which I kept per the facts rather than the maker's figures. Parameter count is given as 12.6B by Fireworks and 13.18B by NVIDIA's own card, so the description states an approximate figure instead of picking one."
+}

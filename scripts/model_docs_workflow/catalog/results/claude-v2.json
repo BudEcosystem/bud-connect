@@ -1,0 +1,55 @@
+{
+  "slug": "claude-v2",
+  "canonical": "claude-v2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude v2 (Amazon Bedrock model ID anthropic.claude-v2:1) is Claude 2.1, an update to Claude 2.0 that Anthropic released in November 2023 with a 200K-token context window, a beta tool-use (function calling) feature, and system prompt support. Anthropic reports Claude 2.1 cut incorrect answers on hard factual questions by 30% and reduced mistaken claims of document support by 3-4x compared to Claude 2.0. Anthropic retired Claude 2.0 and 2.1 from its own Claude API on July 21, 2025, recommending migration to Claude Opus 4.8; Amazon Bedrock, which sets its own schedule, no longer lists Claude v2 among its currently supported models.",
+    "advantages": [
+      "200,000-token context window, twice Claude 2.0's, letting it process roughly 150,000 words or 500+ pages of documents, per AWS's Bedrock announcement.",
+      "Beta tool use (function calling) and system prompt support, introduced with this version, per AWS's Bedrock announcement.",
+      "50% fewer hallucinated false statements in open-ended conversation and document Q&A than Claude 2.0, per AWS's Bedrock announcement.",
+      "30% fewer incorrect answers on hard factual questions, and a 3-4x lower rate of mistakenly concluding a document supports a claim, versus Claude 2.0, per Anthropic's Claude 2.1 model card appendix."
+    ],
+    "disadvantages": [
+      "Anthropic retired Claude 2.0 and 2.1 from the Claude API on July 21, 2025, recommending Claude Opus 4.8 as a replacement.",
+      "Text only: no image input, unlike later Claude models.",
+      "8,191-token max output, small next to current Claude models."
+    ],
+    "use_cases": [
+      "Summarizing and answering questions on very long documents, up to roughly 150,000 words, per AWS's Bedrock announcement.",
+      "Forecasting trends, comparing multiple documents, drafting business plans, and analyzing complex contracts, per AWS's Bedrock announcement.",
+      "Tool use (function calling) for workflow orchestration, in beta at launch, per AWS's Bedrock announcement.",
+      "General open-ended conversation, writing, editing, and coding, per Anthropic's Claude 2 model card."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www-cdn.anthropic.com/5c49cc247484cecf107c699baf29250302e5da70/ModelCardClaudev2_with_appendix_v1.pdf",
+      "title": "Model Card and Evaluations for Claude Models (Claude 2, with Claude 2.1 Appendix)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Model deprecations",
+      "kind": "maker"
+    },
+    {
+      "url": "https://aws.amazon.com/about-aws/whats-new/2023/11/claude-2-1-foundation-model-anthropic-amazon-bedrock/",
+      "title": "Claude 2.1 foundation model from Anthropic is now generally available in Amazon Bedrock",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "The target's URIs are all 'anthropic.claude-v2:1', which maps specifically to Claude 2.1, not Claude 2.0. Catalog lists max_input_tokens as 100,000, but AWS's own Bedrock announcement and Anthropic's Claude 2.1 model card appendix both state a 200,000-token context window for this version; kept the catalog's value per instructions. The standard benchmark scores (MMLU, GSM8K, etc.) in Anthropic's Claude 2 model card were measured for Claude 2.0 and not re-run for 2.1 -- the appendix says 'in most other respects, Claude 2.1 remains similar to Claude 2.0' without republishing those numbers -- so evaluations is left empty rather than attributing Claude 2.0's scores to 2.1; the appendix's own 2.1-specific results are relative reductions, not 0-100 accuracy scores, so they appear in advantages instead. Catalog lists no deprecation_date for this target; Anthropic itself retired Claude 2.0/2.1 from its own Claude API on July 21, 2025, and as of today (2026-09-24) Claude v2 no longer appears in Amazon Bedrock's current 'Models at a glance' listing, suggesting Bedrock access has also ended, though we found no Bedrock-specific EOL date or announcement to cite."
+}

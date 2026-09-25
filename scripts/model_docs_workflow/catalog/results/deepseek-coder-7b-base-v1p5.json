@@ -1,0 +1,44 @@
+{
+  "slug": "deepseek-coder-7b-base-v1p5",
+  "canonical": "deepseek-coder-7b-base-v1p5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-Coder-7B-Base-v1.5 is DeepSeek AI's second-generation base code model, produced by continuing to pre-train DeepSeek-LLM-7B-Base on 2 trillion tokens of code, math and natural-language data with a 4K-token context window and a next-token-prediction objective (no fill-in-the-middle). Compared with the original DeepSeek-Coder-Base 6.7B, DeepSeek's technical report shows a slight drop in HumanEval/MBPP coding scores but marked gains in math reasoning and general natural-language benchmarks. DeepSeek's current API no longer lists any DeepSeek-Coder v1 model.",
+    "advantages": [
+      "Scores 62.4% on GSM8K and 24.7% on MATH, up from 43.2% and 19.2% respectively for the original DeepSeek-Coder-Base 6.7B, per DeepSeek's technical report.",
+      "Scores 49.1% on MMLU, up from 36.6% for DeepSeek-Coder-Base 6.7B, per DeepSeek's technical report, reflecting stronger general natural-language ability.",
+      "Built by continuing pre-training from the general-purpose DeepSeek-LLM-7B-Base checkpoint, adding math- and natural-language-heavy data on top of code, per DeepSeek's technical report."
+    ],
+    "disadvantages": [
+      "A base model, not instruction-tuned, so it is built for code completion rather than chat-style dialogue.",
+      "Coding scores dip slightly versus the original 6.7B base: 43.2% vs. 44.7% on multilingual HumanEval and 60.4% vs. 60.6% on MBPP, per DeepSeek's technical report.",
+      "Uses only a 4K-token context window, narrower than the original DeepSeek-Coder-Base 6.7B's 16K window, per DeepSeek's technical report.",
+      "DeepSeek's own current API no longer lists any DeepSeek-Coder v1 model; available only as open weights or via third-party hosts such as Fireworks."
+    ],
+    "use_cases": [
+      "Code completion and autocomplete",
+      "Program-aided math reasoning tasks",
+      "Base model for further fine-tuning (e.g. DeepSeek-Coder-Instruct-v1.5)"
+    ],
+    "evaluations": [
+      {"name": "HumanEval (multilingual average)", "score": 43.2, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MBPP", "score": 60.4, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "GSM8K", "score": 62.4, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MATH", "score": 24.7, "source": "https://arxiv.org/abs/2401.14196"},
+      {"name": "MMLU", "score": 49.1, "source": "https://arxiv.org/abs/2401.14196"}
+    ],
+    "languages": ["English", "Chinese"],
+    "website_url": "https://huggingface.co/deepseek-ai/deepseek-coder-7b-base-v1.5",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/deepseek-ai/deepseek-coder-7b-base-v1.5", "title": "deepseek-ai/deepseek-coder-7b-base-v1.5 · Hugging Face", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2401.14196", "title": "DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/deepseek-coder-7b-base-v1p5", "title": "DeepSeek Coder 7B Base v1.5 - Fireworks AI", "kind": "host"},
+    {"url": "https://api-docs.deepseek.com/quick_start/pricing", "title": "Models & Pricing | DeepSeek API Docs", "kind": "maker"}
+  ],
+  "notes": "Catalog's 4096 max input/output tokens match both DeepSeek's paper (4K training window, Section 5) and Fireworks' listed context. DeepSeek's current API pricing page (checked 2026-09-24) no longer lists this or any DeepSeek-Coder v1 model."
+}

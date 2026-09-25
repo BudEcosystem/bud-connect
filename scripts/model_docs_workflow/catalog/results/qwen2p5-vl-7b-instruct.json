@@ -1,0 +1,47 @@
+{
+  "slug": "qwen2p5-vl-7b-instruct",
+  "canonical": "qwen2p5-vl-7b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-VL-7B-Instruct is a 7-billion-parameter vision-language model from Alibaba's Qwen team, released in January 2025 as the mid-size model in the Qwen2.5-VL family (3B, 7B, 32B, 72B). The Qwen team built it to read images, video and documents, generate structured outputs such as bounding boxes and JSON, and act as a visual agent for computer- and phone-use tasks, on top of a text chat model with a 128,000-token context window.",
+    "advantages": [
+      "Scores 95.7 on the DocVQA document-understanding benchmark (Qwen2.5-VL-7B-Instruct model card).",
+      "Scores 87.3 on the ChartQA chart-understanding benchmark (Qwen2.5-VL-7B-Instruct model card).",
+      "Scores 58.6 on the MMMU multimodal reasoning benchmark (Qwen2.5-VL-7B-Instruct model card).",
+      "Scores 68.2 on the MathVista testmini visual math-reasoning benchmark (Qwen2.5-VL-7B-Instruct model card).",
+      "Designed to comprehend videos over an hour long and pinpoint relevant segments with second-level timestamps (Qwen2.5-VL launch blog)."
+    ],
+    "disadvantages": [
+      "Catalog lists this deployment's modality as text input and text output only; the image and video understanding described on the model card may not be available through this route.",
+      "Alibaba has since released a newer Qwen3-VL vision-language series (models dated September-November 2025 on Hugging Face), and the Qwen2.5-VL GitHub repository has been renamed to Qwen3-VL."
+    ],
+    "use_cases": [
+      "Extracting structured data such as invoices and forms into JSON output",
+      "Visual agent tasks such as computer- and phone-use automation",
+      "Long-video understanding and event localization in videos over an hour long",
+      "Chart and document question answering",
+      "Object grounding by generating bounding boxes or points"
+    ],
+    "evaluations": [
+      {"name": "DocVQA", "score": 95.7, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"},
+      {"name": "ChartQA", "score": 87.3, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"},
+      {"name": "MMMU", "score": 58.6, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"},
+      {"name": "MathVista (testmini)", "score": 68.2, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"},
+      {"name": "MMBench-V1.1 (English test)", "score": 82.6, "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"}
+    ],
+    "languages": ["English"],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct", "title": "Qwen/Qwen2.5-VL-7B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen2p5-vl-7b-instruct", "title": "Qwen2.5-VL 7B Instruct - Fireworks AI", "kind": "host"},
+    {"url": "https://qwenlm.github.io/blog/qwen2.5-vl/", "title": "Qwen2.5-VL: Qwen team blog", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2.5-VL", "title": "QwenLM/Qwen2.5-VL (now redirects to QwenLM/Qwen3-VL) · GitHub", "kind": "maker"},
+    {"url": "https://huggingface.co/collections/Qwen/qwen3-vl", "title": "Qwen3-VL collection · Hugging Face", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list this deployment's modality as text_input/text_output only (no image_input), and endpoints as /v1/chat/completions, even though Qwen2.5-VL-7B-Instruct is natively a vision-language model and Fireworks' own host page for this model states it supports image input. Kept the catalog's text-only modality per instructions and flagged the mismatch as a disadvantage rather than describing vision as an available feature of this deployment. Context window: catalog and Fireworks host page both give 128,000 tokens, matching each other; the model's default config.json on Hugging Face is set to 32,768 tokens, which this write-up does not restate. github_url left null because the GitHub repository formerly named Qwen2.5-VL now displays as QwenLM/Qwen3-VL (a rename/redirect), so it no longer represents this specific model version; languages field left to just 'English' since that is the only language tag in the model card's metadata, though the model's OCR features are documented elsewhere as multilingual for text-in-image recognition."
+}

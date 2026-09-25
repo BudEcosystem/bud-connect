@@ -1,0 +1,59 @@
+{
+  "slug": "gemini-2.5-flash",
+  "canonical": "gemini-2.5-flash",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Gemini 2.5 Flash is Google DeepMind's price-performance model in the Gemini 2.5 family, entering preview on April 17, 2025 and reaching general availability on June 17, 2025. Google describes it as its first fully hybrid reasoning model: developers can toggle an internal 'thinking' step on or off and set a thinking budget, trading latency and cost against answer quality, while it natively handles text, image, audio and video input. As of Google's current model listing, access to the 2.5 series is now limited to accounts that used it before, and Google directs new projects to its newer Gemini 3 models instead.",
+    "advantages": [
+      "Google's first fully hybrid reasoning model, letting developers toggle thinking on or off and set a thinking budget from 0 to 24,576 tokens.",
+      "Google reports it performs strongly on Hard Prompts in the LMArena leaderboard, ranking second only to Gemini 2.5 Pro at launch.",
+      "Google positions it as offering the best price-to-performance ratio among its thinking models, keeping speeds comparable to Gemini 2.0 Flash even with thinking disabled.",
+      "Supports function calling and built-in tools such as Google Search and code execution."
+    ],
+    "disadvantages": [
+      "Google now limits access to prior users of the 2.5 model family and directs new projects to its newer Gemini 3 models.",
+      "Superseded within the same family's positioning by newer Gemini models that Google recommends for new work."
+    ],
+    "use_cases": [
+      "High-volume, low-latency chat and assistant applications that need reasoning",
+      "Tasks where developers want to tune the cost/latency/quality tradeoff via a thinking budget",
+      "Tool-using and agentic workflows via function calling, search grounding and code execution",
+      "Multimodal understanding combining text, image, audio and video input"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.googleblog.com/en/start-building-with-gemini-25-flash/",
+      "title": "Start building with Gemini 2.5 Flash - Google Developers Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://blog.google/products/gemini/gemini-2-5-model-family-expands/",
+      "title": "Gemini 2.5: Updates to our family of thinking models - Google Blog",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "title": "Gemini models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/thinking",
+      "title": "Gemini thinking | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "title": "Deprecated models | Gemini API | Google AI for Developers",
+      "kind": "maker"
+    }
+  ],
+  "notes": "No maker page I opened gave a specific numeric benchmark score (e.g. GPQA/SWE-bench/MMLU) for Gemini 2.5 Flash itself, only a qualitative LMArena ranking claim, so evaluations is left empty per the instruction to leave it empty rather than guess. Google's current models page (ai.google.dev/gemini-api/docs/models, checked 2026-09-24) states access to 2.5-series models is now limited to users who previously used them, and recommends new projects use its newer Gemini 3 models. CORRECTION: this is not consistent with the catalog's 2026-10-20 deprecation_date as previously noted here -- Google's own deprecations page (ai.google.dev/gemini-api/docs/deprecations, checked 2026-09-24) lists the `gemini-2.5-flash` model's shutdown date as 'No shutdown date announced', so Bud's catalog carries a firm future deprecation date that Google has not itself announced for this id. Could not find a maker page giving an exact knowledge-cutoff date for this model."
+}

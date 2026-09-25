@@ -1,0 +1,71 @@
+{
+  "slug": "qwen2-7b-instruct",
+  "canonical": "qwen2-7b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2-7B-Instruct is the instruction-tuned, 7.61-billion-parameter model in Alibaba Cloud's Qwen2 series, released June 7, 2024. Qwen's launch blog states the series was pretrained with a native 32K-token context, and this checkpoint can be extended up to 128K tokens using YaRN scaling. It targets language understanding and generation, coding, mathematics, and reasoning, with multilingual support for English, Chinese, and 27 additional languages, and is released under the Apache 2.0 license.",
+    "advantages": [
+      "Scores 70.5 on MMLU, a knowledge benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 79.9 on HumanEval, a coding benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 82.3 on GSM8K, a grade-school math benchmark, per Qwen's Qwen2 launch blog.",
+      "Scores 49.6 on MATH, a competition mathematics benchmark, per Qwen's Qwen2 launch blog.",
+      "Released under the Apache 2.0 license, permitting broad commercial use, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Superseded within Qwen's own lineup by the Qwen2.5 and newer Qwen3 model generations.",
+      "Scores well below its 72B-Instruct sibling on the same benchmarks (e.g. 70.5 vs. 82.3 on MMLU), reflecting its smaller size, per Qwen's launch blog."
+    ],
+    "use_cases": [
+      "General-purpose instruction following and chat",
+      "Code generation",
+      "Mathematical reasoning",
+      "Multilingual tasks across English, Chinese, and 27 additional languages"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU",
+        "score": 70.5,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "HumanEval",
+        "score": 79.9,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "GSM8K",
+        "score": 82.3,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      },
+      {
+        "name": "MATH",
+        "score": 49.6,
+        "source": "https://qwenlm.github.io/blog/qwen2/"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2-7B-Instruct",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2-7B-Instruct",
+      "title": "Qwen/Qwen2-7B-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2/",
+      "title": "Hello Qwen2",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen2-7b-instruct",
+      "title": "Qwen2 7B Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's 32,768 input/output token facts match Qwen's stated native 32K pretraining context and Fireworks' listed native context for this deployment; the 128K figure above is an optional YaRN extension, not the default served limit, so it is not treated as contradicting the catalog facts. Left out MT-Bench (8.41, per its Hugging Face card) since it is a 0-10 judge score, not a 0-100 accuracy figure. github.com/QwenLM/Qwen2 now redirects to the unrelated QwenLM/Qwen3 repository, so github_url is null. No maker page found declaring this model formally deprecated; 'superseded' reflects that Qwen's current org and docs pages no longer list Qwen2 models."
+}

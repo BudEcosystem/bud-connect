@@ -1,0 +1,31 @@
+{
+  "slug": "stable-creative-upscale-v1",
+  "canonical": "stable-creative-upscale-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Creative Upscale is one of Stability AI's Stable Image Services, offered through Amazon Bedrock as stability.stable-creative-upscale-v1:0. It takes an input image between 64x64 pixels and 1 megapixel and enlarges it to 4K resolution, an upscale of 20 to 40 times. Per AWS's documentation, it 'performs heavy reimagining' and 'works best on highly degraded images,' and is 'not for photos of 1 megapixel or above.' It takes an image and a required text prompt, with optional negative prompt, creativity, seed, output format, and style preset parameters.",
+    "advantages": [
+      "Can add and enhance detail during upscaling through an adjustable creativity parameter, per AWS's documentation.",
+      "Supports style presets such as anime, cinematic, and photographic to guide the reimagined output, per AWS's documentation."
+    ],
+    "disadvantages": [
+      "Not intended for photos already at 1 megapixel or above, per AWS's documentation, since it performs heavy reimagining rather than simple enlargement.",
+      "Works best on highly degraded images, per AWS's documentation, so results on already-clean images are less predictable."
+    ],
+    "use_cases": [
+      "Recovering and adding plausible detail when upscaling low-resolution or heavily degraded images.",
+      "Creative reinterpretation of an image at higher resolution guided by a text prompt and style preset."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/stable-image-services.html", "title": "Stability AI Image Services", "kind": "host"}
+  ],
+  "notes": "Stability AI's own developer docs (platform.stability.ai) are a JavaScript application that returned no readable content when fetched, so this write-up relies on AWS Bedrock's host documentation, which describes the same service and parameters in detail. website_url was left null because no maker page could be opened."
+}

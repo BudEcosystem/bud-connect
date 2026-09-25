@@ -1,0 +1,90 @@
+{
+  "slug": "universal-3-5-pro",
+  "canonical": "universal-3-5-pro",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "AssemblyAI",
+  "details": {
+    "description": "Universal-3.5 Pro is AssemblyAI's flagship pre-recorded (batch) speech-to-text model, built on an LLM-based decoder that AssemblyAI says targets higher accuracy on entities, rare words, and domain-specific terminology such as medication names and proper nouns. It supports 18 languages with native code-switching and automatic regional-dialect recognition, and AssemblyAI documents it as generally available. AssemblyAI positions it as the higher-accuracy option for the languages it covers, with the separate Universal-2 model handling additional languages outside that 18-language set.",
+    "advantages": [
+      "AssemblyAI reports a mean word error rate of 5.6% (median 4.9%) on English test sets spanning 26 datasets, versus 6.1% for Universal-2 on the same sets.",
+      "On the multilingual FLEURS benchmark, AssemblyAI reports 4.58% WER versus 7.42% for Universal-2.",
+      "AssemblyAI reports 1.52% WER on LibriSpeech Clean and 4.87% WER on CommonVoice.",
+      "AssemblyAI reports a hallucination rate about 30% lower than OpenAI's Whisper.",
+      "Supports keyterm prompting for up to 1,000 custom terms (versus 200 for Universal-2) and, exclusively among AssemblyAI's speech models, general natural-language prompting for up to 1,500 words via the prompt parameter.",
+      "Includes a medical-domain tuning mode ('medical-v1') that AssemblyAI says reduces missed entity rates on pharmaceutical names and clinical terminology by about 20% for English, Spanish, German, and French."
+    ],
+    "disadvantages": [
+      "Covers only 18 languages, versus Universal-2's 99+, so requests outside that set fall back to Universal-2.",
+      "Lacks Universal-2's native filler-word (disfluency) detection; AssemblyAI says similar behavior has to be achieved through prompting instead."
+    ],
+    "use_cases": [
+      "High-accuracy transcription for medical scribes, sales intelligence calls, and meeting notetakers, per AssemblyAI.",
+      "Transcription requiring accurate recognition of entities such as phone numbers, emails, addresses, and medication names.",
+      "Multilingual audio with code-switching across the model's 18 supported languages.",
+      "Domain-tuned medical transcription via the model's Medical Mode."
+    ],
+    "evaluations": [],
+    "languages": [
+      "English",
+      "Spanish",
+      "French",
+      "German",
+      "Italian",
+      "Portuguese",
+      "Arabic",
+      "Danish",
+      "Dutch",
+      "Finnish",
+      "Hebrew",
+      "Hindi",
+      "Japanese",
+      "Mandarin Chinese",
+      "Norwegian",
+      "Swedish",
+      "Turkish",
+      "Vietnamese"
+    ],
+    "website_url": "https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://www.assemblyai.com/docs/pre-recorded-audio/universal-3-5-pro",
+      "title": "Universal-3.5 Pro | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/llms/models.md",
+      "title": "AssemblyAI speech-to-text models reference (llms.md)",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/getting-started/models",
+      "title": "Models | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/pre-recorded-audio/select-the-speech-model",
+      "title": "Select the speech model | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/getting-started/supported-languages",
+      "title": "Supported languages | AssemblyAI Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/api-reference/transcripts/submit",
+      "title": "Create a transcript | AssemblyAI API Reference",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.assemblyai.com/docs/pre-recorded-audio/medical-mode",
+      "title": "Medical Mode | AssemblyAI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "WER and hallucination-rate figures come from AssemblyAI's machine-readable model reference (assemblyai.com/llms/models.md); the dedicated docs page itself gives only qualitative accuracy claims. The 18-language list collapses regional variants named on the language pages (e.g. Global/US/UK/AU English; Metropolitan/Canadian/Belgian French; multiple Spanish and Portuguese variants) into one entry per language, matching AssemblyAI's stated count of 18. Facts carry no deprecation_date, consistent with AssemblyAI documenting this model as GA. Verify pass: corrected the hallucination-rate comparison to name Whisper specifically (AssemblyAI's own reference states '30% lower than Whisper', not 'competing solutions'); clarified that natural-language prompting is exclusive to this model rather than merely larger than Universal-2's; removed the 'mutually exclusive prompting' disadvantage after finding no support for it in the model's docs page, the API reference, or the keyterms-prompting guide; confirmed the medical-v1 name and ~20% figure on AssemblyAI's dedicated Medical Mode page."
+}

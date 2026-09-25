@@ -1,0 +1,46 @@
+{
+  "slug": "gpt-oss-120b",
+  "canonical": "gpt-oss-120b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "gpt-oss-120b is OpenAI's larger open-weight reasoning model, released under an Apache 2.0 license in August 2025. It uses a mixture-of-experts transformer architecture with 117 billion total parameters and 5.1 billion active parameters per token, and is designed to fit on a single 80GB GPU (NVIDIA H100 or AMD MI300X) using native MXFP4 quantization of its MoE weights. The model supports low, medium and high reasoning-effort settings, exposes its full chain of thought, and is trained for agentic tool use including function calling, Python code execution and web browsing. It requires OpenAI's harmony response format to operate correctly.",
+    "advantages": [
+      "OpenAI reports gpt-oss-120b matches or exceeds OpenAI o4-mini on core reasoning benchmarks including competition coding, general problem solving and tool calling, per OpenAI's launch post.",
+      "Scores 90.0% on MMLU and 80.1% on GPQA Diamond at high reasoning effort, per OpenAI's gpt-oss model card (arXiv:2508.10925).",
+      "Scores 62.4% on SWE-bench Verified and 57.6% on HealthBench at high reasoning effort, per OpenAI's gpt-oss model card.",
+      "Fits on a single 80GB GPU using native MXFP4 quantization of the MoE weights, per OpenAI's Hugging Face model card.",
+      "Exposes full chain-of-thought reasoning for debugging and transparency, and supports adjustable reasoning effort (low, medium, high), per OpenAI's launch post."
+    ],
+    "disadvantages": [
+      "Requires OpenAI's harmony response format; OpenAI's model card states the model will not function correctly without it.",
+      "Reported knowledge cutoff of June 2024, per OpenAI's developer documentation.",
+      "Trained mostly on English, text-only data, per OpenAI's launch post."
+    ],
+    "use_cases": [
+      "Agentic workflows with function calling, Python code execution and web browsing",
+      "Production-scale reasoning and coding deployments on a single high-memory GPU",
+      "Custom fine-tuning for specialized or on-premises deployments",
+      "General-purpose chat and instruction-following with adjustable reasoning effort"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 90.0, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "GPQA Diamond", "score": 80.1, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "SWE-bench Verified", "score": 62.4, "source": "https://arxiv.org/abs/2508.10925"},
+      {"name": "HealthBench", "score": 57.6, "source": "https://arxiv.org/abs/2508.10925"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/openai/gpt-oss-120b",
+    "github_url": "https://github.com/openai/gpt-oss"
+  },
+  "sources": [
+    {"url": "https://openai.com/index/introducing-gpt-oss/", "title": "Introducing gpt-oss", "kind": "maker"},
+    {"url": "https://arxiv.org/abs/2508.10925", "title": "gpt-oss-120b & gpt-oss-20b Model Card", "kind": "maker"},
+    {"url": "https://huggingface.co/openai/gpt-oss-120b", "title": "openai/gpt-oss-120b", "kind": "maker"},
+    {"url": "https://developers.openai.com/api/docs/models/gpt-oss-120b", "title": "gpt-oss-120b - OpenAI API docs", "kind": "maker"},
+    {"url": "https://github.com/openai/gpt-oss", "title": "openai/gpt-oss", "kind": "maker"}
+  ],
+  "notes": "Catalog's max_input_tokens (131,072) matches the 128K context window OpenAI's launch post and model card describe. Catalog lists two max_output_tokens values (32768 and 65536) and OpenAI's own docs page separately states 131,072; since sources disagree on the exact output cap, no specific output-token number is stated in the description, per the catalog-is-authoritative rule. Benchmark scores are OpenAI's 'high reasoning effort, no tools' figures from Table 3 of the arXiv model card; with-tools variants score marginally higher on GPQA/AIME/HLE but were not used to avoid double-counting a near-duplicate metric."
+}

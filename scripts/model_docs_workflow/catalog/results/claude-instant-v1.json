@@ -1,0 +1,35 @@
+{
+  "slug": "claude-instant-v1",
+  "canonical": "claude-instant-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Instant v1 is Anthropic's original fast, lower-cost text model, offered on Amazon Bedrock under the static model ID anthropic.claude-instant-v1 rather than a dated snapshot. It supports a 100,000-token context window and an 8,000-token maximum output, with text-only input and output. It is a legacy model: Anthropic retired the Claude Instant model line from its Claude API on November 6, 2024, and Claude Instant no longer appears among the Anthropic models AWS currently documents for Amazon Bedrock.",
+    "advantages": [
+      "A faster, lower-cost variant of Anthropic's original Claude 1-era model line, built for lightweight conversational and text-processing tasks rather than maximum capability, per third-party Bedrock model listings (Portkey, CloudPrice)."
+    ],
+    "disadvantages": [
+      "Legacy, effectively end-of-life: Anthropic retired the Claude Instant model line from its Claude API on November 6, 2024, and Claude Instant no longer appears among the Anthropic models AWS currently documents for Amazon Bedrock.",
+      "Text-only: no image, audio, or video input or output.",
+      "No tool use, extended thinking, or vision, unlike Anthropic's current Claude models."
+    ],
+    "use_cases": [
+      "Chat-based conversational applications requiring quick, low-latency responses",
+      "Basic text content processing and generation tasks",
+      "Cost-sensitive workloads where lower latency and price matter more than maximum model capability"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": null,
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://portkey.ai/models/bedrock/anthropic.claude-instant-v1", "title": "anthropic.claude-instant-v1 | AWS Bedrock | AI Model Directory", "kind": "third_party"},
+    {"url": "https://cloudprice.net/models/bedrock/eu-central-1/6-month-commitment/anthropic.claude-instant-v1", "title": "Anthropic.Claude Instant V1 Pricing & Specs | AI Models | CloudPrice", "kind": "third_party"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-anthropic.html", "title": "Anthropic - Amazon Bedrock User Guide", "kind": "host"}
+  ],
+  "notes": "Status is inferred rather than directly confirmed for this exact Bedrock ID: Anthropic's deprecation history names 'claude-instant-1.0/1.1/1.2' (retired Nov 6, 2024), not 'claude-instant-v1' itself, and neither Anthropic nor AWS publishes a current dedicated model card for anthropic.claude-instant-v1 (a direct fetch of AWS's model-card page for it returned no content, and it is absent from AWS's current Anthropic model list, which now starts at Claude 3 Haiku). Description and use cases rely on third-party model-listing sites (Portkey, CloudPrice) rather than a maker or host page, since none could be found for this specific static model ID; their context window (100K) and max output (8K) figures match the catalog facts."
+}

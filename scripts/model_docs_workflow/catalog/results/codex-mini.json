@@ -1,0 +1,52 @@
+{
+  "slug": "codex-mini",
+  "canonical": "codex-mini",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "codex-mini is Azure OpenAI's hosting of OpenAI's codex-mini-latest, a fast reasoning model fine-tuned from o4-mini specifically for use in the Codex CLI; for general-purpose API use OpenAI's own docs recommend starting with GPT-4.1 instead. It takes text and image input, supports reasoning tokens, structured outputs and function/tool calling, and its training data runs through mid-2024. OpenAI removed the equivalent codex-mini-latest model from its own direct API on February 12, 2026, replacing it with gpt-5-codex-mini, though the Azure snapshot in this catalog is tracked separately.",
+    "advantages": [
+      "A fast reasoning model fine-tuned from o4-mini specifically for use in the Codex CLI (OpenAI codex-mini-latest model page).",
+      "Supports reasoning tokens, structured outputs and function/tool calling alongside text and image input (OpenAI codex-mini-latest model page).",
+      "Azure lists this snapshot's training data as current through May 31, 2024 (Microsoft Foundry models page)."
+    ],
+    "disadvantages": [
+      "OpenAI deprecated and removed the equivalent codex-mini-latest model from its own direct API on February 12, 2026, recommending gpt-5-codex-mini instead (OpenAI Deprecations page).",
+      "OpenAI recommends starting with GPT-4.1 rather than codex-mini-latest for direct API use outside the Codex CLI (OpenAI codex-mini-latest model page).",
+      "Narrow, CLI-focused model with a mid-2024 knowledge cutoff and no audio or video input (OpenAI codex-mini-latest model page)."
+    ],
+    "use_cases": [
+      "Fast reasoning assistance for code questions and tasks inside the Codex CLI",
+      "Agentic coding workflows that call functions or tools during a session"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/codex-mini-latest",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/codex-mini-latest",
+      "title": "codex-mini-latest Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Model retirement schedule - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    }
+  ],
+  "notes": "Confirmed the catalog's 2026-11-15 deprecation_date against Azure's Model retirement schedule, which lists codex-mini (2025-05-16) with Deprecated lifecycle status and a 2026-11-15 retirement date. OpenAI's direct API separately retired the equivalent codex-mini-latest model on 2026-02-12 (replacement: gpt-5-codex-mini), which Azure's current model page does not mention, so the two hosts are on different schedules. OpenAI's own model page states codex-mini-latest is usable only via the Responses API, while the catalog's endpoints list both /v1/chat/completions and /v1/responses; kept the catalog's endpoint list. max_input_tokens (200000) and max_output_tokens (100000) in facts match Azure's published figures for this snapshot."
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "gemini-flash-experimental",
+  "canonical": "gemini-flash-experimental",
+  "status": "insufficient_sources",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": null,
+  "details": null,
+  "sources": [],
+  "notes": "Could not find a maker or host page describing a Vertex AI Gemini model called 'gemini-flash-experimental'. Checked Google's current Gemini API models page (ai.google.dev/gemini-api/docs/models), its embeddings page (ai.google.dev/gemini-api/docs/embeddings, which lists only gemini-embedding-2 and gemini-embedding-001), its changelog, its deprecations page, and Vertex AI's model-versions docs (docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions); none mention this id, and the old Vertex AI doc page for a 2.0 Flash experimental alias (docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash-exp) now 404s. The catalog's own facts for this target (kind 'embedding', endpoint /v1/embeddings, max_output_tokens 8192) also don't match what 'Gemini Flash' models are (chat/generation models, not embedding models), which raises the GROUPING/identity question further: this id and these facts may not belong together. Returning insufficient_sources rather than guessing."
+}

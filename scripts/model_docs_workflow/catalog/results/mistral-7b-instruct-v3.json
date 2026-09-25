@@ -1,0 +1,46 @@
+{
+  "slug": "mistral-7b-instruct-v3",
+  "canonical": "mistral-7b-instruct-v3",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral 7B Instruct v0.3 is Mistral AI's third instruction-tuned release of Mistral 7B, published in May 2024. It is a 7.24-billion-parameter dense transformer that, per its Hugging Face model card, extends the vocabulary to 32,768 tokens with Mistral's v3 tokenizer and adds native function-calling support not present in v0.1 or v0.2. It supports a 32,768-token context length and is released under the Apache 2.0 license. Mistral AI's models overview lists Mistral 7B Instruct as deprecated and replaced by Ministral 3 8B, and lists Mistral 7B (v0.1-v0.3) with a deprecation date of November 30, 2024 and a retirement date of March 30, 2025.",
+    "advantages": [
+      "Adds native function-calling support, unlike Mistral 7B Instruct v0.1 and v0.2, per its Hugging Face model card.",
+      "Supports a 32,768-token context length with an extended v3 tokenizer vocabulary, per its Hugging Face model card.",
+      "Released under the Apache 2.0 license, permitting commercial use."
+    ],
+    "disadvantages": [
+      "Mistral states the model has no built-in moderation mechanisms.",
+      "Mistral AI's models overview (docs.mistral.ai/getting-started/models/) lists Mistral 7B Instruct as deprecated and replaced by Ministral 3 8B, and lists Mistral 7B (v0.1-v0.3) with a deprecation date of November 30, 2024 and a retirement date of March 30, 2025."
+    ],
+    "use_cases": [
+      "Conversational chat and instruction-following with tool/function calling",
+      "Agentic systems and structured prompt generation, per Fireworks' model page"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+      "title": "mistralai/Mistral-7B-Instruct-v0.3 \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://www.fireworks.ai/models/fireworks/mistral-7b-instruct-v3",
+      "title": "Mistral 7B Instruct v0.3 | Fireworks AI",
+      "kind": "host"
+    },
+    {
+      "url": "https://docs.mistral.ai/getting-started/models/",
+      "title": "Models Overview | Mistral AI Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog facts list max_input_tokens/max_output_tokens of 32768 with no deprecation_date, matching both the model's 32,768-token vocabulary/context figure and Fireworks' host page. No evaluation table was found on the Hugging Face page across repeat fetches, so evaluations was left empty. Mistral's own docs state the v0.1-v0.3 line is deprecated (11/30/2024) and retired (3/30/2025), which the catalog's empty deprecation_date does not reflect. Verify pass: the 'agentic systems and structured prompt generation' use case is not on the Hugging Face card (checked again); it is stated on Fireworks' model page for this id, already in sources, so the attribution was corrected to that page rather than removing the claim."
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "gemini-2.5-pro-preview-tts",
+  "canonical": "gemini-2.5-pro-preview-tts",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google DeepMind",
+  "details": {
+    "description": "Gemini 2.5 Pro Preview TTS is Google DeepMind's higher-tier text-to-speech model in the Gemini 2.5 family, intended for long-form content such as narrations, podcasts and audiobooks. It converts text, plus inline style directions, into spoken audio, and supports both single-speaker and multi-speaker output, though not voice design or voice replication, per its Gemini API model page. That page lists an 8,192-token input limit and a 16,384-token output limit. It remains a preview model; Google's current documentation limits access to the 2.5 model family to users who used it previously, and Google's deprecations page lists Gemini 3.1 Flash TTS Preview as the recommended replacement for this model.",
+    "advantages": [
+      "Supports both single-speaker and multi-speaker audio generation, per its Gemini API model page.",
+      "Supports controllable delivery -- style, accent, pace and tone -- via structured prompts and inline vocal tags, per Google's speech-generation documentation.",
+      "Supports Batch API access for speech generation, per its Gemini API model page."
+    ],
+    "disadvantages": [
+      "Does not support voice design or voice replication, per its Gemini API model page.",
+      "Remains a preview model; Google's current documentation limits access to users who used the 2.5 models before, and Google's deprecations page recommends Gemini 3.1 Flash TTS Preview as this model's replacement.",
+      "Its Gemini API model page lists an 8,192-token input limit, smaller than Gemini's general-purpose chat models.",
+      "No longer listed on Google DeepMind's current Gemini model overview page."
+    ],
+    "use_cases": [
+      "Long-form narration such as audiobooks and podcasts",
+      "Professional narration for structured creative workflows",
+      "Single-speaker and multi-speaker spoken-content generation"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts", "title": "Gemini 2.5 Pro Preview TTS | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/speech-generation", "title": "Speech generation | Gemini API", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/models", "title": "Gemini models | Gemini API", "kind": "maker"},
+    {"url": "https://deepmind.google/models/gemini/", "title": "Gemini models overview | Google DeepMind", "kind": "maker"},
+    {"url": "https://ai.google.dev/gemini-api/docs/deprecations", "title": "Deprecations | Gemini API", "kind": "maker"}
+  ],
+  "notes": "The catalog lists this target's kind as 'chat', but the model itself is a text-to-speech model; the description and lists above cover its actual TTS function. Its Gemini API model page (fetched 2026-09-24) lists 8,192 input / 16,384 output tokens; the catalog's facts also carry a larger 1,048,576 input / 65,535 output pair that I could not confirm on any maker page I opened, possibly reflecting a different provider's listing. No exact benchmark scores or a supported-language list were found on the pages I opened, so evaluations and languages are left empty. Verify pass: the model's own page has no 'limited access' notice, but the general models page groups it under the 'Gemini 2.5 Pro' family banner that does; Google's deprecations page (checked 2026-09-25) names Gemini 3.1 Flash TTS Preview, not Gemini 3.8 Flash TTS, as this model's specific recommended replacement, so that name was corrected in description and disadvantages."
+}

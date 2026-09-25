@@ -1,0 +1,55 @@
+{
+  "slug": "grok-build-0.1",
+  "canonical": "grok-build-0.1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "xAI",
+  "details": {
+    "description": "Grok Build 0.1 is the coding model behind xAI's Grok Build agent (an interactive TUI, a headless/scripted mode, and Agent Client Protocol integrations for IDEs and other tools), and is also reachable via the API under the aliases grok-code-fast-1, grok-code-fast, and grok-code-fast-1-0825. xAI first released it in August 2025 as grok-code-fast-1, a coding model trained from scratch on a programming-heavy pre-training corpus and post-trained on real-world pull requests and coding tasks, built to use tools like grep, terminal, and file editing. It has a 256K-token context window, accepts text and image input with text output, and supports function calling, structured outputs, and reasoning.",
+    "advantages": [
+      "Scored 70.8% on the full SWE-Bench-Verified subset using xAI's own internal evaluation harness (xAI grok-code-fast-1 launch post).",
+      "Versatile across the software development stack, with particular strength in TypeScript, Python, Java, Rust, C++, and Go (xAI grok-code-fast-1 launch post).",
+      "Built to use common agentic coding tools such as grep, terminal, and file editing (xAI grok-code-fast-1 launch post).",
+      "256K-token context window with function calling, structured outputs, and reasoning support (xAI model registry, docs.x.ai)."
+    ],
+    "disadvantages": [
+      "Accepts only text and image input with text output; no audio or video support.",
+      "The 70.8% SWE-Bench-Verified figure was measured with xAI's own internal harness rather than the standard public evaluation setup."
+    ],
+    "use_cases": [
+      "Agentic coding through the Grok Build CLI/TUI, headless scripts, or Agent Client Protocol (ACP) integrations",
+      "IDE and coding-tool integrations via Grok Build/ACP",
+      "Zero-to-one project scaffolding and codebase question-answering",
+      "Targeted bug fixes and everyday software-engineering tasks"
+    ],
+    "evaluations": [
+      {
+        "name": "SWE-Bench Verified",
+        "score": 70.8,
+        "source": "https://x.ai/news/grok-code-fast-1"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://x.ai/news/grok-code-fast-1",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://x.ai/news/grok-code-fast-1",
+      "title": "Grok Code Fast 1",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/build/overview",
+      "title": "Grok Build",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.x.ai/developers/models",
+      "title": "Grok Models & Pricing",
+      "kind": "maker"
+    }
+  ],
+  "notes": "xAI's docs (docs.x.ai) list this model under the name grok-build-0.1 with aliases grok-code-fast-1, grok-code-fast, and grok-code-fast-1-0825, and its client-side model registry gives a 256,000-token max prompt length and text+image input / text output, matching the catalog facts. The original grok-code-fast-1 launch post (Aug 2025) noted a multimodal, longer-context variant was 'already in training'; the current grok-build-0.1 entry (text+image in) appears to be that successor. xAI's docs/blog currently brand the company 'SpaceXAI' in page titles and body copy as of Sept 2026; I kept maker as 'xAI' for consistency with the catalog's provider id ('xai')."
+}

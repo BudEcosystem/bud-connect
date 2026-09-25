@@ -1,0 +1,30 @@
+{
+  "slug": "moonshot-v1-8k",
+  "canonical": "moonshot-v1-8k",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Moonshot AI",
+  "details": {
+    "description": "moonshot-v1-8k was one of the original chat-completions models in Moonshot AI's moonshot-v1 line, the smallest of three context-window tiers (8,192, 32,768 and 128,000 tokens) the company originally offered over a text-only endpoint. Moonshot AI's developer platform, now operating under the Kimi brand at platform.kimi.ai, discontinued the entire moonshot-v1 series on August 31, 2026 -- including moonshot-v1-8k, moonshot-v1-32k, moonshot-v1-128k, moonshot-v1-auto, and their vision-preview variants -- stating the models are no longer maintained or supported and directing developers to its current flagship model, kimi-k3.",
+    "advantages": [
+      "Was offered as the smallest-context tier of Moonshot AI's original moonshot-v1 line, alongside 32,768-token (moonshot-v1-32k) and 128,000-token (moonshot-v1-128k) siblings, per Moonshot AI's own model documentation."
+    ],
+    "disadvantages": [
+      "Moonshot AI discontinued moonshot-v1-8k, along with the rest of the moonshot-v1 series, on August 31, 2026, stating it is no longer maintained or supported and recommending kimi-k3 instead.",
+      "Text-only: no image input, unlike the series' own moonshot-v1-8k-vision-preview variant."
+    ],
+    "use_cases": [
+      "General-purpose text chat completions, as part of Moonshot AI's original moonshot-v1 conversational model line before its August 2026 retirement."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://platform.kimi.ai/docs/models",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://platform.kimi.ai/docs/models.md", "title": "Model List - Kimi Open Platform", "kind": "maker"},
+    {"url": "https://platform.kimi.ai/docs/platform-changelog.md", "title": "Kimi Open Platform Changelog", "kind": "maker"}
+  ],
+  "notes": "Catalog's deprecation_date fact is empty for this target, but Moonshot AI's own Model List and platform changelog (both fetched 2026-09-24) state the entire moonshot-v1 series, including this model, was discontinued on 2026-08-31 and that calls to it now return a 404 error. Moonshot AI's current documentation gives no description of this model's capabilities beyond its name, context window and deprecation status -- no source describing function calling, JSON mode or language support for it specifically could be found, so none is claimed here. Context window (8,192 tokens) matches the catalog facts."
+}

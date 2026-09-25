@@ -1,0 +1,54 @@
+{
+  "slug": "qwen-v2p5-7b",
+  "canonical": "qwen-v2p5-7b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen2.5-7B is the base, pretrained checkpoint in Alibaba Cloud's Qwen2.5 series, released September 19, 2024, with about 7.61 billion parameters. It is a foundation model rather than a chat model: Qwen's own model card states it does not recommend using base language models directly for conversations, and this checkpoint is intended for fine-tuning or continued pretraining. Qwen reports the Qwen2.5 series brings improved knowledge and stronger coding and mathematics ability over Qwen2, and multilingual support for over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, and Arabic. It is released under the Apache 2.0 license.",
+    "advantages": [
+      "Qwen's model card reports improved knowledge and stronger coding and mathematics ability for the Qwen2.5 series compared to Qwen2.",
+      "Supports over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, and Arabic, per Qwen's model card.",
+      "Released under the Apache 2.0 license, permitting broad commercial use, per Qwen's model card.",
+      "Scores 45 on the MMLU-Pro benchmark, per its Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Not instruction-tuned: Qwen's model card explicitly advises against using base language models directly for conversations.",
+      "Superseded within Qwen's own lineup by the newer Qwen3 and Qwen3.8 model generations."
+    ],
+    "use_cases": [
+      "Base checkpoint for supervised fine-tuning into custom chat or task-specific models",
+      "Few-shot prompting and text completion",
+      "Continued pretraining on domain-specific data"
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 45,
+        "source": "https://huggingface.co/Qwen/Qwen2.5-7B"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2.5-7B",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-7B",
+      "title": "Qwen/Qwen2.5-7B · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://qwenlm.github.io/blog/qwen2.5/",
+      "title": "Qwen2.5: A Party of Foundation Models!",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/qwen-v2p5-7b",
+      "title": "Qwen2.5 7B - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Fireworks' page for this exact deployment id labels it 'Base model' (not instruct) and lists a 131k-token context, matching the catalog's 131,072 input/output facts, confirming this uri is the base Qwen2.5-7B checkpoint despite the catalog's 'chat' kind. Catalog kind is 'chat' but the model itself is not instruction-tuned; description and use_cases reflect that. github.com/QwenLM/Qwen2.5 now redirects to the unrelated QwenLM/Qwen3 repository, so github_url is null. No maker page found declaring this model formally deprecated; 'superseded' reflects that Qwen's own current org and docs pages feature Qwen3/Qwen3.8 and no longer list Qwen2.5 models."
+}

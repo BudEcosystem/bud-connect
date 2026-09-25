@@ -1,0 +1,75 @@
+{
+  "slug": "deepseek-coder-v2-lite-instruct",
+  "canonical": "deepseek-coder-v2-lite-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-Coder-V2-Lite-Instruct is the instruction-tuned chat variant of DeepSeek's DeepSeek-Coder-V2-Lite code model, from DeepSeek AI. It is a 16-billion-parameter Mixture-of-Experts model with 2.4 billion active parameters per forward pass, built by further pretraining an intermediate DeepSeek-V2 checkpoint on 6 trillion additional tokens before instruction tuning, per DeepSeek's GitHub repository. It supports 338 programming languages, up from 86 in the original DeepSeek-Coder, and a 128,000-token context window per DeepSeek's documentation. DeepSeek's repository reports it performing competitively with closed models such as GPT-4 Turbo on coding and math benchmarks, at a fraction of the parameter count of DeepSeek-Coder-V2's full 236-billion-parameter version.",
+    "advantages": [
+      "Scores 81.1% on HumanEval, per DeepSeek's GitHub repository.",
+      "Scores 68.8% on MBPP+, per DeepSeek's GitHub repository.",
+      "Scores 86.4% on GSM8K, per DeepSeek's GitHub repository.",
+      "Supports 338 programming languages, expanded from 86 in the original DeepSeek-Coder, per DeepSeek's GitHub repository.",
+      "Uses a sparse Mixture-of-Experts architecture with only 2.4 billion active parameters out of 16 billion total, per DeepSeek's Hugging Face model card."
+    ],
+    "disadvantages": [
+      "Scores 0 out of 30 on AIME 2024, per DeepSeek's GitHub repository.",
+      "A smaller, lower-capacity variant of the 236-billion-parameter full DeepSeek-Coder-V2 model, per DeepSeek's GitHub repository."
+    ],
+    "use_cases": [
+      "Code generation and completion across 338 programming languages.",
+      "Mathematical reasoning tasks.",
+      "General-purpose instruction-following chat with a 128,000-token context window."
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval",
+        "score": 81.1,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "MBPP+",
+        "score": 68.8,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "GSM8K",
+        "score": 86.4,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "MATH",
+        "score": 61.8,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      },
+      {
+        "name": "LiveCodeBench",
+        "score": 24.3,
+        "source": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct",
+    "github_url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct",
+      "title": "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+      "title": "deepseek-ai/DeepSeek-Coder-V2 - GitHub",
+      "kind": "maker"
+    },
+    {
+      "url": "https://fireworks.ai/models/fireworks/deepseek-coder-v2-lite-instruct",
+      "title": "DeepSeek Coder V2 Lite Instruct - Fireworks AI",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens and max_output_tokens (163,840, identical for both) exceed DeepSeek's documented native context of 128,000 tokens; Fireworks' own page for this model also lists 163k in its specification section alongside a 128K headline figure. Kept catalog's values per instructions. LiveCodeBench score (24.3) is reported by DeepSeek without stating pass@1 vs pass@5; treated as an accuracy-style percentage consistent with the other benchmarks in the same table."
+}

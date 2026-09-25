@@ -1,0 +1,33 @@
+{
+  "slug": "dynamic-batch-recognition",
+  "canonical": "dynamic-batch-recognition",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Dynamic batching is a processing strategy for Google Cloud Speech-to-Text v2's batch (asynchronous) recognition, selected via the BatchRecognizeRequest processing_strategy field set to DYNAMIC_BATCHING. Google documents it as enabling lower-cost transcription in exchange for higher latency, and states it is only available for batch recognition of audio already stored in Cloud Storage, not for streaming or synchronous requests.",
+    "advantages": [
+      "Google documents dynamic batching as enabling lower-cost transcription compared to standard batch processing."
+    ],
+    "disadvantages": [
+      "Google documents dynamic batching as trading lower cost for higher latency.",
+      "Only available for batch (asynchronous) recognition of audio stored in Cloud Storage, not for streaming or synchronous recognition."
+    ],
+    "use_cases": [
+      "Cost-sensitive, non-time-sensitive transcription of long audio files stored in Cloud Storage"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/v2/docs/batch-recognize",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/batch-recognize",
+      "title": "Transcribe using batch recognition | Cloud Speech-to-Text V2",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This entry is a processing strategy/option of Speech-to-Text v2 batch recognition (DYNAMIC_BATCHING), not a distinct acoustic model with its own language list or accuracy figures; none were published on the source page, so evaluations and languages are left empty rather than guessed."
+}

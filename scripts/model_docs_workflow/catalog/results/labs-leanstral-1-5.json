@@ -1,0 +1,45 @@
+{
+  "slug": "labs-leanstral-1-5",
+  "canonical": "labs-leanstral-1-5",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Leanstral 1.5 is Mistral AI's open-weight model for formal verification and automated theorem proving in the Lean 4 proof assistant, released June 30, 2026 as the successor to the original Leanstral (v26.03), which Mistral has marked deprecated as of 5/22/2026 and is retiring 6/30/2026. It is a sparse mixture-of-experts model with 119 billion total parameters and 6 billion active parameters, licensed Apache 2.0, and is also offered as a free API endpoint. Mistral trained it through mid-training, supervised fine-tuning, and reinforcement learning with CISPO so it can act as an agentic proof-engineering assistant that edits files and runs bash commands using Lean language servers for feedback. On Mistral's own documentation (checked 2026-09-24) it carries a 'Public Preview' label rather than general availability.",
+    "advantages": [
+      "Saturates the miniF2F benchmark and solves 587 of 672 problems on PutnamBench, per Mistral's launch post.",
+      "Achieves a new state-of-the-art among tested models of 87% on FATE-H and 34% on FATE-X, per Mistral's launch post.",
+      "Lifts pass@1 on Mistral's open-sourced FLTEval benchmark from 21.9 to 28.9, and pass@8 from 31.9 to 43.2, versus the original Leanstral, per Mistral's launch post.",
+      "Operates autonomously in a raw filesystem, editing files and running bash commands with Lean language server feedback; Mistral reports it uncovered 5 previously unreported bugs across 57 tested repositories.",
+      "Openly licensed under Apache 2.0 with weights on Hugging Face, plus a free API endpoint, per Mistral's docs and launch post.",
+      "Supports function calling, structured outputs, and the Agents & Conversations API, per Mistral's model documentation."
+    ],
+    "disadvantages": [
+      "Labeled 'Public Preview' rather than generally available on Mistral's model documentation (checked 2026-09-24).",
+      "Narrowly specialized for Lean 4 formal verification and theorem proving rather than general-purpose chat or coding assistance.",
+      "Text-only, with no image input, per Bud's catalog facts."
+    ],
+    "use_cases": [
+      "Automated theorem proving and formal proof generation in Lean 4",
+      "Autoformalization of mathematical statements into Lean 4",
+      "Agentic verification of code properties against formal specifications",
+      "Bug discovery in existing codebases via formal proof techniques"
+    ],
+    "evaluations": [
+      {"name": "FATE-H", "score": 87, "source": "https://mistral.ai/news/leanstral-1-5/"},
+      {"name": "FATE-X", "score": 34, "source": "https://mistral.ai/news/leanstral-1-5/"},
+      {"name": "FLTEval pass@1", "score": 28.9, "source": "https://mistral.ai/news/leanstral-1-5/"},
+      {"name": "PutnamBench", "score": 87.4, "source": "https://mistral.ai/news/leanstral-1-5/"}
+    ],
+    "languages": [],
+    "website_url": "https://docs.mistral.ai/models/leanstral-1-5",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.mistral.ai/models/leanstral-1-5", "title": "Leanstral 1.5 - Mistral AI | Mistral Docs", "kind": "maker"},
+    {"url": "https://mistral.ai/news/leanstral-1-5/", "title": "Leanstral 1.5: Proof Abundance for All", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Mistral Docs", "kind": "maker"}
+  ],
+  "notes": "The docs page's click-to-copy API id is exactly 'labs-leanstral-1-5', matching this target's uri. Catalog facts (262144 max input / 131072 max output tokens) match the docs page's stated 256k context window. Parameter count differs slightly between Mistral's own pages: the launch post states '119B total and only 6B active parameters', while the docs page's meta description rounds active parameters to 6.5B; used the blog's 6B figure, which matches the model's Hugging Face repo naming ('119B-A6B'). PutnamBench's 587/672 (87.4%) figure was reached at a 4M-token-per-attempt budget; Mistral's own chart shows far fewer problems solved at smaller budgets (e.g. 44 at a 50k-token budget), so this score reflects a generous compute budget, not a fixed default. The deprecation table on the models-overview page confirms the original Leanstral (labs-leanstral-2603) is deprecated 5/22/2026 and retires 6/30/2026, replaced by this model."
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "stable-image-remove-background-v1",
+  "canonical": "stable-image-remove-background-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Stability AI",
+  "details": {
+    "description": "Stable Image Remove Background is an image-editing model from Stability AI that automatically detects and removes the background from an uploaded image, isolating the foreground subject. It needs only an image as input, with no text prompt or mask, and returns the edited image through Amazon Bedrock's InvokeModel API. Amazon Bedrock lists a model launch date of November 7, 2024 for this model. Amazon Bedrock currently lists its lifecycle as Active with no confirmed end-of-life date, though the model's originally stated 'no sooner than' retirement window of November 2025 has passed.",
+    "advantages": [
+      "AWS Bedrock's sample request for this model passes only a base64-encoded image, with no text prompt or mask parameter required."
+    ],
+    "disadvantages": [
+      "Performs only background removal and cannot generate new image content or replace or recolor objects, unlike Stability AI's other Stable Image edit models."
+    ],
+    "use_cases": [
+      "Isolating a product or portrait subject from its background for e-commerce or catalog photography.",
+      "Preparing an image with a clean subject cutout for compositing into a new scene.",
+      "Removing a background before applying a further edit, such as outpainting or a background replacement."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://stability.ai/stable-image",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-remove-background.md",
+      "title": "Stable Image Remove Background - Amazon Bedrock Model Card",
+      "kind": "host"
+    },
+    {
+      "url": "https://stability.ai/stable-image",
+      "title": "Stable Image - Stability AI",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Facts here are Bedrock-only (image_input/image_output/text_input modality, max_input_tokens 77); AWS's own sample request for this model uses only an image, no text prompt, so the text-input/token-limit facts may describe an optional parameter not shown in Bedrock's example. Bedrock's model card lists the model's lifecycle as Active with EOL date N/A, even though its originally stated 'no sooner than' end-of-life window (Nov 7, 2025) has already passed; no source states this model is deprecated or superseded."
+}

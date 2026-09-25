@@ -1,0 +1,42 @@
+{
+  "slug": "claude-sonnet-4-6",
+  "canonical": "claude-sonnet-4-6",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Anthropic",
+  "details": {
+    "description": "Claude Sonnet 4.6 is Anthropic's mid-tier Claude model, released February 17, 2026 as a full upgrade over Sonnet 4.5 in coding, computer use, long-context reasoning, agent planning, knowledge work and design. It is Anthropic's default model on Claude.ai and Claude Cowork for Free and Pro plan users, and supports adaptive extended thinking, vision, tool use and a 1-million-token context window in beta. Anthropic reports that in early Claude Code testing, users preferred it to Sonnet 4.5 roughly 70% of the time and to the larger Opus 4.5 59% of the time.",
+    "advantages": [
+      "Scores 79.6% on SWE-bench Verified, averaged over 10 trials with adaptive thinking at max effort (Anthropic Claude Sonnet 4.6 System Card).",
+      "Scores 72.5% on the OSWorld-Verified computer-use benchmark, a first-attempt success rate averaged over five runs (Anthropic Claude Sonnet 4.6 System Card).",
+      "Preferred over Sonnet 4.5 by users in early Claude Code testing roughly 70% of the time, and over Opus 4.5 59% of the time in the same testing (Anthropic launch post).",
+      "Supports a 1 million token context window in beta, with automated context compaction that summarizes older turns as the window fills (Anthropic launch post).",
+      "General availability of web search/fetch tools, code execution, memory and programmatic tool calling alongside adaptive thinking (Anthropic launch post)."
+    ],
+    "disadvantages": [
+      "Anthropic states it still lags behind the most skilled humans at using computers (Anthropic launch post).",
+      "Anthropic recommends its larger Opus 4.6 model instead for tasks demanding the deepest reasoning, such as codebase refactoring (Anthropic launch post)."
+    ],
+    "use_cases": [
+      "Software engineering and autonomous coding agents",
+      "Computer-use automation, e.g. navigating spreadsheets or filling out multi-step web forms",
+      "Long-horizon agentic planning and business simulation tasks",
+      "Enterprise document comprehension and knowledge work",
+      "Design tasks"
+    ],
+    "evaluations": [
+      {"name": "SWE-bench Verified", "score": 79.6, "source": "https://www.anthropic.com/claude-sonnet-4-6-system-card"},
+      {"name": "OSWorld-Verified", "score": 72.5, "source": "https://www.anthropic.com/claude-sonnet-4-6-system-card"}
+    ],
+    "languages": [],
+    "website_url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://www.anthropic.com/news/claude-sonnet-4-6", "title": "Introducing Sonnet 4.6", "kind": "maker"},
+    {"url": "https://platform.claude.com/docs/en/about-claude/model-deprecations", "title": "Model deprecations - Claude Platform Docs", "kind": "maker"},
+    {"url": "https://www.anthropic.com/claude-sonnet-4-6-system-card", "title": "System Card: Claude Sonnet 4.6", "kind": "maker"}
+  ],
+  "notes": "Anthropic's system card PDF did extract on a retry (via the redirect target at anthropic.com/claude-sonnet-4-6-system-card): its Table 2.1.A gives Claude Sonnet 4.6 79.6% on SWE-bench Verified and 72.5% on OSWorld-Verified, so evaluations and advantages are now sourced to that page instead of the DataCamp blog used previously. The same table cross-confirms Claude Sonnet 4.5's 77.2% SWE-bench Verified and 61.4% OSWorld-Verified scores used in the sibling claude-sonnet-4-5.json file. Catalog facts (1M max input tokens, no deprecation date, anthropic/bedrock/vertex_ai-anthropic_models providers) match what Anthropic's own model-deprecations table and launch post state; that table lists claude-sonnet-4-6 as Active with tentative retirement not sooner than February 17, 2027. The launch post only states Sonnet 4.6 is the default model in claude.ai and Claude Cowork for Free/Pro plans -- it does not say Claude Code defaults to it, so that claim was removed."
+}

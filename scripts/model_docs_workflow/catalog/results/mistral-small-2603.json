@@ -1,0 +1,33 @@
+{
+  "slug": "mistral-small-2603",
+  "canonical": "mistral-small-2603",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Mistral AI",
+  "details": {
+    "description": "Mistral Small 4 (API id mistral-small-2603) is an open-weight model Mistral AI released on March 16, 2026 that it describes as consolidating the strengths of three previously separate models -- Magistral's reasoning, Devstral's agentic coding, and Mistral Small's instruction-following -- into one hybrid model. It is a mixture-of-experts model with 128 experts (4 active per token), 119B total parameters (6B active per token, 8B including embedding and output layers), a 256k-token context window, and text-plus-image input. A configurable reasoning-effort setting lets the same model give fast, low-effort answers or deeper, higher-effort reasoning on a per-request basis. It is released under the Apache 2.0 license with open weights.",
+    "advantages": [
+      "Mistral AI reports a 40% reduction in end-to-end completion latency and 3x more requests per second versus Mistral Small 3 in latency- and throughput-optimized deployment setups.",
+      "Mistral AI reports the model outperforms GPT-OSS 120B on LiveCodeBench while producing 20% less output.",
+      "Supports a reasoning_effort parameter that trades off between fast, low-effort responses (comparable to Mistral Small 3.2) and deep, high-effort reasoning (matching prior Magistral verbosity) within a single model.",
+      "Released with open weights under the Apache 2.0 license, available via Hugging Face and NVIDIA NIM in addition to Mistral's own API."
+    ],
+    "disadvantages": [],
+    "use_cases": [
+      "General chat and instruction-following",
+      "Agentic coding tasks such as multi-step code generation and editing",
+      "Complex reasoning tasks with an adjustable reasoning-effort level",
+      "Document analysis and visual understanding via image input"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://mistral.ai/news/mistral-small-4/",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://mistral.ai/news/mistral-small-4/", "title": "Mistral Small 4", "kind": "maker"},
+    {"url": "https://docs.mistral.ai/getting-started/models/models_overview/", "title": "Models Overview - Mistral AI documentation", "kind": "maker"}
+  ],
+  "notes": "Mistral's own models-overview documentation lists mistral-small-2603 as the current API id for 'Mistral Small 4' (v26.03, Apache 2.0), matching the catalog's canonical name; the catalog's 262144-token input/output limits and image+text modality match the maker's stated 256k context window and multimodal input. The launch post gives an AA-LCR score of '0.72' for this model but never states whether that is a 0-1 fraction or a percentage, so it is left out of evaluations rather than converted to 72.0; no other numeric benchmark for this exact model (as opposed to relative claims like 'outperforms GPT-OSS 120B') was found on the maker's page. The maker states the model has 'multilingual support' but names no specific languages, so languages is left empty."
+}

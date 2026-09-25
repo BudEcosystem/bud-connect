@@ -1,0 +1,93 @@
+{
+  "slug": "google_speech-standard",
+  "canonical": "google_speech-standard",
+  "status": "ok",
+  "researched_on": "2026-09-25",
+  "method": "claude-code-subagent",
+  "maker": "Google",
+  "details": {
+    "description": "Google Cloud Text-to-Speech's Standard voices are the entry tier of Google's Cloud Text-to-Speech API. Many Standard voices use a variation of parametric text-to-speech technology, which Google describes as generating audio by passing output through vocoder-based signal processing. They sit alongside Google's newer WaveNet, Neural2, Studio and Chirp voice tiers; Google says WaveNet voices, for example, are built from models 'trained using raw audio samples of actual humans speaking.' Standard voices are offered across dozens of languages and locale variants in Google's supported voices table, remain generally available (GA), and support SSML markup for controlling pronunciation and pacing.",
+    "advantages": [
+      "Offered across dozens of languages and locale variants, per Google's supported voices and languages table.",
+      "Supports SSML markup to control pronunciation, pacing and pitch, and is listed as a generally available (GA) voice tier.",
+      "Can output audio as MP3 or LINEAR16 (WAV), for use in applications or to augment media such as videos and audio recordings."
+    ],
+    "disadvantages": [
+      "Many Standard voices use older parametric, vocoder-based synthesis; Google says its WaveNet-generated voices sound 'more warm and human-like' than other synthetic voices such as Standard.",
+      "Does not support real-time bidirectional streaming synthesis; among Cloud TTS voice tiers, only Chirp 3: HD voices offer that, per Google's voice type overview table."
+    ],
+    "use_cases": [
+      "Powering voice assistant apps that give users natural-language spoken feedback, such as confirming a completed action.",
+      "Augmenting media such as videos or audio recordings with spoken narration.",
+      "General-purpose text-to-speech for applications that play back human speech to users."
+    ],
+    "evaluations": [],
+    "languages": [
+      "Afrikaans",
+      "Arabic",
+      "Basque",
+      "Bengali",
+      "Bulgarian",
+      "Catalan",
+      "Chinese",
+      "Czech",
+      "Danish",
+      "Dutch",
+      "English",
+      "Estonian",
+      "Filipino",
+      "Finnish",
+      "French",
+      "Galician",
+      "German",
+      "Greek",
+      "Gujarati",
+      "Hebrew",
+      "Hindi",
+      "Hungarian",
+      "Icelandic",
+      "Indonesian",
+      "Italian",
+      "Japanese",
+      "Kannada",
+      "Korean",
+      "Latvian",
+      "Lithuanian",
+      "Malay",
+      "Malayalam",
+      "Marathi",
+      "Norwegian",
+      "Polish",
+      "Portuguese",
+      "Punjabi",
+      "Romanian",
+      "Russian",
+      "Serbian",
+      "Slovak",
+      "Spanish",
+      "Swedish",
+      "Tamil",
+      "Telugu",
+      "Thai",
+      "Turkish",
+      "Ukrainian",
+      "Urdu",
+      "Vietnamese"
+    ],
+    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types",
+      "title": "Supported voices and languages | Cloud Text-to-Speech | Google Cloud Documentation",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.cloud.google.com/text-to-speech/docs/basics",
+      "title": "Cloud Text-to-Speech basics | Google Cloud Documentation",
+      "kind": "maker"
+    }
+  ],
+  "notes": "google_speech/standard is Google Cloud Text-to-Speech's Standard voice tier, distinct from WaveNet, Neural2, Studio, Polyglot and Chirp voices. The 178-voices/~50-languages figures are counted directly from the rows marked 'Standard' in Google's current supported-voices table (not a single stated summary number). Google's voice type overview table lists Standard's launch stage as GA with no deprecation notice as of 2026-09-25. No accuracy-style benchmark scores are published by Google for any Cloud TTS voice tier, so evaluations is empty. Catalog facts (endpoints, audio_output/text_input modality) do not conflict with anything found. Voice and locale totals were removed in review: they were a hand count of Google's table, not a figure Google states."
+}

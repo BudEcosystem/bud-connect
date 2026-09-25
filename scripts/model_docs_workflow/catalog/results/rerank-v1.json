@@ -1,0 +1,35 @@
+{
+  "slug": "rerank-v1",
+  "canonical": "rerank-v1",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Rerank 1.0 (amazon.rerank-v1:0) is Amazon's own reranking model on Amazon Bedrock. It takes a query and a list of document chunks, scores each chunk's relevance to the query, and returns them reordered so that a Retrieval-Augmented Generation (RAG) pipeline can use fewer, more relevant results. It is called through Bedrock's dedicated Rerank API, or used automatically during Amazon Bedrock Knowledge Bases queries, and is not accessible directly through the AWS Management Console outside of a knowledge base query.",
+    "advantages": [
+      "A single Rerank API query can contain up to 100 document chunks, tracked in CloudWatch as the SearchUnits metric (AWS Bedrock documentation).",
+      "Integrates directly with Amazon Bedrock Knowledge Bases, where its results override the knowledge base's default relevance ranking for the Retrieve and RetrieveAndGenerate operations (AWS Bedrock documentation).",
+      "Can also be called directly through the standalone Rerank API outside of a knowledge base (AWS Bedrock documentation)."
+    ],
+    "disadvantages": [
+      "Reranking on Amazon Bedrock is supported for textual data only, per AWS's documentation."
+    ],
+    "use_cases": [
+      "Reranking retrieved documents by relevance in Retrieval-Augmented Generation (RAG) pipelines",
+      "Improving the relevance of Amazon Bedrock Knowledge Bases query results",
+      "Reducing the number of documents passed to a foundation model by keeping only the most relevant chunks, which AWS's documentation states can lower downstream generation cost and latency"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank.html",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank.html", "title": "Improve the relevance of query responses with a reranker model in Amazon Bedrock", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank-supported.html", "title": "Supported Regions and models for reranking in Amazon Bedrock", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank-pricing.html", "title": "Pricing and search units - Amazon Bedrock reranking", "kind": "maker"},
+    {"url": "https://docs.aws.amazon.com/bedrock/latest/userguide/rerank-use.html", "title": "Use a reranker model in Amazon Bedrock", "kind": "maker"}
+  ],
+  "notes": "Amazon publishes no dedicated model card, benchmark scores, or supported-language list for Amazon Rerank 1.0 specifically (unlike its Cohere Rerank 3.5 counterpart on the same page), so evaluations and languages are left empty rather than guessed; it also does not appear in Bedrock's general 'Models at a glance' provider listing, only in the reranking-specific documentation pages used above. Catalog facts list max_input_tokens and max_output_tokens as 32000 for this model; none of the pages opened stated a per-document or per-query token limit (only that a query may contain up to 100 document chunks), so the catalog's figures are left as-is and not restated as a claim from these sources. Per RESEARCH_PROMPT.md guidance, no relative-cost claim is made; the 'lower cost and latency' use case is attributed to AWS's own documentation rather than stated as fact."
+}

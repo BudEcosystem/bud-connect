@@ -1,0 +1,41 @@
+{
+  "slug": "azure-tts-hd",
+  "canonical": "azure-tts-hd",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Microsoft",
+  "details": {
+    "description": "Azure Speech's neural text-to-speech HD voices are a higher-quality voice tier within Microsoft's Azure AI Foundry Tools, built on large speech-generation base models called DragonHD and Dragon HD Omni. DragonHD offers more than 30 professionally fine-tuned voice personas, while Dragon HD Omni expands to 700+ voices with automatic emotion detection and multilingual support. Both automatically adjust tone and prosody to match the sentiment of the input text and stream with under-300ms real-time latency.",
+    "advantages": [
+      "Automatically detects emotion in input text and adjusts speaking tone and prosody in real time, without manual SSML tuning.",
+      "Dragon HD Omni offers more than 700 voices, including 300+ AI-generated personas, with automatic multilingual language detection.",
+      "Supports dozens of expressive style and paralinguistic tags (e.g. excited, whispering, sighing, laughter) via SSML or inline bracket tags, and Dragon HD Omni adds automatic style prediction from natural-language descriptions with more than 100 styles for the Ava and Andrew personas.",
+      "Real-time synthesis latency is under 300 ms, faster than Azure OpenAI's HD voices (greater than 500 ms) per Microsoft's own comparison table.",
+      "Dragon HD Omni supports word boundary events for precise word-level timing, useful for karaoke-style captioning and synchronized applications."
+    ],
+    "disadvantages": [
+      "HD voices support real-time synthesis only; unlike Azure's standard neural voices, they do not support batch/asynchronous synthesis.",
+      "HD voices support only a subset of SSML elements (e.g. no <prosody> or <emphasis>) that Azure's standard neural voices support in full.",
+      "Some DragonHD voices, including Andrew3, Ava3, and the MultiTalker Ava-Andrew persona, are still in preview."
+    ],
+    "use_cases": [
+      "Enterprise customer service voice applications requiring a consistent persona",
+      "Audiobook and podcast narration",
+      "Conversational voice assistants and interactive agents",
+      "Content creation requiring a wide variety of voice personas"
+    ],
+    "evaluations": [],
+    "languages": ["German", "English", "Spanish", "French", "Japanese", "Chinese"],
+    "website_url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/high-definition-voices",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/high-definition-voices",
+      "title": "What are neural text to speech HD voices? - Foundry Tools | Microsoft Learn",
+      "kind": "maker"
+    }
+  ],
+  "notes": "This catalog entry (azure/speech/azure-tts-hd) covers Azure's HD voice tier (DragonHD and Dragon HD Omni) as a group. The languages list reflects the locales explicitly named in the DragonHD voice table; Dragon HD Omni supports broader multilingual output via automatic language detection but the source gives only a voice count (700+), not a language list, for that model. The source's fixed SSML/bracket style-tag list totals under 70 tags for either model; the 'more than 100 styles' figure is specific to Dragon HD Omni's separate natural-language automatic style prediction feature on the Ava and Andrew personas, not the tag list, so the advantage sentence was corrected to avoid conflating the two."
+}

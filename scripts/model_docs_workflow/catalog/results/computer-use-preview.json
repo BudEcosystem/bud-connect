@@ -1,0 +1,69 @@
+{
+  "slug": "computer-use-preview",
+  "canonical": "computer-use-preview",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "OpenAI",
+  "details": {
+    "description": "computer-use-preview is OpenAI's specialized model behind its Computer-Using Agent (CUA) and Operator products, offered on Azure OpenAI in Microsoft Foundry as a limited-access preview. Given a task description and a screenshot of the current screen, it returns the next action -- such as a mouse click, keyboard input, or scroll -- for an application to carry out, so it is meant to be used through a computer-use tool rather than as a general chat model. Azure requires registration and grants access case-by-case against Microsoft's eligibility criteria. OpenAI's own model page lists a short 8,192-token context window, a 1,024-token max output, and a knowledge cutoff of October 1, 2023.",
+    "advantages": [
+      "OpenAI reports the underlying model achieved a 38.1% success rate on OSWorld for full computer-use tasks, 58.1% on WebArena and 87% on WebVoyager for web-based tasks (Microsoft Foundry model catalog, citing OpenAI).",
+      "Lets an agent operate an application's existing UI from screenshots and simulated mouse/keyboard actions, without a custom API integration for that application (Microsoft Foundry models page)."
+    ],
+    "disadvantages": [
+      "Limited-access preview: Azure requires registration and grants access based on Microsoft's eligibility criteria, and preview models can be retired with as little as two weeks' notice (Microsoft Foundry models page; OpenAI Deprecations page).",
+      "OpenAI's own model page lists a short 8,192-token context window and 1,024-token max output, with a knowledge cutoff of October 1, 2023 (OpenAI computer-use-preview model page).",
+      "OpenAI's documentation states the model cannot reliably ensure human-in-the-loop intervention, so developers must add their own safeguards against misuse (Microsoft Foundry model catalog).",
+      "A reported 38.1% success rate on OSWorld means most full computer-use tasks are not completed successfully (Microsoft Foundry model catalog, citing OpenAI)."
+    ],
+    "use_cases": [
+      "Computer-use agents that operate existing GUIs via screenshots and simulated mouse/keyboard actions",
+      "Web-based task automation in the style of the WebArena and WebVoyager benchmarks",
+      "Building agent applications through a computer-use tool"
+    ],
+    "evaluations": [
+      {
+        "name": "OSWorld",
+        "score": 38.1,
+        "source": "https://ai.azure.com/catalog/models/computer-use-preview"
+      },
+      {
+        "name": "WebArena",
+        "score": 58.1,
+        "source": "https://ai.azure.com/catalog/models/computer-use-preview"
+      },
+      {
+        "name": "WebVoyager",
+        "score": 87,
+        "source": "https://ai.azure.com/catalog/models/computer-use-preview"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://developers.openai.com/api/docs/models/computer-use-preview",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/models/computer-use-preview",
+      "title": "computer-use-preview Model | OpenAI API",
+      "kind": "maker"
+    },
+    {
+      "url": "https://ai.azure.com/catalog/models/computer-use-preview",
+      "title": "computer-use-preview | Model Catalog | Microsoft Foundry",
+      "kind": "host"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/models",
+      "title": "Foundry Models sold by Azure - Microsoft Foundry | Microsoft Learn",
+      "kind": "host"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "Deprecations | OpenAI API",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's modality is [text_input, text_output] only, but OpenAI's own model page and the Azure model catalog both describe this model as taking image (screenshot) input -- OpenAI's page lists 'Image Input only' alongside text input/output. Kept the catalog's modality list as authoritative and described the screenshot-driven behavior functionally, but flagging the conflict since it may be worth reviewing. Similarly, OpenAI's own page states the model is 'only usable in the Responses API', while the catalog's endpoints list is [/v1/chat/completions]; kept the catalog's endpoint. Could not confirm the 131,072/16,384-token context figures that a Microsoft Foundry catalog page summary suggested elsewhere -- they did not appear in a clean read of that page, so I used OpenAI's own clearly stated 8,192/1,024 figures instead. Catalog's facts list no deprecation_date; I found none published for this Azure snapshot specifically, though OpenAI's general deprecation policy treats preview models (naming computer-use-preview as an example) as retirable on short notice."
+}

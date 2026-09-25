@@ -1,0 +1,42 @@
+{
+  "slug": "qwen3.5-9b",
+  "canonical": "qwen3.5-9b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba Cloud)",
+  "details": {
+    "description": "Qwen3.5-9B is a 9-billion-parameter multimodal chat model from Alibaba's Qwen team, released February 2026 as part of the Qwen3.5 family. It accepts text and image input and combines Gated Delta Networks with a sparse Mixture-of-Experts and hybrid attention layers, natively supporting a 262,144-token context window that Qwen states is extensible to roughly 1,010,000 tokens via YaRN scaling. It runs in a 'thinking' reasoning mode by default (toggleable off), is released under the Apache 2.0 license, and Qwen states it supports 201 languages and dialects.",
+    "advantages": [
+      "Scores 82.5 on MMLU-Pro and 81.7 on GPQA Diamond, per the model's Hugging Face card.",
+      "Scores 91.5 on IFEval for instruction following, per the model's Hugging Face card.",
+      "Scores 70.1 on MMMU-Pro for multimodal reasoning, per the model's Hugging Face card.",
+      "Natively supports a 262,144-token context window, extensible to roughly 1,010,000 tokens via YaRN scaling, per the model's Hugging Face card.",
+      "Supports function calling and structured/JSON output, per Together AI's serverless-models documentation."
+    ],
+    "disadvantages": [
+      "Newly released (February 2026), with benchmark figures reported only by Qwen itself; no independent third-party evaluation was found."
+    ],
+    "use_cases": [
+      "Multimodal chat: text and image understanding",
+      "Long-document and long-context analysis, up to roughly 1M tokens",
+      "Tool use and function calling for agentic workflows",
+      "Multilingual conversation and instruction following"
+    ],
+    "evaluations": [
+      {"name": "MMLU-Pro", "score": 82.5, "source": "https://huggingface.co/Qwen/Qwen3.5-9B"},
+      {"name": "GPQA Diamond", "score": 81.7, "source": "https://huggingface.co/Qwen/Qwen3.5-9B"},
+      {"name": "IFEval", "score": 91.5, "source": "https://huggingface.co/Qwen/Qwen3.5-9B"},
+      {"name": "MMMU-Pro", "score": 70.1, "source": "https://huggingface.co/Qwen/Qwen3.5-9B"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3.5-9B",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3.5-9B", "title": "Qwen/Qwen3.5-9B · Hugging Face", "kind": "maker"},
+    {"url": "https://huggingface.co/Qwen/Qwen3.5-9B/raw/main/README.md", "title": "Qwen/Qwen3.5-9B README", "kind": "maker"},
+    {"url": "https://docs.together.ai/docs/serverless-models", "title": "Together AI Serverless Models", "kind": "host"}
+  ],
+  "notes": "Catalog's 262,144 max_input_tokens matches Qwen's stated native context window exactly; Qwen additionally claims extensibility to roughly 1,010,000 tokens via YaRN, which is not reflected in the catalog figure. Modality (image_input plus text) matches Qwen's own 'image-text-to-text' classification. Qwen's model card also describes video input support and reports a VideoMME benchmark score (84.5); the catalog's modality facts list image_input but not video_input, so the video-input claim and the VideoMME score were removed rather than claimed here. Languages were given only as a count (201 languages and dialects) by Qwen, so the languages list was left empty per instructions."
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "code-llama-13b-instruct",
+  "canonical": "code-llama-13b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Code Llama 13B Instruct is the instruction-tuned, 13-billion-parameter variant in Meta's Code Llama family, fine-tuned from the base model with the instruction-tuning dataset collected for Llama 2 Chat plus a self-instruct dataset, per Meta's Code Llama research paper. Meta describes the Instruct variant as intended to be safer to use for code-assistant and code-generation applications that need to follow natural-language instructions, rather than raw code completion. Like the rest of the family it is an auto-regressive transformer trained on 16k-token sequences, with Meta reporting improved handling of inputs up to 100,000 tokens.",
+    "advantages": [
+      "Scores 42.7% pass@1 on HumanEval, ahead of the same-size base model (36.0%), per Meta's Code Llama research paper (Table 2).",
+      "Fine-tuned to follow natural-language instructions, using the Llama 2 Chat instruction dataset plus a self-instruct dataset, per Meta's Code Llama research paper.",
+      "Meta positions it as safer for code-assistant and generation applications than the base or Python variants."
+    ],
+    "disadvantages": [
+      "Meta's model card states it is intended for commercial and research use in English and relevant programming languages.",
+      "Meta's own card warns \"the model may in some instances produce inaccurate or objectionable responses to user prompts,\" and asks developers to safety-test before deployment."
+    ],
+    "use_cases": [
+      "Natural-language-instructed code generation and code assistant applications",
+      "Conversational code explanation and debugging help",
+      "General code synthesis and understanding across supported programming languages"
+    ],
+    "evaluations": [
+      {
+        "name": "HumanEval pass@1",
+        "score": 42.7,
+        "source": "https://arxiv.org/abs/2308.12950"
+      },
+      {
+        "name": "MBPP pass@1",
+        "score": 49.4,
+        "source": "https://arxiv.org/abs/2308.12950"
+      }
+    ],
+    "languages": [
+      "English"
+    ],
+    "website_url": "https://huggingface.co/meta-llama/CodeLlama-13b-Instruct-hf",
+    "github_url": "https://github.com/facebookresearch/codellama"
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/meta-llama/CodeLlama-13b-Instruct-hf",
+      "title": "meta-llama/CodeLlama-13b-Instruct-hf \u00b7 Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://github.com/facebookresearch/codellama",
+      "title": "facebookresearch/codellama",
+      "kind": "maker"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.12950",
+      "title": "Code Llama: Open Foundation Models for Code (arXiv:2308.12950)",
+      "kind": "maker"
+    }
+  ],
+  "notes": "The huggingface.co/blog/codellama table (previously cited for the 50.6% HumanEval figure) is explicitly labeled on the page as sourced from Hugging Face's own multilingual code leaderboard, not from Meta's official release numbers, so it has been dropped per the verify pass's rule against a blog's own test runs. Meta's own paper (arXiv:2308.12950, Table 2) gives 42.7% HumanEval pass@1 and 49.4% MBPP pass@1 for Code Llama - Instruct 13B; on those correct figures Instruct 13B is actually slightly behind Code Llama - Python 13B (43.3%) on HumanEval, the reverse of what the leaderboard numbers implied, so the prior 'ahead of ... Python-specialized' comparison was removed rather than corrected. The 'self-instruct dataset' fine-tuning detail is stated in Meta's research paper (Section 2.5), not on the Hugging Face model card itself, so its citation was corrected accordingly. The maker's Hugging Face repo for this model now carries a 'non-official' notice pointing to the meta-llama org, so website_url and the maker source were updated to https://huggingface.co/meta-llama/CodeLlama-13b-Instruct-hf. Catalog facts (16384 max input/output tokens) are consistent with Fireworks' listed '16.3k tokens' context."
+}

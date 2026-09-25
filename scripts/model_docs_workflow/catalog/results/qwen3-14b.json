@@ -1,0 +1,36 @@
+{
+  "slug": "qwen3-14b",
+  "canonical": "qwen3-14b",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen",
+  "details": {
+    "description": "Qwen3-14B is a 14.8-billion-parameter (13.2B non-embedding) dense large language model from Alibaba's Qwen team, released in April 2025 as part of the Qwen3 family. It switches between a thinking mode for step-by-step reasoning on math, coding and logic tasks and a non-thinking mode for fast, general dialogue within a single model, and supports tool calling and agentic workflows through the Qwen-Agent framework. This deployment lists a 40,960-token context window and is multilingual.",
+    "advantages": [
+      "Switches between an explicit thinking mode and a fast non-thinking mode within a single model, controllable via an enable_thinking parameter or /think and /no_think commands (Qwen3-14B model card).",
+      "Supports tool calling and MCP-based agentic workflows via the Qwen-Agent framework (Qwen3-14B model card).",
+      "Qwen states Qwen3 models support over 119 languages and dialects (Qwen3 launch blog)."
+    ],
+    "disadvantages": [
+      "Smaller than Qwen3's largest dense (32B) and mixture-of-experts (e.g. 235B-A22B) siblings (Qwen3 GitHub repository)."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction following",
+      "Step-by-step reasoning for math, coding, and logic via thinking mode",
+      "Tool-calling and MCP-based agent workflows",
+      "Multilingual dialogue and translation"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen3-14B",
+    "github_url": "https://github.com/QwenLM/Qwen3"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen3-14B", "title": "Qwen/Qwen3-14B · Hugging Face", "kind": "maker"},
+    {"url": "https://fireworks.ai/models/fireworks/qwen3-14b", "title": "Qwen3 14B - Fireworks AI", "kind": "host"},
+    {"url": "https://qwenlm.github.io/blog/qwen3/", "title": "Qwen3: Think Deeper, Act Faster - Qwen blog", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen3", "title": "QwenLM/Qwen3 · GitHub", "kind": "maker"}
+  ],
+  "notes": "Qwen's own Qwen3-14B model card states a native context length of 32,768 tokens, extendable to 131,072 tokens with YaRN; the catalog facts and Fireworks' host page both instead list a 40,960-token window for this deployment, matching neither the native nor YaRN-extended figure. Kept the catalog's 40,960 value per instructions. The Qwen3 launch blog states 'Qwen3-1.7B/4B/8B/14B/32B-Base performs as well as Qwen2.5-3B/7B/14B/32B/72B-Base, respectively' -- this is a comparison of Base (pretrained-only) checkpoints, not the post-trained Qwen3-14B instruct/hybrid model this target represents, so it was left out of advantages to avoid mixing Base and Instruct results. Languages: blog gives only a count ('119 languages and dialects'), so the languages list is left empty and the count is in the description instead. No numeric instruct-level benchmark scores for Qwen3-14B were found on its model card, the launch blog, or the GitHub README, so evaluations is left empty."
+}

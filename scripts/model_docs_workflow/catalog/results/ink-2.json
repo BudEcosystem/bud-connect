@@ -1,0 +1,40 @@
+{
+  "slug": "ink-2",
+  "canonical": "ink-2",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cartesia",
+  "details": {
+    "description": "Ink-2 is Cartesia's streaming speech-to-text model built for real-time voice agents, launched July 9, 2026. Cartesia describes it as its fastest and most accurate streaming STT, with native turn detection so agents know when a caller has finished speaking without a separate voice-activity-detection step. It accurately transcribes structured data such as phone numbers, dates, and emails, and is currently offered for English, French, Hindi, Japanese, and Spanish with automatic language detection.",
+    "advantages": [
+      "Cartesia reports a 6.5% word error rate on live production calls, versus 9.2% for ElevenLabs Scribe and 9.4% for Deepgram in the same test.",
+      "On AppTek's 14-accent English benchmark, Cartesia reports an 8% word error rate for Ink-2, versus 10% for Deepgram Flux and 12% for ElevenLabs Scribe v2.",
+      "Native turn-detection events (turn.start, turn.eager_end, turn.end) use semantic endpointing that reads meaning rather than silence, so agents wait less and interrupt less.",
+      "Time-to-final-transcript of 0.1 seconds, with a turn.eager_end signal that lets an agent start generating a response before the final transcript is confirmed.",
+      "Natively parses structured data such as phone numbers, dates, and emails without extra post-processing.",
+      "Ranked #1 on Artificial Analysis's streaming speech-to-text leaderboard, per Cartesia."
+    ],
+    "disadvantages": [
+      "Only supports realtime/streaming transcription endpoints; Cartesia's own batch transcription endpoint uses the older Ink-Whisper model instead.",
+      "Covers five languages (English, French, Hindi, Japanese, Spanish) versus the 99 languages of Cartesia's older Ink-Whisper model."
+    ],
+    "use_cases": [
+      "Real-time conversational voice agents that need low-latency turn detection.",
+      "Customer support and call-center transcription.",
+      "Recruiting and interview voice agents.",
+      "Any live application needing structured-data-aware transcription (phone numbers, dates, emails)."
+    ],
+    "evaluations": [],
+    "languages": ["English", "French", "Hindi", "Japanese", "Spanish"],
+    "website_url": "https://docs.cartesia.ai/build-with-cartesia/stt/latest",
+    "github_url": null
+  },
+  "sources": [
+    {"url": "https://docs.cartesia.ai/build-with-cartesia/stt/latest", "title": "Ink 2 - Cartesia Docs", "kind": "maker"},
+    {"url": "https://cartesia.ai/blog/ink-2", "title": "Introducing Ink-2: The #1-ranked STT built for voice agents", "kind": "maker"},
+    {"url": "https://docs.cartesia.ai/use-the-api/stt/compare-endpoints", "title": "Compare STT endpoints - Cartesia Docs", "kind": "maker"},
+    {"url": "https://www.cartesia.ai/ink", "title": "Ink - Cartesia", "kind": "maker"}
+  ],
+  "notes": "The launch blog post (Jul 9, 2026) says Ink-2 shipped English-only with 'multilingual support on the way'; the current docs page now lists five languages, which I used as the current state per the catalog facts' guidance to prefer current pages. WER figures are Cartesia's own reported comparisons, not a named third-party leaderboard, so I kept them out of the evaluations list (word-error-rate is explicitly not an accuracy score) and put them in advantages instead. The dated snapshot referenced in Cartesia's docs is unspecified beyond 'Ink 2'; no deprecation or preview status was found for it."
+}

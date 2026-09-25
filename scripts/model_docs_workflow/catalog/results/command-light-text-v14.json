@@ -1,0 +1,43 @@
+{
+  "slug": "command-light-text-v14",
+  "canonical": "command-light-text-v14",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Cohere",
+  "details": {
+    "description": "Command Light is Cohere's smaller, faster sibling to its original Command model: an instruction-following text-generation model for conversational and summarization tasks, with a 4,000-token context window. On Amazon Bedrock it is offered as cohere.command-light-text-v14 under 1-month or 6-month commitment pricing. Cohere's own documentation marks both Command and Command Light as deprecated as of September 15, 2025, directing users to its current model lineup instead.",
+    "advantages": [
+      "Cohere describes it as 'a smaller, faster version of command', prioritizing speed over the larger Command model.",
+      "Responds well to instruction-like prompts and supports both Cohere's Chat and Summarize APIs, per Cohere's documentation."
+    ],
+    "disadvantages": [
+      "Cohere's documentation marks Command and Command Light as deprecated as of September 15, 2025.",
+      "4,000-token context window and 4,000-token max output are small next to current models.",
+      "Text only, per Cohere's documentation, which lists no vision or other modality support.",
+      "Not in Amazon Bedrock's current 'Models at a glance' listing, which as of September 2026 includes only Rerank 3.5, Command R, Command R+, and Cohere's embedding models, suggesting it has also reached end-of-life on Bedrock."
+    ],
+    "use_cases": [
+      "Conversational, instruction-following text generation, per Cohere's documentation.",
+      "Text summarization via Cohere's Summarize API, per Cohere's documentation.",
+      "Lower-latency applications where speed is prioritized over the larger Command model's quality, per Cohere's documentation."
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.cohere.com/docs/command-beta",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.cohere.com/docs/command-beta",
+      "title": "Cohere's Command and Command Light",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "title": "Models at a glance - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog lists no deprecation_date for this target, but Cohere's own docs state Command and Command Light were deprecated on September 15, 2025, and as of today (2026-09-24) neither model appears in Amazon Bedrock's current 'Models at a glance' listing, suggesting Bedrock access has also ended, though we found no Bedrock-specific EOL date or announcement to cite. No accuracy-style benchmark specific to Command Light was found on Cohere's maker pages, so evaluations is left empty."
+}

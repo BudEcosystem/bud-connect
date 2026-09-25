@@ -1,0 +1,42 @@
+{
+  "slug": "qwen2-vl-2b-instruct",
+  "canonical": "qwen2-vl-2b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Qwen (Alibaba)",
+  "details": {
+    "description": "Qwen2-VL-2B-Instruct is the smallest model in Alibaba's Qwen team's Qwen2-VL vision-language family, released August 2024 for instruction-following image and video understanding. It handles images at arbitrary resolutions via dynamic token mapping, processes videos over 20 minutes long, and is documented as a visual agent capable of operating mobile devices and robots.",
+    "advantages": [
+      "Scores 90.1 on DocVQA, a document visual-question-answering benchmark (Hugging Face model card).",
+      "Scores 79.7 on TextVQA (Hugging Face model card).",
+      "Scores 794 on OCRBench, an OCR benchmark (Hugging Face model card).",
+      "Documented agent capability to operate mobile devices and robots through visual reasoning (Hugging Face model card).",
+      "Processes videos longer than 20 minutes for video question answering (Hugging Face model card)."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of June 2023 (Hugging Face model card).",
+      "Hugging Face's model card notes weaker spatial reasoning and counting accuracy."
+    ],
+    "use_cases": [
+      "Document and OCR understanding",
+      "Video question answering over long videos",
+      "Visual agent workflows operating mobile device or robot interfaces",
+      "General multimodal image question answering"
+    ],
+    "evaluations": [
+      {"name": "MMMU", "score": 41.1, "source": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct"},
+      {"name": "DocVQA", "score": 90.1, "source": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct"},
+      {"name": "MathVista", "score": 43.0, "source": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct"},
+      {"name": "TextVQA", "score": 79.7, "source": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct"}
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct",
+    "github_url": "https://github.com/QwenLM/Qwen2-VL"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct", "title": "Qwen/Qwen2-VL-2B-Instruct · Hugging Face", "kind": "maker"},
+    {"url": "https://github.com/QwenLM/Qwen2-VL", "title": "QwenLM/Qwen2-VL", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list only text_input/text_output modality and a 32,768-token max input/output for this URI (fireworks_ai-embedding-models), while Qwen's own model card describes Qwen2-VL-2B-Instruct as an image- and video-input vision-language model; kept the catalog's facts per instructions and flag the modality mismatch here. The model's config.json lists max_position_embeddings as 32,768, matching the catalog's figure exactly, so context length is not actually in conflict. Removed the claim that Qwen2.5-VL-2B-Instruct is a newer version of this model: unlike the 7B and 72B siblings, this model's Hugging Face card carries no 'newer version' banner, no Qwen2.5-VL-2B-Instruct model exists on Hugging Face (Qwen2.5-VL shipped only 3B/7B/72B), and neither the QwenLM/Qwen2-VL GitHub README nor the Qwen2.5-VL launch blog states this model has been superseded. Also corrected the release date from September to August 2024: Qwen's own blog post announcing Qwen2-VL-2B and -7B is dated August 29, 2024, and the Hugging Face repo was created August 28, 2024 (the 72B repo followed in September). Language support is described on the model card only as 'English, Chinese, most European languages, Japanese, Korean, Arabic, Vietnamese, etc.' with no complete list or count, so languages was left empty."
+}

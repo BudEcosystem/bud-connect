@@ -1,0 +1,48 @@
+{
+  "slug": "nova-2-multimodal-embeddings",
+  "canonical": "nova-2-multimodal-embeddings",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Amazon",
+  "details": {
+    "description": "Amazon Nova Multimodal Embeddings, launched October 28, 2025 as part of the Nova 2 family, is Amazon's embedding model for agentic retrieval-augmented generation and semantic search. It maps images and audio into a single unified vector space so applications can run cross-modal vector search, and it offers four selectable output dimension sizes and asynchronous batch inference for large-scale jobs.",
+    "advantages": [
+      "Unifies image and audio into one semantic space, enabling cross-modal vector search from a single model (AWS Amazon Nova 2 user guide).",
+      "Offers four output dimension sizes -- 3072, 1024, 384 or 256 -- to trade off embedding accuracy against vector storage cost (AWS Amazon Nova 2 user guide).",
+      "Supports asynchronous batch inference with built-in segmentation for long audio inputs (AWS Amazon Nova 2 user guide)."
+    ],
+    "disadvantages": [
+      "Maximum context length is 8K tokens per input, or 30 seconds per audio segment (AWS Amazon Nova 2 user guide).",
+      "Does not support the Converse, Chat Completions or InvokeModel APIs; access on the bedrock-runtime endpoint is limited to the asynchronous StartAsyncInvoke API (AWS Bedrock model card)."
+    ],
+    "use_cases": [
+      "Semantic content retrieval and recommendation",
+      "Cross-modal search",
+      "Retrieval-augmented generation over multimodal content",
+      "Large-scale batch embedding of audio via the asynchronous API"
+    ],
+    "evaluations": [],
+    "languages": [],
+    "website_url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/embeddings.html",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/embeddings.html",
+      "title": "Using Amazon Nova embeddings - Amazon Nova 2 User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/nova/latest/nova2-userguide/whats-new.html",
+      "title": "What's new in Amazon Nova 2 - Amazon Nova 2 User Guide",
+      "kind": "maker"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-amazon-nova-multimodal-embeddings.html",
+      "title": "Amazon Nova Multimodal Embeddings model card - Amazon Bedrock",
+      "kind": "host"
+    }
+  ],
+  "notes": "Catalog facts list modality as audio_input, image_input only; the maker's own embeddings page additionally documents text, document and video input support. That gap is real, but the researched file had actually written text/documents/video into the description, two advantages and two use cases despite saying in this field that none of it was added -- those mentions were removed so the file matches its own stated approach; the gap is only flagged here now. Separately, the Bedrock model card's APIs-supported table marks InvokeModel as unsupported (only StartAsyncInvoke is checked) for this model, contradicting the file's disadvantage claim that InvokeModel is available and contradicting the synchronous invoke_model() code sample on the Nova 2 user guide's embeddings page; the model card was treated as authoritative for API support and the description's 'synchronous ... batch inference' claim was corrected to asynchronous-only accordingly. No MTEB or other accuracy-style benchmark scores were found on any page opened, so evaluations is empty."
+}

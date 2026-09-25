@@ -1,0 +1,54 @@
+{
+  "slug": "whisper",
+  "canonical": "whisper",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Deepgram",
+  "details": {
+    "description": "Whisper is Deepgram's hosted access to OpenAI's Whisper speech-to-text model family through Deepgram's Whisper Cloud. Deepgram's documentation states that Deepgram hosts and maintains these Whisper models itself, rather than proxying OpenAI's own API. When no size is specified, Deepgram defaults to the 769-million-parameter (medium) Whisper size, one of five sizes offered. Deepgram's Whisper Cloud supported-languages list enumerates around 99 language codes.",
+    "advantages": [
+      "Deepgram's Whisper Cloud documentation lists around 99 supported language codes, broader coverage than Deepgram's own Nova-tier legacy models.",
+      "Deepgram hosts and maintains the Whisper models itself rather than proxying OpenAI's API, per its documentation."
+    ],
+    "disadvantages": [
+      "Deepgram's documentation states Whisper models are \"less scalable than all other Deepgram models due to their inherent model architecture\" and recommends its Nova models where performance matters.",
+      "Requests are limited to 15 concurrent requests on a paid plan and 5 concurrent requests on the pay-as-you-go plan, per Deepgram's Whisper Cloud documentation.",
+      "Long audio files are supported only up to a maximum of 20 minutes of processing time.",
+      "No word-error-rate or other accuracy figures for this model were found on Deepgram's documentation."
+    ],
+    "use_cases": [
+      "Multilingual audio transcription where broad language coverage is needed"
+    ],
+    "evaluations": [],
+    "languages": [
+      "English", "Chinese", "German", "Spanish", "Russian", "Korean", "French", "Japanese", "Portuguese",
+      "Turkish", "Polish", "Catalan", "Dutch", "Arabic", "Swedish", "Italian", "Indonesian", "Hindi",
+      "Finnish", "Vietnamese", "Hebrew", "Ukrainian", "Greek", "Malay", "Czech", "Romanian", "Danish",
+      "Hungarian", "Tamil", "Norwegian", "Thai", "Urdu", "Croatian", "Bulgarian", "Lithuanian", "Latin",
+      "Maori", "Malayalam", "Welsh", "Slovak", "Telugu", "Persian", "Latvian", "Bengali", "Serbian",
+      "Azerbaijani", "Slovenian", "Kannada", "Estonian", "Macedonian", "Breton", "Basque", "Icelandic",
+      "Armenian", "Nepali", "Mongolian", "Bosnian", "Kazakh", "Albanian", "Swahili", "Galician", "Marathi",
+      "Punjabi", "Sinhala", "Khmer", "Shona", "Yoruba", "Somali", "Afrikaans", "Occitan", "Georgian",
+      "Belarusian", "Tajik", "Sindhi", "Gujarati", "Amharic", "Yiddish", "Lao", "Uzbek", "Faroese",
+      "Haitian Creole", "Pashto", "Turkmen", "Norwegian Nynorsk", "Maltese", "Sanskrit", "Luxembourgish",
+      "Burmese", "Tibetan", "Tagalog", "Malagasy", "Assamese", "Tatar", "Hawaiian", "Lingala", "Hausa",
+      "Bashkir", "Javanese", "Sundanese"
+    ],
+    "website_url": "https://developers.deepgram.com/docs/deepgram-whisper-cloud",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://developers.deepgram.com/docs/deepgram-whisper-cloud",
+      "title": "Getting Started with Deepgram Whisper Cloud",
+      "kind": "maker"
+    },
+    {
+      "url": "https://developers.deepgram.com/docs/model",
+      "title": "Model Options | Deepgram's Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Deepgram's supported-languages list for Whisper Cloud enumerates ~99 ISO codes (matching OpenAI Whisper's standard language set) rather than stating a count, so I listed them as English names per the 'up to about 100' rule rather than leaving the list empty. No WER or other benchmark figures were found on Deepgram's pages for this model; Deepgram explicitly says it does not publish accuracy figures for Whisper Cloud and instead points to scalability caveats. The catalog carries no deprecation_date."
+}

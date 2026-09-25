@@ -1,0 +1,44 @@
+{
+  "slug": "meta-llama-3.1-8b-instruct",
+  "canonical": "meta-llama-3.1-8b-instruct",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "Meta",
+  "details": {
+    "description": "Llama 3.1 8B Instruct is the smallest model in Meta's Llama 3.1 family, a dense auto-regressive transformer using grouped-query attention, instruction-tuned with supervised fine-tuning and RLHF for multilingual dialogue and released July 23, 2024. It was trained on roughly 15 trillion tokens of publicly available data with a knowledge cutoff of December 2023, and supports tool use across eight languages. As the family's smallest model, it scores lower than the 70B and 405B Llama 3.1 Instruct models on every benchmark Meta publishes, trading capability for lower resource requirements.",
+    "advantages": [
+      "Scores 69.4 on MMLU (5-shot), per Meta's Llama 3.1 8B Instruct model card.",
+      "Scores 72.6 pass@1 on HumanEval and 84.5% on GSM-8K with chain-of-thought prompting, per Meta's Llama 3.1 8B Instruct model card.",
+      "Scores 80.4 on IFEval, an instruction-following benchmark, per Meta's Llama 3.1 8B Instruct model card.",
+      "Scores 82.6 on the API-Bank tool-use benchmark, per Meta's Llama 3.1 8B Instruct model card."
+    ],
+    "disadvantages": [
+      "Knowledge cutoff of December 2023, per Meta's Llama 3.1 8B Instruct model card.",
+      "Scores substantially lower than the larger Llama 3.1 70B and 405B Instruct models on every published benchmark, per Meta's Llama 3.1 model cards, e.g. 69.4 vs. 83.6 and 87.3 on MMLU."
+    ],
+    "use_cases": [
+      "General-purpose chat and instruction-following where lower latency or cost matters",
+      "Multilingual conversational agents across eight supported languages",
+      "Lightweight coding assistance",
+      "Tool-use and agentic workflows"
+    ],
+    "evaluations": [
+      {"name": "MMLU", "score": 69.4, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"},
+      {"name": "HumanEval", "score": 72.6, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"},
+      {"name": "GSM-8K (CoT)", "score": 84.5, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"},
+      {"name": "ARC-Challenge", "score": 83.4, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"},
+      {"name": "GPQA", "score": 30.4, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"},
+      {"name": "IFEval", "score": 80.4, "source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"}
+    ],
+    "languages": ["English", "German", "French", "Italian", "Portuguese", "Hindi", "Spanish", "Thai"],
+    "website_url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+    "github_url": "https://github.com/meta-llama/llama-models"
+  },
+  "sources": [
+    {"url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct", "title": "meta-llama/Llama-3.1-8B-Instruct - Hugging Face", "kind": "maker"},
+    {"url": "https://ai.meta.com/blog/meta-llama-3-1/", "title": "Introducing Llama 3.1: Our most capable models to date", "kind": "maker"},
+    {"url": "https://github.com/meta-llama/llama-models", "title": "meta-llama/llama-models - GitHub", "kind": "maker"}
+  ],
+  "notes": "Catalog facts list max_input_tokens and max_output_tokens as 32,768 for this Hyperbolic-served deployment; Meta's own Hugging Face model card and launch blog state the model natively supports a 128K-token context window. Kept the catalog's value per instructions and flag the discrepancy here rather than in the description. No 'newer model' banner or deprecation notice was found on this model's Hugging Face card. Could not confirm Hyperbolic-specific details directly -- hyperbolic.xyz/hyperbolic.ai's docs and model-listing pages returned 404s or generic marketing content with no per-model page found, so only maker sources are cited."
+}

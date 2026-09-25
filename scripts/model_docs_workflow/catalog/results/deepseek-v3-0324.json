@@ -1,0 +1,77 @@
+{
+  "slug": "deepseek-v3-0324",
+  "canonical": "deepseek-v3-0324",
+  "status": "ok",
+  "researched_on": "2026-09-24",
+  "method": "claude-code-subagent",
+  "maker": "DeepSeek",
+  "details": {
+    "description": "DeepSeek-V3-0324 is DeepSeek's March 25, 2025 update to its DeepSeek-V3 chat model, per DeepSeek's own API changelog and release announcement. It keeps V3's Mixture-of-Experts architecture but brings, per that changelog, a significant boost in reasoning benchmarks, stronger front-end web-development code, improved Chinese writing, and better function-calling accuracy. Its Hugging Face model card lists MIT-licensed weights. DeepSeek's own changelog shows the deepseek-chat endpoint has since moved on through DeepSeek-V3.1, V3.1-Terminus and V3.2 to newer DeepSeek-V4 models.",
+    "advantages": [
+      "Scores 81.2 on MMLU-Pro, up from 75.9 for the original DeepSeek-V3, per DeepSeek's own changelog.",
+      "Scores 68.4 on GPQA-Diamond, up from 59.1 for DeepSeek-V3, per DeepSeek's own changelog.",
+      "Scores 59.4 on AIME, up from 39.6 for DeepSeek-V3, per DeepSeek's own changelog.",
+      "Scores 49.2 on LiveCodeBench, up from 39.2 for DeepSeek-V3, per DeepSeek's own changelog.",
+      "Improved front-end web-development code executability and Chinese writing quality over DeepSeek-V3, per DeepSeek's release announcement."
+    ],
+    "disadvantages": [
+      "DeepSeek's own changelog shows the deepseek-chat endpoint has since moved on to newer DeepSeek-V4 models, so this checkpoint is no longer served under that default alias.",
+      "Superseded five months later by DeepSeek-V3.1, per DeepSeek's own changelog.",
+      "Text only; no image or audio input or output."
+    ],
+    "use_cases": [
+      "General-purpose chat and text generation.",
+      "Front-end web development and code generation.",
+      "Function calling, JSON output and fill-in-the-middle code completion, per DeepSeek's release notes.",
+      "Chinese-language writing and search tasks."
+    ],
+    "evaluations": [
+      {
+        "name": "MMLU-Pro",
+        "score": 81.2,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324"
+      },
+      {
+        "name": "GPQA-Diamond",
+        "score": 68.4,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324"
+      },
+      {
+        "name": "AIME",
+        "score": 59.4,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324"
+      },
+      {
+        "name": "LiveCodeBench",
+        "score": 49.2,
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324"
+      }
+    ],
+    "languages": [],
+    "website_url": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
+    "github_url": null
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
+      "title": "deepseek-ai/DeepSeek-V3-0324 · Hugging Face",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/news/news250325",
+      "title": "DeepSeek-V3-0324 Release | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "Change Log | DeepSeek API Docs",
+      "kind": "maker"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "title": "Models & Pricing | DeepSeek API Docs",
+      "kind": "maker"
+    }
+  ],
+  "notes": "Catalog's max_input_tokens (32768, 163840) and max_output_tokens (32768, 163840) were not corroborated: neither the Hugging Face model card nor DeepSeek's release notes for this specific checkpoint state a context-length figure (the architecture is the same as DeepSeek-V3, whose own docs state 128K). Hugging Face's own metadata sidebar shows '685B params' for this model, versus 671B/37B-activated stated in DeepSeek-V3's model card and GitHub README for the shared base architecture; likely a difference in whether the multi-token-prediction module is counted, so no total-parameter figure is stated in the description. No separate GitHub repository for this checkpoint was found. Release date is DeepSeek's own changelog date (2025-03-24/25); the arXiv citation on the HF card is for the original December 2024 V3 technical report, not this update."
+}
