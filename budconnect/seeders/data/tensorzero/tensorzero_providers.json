@@ -251,6 +251,14 @@
                 "description": "Your Azure API key",
                 "required": true,
                 "order": 2
+            },
+            {
+                "field": "deployment_id",
+                "label": "Deployment Name",
+                "type": "text",
+                "description": "Azure OpenAI deployment name (optional). Set it only when it differs from the model name",
+                "required": false,
+                "order": 3
             }
         ],
         "capabilities": [
@@ -711,12 +719,36 @@
         "icon": "icons/providers/aws_polly.png",
         "credentials": [
             {
-                "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Amazon Polly API key. This vendor also needs AWS access key, secret and region, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "field": "aws_access_key_id",
+                "label": "AWS Access Key ID",
+                "type": "text",
+                "description": "Access key ID of the IAM user or role that calls Amazon Polly",
                 "required": true,
                 "order": 1
+            },
+            {
+                "field": "aws_secret_access_key",
+                "label": "AWS Secret Access Key",
+                "type": "password",
+                "description": "Secret access key paired with the access key ID",
+                "required": true,
+                "order": 2
+            },
+            {
+                "field": "aws_session_token",
+                "label": "AWS Session Token",
+                "type": "password",
+                "description": "Session token, only for temporary (STS) credentials (optional)",
+                "required": false,
+                "order": 3
+            },
+            {
+                "field": "aws_region_name",
+                "label": "AWS Region Name",
+                "type": "text",
+                "description": "AWS region to call Amazon Polly in, e.g. us-east-1",
+                "required": true,
+                "order": 4
             }
         ],
         "capabilities": [
@@ -730,12 +762,36 @@
         "icon": "icons/providers/aws_transcribe.png",
         "credentials": [
             {
-                "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Amazon Transcribe API key. This vendor also needs AWS access key, secret and region, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "field": "aws_access_key_id",
+                "label": "AWS Access Key ID",
+                "type": "text",
+                "description": "Access key ID of the IAM user or role that calls Amazon Transcribe",
                 "required": true,
                 "order": 1
+            },
+            {
+                "field": "aws_secret_access_key",
+                "label": "AWS Secret Access Key",
+                "type": "password",
+                "description": "Secret access key paired with the access key ID",
+                "required": true,
+                "order": 2
+            },
+            {
+                "field": "aws_session_token",
+                "label": "AWS Session Token",
+                "type": "password",
+                "description": "Session token, only for temporary (STS) credentials (optional)",
+                "required": false,
+                "order": 3
+            },
+            {
+                "field": "aws_region_name",
+                "label": "AWS Region Name",
+                "type": "text",
+                "description": "AWS region to call Amazon Transcribe in, e.g. us-east-1",
+                "required": true,
+                "order": 4
             }
         ],
         "capabilities": [
@@ -869,11 +925,27 @@
         "credentials": [
             {
                 "field": "api_key",
-                "label": "API Key",
-                "type": "password",
-                "description": "Google Cloud Speech API key. This vendor also needs a Google Cloud service account, which WaaV reads from its own gateway configuration — a key alone does not finish the setup, so check with your operator before deploying.",
+                "label": "Service account key (JSON)",
+                "type": "textarea",
+                "description": "Paste the full JSON key file of a Google Cloud service account (\"type\": \"service_account\")",
                 "required": true,
                 "order": 1
+            },
+            {
+                "field": "project_id",
+                "label": "Project ID",
+                "type": "text",
+                "description": "Google Cloud project ID (optional). Overrides the project in the service account key",
+                "required": false,
+                "order": 2
+            },
+            {
+                "field": "location",
+                "label": "Location",
+                "type": "text",
+                "description": "Speech-to-Text v2 location (optional). Empty means global; chirp_3 needs us or eu, chirp_2 a regional location such as us-central1",
+                "required": false,
+                "order": 3
             }
         ],
         "capabilities": [
