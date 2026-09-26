@@ -169,7 +169,10 @@ def test_credentials_array_is_a_renderable_form(providers, provider):
     for field in creds:
         for key in ("field", "label", "type", "required", "order"):
             assert key in field, f"{provider} credential {field.get('field')!r} is missing {key!r}"
-        assert field["type"] in {"password", "url", "string", "text"}, (
+        # `textarea` is what `vertex_ai-*` has always used for a pasted service-account key, and
+        # budapp's credential validator accepts it as a string. google_speech's key is the same
+        # kind of value, so it takes the same type rather than inventing a new one.
+        assert field["type"] in {"password", "url", "string", "text", "textarea"}, (
             f"{provider} credential {field['field']!r} has type {field['type']!r}, which budadmin has no input for"
         )
 
@@ -184,6 +187,204 @@ def test_vendor_secrets_are_password_fields(providers, provider):
     """
     api_key = next(f for f in providers[provider]["credentials"] if f["field"] == "api_key")
     assert api_key["type"] == "password", f"{provider}'s api_key must render masked"
+
+
+# --------------------------------------------------------------------------- #
+# Vendors whose whole credential is collected by the form (voice contract, 2026-09-26)
+#
+# `aws_polly`, `aws_transcribe` and `google_speech` used to ask for a single "API key" and say
+# the rest came from WaaV's own gateway configuration. Neither vendor HAS an API key: AWS signs
+# every request with an access key pair (SigV4), and Google Speech authenticates with a service
+# account. The one field the form collected could not authenticate anything, and the "operator
+# configures the rest" escape hatch meant every tenant ran as the gateway's cloud identity.
+# budapp now carries the real credential to WaaV per endpoint, so the form has to ask for it.
+# --------------------------------------------------------------------------- #
+
+AWS_VOICE_PROVIDERS = ["aws_polly", "aws_transcribe"]
+
+#: The names `bedrock` uses, in bedrock's order. budapp's `_pack_aws_credentials` reads
+#: `aws_access_key_id` / `aws_secret_access_key` / `aws_session_token` by exactly these names,
+#: and the region travels as `provider_params.region`. A new spelling here would be a field
+#: budapp never reads -- the credential would save and the endpoint would refuse to publish.
+AWS_VOICE_FIELDS = ["aws_access_key_id", "aws_secret_access_key", "aws_session_token", "aws_region_name"]
+
+#: Of those, the ones that are secrets and must render masked.
+AWS_SECRET_FIELDS = {"aws_secret_access_key", "aws_session_token"}
+
+#: Only the session token is optional: it exists for temporary (STS) credentials alone.
+AWS_OPTIONAL_FIELDS = {"aws_session_token"}
+
+#: Wording that sent users to an operator for the part of the credential the form did not
+#: collect. Matched case-insensitively.
+OWN_CONFIG_CLAIM = "from its own gateway configuration"
+
+#: Voice vendors whose credential form still carries that claim. A RATCHET, not an endorsement:
+#: each of these asks for one key where the vendor needs two or more, and each should get the
+#: treatment the three above got. Remove a vendor from this list when its form is fixed; never add
+#: one.
+PENDING_OWN_CONFIG_VENDORS = {
+    "baidu",
+    "bhashini",
+    "gnani",
+    "huawei_cloud",
+    "ibm_watson",
+    "iflytek",
+    "naver_clova",
+    "reverie",
+    "tencent",
+    "tinkoff",
+}
+
+
+def _creds_by_field(providers, provider):
+    return {f["field"]: f for f in providers[provider]["credentials"]}
+
+
+@pytest.mark.parametrize("provider", AWS_VOICE_PROVIDERS)
+def test_aws_voice_provider_collects_exactly_the_four_bedrock_named_fields(providers, provider):
+    """Access key pair, optional session token, region -- and no `api_key`."""
+    fields = [f["field"] for f in sorted(providers[provider]["credentials"], key=lambda f: f["order"])]
+    assert fields == AWS_VOICE_FIELDS, f"{provider} collects {fields}"
+    assert "api_key" not in fields, (
+        f"{provider} asks for an `api_key`; AWS has no such thing, and budapp would publish it as the "
+        "credential WaaV signs with"
+    )
+
+
+@pytest.mark.parametrize("provider", AWS_VOICE_PROVIDERS)
+def test_aws_voice_fields_match_bedrock(providers, provider):
+    """Same name, label, type and required-ness as bedrock.
+
+    budadmin and budapp then treat the two AWS forms identically. Descriptions may differ -- they
+    name the service being called.
+    """
+    bedrock = _creds_by_field(providers, "bedrock")
+    for name, field in _creds_by_field(providers, provider).items():
+        assert name in bedrock, f"{provider}.{name} is not a field bedrock has"
+        for key in ("label", "type", "required", "order"):
+            assert field[key] == bedrock[name][key], (
+                f"{provider}.{name} {key}={field[key]!r}, bedrock has {bedrock[name][key]!r}"
+            )
+
+
+@pytest.mark.parametrize("provider", AWS_VOICE_PROVIDERS)
+def test_aws_voice_secrets_are_password_fields_and_only_the_token_is_optional(providers, provider):
+    """Secrets render masked; everything but the STS session token is required."""
+    by_field = _creds_by_field(providers, provider)
+    for name in AWS_VOICE_FIELDS:
+        expected_type = "password" if name in AWS_SECRET_FIELDS else "text"
+        assert by_field[name]["type"] == expected_type, f"{provider}.{name} must be {expected_type}"
+        assert by_field[name]["required"] is (name not in AWS_OPTIONAL_FIELDS), (
+            f"{provider}.{name} required={by_field[name]['required']}"
+        )
+
+
+def test_google_speech_asks_for_a_service_account_key(providers):
+    """The whole service-account JSON, in the field budapp publishes as the credential."""
+    by_field = _creds_by_field(providers, "google_speech")
+    fields = [f["field"] for f in sorted(providers["google_speech"]["credentials"], key=lambda f: f["order"])]
+    assert fields == ["api_key", "project_id", "location"], fields
+
+    key = by_field["api_key"]
+    # Still `api_key`: it is the field budapp encrypts and publishes as the endpoint's credential.
+    assert key["type"] == "textarea", "a service-account key is a multi-line JSON document"
+    assert key["required"] is True
+    assert key["label"] == "Service account key (JSON)"
+    assert "service_account" in key["description"], "the form should say which kind of JSON it wants"
+
+
+def test_google_speech_project_and_location_are_optional_text(providers):
+    """Both have working defaults: the key names its own project, and WaaV defaults `global`."""
+    by_field = _creds_by_field(providers, "google_speech")
+    for name in ("project_id", "location"):
+        assert by_field[name]["type"] == "text", f"google_speech.{name} is not a secret"
+        assert by_field[name]["required"] is False, f"google_speech.{name} must stay optional"
+    # chirp_3 is served from the `us` and `eu` multi-regions only, so an empty location fails it;
+    # the form is the only place a user learns that before the first request does.
+    assert "chirp_3" in by_field["location"]["description"]
+
+
+@pytest.mark.parametrize("provider", AWS_VOICE_PROVIDERS + ["google_speech"])
+def test_a_fully_collected_credential_does_not_defer_to_the_operator(providers, provider):
+    """The form collects the whole credential now, so nothing may say otherwise."""
+    for field in providers[provider]["credentials"]:
+        description = field.get("description", "").lower()
+        assert OWN_CONFIG_CLAIM not in description, (
+            f"{provider}.{field['field']} still says WaaV reads the rest of the credential from its own "
+            "configuration; the form now collects all of it"
+        )
+        assert "check with your operator" not in description
+
+
+def test_no_new_vendor_defers_its_credential_to_the_operator(providers):
+    """The ratchet on PENDING_OWN_CONFIG_VENDORS: the list may shrink, never grow."""
+    claiming = {
+        provider
+        for provider, entry in providers.items()
+        if any(OWN_CONFIG_CLAIM in f.get("description", "").lower() for f in entry["credentials"])
+    }
+    unexpected = claiming - PENDING_OWN_CONFIG_VENDORS
+    assert not unexpected, (
+        f"{sorted(unexpected)} tell the user WaaV reads part of the credential from its own gateway "
+        "configuration. Collect the whole credential in the form instead."
+    )
+
+
+def test_every_catalog_entry_builds_the_seeders_provider_schema(providers):
+    """Build each entry exactly as `TensorZeroSeeder.seed` does, through the same schema.
+
+    The per-key checks above cannot see a value `ProviderCreate` rejects -- an unknown capability,
+    a credentials list that is not a list of objects -- and the seeder raises on the first one,
+    aborting the run for every provider after it.
+    """
+    from budconnect.model.schemas import ProviderCreate
+
+    for provider_type, entry in providers.items():
+        ProviderCreate(
+            name=entry["name"],
+            provider_type=provider_type,
+            icon=entry["icon"],
+            description=entry["description"],
+            credentials=entry["credentials"],
+            capabilities=entry["capabilities"],
+        )
+
+
+def test_a_reseed_rewrites_an_existing_providers_credentials(providers):
+    """Why changing a credential form needs no migration.
+
+    The seeder upserts providers through `ProviderCRUD.upsert` on `provider_type`, and the SET
+    clause carries every column it inserts -- `credentials` included -- so the next startup seed or
+    24h `/cron-tensorzero-sync` replaces the stored form. Drives the real method with a session
+    that only records the statement, then compiles it for postgres; no database. If the upsert ever
+    narrows its SET clause, a changed form would reach new installs only.
+    """
+    from unittest.mock import MagicMock
+    from uuid import uuid4
+
+    from sqlalchemy.dialects import postgresql
+
+    import budconnect.commons  # noqa: F401  -- must precede model.crud (circular import)
+    from budconnect.model.crud import ProviderCRUD
+    from budconnect.model.schemas import ProviderCreate
+
+    entry = providers["aws_polly"]
+    row = ProviderCreate(
+        name=entry["name"],
+        provider_type="aws_polly",
+        icon=entry["icon"],
+        description=entry["description"],
+        credentials=entry["credentials"],
+        capabilities=entry["capabilities"],
+    ).model_dump()
+
+    session = MagicMock()
+    session.execute.return_value.first.return_value = (uuid4(),)
+    ProviderCRUD().upsert(data=row, conflict_target=["provider_type"], session=session)
+
+    stmt = session.execute.call_args.args[0]
+    on_conflict = str(stmt.compile(dialect=postgresql.dialect())).split("ON CONFLICT", 1)[1]
+    assert "credentials =" in on_conflict, "a re-seed would leave an existing provider's old credential form"
 
 
 # --------------------------------------------------------------------------- #
