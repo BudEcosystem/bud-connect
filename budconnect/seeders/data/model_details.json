@@ -87051,67 +87051,7 @@
     ],
     "website_url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation"
   },
-  "gladia/async": {
-    "advantages": [
-      "Supports 100+ languages with automatic mid-sentence code-switching using the default Solaria-1 model.",
-      "Offers an optional Solaria-3 model that Gladia positions as its highest-accuracy option for English, French, German, Spanish and Italian audio.",
-      "Gladia reports a 33.9% word error rate on the Switchboard conversational benchmark, which it states is the lowest among the providers it tested.",
-      "Built-in speaker diarization lets a caller fix the exact speaker count or set a minimum/maximum via diarization_config.",
-      "Bundles audio-intelligence add-ons (translation, summarization, named entity recognition, sentiment analysis, PII redaction, custom vocabulary) in the same request."
-    ],
-    "architecture": null,
-    "description": "Gladia's asynchronous (batch) speech-to-text API for pre-recorded audio and video, such as call recordings, meetings and podcasts. A file is uploaded and Gladia returns a full transcript, with optional speaker diarization, translation, summarization and other audio-intelligence add-ons in the same call. By default it runs on Gladia's Solaria-1 model, which covers 100+ languages with mid-sentence code-switching; the higher-accuracy Solaria-3 model can be selected instead but is restricted to English, French, German, Spanish and Italian, one language per request.",
-    "disadvantages": [
-      "Processes only pre-recorded files uploaded by URL; it is not a live/streaming transcription mode.",
-      "The higher-accuracy Solaria-3 model accepts only one language per request, with no code-switching, and covers just five languages."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "async",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Gladia",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Async / pre-recorded speech-to-text - Gladia",
-          "url": "https://www.gladia.io/product/async-transcription"
-        },
-        {
-          "kind": "maker",
-          "title": "Pre-recorded transcription API reference - Gladia docs",
-          "url": "https://docs.gladia.io/api-reference/v2/pre-recorded/init"
-        },
-        {
-          "kind": "maker",
-          "title": "Solaria speech-to-text model - Gladia",
-          "url": "https://www.gladia.io/solaria"
-        },
-        {
-          "kind": "maker",
-          "title": "Gladia - Speech-to-Text API",
-          "url": "https://www.gladia.io/"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing meeting and call recordings",
-      "Contact-center quality assurance and compliance review",
-      "Sales call analysis",
-      "Podcast and media transcription"
-    ],
-    "website_url": "https://www.gladia.io/product/async-transcription"
-  },
-  "gladia/real-time": {
+  "gladia/solaria-1": {
     "advantages": [
       "Gladia states it returns partial transcripts in under 103ms, with sub-300ms end-to-end latency.",
       "Covers 100+ languages via ISO 639-1 codes with automatic language detection.",
@@ -87127,7 +87067,7 @@
     ],
     "evaluations": [],
     "extraction_metadata": {
-      "canonical": "real-time",
+      "canonical": "solaria-1",
       "evaluation_sources": {},
       "extraction_date": "2026-09-24",
       "method": "claude-code-subagent",
@@ -87258,29 +87198,38 @@
     ],
     "website_url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd"
   },
-  "google_speech/dynamic-batch-recognition": {
+  "google_speech/chirp_2": {
     "advantages": [
-      "Google documents dynamic batching as enabling lower-cost transcription compared to standard batch processing."
+      "Speech translation: Google documents automatic translation from the spoken language to a target language.",
+      "Word-level timestamps can be enabled.",
+      "BatchRecognize handles long audio, from one minute up to eight hours.",
+      "Speech adaptation and a denoiser with SNR filtering are supported."
     ],
     "architecture": null,
-    "description": "Dynamic batching is a processing strategy for Google Cloud Speech-to-Text v2's batch (asynchronous) recognition, selected via the BatchRecognizeRequest processing_strategy field set to DYNAMIC_BATCHING. Google documents it as enabling lower-cost transcription in exchange for higher latency, and states it is only available for batch recognition of audio already stored in Cloud Storage, not for streaming or synchronous requests.",
+    "description": "Chirp 2 is a multilingual ASR-specific model in Google Cloud Speech-to-Text V2, which Google describes as the Universal large Speech Model (USM) powered by its large language model technology, providing transcription and translation. It supports StreamingRecognize, Recognize (audio under one minute) and BatchRecognize (one minute to eight hours), and adds word-level timestamps and speech translation.",
     "disadvantages": [
-      "Google documents dynamic batching as trading lower cost for higher latency.",
-      "Only available for batch (asynchronous) recognition of audio stored in Cloud Storage, not for streaming or synchronous recognition."
+      "Regional: Google's Chirp 2 page lists it in `us-central1`, `europe-west4` and `asia-southeast1`.",
+      "StreamingRecognize supports a smaller set of languages than BatchRecognize.",
+      "Google's documentation lists speaker diarization as not supported."
     ],
     "evaluations": [],
     "extraction_metadata": {
-      "canonical": "dynamic-batch-recognition",
+      "canonical": "chirp_2",
       "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
+      "extraction_date": "2026-09-26",
       "method": "claude-code-subagent",
       "model_metadata": {},
       "provider": "Google",
       "sources": [
         {
           "kind": "maker",
-          "title": "Transcribe using batch recognition | Cloud Speech-to-Text V2",
-          "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/batch-recognize"
+          "title": "Chirp 2 model - Cloud Speech-to-Text V2 documentation",
+          "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/chirp_2-model"
+        },
+        {
+          "kind": "maker",
+          "title": "Transcription models - Cloud Speech-to-Text V2 documentation",
+          "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/transcription-model"
         }
       ]
     },
@@ -87292,172 +87241,55 @@
     "tags": [],
     "tasks": [],
     "use_cases": [
-      "Cost-sensitive, non-time-sensitive transcription of long audio files stored in Cloud Storage"
+      "Transcription with word-level timestamps, such as subtitling",
+      "Speech translation of recorded audio",
+      "Long-form batch transcription of recordings up to eight hours"
     ],
-    "website_url": "https://docs.cloud.google.com/speech-to-text/v2/docs/batch-recognize"
+    "website_url": "https://docs.cloud.google.com/speech-to-text/v2/docs/chirp_2-model"
   },
-  "google_speech/instant-custom-voice": {
+  "google_speech/chirp_3": {
     "advantages": [
-      "Clones a voice from as little as up to 10 seconds of reference audio, according to Google's documentation.",
-      "Supports 25 languages, including multiple English and French locale variants, German, Chinese, Japanese, Korean, Arabic, Russian and several Indian regional languages, per Google's documentation.",
-      "Multilingual transfer lets an en-US voice cloning key synthesize speech in German, Spanish, French and Portuguese.",
-      "Supports text-based prompting, pace control from 0.25x to 2x speed, pause tags, and custom pronunciation via phonetic encoding."
+      "Supported on all three Speech-to-Text V2 recognition methods: StreamingRecognize, Recognize and BatchRecognize.",
+      "Language-agnostic transcription: Google documents automatic detection of the spoken language.",
+      "Speech adaptation accepts phrase or word hints to improve recognition of domain-specific terms.",
+      "A built-in denoiser can clean audio before it reaches the model."
     ],
     "architecture": null,
-    "description": "Chirp 3: Instant Custom Voice is a Google Cloud Text-to-Speech feature that clones a voice from a short audio sample and lets that cloned voice be used to synthesize new speech from text. Google's documentation describes providing up to 10 seconds of clean, single-channel consent and reference audio, from which the service generates a text-string 'voice cloning key' that can later be used to synthesize speech. Access is restricted to allow-listed users, who must contact Google's sales team.",
+    "description": "Chirp 3 is, per Google, the latest generation of its multilingual Automatic Speech Recognition (ASR)-specific generative models, offered through the Cloud Speech-to-Text V2 API. It supports streaming (StreamingRecognize), synchronous (Recognize) and batch (BatchRecognize) transcription, can transcribe without being told the spoken language, and is served only from Google's `us` and `eu` multi-region locations.",
     "disadvantages": [
-      "Access is restricted to allow-listed users and requires contacting Google's sales team, rather than being generally available.",
-      "Reference audio must be close to 10 seconds with no background noise, limiting usable source recordings."
+      "Google's Chirp 3 page lists only the `us` and `eu` multi-region locations, not `global`, so the recognizer location has to be one of those two.",
+      "Google's documentation states Chirp 3 does not support word-level timestamps.",
+      "Speaker diarization is not available on streaming recognition."
     ],
     "evaluations": [],
     "extraction_metadata": {
-      "canonical": "instant-custom-voice",
+      "canonical": "chirp_3",
       "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
+      "extraction_date": "2026-09-26",
       "method": "claude-code-subagent",
       "model_metadata": {},
       "provider": "Google",
       "sources": [
         {
           "kind": "maker",
-          "title": "Chirp 3: Instant Custom Voice",
-          "url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-instant-custom-voice"
+          "title": "Chirp 3 model - Cloud Speech-to-Text V2 documentation",
+          "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/chirp_3-model"
         }
       ]
     },
     "github_url": null,
-    "languages": [
-      "Arabic",
-      "Bengali",
-      "Chinese",
-      "Dutch",
-      "English",
-      "French",
-      "German",
-      "Gujarati",
-      "Hindi",
-      "Indonesian",
-      "Italian",
-      "Japanese",
-      "Kannada",
-      "Korean",
-      "Malayalam",
-      "Marathi",
-      "Polish",
-      "Portuguese",
-      "Russian",
-      "Spanish",
-      "Tamil",
-      "Telugu",
-      "Thai",
-      "Turkish",
-      "Vietnamese"
-    ],
+    "languages": [],
     "logo_url": null,
     "model_tree": null,
     "papers": [],
     "tags": [],
     "tasks": [],
     "use_cases": [
-      "Personalized audio content creation from a cloned voice",
-      "Multilingual voice synthesis from a single voice sample"
+      "Real-time transcription for voice agents and live captioning over StreamingRecognize",
+      "Multilingual transcription where the spoken language is not known in advance",
+      "Batch transcription of recorded audio"
     ],
-    "website_url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-instant-custom-voice"
-  },
-  "google_speech/medical-conversation": {
-    "advantages": [
-      "Automatically detects and labels which speaker (provider or patient) said each part of the transcript, per Google's documentation.",
-      "Supports automatic punctuation, alternate transcriptions, word timestamps and word-level confidence scores."
-    ],
-    "architecture": null,
-    "description": "The medical_conversation model is a Google Cloud Speech-to-Text V1 model tailored for transcribing dialogue between a medical provider, such as a doctor or nurse, and a patient. Google's documentation states words spoken by each speaker are automatically detected and labeled in the returned transcript, and the model is available only for en-US audio. Google's Speech-to-Text V1 docs recommend that new users use the V2 API instead, though medical_conversation is a V1-specific model.",
-    "disadvantages": [
-      "Only available for en-US audio, per Google's documentation.",
-      "Is a Speech-to-Text V1 model; Google's documentation recommends new Speech-to-Text users use the V2 API instead."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "medical-conversation",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Google",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Medical models | Cloud Speech-to-Text Documentation",
-          "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "English"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing conversations between a medical provider and a patient, such as clinical visits"
-    ],
-    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
-  },
-  "google_speech/medical-dictation": {
-    "advantages": [
-      "Recognizes medical vocabulary \u2014 diagnoses, medications, symptoms, treatments, and conditions \u2014 that Google's general-purpose Speech-to-Text models are not tuned for.",
-      "Automatically enables spoken punctuation, formatting commands, and spoken headings, features Google's documentation says \"cannot be disabled\" for this model.",
-      "Supports automatic punctuation (enabled by default), alternate transcriptions, word timestamps, and word-level confidence, the only additional features Google's documentation allows with medical models."
-    ],
-    "architecture": null,
-    "description": "Medical Dictation is one of Google Cloud Speech-to-Text's two medical speech recognition models, alongside Medical Conversation, tuned for notes dictated by a single medical provider \u2014 for example, a doctor dictating notes about a patient's blood test results \u2014 and for vocabulary such as diagnoses, medications, symptoms, treatments, and conditions. It is offered through Speech-to-Text's v1 API and, per Google's documentation, is available only for US English.",
-    "disadvantages": [
-      "Available only for US English (en-US); Google's documentation states medical models are not offered in any other language.",
-      "Listed only among Speech-to-Text's v1 API models; it does not appear among the v2 API's Chirp-based models (chirp_3, chirp_2, telephony) in Google's current documentation."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "medical-dictation",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Google",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Medical models | Cloud Speech-to-Text",
-          "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
-        },
-        {
-          "kind": "maker",
-          "title": "Transcription models (v1) | Cloud Speech-to-Text",
-          "url": "https://docs.cloud.google.com/speech-to-text/docs/v1/transcription-model"
-        },
-        {
-          "kind": "maker",
-          "title": "Transcription models (v2) | Cloud Speech-to-Text",
-          "url": "https://docs.cloud.google.com/speech-to-text/docs/transcription-model"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "English (US)"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing a single medical provider's dictated notes, such as a doctor recording findings from a patient's blood test.",
-      "Capturing medical documentation with correctly recognized diagnosis, medication, symptom, treatment, and condition terminology.",
-      "Structured dictation workflows that rely on spoken punctuation, spoken headings, and formatting commands to shape the transcript."
-    ],
-    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
+    "website_url": "https://docs.cloud.google.com/speech-to-text/v2/docs/chirp_3-model"
   },
   "google_speech/neural2": {
     "advantages": [
@@ -87572,93 +87404,6 @@
       "Applications already using Google Cloud Text-to-Speech that want an additional male voice option in one of these six locales."
     ],
     "website_url": "https://docs.cloud.google.com/text-to-speech/docs/voice-types"
-  },
-  "google_speech/speech-recognition-with-data-logging": {
-    "advantages": [
-      "Provides access to discounted pricing on Cloud Speech-to-Text transcription in exchange for allowing Google to log the submitted audio and transcripts, per Google's Data Logging documentation.",
-      "Speech-to-Text API includes recognition features such as automatic punctuation and word-level confidence, per Google's Speech-to-Text documentation."
-    ],
-    "architecture": null,
-    "description": "This is Google Cloud Speech-to-Text's V1 API transcription service used with Google's opt-in data logging program enabled. Customers who opt a project into data logging allow Google to use the audio and transcripts it submits to refine and improve Cloud Speech-to-Text's service quality, and in exchange gain access to discounted pricing, per Google's Data Logging documentation. By default, Cloud Speech-to-Text does not log customer audio data or transcripts; logging only happens once a project explicitly opts in.",
-    "disadvantages": [
-      "Audio and transcripts logged under this program are not deleted when the project is deleted; removal requires submitting a separate deletion request form, per Google's Data Logging documentation.",
-      "Only a limited set of authorized Google employees and contractors have access to the logged customer data, per Google's Data Logging documentation."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "speech-recognition-with-data-logging",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Google",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Data logging | Cloud Speech-to-Text Documentation",
-          "url": "https://cloud.google.com/speech-to-text/docs/data-logging"
-        },
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text basics | Google Cloud",
-          "url": "https://cloud.google.com/speech-to-text/docs/basics"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing spoken audio to text via the Speech-to-Text V1 API for customers willing to let Google log audio and transcripts in exchange for discounted transcription pricing, per Google's Data Logging documentation."
-    ],
-    "website_url": "https://cloud.google.com/speech-to-text/docs/data-logging"
-  },
-  "google_speech/speech-recognition-without-data-logging": {
-    "advantages": [
-      "Audio and transcripts are not logged by Google, since data logging is off by default on Cloud Speech-to-Text, per Google's Data Logging documentation.",
-      "Speech-to-Text API includes recognition features such as automatic punctuation and word-level confidence, per Google's Speech-to-Text documentation."
-    ],
-    "architecture": null,
-    "description": "This is Google Cloud Speech-to-Text's V1 API transcription service in its default configuration, with Google's opt-in data logging program not enabled. By default, Cloud Speech-to-Text does not log customer audio data or transcripts, per Google's Data Logging documentation; a project only has its audio and transcripts logged if it explicitly opts into the data logging program, which this configuration has not done. Data sent to a project without data logging enabled is used by Google only as needed to provide the service, not to refine or improve its products, per Google's Data Logging documentation.",
-    "disadvantages": [
-      "Does not receive the discounted pricing that Google offers to projects that opt into the data logging program, per Google's Data Logging documentation."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "speech-recognition-without-data-logging",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Google",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Data logging | Cloud Speech-to-Text Documentation",
-          "url": "https://cloud.google.com/speech-to-text/docs/data-logging"
-        },
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text basics | Google Cloud",
-          "url": "https://cloud.google.com/speech-to-text/docs/basics"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing spoken audio to text via the Speech-to-Text V1 API for customers who do not want their audio or transcripts logged by Google, per Google's Data Logging documentation."
-    ],
-    "website_url": "https://cloud.google.com/speech-to-text/docs/data-logging"
   },
   "google_speech/standard": {
     "advantages": [
@@ -87811,6 +87556,43 @@
       "Long-form narration, per Google's Text-to-Speech release notes."
     ],
     "website_url": "https://cloud.google.com/text-to-speech/docs/voice-types"
+  },
+  "google_speech/telephony": {
+    "advantages": [
+      "Tuned for phone-call audio typically recorded at an 8 kHz sampling rate."
+    ],
+    "architecture": null,
+    "description": "The telephony model in Google Cloud Speech-to-Text V2 is intended, per Google, for audio that originates from a phone call, typically recorded at an 8 kHz sampling rate.",
+    "disadvantages": [],
+    "evaluations": [],
+    "extraction_metadata": {
+      "canonical": "telephony",
+      "evaluation_sources": {},
+      "extraction_date": "2026-09-26",
+      "method": "claude-code-subagent",
+      "model_metadata": {},
+      "provider": "Google",
+      "sources": [
+        {
+          "kind": "maker",
+          "title": "Transcription models - Cloud Speech-to-Text V2 documentation",
+          "url": "https://docs.cloud.google.com/speech-to-text/v2/docs/transcription-model"
+        }
+      ]
+    },
+    "github_url": null,
+    "languages": [],
+    "logo_url": null,
+    "model_tree": null,
+    "papers": [],
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Customer service call transcription",
+      "Teleconferencing",
+      "Automated kiosk applications"
+    ],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/v2/docs/transcription-model"
   },
   "google_speech/wavenet": {
     "advantages": [
@@ -104550,176 +104332,6 @@
     ],
     "website_url": "https://www.rev.ai/pricing"
   },
-  "revai/whisper-large": {
-    "advantages": [
-      "The largest Whisper checkpoint; OpenAI's README describes the six sizes as offering \"speed and accuracy tradeoffs,\" with large positioned as the most accurate, at the cost of speed (about 10 GB VRAM, the slowest of the family).",
-      "Deepgram pairs Whisper Cloud with diarization and word timings, which Deepgram says are not available through OpenAI's own API.",
-      "Trained on 680,000 hours of audio covering 98 languages per OpenAI's model card, giving it broad multilingual coverage."
-    ],
-    "architecture": null,
-    "description": "Whisper Large (1550M parameters) is the biggest and, per OpenAI's README, most accurate checkpoint in OpenAI's open-source Whisper family of speech recognition models, trained on 680,000 hours of multilingual, multitask audio and able to transcribe speech and translate it into English. It is offered as a multilingual-only checkpoint (no English-only variant). Deepgram hosts it as part of its \"Whisper Cloud\" offering, where model=whisper-large defaults to OpenAI's Whisper large-v2, layering diarization and word timings on top of the open model for pre-recorded audio. Rev AI separately offers a hosted \"Whisper Large Transcription\" option, limited to English.",
-    "disadvantages": [
-      "Deepgram does not support live streaming with Whisper Cloud; only pre-recorded audio up to 20 minutes of processing time is supported.",
-      "Deepgram calls its Whisper models \"less scalable than all other Deepgram models\" and caps Whisper requests at 15 concurrent calls on paid plans (5 on pay-as-you-go), recommending a Deepgram model such as Nova instead if it meets the need.",
-      "The slowest of the Whisper sizes per OpenAI's README, at roughly 1x relative inference speed versus up to about 10x for the tiny checkpoint.",
-      "Deepgram's Whisper Cloud defaults whisper-large to OpenAI's Whisper large-v2 rather than a newer large checkpoint.",
-      "Rev AI's hosted Whisper Large Transcription option supports English only, unlike Rev AI's own Reverb offering which covers Spanish, French, Chinese, Portuguese and more.",
-      "OpenAI's model card reports the Whisper family is prone to hallucination and shows disparate performance across accents and dialects."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "whisper-large",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "OpenAI",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision",
-          "url": "https://github.com/openai/whisper"
-        },
-        {
-          "kind": "maker",
-          "title": "Whisper Model Card",
-          "url": "https://github.com/openai/whisper/blob/main/model-card.md"
-        },
-        {
-          "kind": "host",
-          "title": "Deepgram Whisper Cloud",
-          "url": "https://developers.deepgram.com/docs/deepgram-whisper-cloud"
-        },
-        {
-          "kind": "host",
-          "title": "Model Options | Deepgram's Docs",
-          "url": "https://developers.deepgram.com/docs/model"
-        },
-        {
-          "kind": "host",
-          "title": "Models & Languages Overview | Deepgram's Docs",
-          "url": "https://developers.deepgram.com/docs/models-languages-overview"
-        },
-        {
-          "kind": "host",
-          "title": "Rev AI Pricing",
-          "url": "https://www.rev.ai/pricing"
-        }
-      ]
-    },
-    "github_url": "https://github.com/openai/whisper",
-    "languages": [
-      "English",
-      "Chinese",
-      "German",
-      "Spanish",
-      "Russian",
-      "Korean",
-      "French",
-      "Japanese",
-      "Portuguese",
-      "Turkish",
-      "Polish",
-      "Catalan",
-      "Dutch",
-      "Arabic",
-      "Swedish",
-      "Italian",
-      "Indonesian",
-      "Hindi",
-      "Finnish",
-      "Vietnamese",
-      "Hebrew",
-      "Ukrainian",
-      "Greek",
-      "Malay",
-      "Czech",
-      "Romanian",
-      "Danish",
-      "Hungarian",
-      "Tamil",
-      "Norwegian",
-      "Thai",
-      "Urdu",
-      "Croatian",
-      "Bulgarian",
-      "Lithuanian",
-      "Latin",
-      "Maori",
-      "Malayalam",
-      "Welsh",
-      "Slovak",
-      "Telugu",
-      "Persian",
-      "Latvian",
-      "Bengali",
-      "Serbian",
-      "Azerbaijani",
-      "Slovenian",
-      "Kannada",
-      "Estonian",
-      "Macedonian",
-      "Breton",
-      "Basque",
-      "Icelandic",
-      "Armenian",
-      "Nepali",
-      "Mongolian",
-      "Bosnian",
-      "Kazakh",
-      "Albanian",
-      "Swahili",
-      "Galician",
-      "Marathi",
-      "Punjabi",
-      "Sinhala",
-      "Khmer",
-      "Shona",
-      "Yoruba",
-      "Somali",
-      "Afrikaans",
-      "Occitan",
-      "Georgian",
-      "Belarusian",
-      "Tajik",
-      "Sindhi",
-      "Gujarati",
-      "Amharic",
-      "Yiddish",
-      "Lao",
-      "Uzbek",
-      "Faroese",
-      "Haitian Creole",
-      "Pashto",
-      "Turkmen",
-      "Nynorsk",
-      "Maltese",
-      "Sanskrit",
-      "Luxembourgish",
-      "Myanmar",
-      "Tibetan",
-      "Tagalog",
-      "Malagasy",
-      "Assamese",
-      "Tatar",
-      "Hawaiian",
-      "Lingala",
-      "Hausa",
-      "Bashkir",
-      "Javanese",
-      "Sundanese"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcription of pre-recorded audio where maximum accuracy matters more than latency or cost",
-      "Multilingual speech-to-text transcription"
-    ],
-    "website_url": "https://github.com/openai/whisper"
-  },
   "sagemaker/meta-textgeneration-llama-2-13b": {
     "advantages": [
       "Scores 54.8 on MMLU and averages 66.9 on Meta's grouped commonsense-reasoning benchmarks, per Meta's model card.",
@@ -105165,466 +104777,7 @@
     ],
     "website_url": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf"
   },
-  "speechmatics/batch-enhanced": {
-    "advantages": [
-      "Speechmatics documents Enhanced as its highest-accuracy operating point for Batch and Realtime transcription, ahead of the faster Standard model.",
-      "Supports custom dictionaries, per-word confidence scores, and speaker diarization, per Speechmatics' Models documentation.",
-      "Bundles speech-intelligence add-ons in the same job, including translation, summarization, topic detection, chapters, sentiment analysis and audio-event detection, per Speechmatics' Models documentation.",
-      "Offers a medical-domain variant, set via a domain parameter, tuned for healthcare terminology, per Speechmatics' Models documentation."
-    ],
-    "architecture": null,
-    "description": "Enhanced is Speechmatics' highest-accuracy operating point for its Batch and Realtime speech-to-text API, selected by setting the request's model field to \"enhanced\". It transcribes a chosen language, or auto-detects one, and carries Speechmatics' full transcription feature set. Speechmatics also offers a medical-domain variant of Enhanced, tuned for healthcare terminology and selected via a domain parameter.",
-    "disadvantages": [
-      "Speechmatics markets its separate Standard operating point as the faster-turnaround choice, implying Enhanced trades some processing speed for its higher accuracy."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "batch-enhanced",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Speechmatics",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text Models - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/models"
-        },
-        {
-          "kind": "maker",
-          "title": "Voice Agents - Speechmatics",
-          "url": "https://www.speechmatics.com/voice-agents"
-        },
-        {
-          "kind": "maker",
-          "title": "Languages - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/languages"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "Arabic",
-      "Bashkir",
-      "Basque",
-      "Belarusian",
-      "Bengali",
-      "Bulgarian",
-      "Cantonese",
-      "Catalan",
-      "Croatian",
-      "Czech",
-      "Danish",
-      "Dutch",
-      "English",
-      "Esperanto",
-      "Estonian",
-      "Finnish",
-      "French",
-      "Galician",
-      "German",
-      "Greek",
-      "Hebrew",
-      "Hindi",
-      "Hungarian",
-      "Indonesian",
-      "Interlingua",
-      "Irish",
-      "Italian",
-      "Japanese",
-      "Korean",
-      "Latvian",
-      "Lithuanian",
-      "Malay",
-      "Maltese",
-      "Mandarin",
-      "Marathi",
-      "Mongolian",
-      "Norwegian",
-      "Persian",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Slovakian",
-      "Slovenian",
-      "Spanish",
-      "Swahili",
-      "Swedish",
-      "Tamil",
-      "Thai",
-      "Turkish",
-      "Ukrainian",
-      "Urdu",
-      "Uyghur",
-      "Vietnamese",
-      "Welsh"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Medical transcription and clinical documentation",
-      "Legal transcription",
-      "Subtitling and captioning requiring maximum precision",
-      "Contact-centre and compliance transcription where accuracy matters more than turnaround speed"
-    ],
-    "website_url": "https://docs.speechmatics.com/speech-to-text/models"
-  },
-  "speechmatics/batch-melia-1": {
-    "advantages": [
-      "Automatically detects the spoken language from 55 languages and handles mid-sentence code-switching without requiring a language to be selected, per Speechmatics' Languages documentation.",
-      "Labels each word in the transcript with the language it was spoken in, a per-word language ID that Speechmatics' other models do not provide, per Speechmatics' Models documentation.",
-      "Speechmatics states Melia 1's accuracy matches its Standard operating point, per Speechmatics' Models documentation.",
-      "Speechmatics' September 2026 changelog reports a model update giving a 2% relative word-error-rate improvement across many languages, plus fewer transliteration errors and better mid-sentence code-switching on Hindi-English audio."
-    ],
-    "architecture": null,
-    "description": "Melia 1 is Speechmatics' multilingual speech-to-text model, offered for Batch transcription in the EU and US regions by setting the request's model field to \"melia-1\" with language set to \"multi\". Instead of requiring a language to be selected up front, it automatically detects the spoken language from 55 languages, handles code-switching mid-sentence, and labels each word in the output with the language it was spoken in. Speechmatics states Melia 1's accuracy matches its Standard model. As of Speechmatics' current documentation, Melia 1 does not yet support the custom vocabulary, confidence scores, speaker identification, or speech-intelligence add-ons (translation, summarization, etc.) that Speechmatics' Enhanced and Standard models offer.",
-    "disadvantages": [
-      "Does not currently support custom vocabulary, confidence scores, speaker identification, or Speechmatics' speech-intelligence add-ons (translation, summarization, topic detection, chapters, sentiment analysis, audio events), which Enhanced and Standard both offer.",
-      "Available for Batch transcription only in the EU and US regions, per Speechmatics' Models documentation.",
-      "Speechmatics' Models documentation describes Melia 1 as an early-access model whose feature support is still expanding."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "batch-melia-1",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Speechmatics",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text Models - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/models"
-        },
-        {
-          "kind": "maker",
-          "title": "GPU speech-to-text: Melia 1 - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/deployments/container/gpu-speech-to-text-melia-1"
-        },
-        {
-          "kind": "maker",
-          "title": "Batch output - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/batch/output"
-        },
-        {
-          "kind": "maker",
-          "title": "Changelog - Speechmatics",
-          "url": "https://speechmatics.featurebase.app/en/changelog"
-        },
-        {
-          "kind": "maker",
-          "title": "Languages - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/languages"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "Arabic",
-      "Bashkir",
-      "Basque",
-      "Belarusian",
-      "Bengali",
-      "Bulgarian",
-      "Cantonese",
-      "Catalan",
-      "Croatian",
-      "Czech",
-      "Danish",
-      "Dutch",
-      "English",
-      "Esperanto",
-      "Estonian",
-      "Finnish",
-      "French",
-      "Galician",
-      "German",
-      "Greek",
-      "Hebrew",
-      "Hindi",
-      "Hungarian",
-      "Indonesian",
-      "Interlingua",
-      "Irish",
-      "Italian",
-      "Japanese",
-      "Korean",
-      "Latvian",
-      "Lithuanian",
-      "Malay",
-      "Maltese",
-      "Mandarin",
-      "Marathi",
-      "Mongolian",
-      "Norwegian",
-      "Persian",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Slovakian",
-      "Slovenian",
-      "Spanish",
-      "Swahili",
-      "Swedish",
-      "Tamil",
-      "Thai",
-      "Turkish",
-      "Ukrainian",
-      "Urdu",
-      "Uyghur",
-      "Vietnamese",
-      "Welsh"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Transcribing multilingual audio with mid-sentence code-switching",
-      "Multilingual meeting, call and media transcription where the spoken language is not known in advance",
-      "Localized transcript output using per-language word delimiters and writing direction"
-    ],
-    "website_url": "https://docs.speechmatics.com/speech-to-text/models"
-  },
-  "speechmatics/batch-standard": {
-    "advantages": [
-      "Speechmatics documents Standard as its fastest-turnaround operating point for Batch and Realtime transcription, per Speechmatics' Models documentation.",
-      "Speechmatics states Standard's accuracy matches its Melia 1 model, per Speechmatics' Models documentation.",
-      "Supports custom dictionaries, per-word confidence scores, and speaker diarization, the same feature set as Enhanced, per Speechmatics' Models documentation.",
-      "Bundles speech-intelligence add-ons in the same job, including translation, summarization, topic detection, chapters, sentiment analysis and audio-event detection, per Speechmatics' Models documentation."
-    ],
-    "architecture": null,
-    "description": "Standard is Speechmatics' fastest-turnaround operating point for its Batch and Realtime speech-to-text API, selected by setting the request's model field to \"standard\". Speechmatics states its accuracy matches its newer Melia 1 model and sits slightly below its own Enhanced operating point, while offering the same core transcription feature set as Enhanced. Speechmatics positions Standard as the choice when throughput matters more than peak accuracy.",
-    "disadvantages": [
-      "Speechmatics documents Enhanced, not Standard, as its highest-accuracy operating point, describing Standard as prioritising throughput over maximum accuracy."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "batch-standard",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Speechmatics",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text Models - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/models"
-        },
-        {
-          "kind": "maker",
-          "title": "Voice Agents - Speechmatics",
-          "url": "https://www.speechmatics.com/voice-agents"
-        },
-        {
-          "kind": "maker",
-          "title": "Languages - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/languages"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "Arabic",
-      "Bashkir",
-      "Basque",
-      "Belarusian",
-      "Bengali",
-      "Bulgarian",
-      "Cantonese",
-      "Catalan",
-      "Croatian",
-      "Czech",
-      "Danish",
-      "Dutch",
-      "English",
-      "Esperanto",
-      "Estonian",
-      "Finnish",
-      "French",
-      "Galician",
-      "German",
-      "Greek",
-      "Hebrew",
-      "Hindi",
-      "Hungarian",
-      "Indonesian",
-      "Interlingua",
-      "Irish",
-      "Italian",
-      "Japanese",
-      "Korean",
-      "Latvian",
-      "Lithuanian",
-      "Malay",
-      "Maltese",
-      "Mandarin",
-      "Marathi",
-      "Mongolian",
-      "Norwegian",
-      "Persian",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Slovakian",
-      "Slovenian",
-      "Spanish",
-      "Swahili",
-      "Swedish",
-      "Tamil",
-      "Thai",
-      "Turkish",
-      "Ukrainian",
-      "Urdu",
-      "Uyghur",
-      "Vietnamese",
-      "Welsh"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Archival transcription",
-      "Content indexing",
-      "Large-scale or bulk captioning",
-      "High-volume batch transcription where turnaround speed matters more than peak accuracy"
-    ],
-    "website_url": "https://docs.speechmatics.com/speech-to-text/models"
-  },
-  "speechmatics/linden-1": {
-    "advantages": [
-      "Returns speaker-attributed, punctuated transcript segments with explicit turn-start and turn-end signals rather than a raw word stream, formatted to pass directly to an LLM, per Speechmatics' Agent STT documentation.",
-      "Speechmatics states end-of-speech finalization lands in about 350ms, per Speechmatics' Voice Agents page.",
-      "Includes speaker diarization by default, attributing every word to the speaker who said it, per Speechmatics' Voice Agents page.",
-      "Supports a custom vocabulary of up to 1,000 domain-specific terms, per Speechmatics' Voice Agents page.",
-      "Speechmatics states Agent STT is available in 55+ languages, per Speechmatics' Voice Agents page.",
-      "Integrates directly with the Vapi, LiveKit and Pipecat voice-agent platforms, plus a Python SDK and a direct WebSocket API for any other language, per Speechmatics' Agent STT documentation."
-    ],
-    "architecture": null,
-    "description": "Linden 1 is Speechmatics' speech-to-text model built specifically for Agent STT, its turn-based transcription service for voice agents, reached over a dedicated /v2/agent WebSocket endpoint; Speechmatics states Agent STT is powered by linden-1 and offers no alternative model. Rather than a running word stream, it returns speaker-attributed, punctuated segments together with explicit start-of-turn and end-of-turn signals, formatted to pass directly to an LLM. Speechmatics states Agent STT is available in 55+ languages and, as of its current documentation, on SaaS only.",
-    "disadvantages": [
-      "Agent STT, the product linden-1 powers, is available on SaaS only, per Speechmatics' Agent STT documentation.",
-      "Linden 1 is the only model Agent STT offers, so there is no alternative model to choose for this endpoint."
-    ],
-    "evaluations": [],
-    "extraction_metadata": {
-      "canonical": "linden-1",
-      "evaluation_sources": {},
-      "extraction_date": "2026-09-24",
-      "method": "claude-code-subagent",
-      "model_metadata": {},
-      "provider": "Speechmatics",
-      "sources": [
-        {
-          "kind": "maker",
-          "title": "Speech-to-Text Models - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/models"
-        },
-        {
-          "kind": "maker",
-          "title": "Agent STT - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/agent-stt"
-        },
-        {
-          "kind": "maker",
-          "title": "Agent STT WebSocket API - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/api-ref/agent-stt-websocket"
-        },
-        {
-          "kind": "maker",
-          "title": "Voice Agents - Speechmatics",
-          "url": "https://www.speechmatics.com/voice-agents"
-        },
-        {
-          "kind": "maker",
-          "title": "Languages - Speechmatics Documentation",
-          "url": "https://docs.speechmatics.com/speech-to-text/languages"
-        }
-      ]
-    },
-    "github_url": null,
-    "languages": [
-      "Arabic",
-      "Bashkir",
-      "Basque",
-      "Belarusian",
-      "Bengali",
-      "Bulgarian",
-      "Cantonese",
-      "Catalan",
-      "Croatian",
-      "Czech",
-      "Danish",
-      "Dutch",
-      "English",
-      "Esperanto",
-      "Estonian",
-      "Finnish",
-      "French",
-      "Galician",
-      "German",
-      "Greek",
-      "Hebrew",
-      "Hindi",
-      "Hungarian",
-      "Indonesian",
-      "Interlingua",
-      "Irish",
-      "Italian",
-      "Japanese",
-      "Korean",
-      "Latvian",
-      "Lithuanian",
-      "Malay",
-      "Maltese",
-      "Mandarin",
-      "Marathi",
-      "Mongolian",
-      "Norwegian",
-      "Persian",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Slovakian",
-      "Slovenian",
-      "Spanish",
-      "Swahili",
-      "Swedish",
-      "Tamil",
-      "Thai",
-      "Turkish",
-      "Ukrainian",
-      "Urdu",
-      "Uyghur",
-      "Vietnamese",
-      "Welsh"
-    ],
-    "logo_url": null,
-    "model_tree": null,
-    "papers": [],
-    "tags": [],
-    "tasks": [],
-    "use_cases": [
-      "Building voice AI agents for conversational, LLM-driven applications",
-      "Real-time, multi-speaker call or meeting transcription feeding directly into an LLM",
-      "Customer-facing voice bots built on Vapi, LiveKit or Pipecat"
-    ],
-    "website_url": "https://www.speechmatics.com/voice-agents"
-  },
-  "speechmatics/real-time-enhanced": {
+  "speechmatics/enhanced": {
     "advantages": [
       "Speechmatics documents Enhanced as delivering the highest accuracy of its two real-time operating points, recommending it for single-language work such as medical, legal or subtitling transcription.",
       "Supports 55+ languages and language packs, each covering multiple accents and dialects, plus bilingual packs and translation to/from English for most languages.",
@@ -105639,7 +104792,7 @@
     ],
     "evaluations": [],
     "extraction_metadata": {
-      "canonical": "real-time-enhanced",
+      "canonical": "enhanced",
       "evaluation_sources": {},
       "extraction_date": "2026-09-24",
       "method": "claude-code-subagent",
@@ -105749,7 +104902,7 @@
     ],
     "website_url": "https://docs.speechmatics.com/speech-to-text/models"
   },
-  "speechmatics/real-time-standard": {
+  "speechmatics/standard": {
     "advantages": [
       "Speechmatics documents Standard as its fastest real-time operating point, prioritizing throughput over the maximum accuracy that its Enhanced operating point targets.",
       "Feature-identical to Enhanced: supports the same 55+ languages and language packs, bilingual packs, and translation to/from English for most languages.",
@@ -105764,7 +104917,7 @@
     ],
     "evaluations": [],
     "extraction_metadata": {
-      "canonical": "real-time-standard",
+      "canonical": "standard",
       "evaluation_sources": {},
       "extraction_date": "2026-09-24",
       "method": "claude-code-subagent",
@@ -117590,5 +116743,100 @@
       "General text-to-image generation via the xAI API, grok.com/imagine, or xAI's iOS/Android apps"
     ],
     "website_url": "https://x.ai/news/grok-imagine-image-2"
+  },
+  "google_speech/medical_conversation": {
+    "advantages": [
+      "Automatically detects and labels which speaker (provider or patient) said each part of the transcript, per Google's documentation.",
+      "Supports automatic punctuation, alternate transcriptions, word timestamps and word-level confidence scores."
+    ],
+    "architecture": null,
+    "description": "The medical_conversation model is a Google Cloud Speech-to-Text V1 model tailored for transcribing dialogue between a medical provider, such as a doctor or nurse, and a patient. Google's documentation states words spoken by each speaker are automatically detected and labeled in the returned transcript, and the model is available only for en-US audio. Google's Speech-to-Text V1 docs recommend that new users use the V2 API instead, though medical_conversation is a V1-specific model.",
+    "disadvantages": [
+      "Only available for en-US audio, per Google's documentation.",
+      "Is a Speech-to-Text V1 model; Google's documentation recommends new Speech-to-Text users use the V2 API instead."
+    ],
+    "evaluations": [],
+    "extraction_metadata": {
+      "canonical": "medical-conversation",
+      "evaluation_sources": {},
+      "extraction_date": "2026-09-24",
+      "method": "claude-code-subagent",
+      "model_metadata": {},
+      "provider": "Google",
+      "sources": [
+        {
+          "kind": "maker",
+          "title": "Medical models | Cloud Speech-to-Text Documentation",
+          "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
+        }
+      ]
+    },
+    "github_url": null,
+    "languages": [
+      "English"
+    ],
+    "logo_url": null,
+    "model_tree": null,
+    "papers": [],
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Transcribing conversations between a medical provider and a patient, such as clinical visits"
+    ],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
+  },
+  "google_speech/medical_dictation": {
+    "advantages": [
+      "Recognizes medical vocabulary \u2014 diagnoses, medications, symptoms, treatments, and conditions \u2014 that Google's general-purpose Speech-to-Text models are not tuned for.",
+      "Automatically enables spoken punctuation, formatting commands, and spoken headings, features Google's documentation says \"cannot be disabled\" for this model.",
+      "Supports automatic punctuation (enabled by default), alternate transcriptions, word timestamps, and word-level confidence, the only additional features Google's documentation allows with medical models."
+    ],
+    "architecture": null,
+    "description": "Medical Dictation is one of Google Cloud Speech-to-Text's two medical speech recognition models, alongside Medical Conversation, tuned for notes dictated by a single medical provider \u2014 for example, a doctor dictating notes about a patient's blood test results \u2014 and for vocabulary such as diagnoses, medications, symptoms, treatments, and conditions. It is offered through Speech-to-Text's v1 API and, per Google's documentation, is available only for US English.",
+    "disadvantages": [
+      "Available only for US English (en-US); Google's documentation states medical models are not offered in any other language.",
+      "Listed only among Speech-to-Text's v1 API models; it does not appear among the v2 API's Chirp-based models (chirp_3, chirp_2, telephony) in Google's current documentation."
+    ],
+    "evaluations": [],
+    "extraction_metadata": {
+      "canonical": "medical-dictation",
+      "evaluation_sources": {},
+      "extraction_date": "2026-09-24",
+      "method": "claude-code-subagent",
+      "model_metadata": {},
+      "provider": "Google",
+      "sources": [
+        {
+          "kind": "maker",
+          "title": "Medical models | Cloud Speech-to-Text",
+          "url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
+        },
+        {
+          "kind": "maker",
+          "title": "Transcription models (v1) | Cloud Speech-to-Text",
+          "url": "https://docs.cloud.google.com/speech-to-text/docs/v1/transcription-model"
+        },
+        {
+          "kind": "maker",
+          "title": "Transcription models (v2) | Cloud Speech-to-Text",
+          "url": "https://docs.cloud.google.com/speech-to-text/docs/transcription-model"
+        }
+      ]
+    },
+    "github_url": null,
+    "languages": [
+      "English (US)"
+    ],
+    "logo_url": null,
+    "model_tree": null,
+    "papers": [],
+    "tags": [],
+    "tasks": [],
+    "use_cases": [
+      "Transcribing a single medical provider's dictated notes, such as a doctor recording findings from a patient's blood test.",
+      "Capturing medical documentation with correctly recognized diagnosis, medication, symptom, treatment, and condition terminology.",
+      "Structured dictation workflows that rely on spoken punctuation, spoken headings, and formatting commands to shape the transcript."
+    ],
+    "website_url": "https://docs.cloud.google.com/speech-to-text/docs/medical-models"
   }
 }

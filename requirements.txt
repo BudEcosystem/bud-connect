@@ -1,20 +1,19 @@
 # Service/Clients
 dapr >= 1.14.0
 budmicroframe @ git+https://github.com/BudEcosystem/bud-microframe.git
-# Pinned to BudModelCatalog-SDK PR #6 (2026-09-24), which adds voice billing rules and the
-# pricing-page scrapers: authoritative AWS/Azure feeds, and adapters for speechmatics,
-# cartesia, revai, gladia, google_speech (TTS + STT) and deepgram (Aura TTS). It also stops
-# publishing fifteen LiteLLM entries that are not models.
-#
-# NOTE: this is a commit on the PR branch, NOT on main -- PR #6 is open at time of writing.
-# Move it to the merge commit once that lands, or a later `git fetch` of main will not contain
-# it and a clean build will fail rather than silently regress.
+# Pinned to the merge commit of BudModelCatalog-SDK PR #7 on main (2026-09-26). It builds on
+# PR #6 (voice billing rules and the pricing-page scrapers) and publishes voice model ids the
+# vendors accept instead of pricing labels: 11 non-models retired (Google STT pricing SKUs and
+# instant-custom-voice, Speechmatics batch-*/melia-1/linden-1, Rev.ai whisper-large, Gladia
+# async), 5 renamed (speechmatics real-time-* -> standard/enhanced, gladia real-time ->
+# solaria-1, google_speech medical-* -> medical_*), and Google STT v2 chirp_3/chirp_2/telephony
+# added. The first sync on this pin marks the 16 old uris inactive (under the 25 guard).
 #
 # Pinned because unpinned does NOT mean latest: Docker keys the `pip install -r` layer on this
 # file, so an unpinned git URL freezes at whatever HEAD was current when that layer was first
 # built. The nightly shipped a six-month-old catalog that way, and deepgram/elevenlabs seeded
-# with zero models. Bump this SHA deliberately when the SDK moves.
-bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@943f4c0748d34c1be3f2d13592d040b0d8b0d6ba
+# with zero models. Bump this SHA deliberately when the SDK moves, and only to a commit on main.
+bud-model-catalog @ git+https://github.com/BudEcosystem/BudModelCatalog-SDK.git@d1422c9a874f411fe4e04e5e20f9e58ed3fd9543
 
 # API
 fastapi >= 0.111.1

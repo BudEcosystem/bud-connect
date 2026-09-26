@@ -29,6 +29,12 @@ Why these fields cannot come back:
 
 If budgateway later grows support for any of them, delete it from ``RETIRED_FIELDS`` here AND
 emit it from ``budapp``'s ``_create_provider_config`` in the same release -- not before.
+
+``deployment_id`` is the one addition, and it is safe for the opposite reason: budgateway's
+Azure variant DECLARES it, and ``_create_provider_config`` already copies a credential's
+``deployment_id`` over its default (the model name). It is optional -- most Azure OpenAI
+deployments are named after the model -- and the voice contract (2026-09-26) reuses it for WaaV's
+``azure_openai`` vendor, where it names the deployment in the ``/openai/deployments/{id}`` path.
 """
 
 import json
@@ -43,8 +49,15 @@ PROVIDERS_JSON_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "tensorzer
 PROVIDER_KEY = "azure"
 
 # Everything budgateway's Azure variant declares, expressed as credential fields.
-# `deployment_id` is not collected -- budapp derives it from the model name.
-SUPPORTED_FIELDS = {"api_base", "api_key"}
+# `api_key_location` is not collected -- budapp derives it from the endpoint id.
+SUPPORTED_FIELDS = {"api_base", "api_key", "deployment_id"}
+
+# Without these the deployment cannot authenticate or route.
+REQUIRED_FIELDS = {"api_base", "api_key"}
+
+# Defaults to the model name in budapp, so requiring it would demand a value that is
+# usually a copy of one the user has already chosen.
+OPTIONAL_FIELDS = SUPPORTED_FIELDS - REQUIRED_FIELDS
 
 RETIRED_FIELDS = {"api_version", "azure_ad_token", "tenant_id", "client_id", "client_secret"}
 
@@ -79,8 +92,21 @@ def test_retired_azure_field_is_not_reintroduced(retired):
 def test_both_surviving_azure_fields_are_still_required():
     """Neither survivor is optional: without them the deployment cannot authenticate or route."""
     by_name = {field["field"]: field for field in _azure_credentials()}
-    for name in sorted(SUPPORTED_FIELDS):
+    for name in sorted(REQUIRED_FIELDS):
         assert by_name[name]["required"] is True, f"azure {name!r} must stay required"
+
+
+def test_azure_deployment_id_is_an_optional_text_field():
+    """Required would break every existing Azure credential, which was stored without it.
+
+    budapp validates a credential against this schema on every write, so a newly required field
+    turns each saved Azure credential into one that cannot be edited without inventing a value.
+    """
+    by_name = {field["field"]: field for field in _azure_credentials()}
+    assert {"deployment_id"} == OPTIONAL_FIELDS
+    deployment_id = by_name["deployment_id"]
+    assert deployment_id["required"] is False
+    assert deployment_id["type"] == "text", "a deployment name is not a secret; masking it only hides typos"
 
 
 def test_azure_credential_order_has_no_gaps_after_the_removals():
