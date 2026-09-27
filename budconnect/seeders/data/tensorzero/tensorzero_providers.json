@@ -264,7 +264,8 @@
         "capabilities": [
             "model",
             "audio_transcription",
-            "text_to_speech"
+            "text_to_speech",
+            "realtime_session"
         ]
     },
     "openai": {
@@ -286,7 +287,8 @@
             "moderation",
             "audio_transcription",
             "audio_translation",
-            "text_to_speech"
+            "text_to_speech",
+            "realtime_session"
         ]
     },
     "sagemaker": {

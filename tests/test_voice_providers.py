@@ -489,6 +489,10 @@ def test_the_chat_self_hosted_entry_keeps_its_own_credential_shape(providers):
 #: Everything ``ProviderCapabilityEnum`` accepts, on BOTH sides of the wire. A value outside
 #: this set is rejected at insert here, and — worse — aborts budapp's whole provider sync,
 #: because it validates each incoming string inside an unguarded loop.
+#:
+#: ``realtime_session`` (FRD-023) is known to budapp from its release N (WP-RT1.1), which reads
+#: it and strips it on sync until release N+1. This catalog must not deploy before release N is
+#: live everywhere: an older budapp skips openai and azure outright rather than drop one value.
 KNOWN_CAPABILITIES = {
     "model",
     "moderation",
@@ -496,6 +500,7 @@ KNOWN_CAPABILITIES = {
     "text_to_speech",
     "audio_transcription",
     "audio_translation",
+    "realtime_session",
 }
 
 

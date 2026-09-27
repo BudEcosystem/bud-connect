@@ -23,6 +23,7 @@ Loads the seeder module with its package stubbed out, like ``test_catalog_deriva
 
 import asyncio
 import importlib
+import json
 import logging
 import re
 import sys
@@ -32,13 +33,19 @@ from pathlib import Path
 
 import pytest
 
+from budconnect.commons.constants import ModalityEnum as M
 from budconnect.commons.constants import ModelEndpointEnum as E
 from budconnect.commons.constants import ProviderCapabilityEnum as C
 from budconnect.model.schemas import LiteLLMModelInfo
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+PROVIDERS_JSON_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "tensorzero" / "tensorzero_providers.json"
 MIGRATIONS_DIR = REPO_ROOT / "alembic" / "versions"
+
+#: The providers WaaV can relay the Realtime protocol for in the first release (FRD-023 DEG-1).
+#: RT7 adds gemini, bedrock and xai -- each with its translator, never before it.
+REALTIME_PROVIDERS = {"openai", "azure"}
 
 
 # ---- catalog entries, as the SDK emits them -------------------------------------------------- #
@@ -122,6 +129,7 @@ GPT_4O_MINI_REALTIME_PREVIEW = {
     "supports_audio_output": True,
 }
 
+AZURE_GPT_REALTIME_2_1 = {**GPT_REALTIME_2_1, "litellm_provider": "azure"}
 
 #: Gemini Live is listed at /v1/realtime, and WaaV has no Gemini translator until RT7.
 GEMINI_3_8_LIVE = {
@@ -173,6 +181,25 @@ def _routes(tz, uri, config):
     """Return the routes an entry derives, before any provider gate."""
     config = {k: v for k, v in config.items() if k != "litellm_provider"}
     return asyncio.run(tz.TensorZeroParser.derive_model_specs(LiteLLMModelInfo(uri=uri, config=config)))["endpoints"]
+
+
+def _providers():
+    with PROVIDERS_JSON_PATH.open() as handle:
+        return json.load(handle)
+
+
+def _fake_sdk(monkeypatch, models):
+    class Result:
+        def __init__(self):
+            self.models = models
+            self.ai_models_fetched_at = "2026-09-28"
+            self.stats = types.SimpleNamespace(matched=0, unmatched=0)
+
+    class CatalogClient:
+        def fetch_catalog_sync(self):
+            return Result()
+
+    monkeypatch.setitem(sys.modules, "bud_model_catalog", types.SimpleNamespace(CatalogClient=CatalogClient))
 
 
 # ---- C5 vocabulary --------------------------------------------------------------------------- #
@@ -227,6 +254,63 @@ def test_one_migration_adds_the_label_the_orm_writes(column, member, pg_type):
 
 
 # ---- TC-CAT-04: realtime is per model, never inferred from modality or mode ------------------- #
+
+
+def test_tc_cat_04_only_the_realtime_model_in_a_snapshot_carries_the_route(tz, monkeypatch):
+    """Seed from a snapshot holding gpt-realtime-2.1, gpt-live-1 and gpt-audio-1.5 (TC-CAT-04).
+
+    Plus gpt-audio-mini, the gpt-audio model LiteLLM also lists at /v1/realtime.
+    """
+    _fake_sdk(
+        monkeypatch,
+        {
+            "openai/gpt-realtime-2.1": dict(GPT_REALTIME_2_1),
+            "openai/gpt-live-1": dict(GPT_LIVE_1),
+            "openai/gpt-audio-1.5": dict(GPT_AUDIO_1_5),
+            "openai/gpt-audio-mini-2025-12-15": dict(GPT_AUDIO_MINI),
+        },
+    )
+    parsed = asyncio.run(tz.TensorZeroParser.parse_model_data())
+    routes = {
+        m.uri: _model_info(tz, m.uri, m.config, provider).endpoints for provider, ms in parsed.items() for m in ms
+    }
+
+    assert routes == {
+        "openai/gpt-realtime-2.1": [E.REALTIME],
+        "openai/gpt-live-1": [],
+        "openai/gpt-audio-1.5": [E.CHAT],
+        "openai/gpt-audio-mini-2025-12-15": [E.BATCH, E.CHAT, E.RESPONSE],
+    }
+
+
+def test_an_explicit_realtime_route_is_no_longer_dropped(tz):
+    """Every GA gpt-realtime model is listed at /v1/realtime alone; that is its only route."""
+    mi = _model_info(tz, "openai/gpt-realtime-2.1", GPT_REALTIME_2_1, "openai")
+    assert mi.endpoints == [E.REALTIME]
+    # budapp derives `session_type: "realtime"` from the audio output.
+    assert M.AUDIO_OUTPUT in mi.modality and M.AUDIO_INPUT in mi.modality
+
+
+def test_azure_realtime_models_are_served_too(tz):
+    """Azure OpenAI is the other relay vendor of the first release."""
+    assert _model_info(tz, "azure/gpt-realtime-2.1", AZURE_GPT_REALTIME_2_1, "azure").endpoints == [E.REALTIME]
+
+
+def test_the_realtime_prices_budapp_suggests_survive(tz):
+    """C3 builds `suggested.rates` from these; a route with its prices dropped would bill nothing."""
+    dumped = _model_info(tz, "openai/gpt-realtime-2.1", GPT_REALTIME_2_1, "openai").model_dump()
+    assert dumped["input_cost"]["input_cost_per_audio_token"] == 3.2e-05
+    assert dumped["input_cost"]["input_cost_per_token"] == 4e-06
+    assert dumped["output_cost"]["output_cost_per_audio_token"] == 6.4e-05
+    assert dumped["output_cost"]["output_cost_per_token"] == 2.4e-05
+    assert dumped["cache_cost"]["cache_read_input_audio_token_cost"] == 4e-07
+
+
+def test_a_realtime_transcription_model_is_served_with_no_audio_output(tz):
+    """gpt-realtime-whisper: the transcription session type; its second route has no Bud value."""
+    mi = _model_info(tz, "openai/gpt-realtime-whisper", GPT_REALTIME_WHISPER, "openai")
+    assert mi.endpoints == [E.REALTIME]
+    assert M.AUDIO_OUTPUT not in mi.modality
 
 
 @pytest.mark.parametrize(
@@ -307,3 +391,15 @@ def test_the_gate_applies_through_the_provider_catalog(tz, monkeypatch):
     """create_model_info reads the provider's capabilities from the catalog JSON, not the entry."""
     monkeypatch.setattr(tz, "_PROVIDER_CAPABILITIES", {"openai": ["model"]})
     assert _model_info(tz, "openai/gpt-realtime-2.1", GPT_REALTIME_2_1, "openai").endpoints == []
+
+
+def test_only_the_relay_vendors_declare_realtime_session():
+    """DEG-1: the catalog must not offer /v1/realtime for a vendor WaaV cannot serve."""
+    declaring = {p for p, entry in _providers().items() if "realtime_session" in entry["capabilities"]}
+    assert declaring == REALTIME_PROVIDERS
+
+
+@pytest.mark.parametrize("provider", sorted(REALTIME_PROVIDERS))
+def test_a_realtime_vendor_still_declares_model(provider):
+    """/model/get-compatible-models only returns providers carrying MODEL."""
+    assert "model" in _providers()[provider]["capabilities"]
