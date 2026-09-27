@@ -62,10 +62,12 @@ def test_a_video_model_is_not_a_chat_model(tz):
 
 
 def test_a_realtime_model_gets_no_route_whatever_its_flags(tz):
-    """A realtime model gets no route, whatever its flags.
+    """A realtime model with no endpoint list gets no route, whatever its flags.
 
     Thirteen had speech and transcription routes, which kept them out of the "no route" set
-    budapp hides.
+    budapp hides. Since FRD-023 a model can be served at /v1/realtime, but only by listing it
+    explicitly -- the mode alone also covers GPT-Live and the retired betas
+    (tests/test_realtime_catalog.py).
     """
     assert (
         routes(

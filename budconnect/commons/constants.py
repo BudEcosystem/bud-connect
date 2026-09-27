@@ -62,6 +62,8 @@ class ModelEndpointEnum(Enum):
         DOCUMENT (str): Document processing endpoint.
         RERANK (str): Reranking endpoint for search results.
         MODERATION (str): Content moderation endpoint.
+        REALTIME (str): OpenAI Realtime GA socket (speech-to-speech and realtime transcription),
+            relayed by WaaV. budapp names the same value ``REALTIME_SESSION`` (FRD-023 C5).
     """
 
     CHAT = "/v1/chat/completions"
@@ -78,6 +80,7 @@ class ModelEndpointEnum(Enum):
     DOCUMENT = "/v1/documents"
     RERANK = "/v1/rerank"  # https://docs.litellm.ai/docs/rerank
     MODERATION = "/v1/moderations"  # https://docs.litellm.ai/docs/moderation
+    REALTIME = "/v1/realtime"  # a WebSocket, not a REST route; served by WaaV, never budgateway
 
 
 class ProviderCapabilityEnum(Enum):
@@ -96,8 +99,10 @@ class ProviderCapabilityEnum(Enum):
         TEXT_TO_SPEECH: The provider can synthesise speech through the audio gateway.
         AUDIO_TRANSCRIPTION: The provider can transcribe audio through the audio gateway.
         AUDIO_TRANSLATION: The provider can translate audio to English text.
+        REALTIME_SESSION: The audio gateway can open a ``/v1/realtime`` session for the
+            provider's models (FRD-023). A model under a provider without it loses that route.
 
-    The first three say what KIND of provider this is; the audio three say what it can serve.
+    The first three say what KIND of provider this is; the rest say what it can serve.
     They share one array on purpose -- "what can this provider do" is one question, and budapp
     already filters providers on this field. A voice vendor keeps ``MODEL`` alongside them:
     ``/model/get-compatible-models`` only returns providers carrying MODEL, and budadmin's
@@ -114,6 +119,7 @@ class ProviderCapabilityEnum(Enum):
     TEXT_TO_SPEECH = "text_to_speech"
     AUDIO_TRANSCRIPTION = "audio_transcription"
     AUDIO_TRANSLATION = "audio_translation"
+    REALTIME_SESSION = "realtime_session"
 
 
 class ModelProviderTypeEnum(str, Enum):
