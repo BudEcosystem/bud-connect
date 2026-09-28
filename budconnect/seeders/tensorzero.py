@@ -18,7 +18,8 @@
 
 import json
 import os
-from typing import Any, Dict, List, Optional, Set
+import re
+from typing import Any, Dict, FrozenSet, List, Optional, Set
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -71,6 +72,14 @@ MIN_RETIREMENT_ALLOWANCE = 25
 #: The route a model is served at, by LiteLLM `mode`, for a model that lists no
 #: `supported_endpoints` of its own. A mode missing here -- realtime, video_generation, ocr --
 #: has no Bud route, so its models get none, which is what budapp hides them by.
+#:
+#: `realtime` is missing on purpose, although /v1/realtime is a Bud route (FRD-023). LiteLLM
+#: files every live-audio model under `mode: "realtime"` whatever protocol it speaks: GPT-Live
+#: (`gpt-live-1`, a different socket), the translation sessions (`gpt-realtime-translate`), the
+#: retired `gpt-4o-*-realtime-preview` betas, Gemini Live, Nova Sonic. Among OpenAI and Azure
+#: models, the mode-only set is exactly those -- every GA `gpt-realtime*` model lists
+#: /v1/realtime explicitly. So the mode would add only routes that fail at connect time; the
+#: explicit list is what says a model speaks the Realtime protocol.
 MODE_ENDPOINTS: Dict[str, List[ModelEndpointEnum]] = {
     "chat": [ModelEndpointEnum.CHAT],
     "completion": [ModelEndpointEnum.COMPLETION],
@@ -126,6 +135,90 @@ def gate_audio_routes(
     if not any(cap in AUDIO_ROUTE_CAPABILITY.values() for cap in capabilities):
         return endpoints
     return [e for e in endpoints if e not in AUDIO_ROUTE_CAPABILITY or AUDIO_ROUTE_CAPABILITY[e] in capabilities]
+
+
+#: The modes whose models keep an explicit /v1/realtime: speech-to-speech models and realtime
+#: transcription models (`gpt-realtime-whisper`, the `session_type: "transcription"` deployments).
+#: A chat model LiteLLM also lists there -- `gpt-audio-mini` lists chat, responses, realtime and
+#: batch -- stays a chat model: budapp publishes a deployment to ONE plane, and a realtime route
+#: would take it off the chat plane its chat route needs (FRD-023 §5.12, CONTRACTS C5).
+REALTIME_MODES = frozenset({"realtime", "audio_transcription"})
+
+
+def gate_realtime_route(
+    endpoints: List[ModelEndpointEnum], capabilities: List[ProviderCapabilityEnum], uri: str
+) -> List[ModelEndpointEnum]:
+    """Drop /v1/realtime from a model whose provider the audio gateway cannot open a session for.
+
+    Unlike `gate_audio_routes` this applies to EVERY provider: /v1/realtime is only ever served
+    by WaaV, so a provider without `realtime_session` has no other plane to fall back to. WaaV
+    serves OpenAI, Azure OpenAI and xAI by relay and Gemini Live, Nova 2 Sonic and the per-minute
+    agents by translation (FRD-023 C7); Vertex, which LiteLLM also lists Live models for, has no
+    translator (DEG-1). Loud, because it is the one place a model the source calls
+    realtime-capable silently loses the route.
+    """
+    if ModelEndpointEnum.REALTIME not in endpoints or ProviderCapabilityEnum.REALTIME_SESSION in capabilities:
+        return endpoints
+    logger.warning(
+        "Model %s is listed at %s, but its provider does not declare %s; the route is dropped",
+        uri,
+        ModelEndpointEnum.REALTIME.value,
+        ProviderCapabilityEnum.REALTIME_SESSION.value,
+    )
+    return [e for e in endpoints if e is not ModelEndpointEnum.REALTIME]
+
+
+#: FRD-023 RT7, CONTRACTS C5/C7. Realtime models LiteLLM lists with NO endpoint list, granted
+#: /v1/realtime by NAME -- per model, never from their mode (which would also grant GPT-Live, the
+#: translation sessions and the retired betas). By provider_type, the bare model id.
+#:
+#: Nova 2 Sonic is the one such model WaaV serves (its translate engine over Bedrock's
+#: InvokeModelWithBidirectionalStream). What is NOT here, deliberately: xAI's voice model
+#: (``grok-voice-*``) is not in the catalog at all, and the per-minute agents (Deepgram Voice Agent,
+#: ElevenLabs Agents, Hume EVI) are agents, not models -- their own flow, a later phase. None is
+#: invented here, and their providers do not declare ``realtime_session``: a declaration puts a
+#: provider in budadmin's Realtime picker, which would then show an empty list.
+REALTIME_ROUTE_GRANTS: Dict[str, FrozenSet[str]] = {
+    "bedrock": frozenset({"amazon.nova-2-sonic-v1:0"}),
+}
+
+#: Providers WaaV serves as speech-to-speech sessions ONLY (C7): its translate engine (Gemini Live,
+#: Nova 2 Sonic), xAI, and the per-minute agents. A realtime TRANSCRIPTION model under one of them
+#: (``gemini-3.5-transcribe-live``) would publish a session type none of them opens, so it keeps no
+#: /v1/realtime. OpenAI and Azure serve both session types (``gpt-realtime-whisper``).
+SPEECH_TO_SPEECH_ONLY_REALTIME_PROVIDERS = frozenset({"gemini", "bedrock", "xai", "deepgram", "elevenlabs", "hume"})
+
+#: A speech TRANSLATION session model (FRD-023 NG-2): ``gpt-realtime-translate``,
+#: ``gemini-3.5-live-translate-preview``. Its own product and protocol, whatever it is listed at.
+_TRANSLATION_SESSION_RE = re.compile(r"(?:live|realtime)-translate")
+
+
+def realtime_route_for_model(
+    endpoints: List[ModelEndpointEnum], provider_type: str, uri: str, mode: str
+) -> List[ModelEndpointEnum]:
+    """Grant or withhold /v1/realtime for one model (FRD-023 C5, C7), before the provider gates.
+
+    Grants it to a model named in :data:`REALTIME_ROUTE_GRANTS`; withholds it from a translation
+    session (NG-2), and from a non-``realtime``-mode model under a speech-to-speech-only provider.
+    Whether the provider can serve the route at all is still :func:`gate_realtime_route`'s question.
+    """
+    bare = uri.split("/", 1)[1] if uri.startswith(f"{provider_type}/") else uri
+    routes = set(endpoints)
+    if bare in REALTIME_ROUTE_GRANTS.get(provider_type, frozenset()):
+        routes.add(ModelEndpointEnum.REALTIME)
+    if ModelEndpointEnum.REALTIME in routes:
+        reason = None
+        if _TRANSLATION_SESSION_RE.search(uri):
+            reason = "it is a speech translation session, not a conversation (FRD-023 NG-2)"
+        elif provider_type in SPEECH_TO_SPEECH_ONLY_REALTIME_PROVIDERS and mode != "realtime":
+            reason = f"{provider_type} realtime sessions are speech-to-speech only and its mode is {mode!r}"
+        if reason:
+            # Not a warning: the rule working, on every sync, for the same few models.
+            logger.info(
+                "Model %s is listed at %s; the route is withheld: %s", uri, ModelEndpointEnum.REALTIME.value, reason
+            )
+            routes.discard(ModelEndpointEnum.REALTIME)
+    return sorted(routes, key=lambda e: e.value)
 
 
 def read_json_file(file_path: str) -> Dict[str, Any]:
@@ -418,8 +511,13 @@ class TensorZeroParser:
         else:
             model_specs = await self.derive_model_specs(model_data)
 
+        # FRD-023 RT7: per-model realtime grants and withholdings, before the provider gates judge them.
+        model_specs["endpoints"] = realtime_route_for_model(
+            model_specs["endpoints"], provider_type, model_data.uri, model_data.config.get("mode") or ""
+        )
         capabilities = [ProviderCapabilityEnum(c) for c in _provider_capabilities().get(provider_type, [])]
         model_specs["endpoints"] = gate_audio_routes(model_specs["endpoints"], capabilities)
+        model_specs["endpoints"] = gate_realtime_route(model_specs["endpoints"], capabilities, model_data.uri)
 
         billing = await self.derive_billing(model_data, categorized_data)
 
@@ -599,26 +697,38 @@ class TensorZeroParser:
             supported_model_endpoints = []
             for endpoint in config.get("supported_endpoints", []):
                 try:
-                    supported_model_endpoints.append(ModelEndpointEnum(endpoint))
+                    route = ModelEndpointEnum(endpoint)
                 except ValueError:
                     # The explicit list is authoritative: it says where the model is SERVED.
                     # Falling back to the mode-derived route here would be wrong -- a model
-                    # listed only at /v1/realtime cannot be called at /v1/chat/completions,
+                    # listed only at /vertex_ai/live cannot be called at /v1/chat/completions,
                     # and advertising that route fails at request time. So the endpoint is
                     # dropped, but loudly: at DEBUG this hid 25 realtime models losing their
                     # only route, which left them in the catalog with none.
                     #
                     # Keeping them with an empty endpoint list is a decision, not a gap
-                    # (2026-09-24). budapp hides models whose `endpoints` is empty until it
-                    # implements realtime. An empty list means "no Bud route serves this":
-                    # realtime/live, video generation, OCR, and audio a voice vendor's
-                    # gateway cannot dispatch -- so do not "fix" it with a fallback route.
+                    # (2026-09-24). budapp hides models whose `endpoints` is empty. An empty
+                    # list means "no Bud route serves this": Vertex Live, video generation,
+                    # OCR, and audio a voice vendor's gateway cannot dispatch -- so do not
+                    # "fix" it with a fallback route. /v1/realtime itself left this set when
+                    # FRD-023 gave it a value; `gate_realtime_route` now decides who keeps it.
                     logger.warning(
                         "Model %s is served at %s, which has no ModelEndpointEnum value; "
                         "no Bud route can serve it there",
                         model_data.uri,
                         endpoint,
                     )
+                    continue
+                if route is ModelEndpointEnum.REALTIME and mode not in REALTIME_MODES:
+                    # Not a warning: this is the rule working, every night, for gpt-audio*.
+                    logger.info(
+                        "Model %s (mode %r) is also listed at %s; it stays on its other routes",
+                        model_data.uri,
+                        mode,
+                        endpoint,
+                    )
+                    continue
+                supported_model_endpoints.append(route)
 
         if set(supported_model_endpoints) == {ModelEndpointEnum.BATCH}:
             # Batch is a way of calling a route, not a route. Mistral OCR is listed at
