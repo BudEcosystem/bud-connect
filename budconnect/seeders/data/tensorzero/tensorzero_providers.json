@@ -382,8 +382,7 @@
             }
         ],
         "capabilities": [
-            "model",
-            "realtime_session"
+            "model"
         ]
     },
     "anthropic": {
@@ -597,8 +596,7 @@
         "capabilities": [
             "model",
             "audio_transcription",
-            "text_to_speech",
-            "realtime_session"
+            "text_to_speech"
         ]
     },
     "elevenlabs": {
@@ -618,8 +616,7 @@
         "capabilities": [
             "model",
             "audio_transcription",
-            "text_to_speech",
-            "realtime_session"
+            "text_to_speech"
         ]
     },
     "cartesia": {
@@ -1016,8 +1013,7 @@
         ],
         "capabilities": [
             "model",
-            "text_to_speech",
-            "realtime_session"
+            "text_to_speech"
         ]
     },
     "ibm_watson": {

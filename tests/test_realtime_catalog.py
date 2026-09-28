@@ -43,12 +43,13 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS_JSON_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "tensorzero" / "tensorzero_providers.json"
 MIGRATIONS_DIR = REPO_ROOT / "alembic" / "versions"
 
-#: The providers WaaV serves /v1/realtime for (FRD-023 DEG-1, CONTRACTS C7): the relay's openai, azure
-#: and xai (Grok speaks GA); the translate engine's gemini (Gemini Live) and bedrock (Nova 2 Sonic); and
-#: the per-minute agents deepgram (Voice Agent), elevenlabs (Agents) and hume (EVI). The per-minute
-#: agents have no catalog model -- an agent is configured at the vendor -- so they declare the
-#: capability only for budapp's "+ Cloud Model" picker to offer them under Realtime.
-REALTIME_PROVIDERS = {"openai", "azure", "xai", "gemini", "bedrock", "deepgram", "elevenlabs", "hume"}
+#: The providers the catalog offers realtime MODELS for (FRD-023 DEG-1, CONTRACTS C7): the relay's openai
+#: and azure, the translate engine's gemini (Gemini Live) and bedrock (Nova 2 Sonic). A declaration puts
+#: the provider in budadmin's Realtime picker, so only a provider with realtime models in the catalog
+#: makes one: xai has no voice model here, and the per-minute agents (deepgram's Voice Agent, elevenlabs'
+#: Agents, hume's EVI) are agents, not models -- their own flow, a later phase. WaaV serving them is
+#: unchanged; the catalog just does not list a provider whose Realtime list would be empty.
+REALTIME_PROVIDERS = {"openai", "azure", "gemini", "bedrock"}
 
 
 # ---- catalog entries, as the SDK emits them -------------------------------------------------- #
@@ -555,8 +556,7 @@ def test_the_named_grant_needs_the_provider_capability(tz, monkeypatch):
 def test_the_named_grants_are_nova_2_sonic_alone(tz):
     """Only Nova 2 Sonic needs a grant; nothing else is invented.
 
-    xAI's voice model (grok-voice-*) is not in the catalog, and a per-minute agent is configured at its
-    vendor: both are added with budadmin's "+ Cloud Model" and the Realtime category.
+    xAI's voice model (grok-voice-*) is not in the catalog, and a per-minute agent is not a model.
     """
     expected = {"bedrock": frozenset({"amazon.nova-2-sonic-v1:0"})}
     assert expected == tz.REALTIME_ROUTE_GRANTS
@@ -585,9 +585,13 @@ def test_tc_cat_04_rt7_snapshot(tz, monkeypatch):
     }
 
 
-@pytest.mark.parametrize("provider", ["deepgram", "elevenlabs", "hume"])
-def test_a_per_minute_agent_keeps_its_audio_capabilities(provider):
-    """Declaring realtime_session adds the Realtime picker; the STT/TTS claims are untouched."""
+@pytest.mark.parametrize("provider", ["deepgram", "elevenlabs", "hume", "xai"])
+def test_a_provider_with_no_realtime_model_is_not_offered_under_realtime(provider):
+    """The Realtime picker lists a provider's catalog models; with none, the user lands on an empty list.
+
+    The per-minute agents (Deepgram Voice Agent, ElevenLabs Agents, Hume EVI) are agents, added through
+    their own flow in a later phase; xAI's voice model is not in the catalog. Their other claims stand.
+    """
     capabilities = _providers()[provider]["capabilities"]
-    assert "realtime_session" in capabilities
-    assert {"audio_transcription", "text_to_speech"} & set(capabilities)
+    assert "realtime_session" not in capabilities
+    assert "model" in capabilities

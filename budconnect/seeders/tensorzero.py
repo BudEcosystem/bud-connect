@@ -175,9 +175,9 @@ def gate_realtime_route(
 #: Nova 2 Sonic is the one such model WaaV serves (its translate engine over Bedrock's
 #: InvokeModelWithBidirectionalStream). What is NOT here, deliberately: xAI's voice model
 #: (``grok-voice-*``) is not in the catalog at all, and the per-minute agents (Deepgram Voice Agent,
-#: ElevenLabs Agents, Hume EVI) are configured at their vendor, so no catalog model is theirs. Both are
-#: added with budadmin's "+ Cloud Model" and the Realtime category -- their providers declare
-#: ``realtime_session`` so the picker offers them -- and none is invented here.
+#: ElevenLabs Agents, Hume EVI) are agents, not models -- their own flow, a later phase. None is
+#: invented here, and their providers do not declare ``realtime_session``: a declaration puts a
+#: provider in budadmin's Realtime picker, which would then show an empty list.
 REALTIME_ROUTE_GRANTS: Dict[str, FrozenSet[str]] = {
     "bedrock": frozenset({"amazon.nova-2-sonic-v1:0"}),
 }
