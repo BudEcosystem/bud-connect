@@ -43,9 +43,12 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS_JSON_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "tensorzero" / "tensorzero_providers.json"
 MIGRATIONS_DIR = REPO_ROOT / "alembic" / "versions"
 
-#: The providers WaaV can relay the Realtime protocol for in the first release (FRD-023 DEG-1).
-#: RT7 adds gemini, bedrock and xai -- each with its translator, never before it.
-REALTIME_PROVIDERS = {"openai", "azure"}
+#: The providers WaaV serves /v1/realtime for (FRD-023 DEG-1, CONTRACTS C7): the relay's openai, azure
+#: and xai (Grok speaks GA); the translate engine's gemini (Gemini Live) and bedrock (Nova 2 Sonic); and
+#: the per-minute agents deepgram (Voice Agent), elevenlabs (Agents) and hume (EVI). The per-minute
+#: agents have no catalog model -- an agent is configured at the vendor -- so they declare the
+#: capability only for budapp's "+ Cloud Model" picker to offer them under Realtime.
+REALTIME_PROVIDERS = {"openai", "azure", "xai", "gemini", "bedrock", "deepgram", "elevenlabs", "hume"}
 
 
 # ---- catalog entries, as the SDK emits them -------------------------------------------------- #
@@ -131,7 +134,7 @@ GPT_4O_MINI_REALTIME_PREVIEW = {
 
 AZURE_GPT_REALTIME_2_1 = {**GPT_REALTIME_2_1, "litellm_provider": "azure"}
 
-#: Gemini Live is listed at /v1/realtime, and WaaV has no Gemini translator until RT7.
+#: Gemini Live is listed at /v1/realtime; RT7's translator serves it (C7).
 GEMINI_3_8_LIVE = {
     "litellm_provider": "gemini",
     "mode": "realtime",
@@ -353,13 +356,14 @@ def test_audio_in_and_out_never_implies_realtime(tz):
 
 
 def test_tc_cat_05_a_provider_without_the_capability_loses_the_route_with_a_warning(tz, caplog):
-    """Gemini lists its Live models at /v1/realtime; WaaV cannot serve them until RT7 (TC-CAT-05)."""
+    """LiteLLM lists Vertex's Live models at /v1/realtime; WaaV has no Vertex Live translator (TC-CAT-05)."""
+    vertex_live = {**GEMINI_3_8_LIVE, "litellm_provider": "vertex_ai-gemini-models"}
     with caplog.at_level(logging.WARNING, logger=tz.logger.name):
-        mi = _model_info(tz, "gemini/gemini-3.8-live", GEMINI_3_8_LIVE, "gemini")
+        mi = _model_info(tz, "vertex_ai/gemini-3.8-live", vertex_live, "vertex_ai-gemini-models")
 
     assert mi.endpoints == []
     warnings = [
-        r for r in caplog.records if r.levelno == logging.WARNING and "gemini/gemini-3.8-live" in r.getMessage()
+        r for r in caplog.records if r.levelno == logging.WARNING and "vertex_ai/gemini-3.8-live" in r.getMessage()
     ]
     assert any("realtime_session" in r.getMessage() for r in warnings), [r.getMessage() for r in caplog.records]
 
@@ -393,7 +397,7 @@ def test_the_gate_applies_through_the_provider_catalog(tz, monkeypatch):
     assert _model_info(tz, "openai/gpt-realtime-2.1", GPT_REALTIME_2_1, "openai").endpoints == []
 
 
-def test_only_the_relay_vendors_declare_realtime_session():
+def test_only_the_vendors_waav_serves_declare_realtime_session():
     """DEG-1: the catalog must not offer /v1/realtime for a vendor WaaV cannot serve."""
     declaring = {p for p, entry in _providers().items() if "realtime_session" in entry["capabilities"]}
     assert declaring == REALTIME_PROVIDERS
@@ -403,3 +407,187 @@ def test_only_the_relay_vendors_declare_realtime_session():
 def test_a_realtime_vendor_still_declares_model(provider):
     """/model/get-compatible-models only returns providers carrying MODEL."""
     assert "model" in _providers()[provider]["capabilities"]
+
+
+# ---- RT7 (CONTRACTS C7): Gemini Live, Nova 2 Sonic, xAI, the per-minute agents ------------------ #
+#
+# Entries copied from LiteLLM's model_prices_and_context_window.json (2026-09-28), the fields that decide
+# routes and prices.
+
+GEMINI_2_5_NATIVE_AUDIO = {
+    "litellm_provider": "gemini",
+    "mode": "realtime",
+    "supported_endpoints": ["/v1/realtime"],
+    "supported_modalities": ["text", "audio"],
+    "supported_output_modalities": ["text", "audio"],
+    "input_cost_per_token": 5e-07,
+    "input_cost_per_audio_token": 3e-06,
+    "output_cost_per_token": 2e-06,
+    "output_cost_per_audio_token": 1.2e-05,
+}
+
+GEMINI_3_1_FLASH_LIVE = {
+    "litellm_provider": "gemini",
+    "mode": "realtime",
+    "supported_endpoints": ["/v1/realtime"],
+    "supported_modalities": ["text", "image", "audio", "video"],
+    "supported_output_modalities": ["text", "audio"],
+}
+
+#: A speech TRANSLATION session (NG-2's Gemini twin): listed at /v1/realtime, not a conversation.
+GEMINI_LIVE_TRANSLATE = {
+    "litellm_provider": "gemini",
+    "mode": "realtime",
+    "supported_endpoints": ["/v1/realtime"],
+    "supported_modalities": ["audio"],
+    "supported_output_modalities": ["audio", "text"],
+}
+
+#: A Live TRANSCRIPTION model: audio in, text out. The translate engine opens speech-to-speech sessions.
+GEMINI_TRANSCRIBE_LIVE = {
+    "litellm_provider": "gemini",
+    "mode": "audio_transcription",
+    "supported_endpoints": ["/v1/realtime"],
+    "supported_modalities": ["audio"],
+    "supported_output_modalities": ["text"],
+}
+
+#: A chat model LiteLLM lists at /v1/realtime only.
+GEMINI_ROBOTICS_STREAMING = {
+    "litellm_provider": "gemini",
+    "mode": "chat",
+    "supported_endpoints": ["/v1/realtime"],
+    "supported_modalities": ["text", "image", "audio", "video"],
+    "supported_output_modalities": ["text"],
+}
+
+#: Nova 2 Sonic, exactly as LiteLLM lists it: realtime mode, audio flags, NO endpoint list.
+NOVA_2_SONIC = {
+    "litellm_provider": "bedrock",
+    "mode": "realtime",
+    "supports_audio_input": True,
+    "supports_audio_output": True,
+    "input_cost_per_token": 3.3e-07,
+    "input_cost_per_audio_token": 3e-06,
+    "output_cost_per_token": 2.75e-06,
+    "output_cost_per_audio_token": 1.2e-05,
+}
+
+
+@pytest.mark.parametrize(
+    ("uri", "config"),
+    [
+        ("gemini-2.5-flash-native-audio-preview-09-2025", GEMINI_2_5_NATIVE_AUDIO),
+        ("gemini/gemini-2.5-flash-native-audio-latest", GEMINI_2_5_NATIVE_AUDIO),
+        ("gemini-3.1-flash-live-preview", GEMINI_3_1_FLASH_LIVE),
+        ("gemini-3.8-live", GEMINI_3_8_LIVE),
+    ],
+)
+def test_gemini_live_models_are_served_at_realtime(tz, uri, config):
+    """Gemini Live (RT7's translate engine): every Live model LiteLLM lists at /v1/realtime keeps it."""
+    mi = _model_info(tz, uri, config, "gemini")
+    assert mi.endpoints == [E.REALTIME]
+    # budapp derives `session_type: "realtime"` from the audio output.
+    assert M.AUDIO_OUTPUT in mi.modality and M.AUDIO_INPUT in mi.modality
+
+
+def test_a_gemini_live_price_survives_for_budapps_suggestion(tz):
+    """The Gemini realtime rates budapp suggests come from these (C3, C7)."""
+    dumped = _model_info(
+        tz, "gemini-2.5-flash-native-audio-preview-09-2025", GEMINI_2_5_NATIVE_AUDIO, "gemini"
+    ).model_dump()
+    assert dumped["input_cost"]["input_cost_per_audio_token"] == 3e-06
+    assert dumped["output_cost"]["output_cost_per_audio_token"] == 1.2e-05
+
+
+def test_a_live_translation_model_is_never_a_realtime_session(tz, caplog):
+    """NG-2: a translation session is its own product, whatever LiteLLM lists it at."""
+    with caplog.at_level(logging.INFO, logger=tz.logger.name):
+        mi = _model_info(tz, "gemini/gemini-3.5-live-translate-preview", GEMINI_LIVE_TRANSLATE, "gemini")
+    assert mi.endpoints == []
+    assert any("translat" in r.getMessage() for r in caplog.records)
+
+
+def test_the_translate_engine_opens_no_transcription_session(tz):
+    """C7 serves Gemini as speech-to-speech; budapp refuses a Gemini transcription session at publish."""
+    assert _model_info(tz, "gemini/gemini-3.5-transcribe-live", GEMINI_TRANSCRIBE_LIVE, "gemini").endpoints == []
+
+
+def test_openai_still_serves_realtime_transcription_sessions(tz):
+    """The relay vendors keep theirs: gpt-realtime-whisper is a transcription session on /v1/realtime."""
+    mi = _model_info(tz, "openai/gpt-realtime-whisper", GPT_REALTIME_WHISPER, "openai")
+    assert mi.endpoints == [E.REALTIME]
+
+
+def test_a_chat_model_listed_at_realtime_alone_gets_no_route(tz):
+    """A chat-mode model is not a realtime session, and /v1/realtime was its only listing."""
+    assert (
+        _model_info(tz, "gemini/gemini-robotics-er-2-streaming-preview", GEMINI_ROBOTICS_STREAMING, "gemini").endpoints
+        == []
+    )
+
+
+def test_nova_2_sonic_is_served_at_realtime_by_name(tz):
+    """Nova 2 Sonic is granted the route by name.
+
+    LiteLLM lists it with no endpoints, and C5 never reads the route off a mode, which would also grant
+    every other realtime-mode model.
+    """
+    mi = _model_info(tz, "amazon.nova-2-sonic-v1:0", NOVA_2_SONIC, "bedrock")
+    assert mi.endpoints == [E.REALTIME]
+    assert set(mi.modality) == {M.AUDIO_INPUT, M.AUDIO_OUTPUT}
+    dumped = mi.model_dump()
+    assert dumped["input_cost"]["input_cost_per_audio_token"] == 3e-06
+    assert dumped["output_cost"]["output_cost_per_token"] == 2.75e-06
+
+
+def test_realtime_mode_alone_still_grants_nothing_on_bedrock(tz):
+    """Another realtime-mode Bedrock model with no endpoint list is not Nova 2 Sonic."""
+    assert _model_info(tz, "amazon.nova-sonic-v1:0", NOVA_2_SONIC, "bedrock").endpoints == []
+
+
+def test_the_named_grant_needs_the_provider_capability(tz, monkeypatch):
+    """The grant is a route like any other: a provider that stops declaring realtime_session loses it."""
+    monkeypatch.setattr(tz, "_PROVIDER_CAPABILITIES", {"bedrock": ["model"]})
+    assert _model_info(tz, "amazon.nova-2-sonic-v1:0", NOVA_2_SONIC, "bedrock").endpoints == []
+
+
+def test_the_named_grants_are_nova_2_sonic_alone(tz):
+    """Only Nova 2 Sonic needs a grant; nothing else is invented.
+
+    xAI's voice model (grok-voice-*) is not in the catalog, and a per-minute agent is configured at its
+    vendor: both are added with budadmin's "+ Cloud Model" and the Realtime category.
+    """
+    expected = {"bedrock": frozenset({"amazon.nova-2-sonic-v1:0"})}
+    assert expected == tz.REALTIME_ROUTE_GRANTS
+
+
+def test_tc_cat_04_rt7_snapshot(tz, monkeypatch):
+    """One seed over a snapshot holding every RT7 shape: only the speech-to-speech models get the route."""
+    _fake_sdk(
+        monkeypatch,
+        {
+            "gemini-2.5-flash-native-audio-preview-09-2025": dict(GEMINI_2_5_NATIVE_AUDIO),
+            "gemini/gemini-3.5-live-translate-preview": dict(GEMINI_LIVE_TRANSLATE),
+            "gemini/gemini-3.5-transcribe-live": dict(GEMINI_TRANSCRIBE_LIVE),
+            "amazon.nova-2-sonic-v1:0": dict(NOVA_2_SONIC),
+        },
+    )
+    parsed = asyncio.run(tz.TensorZeroParser.parse_model_data())
+    routes = {
+        m.uri: _model_info(tz, m.uri, m.config, provider).endpoints for provider, ms in parsed.items() for m in ms
+    }
+    assert routes == {
+        "gemini-2.5-flash-native-audio-preview-09-2025": [E.REALTIME],
+        "gemini/gemini-3.5-live-translate-preview": [],
+        "gemini/gemini-3.5-transcribe-live": [],
+        "amazon.nova-2-sonic-v1:0": [E.REALTIME],
+    }
+
+
+@pytest.mark.parametrize("provider", ["deepgram", "elevenlabs", "hume"])
+def test_a_per_minute_agent_keeps_its_audio_capabilities(provider):
+    """Declaring realtime_session adds the Realtime picker; the STT/TTS claims are untouched."""
+    capabilities = _providers()[provider]["capabilities"]
+    assert "realtime_session" in capabilities
+    assert {"audio_transcription", "text_to_speech"} & set(capabilities)

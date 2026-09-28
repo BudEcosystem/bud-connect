@@ -100,7 +100,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "realtime_session"
         ]
     },
     "deepseek": {
@@ -210,7 +211,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "realtime_session"
         ]
     },
     "fireworks_ai-embedding-models": {
@@ -380,7 +382,8 @@
             }
         ],
         "capabilities": [
-            "model"
+            "model",
+            "realtime_session"
         ]
     },
     "anthropic": {
@@ -594,7 +597,8 @@
         "capabilities": [
             "model",
             "audio_transcription",
-            "text_to_speech"
+            "text_to_speech",
+            "realtime_session"
         ]
     },
     "elevenlabs": {
@@ -614,7 +618,8 @@
         "capabilities": [
             "model",
             "audio_transcription",
-            "text_to_speech"
+            "text_to_speech",
+            "realtime_session"
         ]
     },
     "cartesia": {
@@ -1011,7 +1016,8 @@
         ],
         "capabilities": [
             "model",
-            "text_to_speech"
+            "text_to_speech",
+            "realtime_session"
         ]
     },
     "ibm_watson": {

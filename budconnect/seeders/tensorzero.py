@@ -18,7 +18,8 @@
 
 import json
 import os
-from typing import Any, Dict, List, Optional, Set
+import re
+from typing import Any, Dict, FrozenSet, List, Optional, Set
 from uuid import UUID
 
 from budmicroframe.commons import logging
@@ -151,10 +152,10 @@ def gate_realtime_route(
 
     Unlike `gate_audio_routes` this applies to EVERY provider: /v1/realtime is only ever served
     by WaaV, so a provider without `realtime_session` has no other plane to fall back to. WaaV
-    relays OpenAI and Azure OpenAI in the first release; Gemini Live, Nova Sonic and xAI wait
-    for their translators (FRD-023 RT7, DEG-1), and LiteLLM already lists Gemini's Live models
-    at /v1/realtime. Loud, because it is the one place a model the source calls realtime-capable
-    silently loses the route.
+    serves OpenAI, Azure OpenAI and xAI by relay and Gemini Live, Nova 2 Sonic and the per-minute
+    agents by translation (FRD-023 C7); Vertex, which LiteLLM also lists Live models for, has no
+    translator (DEG-1). Loud, because it is the one place a model the source calls
+    realtime-capable silently loses the route.
     """
     if ModelEndpointEnum.REALTIME not in endpoints or ProviderCapabilityEnum.REALTIME_SESSION in capabilities:
         return endpoints
@@ -165,6 +166,59 @@ def gate_realtime_route(
         ProviderCapabilityEnum.REALTIME_SESSION.value,
     )
     return [e for e in endpoints if e is not ModelEndpointEnum.REALTIME]
+
+
+#: FRD-023 RT7, CONTRACTS C5/C7. Realtime models LiteLLM lists with NO endpoint list, granted
+#: /v1/realtime by NAME -- per model, never from their mode (which would also grant GPT-Live, the
+#: translation sessions and the retired betas). By provider_type, the bare model id.
+#:
+#: Nova 2 Sonic is the one such model WaaV serves (its translate engine over Bedrock's
+#: InvokeModelWithBidirectionalStream). What is NOT here, deliberately: xAI's voice model
+#: (``grok-voice-*``) is not in the catalog at all, and the per-minute agents (Deepgram Voice Agent,
+#: ElevenLabs Agents, Hume EVI) are configured at their vendor, so no catalog model is theirs. Both are
+#: added with budadmin's "+ Cloud Model" and the Realtime category -- their providers declare
+#: ``realtime_session`` so the picker offers them -- and none is invented here.
+REALTIME_ROUTE_GRANTS: Dict[str, FrozenSet[str]] = {
+    "bedrock": frozenset({"amazon.nova-2-sonic-v1:0"}),
+}
+
+#: Providers WaaV serves as speech-to-speech sessions ONLY (C7): its translate engine (Gemini Live,
+#: Nova 2 Sonic), xAI, and the per-minute agents. A realtime TRANSCRIPTION model under one of them
+#: (``gemini-3.5-transcribe-live``) would publish a session type none of them opens, so it keeps no
+#: /v1/realtime. OpenAI and Azure serve both session types (``gpt-realtime-whisper``).
+SPEECH_TO_SPEECH_ONLY_REALTIME_PROVIDERS = frozenset({"gemini", "bedrock", "xai", "deepgram", "elevenlabs", "hume"})
+
+#: A speech TRANSLATION session model (FRD-023 NG-2): ``gpt-realtime-translate``,
+#: ``gemini-3.5-live-translate-preview``. Its own product and protocol, whatever it is listed at.
+_TRANSLATION_SESSION_RE = re.compile(r"(?:live|realtime)-translate")
+
+
+def realtime_route_for_model(
+    endpoints: List[ModelEndpointEnum], provider_type: str, uri: str, mode: str
+) -> List[ModelEndpointEnum]:
+    """Grant or withhold /v1/realtime for one model (FRD-023 C5, C7), before the provider gates.
+
+    Grants it to a model named in :data:`REALTIME_ROUTE_GRANTS`; withholds it from a translation
+    session (NG-2), and from a non-``realtime``-mode model under a speech-to-speech-only provider.
+    Whether the provider can serve the route at all is still :func:`gate_realtime_route`'s question.
+    """
+    bare = uri.split("/", 1)[1] if uri.startswith(f"{provider_type}/") else uri
+    routes = set(endpoints)
+    if bare in REALTIME_ROUTE_GRANTS.get(provider_type, frozenset()):
+        routes.add(ModelEndpointEnum.REALTIME)
+    if ModelEndpointEnum.REALTIME in routes:
+        reason = None
+        if _TRANSLATION_SESSION_RE.search(uri):
+            reason = "it is a speech translation session, not a conversation (FRD-023 NG-2)"
+        elif provider_type in SPEECH_TO_SPEECH_ONLY_REALTIME_PROVIDERS and mode != "realtime":
+            reason = f"{provider_type} realtime sessions are speech-to-speech only and its mode is {mode!r}"
+        if reason:
+            # Not a warning: the rule working, on every sync, for the same few models.
+            logger.info(
+                "Model %s is listed at %s; the route is withheld: %s", uri, ModelEndpointEnum.REALTIME.value, reason
+            )
+            routes.discard(ModelEndpointEnum.REALTIME)
+    return sorted(routes, key=lambda e: e.value)
 
 
 def read_json_file(file_path: str) -> Dict[str, Any]:
@@ -457,6 +511,10 @@ class TensorZeroParser:
         else:
             model_specs = await self.derive_model_specs(model_data)
 
+        # FRD-023 RT7: per-model realtime grants and withholdings, before the provider gates judge them.
+        model_specs["endpoints"] = realtime_route_for_model(
+            model_specs["endpoints"], provider_type, model_data.uri, model_data.config.get("mode") or ""
+        )
         capabilities = [ProviderCapabilityEnum(c) for c in _provider_capabilities().get(provider_type, [])]
         model_specs["endpoints"] = gate_audio_routes(model_specs["endpoints"], capabilities)
         model_specs["endpoints"] = gate_realtime_route(model_specs["endpoints"], capabilities, model_data.uri)
