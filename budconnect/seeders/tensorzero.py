@@ -242,6 +242,18 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
         return data
 
 
+def is_fine_tune_price_key(uri: str) -> bool:
+    """Whether a catalog key is LiteLLM's price entry for fine-tunes rather than a model.
+
+    LiteLLM lists `ft:gpt-4o-mini-2024-07-18` so it can price calls to any fine-tune of that
+    base. A fine-tuned model's id carries the owner after the base,
+    `ft:gpt-4o-mini-2024-07-18:<org>:<suffix>:<id>`, so the bare prefix is no model at all:
+    OpenAI answers `model_not_found` to every request. Published as a chat model, it could be
+    deployed, and every request to the deployment failed with a 502.
+    """
+    return uri.split("/", 1)[-1].startswith("ft:")
+
+
 def refuse_mass_retirement(version: str, stale_uris: Set[str], existing_count: int) -> None:
     """Raise rather than retire an implausible share of a version's models in one run.
 
@@ -356,6 +368,13 @@ class TensorZeroParser:
             result.stats.matched,
             result.stats.unmatched,
         )
+
+        price_keys = sorted(uri for uri in model_data if is_fine_tune_price_key(uri))
+        if price_keys:
+            # Dropped after the guards, so they judge the catalog as fetched. Seeded earlier,
+            # these entries are now absent and retire like any model that left the catalog.
+            logger.info("Dropping %d fine-tune price keys, which are not models: %s", len(price_keys), price_keys)
+            model_data = {uri: info for uri, info in model_data.items() if not is_fine_tune_price_key(uri)}
 
         # Get unique providers
         providers = {item["litellm_provider"] for item in model_data.values()}

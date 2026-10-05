@@ -278,3 +278,30 @@ def test_retiring_a_fifth_of_the_catalog_at_once_is_refused(tz):
 def test_a_small_catalog_can_still_lose_a_few(tz):
     """The fraction has a floor, or a six-model catalog could never retire one."""
     tz.refuse_mass_retirement("0.1.0", {f"m{i}" for i in range(6)}, 6)
+
+
+@pytest.mark.parametrize(
+    "uri, is_price_key",
+    [
+        ("openai/ft:gpt-4o-mini-2024-07-18", True),
+        ("openai/ft:gpt-3.5-turbo", True),
+        ("openai/gpt-4o-mini-2024-07-18", False),
+        ("together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo", False),
+    ],
+)
+def test_a_fine_tune_price_key_is_recognised(tz, uri, is_price_key):
+    """Only the bare `ft:` prefix is LiteLLM's price entry; the provider prefix is not part of it."""
+    assert tz.is_fine_tune_price_key(uri) is is_price_key
+
+
+def test_a_fine_tune_price_key_is_not_published(tz, monkeypatch):
+    """`ft:gpt-4o-mini-2024-07-18` was published as a chat model; OpenAI 404s every request to it."""
+    _fake_sdk(
+        monkeypatch,
+        {
+            "openai/gpt-4o-mini-2024-07-18": {"litellm_provider": "openai", "mode": "chat"},
+            "openai/ft:gpt-4o-mini-2024-07-18": {"litellm_provider": "openai", "mode": "chat"},
+        },
+    )
+    parsed = asyncio.run(tz.TensorZeroParser.parse_model_data())
+    assert [m.uri for m in parsed["openai"]] == ["openai/gpt-4o-mini-2024-07-18"]

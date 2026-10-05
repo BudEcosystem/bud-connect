@@ -167,6 +167,11 @@ def main():
                 skipped_count += 1
                 continue
 
+            # `ft:<base>` keys price fine-tunes of a base model; they are not models a request can name
+            if original_key.startswith("ft:"):
+                skipped_count += 1
+                continue
+
             # Special case: vertex_ai-language-models → only include Gemini models
             if litellm_provider == "vertex_ai-language-models":
                 if "gemini" not in original_key.lower():
