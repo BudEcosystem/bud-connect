@@ -1931,8 +1931,8 @@
     {
       "class_name": "Qwen3_5ForConditionalGeneration",
       "architecture_family": "qwen3_5",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "qwen3_coder",
+      "reasoning_parser_type": "qwen3",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
@@ -1947,8 +1947,8 @@
     {
       "class_name": "Qwen3_5MoeForConditionalGeneration",
       "architecture_family": "qwen3_5",
-      "tool_calling_parser_type": null,
-      "reasoning_parser_type": null,
+      "tool_calling_parser_type": "qwen3_coder",
+      "reasoning_parser_type": "qwen3",
       "supports_lora": true,
       "supports_pipeline_parallelism": true
     },

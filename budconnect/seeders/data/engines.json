@@ -518,6 +518,15 @@
                 "match_type": "prefix",
                 "pattern": "moonshotai/Kimi-K2-",
                 "priority": 0,
+                "enabled": false,
+                "notes": "Disabled: also matched the non-thinking Kimi-K2-Instruct, whose whole answer the kimi_k2 parser then returns as reasoning_content. Superseded by the Kimi-K2-Thinking rule; kept so reseeding disables the row already in deployed databases."
+            },
+            {
+                "rule_type": "reasoning",
+                "parser_type": "kimi_k2",
+                "match_type": "prefix",
+                "pattern": "moonshotai/Kimi-K2-Thinking",
+                "priority": 0,
                 "enabled": true,
                 "notes": ""
             },

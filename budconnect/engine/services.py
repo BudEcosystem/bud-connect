@@ -586,7 +586,10 @@ class EngineService:
                         list(engine_ids), session=parser_rule_crud.session
                     )
 
-        # Enhance response with architecture capabilities and chat template
+        # Enhance response with architecture capabilities and chat template.
+        # Parser precedence: model_info > engine parser rule > architecture default. A rule matches the
+        # model URI, so it is more specific than a default shared by every model on the architecture
+        # (Qwen3-Coder runs on Qwen3MoeForCausalLM, whose default is hermes, but emits XML tool calls).
         for engine_item in compatible_engines:
             tool_rule = None
             reasoning_rule = None
@@ -601,16 +604,6 @@ class EngineService:
                 engine_item.tool_calling_parser_type = model_info.tool_calling_parser_type
                 engine_item.parser_source = "model_default"
 
-            if architecture_info:
-                if not engine_item.tool_calling_parser_type and architecture_info.tool_calling_parser_type:
-                    engine_item.tool_calling_parser_type = architecture_info.tool_calling_parser_type
-                    engine_item.parser_source = engine_item.parser_source or "architecture_default"
-                if not engine_item.reasoning_parser_type:
-                    engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
-                engine_item.architecture_family = architecture_info.architecture_family
-                engine_item.supports_lora = architecture_info.supports_lora
-                engine_item.supports_pipeline_parallelism = architecture_info.supports_pipeline_parallelism
-
             # Apply tool parser rule
             if tool_rule:
                 if tool_rule.chat_template is not None:
@@ -624,6 +617,16 @@ class EngineService:
             # Apply reasoning parser rule
             if reasoning_rule and reasoning_rule.parser_type and not engine_item.reasoning_parser_type:
                 engine_item.reasoning_parser_type = reasoning_rule.parser_type
+
+            if architecture_info:
+                if not engine_item.tool_calling_parser_type and architecture_info.tool_calling_parser_type:
+                    engine_item.tool_calling_parser_type = architecture_info.tool_calling_parser_type
+                    engine_item.parser_source = engine_item.parser_source or "architecture_default"
+                if not engine_item.reasoning_parser_type:
+                    engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
+                engine_item.architecture_family = architecture_info.architecture_family
+                engine_item.supports_lora = architecture_info.supports_lora
+                engine_item.supports_pipeline_parallelism = architecture_info.supports_pipeline_parallelism
 
             # Add chat_template if model_info is available
             if model_info and engine_item.chat_template is None:
