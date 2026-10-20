@@ -164,6 +164,8 @@ class EngineService:
                 version=version_data.version,
                 device_architecture=version_data.device_architecture,
                 container_image=version_data.container_image,
+                upstream_vllm=version_data.upstream_vllm,
+                kv_features=list(version_data.kv_features),
             )
             return EngineService.engine_version_crud.insert(version, session=session)
         except Exception as e:
@@ -199,6 +201,8 @@ class EngineService:
                 device_architecture=version.device_architecture,
                 container_image=version.container_image,
                 engine_id=version.engine_id,
+                upstream_vllm=version.upstream_vllm,
+                kv_features=list(version.kv_features or []),
                 created_at=str(version.created_at) if hasattr(version, "created_at") and version.created_at else None,
                 updated_at=str(version.updated_at) if hasattr(version, "updated_at") and version.updated_at else None,
             )
@@ -221,6 +225,10 @@ class EngineService:
             update_data["device_architecture"] = version_data.device_architecture.value
         if version_data.container_image is not None:
             update_data["container_image"] = version_data.container_image
+        if version_data.upstream_vllm is not None:
+            update_data["upstream_vllm"] = version_data.upstream_vllm
+        if version_data.kv_features is not None:
+            update_data["kv_features"] = list(version_data.kv_features)
 
         if update_data:
             EngineService.engine_version_crud.update(data=update_data, conditions={"id": version_id}, session=session)

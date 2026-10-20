@@ -3,7 +3,7 @@ from uuid import uuid4
 
 from budmicroframe.commons import logging
 from budmicroframe.shared.psql_service import PSQLBase, TimestampMixin
-from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String, Text, text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -56,6 +56,8 @@ class EngineVersion(PSQLBase, TimestampMixin):
         version: Version string identifier
         container_image: Container image path or reference
         device_architecture: Architecture this version is built for
+        upstream_vllm: The upstream vLLM base of a vLLM build (e.g. ``0.31.0``), or None
+        kv_features: The KV-cache features verified on this build (``schemas.KV_FEATURES``)
         engine: Relationship to the parent engine
         compatibilities: Relationship to compatibility specifications
     """
@@ -67,6 +69,11 @@ class EngineVersion(PSQLBase, TimestampMixin):
     version: Mapped[str] = mapped_column(String, nullable=False)
     container_image: Mapped[str] = mapped_column(String, nullable=False)
     device_architecture: Mapped[DeviceArchitecture] = mapped_column(Enum(DeviceArchitecture), nullable=False)
+    upstream_vllm: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    # NOT NULL with a server default, so a row an older image inserts (without the column) lists no features
+    kv_features: Mapped[List[str]] = mapped_column(
+        JSONB, nullable=False, default=list, server_default=text("'[]'::jsonb")
+    )
 
     engine = relationship("Engine", back_populates="versions")
     compatibilities = relationship("EngineCompatibility", back_populates="engine_version")

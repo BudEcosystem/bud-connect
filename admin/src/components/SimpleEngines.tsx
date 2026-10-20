@@ -15,10 +15,23 @@ import {
   EngineParserRuleUpdate,
   ParserMatchType,
   ParserRuleType,
-  DeviceArchitecture
+  DeviceArchitecture,
+  KVFeature
 } from '../types'
 
 const DEVICE_ARCHITECTURES: DeviceArchitecture[] = ['CUDA', 'CPU', 'ROCM', 'HPU']
+
+// The KV-cache features a build can list (bud-runtime FRD-023). budsim and budcluster render a KV setting only for a
+// feature the build lists, so tick one only after it was verified on this build.
+const KV_FEATURE_OPTIONS: { value: KVFeature; label: string }[] = [
+  { value: 'kv_events', label: 'KV cache events (prefix-aware routing, KV metrics)' },
+  { value: 'cache_salt', label: 'Cache salt (per-tenant prefix isolation)' },
+  { value: 'cpu_offload_shm', label: 'CPU tier, register mode (/dev/shm; bare-metal GPUs)' },
+  { value: 'cpu_offload_host_alloc', label: 'CPU tier, alloc mode (needs the alloc host-memory patch; vGPU)' },
+  { value: 'cpu_offload_shm_per_copy', label: 'CPU tier, per-copy transfers (needs the per-copy patch)' },
+  { value: 'kv_fp8', label: 'FP8 KV cache (after a 128K needle-in-a-haystack pass on each GPU generation)' },
+  { value: 'tiering_fs', label: 'Node-local disk tier (vLLM #49829 can stall the engine)' }
+]
 const MATCH_TYPES: ParserMatchType[] = ['exact', 'prefix', 'regex']
 const RULE_TYPES: ParserRuleType[] = ['tool', 'reasoning']
 
@@ -31,6 +44,8 @@ export function SimpleEngines() {
   const [editingEngine, setEditingEngine] = useState<Engine | null>(null)
   const [selectedEngine, setSelectedEngine] = useState<Engine | null>(null)
   const [selectedVersion, setSelectedVersion] = useState<EngineVersion | null>(null)
+  // set while the version modal edits an existing version (null: it adds one)
+  const [editingVersion, setEditingVersion] = useState<EngineVersion | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [expandedEngines, setExpandedEngines] = useState<Set<string>>(new Set())
   const [engineVersions, setEngineVersions] = useState<Record<string, EngineVersion[]>>({})
@@ -44,7 +59,9 @@ export function SimpleEngines() {
     engine_id: '',
     version: '',
     container_image: '',
-    device_architecture: 'CUDA'
+    device_architecture: 'CUDA',
+    upstream_vllm: '',
+    kv_features: []
   })
 
   const [compatibilityFormData, setCompatibilityFormData] = useState<EngineCompatibilityCreate>({
@@ -139,8 +156,19 @@ export function SimpleEngines() {
 
   const handleVersionSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const upstream = (versionFormData.upstream_vllm || '').trim()
     try {
-      await engineApi.createVersion(versionFormData)
+      if (editingVersion) {
+        const update: EngineVersionUpdate = {
+          container_image: versionFormData.container_image,
+          kv_features: versionFormData.kv_features || []
+        }
+        // an empty field keeps the stored upstream version
+        if (upstream) update.upstream_vllm = upstream
+        await engineApi.updateVersion(editingVersion.id, update)
+      } else {
+        await engineApi.createVersion({ ...versionFormData, upstream_vllm: upstream || null })
+      }
       setShowVersionModal(false)
       setSelectedEngine(null)
       resetVersionForm()
@@ -149,8 +177,8 @@ export function SimpleEngines() {
         await fetchEngineVersions(versionFormData.engine_id)
       }
     } catch (error) {
-      console.error('Failed to create engine version:', error)
-      alert('Failed to create engine version')
+      console.error('Failed to save engine version:', error)
+      alert('Failed to save engine version (an unknown KV feature or a malformed upstream vLLM version is refused)')
     }
   }
 
@@ -284,13 +312,38 @@ export function SimpleEngines() {
 
   const handleAddVersion = (engine: Engine) => {
     setSelectedEngine(engine)
+    setEditingVersion(null)
     setVersionFormData({
       engine_id: engine.id,
       version: '',
       container_image: '',
-      device_architecture: 'CUDA'
+      device_architecture: 'CUDA',
+      upstream_vllm: '',
+      kv_features: []
     })
     setShowVersionModal(true)
+  }
+
+  const handleEditVersion = (version: EngineVersion, engine: Engine) => {
+    setSelectedEngine(engine)
+    setEditingVersion(version)
+    setVersionFormData({
+      engine_id: engine.id,
+      version: version.version,
+      container_image: version.container_image,
+      device_architecture: version.device_architecture,
+      upstream_vllm: version.upstream_vllm || '',
+      kv_features: version.kv_features || []
+    })
+    setShowVersionModal(true)
+  }
+
+  const toggleKVFeature = (feature: KVFeature) => {
+    const current = versionFormData.kv_features || []
+    setVersionFormData({
+      ...versionFormData,
+      kv_features: current.includes(feature) ? current.filter((f) => f !== feature) : [...current, feature]
+    })
   }
 
   const handleAddCompatibility = (version: EngineVersion, engine: Engine) => {
@@ -359,11 +412,14 @@ export function SimpleEngines() {
   }
 
   const resetVersionForm = () => {
+    setEditingVersion(null)
     setVersionFormData({
       engine_id: '',
       version: '',
       container_image: '',
-      device_architecture: 'CUDA'
+      device_architecture: 'CUDA',
+      upstream_vllm: '',
+      kv_features: []
     })
   }
 
@@ -523,9 +579,26 @@ export function SimpleEngines() {
                           <div>
                             <strong>Version:</strong> {version.version}<br />
                             <strong>Architecture:</strong> {version.device_architecture}<br />
-                            <strong>Container:</strong> {version.container_image}
+                            <strong>Container:</strong> {version.container_image}<br />
+                            <strong>Upstream vLLM:</strong> {version.upstream_vllm || '—'}<br />
+                            <strong>KV features:</strong>{' '}
+                            {version.kv_features && version.kv_features.length > 0 ? version.kv_features.join(', ') : 'none'}
                           </div>
                           <div style={{ display: 'flex', gap: '5px' }}>
+                            <button
+                              onClick={() => handleEditVersion(version, engine)}
+                              style={{
+                                padding: '3px 8px',
+                                backgroundColor: '#ffc107',
+                                color: 'black',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '12px'
+                              }}
+                            >
+                              Edit
+                            </button>
                             <button
                               onClick={() => handleAddCompatibility(version, engine)}
                               style={{
@@ -788,7 +861,7 @@ export function SimpleEngines() {
             maxHeight: '80vh',
             overflow: 'auto'
           }}>
-            <h2>Add Engine Version</h2>
+            <h2>{editingVersion ? 'Edit Engine Version' : 'Add Engine Version'}</h2>
             <p>For engine: <strong>{selectedEngine?.name}</strong></p>
             <form onSubmit={handleVersionSubmit}>
               <div style={{ marginBottom: '15px' }}>
@@ -800,6 +873,7 @@ export function SimpleEngines() {
                   value={versionFormData.version}
                   onChange={(e) => setVersionFormData({ ...versionFormData, version: e.target.value })}
                   required
+                  disabled={!!editingVersion}
                   placeholder="e.g., 0.7.25"
                   style={{
                     width: '100%',
@@ -837,6 +911,7 @@ export function SimpleEngines() {
                   value={versionFormData.device_architecture}
                   onChange={(e) => setVersionFormData({ ...versionFormData, device_architecture: e.target.value as DeviceArchitecture })}
                   required
+                  disabled={!!editingVersion}
                   style={{
                     width: '100%',
                     padding: '8px',
@@ -848,6 +923,41 @@ export function SimpleEngines() {
                     <option key={arch} value={arch}>{arch}</option>
                   ))}
                 </select>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>
+                  Upstream vLLM
+                </label>
+                <input
+                  type="text"
+                  value={versionFormData.upstream_vllm || ''}
+                  onChange={(e) => setVersionFormData({ ...versionFormData, upstream_vllm: e.target.value })}
+                  placeholder="e.g., 0.31.0 (the vLLM release the build is based on)"
+                  style={{
+                    width: '100%',
+                    padding: '8px',
+                    border: '1px solid #ddd',
+                    borderRadius: '4px'
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>
+                  KV features (verified on this build)
+                </label>
+                {KV_FEATURE_OPTIONS.map((option) => (
+                  <label key={option.value} style={{ display: 'block', marginBottom: '4px', fontSize: '13px' }}>
+                    <input
+                      type="checkbox"
+                      checked={(versionFormData.kv_features || []).includes(option.value)}
+                      onChange={() => toggleKVFeature(option.value)}
+                      style={{ marginRight: '6px' }}
+                    />
+                    <code>{option.value}</code> — {option.label}
+                  </label>
+                ))}
               </div>
 
               <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
@@ -880,7 +990,7 @@ export function SimpleEngines() {
                     cursor: 'pointer'
                   }}
                 >
-                  Create
+                  {editingVersion ? 'Save' : 'Create'}
                 </button>
               </div>
             </form>

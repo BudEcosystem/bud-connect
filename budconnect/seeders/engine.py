@@ -14,6 +14,8 @@ from ..engine.schemas import (
     EngineCreate,
     ParserMatchType,
     ParserRuleType,
+    check_kv_features,
+    check_upstream_vllm,
 )
 from .base import BaseSeeder
 
@@ -83,9 +85,21 @@ class EngineSeeder(BaseSeeder):
                             }
                         )
 
+                    kv_fields = EngineSeeder._version_kv_fields(version_data)  # type: ignore[arg-type]
                     if existing_versions:
-                        # Version exists, use its ID
-                        version_id = existing_versions[0].id
+                        # Version exists, use its ID; engines.json is the source of truth for the KV fields of the
+                        # versions it lists (as it is for their compatibilities)
+                        existing = existing_versions[0]
+                        version_id = existing.id
+                        stored = {
+                            "upstream_vllm": existing.upstream_vllm,
+                            "kv_features": list(existing.kv_features or []),
+                        }
+                        stale = {key: value for key, value in kv_fields.items() if stored[key] != value}
+                        if stale:
+                            with engine_version_crud as engine_version_crud:
+                                engine_version_crud.update(data=stale, conditions={"id": version_id})
+                            logger.info(f"Updated {sorted(stale)} of version {version_data['version']}")  # type: ignore
                     else:
                         # Create new version
                         new_version_data = {
@@ -93,6 +107,7 @@ class EngineSeeder(BaseSeeder):
                             "version": version_data["version"],  # type: ignore
                             "device_architecture": version_data["device_architecture"],  # type: ignore
                             "container_image": version_data["container_image"],  # type: ignore
+                            **kv_fields,
                         }
                         with engine_version_crud as engine_version_crud:
                             created_version = engine_version_crud.insert(new_version_data)
@@ -387,6 +402,19 @@ class EngineSeeder(BaseSeeder):
                                 rule_payload["pattern"],
                                 engine_id,
                             )
+
+    @staticmethod
+    def _version_kv_fields(version_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Return the ``upstream_vllm`` and ``kv_features`` a seeded version declares, validated (bud-runtime FRD-023).
+
+        Only the keys the entry names are returned, so an entry without them leaves a stored value alone.
+        """
+        out: Dict[str, Any] = {}
+        if "upstream_vllm" in version_data:
+            out["upstream_vllm"] = check_upstream_vllm(version_data["upstream_vllm"])
+        if "kv_features" in version_data:
+            out["kv_features"] = check_kv_features(list(version_data["kv_features"] or []))
+        return out
 
     @staticmethod
     def _get_engines_data() -> Dict[str, Any]:

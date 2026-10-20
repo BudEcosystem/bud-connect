@@ -1,9 +1,53 @@
+import re
 from enum import Enum
 from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from budmicroframe.commons.schemas import SuccessResponse
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+#: The KV-cache features an engine build can list (bud-runtime FRD-023). budsim and budcluster render a KV setting --
+#: KV events, the cache salt, the CPU tier in register (``cpu_offload_shm``) or alloc (``cpu_offload_host_alloc``)
+#: mode or with per-copy transfers, FP8 KV, the fs tier -- only for the features the build lists, so a build lists one
+#: only after it was verified on that build. The set must match the simulator's ``KV_FEATURES``
+#: (llm_memory_calculator/engine/record.py) one for one: an unknown name renders nothing downstream.
+KV_FEATURES = frozenset(
+    {
+        "kv_events",
+        "cache_salt",
+        "cpu_offload_shm",
+        "cpu_offload_host_alloc",
+        "cpu_offload_shm_per_copy",
+        "kv_fp8",
+        "tiering_fs",
+    }
+)
+
+#: An upstream vLLM version: a release (``0.31.0``), a minor (``0.30``), a release candidate (``0.31.0rc1``) or a dev
+#: build with its commit (``0.26.0.dev+481e481be``). The planner matches it by minor.
+_UPSTREAM_VLLM = re.compile(r"^\d+\.\d+(\.\d+)?([a-z]+\d*)?(\.dev\d*)?(\+[0-9a-z.]+)?$")
+
+
+def check_kv_features(value: Optional[List[str]]) -> Optional[List[str]]:
+    """Validate the names against ``KV_FEATURES``; return them deduplicated and sorted (None stays None)."""
+    if value is None:
+        return None
+    names = [str(v).strip() for v in value]
+    unknown = sorted(set(names) - KV_FEATURES)
+    if unknown:
+        raise ValueError(f"unknown kv_features {unknown}; known: {sorted(KV_FEATURES)}")
+    return sorted(set(names))
+
+
+def check_upstream_vllm(value: Optional[str]) -> Optional[str]:
+    """Validate an upstream vLLM version (None stays None)."""
+    if value is None:
+        return None
+    value = str(value).strip()
+    if not _UPSTREAM_VLLM.match(value):
+        raise ValueError(f"upstream_vllm {value!r} is not a vLLM version such as 0.31.0 or 0.26.0.dev+481e481be")
+    return value
 
 
 class DeviceArchitecture(Enum):
@@ -50,6 +94,8 @@ class EngineVersion(BaseModel):
     device_architecture: DeviceArchitecture
     container_image: str
     engine_id: UUID
+    upstream_vllm: Optional[str] = None
+    kv_features: List[str] = Field(default_factory=list)
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
 
@@ -64,12 +110,44 @@ class EngineVersionCreate(BaseModel):
     device_architecture: DeviceArchitecture
     container_image: str
     engine_id: UUID
+    #: the upstream vLLM base of a vLLM build (the planner picks its engine record by version, then by this minor)
+    upstream_vllm: Optional[str] = None
+    #: the KV-cache features verified on this build (``KV_FEATURES``); empty renders no KV setting
+    kv_features: List[str] = Field(default_factory=list)
+
+    @field_validator("upstream_vllm")
+    @classmethod
+    def _valid_upstream(cls, value: Optional[str]) -> Optional[str]:
+        """Refuse what is not an upstream vLLM version."""
+        return check_upstream_vllm(value)
+
+    @field_validator("kv_features")
+    @classmethod
+    def _valid_features(cls, value: Optional[List[str]]) -> Optional[List[str]]:
+        """Refuse unknown names; deduplicate and sort the rest."""
+        return check_kv_features(value)
 
 
 class EngineVersionUpdate(BaseModel):
     version: Optional[str] = None
     device_architecture: Optional[DeviceArchitecture] = None
     container_image: Optional[str] = None
+    #: None keeps the stored value
+    upstream_vllm: Optional[str] = None
+    #: None keeps the stored features; an empty list withdraws them all
+    kv_features: Optional[List[str]] = None
+
+    @field_validator("upstream_vllm")
+    @classmethod
+    def _valid_upstream(cls, value: Optional[str]) -> Optional[str]:
+        """Refuse what is not an upstream vLLM version."""
+        return check_upstream_vllm(value)
+
+    @field_validator("kv_features")
+    @classmethod
+    def _valid_features(cls, value: Optional[List[str]]) -> Optional[List[str]]:
+        """Refuse unknown names; deduplicate and sort the rest."""
+        return check_kv_features(value)
 
 
 class ModelArchitecture(BaseModel):
@@ -138,6 +216,8 @@ class CompatibleEngine(BaseModel):
     parser_notes: Optional[str] = None
     supports_lora: Optional[bool] = None
     supports_pipeline_parallelism: Optional[bool] = None
+    upstream_vllm: Optional[str] = None
+    kv_features: List[str] = Field(default_factory=list)
 
 
 class CompatibleEnginesResponse(SuccessResponse):

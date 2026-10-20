@@ -105,6 +105,8 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             EngineVersion.version.label("version"),
             EngineVersion.engine_id.label("engine_id"),
             EngineVersion.container_image.label("container_image"),
+            EngineVersion.upstream_vllm.label("upstream_vllm"),
+            EngineVersion.kv_features.label("kv_features"),
         ]
 
         # Query 1: Architecture-based matching (engines with non-empty architectures list)
@@ -210,6 +212,8 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
                     container_image=row.container_image,
                     engine_version_id=row.engine_version_id,
                     engine_id=row.engine_id,
+                    upstream_vllm=row.upstream_vllm,
+                    kv_features=list(row.kv_features or []),
                 )
             )
         return compatible_engines

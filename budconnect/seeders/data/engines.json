@@ -581,6 +581,12 @@
                 "version": "0.10.0",
                 "device_architecture": "CUDA",
                 "container_image": "registry.bud.studio/runtime/vllm-cuda:0.10.0",
+                "upstream_vllm": "0.31.0",
+                "kv_features": [
+                    "cache_salt",
+                    "cpu_offload_shm",
+                    "kv_events"
+                ],
                 "compatibilities": [
                     {
                         "architecture": [
@@ -990,6 +996,8 @@
                 "version": "0.10.0",
                 "device_architecture": "CPU",
                 "container_image": "registry.bud.studio/runtime/vllm-cpu:0.10.0",
+                "upstream_vllm": "0.31.0",
+                "kv_features": [],
                 "compatibilities": [
                     {
                         "architecture": [
