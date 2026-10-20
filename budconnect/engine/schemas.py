@@ -218,6 +218,10 @@ class CompatibleEngine(BaseModel):
     supports_pipeline_parallelism: Optional[bool] = None
     upstream_vllm: Optional[str] = None
     kv_features: List[str] = Field(default_factory=list)
+    # Parsers this engine version registers (None = no list stored, so nothing is filtered). Used to drop
+    # rule and architecture parsers that an older build doesn't have; not part of the response.
+    supported_tool_calling_parsers: Optional[List[str]] = Field(default=None, exclude=True)
+    supported_reasoning_parsers: Optional[List[str]] = Field(default=None, exclude=True)
 
 
 class CompatibleEnginesResponse(SuccessResponse):

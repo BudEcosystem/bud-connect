@@ -15,6 +15,11 @@ from .schemas import CompatibleEngine, DeviceArchitecture, ParserRuleType
 logger = logging.getLogger(__name__)
 
 
+def _parser_types(value: Optional[Dict[str, List[str]]]) -> Optional[List[str]]:
+    """Unwrap a compatibility row's ``{"parser_types": [...]}`` parser list."""
+    return value.get("parser_types") if value else None
+
+
 class EngineCRUD(CRUDMixin[Engine, None, None]):
     __model__ = Engine
 
@@ -107,6 +112,8 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
             EngineVersion.container_image.label("container_image"),
             EngineVersion.upstream_vllm.label("upstream_vllm"),
             EngineVersion.kv_features.label("kv_features"),
+            EngineCompatibility.supported_tool_calling_parser_types.label("supported_tool_calling_parser_types"),
+            EngineCompatibility.supported_reasoning_parsers.label("supported_reasoning_parsers"),
         ]
 
         # Query 1: Architecture-based matching (engines with non-empty architectures list)
@@ -214,6 +221,8 @@ class EngineCRUD(CRUDMixin[Engine, None, None]):
                     engine_id=row.engine_id,
                     upstream_vllm=row.upstream_vllm,
                     kv_features=list(row.kv_features or []),
+                    supported_tool_calling_parsers=_parser_types(row.supported_tool_calling_parser_types),
+                    supported_reasoning_parsers=_parser_types(row.supported_reasoning_parsers),
                 )
             )
         return compatible_engines

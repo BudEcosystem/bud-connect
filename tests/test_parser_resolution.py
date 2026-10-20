@@ -55,9 +55,15 @@ def _architectures() -> Dict[str, SimpleNamespace]:
 class _FakeCRUD:
     """Stands in for every CRUD the resolver opens, answering from seed data instead of the database."""
 
-    def __init__(self, architecture: str, model_info: Optional[SimpleNamespace]) -> None:
+    def __init__(
+        self,
+        architecture: str,
+        model_info: Optional[SimpleNamespace],
+        reasoning_parsers: Optional[List[str]] = None,
+    ) -> None:
         self.architecture = architecture
         self.model_info = model_info
+        self.reasoning_parsers = reasoning_parsers
         self.architectures = _architectures()
         self.rules = _vllm_rules()
         self.session = None
@@ -87,6 +93,7 @@ class _FakeCRUD:
                 version="test",
                 container_image="test",
                 engine_id=ENGINE_ID,
+                supported_reasoning_parsers=self.reasoning_parsers,
             )
         ]
 
@@ -99,8 +106,9 @@ def _resolve(
     model_uri: str,
     architecture: str,
     model_info: Optional[SimpleNamespace] = None,
+    reasoning_parsers: Optional[List[str]] = None,
 ) -> CompatibleEngine:
-    fake = _FakeCRUD(architecture, model_info)
+    fake = _FakeCRUD(architecture, model_info, reasoning_parsers)
     for name in ("ModelInfoCRUD", "ModelArchitectureClassCRUD", "EngineCRUD", "EngineParserRuleCRUD"):
         monkeypatch.setattr(services, name, fake)
     (engine,) = services.EngineService.get_compatible_engines(
@@ -161,3 +169,25 @@ def test_model_info_beats_rule_and_architecture_default(monkeypatch: pytest.Monk
 
     assert engine.tool_calling_parser_type == "pythonic"
     assert engine.parser_source == "model_default"
+
+
+def _shipped_reasoning_parsers() -> List[str]:
+    engines = json.loads((DATA_DIR / "engines.json").read_text())
+    vllm = next(engine for engine in engines if engine["name"] == "vllm")
+    return vllm["versions"][0]["compatibilities"][0]["supported_reasoning_parsers"]
+
+
+def test_rule_parser_needs_the_version_to_register_it(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Rules are shared by every version, so a build without the rule's parser must not be handed it."""
+    uri, arch = "ibm-granite/granite-4.2-30b", "GraniteMoeHybridForCausalLM"
+
+    current = _resolve(monkeypatch, uri, arch, reasoning_parsers=_shipped_reasoning_parsers())
+    older = _resolve(
+        monkeypatch,
+        uri,
+        arch,
+        reasoning_parsers=[p for p in _shipped_reasoning_parsers() if p != "granite_thinking_parser"],
+    )
+
+    assert current.reasoning_parser_type == "granite_thinking_parser"
+    assert older.reasoning_parser_type is None

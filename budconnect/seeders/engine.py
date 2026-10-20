@@ -120,6 +120,9 @@ class EngineSeeder(BaseSeeder):
                         all_architectures: List[str] = []
                         all_features: List[str] = []
                         all_supported_endpoints: List[str] = []
+                        # Parsers this version's build registers, listed per version so each build keeps its own
+                        supported_tool_calling: List[str] = []
+                        supported_reasoning: List[str] = []
 
                         for compat_data in version_data["compatibilities"]:  # type: ignore
                             # Collect all architectures
@@ -132,111 +135,18 @@ class EngineSeeder(BaseSeeder):
                             if "supported_endpoints" in compat_data:
                                 all_supported_endpoints.extend(compat_data["supported_endpoints"])  # type: ignore
 
+                            # Collect the parser registries
+                            tool_parsers = compat_data.get("supported_tool_calling_parser_types", [])  # type: ignore
+                            supported_tool_calling.extend(tool_parsers)
+                            reasoning_parsers = compat_data.get("supported_reasoning_parsers", [])  # type: ignore
+                            supported_reasoning.extend(reasoning_parsers)
+
                         # Convert to dictionary format expected by the schema
                         architectures_dict = {"architectures": all_architectures}
                         features_dict = {"features": all_features}
                         supported_endpoints_dict = (
                             {"endpoints": all_supported_endpoints} if all_supported_endpoints else None
                         )
-
-                        # Determine supported tool calling templates and reasoning parsers based on engine
-                        supported_tool_calling = []
-                        supported_reasoning = []
-
-                        # For vLLM engines, determine capabilities based on version
-                        if engine_name.lower() == "vllm":
-                            # vLLM supports various tool calling templates
-                            supported_tool_calling = [
-                                "apertus",
-                                "cohere_command3",
-                                "cohere_command4",
-                                "deepseek_v3",
-                                "deepseek_v31",
-                                "deepseek_v32",
-                                "deepseek_v4",
-                                "deepseek_v41",
-                                "dots",
-                                "ernie45",
-                                "functiongemma",
-                                "gemma4",
-                                "gigachat3",
-                                "glm45",
-                                "glm47",
-                                "granite",
-                                "granite-20b-fc",
-                                "granite4",
-                                "hermes",
-                                "hunyuan_a13b",
-                                "hy_v3",
-                                "hy_v4",
-                                "inkling",
-                                "internlm",
-                                "jamba",
-                                "k2_horizon",
-                                "kimi_k2",
-                                "kimi_k3",
-                                "lfm2",
-                                "ling3",
-                                "llama3_json",
-                                "llama4_json",
-                                "llama4_pythonic",
-                                "longcat",
-                                "mimo",
-                                "minicpm5",
-                                "minimax_m2",
-                                "minimax_m3",
-                                "mistral",
-                                "muse_glimmer",
-                                "olmo3",
-                                "openai",
-                                "phi4_mini_json",
-                                "poolside_v1",
-                                "pythonic",
-                                "qwen3_coder",
-                                "qwen3_xml",
-                                "seed_oss",
-                                "step3",
-                                "step3p5",
-                                "xlam",
-                            ]
-                            # vLLM supports various reasoning parsers
-                            supported_reasoning = [
-                                "cohere_command3",
-                                "cohere_command4",
-                                "deepseek_r1",
-                                "deepseek_v3",
-                                "deepseek_v4",
-                                "deepseek_v41",
-                                "ernie45",
-                                "gemma4",
-                                "glm45",
-                                "glm47",
-                                "granite",
-                                "granite_thinking_parser",
-                                "holo2",
-                                "hunyuan_a13b",
-                                "hy_v3",
-                                "hy_v4",
-                                "inkling",
-                                "k2_horizon",
-                                "kimi_k2",
-                                "kimi_k3",
-                                "ling3",
-                                "mimo",
-                                "minimax_m2",
-                                "minimax_m2_append_think",
-                                "minimax_m3",
-                                "mistral",
-                                "muse_glimmer",
-                                "nemotron_v3",
-                                "olmo3",
-                                "openai_gptoss",
-                                "poolside_v1",
-                                "qwen3",
-                                "seed_oss",
-                                "step3",
-                                "step3p5",
-                            ]
 
                         # Wrap parser lists in dictionaries for consistency with architectures/features
                         supported_tool_calling_dict = (

@@ -4,8 +4,8 @@ description: >-
   Upgrade the vLLM inference engine version in BudConnect end-to-end: mine a
   freshly-cloned vLLM source tree for its supported model architectures and
   tool/reasoning parsers, then propagate everything into the seed data
-  (engines.json, model_architectures.json), the _VLLM_MODELS mirror script, the
-  hardcoded parser menus in the seeder, and the docs. Use this whenever someone
+  (engines.json incl. per-version parser lists, model_architectures.json), the
+  _VLLM_MODELS mirror script, and the docs. Use this whenever someone
   wants to bump the vLLM engine version, ship a new vLLM build, refresh the
   supported-model list, add a device build (CUDA/CPU/ROCM/HPU), sync BudConnect
   with a new vLLM release, or asks "what else needs updating when we upgrade
@@ -22,7 +22,7 @@ BudConnect tells operators, **before** they deploy, whether a given model can ru
 on a given Bud engine build. For the vLLM engine that answer is **data-driven**:
 nothing is computed at request time — it is all seeded from JSON files derived
 from the vLLM source. An upgrade therefore means re-deriving that data from the
-new vLLM and updating five coupled surfaces in lockstep. Miss one and BudConnect
+new vLLM and updating four coupled surfaces in lockstep. Miss one and BudConnect
 either hides newly-supported models or advertises models the new engine rejects.
 
 Versions track **Bud releases**, not upstream vLLM (the engine is a fork). See
@@ -34,19 +34,22 @@ Versions track **Bud releases**, not upstream vLLM (the engine is a fork). See
    image tag — see the seeder gotcha below.
 2. **Which device builds** are part of this rebuild (CUDA, CPU, ROCM, HPU). Only
    touch blocks whose image was actually rebuilt. CUDA and CPU currently ship the
-   same vLLM fork, so their architecture lists are kept **identical**.
+   same vLLM fork, so the CPU list is the CUDA list minus only the archs the CPU
+   build provably cannot load (a CPU stub that raises, or an import that needs
+   CUDA kernels) — check per-device `vllm/models/<pkg>/{nvidia,cpu}` packages.
 3. **The vLLM checkout path** (a fresh clone of the fork) and the **transformers
-   version** its image pins (from vLLM `requirements/*.txt`) — needed for the
-   backend-survivor check in Step 2.
+   version each image actually ships** (read it from the image, e.g. stream the
+   layers with `crane blob ... | tar -tz | grep transformers-.*dist-info`; the
+   `requirements/*.txt` pin is only a range) — needed for the backend-survivor
+   check in Step 2.
 
-## The five coupled surfaces
+## The four coupled surfaces
 
 | File | What it holds | Derived from |
 |---|---|---|
-| `budconnect/seeders/data/engines.json` | per-device `version`, `container_image`, `architecture[]`, engine-level `parser_rules[]` | vLLM registry + parser registries |
+| `budconnect/seeders/data/engines.json` | per-device `version`, `container_image`, `architecture[]`, `supported_tool_calling_parser_types[]` / `supported_reasoning_parsers[]`, engine-level `parser_rules[]` | vLLM registry + parser registries |
 | `budconnect/seeders/data/model_architectures.json` | per-arch `architecture_family`, tool/reasoning parser, LoRA/PP flags | vLLM registry + docs |
 | `scripts/arch_support_to_seeder.py` | `_VLLM_MODELS` (hand-mirror of registry.py) | vLLM `registry.py` |
-| `budconnect/seeders/engine.py` | hardcoded `supported_tool_calling` / `supported_reasoning` menus (vLLM branch, ~L130-176) | vLLM parser registries |
 | `docs/engine-versioning.md` | version table + support policy | this procedure |
 
 ## Procedure
@@ -104,21 +107,22 @@ Apply, per file:
 
 - **engines.json** — for each rebuilt device block: set `version` to the new
   string and `container_image` to the new tag; replace `architecture[]` with
-  `sorted(native ∪ survivors)`; keep CUDA and CPU **identical**. Then drop any
-  `parser_rules[]` whose `parser_type` is no longer a valid tool/reasoning name
-  (e.g. a rule pointing at a dropped model's parser).
+  `sorted(native ∪ survivors)` (CPU: minus provably CPU-unloadable archs); set
+  that block's `supported_tool_calling_parser_types` / `supported_reasoning_parsers`
+  to the full extracted key sets. Then drop any `parser_rules[]` whose
+  `parser_type` is no longer a valid tool/reasoning name (e.g. a rule pointing at
+  a dropped model's parser). Rules are shared by every version, but
+  `get-compatible-engines` skips a rule's parser on a version whose list lacks it.
 - **model_architectures.json** — remove truly-dropped archs; append new native
   archs with `architecture_family` from the extract and **null parsers / false
   flags** (the established default); restore Transformers-backend survivors from
-  git HEAD, **scrubbing any now-invalid parser value to null**. Keep the class
-  set identical to engines.json.
+  git HEAD, **scrubbing any now-invalid parser value to null**, and set their
+  LoRA/PP flags to those of the Transformers backend class that now serves them.
+  Keep the class set identical to the CUDA list in engines.json.
 - **arch_support_to_seeder.py** — `python scripts/remirror_seeder.py "$VLLM"
   "$BUD/scripts/arch_support_to_seeder.py" --commit <hash>`. This mirrors the
   **native** registry only, so engines.json / model_architectures.json are an
   intentional superset (they also carry the survivors) — note that in the docs.
-- **engine.py** — replace the `supported_tool_calling` and `supported_reasoning`
-  list literals (vLLM branch) with the full extracted key sets. These menus are
-  hardcoded, not derived — the single easiest file to forget.
 
 ### Step 4 — Enrich parser assignments (conservative)
 
@@ -132,8 +136,13 @@ model family → arch class via `architecture_family`. Rules:
 - Most archs stay null. Draft/MTP/Eagle heads, audio/speech, OCR, vision-only,
   embedding, and token-classification models have **no** tool/reasoning parser.
 - Never invent a parser name — every value must be in the extracted key sets.
-- LoRA / PP flags for new archs come from vLLM's `docs/.../supported_models.md`
-  (LoRA and PP columns) or the model class's `Supports*` interfaces.
+- LoRA / PP flags come from vLLM's own `supports_lora()` / `supports_pp()` on the
+  class the CUDA image loads (for per-device `vllm.models.*` packages, the
+  `nvidia/` implementation). The docs table disagrees with the classes in places;
+  the classes are what vLLM enforces.
+- `architecture_family` is the HF `model_type`. For `vllm.models.*` packages use
+  `vllm.models.<pkg>` (no platform subpackage); for archs registered via the
+  Transformers backend, use the model's real `model_type`, not `transformers`.
 
 ### Step 5 — Verify (run every check)
 
@@ -141,9 +150,10 @@ model family → arch class via `architecture_family`. Rules:
 python scripts/verify_upgrade.py "$VLLM" "$BUD" scratchpad/vllm_extract.json
 ```
 
-It asserts: every parser reference across engine.py, engines.json `parser_rules`,
-and model_architectures.json is a valid registry name; CUDA arch list == CPU ==
-model_architectures class set; both JSONs still round-trip; the re-mirrored
+It asserts: every parser reference across engines.json (per-version lists and
+`parser_rules`) and model_architectures.json is a valid registry name; each
+version's parser lists == the registry; CUDA arch list == model_architectures class
+set and every other device list is a subset of it; both JSONs still round-trip; the re-mirrored
 `_VLLM_MODELS` composes to the native count and downstream scripts import; and the
 compatibility set == native ∪ survivors. For a heavier upgrade, additionally have
 independent agents re-derive the numbers from vLLM and diff the applied files.
@@ -163,8 +173,10 @@ independent agents re-derive the numbers from vLLM and diff the applied files.
   existing row's `container_image`; reusing the version leaves the old image in
   the DB and runtimes keep pulling it.
 - **"Latest" = most recently seeded (`created_at DESC`), not highest semver.**
-- **CUDA and CPU architecture lists must stay in lockstep** — they ship the same
-  fork.
+- **CUDA and CPU architecture lists stay in lockstep** — they ship the same
+  fork — except archs the CPU build cannot load, which are left off the CPU list.
+- **LoRA/PP flags and parser defaults in model_architectures.json are global**,
+  shared by every version still in the DB.
 - **Dropped ≠ unsupported** — always run the Step 2 Transformers-backend check.
 - No Alembic migration is needed — all vLLM data lives in these JSON seed files.
 

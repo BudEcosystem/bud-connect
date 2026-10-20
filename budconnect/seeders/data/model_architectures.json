@@ -157,7 +157,7 @@
       "architecture_family": "chameleon",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2717,7 +2717,7 @@
       "architecture_family": "aya_vision",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2733,31 +2733,31 @@
       "architecture_family": "ernie",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "ErnieForSequenceClassification",
       "architecture_family": "ernie",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "ErnieForTokenClassification",
       "architecture_family": "ernie",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "FuyuForCausalLM",
       "architecture_family": "fuyu",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -2765,8 +2765,8 @@
       "architecture_family": "minimax_text_01",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
-      "supports_pipeline_parallelism": false
+      "supports_lora": true,
+      "supports_pipeline_parallelism": true
     },
     {
       "class_name": "MusicFlamingoForConditionalGeneration",
@@ -2781,7 +2781,7 @@
       "architecture_family": "persimmon",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
-      "supports_lora": false,
+      "supports_lora": true,
       "supports_pipeline_parallelism": true
     },
     {
@@ -3026,7 +3026,7 @@
     },
     {
       "class_name": "K3DSparkModel",
-      "architecture_family": "vllm.models.kimi_k3.nvidia.dspark_mla",
+      "architecture_family": "vllm.models.kimi_k3",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": false,
@@ -3082,7 +3082,7 @@
     },
     {
       "class_name": "NanbeigeForCausalLM",
-      "architecture_family": "transformers",
+      "architecture_family": "nanbeige",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -3154,7 +3154,7 @@
     },
     {
       "class_name": "VaultGemmaForCausalLM",
-      "architecture_family": "transformers",
+      "architecture_family": "vaultgemma",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,
@@ -3162,7 +3162,7 @@
     },
     {
       "class_name": "VibeVoiceAsrForConditionalGeneration",
-      "architecture_family": "transformers",
+      "architecture_family": "vibevoice_asr",
       "tool_calling_parser_type": null,
       "reasoning_parser_type": null,
       "supports_lora": true,

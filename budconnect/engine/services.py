@@ -608,6 +608,11 @@ class EngineService:
                 # Match reasoning parser rule
                 reasoning_rule = EngineService._match_parser_rule(model_uri, rules, ParserRuleType.REASONING)
 
+            # Rules and architecture defaults are shared by every version of an engine, so skip a parser
+            # that this version's build does not register (e.g. a rule added for a newer vLLM).
+            tool_menu = engine_item.supported_tool_calling_parsers
+            reasoning_menu = engine_item.supported_reasoning_parsers
+
             if model_info and model_info.tool_calling_parser_type:
                 engine_item.tool_calling_parser_type = model_info.tool_calling_parser_type
                 engine_item.parser_source = "model_default"
@@ -618,19 +623,30 @@ class EngineService:
                     engine_item.chat_template = tool_rule.chat_template
                 if tool_rule.notes:
                     engine_item.parser_notes = tool_rule.notes
-                if tool_rule.parser_type and not engine_item.tool_calling_parser_type:
+                if (
+                    EngineService._registered(tool_rule.parser_type, tool_menu)
+                    and not engine_item.tool_calling_parser_type
+                ):
                     engine_item.tool_calling_parser_type = tool_rule.parser_type
                     engine_item.parser_source = engine_item.parser_source or "engine_parser_rule"
 
             # Apply reasoning parser rule
-            if reasoning_rule and reasoning_rule.parser_type and not engine_item.reasoning_parser_type:
+            if (
+                reasoning_rule
+                and EngineService._registered(reasoning_rule.parser_type, reasoning_menu)
+                and not engine_item.reasoning_parser_type
+            ):
                 engine_item.reasoning_parser_type = reasoning_rule.parser_type
 
             if architecture_info:
-                if not engine_item.tool_calling_parser_type and architecture_info.tool_calling_parser_type:
+                if not engine_item.tool_calling_parser_type and EngineService._registered(
+                    architecture_info.tool_calling_parser_type, tool_menu
+                ):
                     engine_item.tool_calling_parser_type = architecture_info.tool_calling_parser_type
                     engine_item.parser_source = engine_item.parser_source or "architecture_default"
-                if not engine_item.reasoning_parser_type:
+                if not engine_item.reasoning_parser_type and EngineService._registered(
+                    architecture_info.reasoning_parser_type, reasoning_menu
+                ):
                     engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
                 engine_item.architecture_family = architecture_info.architecture_family
                 engine_item.supports_lora = architecture_info.supports_lora
@@ -641,6 +657,11 @@ class EngineService:
                 engine_item.chat_template = model_info.chat_template
 
         return compatible_engines
+
+    @staticmethod
+    def _registered(parser: Optional[str], menu: Optional[List[str]]) -> bool:
+        """Whether ``parser`` is set and the engine version registers it (no stored list = unknown, allow)."""
+        return bool(parser) and (menu is None or parser in menu)
 
     @staticmethod
     def _match_parser_rule(
