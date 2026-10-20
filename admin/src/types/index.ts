@@ -328,12 +328,24 @@ export interface EngineUpdate {
   name?: string
 }
 
+// The KV-cache features a build can list (bud-runtime FRD-023); the API refuses any other name
+export type KVFeature =
+  | 'kv_events'
+  | 'cache_salt'
+  | 'cpu_offload_shm'
+  | 'cpu_offload_host_alloc'
+  | 'cpu_offload_shm_per_copy'
+  | 'kv_fp8'
+  | 'tiering_fs'
+
 export interface EngineVersion {
   id: string
   engine_id: string
   version: string
   container_image: string
   device_architecture: DeviceArchitecture
+  upstream_vllm?: string | null
+  kv_features?: KVFeature[]
   engine?: Engine
   compatibilities?: EngineCompatibility[]
   supported_providers?: Provider[]
@@ -346,12 +358,17 @@ export interface EngineVersionCreate {
   version: string
   container_image: string
   device_architecture: DeviceArchitecture
+  upstream_vllm?: string | null
+  kv_features?: KVFeature[]
 }
 
 export interface EngineVersionUpdate {
   version?: string
   container_image?: string
   device_architecture?: DeviceArchitecture
+  // omitted: unchanged; an empty kv_features list withdraws every feature
+  upstream_vllm?: string | null
+  kv_features?: KVFeature[]
 }
 
 export interface EngineCompatibility {
@@ -411,6 +428,8 @@ export interface CompatibleEngine {
   device_architecture: DeviceArchitecture
   version: string
   container_image: string
+  upstream_vllm?: string | null
+  kv_features?: KVFeature[]
   engine_version_id?: string
   engine_id?: string
   tool_calling_parser_type?: string | null

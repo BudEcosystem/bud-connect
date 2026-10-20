@@ -14,6 +14,8 @@ from ..engine.schemas import (
     EngineCreate,
     ParserMatchType,
     ParserRuleType,
+    check_kv_features,
+    check_upstream_vllm,
 )
 from .base import BaseSeeder
 
@@ -83,9 +85,21 @@ class EngineSeeder(BaseSeeder):
                             }
                         )
 
+                    kv_fields = EngineSeeder._version_kv_fields(version_data)  # type: ignore[arg-type]
                     if existing_versions:
-                        # Version exists, use its ID
-                        version_id = existing_versions[0].id
+                        # Version exists, use its ID; engines.json is the source of truth for the KV fields of the
+                        # versions it lists (as it is for their compatibilities)
+                        existing = existing_versions[0]
+                        version_id = existing.id
+                        stored = {
+                            "upstream_vllm": existing.upstream_vllm,
+                            "kv_features": list(existing.kv_features or []),
+                        }
+                        stale = {key: value for key, value in kv_fields.items() if stored[key] != value}
+                        if stale:
+                            with engine_version_crud as engine_version_crud:
+                                engine_version_crud.update(data=stale, conditions={"id": version_id})
+                            logger.info(f"Updated {sorted(stale)} of version {version_data['version']}")  # type: ignore
                     else:
                         # Create new version
                         new_version_data = {
@@ -93,6 +107,7 @@ class EngineSeeder(BaseSeeder):
                             "version": version_data["version"],  # type: ignore
                             "device_architecture": version_data["device_architecture"],  # type: ignore
                             "container_image": version_data["container_image"],  # type: ignore
+                            **kv_fields,
                         }
                         with engine_version_crud as engine_version_crud:
                             created_version = engine_version_crud.insert(new_version_data)
@@ -105,6 +120,9 @@ class EngineSeeder(BaseSeeder):
                         all_architectures: List[str] = []
                         all_features: List[str] = []
                         all_supported_endpoints: List[str] = []
+                        # Parsers this version's build registers, listed per version so each build keeps its own
+                        supported_tool_calling: List[str] = []
+                        supported_reasoning: List[str] = []
 
                         for compat_data in version_data["compatibilities"]:  # type: ignore
                             # Collect all architectures
@@ -117,95 +135,18 @@ class EngineSeeder(BaseSeeder):
                             if "supported_endpoints" in compat_data:
                                 all_supported_endpoints.extend(compat_data["supported_endpoints"])  # type: ignore
 
+                            # Collect the parser registries
+                            tool_parsers = compat_data.get("supported_tool_calling_parser_types", [])  # type: ignore
+                            supported_tool_calling.extend(tool_parsers)
+                            reasoning_parsers = compat_data.get("supported_reasoning_parsers", [])  # type: ignore
+                            supported_reasoning.extend(reasoning_parsers)
+
                         # Convert to dictionary format expected by the schema
                         architectures_dict = {"architectures": all_architectures}
                         features_dict = {"features": all_features}
                         supported_endpoints_dict = (
                             {"endpoints": all_supported_endpoints} if all_supported_endpoints else None
                         )
-
-                        # Determine supported tool calling templates and reasoning parsers based on engine
-                        supported_tool_calling = []
-                        supported_reasoning = []
-
-                        # For vLLM engines, determine capabilities based on version
-                        if engine_name.lower() == "vllm":
-                            # vLLM supports various tool calling templates
-                            supported_tool_calling = [
-                                "apertus",
-                                "cohere_command3",
-                                "cohere_command4",
-                                "deepseek_v3",
-                                "deepseek_v31",
-                                "deepseek_v32",
-                                "deepseek_v4",
-                                "ernie45",
-                                "functiongemma",
-                                "gemma4",
-                                "gigachat3",
-                                "glm45",
-                                "glm47",
-                                "granite",
-                                "granite-20b-fc",
-                                "granite4",
-                                "hermes",
-                                "hunyuan_a13b",
-                                "hy_v3",
-                                "internlm",
-                                "jamba",
-                                "kimi_k2",
-                                "lfm2",
-                                "llama3_json",
-                                "llama4_json",
-                                "llama4_pythonic",
-                                "longcat",
-                                "mimo",
-                                "minicpm5",
-                                "minimax_m2",
-                                "minimax_m3",
-                                "mistral",
-                                "olmo3",
-                                "openai",
-                                "phi4_mini_json",
-                                "poolside_v1",
-                                "pythonic",
-                                "qwen3_coder",
-                                "qwen3_xml",
-                                "seed_oss",
-                                "step3",
-                                "step3p5",
-                                "xlam",
-                            ]
-                            # vLLM supports various reasoning parsers
-                            supported_reasoning = [
-                                "cohere_command3",
-                                "cohere_command4",
-                                "deepseek_r1",
-                                "deepseek_v3",
-                                "deepseek_v4",
-                                "ernie45",
-                                "gemma4",
-                                "glm45",
-                                "glm47",
-                                "granite",
-                                "holo2",
-                                "hunyuan_a13b",
-                                "hy_v3",
-                                "kimi_k2",
-                                "mimo",
-                                "minimax_m2",
-                                "minimax_m2_append_think",
-                                "minimax_m3",
-                                "mistral",
-                                "nemotron_v3",
-                                "olmo3",
-                                "openai_gptoss",
-                                "poolside_v1",
-                                "qwen3",
-                                "seed_oss",
-                                "step3",
-                                "step3p5",
-                            ]
 
                         # Wrap parser lists in dictionaries for consistency with architectures/features
                         supported_tool_calling_dict = (
@@ -371,6 +312,19 @@ class EngineSeeder(BaseSeeder):
                                 rule_payload["pattern"],
                                 engine_id,
                             )
+
+    @staticmethod
+    def _version_kv_fields(version_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Return the ``upstream_vllm`` and ``kv_features`` a seeded version declares, validated (bud-runtime FRD-023).
+
+        Only the keys the entry names are returned, so an entry without them leaves a stored value alone.
+        """
+        out: Dict[str, Any] = {}
+        if "upstream_vllm" in version_data:
+            out["upstream_vllm"] = check_upstream_vllm(version_data["upstream_vllm"])
+        if "kv_features" in version_data:
+            out["kv_features"] = check_kv_features(list(version_data["kv_features"] or []))
+        return out
 
     @staticmethod
     def _get_engines_data() -> Dict[str, Any]:

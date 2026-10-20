@@ -279,6 +279,8 @@ async def create_engine_version(version_data: EngineVersionCreate) -> Union[Engi
             device_architecture=version.device_architecture,
             container_image=version.container_image,
             engine_id=version.engine_id,
+            upstream_vllm=version.upstream_vllm,
+            kv_features=list(version.kv_features or []),
             created_at=str(version.created_at) if hasattr(version, "created_at") and version.created_at else None,
             updated_at=str(version.updated_at) if hasattr(version, "updated_at") and version.updated_at else None,
         )
@@ -329,6 +331,8 @@ async def get_engine_version(version_id: UUID) -> Union[EngineVersionResponse, E
             device_architecture=version.device_architecture,
             container_image=version.container_image,
             engine_id=version.engine_id,
+            upstream_vllm=version.upstream_vllm,
+            kv_features=list(version.kv_features or []),
             created_at=str(version.created_at) if hasattr(version, "created_at") and version.created_at else None,
             updated_at=str(version.updated_at) if hasattr(version, "updated_at") and version.updated_at else None,
         )
@@ -360,6 +364,8 @@ async def update_engine_version(
             device_architecture=version.device_architecture,
             container_image=version.container_image,
             engine_id=version.engine_id,
+            upstream_vllm=version.upstream_vllm,
+            kv_features=list(version.kv_features or []),
             created_at=str(version.created_at) if hasattr(version, "created_at") and version.created_at else None,
             updated_at=str(version.updated_at) if hasattr(version, "updated_at") and version.updated_at else None,
         )

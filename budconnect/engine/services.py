@@ -164,6 +164,8 @@ class EngineService:
                 version=version_data.version,
                 device_architecture=version_data.device_architecture,
                 container_image=version_data.container_image,
+                upstream_vllm=version_data.upstream_vllm,
+                kv_features=list(version_data.kv_features),
             )
             return EngineService.engine_version_crud.insert(version, session=session)
         except Exception as e:
@@ -199,6 +201,8 @@ class EngineService:
                 device_architecture=version.device_architecture,
                 container_image=version.container_image,
                 engine_id=version.engine_id,
+                upstream_vllm=version.upstream_vllm,
+                kv_features=list(version.kv_features or []),
                 created_at=str(version.created_at) if hasattr(version, "created_at") and version.created_at else None,
                 updated_at=str(version.updated_at) if hasattr(version, "updated_at") and version.updated_at else None,
             )
@@ -221,6 +225,10 @@ class EngineService:
             update_data["device_architecture"] = version_data.device_architecture.value
         if version_data.container_image is not None:
             update_data["container_image"] = version_data.container_image
+        if version_data.upstream_vllm is not None:
+            update_data["upstream_vllm"] = version_data.upstream_vllm
+        if version_data.kv_features is not None:
+            update_data["kv_features"] = list(version_data.kv_features)
 
         if update_data:
             EngineService.engine_version_crud.update(data=update_data, conditions={"id": version_id}, session=session)
@@ -600,6 +608,11 @@ class EngineService:
                 # Match reasoning parser rule
                 reasoning_rule = EngineService._match_parser_rule(model_uri, rules, ParserRuleType.REASONING)
 
+            # Rules and architecture defaults are shared by every version of an engine, so skip a parser
+            # that this version's build does not register (e.g. a rule added for a newer vLLM).
+            tool_menu = engine_item.supported_tool_calling_parsers
+            reasoning_menu = engine_item.supported_reasoning_parsers
+
             if model_info and model_info.tool_calling_parser_type:
                 engine_item.tool_calling_parser_type = model_info.tool_calling_parser_type
                 engine_item.parser_source = "model_default"
@@ -610,19 +623,30 @@ class EngineService:
                     engine_item.chat_template = tool_rule.chat_template
                 if tool_rule.notes:
                     engine_item.parser_notes = tool_rule.notes
-                if tool_rule.parser_type and not engine_item.tool_calling_parser_type:
+                if (
+                    EngineService._registered(tool_rule.parser_type, tool_menu)
+                    and not engine_item.tool_calling_parser_type
+                ):
                     engine_item.tool_calling_parser_type = tool_rule.parser_type
                     engine_item.parser_source = engine_item.parser_source or "engine_parser_rule"
 
             # Apply reasoning parser rule
-            if reasoning_rule and reasoning_rule.parser_type and not engine_item.reasoning_parser_type:
+            if (
+                reasoning_rule
+                and EngineService._registered(reasoning_rule.parser_type, reasoning_menu)
+                and not engine_item.reasoning_parser_type
+            ):
                 engine_item.reasoning_parser_type = reasoning_rule.parser_type
 
             if architecture_info:
-                if not engine_item.tool_calling_parser_type and architecture_info.tool_calling_parser_type:
+                if not engine_item.tool_calling_parser_type and EngineService._registered(
+                    architecture_info.tool_calling_parser_type, tool_menu
+                ):
                     engine_item.tool_calling_parser_type = architecture_info.tool_calling_parser_type
                     engine_item.parser_source = engine_item.parser_source or "architecture_default"
-                if not engine_item.reasoning_parser_type:
+                if not engine_item.reasoning_parser_type and EngineService._registered(
+                    architecture_info.reasoning_parser_type, reasoning_menu
+                ):
                     engine_item.reasoning_parser_type = architecture_info.reasoning_parser_type
                 engine_item.architecture_family = architecture_info.architecture_family
                 engine_item.supports_lora = architecture_info.supports_lora
@@ -633,6 +657,11 @@ class EngineService:
                 engine_item.chat_template = model_info.chat_template
 
         return compatible_engines
+
+    @staticmethod
+    def _registered(parser: Optional[str], menu: Optional[List[str]]) -> bool:
+        """Whether ``parser`` is set and the engine version registers it (no stored list = unknown, allow)."""
+        return bool(parser) and (menu is None or parser in menu)
 
     @staticmethod
     def _match_parser_rule(
