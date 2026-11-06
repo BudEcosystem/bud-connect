@@ -60,8 +60,10 @@ withdraws every feature.
 | build | `upstream_vllm` | `kv_features` |
 |---|---|---|
 | CUDA `0.10.0` | `0.31.0` | `cache_salt`, `cpu_offload_shm`, `kv_events` |
-| CPU `0.10.0` | `0.31.0` | none yet |
+| CPU `0.10.0` | `0.31.0` | `cache_salt`, `kv_events` |
 
 CUDA `0.10.0` lists neither the alloc-mode tier nor per-copy transfers: both need a fork patch that the build does
-not carry. It lists no FP8 KV until the needle-in-a-haystack run passes, and no disk tier. CPU `0.10.0` lists nothing
-until it is verified; KV events and the cache salt were verified on CPU `0.6.0`.
+not carry. It lists no FP8 KV until the needle-in-a-haystack run passes, and no disk tier. CPU `0.10.0` lists the cache salt
+and KV events, verified on PNAP (Xeon 6767P, 2026-11-06): a prompt sent with one salt hits its own blocks and misses
+under another, and the engine publishes `BlockStored` events whose hashes differ by salt, which AIBrix v0.8.0's gateway
+subscribes to. Its offloading tiers stay unlisted: vLLM's offloading connector refuses CPU engines.

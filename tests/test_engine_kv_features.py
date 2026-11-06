@@ -255,6 +255,16 @@ def test_the_seeded_cuda_build_lists_what_was_verified_on_it():
     assert cuda["kv_features"] == ["cache_salt", "cpu_offload_shm", "kv_events"]
 
 
+def test_the_seeded_cpu_build_lists_what_was_verified_on_it():
+    """bud-vllm 0.10.0 (upstream v0.31.0) on CPU: KV events and the cache salt, verified on PNAP (2026-11-06).
+
+    No offloading tier: vLLM's offloading connector refuses CPU engines, whose KV already lives in host RAM.
+    """
+    cpu = _vllm_versions()[("0.10.0", "CPU")]
+    assert cpu["upstream_vllm"] == "0.31.0"
+    assert cpu["kv_features"] == ["cache_salt", "kv_events"]
+
+
 def test_every_seeded_feature_name_is_known():
     """The seeder writes engines.json as is; a name the consumers don't know would be refused by the API."""
     for (version, device), data in _vllm_versions().items():
