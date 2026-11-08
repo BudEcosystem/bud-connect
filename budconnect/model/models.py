@@ -128,6 +128,8 @@ class ModelInfo(PSQLBase, TimestampMixin):
     media_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     features: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     billing: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
+    # Per-request caps of a decision vendor (bud-runtime spec 031 D-24); see DecisionLimits.
+    decision_limits: Mapped[Dict[str, Any]] = mapped_column(JSONB, nullable=True)
     provider_id: Mapped[UUID] = mapped_column(UUID, ForeignKey("provider.id"), nullable=False)
     deprecation_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     endpoints: Mapped[List[ModelEndpointEnum]] = mapped_column(ARRAY(Enum(ModelEndpointEnum)), nullable=True)

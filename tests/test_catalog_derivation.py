@@ -296,6 +296,8 @@ def test_a_fine_tune_price_key_is_recognised(tz, uri, is_price_key):
 
 def test_a_fine_tune_price_key_is_not_published(tz, monkeypatch):
     """`ft:gpt-4o-mini-2024-07-18` was published as a chat model; OpenAI 404s every request to it."""
+    # The curated decision models (gpt-6-luna among them) are merged into every parse.
+    monkeypatch.setattr(tz, "load_decision_models", lambda: [])
     _fake_sdk(
         monkeypatch,
         {

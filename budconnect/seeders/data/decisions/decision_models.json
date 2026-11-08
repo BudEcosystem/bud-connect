@@ -1,0 +1,1363 @@
+[
+    {
+        "uri": "openai/gpt-6-luna",
+        "modality": [
+            "image_input",
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07,
+            "input_cost_per_token_decisions": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 5e-07,
+            "output_cost_per_token_decisions": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 1e-08
+        },
+        "tokens": {
+            "max_input_tokens": 922000,
+            "max_output_tokens": 128000
+        },
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 255,
+            "max_levels": 10
+        },
+        "verified": true,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Chat and responses: $0.10/M input, $0.01/M cached input, $0.50/M output (OpenAI pricing page). Decisions: $0.10/M input, output free, from LiteLLM's input_cost_per_token_decisions and output_cost_per_token_decisions (2026-11-08), which cite the same page; the page has no decisions row. The decisions route was called live; gpt-5.6-luna is not a decision model (404)."
+    },
+    {
+        "uri": "azure/gpt-6-luna",
+        "modality": [
+            "image_input",
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07,
+            "input_cost_per_token_decisions": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 5e-07,
+            "output_cost_per_token_decisions": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 1e-08
+        },
+        "tokens": {
+            "max_input_tokens": 922000,
+            "max_output_tokens": 128000
+        },
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 255,
+            "max_levels": 10
+        },
+        "verified": false,
+        "source": "https://dev.classmethod.jp/en/articles/azure-openai-decisions-api-ga/",
+        "checked_on": "2026-11-08",
+        "note": "Azure serves OpenAI's /v1/decisions wire on its v1 surface (secondary source; not in East US 2); not called live. Chat prices from LiteLLM's azure/gpt-6-luna (2026-11-08); decisions prices assumed equal to OpenAI's."
+    },
+    {
+        "uri": "typesafe/jev-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Alias of jev-1.14.0 on 2026-11-08; responses name the pinned id. Output tokens are reported but free. 64K per request by default; the 262K long-context header is not sent by Bud.",
+        "details": {
+            "description": "Alias for TypeSafe's newest stable Jev release (jev-1.14.0 on 2026-11-08); it moves when TypeSafe ships a new release, and responses name the pinned version. Jev is TypeSafe's flagship System One model: it answers typed questions about the input with calibrated probabilities instead of generated text.",
+            "advantages": [
+                "Answers typed questions (Noul, Choice, Score) with probabilities that code can branch on directly, instead of generated text.",
+                "Trained for calibrated decisions; answers can carry a confidence for deciding when to act on its own and when to ask for review.",
+                "No fixed cap on the number of questions per request, as long as the 64K per-request and 32K per-question context limits are met.",
+                "Billed on input tokens only; output tokens are free."
+            ],
+            "disadvantages": [
+                "Moves to a new model when TypeSafe ships a release; use jev-1.14.0 to pin the version.",
+                "Does not write replies, produce code or explain its reasoning.",
+                "Calibration is measured across groups of predictions; it does not guarantee that an individual answer is correct.",
+                "64K tokens per request and 32K per question; TypeSafe's opt-in 262K long-context mode is not used by Bud.",
+                "TypeSafe accepts PNG and JPEG images, but Bud's System One adapter sends text only in this release.",
+                "Box questions (bounding boxes over images) are not available through Bud."
+            ],
+            "use_cases": [
+                "Routing support tickets to the right team",
+                "Detecting refund requests and other intents in customer messages",
+                "Gating automated actions on a confidence threshold, with human review for uncertain cases",
+                "Combining several independent checks with deterministic rules in code",
+                "Candidate screening"
+            ],
+            "website_url": "https://docs.typesafe.ai/models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Models | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "System One | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/concepts/system-one"
+                },
+                {
+                    "kind": "maker",
+                    "title": "TypeSafe",
+                    "url": "https://typesafe.ai/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "typesafe/jev-1.14.0",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Output tokens are reported but free.",
+        "details": {
+            "description": "Jev 1.14 is TypeSafe's newest Jev release, available from October 14, 2026, and the model jev-latest points to. A System One decision model, it answers Choice, Score and Noul questions about the input with calibrated probabilities instead of generated text; Box questions require this version.",
+            "advantages": [
+                "Pinned version: its answers do not change when jev-latest moves.",
+                "Answers typed questions (Noul, Choice, Score) with probabilities that code can branch on directly, instead of generated text.",
+                "Trained for calibrated decisions; answers can carry a confidence for deciding when to act on its own and when to ask for review.",
+                "No fixed cap on the number of questions per request, as long as the 64K per-request and 32K per-question context limits are met.",
+                "Billed on input tokens only; output tokens are free."
+            ],
+            "disadvantages": [
+                "Does not write replies, produce code or explain its reasoning.",
+                "Calibration is measured across groups of predictions; it does not guarantee that an individual answer is correct.",
+                "64K tokens per request and 32K per question; TypeSafe's opt-in 262K long-context mode is not used by Bud.",
+                "TypeSafe accepts PNG and JPEG images, but Bud's System One adapter sends text only in this release.",
+                "Box questions (bounding boxes over images) are not available through Bud."
+            ],
+            "use_cases": [
+                "Routing support tickets to the right team",
+                "Detecting refund requests and other intents in customer messages",
+                "Gating automated actions on a confidence threshold, with human review for uncertain cases",
+                "Combining several independent checks with deterministic rules in code",
+                "Candidate screening"
+            ],
+            "website_url": "https://docs.typesafe.ai/models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Models | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "System One | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/concepts/system-one"
+                },
+                {
+                    "kind": "maker",
+                    "title": "TypeSafe",
+                    "url": "https://typesafe.ai/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "typesafe/jev-1.13.0",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Output tokens are reported but free.",
+        "details": {
+            "description": "Jev 1.13 is the previous release of TypeSafe's System One decision model. It answers Choice, Score and Noul questions with calibrated probabilities and shares Jev 1.14's price, context and input types, but does not support Box questions.",
+            "advantages": [
+                "Pinned version: its answers do not change when jev-latest moves.",
+                "Answers typed questions (Noul, Choice, Score) with probabilities that code can branch on directly, instead of generated text.",
+                "Trained for calibrated decisions; answers can carry a confidence for deciding when to act on its own and when to ask for review.",
+                "No fixed cap on the number of questions per request, as long as the 64K per-request and 32K per-question context limits are met.",
+                "Billed on input tokens only; output tokens are free."
+            ],
+            "disadvantages": [
+                "Superseded by jev-1.14.0; does not support Box questions.",
+                "Does not write replies, produce code or explain its reasoning.",
+                "Calibration is measured across groups of predictions; it does not guarantee that an individual answer is correct.",
+                "64K tokens per request and 32K per question; TypeSafe's opt-in 262K long-context mode is not used by Bud.",
+                "TypeSafe accepts PNG and JPEG images, but Bud's System One adapter sends text only in this release."
+            ],
+            "use_cases": [
+                "Routing support tickets to the right team",
+                "Detecting refund requests and other intents in customer messages",
+                "Gating automated actions on a confidence threshold, with human review for uncertain cases",
+                "Combining several independent checks with deterministic rules in code",
+                "Candidate screening"
+            ],
+            "website_url": "https://docs.typesafe.ai/models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Models | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "System One | TypeSafe docs",
+                    "url": "https://docs.typesafe.ai/concepts/system-one"
+                },
+                {
+                    "kind": "maker",
+                    "title": "TypeSafe",
+                    "url": "https://typesafe.ai/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "embedding_space/laya",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_request": 0.002
+        },
+        "output_cost": null,
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 128,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://studio.embedding.in/docs/credits",
+        "checked_on": "2026-11-08",
+        "note": "$0.002 per record whatever the question count (GET /v1/credits: per_decision_micro_usd 2000). No token usage is reported. 255 options failed live with an out-of-memory error, 128 passed.",
+        "details": {
+            "description": "Laya is Embedding Space's open-source System 1 decision model, served through Embedding Studio's decide API. It returns a typed answer from a fixed set with a calibrated confidence and a conformal prediction set, abstains when no single option reaches the calibrated bar, and routes uncertain records to human review.",
+            "advantages": [
+                "Confidence is calibrated rather than taken from a softmax, with abstention when no single option clears the bar.",
+                "Projects can be fitted on your own labels, measured and replayed; the trained policy can be downloaded and served locally with laya, giving the same answers as the hosted API.",
+                "The engine is open source.",
+                "Priced per decision rather than per token.",
+                "Embedding Space reports a 33 ms median per decision."
+            ],
+            "disadvantages": [
+                "No token usage is reported; Bud bills a fixed price per request.",
+                "Choice questions are capped at 128 options in Bud: 255 failed live with an out-of-memory error (2026-11-08).",
+                "Abstention, the review route and the conformal set are not returned through Bud's Decisions API; Bud returns probabilities and confidence.",
+                "Embedding Studio also accepts images, audio and video, but Bud sends text only."
+            ],
+            "use_cases": [
+                "Agent guard rails and agent action gating",
+                "Model and orchestrator routing",
+                "Prompt-injection guarding",
+                "Content moderation",
+                "Support ticket routing and email triage",
+                "Document sorting, lead qualification and product review triage",
+                "AI-as-judge and answer checking",
+                "Order screening"
+            ],
+            "website_url": "https://studio.embedding.in/docs/decide",
+            "github_url": "https://github.com/NandhaKishorM/laya",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decide | Embedding Studio docs",
+                    "url": "https://studio.embedding.in/docs/decide"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Modalities | Embedding Studio docs",
+                    "url": "https://studio.embedding.in/docs/modalities"
+                },
+                {
+                    "kind": "maker",
+                    "title": "On your device, with laya | Embedding Studio docs",
+                    "url": "https://studio.embedding.in/docs/device"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Credits | Embedding Studio docs",
+                    "url": "https://studio.embedding.in/docs/credits"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Embedding Space",
+                    "url": "https://www.embedding.in/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "perplexity/pplx-decider-v1.2",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "27B. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "pplx-decider-v1.2 is Perplexity's 27B-parameter decision model and the default on its Decisions API, replacing pplx-decider-v1.1-27b in October 2026. It answers yes/no, choice and score questions about text, JSON or images with probabilities instead of generated text, within a 256K-token context.",
+            "advantages": [
+                "The larger of Perplexity's two decision models, and its default.",
+                "Answers yes/no (noul), choice and score questions with probabilities instead of generated text.",
+                "256K-token context window.",
+                "Choice questions take up to 255 options and score questions up to 10 levels.",
+                "Billed on input tokens only; output tokens are free, with no per-request fee."
+            ],
+            "disadvantages": [
+                "Does not write replies, generate code or explain its reasoning.",
+                "Perplexity accepts images, but Bud's System One adapter sends text only in this release.",
+                "Perplexity's web-grounding mode is not available through Bud."
+            ],
+            "use_cases": [
+                "Classifying content",
+                "Routing requests and triaging support tickets",
+                "Grading against a rubric",
+                "Thresholding yes/no decisions"
+            ],
+            "website_url": "https://docs.perplexity.ai/docs/decisions/quickstart",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decisions API quickstart | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/decisions/quickstart"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Changelog | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/resources/changelog"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "perplexity/pplx-decider-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of pplx-decider-v1.2. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "pplx-decider-latest follows the newest version of Perplexity's larger decision model, pplx-decider-v1.2 (27B parameters) as of 2026-11-08, and can move to a newer model over time. The model answers yes/no, choice and score questions about text, JSON or images with probabilities instead of generated text.",
+            "advantages": [
+                "Answers yes/no (noul), choice and score questions with probabilities instead of generated text.",
+                "256K-token context window.",
+                "Choice questions take up to 255 options and score questions up to 10 levels.",
+                "Billed on input tokens only; output tokens are free, with no per-request fee."
+            ],
+            "disadvantages": [
+                "The alias can move to a newer decision model; name pplx-decider-v1.2 to pin it.",
+                "Does not write replies, generate code or explain its reasoning.",
+                "Perplexity accepts images, but Bud's System One adapter sends text only in this release.",
+                "Perplexity's web-grounding mode is not available through Bud."
+            ],
+            "use_cases": [
+                "Classifying content",
+                "Routing requests and triaging support tickets",
+                "Grading against a rubric",
+                "Thresholding yes/no decisions"
+            ],
+            "website_url": "https://docs.perplexity.ai/docs/decisions/quickstart",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decisions API quickstart | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/decisions/quickstart"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Changelog | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/resources/changelog"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "perplexity/pplx-decider-flash-v1.2",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "4B. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "pplx-decider-flash-v1.2 is Perplexity's 4B-parameter decision model, introduced in October 2026 at half the input price of pplx-decider-v1.2. Perplexity suggests it for high-volume decisions with clear criteria; it shares the larger model's 256K-token context and question types.",
+            "advantages": [
+                "Half the input price of pplx-decider-v1.2.",
+                "Answers yes/no (noul), choice and score questions with probabilities instead of generated text.",
+                "256K-token context window.",
+                "Choice questions take up to 255 options and score questions up to 10 levels.",
+                "Billed on input tokens only; output tokens are free, with no per-request fee."
+            ],
+            "disadvantages": [
+                "Smaller (4B) than Perplexity's default 27B decision model; suggested for decisions with clear criteria.",
+                "Does not write replies, generate code or explain its reasoning.",
+                "Perplexity accepts images, but Bud's System One adapter sends text only in this release.",
+                "Perplexity's web-grounding mode is not available through Bud."
+            ],
+            "use_cases": [
+                "High-volume decisions with clear criteria",
+                "Classifying content",
+                "Routing requests and triaging support tickets",
+                "Grading against a rubric",
+                "Thresholding yes/no decisions"
+            ],
+            "website_url": "https://docs.perplexity.ai/docs/decisions/quickstart",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decisions API quickstart | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/decisions/quickstart"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Changelog | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/resources/changelog"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "perplexity/pplx-decider-flash-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of pplx-decider-flash-v1.2. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "pplx-decider-flash-latest follows the newest version of Perplexity's smaller decision model, pplx-decider-flash-v1.2 (4B parameters) as of 2026-11-08, and can move to a newer model over time. Perplexity suggests it for high-volume decisions with clear criteria.",
+            "advantages": [
+                "Half the input price of pplx-decider-v1.2.",
+                "Answers yes/no (noul), choice and score questions with probabilities instead of generated text.",
+                "256K-token context window.",
+                "Choice questions take up to 255 options and score questions up to 10 levels.",
+                "Billed on input tokens only; output tokens are free, with no per-request fee."
+            ],
+            "disadvantages": [
+                "The alias can move to a newer decision model; name pplx-decider-flash-v1.2 to pin it.",
+                "Does not write replies, generate code or explain its reasoning.",
+                "Perplexity accepts images, but Bud's System One adapter sends text only in this release.",
+                "Perplexity's web-grounding mode is not available through Bud."
+            ],
+            "use_cases": [
+                "High-volume decisions with clear criteria",
+                "Classifying content",
+                "Routing requests and triaging support tickets",
+                "Grading against a rubric",
+                "Thresholding yes/no decisions"
+            ],
+            "website_url": "https://docs.perplexity.ai/docs/decisions/quickstart",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decisions API quickstart | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/decisions/quickstart"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Changelog | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/resources/changelog"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "perplexity/pplx-decider-v1-27b",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/decisions/quickstart",
+        "checked_on": "2026-11-08",
+        "note": "Legacy name, still accepted and billed at the v1.2 rate. Drafted earlier at $0.04/M and 128 questions from secondary sources; the vendor docs say $0.02/M and no question cap. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "pplx-decider-v1-27b is the legacy name of the 27B model Perplexity launched its Decisions API with in October 2026. Requests that still name it are served by pplx-decider-v1.2 and billed at that model's rate.",
+            "advantages": [
+                "Answers yes/no (noul), choice and score questions with probabilities instead of generated text.",
+                "256K-token context window.",
+                "Choice questions take up to 255 options and score questions up to 10 levels.",
+                "Billed on input tokens only; output tokens are free, with no per-request fee."
+            ],
+            "disadvantages": [
+                "Legacy name: Perplexity serves pplx-decider-v1.2 for it, so answers follow that model.",
+                "Does not write replies, generate code or explain its reasoning.",
+                "Perplexity accepts images, but Bud's System One adapter sends text only in this release.",
+                "Perplexity's web-grounding mode is not available through Bud."
+            ],
+            "use_cases": [
+                "Classifying content",
+                "Routing requests and triaging support tickets",
+                "Grading against a rubric",
+                "Thresholding yes/no decisions"
+            ],
+            "website_url": "https://docs.perplexity.ai/docs/decisions/quickstart",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Changelog | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/resources/changelog"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Decisions API quickstart | Perplexity docs",
+                    "url": "https://docs.perplexity.ai/docs/decisions/quickstart"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "liquid_ai/d1.1",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.liquid.ai/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Liquid's default hosted decision model. Served at https://api.liquid.ai/decisions/v1/systemone (https://docs.liquid.ai/lfm/models/d1). Context and question, choice and level caps are not documented. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "d1.1 is Liquid AI's default hosted decision model, served through the Liquid API. It answers Noul, Choice and Score questions about text, JSON or images with calibrated probabilities and generates no tokens.",
+            "advantages": [
+                "The lower-priced of Liquid's two hosted decision models.",
+                "Calibrated answers: Noul returns a probability, Choice the selected option with a distribution and a confidence, Score a value across an ordered rubric.",
+                "Several questions run at once against the same input in a single call.",
+                "Probabilities near 0.5 flag uncertain cases, which can be routed to human review.",
+                "Billed on input tokens only; it generates no tokens, so output is free."
+            ],
+            "disadvantages": [
+                "Not suited to free-form generation, multi-turn conversation or code generation.",
+                "Liquid does not document a context length or per-request question, option or level limits.",
+                "Liquid advises calibrating any decision threshold on data from your own use.",
+                "Liquid accepts images, but Bud's System One adapter sends text only in this release."
+            ],
+            "use_cases": [
+                "Classification",
+                "Routing, such as support-ticket routing",
+                "Scoring, such as urgency scoring",
+                "Reranking",
+                "Yes/no gates, such as complaint detection or harmful-content checks"
+            ],
+            "website_url": "https://docs.liquid.ai/lfm/models/d1",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "d1 | Liquid AI docs",
+                    "url": "https://docs.liquid.ai/lfm/models/d1"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Decision models | Liquid AI docs",
+                    "url": "https://docs.liquid.ai/lfm/models/decision-models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Pricing | Liquid AI",
+                    "url": "https://www.liquid.ai/pricing"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "liquid_ai/d1-ultra",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.liquid.ai/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Liquid's most capable decision model. Served at https://api.liquid.ai/decisions/v1/systemone (https://docs.liquid.ai/lfm/models/d1). Context and question, choice and level caps are not documented. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1.",
+        "details": {
+            "description": "d1-ultra is Liquid AI's most capable hosted decision model, for harder decisions; Liquid builds it on a larger open-weight model with Liquid-specific customizations. Like d1.1, it answers Noul, Choice and Score questions about text or images with calibrated probabilities and generates no tokens.",
+            "advantages": [
+                "Liquid's most capable decision model, for harder decisions.",
+                "Calibrated answers: Noul returns a probability, Choice the selected option with a distribution and a confidence, Score a value across an ordered rubric.",
+                "Several questions run at once against the same input in a single call.",
+                "Probabilities near 0.5 flag uncertain cases, which can be routed to human review.",
+                "Billed on input tokens only; it generates no tokens, so output is free."
+            ],
+            "disadvantages": [
+                "Costs more per input token than d1.1.",
+                "Not suited to free-form generation, multi-turn conversation or code generation.",
+                "Liquid does not document a context length or per-request question, option or level limits.",
+                "Liquid advises calibrating any decision threshold on data from your own use.",
+                "Liquid accepts images, but Bud's System One adapter sends text only in this release."
+            ],
+            "use_cases": [
+                "Classification",
+                "Routing, such as support-ticket routing",
+                "Scoring, such as urgency scoring",
+                "Reranking",
+                "Yes/no gates, such as complaint detection or harmful-content checks"
+            ],
+            "website_url": "https://docs.liquid.ai/lfm/models/d1",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "d1 | Liquid AI docs",
+                    "url": "https://docs.liquid.ai/lfm/models/d1"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Decision models | Liquid AI docs",
+                    "url": "https://docs.liquid.ai/lfm/models/decision-models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Pricing | Liquid AI",
+                    "url": "https://www.liquid.ai/pricing"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "bespokelabs/nimble-v4.1-max",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Bespoke's default model. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented.",
+        "details": {
+            "description": "Nimble v4.1 Max is Bespoke Labs' most accurate Nimble model and its default. Nimble is a fast, low-cost decision API for text classification, routing, moderation and LLM-as-a-judge scoring that answers up to 64 typed questions about a piece of text or JSON with probabilities.",
+            "advantages": [
+                "Bespoke Labs' most accurate Nimble model.",
+                "Works zero-shot: options are described in plain language, with no classifier to train.",
+                "Answers with probabilities, so you set your own thresholds.",
+                "Up to 64 typed questions per request; choice questions take 2 to 255 options.",
+                "Billed on input tokens only; shared text is billed once per request, not once per question."
+            ],
+            "disadvantages": [
+                "Different Nimble models return different probabilities for the same request; retest thresholds after switching models.",
+                "Takes text or JSON input only.",
+                "Bespoke Labs does not document a context length.",
+                "Bud caps score questions at 10 levels, below Nimble's 255."
+            ],
+            "use_cases": [
+                "Ticket routing",
+                "Request triage by urgency",
+                "Content moderation, such as harassment detection",
+                "Intent detection",
+                "Policy checks",
+                "Sentiment analysis",
+                "LLM-as-a-judge scoring"
+            ],
+            "website_url": "https://docs.bespokelabs.ai/nimble/overview",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Nimble overview | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/overview"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Nimble pricing | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/pricing"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "bespokelabs/nimble-v4-max",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "The previous model. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented.",
+        "details": {
+            "description": "Nimble v4 Max is Bespoke Labs' previous Nimble model, still served; nimble-latest pointed to it until November 5, 2026. Nimble is a fast, low-cost decision API for text classification, routing, moderation and LLM-as-a-judge scoring that answers up to 64 typed questions about a piece of text or JSON with probabilities.",
+            "advantages": [
+                "Works zero-shot: options are described in plain language, with no classifier to train.",
+                "Answers with probabilities, so you set your own thresholds.",
+                "Up to 64 typed questions per request; choice questions take 2 to 255 options.",
+                "Billed on input tokens only; shared text is billed once per request, not once per question."
+            ],
+            "disadvantages": [
+                "Superseded by nimble-v4.1-max, which Bespoke Labs calls its most accurate model.",
+                "Different Nimble models return different probabilities for the same request; retest thresholds after switching models.",
+                "Takes text or JSON input only.",
+                "Bespoke Labs does not document a context length.",
+                "Bud caps score questions at 10 levels, below Nimble's 255."
+            ],
+            "use_cases": [
+                "Ticket routing",
+                "Request triage by urgency",
+                "Content moderation, such as harassment detection",
+                "Intent detection",
+                "Policy checks",
+                "Sentiment analysis",
+                "LLM-as-a-judge scoring"
+            ],
+            "website_url": "https://docs.bespokelabs.ai/nimble/overview",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Nimble overview | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/overview"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Nimble pricing | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/pricing"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "bespokelabs/nimble-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of nimble-v4.1-max; moves with new releases. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented.",
+        "details": {
+            "description": "nimble-latest points to Bespoke Labs' newest Nimble model, nimble-v4.1-max since November 5, 2026, and moves as new models are released. Nimble is a fast, low-cost decision API for text classification, routing, moderation and LLM-as-a-judge scoring that answers up to 64 typed questions about a piece of text or JSON with probabilities.",
+            "advantages": [
+                "Works zero-shot: options are described in plain language, with no classifier to train.",
+                "Answers with probabilities, so you set your own thresholds.",
+                "Up to 64 typed questions per request; choice questions take 2 to 255 options.",
+                "Billed on input tokens only; shared text is billed once per request, not once per question."
+            ],
+            "disadvantages": [
+                "Moves with new releases, which changes the probabilities returned; name nimble-v4.1-max for stable thresholds.",
+                "Different Nimble models return different probabilities for the same request; retest thresholds after switching models.",
+                "Takes text or JSON input only.",
+                "Bespoke Labs does not document a context length.",
+                "Bud caps score questions at 10 levels, below Nimble's 255."
+            ],
+            "use_cases": [
+                "Ticket routing",
+                "Request triage by urgency",
+                "Content moderation, such as harassment detection",
+                "Intent detection",
+                "Policy checks",
+                "Sentiment analysis",
+                "LLM-as-a-judge scoring"
+            ],
+            "website_url": "https://docs.bespokelabs.ai/nimble/overview",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Nimble overview | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/overview"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Nimble pricing | Bespoke Labs docs",
+                    "url": "https://docs.bespokelabs.ai/nimble/pricing"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "subq/subq-snap-preview",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 5e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 393216
+        },
+        "decision_limits": {
+            "max_questions": 16,
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.openclaw.ai/plugins/subq.md",
+        "checked_on": "2026-11-08",
+        "note": "A third party quoting SubQ's docs (checked 2026-10-13): 1-16 questions, 2-255 options, 2-10 levels, 384K context. Preview id; SubQ says the GA id will change. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1. SubQ's models page lists only subq-snap-1.1 (2026-11-08); this id and its values come from OpenClaw's SubQ plugin docs and are unconfirmed by SubQ.",
+        "details": {
+            "description": "subq-snap-preview is the preview model id of SubQ Snap, Subquadratic's long-context decision model for yes/no judgments, choices and rubric scores, with a 384K-token context window. It is documented by a third party (OpenClaw); SubQ's own model list names only subq-snap-1.1.",
+            "advantages": [
+                "384K-token (393,216) context window.",
+                "Answers carry per-option probabilities and a confidence value; scores can fall between levels.",
+                "Billed on input tokens only; output tokens are always zero."
+            ],
+            "disadvantages": [
+                "SubQ's own model list does not include this id; subq-snap-1.1 is its default decision model.",
+                "Public preview.",
+                "Requests over or close to the context limit fail with 400.",
+                "Accepts no files or video; documents must be converted to text first.",
+                "SubQ accepts up to four images per request, but Bud's System One adapter sends text only in this release."
+            ],
+            "use_cases": [
+                "Routing and triage, such as deciding whether a nurse should review a chat",
+                "Fact-checking a claim against its source document",
+                "Finding the passage that supports an answer",
+                "Tagging records from their text",
+                "Support queue triage",
+                "Context curation within coding agents"
+            ],
+            "website_url": "https://docs.subq.ai/endpoints/decisions-api/",
+            "sources": [
+                {
+                    "kind": "third_party",
+                    "title": "SubQ plugin | OpenClaw docs",
+                    "url": "https://docs.openclaw.ai/plugins/subq.md"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Models | SubQ docs",
+                    "url": "https://docs.subq.ai/using-the-api/models/"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Decisions API | SubQ docs",
+                    "url": "https://docs.subq.ai/endpoints/decisions-api/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "subq/subq-snap-1.1",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 393216
+        },
+        "decision_limits": {
+            "max_questions": 128,
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.baseten.co/library/subq-snap-11/",
+        "checked_on": "2026-11-08",
+        "note": "Named by Baseten's model library; the third-party SubQ page names only subq-snap-preview, so this id is the least certain in the seed. Limits and price as subq-snap-preview. Corrected 2026-11-08 from SubQ's own docs: $0.04/M input, output free (docs.subq.ai/using-the-api/models/); 1-128 questions, 2-255 choices, 2-10 levels (docs.subq.ai/endpoints/decisions-api/).",
+        "details": {
+            "description": "SubQ Snap 1.1 is Subquadratic's long-context decision model and the default model on SubQ's Decisions API, in public preview. It makes fast, structured judgments (yes/no gates, a choice among 2 to 255 options, or a score on 2 to 10 levels) over inputs of up to 384K tokens.",
+            "advantages": [
+                "384K-token (393,216) context window.",
+                "Answers carry per-option probabilities and a confidence value; scores can fall between levels.",
+                "Billed on input tokens only; output tokens are always zero."
+            ],
+            "disadvantages": [
+                "Public preview.",
+                "Requests over or close to the context limit fail with 400.",
+                "Accepts no files or video; documents must be converted to text first.",
+                "SubQ accepts up to four images per request, but Bud's System One adapter sends text only in this release."
+            ],
+            "use_cases": [
+                "Routing and triage, such as deciding whether a nurse should review a chat",
+                "Fact-checking a claim against its source document",
+                "Finding the passage that supports an answer",
+                "Tagging records from their text",
+                "Support queue triage",
+                "Context curation within coding agents"
+            ],
+            "website_url": "https://docs.subq.ai/endpoints/decisions-api/",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Models | SubQ docs",
+                    "url": "https://docs.subq.ai/using-the-api/models/"
+                },
+                {
+                    "kind": "maker",
+                    "title": "Decisions API | SubQ docs",
+                    "url": "https://docs.subq.ai/endpoints/decisions-api/"
+                },
+                {
+                    "kind": "maker",
+                    "title": "SubQ Snap 1.1 | Subquadratic",
+                    "url": "https://subq.ai/"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "fireworks_ai/accounts/fireworks/models/rune",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 8.4e-09
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 208,
+            "images": false,
+            "max_questions": 256
+        },
+        "verified": false,
+        "source": "https://docs.fireworks.ai/api-reference/post-decisions",
+        "checked_on": "2026-11-08",
+        "note": "Fireworks' public serverless decision model. 208 options and text-only input from the Fireworks decisions reference; price, cached-input price and context from LiteLLM (2026-11-08), citing https://api.fireworks.ai/v1/serverless/models. Up to 256 questions per request (app.fireworks.ai/models/fireworks/rune, 2026-11-08).",
+        "details": {
+            "description": "Rune 26B-A4B is a System One decision model on Fireworks AI's serverless platform. It does not reason or generate text: it reads a document once and answers up to 256 typed questions about it (yes/no probability, multiple choice or graded scale) in a single pass, over a 262K-token context, text only.",
+            "advantages": [
+                "Answers many questions about one document in a single pass.",
+                "262K-token context window.",
+                "Output tokens are always zero, so only input is billed; cached input is discounted."
+            ],
+            "disadvantages": [
+                "Text only: image input returns 400.",
+                "Choice questions take at most 208 options, fewer than OpenAI's 255."
+            ],
+            "website_url": "https://app.fireworks.ai/models/fireworks/rune",
+            "sources": [
+                {
+                    "kind": "host",
+                    "title": "Rune 26B-A4B | Fireworks AI",
+                    "url": "https://app.fireworks.ai/models/fireworks/rune"
+                },
+                {
+                    "kind": "host",
+                    "title": "Create decision | Fireworks AI docs",
+                    "url": "https://docs.fireworks.ai/api-reference/post-decisions"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "baseten/decision-models/baseten-elephant-9b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 3.5e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "elephant-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier.",
+        "details": {
+            "description": "elephant-1 is a 9B-parameter decision model post-trained from Qwen3.5-9B by Base Labs at Baseten, served on Baseten's Model APIs. Given an input and a set of yes/no, choice and score questions, it returns a calibrated probability for every option, answering all of them from one shared-prefix prefill.",
+            "advantages": [
+                "Returns a calibrated probability for every option of every question.",
+                "Answers all questions from one shared-prefix prefill.",
+                "Open weights under the MIT licence (baselabs/elephant-1 on Hugging Face)."
+            ],
+            "disadvantages": [
+                "16,384-token context; longer requests are refused, not truncated.",
+                "The model accepts images, but Bud's System One adapter sends text only in this release."
+            ],
+            "languages": [
+                "English"
+            ],
+            "website_url": "https://docs.baseten.co/inference/model-apis/decision-models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decision models | Baseten docs",
+                    "url": "https://docs.baseten.co/inference/model-apis/decision-models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "baselabs/elephant-1 model card | Hugging Face",
+                    "url": "https://huggingface.co/baselabs/elephant-1"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "baseten/decision-models/baseten-mammoth-27b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "mammoth-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier.",
+        "details": {
+            "description": "mammoth-1 is a 27B-parameter decision model post-trained from Qwen3.5-27B by Base Labs at Baseten, served on Baseten's Model APIs. Given an input and a set of yes/no, choice and score questions, it returns a calibrated probability for every option, answering all of them from one shared-prefix prefill.",
+            "advantages": [
+                "The largest of Baseten's three decision models.",
+                "Returns a calibrated probability for every option of every question.",
+                "Answers all questions from one shared-prefix prefill.",
+                "Open weights under the MIT licence (baselabs/mammoth-1 on Hugging Face)."
+            ],
+            "disadvantages": [
+                "16,384-token context; longer requests are refused, not truncated.",
+                "The model accepts images, but Bud's System One adapter sends text only in this release."
+            ],
+            "languages": [
+                "English"
+            ],
+            "website_url": "https://docs.baseten.co/inference/model-apis/decision-models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decision models | Baseten docs",
+                    "url": "https://docs.baseten.co/inference/model-apis/decision-models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "baselabs/mammoth-1 model card | Hugging Face",
+                    "url": "https://huggingface.co/baselabs/mammoth-1"
+                }
+            ]
+        }
+    },
+    {
+        "uri": "baseten/decision-models/baseten-joey-2b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "joey-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier.",
+        "details": {
+            "description": "joey-1 is a 2B-parameter decision model post-trained from Qwen3.5-2B by Base Labs at Baseten, served on Baseten's Model APIs. Given an input and a set of yes/no, choice and score questions, it returns calibrated probabilities for each option from one shared-prefix prefill.",
+            "advantages": [
+                "Returns a calibrated probability for every option of every question.",
+                "Answers all questions from one shared-prefix prefill.",
+                "Small enough to self-host on one CUDA GPU.",
+                "Open weights under the MIT licence (baselabs/joey-1 on Hugging Face)."
+            ],
+            "disadvantages": [
+                "On the public Jev split, joey-1 trails elephant-1 in every area (model card).",
+                "16,384-token context; longer requests are refused, not truncated.",
+                "The model accepts images, but Bud's System One adapter sends text only in this release."
+            ],
+            "languages": [
+                "English"
+            ],
+            "website_url": "https://docs.baseten.co/inference/model-apis/decision-models",
+            "sources": [
+                {
+                    "kind": "maker",
+                    "title": "Decision models | Baseten docs",
+                    "url": "https://docs.baseten.co/inference/model-apis/decision-models"
+                },
+                {
+                    "kind": "maker",
+                    "title": "baselabs/joey-1 model card | Hugging Face",
+                    "url": "https://huggingface.co/baselabs/joey-1"
+                }
+            ]
+        }
+    }
+]

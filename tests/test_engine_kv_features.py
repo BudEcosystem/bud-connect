@@ -13,6 +13,7 @@ be imported standalone.
 import ast
 import json
 import pathlib
+import re
 
 import pytest
 from pydantic import ValidationError
@@ -210,9 +211,11 @@ def test_the_engine_version_table_has_both_columns():
 
 
 def test_a_migration_adds_the_columns_additively_at_the_head():
-    """One new revision at the head adds both columns.
+    """One new revision adds both columns, on the single line of revisions.
 
-    Each is nullable or has a server default, and the upgrade drops nothing.
+    Each is nullable or has a server default, and the upgrade drops nothing. It was the head when it
+    was written; later revisions build on it, so what must hold is that it is on the main line and the
+    graph still has one head.
     """
     versions = pathlib.Path(__file__).parent.parent / "alembic" / "versions"
     files = [p for p in versions.glob("*.py") if "kv_features" in p.read_text()]
@@ -222,17 +225,21 @@ def test_a_migration_adds_the_columns_additively_at_the_head():
     assert 'op.add_column(\n        "engine_version"' in upgrade or 'op.add_column("engine_version"' in upgrade
     assert "upstream_vllm" in upgrade and "kv_features" in upgrade and "server_default" in upgrade
     assert "drop_" not in upgrade
-    downs = {}
+    revision = source.split('revision: str = "', 1)[1].split('"', 1)[0]
+    parent_of = {}
     for p in versions.glob("*.py"):
         text = p.read_text()
-        rev = text.split('revision: str = "', 1)[1].split('"', 1)[0] if 'revision: str = "' in text else None
+        rev = re.search(r"^revision(?::\s*str)?\s*=\s*['\"]([^'\"]+)", text, re.M)
+        down = re.search(r"^down_revision(?::\s*[^=]+)?\s*=\s*['\"]([^'\"]+)", text, re.M)
         if rev:
-            downs[rev] = text
-    revision = source.split('revision: str = "', 1)[1].split('"', 1)[0]
-    referenced = {
-        r for r, t in downs.items() for other in downs if f'down_revision: Union[str, None] = "{r}"' in downs[other]
-    }
-    assert revision not in referenced, "the KV revision must be the head"
+            parent_of[rev.group(1)] = down.group(1) if down else None
+    heads = set(parent_of) - set(parent_of.values())
+    assert len(heads) == 1, f"the migration graph must have one head, not {sorted(heads)}"
+    chain, current = set(), heads.pop()
+    while current in parent_of and current not in chain:
+        chain.add(current)
+        current = parent_of[current]
+    assert revision in chain, "the KV revision must be on the line that leads to the head"
 
 
 # ---------------------------------------------------------------------- the seeded builds

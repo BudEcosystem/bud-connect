@@ -493,6 +493,9 @@ def test_the_chat_self_hosted_entry_keeps_its_own_credential_shape(providers):
 #: ``realtime_session`` (FRD-023) is known to budapp from its release N (WP-RT1.1), which reads
 #: it and strips it on sync until release N+1. This catalog must not deploy before release N is
 #: live everywhere: an older budapp skips openai and azure outright rather than drop one value.
+#:
+#: ``decisions`` (bud-runtime spec 031) follows the same rule: budapp's release N reads it, so this
+#: catalog ships only after that release is live everywhere.
 KNOWN_CAPABILITIES = {
     "model",
     "moderation",
@@ -501,6 +504,7 @@ KNOWN_CAPABILITIES = {
     "audio_transcription",
     "audio_translation",
     "realtime_session",
+    "decisions",
 }
 
 

@@ -17,10 +17,10 @@
 """The model schemas, containing essential data structures for the model microservice."""
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import UUID4, BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator, model_validator
 
 from ..commons.constants import (
     BillingUnitEnum,
@@ -241,6 +241,23 @@ class MediaLimits(BaseModel):
         extra = "forbid"
 
 
+class DecisionLimits(BaseModel):
+    """What one ``/v1/decisions`` request may ask of a decision vendor (bud-runtime spec 031 D-24).
+
+    budapp copies these onto the deployment's ``system_one`` gateway entry, and budgateway refuses an
+    oversized request with a 400 before calling the vendor. Every field is optional: an absent one
+    means no limit beyond the gateway's own (400 questions, 255 choices, 10 levels). A misspelt key
+    is refused rather than kept, since a limit nobody reads is a limit nobody enforces.
+    """
+
+    max_questions: Optional[StrictInt] = Field(None, ge=1, description="Questions per request.")
+    max_choices: Optional[StrictInt] = Field(None, ge=1, description="Options per choice question.")
+    max_levels: Optional[StrictInt] = Field(None, ge=1, description="Levels per score question.")
+    images: Optional[StrictBool] = Field(None, description="Whether the vendor accepts image input.")
+
+    model_config = ConfigDict(extra="forbid")
+
+
 class Features(BaseModel):
     """Validates model features configuration."""
 
@@ -367,6 +384,7 @@ class ModelInfoCreate(BaseModel):
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[DecisionLimits] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -392,6 +410,7 @@ class ModelInfoCreate(BaseModel):
             "media_limits",
             "features",
             "billing",
+            "decision_limits",
         ]
 
         for field in nested_fields:
@@ -419,6 +438,7 @@ class ModelInfoUpdate(BaseModel):
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[DecisionLimits] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -489,6 +509,7 @@ class ModelInfoResponse(BaseModel):
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
     billing: Optional[Dict[str, Any]] = None
+    decision_limits: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
@@ -588,6 +609,61 @@ class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
     items: List[CompatibleProviders]
 
 
+def _https_url(value: Optional[str]) -> Optional[str]:
+    if value is not None and not value.startswith("https://"):
+        raise ValueError(f"{value!r} is not an https URL")
+    return value
+
+
+class CuratedSource(BaseModel):
+    """One page a curated model description was read from (``model_details.extraction_metadata``)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    kind: Literal["maker", "host", "third_party"]
+    title: str = Field(..., min_length=1)
+    url: str
+
+    _check_url = field_validator("url")(_https_url)
+
+
+class CuratedModelDetails(BaseModel):
+    """What a curated catalog entry says about its model, in ``model_details``' column names.
+
+    bud-runtime spec 031: the curated decision models carry this block so that budapp's catalog sync
+    -- which reads ``model_details`` through ``include_details`` -- has a description, pros, cons and
+    links to show for them. ``advantages`` and ``disadvantages`` keep the column names; budapp calls
+    them strengths and limitations. Facts from the vendor's own pages only, so every block cites them.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    description: str = Field(..., min_length=1)
+    advantages: List[str] = []
+    disadvantages: List[str] = []
+    use_cases: List[str] = []
+    languages: List[str] = []
+    website_url: Optional[str] = None
+    github_url: Optional[str] = None
+    sources: List[CuratedSource] = Field(..., min_length=1)
+
+    _check_urls = field_validator("website_url", "github_url")(_https_url)
+
+    @field_validator("description")
+    @classmethod
+    def _not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("description is blank")
+        return value
+
+    @field_validator("advantages", "disadvantages", "use_cases", "languages")
+    @classmethod
+    def _no_blank_items(cls, values: List[str]) -> List[str]:
+        if any(not value.strip() for value in values):
+            raise ValueError("a list item is blank")
+        return values
+
+
 class ModelPaper(BaseModel):
     """Schema for model-related research papers."""
 
@@ -656,6 +732,7 @@ class ModelDetailsResponse(BaseModel):
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[Dict[str, Any]] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
