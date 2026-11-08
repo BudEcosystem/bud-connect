@@ -700,6 +700,7 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
                     "media_limits": model_info.media_limits,
                     "features": model_info.features,
                     "billing": model_info.billing,
+                    "decision_limits": model_info.decision_limits,
                     "endpoints": model_info.endpoints,
                     "deprecation_date": model_info.deprecation_date,
                     "tool_calling_parser_type": model_info.tool_calling_parser_type,

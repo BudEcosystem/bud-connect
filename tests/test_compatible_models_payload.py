@@ -37,6 +37,7 @@ JSONB_PAYLOAD = frozenset(
         "media_limits",
         "features",
         "billing",
+        "decision_limits",
     }
 )
 

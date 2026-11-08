@@ -20,7 +20,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
-from pydantic import UUID4, BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import UUID4, BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator, model_validator
 
 from ..commons.constants import (
     BillingUnitEnum,
@@ -241,6 +241,23 @@ class MediaLimits(BaseModel):
         extra = "forbid"
 
 
+class DecisionLimits(BaseModel):
+    """What one ``/v1/decisions`` request may ask of a decision vendor (bud-runtime spec 031 D-24).
+
+    budapp copies these onto the deployment's ``system_one`` gateway entry, and budgateway refuses an
+    oversized request with a 400 before calling the vendor. Every field is optional: an absent one
+    means no limit beyond the gateway's own (400 questions, 255 choices, 10 levels). A misspelt key
+    is refused rather than kept, since a limit nobody reads is a limit nobody enforces.
+    """
+
+    max_questions: Optional[StrictInt] = Field(None, ge=1, description="Questions per request.")
+    max_choices: Optional[StrictInt] = Field(None, ge=1, description="Options per choice question.")
+    max_levels: Optional[StrictInt] = Field(None, ge=1, description="Levels per score question.")
+    images: Optional[StrictBool] = Field(None, description="Whether the vendor accepts image input.")
+
+    model_config = ConfigDict(extra="forbid")
+
+
 class Features(BaseModel):
     """Validates model features configuration."""
 
@@ -367,6 +384,7 @@ class ModelInfoCreate(BaseModel):
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[DecisionLimits] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -392,6 +410,7 @@ class ModelInfoCreate(BaseModel):
             "media_limits",
             "features",
             "billing",
+            "decision_limits",
         ]
 
         for field in nested_fields:
@@ -419,6 +438,7 @@ class ModelInfoUpdate(BaseModel):
     media_limits: Optional[MediaLimits] = None
     features: Optional[Features] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[DecisionLimits] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license_id: Optional[UUID4] = None
@@ -489,6 +509,7 @@ class ModelInfoResponse(BaseModel):
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
     billing: Optional[Dict[str, Any]] = None
+    decision_limits: Optional[Dict[str, Any]] = None
     endpoints: List[ModelEndpointEnum]
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None
@@ -656,6 +677,7 @@ class ModelDetailsResponse(BaseModel):
     media_limits: Optional[Dict[str, Any]] = None
     features: Optional[Dict[str, Any]] = None
     billing: Optional[Billing] = None
+    decision_limits: Optional[Dict[str, Any]] = None
     endpoints: Optional[List[ModelEndpointEnum]] = None
     deprecation_date: Optional[datetime] = None
     license: Optional[LicenseResponse] = None

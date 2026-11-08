@@ -1,0 +1,617 @@
+[
+    {
+        "uri": "openai/gpt-6-luna",
+        "modality": [
+            "image_input",
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07,
+            "input_cost_per_token_decisions": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 5e-07,
+            "output_cost_per_token_decisions": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 1e-08
+        },
+        "tokens": {
+            "max_input_tokens": 922000,
+            "max_output_tokens": 128000
+        },
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 255,
+            "max_levels": 10
+        },
+        "verified": true,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Chat and responses: $0.10/M input, $0.01/M cached input, $0.50/M output (OpenAI pricing page). Decisions: $0.10/M input, output free, from LiteLLM's input_cost_per_token_decisions and output_cost_per_token_decisions (2026-11-08), which cite the same page; the page has no decisions row. The decisions route was called live; gpt-5.6-luna is not a decision model (404)."
+    },
+    {
+        "uri": "azure/gpt-6-luna",
+        "modality": [
+            "image_input",
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07,
+            "input_cost_per_token_decisions": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 5e-07,
+            "output_cost_per_token_decisions": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 1e-08
+        },
+        "tokens": {
+            "max_input_tokens": 922000,
+            "max_output_tokens": 128000
+        },
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 255,
+            "max_levels": 10
+        },
+        "verified": false,
+        "source": "https://dev.classmethod.jp/en/articles/azure-openai-decisions-api-ga/",
+        "checked_on": "2026-11-08",
+        "note": "Azure serves OpenAI's /v1/decisions wire on its v1 surface (secondary source; not in East US 2); not called live. Chat prices from LiteLLM's azure/gpt-6-luna (2026-11-08); decisions prices assumed equal to OpenAI's."
+    },
+    {
+        "uri": "typesafe/jev-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Alias of jev-1.14.0 on 2026-11-08; responses name the pinned id. Output tokens are reported but free. 64K per request by default; the 262K long-context header is not sent by Bud."
+    },
+    {
+        "uri": "typesafe/jev-1.14.0",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Output tokens are reported but free."
+    },
+    {
+        "uri": "typesafe/jev-1.13.0",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 65536
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://docs.typesafe.ai/models",
+        "checked_on": "2026-11-08",
+        "note": "Output tokens are reported but free."
+    },
+    {
+        "uri": "embedding_space/laya",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_request": 0.002
+        },
+        "output_cost": null,
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 400,
+            "max_choices": 128,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": true,
+        "source": "https://studio.embedding.in/docs/credits",
+        "checked_on": "2026-11-08",
+        "note": "$0.002 per record whatever the question count (GET /v1/credits: per_decision_micro_usd 2000). No token usage is reported. 255 options failed live with an out-of-memory error, 128 passed."
+    },
+    {
+        "uri": "perplexity/pplx-decider-v1.2",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "27B. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "perplexity/pplx-decider-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of pplx-decider-v1.2. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "perplexity/pplx-decider-flash-v1.2",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "4B. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "perplexity/pplx-decider-flash-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of pplx-decider-flash-v1.2. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "perplexity/pplx-decider-v1-27b",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.perplexity.ai/docs/decisions/quickstart",
+        "checked_on": "2026-11-08",
+        "note": "Legacy name, still accepted and billed at the v1.2 rate. Drafted earlier at $0.04/M and 128 questions from secondary sources; the vendor docs say $0.02/M and no question cap. Limits and the 256K context from https://docs.perplexity.ai/docs/decisions/quickstart; no question cap outside mode web_grounding, which Bud does not send. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "liquid_ai/d1.1",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.liquid.ai/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Liquid's default hosted decision model. Served at https://api.liquid.ai/decisions/v1/systemone (https://docs.liquid.ai/lfm/models/d1). Context and question, choice and level caps are not documented. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "liquid_ai/d1-ultra",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.liquid.ai/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Liquid's most capable decision model. Served at https://api.liquid.ai/decisions/v1/systemone (https://docs.liquid.ai/lfm/models/d1). Context and question, choice and level caps are not documented. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "bespokelabs/nimble-v4.1-max",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Bespoke's default model. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented."
+    },
+    {
+        "uri": "bespokelabs/nimble-v4-max",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "The previous model. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented."
+    },
+    {
+        "uri": "bespokelabs/nimble-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": null,
+        "decision_limits": {
+            "max_questions": 64,
+            "max_choices": 255,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.bespokelabs.ai/nimble/pricing",
+        "checked_on": "2026-11-08",
+        "note": "Alias of nimble-v4.1-max; moves with new releases. Limits from https://docs.bespokelabs.ai/nimble/overview: 64 questions, 2-255 options, 2-255 levels (Bud's own cap of 10 levels is lower). Context not documented."
+    },
+    {
+        "uri": "subq/subq-snap-preview",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 5e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 393216
+        },
+        "decision_limits": {
+            "max_questions": 16,
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.openclaw.ai/plugins/subq.md",
+        "checked_on": "2026-11-08",
+        "note": "A third party quoting SubQ's docs (checked 2026-10-13): 1-16 questions, 2-255 options, 2-10 levels, 384K context. Preview id; SubQ says the GA id will change. Images are accepted by the vendor but not sent by Bud's System One adapter in DM1."
+    },
+    {
+        "uri": "subq/subq-snap-1.1",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 5e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 393216
+        },
+        "decision_limits": {
+            "max_questions": 16,
+            "max_choices": 255,
+            "max_levels": 10,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://www.baseten.co/library/subq-snap-11/",
+        "checked_on": "2026-11-08",
+        "note": "Named by Baseten's model library; the third-party SubQ page names only subq-snap-preview, so this id is the least certain in the seed. Limits and price as subq-snap-preview."
+    },
+    {
+        "uri": "fireworks_ai/accounts/fireworks/models/rune",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 4.2e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "cache_cost": {
+            "cache_read_input_token_cost": 8.4e-09
+        },
+        "tokens": {
+            "max_input_tokens": 262144
+        },
+        "decision_limits": {
+            "max_choices": 208,
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.fireworks.ai/api-reference/post-decisions",
+        "checked_on": "2026-11-08",
+        "note": "Fireworks' public serverless decision model. 208 options and text-only input from the Fireworks decisions reference; price, cached-input price and context from LiteLLM (2026-11-08), citing https://api.fireworks.ai/v1/serverless/models."
+    },
+    {
+        "uri": "baseten/decision-models/baseten-elephant-9b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 3.5e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "elephant-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier."
+    },
+    {
+        "uri": "baseten/decision-models/baseten-mammoth-27b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-07
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "mammoth-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier."
+    },
+    {
+        "uri": "baseten/decision-models/baseten-joey-2b-latest",
+        "modality": [
+            "text_input",
+            "text_output"
+        ],
+        "endpoints": [
+            "/v1/decisions"
+        ],
+        "input_cost": {
+            "input_cost_per_token": 1e-08
+        },
+        "output_cost": {
+            "output_cost_per_token": 0
+        },
+        "tokens": {
+            "max_input_tokens": 16384
+        },
+        "decision_limits": {
+            "images": false
+        },
+        "verified": false,
+        "source": "https://docs.baseten.co/inference/model-apis/decision-models.md",
+        "checked_on": "2026-11-08",
+        "note": "joey-1. Slug and 16,384-token context from the Baseten page, which gives no price; the price is LiteLLM's (2026-11-08), citing https://inference.baseten.co/v1/models. Default service tier."
+    }
+]

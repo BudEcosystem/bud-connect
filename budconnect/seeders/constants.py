@@ -29,6 +29,13 @@ NO_MODEL_PROVIDERS = [
     # this entry an honest promise there, and audio has no equivalent.
     # `test_the_chat_self_hosted_entry_claims_no_audio` holds it to that.
     "openai_compatible",
+    # `system_one_compatible` is the decisions twin of `openai_compatible` (bud-runtime spec 031 D-22):
+    # any System One server the user points Bud at -- a Databricks workspace, Ollama, a self-run
+    # decider, a vendor the catalog has no entry for. Its models are the user's own, so it has none
+    # in the catalog. The named decision vendors (typesafe, embedding_space, ...) are NOT listed here:
+    # the curated seed (seeders/data/decisions/decision_models.json) gives each of them models, and
+    # the model walk reaches them like any other provider.
+    "system_one_compatible",
     # FRD-018 voice providers.
     #
     # `waav_self_hosted` was here and is RETIRED (FRD-019 M3): it was `openai_compatible`

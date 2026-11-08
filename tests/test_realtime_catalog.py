@@ -265,6 +265,8 @@ def test_tc_cat_04_only_the_realtime_model_in_a_snapshot_carries_the_route(tz, m
 
     Plus gpt-audio-mini, the gpt-audio model LiteLLM also lists at /v1/realtime.
     """
+    # The curated decision models are merged into every parse; this snapshot is about realtime.
+    monkeypatch.setattr(tz, "load_decision_models", lambda: [])
     _fake_sdk(
         monkeypatch,
         {
@@ -564,6 +566,8 @@ def test_the_named_grants_are_nova_2_sonic_alone(tz):
 
 def test_tc_cat_04_rt7_snapshot(tz, monkeypatch):
     """One seed over a snapshot holding every RT7 shape: only the speech-to-speech models get the route."""
+    # The curated decision models are merged into every parse; this snapshot is about realtime.
+    monkeypatch.setattr(tz, "load_decision_models", lambda: [])
     _fake_sdk(
         monkeypatch,
         {

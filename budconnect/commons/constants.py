@@ -64,6 +64,9 @@ class ModelEndpointEnum(Enum):
         MODERATION (str): Content moderation endpoint.
         REALTIME (str): OpenAI Realtime GA socket (speech-to-speech and realtime transcription),
             relayed by WaaV. budapp names the same value ``REALTIME_SESSION`` (FRD-023 C5).
+        DECISIONS (str): Typed questions answered with calibrated probabilities (bud-runtime spec
+            031). budgateway serves it, and ``/v1/systemone`` for the same deployment; the catalog
+            lists only this value for both.
     """
 
     CHAT = "/v1/chat/completions"
@@ -81,6 +84,7 @@ class ModelEndpointEnum(Enum):
     RERANK = "/v1/rerank"  # https://docs.litellm.ai/docs/rerank
     MODERATION = "/v1/moderations"  # https://docs.litellm.ai/docs/moderation
     REALTIME = "/v1/realtime"  # a WebSocket, not a REST route; served by WaaV, never budgateway
+    DECISIONS = "/v1/decisions"
 
 
 class ProviderCapabilityEnum(Enum):
@@ -101,6 +105,10 @@ class ProviderCapabilityEnum(Enum):
         AUDIO_TRANSLATION: The provider can translate audio to English text.
         REALTIME_SESSION: The audio gateway can open a ``/v1/realtime`` session for the
             provider's models (FRD-023). A model under a provider without it loses that route.
+        DECISIONS: budgateway can serve the provider's models at ``/v1/decisions`` (bud-runtime
+            spec 031): natively for OpenAI and Azure, through the System One route at the
+            provider's ``decisions_url`` for everyone else. A model under a provider without it
+            loses that route.
 
     The first three say what KIND of provider this is; the rest say what it can serve.
     They share one array on purpose -- "what can this provider do" is one question, and budapp
@@ -120,6 +128,7 @@ class ProviderCapabilityEnum(Enum):
     AUDIO_TRANSCRIPTION = "audio_transcription"
     AUDIO_TRANSLATION = "audio_translation"
     REALTIME_SESSION = "realtime_session"
+    DECISIONS = "decisions"
 
 
 class ModelProviderTypeEnum(str, Enum):

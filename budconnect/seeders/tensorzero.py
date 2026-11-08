@@ -19,6 +19,7 @@
 import json
 import os
 import re
+from datetime import date
 from typing import Any, Dict, FrozenSet, List, Optional, Set
 from uuid import UUID
 
@@ -28,6 +29,7 @@ from sqlalchemy import delete
 from budconnect.seeders.constants import NO_MODEL_PROVIDERS
 
 from ..commons.constants import (
+    BillingUnitEnum,
     ModalityEnum,
     ModelEndpointEnum,
     ModelStatusEnum,
@@ -41,6 +43,7 @@ from ..model.models import ModelInfo, Provider, engine_version_model_info, engin
 from ..model.schemas import (
     Billing,
     CacheCost,
+    DecisionLimits,
     Features,
     InputCost,
     LiteLLMModelInfo,
@@ -62,6 +65,8 @@ logger = logging.get_logger(__name__)
 SEEDER_DIR = os.path.dirname(os.path.abspath(__file__))
 TENSORZERO_DATA_DIR = os.path.join(SEEDER_DIR, "data", "tensorzero")
 TENSORZERO_PROVIDERS_PATH = os.path.join(TENSORZERO_DATA_DIR, "tensorzero_providers.json")
+#: Decision models the catalog SDK does not carry, merged into every version (bud-runtime spec 031 C7.2).
+DECISION_MODELS_PATH = os.path.join(SEEDER_DIR, "data", "decisions", "decision_models.json")
 LICENSES_PATH = os.path.join(SEEDER_DIR, "data", "licenses.json")
 
 #: The most of a version's models one sync may retire, as a fraction and as a floor (so a
@@ -80,6 +85,13 @@ MIN_RETIREMENT_ALLOWANCE = 25
 #: models, the mode-only set is exactly those -- every GA `gpt-realtime*` model lists
 #: /v1/realtime explicitly. So the mode would add only routes that fail at connect time; the
 #: explicit list is what says a model speaks the Realtime protocol.
+#:
+#: `decisions` and `evaluation` are missing for the same reason (bud-runtime spec 031 C7.3). LiteLLM
+#: files decision models under both -- `decisions` for four (Baseten, a Fireworks Rune path) and
+#: `evaluation` for thirty-five (TypeSafe Jev, Perplexity Decider, Cloudflare Clef, ...) as of
+#: 2026-11-08 -- and `evaluation` does not even say decisions. A model is served at /v1/decisions when
+#: its entry lists that route (or /v1/systemone, its other name) explicitly, as gpt-6-luna does, or
+#: when the curated seed (`DECISION_MODELS_PATH`) says so.
 MODE_ENDPOINTS: Dict[str, List[ModelEndpointEnum]] = {
     "chat": [ModelEndpointEnum.CHAT],
     "completion": [ModelEndpointEnum.COMPLETION],
@@ -166,6 +178,45 @@ def gate_realtime_route(
         ProviderCapabilityEnum.REALTIME_SESSION.value,
     )
     return [e for e in endpoints if e is not ModelEndpointEnum.REALTIME]
+
+
+def gate_decisions_route(
+    endpoints: List[ModelEndpointEnum], capabilities: List[ProviderCapabilityEnum], uri: str
+) -> List[ModelEndpointEnum]:
+    """Drop /v1/decisions from a model whose provider budgateway cannot serve that route for.
+
+    bud-runtime spec 031 C7.3. budapp publishes a deployment carrying /v1/decisions either natively
+    (OpenAI, Azure) or as a System One entry whose URL is the provider's ``decisions_url`` -- a field
+    only providers declaring ``decisions`` carry. Under any other provider the route has no URL to
+    call and every request would fail, so it goes. Loud, like `gate_realtime_route`: it is the one
+    place a model the source lists at the route silently loses it. Each model is derived once per
+    version, so this logs once per model per sync.
+    """
+    if ModelEndpointEnum.DECISIONS not in endpoints or ProviderCapabilityEnum.DECISIONS in capabilities:
+        return endpoints
+    logger.warning(
+        "Model %s is listed at %s, but its provider does not declare %s; the route is dropped",
+        uri,
+        ModelEndpointEnum.DECISIONS.value,
+        ProviderCapabilityEnum.DECISIONS.value,
+    )
+    return [e for e in endpoints if e is not ModelEndpointEnum.DECISIONS]
+
+
+#: Routes a source lists under another name, by that name. `/v1/systemone` is the System One shape of
+#: the decisions capability; Bud serves both routes for any deployment carrying /v1/decisions.
+ENDPOINT_ALIASES: Dict[str, ModelEndpointEnum] = {"/v1/systemone": ModelEndpointEnum.DECISIONS}
+
+
+def mode_routes(config: Dict[str, Any]) -> List[ModelEndpointEnum]:
+    """Return the routes a catalog entry gets from its LiteLLM `mode`, for when it lists none of its own."""
+    mode = config.get("mode") or ""
+    routes = list(MODE_ENDPOINTS.get(mode, ()))
+    if mode == "chat" and "text" in config.get("supported_modalities", []):
+        # Kept from the flag-derived routes this replaced, so the models that had
+        # /v1/completions beside chat keep it; it is the same text-generation family.
+        routes.append(ModelEndpointEnum.COMPLETION)
+    return routes
 
 
 #: FRD-023 RT7, CONTRACTS C5/C7. Realtime models LiteLLM lists with NO endpoint list, granted
@@ -303,6 +354,218 @@ def _provider_capabilities() -> Dict[str, List[str]]:
     return _PROVIDER_CAPABILITIES
 
 
+#: The fields a curated decision model must carry (bud-runtime spec 031 C7.2), and the ones it may.
+CURATED_REQUIRED_KEYS: FrozenSet[str] = frozenset(
+    {
+        "uri",
+        "modality",
+        "endpoints",
+        "input_cost",
+        "output_cost",
+        "tokens",
+        "decision_limits",
+        "verified",
+        "source",
+        "checked_on",
+    }
+)
+CURATED_OPTIONAL_KEYS: FrozenSet[str] = frozenset({"cache_cost", "deprecation_date", "note"})
+
+#: The blocks of a curated entry that are LiteLLM fields grouped by kind; flattened back for the parser.
+_CURATED_FLAT_BLOCKS = ("input_cost", "output_cost", "cache_cost", "tokens")
+
+
+def _is_price(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0
+
+
+def _curated_entry_problems(entry: Any, providers: Dict[str, Any]) -> List[str]:
+    """Everything wrong with one curated decision model; empty when it can be seeded."""
+    if not isinstance(entry, dict):
+        return [f"entry {entry!r} is not an object"]
+    uri = entry.get("uri")
+    missing = sorted(CURATED_REQUIRED_KEYS - set(entry))
+    if missing:
+        return [f"{uri}: missing {missing}"]
+    problems = []
+    unknown = sorted(set(entry) - CURATED_REQUIRED_KEYS - CURATED_OPTIONAL_KEYS)
+    if unknown:
+        problems.append(f"{uri}: unknown keys {unknown}")
+
+    provider = uri.split("/", 1)[0] if isinstance(uri, str) and "/" in uri else None
+    if provider not in providers:
+        problems.append(f"{uri}: the provider prefix is not a provider in {TENSORZERO_PROVIDERS_PATH}")
+    elif ProviderCapabilityEnum.DECISIONS.value not in providers[provider].get("capabilities", []):
+        problems.append(f"{uri}: provider {provider} does not declare {ProviderCapabilityEnum.DECISIONS.value}")
+
+    try:
+        if not entry["modality"]:
+            problems.append(f"{uri}: no modality")
+        for value in entry["modality"]:
+            ModalityEnum(value)
+        routes = [ModelEndpointEnum(value) for value in entry["endpoints"]]
+        if ModelEndpointEnum.DECISIONS not in routes:
+            problems.append(f"{uri}: not listed at {ModelEndpointEnum.DECISIONS.value}")
+    except (TypeError, ValueError) as e:
+        problems.append(f"{uri}: {e}")
+
+    # Priced per token or per request (FRD D-25), never both and never neither: an unpriced
+    # decisions deployment would bill nothing.
+    input_cost = entry["input_cost"] if isinstance(entry["input_cost"], dict) else {}
+    per_token, per_request = input_cost.get("input_cost_per_token"), input_cost.get("input_cost_per_request")
+    if (per_token is None) == (per_request is None) or not _is_price(
+        per_token if per_token is not None else per_request
+    ):
+        problems.append(f"{uri}: needs exactly one positive input_cost_per_token or input_cost_per_request")
+
+    for block, schema in (
+        ("input_cost", InputCost),
+        ("output_cost", OutputCost),
+        ("cache_cost", CacheCost),
+        ("tokens", Tokens),
+        ("decision_limits", DecisionLimits),
+    ):
+        value = entry.get(block)
+        if value is None and block != "decision_limits":
+            continue
+        if not isinstance(value, dict):
+            problems.append(f"{uri}: {block} must be an object")
+            continue
+        try:
+            schema(**value)
+        except (TypeError, ValueError) as e:
+            problems.append(f"{uri}: {block} is invalid: {e}")
+
+    if not isinstance(entry["verified"], bool):
+        problems.append(f"{uri}: verified must be true or false")
+    if not (isinstance(entry["source"], str) and entry["source"].startswith("https://")):
+        problems.append(f"{uri}: source must be an https URL")
+    try:
+        date.fromisoformat(entry["checked_on"])
+    except (TypeError, ValueError):
+        problems.append(f"{uri}: checked_on must be an ISO date")
+    return problems
+
+
+def load_decision_models() -> List[Dict[str, Any]]:
+    """Read and validate the curated decision models (bud-runtime spec 031 C7.2).
+
+    A problem in the file fails the sync -- which keeps yesterday's rows -- rather than seeding a
+    decision model with no price, under a provider that cannot serve it, or with limits nobody can
+    enforce. The file ships with the image, so CI is where such a problem is meant to be caught.
+
+    Raises:
+        SeederException: The file is missing, unreadable, or holds an entry that cannot be seeded.
+    """
+    try:
+        with open(DECISION_MODELS_PATH, "r") as f:
+            entries: Any = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        raise SeederException(f"Cannot read the curated decision models at {DECISION_MODELS_PATH}: {e}") from e
+    if not isinstance(entries, list):
+        raise SeederException(f"{DECISION_MODELS_PATH} must hold a list of models")
+
+    providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
+    problems = [problem for entry in entries for problem in _curated_entry_problems(entry, providers)]
+    uris = [entry["uri"] for entry in entries if isinstance(entry, dict) and "uri" in entry]
+    duplicates = sorted({uri for uri in uris if uris.count(uri) > 1})
+    if duplicates:
+        problems.append(f"listed more than once: {duplicates}")
+    if problems:
+        raise SeederException(f"Refusing to seed the curated decision models: {'; '.join(problems)}")
+    return entries
+
+
+def curated_model_config(entry: Dict[str, Any]) -> Dict[str, Any]:
+    """Put a curated decision model in the catalog SDK's shape, so it takes the same derivation path.
+
+    Modalities go back to LiteLLM's `supported_modalities` words and the cost and token blocks are
+    flattened to their LiteLLM field names, which `create_model_info` sorts into the same blocks
+    again. The endpoint list is explicit, so the route never depends on a mode (C7.3). The price's
+    provenance becomes a `billing` block, the field bud-connect already carries it in.
+    """
+    config: Dict[str, Any] = {
+        "litellm_provider": entry["uri"].split("/", 1)[0],
+        "supported_endpoints": list(entry["endpoints"]),
+    }
+    inputs = [m.rsplit("_", 1)[0] for m in entry["modality"] if m.endswith("_input")]
+    outputs = [m.rsplit("_", 1)[0] for m in entry["modality"] if m.endswith("_output")]
+    if inputs:
+        config["supported_modalities"] = inputs
+    if outputs:
+        config["supported_output_modalities"] = outputs
+    for block in _CURATED_FLAT_BLOCKS:
+        config.update(entry.get(block) or {})
+    if entry.get("deprecation_date"):
+        config["deprecation_date"] = entry["deprecation_date"]
+    config["decision_limits"] = dict(entry["decision_limits"])
+
+    if entry["verified"]:
+        note = f"Verified by a live call on {entry['checked_on']} (bud-runtime spec 031, SPIKE.md)."
+    else:
+        note = "Copied from public documentation; not verified by a live call."
+    if entry.get("note"):
+        note = f"{note} {entry['note']}"
+    per_request = "input_cost_per_request" in (entry["input_cost"] or {})
+    config["billing"] = {
+        "unit": BillingUnitEnum.REQUEST.value if per_request else BillingUnitEnum.TOKEN.value,
+        "currency": "USD",
+        "confidence": PriceConfidenceEnum.CURATED.value,
+        "source": {"url": entry["source"], "checked_on": entry["checked_on"], "note": note},
+    }
+    return config
+
+
+def _extend_catalog_entry(existing: Dict[str, Any], curated: Dict[str, Any]) -> Dict[str, Any]:
+    """Add a curated decision model's routes and missing fields to the SDK's entry for the same model.
+
+    The SDK's values win wherever it has one (C7.3: use what LiteLLM has, curate only the rest). Its
+    routes are kept -- the mode's, when it lists none -- and the curated ones are added. A curated
+    `billing` block describes the curated price, so it is not attached to a price the SDK supplied.
+    """
+    entry = dict(existing)
+    routes = list(entry.get("supported_endpoints") or [route.value for route in mode_routes(entry)])
+    routes.extend(route for route in curated["supported_endpoints"] if route not in routes)
+    entry["supported_endpoints"] = routes
+    priced_by_sdk = any(price_category(field, value) for field, value in existing.items())
+    for field, value in curated.items():
+        if field in ("supported_endpoints", "litellm_provider") or (field == "billing" and priced_by_sdk):
+            continue
+        entry.setdefault(field, value)
+    return entry
+
+
+def merge_decision_models(
+    model_data: Dict[str, Dict[str, Any]], curated: List[Dict[str, Any]]
+) -> Dict[str, Dict[str, Any]]:
+    """Merge the curated decision models into one catalog fetch (bud-runtime spec 031 C7.2).
+
+    The catalog SDK maps a fixed set of LiteLLM providers, and none of the System One vendors is in
+    it, so their models come from here alone. A model the SDK does carry (gpt-6-luna) is extended,
+    not replaced. Returns a new mapping; the SDK's entries are not modified.
+    """
+    merged = dict(model_data)
+    added: List[str] = []
+    extended: List[str] = []
+    for entry in curated:
+        uri = entry["uri"]
+        config = curated_model_config(entry)
+        if uri in merged:
+            merged[uri] = _extend_catalog_entry(merged[uri], config)
+            extended.append(uri)
+        else:
+            merged[uri] = config
+            added.append(uri)
+    logger.info(
+        "Merged %d curated decision models: %d added, %d extended (%s)",
+        len(curated),
+        len(added),
+        len(extended),
+        ", ".join(extended) or "none",
+    )
+    return merged
+
+
 def get_license_key_for_model(model_uri: str, provider_type: str) -> Optional[str]:
     """Get license key for a model based on its URI and provider.
 
@@ -316,6 +579,15 @@ def get_license_key_for_model(model_uri: str, provider_type: str) -> Optional[st
     # This function is now mainly a fallback - most license_id should come directly from model data
     # Return None if we don't have specific knowledge about the license
     return None
+
+
+class UntrustedCatalogError(SeederException):
+    """The catalog SDK's fetch is empty or degraded, so the sync must not act on it.
+
+    A subclass, so every existing handler of ``SeederException`` still sees a failed sync. It is
+    told apart only so that ``TensorZeroSeeder.seed`` can still apply the curated decision models
+    -- our own validated file -- additively before failing (bud-runtime spec 031 C7.2).
+    """
 
 
 class TensorZeroParser:
@@ -352,13 +624,13 @@ class TensorZeroParser:
             # The SDK returns an empty catalog, rather than raising, when LiteLLM answers
             # with nothing usable -- and says so, expecting the consumer to notice. Seeding
             # it would retire every model and unlink every provider.
-            raise SeederException("Catalog SDK returned no models; refusing to sync an empty catalog")
+            raise UntrustedCatalogError("Catalog SDK returned no models; refusing to sync an empty catalog")
         if result.ai_models_fetched_at is None:
             # ai-models failed and the SDK fell back to LiteLLM alone. That catalog filters
             # deprecations by LiteLLM's dates only and prices from LiteLLM only: measured,
             # 240 deprecated models come back and 87 prices change, for one night, until the
             # next good run retires them again -- and budapp mirrors each flip.
-            raise SeederException(
+            raise UntrustedCatalogError(
                 "ai-models source was unavailable, so the catalog is LiteLLM-only (deprecated "
                 "models resurface, prices regress); keeping the previous catalog"
             )
@@ -376,6 +648,28 @@ class TensorZeroParser:
             logger.info("Dropping %d fine-tune price keys, which are not models: %s", len(price_keys), price_keys)
             model_data = {uri: info for uri, info in model_data.items() if not is_fine_tune_price_key(uri)}
 
+        # Merged after the guards, so they judge the SDK's catalog alone: a few curated decision
+        # models must never make an empty or degraded catalog look seedable.
+        model_data = merge_decision_models(model_data, load_decision_models())
+        return TensorZeroParser.group_by_provider(model_data)
+
+    @staticmethod
+    async def parse_curated_decision_models() -> Dict[str, List[LiteLLMModelInfo]]:
+        """Return the curated decision models alone, organised by provider (C7.2).
+
+        What ``TensorZeroSeeder.seed`` applies while the SDK's fetch is untrusted. Without the SDK
+        there is nothing to extend, so each curated entry is complete on its own -- gpt-6-luna
+        carries its chat price in the file for exactly this case.
+        """
+        return TensorZeroParser.group_by_provider(merge_decision_models({}, load_decision_models()))
+
+    @staticmethod
+    def group_by_provider(model_data: Dict[str, Dict[str, Any]]) -> Dict[str, List[LiteLLMModelInfo]]:
+        """Organise one catalog fetch by provider, refusing a provider with no catalog entry.
+
+        Raises:
+            SeederException: A model names a provider ``tensorzero_providers.json`` does not define.
+        """
         # Get unique providers
         providers = {item["litellm_provider"] for item in model_data.values()}
         logger.debug("Found %d providers in TensorZero data", len(providers))
@@ -537,8 +831,10 @@ class TensorZeroParser:
         capabilities = [ProviderCapabilityEnum(c) for c in _provider_capabilities().get(provider_type, [])]
         model_specs["endpoints"] = gate_audio_routes(model_specs["endpoints"], capabilities)
         model_specs["endpoints"] = gate_realtime_route(model_specs["endpoints"], capabilities, model_data.uri)
+        model_specs["endpoints"] = gate_decisions_route(model_specs["endpoints"], capabilities, model_data.uri)
 
         billing = await self.derive_billing(model_data, categorized_data)
+        decision_limits = self.derive_decision_limits(model_data, model_specs["endpoints"])
 
         if categorized_data["search_context_cost"]:
             search_context_cost_per_query = SearchContextCost(
@@ -562,10 +858,30 @@ class TensorZeroParser:
             media_limits=MediaLimits(**categorized_data["media_limits"]) if categorized_data["media_limits"] else None,
             features=Features(**categorized_data["features"]) if categorized_data["features"] else None,
             billing=billing,
+            decision_limits=decision_limits,
             deprecation_date=model_data.config.get("deprecation_date"),
             license_id=license_id,
             status=ModelStatusEnum.ACTIVE,
         )
+
+    @staticmethod
+    def derive_decision_limits(
+        model_data: LiteLLMModelInfo, endpoints: List[ModelEndpointEnum]
+    ) -> Optional[DecisionLimits]:
+        """Return the vendor's per-request caps, for a model that kept its /v1/decisions route.
+
+        The curated seed is validated when it is loaded, so a malformed block can only come from
+        the catalog SDK. Like a malformed billing block it costs that model its limits, not every
+        provider its sync: with no limits the gateway applies its own and surfaces the vendor's 400.
+        """
+        declared = model_data.config.get("decision_limits")
+        if not declared or ModelEndpointEnum.DECISIONS not in endpoints:
+            return None
+        try:
+            return DecisionLimits(**declared)
+        except (TypeError, ValueError):
+            logger.warning("Discarding malformed decision_limits for %s: %r", model_data.uri, declared)
+            return None
 
     @staticmethod
     async def derive_billing(model_data: LiteLLMModelInfo, categorized_data: Dict[str, Any]) -> Optional[Billing]:
@@ -703,11 +1019,7 @@ class TensorZeroParser:
         if not supported_modalities:
             supported_modalities = list(MODE_MODALITIES.get(mode, ()))
 
-        supported_model_endpoints = list(MODE_ENDPOINTS.get(mode, ()))
-        if mode == "chat" and "text" in input_modalities:
-            # Kept from the flag-derived routes this replaces, so the models that had
-            # /v1/completions beside chat keep it; it is the same text-generation family.
-            supported_model_endpoints.append(ModelEndpointEnum.COMPLETION)
+        supported_model_endpoints = mode_routes(config)
 
         # Get supported endpoints
         if config.get("supported_endpoints", []):
@@ -716,7 +1028,7 @@ class TensorZeroParser:
             supported_model_endpoints = []
             for endpoint in config.get("supported_endpoints", []):
                 try:
-                    route = ModelEndpointEnum(endpoint)
+                    route = ENDPOINT_ALIASES.get(endpoint) or ModelEndpointEnum(endpoint)
                 except ValueError:
                     # The explicit list is authoritative: it says where the model is SERVED.
                     # Falling back to the mode-derived route here would be wrong -- a model
@@ -1024,6 +1336,10 @@ class TensorZeroSeeder(BaseSeeder):
                     logger.warning("No versions defined for TensorZero engine")
                     return
 
+            # Set when the SDK's fetch could not be trusted for some version: that version gets the
+            # curated decision models only, and the sync still fails once every version is done.
+            untrusted: Optional[UntrustedCatalogError] = None
+
             # Process each version
             for version_config in db_engine.versions:
                 version = version_config.version
@@ -1052,7 +1368,16 @@ class TensorZeroSeeder(BaseSeeder):
 
                 # Parse model data from catalog SDK
                 tensorzero_parser = await self.get_parser_by_version(version)
-                model_data = await tensorzero_parser.parse_model_data()
+                try:
+                    model_data = await tensorzero_parser.parse_model_data()
+                    retire = True
+                except UntrustedCatalogError as exc:
+                    # The curated decision models are our own file, validated on load, so they can
+                    # be applied without the SDK. Additively only: nothing below may read this
+                    # run's absences as retirements, because the run never saw the real catalog.
+                    untrusted = untrusted or exc
+                    model_data = await tensorzero_parser.parse_curated_decision_models()
+                    retire = False
 
                 # Read providers data
                 predefined_providers = read_json_file(TENSORZERO_PROVIDERS_PATH)
@@ -1136,6 +1461,16 @@ class TensorZeroSeeder(BaseSeeder):
                             logger.debug("Upserted model info: %s", db_model_info_id)
                             model_info_crud.add_engine_version(db_model_info_id, version_config.id)
 
+                if not retire:
+                    logger.warning(
+                        "Catalog SDK fetch untrusted for version %s (%s); upserted %d curated decision "
+                        "models and retired nothing",
+                        version,
+                        untrusted,
+                        len(processed_uris),
+                    )
+                    continue
+
                 # Providers that were in the catalog on a previous run and are not now.
                 # Collected from the same two loops that upsert them, so the set cannot drift
                 # from what was actually seeded.
@@ -1159,6 +1494,9 @@ class TensorZeroSeeder(BaseSeeder):
                     self.deactivate_stale_models(version_config.id, stale_model_ids)
                 else:
                     logger.debug("No stale models to deactivate for version %s", version)
+
+            if untrusted is not None:
+                raise untrusted
 
         except SeederException:
             # Already says what went wrong -- the catalog guards above depend on their message
