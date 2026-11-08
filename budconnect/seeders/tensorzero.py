@@ -38,11 +38,12 @@ from ..commons.constants import (
 )
 from ..commons.exceptions import SeederException
 from ..engine.crud import EngineCRUD
-from ..model.crud import LicenseCRUD, ModelInfoCRUD, ProviderCRUD
+from ..model.crud import LicenseCRUD, ModelDetailsCRUD, ModelInfoCRUD, ProviderCRUD
 from ..model.models import ModelInfo, Provider, engine_version_model_info, engine_version_provider
 from ..model.schemas import (
     Billing,
     CacheCost,
+    CuratedModelDetails,
     DecisionLimits,
     Features,
     InputCost,
@@ -369,7 +370,7 @@ CURATED_REQUIRED_KEYS: FrozenSet[str] = frozenset(
         "checked_on",
     }
 )
-CURATED_OPTIONAL_KEYS: FrozenSet[str] = frozenset({"cache_cost", "deprecation_date", "note"})
+CURATED_OPTIONAL_KEYS: FrozenSet[str] = frozenset({"cache_cost", "deprecation_date", "note", "details"})
 
 #: The blocks of a curated entry that are LiteLLM fields grouped by kind; flattened back for the parser.
 _CURATED_FLAT_BLOCKS = ("input_cost", "output_cost", "cache_cost", "tokens")
@@ -436,6 +437,15 @@ def _curated_entry_problems(entry: Any, providers: Dict[str, Any]) -> List[str]:
         except (TypeError, ValueError) as e:
             problems.append(f"{uri}: {block} is invalid: {e}")
 
+    if "details" in entry:
+        if not isinstance(entry["details"], dict):
+            problems.append(f"{uri}: details must be an object")
+        else:
+            try:
+                CuratedModelDetails(**entry["details"])
+            except (TypeError, ValueError) as e:
+                problems.append(f"{uri}: details is invalid: {e}")
+
     if not isinstance(entry["verified"], bool):
         problems.append(f"{uri}: verified must be true or false")
     if not (isinstance(entry["source"], str) and entry["source"].startswith("https://")):
@@ -476,6 +486,36 @@ def load_decision_models() -> List[Dict[str, Any]]:
     return entries
 
 
+def curated_details_row(entry: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Return the ``model_details`` columns a curated entry fills, or None when it has no ``details``.
+
+    budapp's catalog sync reads a model's description, strengths, limitations, use cases, languages
+    and links from its ``model_details`` row (``/model/get-compatible-models?include_details``). Most
+    rows come from ``data/model_details.json``, which only the startup seeder applies; a curated
+    decision model's row is written by the catalog sync itself, so it exists wherever the model does.
+    Every column the block owns is written, empty lists included, so a claim removed from the file is
+    removed from the row. The pages it was read from go to ``extraction_metadata``, as in that file.
+    """
+    if entry.get("details") is None:
+        return None
+    details = CuratedModelDetails(**entry["details"])
+    return {
+        "description": details.description,
+        "advantages": details.advantages,
+        "disadvantages": details.disadvantages,
+        "use_cases": details.use_cases,
+        "languages": details.languages,
+        "website_url": details.website_url,
+        "github_url": details.github_url,
+        "extraction_metadata": {
+            "method": "curated",
+            "extraction_date": entry["checked_on"],
+            "provider": entry["uri"].split("/", 1)[0],
+            "sources": [source.model_dump() for source in details.sources],
+        },
+    }
+
+
 def curated_model_config(entry: Dict[str, Any]) -> Dict[str, Any]:
     """Put a curated decision model in the catalog SDK's shape, so it takes the same derivation path.
 
@@ -499,6 +539,9 @@ def curated_model_config(entry: Dict[str, Any]) -> Dict[str, Any]:
     if entry.get("deprecation_date"):
         config["deprecation_date"] = entry["deprecation_date"]
     config["decision_limits"] = dict(entry["decision_limits"])
+    details = curated_details_row(entry)
+    if details is not None:
+        config["details"] = details
 
     if entry["verified"]:
         note = f"Verified by a live call on {entry['checked_on']} (bud-runtime spec 031, SPIKE.md)."
@@ -1460,6 +1503,16 @@ class TensorZeroSeeder(BaseSeeder):
                             )
                             logger.debug("Upserted model info: %s", db_model_info_id)
                             model_info_crud.add_engine_version(db_model_info_id, version_config.id)
+
+                        # A curated model's description, pros, cons and links (`curated_details_row`).
+                        # Only the columns the block owns are written, keyed on the row just upserted.
+                        details = model.config.get("details")
+                        if details:
+                            with ModelDetailsCRUD() as model_details_crud:
+                                model_details_crud.upsert(
+                                    data={"model_info_id": db_model_info_id, **details},
+                                    conflict_target=["model_info_id"],
+                                )
 
                 if not retire:
                     logger.warning(

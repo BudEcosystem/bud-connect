@@ -98568,10 +98568,11 @@
       "Scores 37 on the Artificial Analysis Intelligence Index at max reasoning effort, well above the comparable-model median of 13.",
       "AWS's Bedrock blog reports improved factual reliability and clearer result communication compared to its predecessor, GPT-5.6 Luna.",
       "Supports reasoning effort adjustable per request, from none to max, to balance quality and responsiveness for each task.",
-      "Supports function calling, structured outputs, file search, web search, code interpreter, hosted shell, computer use and MCP tool use via the Responses API."
+      "Supports function calling, structured outputs, file search, web search, code interpreter, hosted shell, computer use and MCP tool use via the Responses API.",
+      "Through the Decisions API it answers up to 400 typed questions per request, about 10x faster than the Responses API by OpenAI's account, and bills input tokens only."
     ],
     "architecture": null,
-    "description": "GPT-6 Luna is OpenAI's fast, cost-efficient model in the GPT-6 family, released September 22, 2026 alongside GPT-6 Sol as the successor to GPT-5.6 Luna. AWS's Bedrock blog describes it as built for high-frequency, repeatable tasks such as extracting information from large document collections, summarizing incoming material, classifying inputs and answering focused questions. It takes text and image input and produces text output, with a knowledge cutoff of May 18, 2026 and reasoning effort adjustable per request from none up to max.",
+    "description": "GPT-6 Luna is OpenAI's fast, cost-efficient model in the GPT-6 family, released September 22, 2026 alongside GPT-6 Sol as the successor to GPT-5.6 Luna. AWS's Bedrock blog describes it as built for high-frequency, repeatable tasks such as extracting information from large document collections, summarizing incoming material, classifying inputs and answering focused questions. It takes text and image input and produces text output, with a knowledge cutoff of May 18, 2026 and reasoning effort adjustable per request from none up to max. It is also the only model served by OpenAI's Decisions API (POST /v1/decisions), which returns typed answers - the probability that a condition holds, a choice from a fixed set or a rubric score - instead of generated text, with output tokens not charged.",
     "disadvantages": [
       "Output is text-only; the model does not generate images, audio or video.",
       "Not compatible with Live sessions, Realtime, Assistants, fine-tuning, embeddings, or audio/video features.",
@@ -98619,6 +98620,11 @@
           "kind": "third_party",
           "title": "OpenAI's GPT-6 Sol and GPT-6 Luna now available - GitHub Changelog",
           "url": "https://github.blog/changelog/2026-09-22-openais-gpt-6-sol-and-gpt-6-luna-now-available/"
+        },
+        {
+          "kind": "maker",
+          "title": "Decisions | OpenAI API",
+          "url": "https://developers.openai.com/api/docs/guides/decisions"
         }
       ]
     },
@@ -98634,7 +98640,8 @@
       "Summarizing incoming material",
       "Classifying and routing inputs",
       "Answering focused, high-volume questions",
-      "Lightweight agentic tasks"
+      "Lightweight agentic tasks",
+      "Typed decisions through the Decisions API: classifying content, routing requests and prioritizing work"
     ],
     "website_url": "https://developers.openai.com/api/docs/models/gpt-6-luna"
   },

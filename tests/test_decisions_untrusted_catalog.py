@@ -47,7 +47,7 @@ def tz():
 
 
 class _RecordingCRUD:
-    """A ProviderCRUD / ModelInfoCRUD double that records every upsert."""
+    """A ProviderCRUD / ModelInfoCRUD / ModelDetailsCRUD double that records every upsert."""
 
     def __init__(self, sink: List[Dict[str, Any]]) -> None:
         self.sink = sink
@@ -89,6 +89,7 @@ def seeded(tz, monkeypatch, tmp_path):
     """Run ``TensorZeroSeeder.seed`` with the SDK untrusted; return what was written and retired."""
     providers: List[Dict[str, Any]] = []
     models: List[Dict[str, Any]] = []
+    details: List[Dict[str, Any]] = []
     engine = SimpleNamespace(versions=[SimpleNamespace(version="0.1.0", id=uuid4())])
     data_file = tmp_path / "models.json"
     data_file.write_text("{}")
@@ -108,6 +109,7 @@ def seeded(tz, monkeypatch, tmp_path):
     monkeypatch.setattr(tensorzero, "EngineCRUD", lambda: _EngineCRUD(engine))
     monkeypatch.setattr(tensorzero, "ProviderCRUD", lambda: _RecordingCRUD(providers))
     monkeypatch.setattr(tensorzero, "ModelInfoCRUD", lambda: _RecordingCRUD(models))
+    monkeypatch.setattr(tensorzero, "ModelDetailsCRUD", lambda: _RecordingCRUD(details), raising=False)
     monkeypatch.setattr(TensorZeroParser, "parse_model_data", staticmethod(untrusted))
     monkeypatch.setattr(TensorZeroSeeder, "get_license_id_map", no_licenses)
     monkeypatch.setattr(TensorZeroSeeder, "get_version_file_path", staticmethod(version_file))
@@ -126,6 +128,7 @@ def seeded(tz, monkeypatch, tmp_path):
     return SimpleNamespace(
         providers=providers,
         models=models,
+        details=details,
         raised=raised,
         retire_providers=retire_providers,
         retire_models=retire_models,
@@ -169,3 +172,11 @@ def test_decision_providers_and_the_generic_source_are_upserted(seeded):
     """Their credential forms must exist for budapp, the generic source included."""
     written = {row["provider_type"] for row in seeded.providers}
     assert {"typesafe", "embedding_space", "system_one_compatible", "openai"} <= written
+
+
+def test_curated_details_are_written_while_the_catalog_is_untrusted(tz, seeded):
+    """The fallback writes the same `model_details` rows a trusted sync does, so no card goes blank."""
+    described = [entry for entry in tz.load_decision_models() if entry.get("details")]
+    assert described
+    descriptions = sorted(row["description"] for row in seeded.details)
+    assert descriptions == sorted(entry["details"]["description"] for entry in described)

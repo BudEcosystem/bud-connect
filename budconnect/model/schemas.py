@@ -17,7 +17,7 @@
 """The model schemas, containing essential data structures for the model microservice."""
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 from budmicroframe.commons.schemas import PaginatedResponse
 from pydantic import UUID4, BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator, model_validator
@@ -607,6 +607,61 @@ class CompatibleModelsResponse(PaginatedResponse[CompatibleProviders]):
     engine_name: Optional[str] = None
     engine_version: Optional[str] = None
     items: List[CompatibleProviders]
+
+
+def _https_url(value: Optional[str]) -> Optional[str]:
+    if value is not None and not value.startswith("https://"):
+        raise ValueError(f"{value!r} is not an https URL")
+    return value
+
+
+class CuratedSource(BaseModel):
+    """One page a curated model description was read from (``model_details.extraction_metadata``)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    kind: Literal["maker", "host", "third_party"]
+    title: str = Field(..., min_length=1)
+    url: str
+
+    _check_url = field_validator("url")(_https_url)
+
+
+class CuratedModelDetails(BaseModel):
+    """What a curated catalog entry says about its model, in ``model_details``' column names.
+
+    bud-runtime spec 031: the curated decision models carry this block so that budapp's catalog sync
+    -- which reads ``model_details`` through ``include_details`` -- has a description, pros, cons and
+    links to show for them. ``advantages`` and ``disadvantages`` keep the column names; budapp calls
+    them strengths and limitations. Facts from the vendor's own pages only, so every block cites them.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    description: str = Field(..., min_length=1)
+    advantages: List[str] = []
+    disadvantages: List[str] = []
+    use_cases: List[str] = []
+    languages: List[str] = []
+    website_url: Optional[str] = None
+    github_url: Optional[str] = None
+    sources: List[CuratedSource] = Field(..., min_length=1)
+
+    _check_urls = field_validator("website_url", "github_url")(_https_url)
+
+    @field_validator("description")
+    @classmethod
+    def _not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("description is blank")
+        return value
+
+    @field_validator("advantages", "disadvantages", "use_cases", "languages")
+    @classmethod
+    def _no_blank_items(cls, values: List[str]) -> List[str]:
+        if any(not value.strip() for value in values):
+            raise ValueError("a list item is blank")
+        return values
 
 
 class ModelPaper(BaseModel):

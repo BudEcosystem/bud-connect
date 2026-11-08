@@ -567,7 +567,7 @@ def test_the_seed_lists_each_model_once():
 def test_every_seed_entry_carries_the_contract_fields(entry):
     """C7.2's fields are present, nothing unknown is, and every enum value is one budapp knows."""
     assert set(entry) >= REQUIRED_SEED_KEYS, f"missing {sorted(REQUIRED_SEED_KEYS - set(entry))}"
-    unknown = set(entry) - REQUIRED_SEED_KEYS - {"cache_cost", "deprecation_date", "note"}
+    unknown = set(entry) - REQUIRED_SEED_KEYS - {"cache_cost", "deprecation_date", "note", "details"}
     assert not unknown, f"unknown keys {sorted(unknown)}"
     for value in entry["modality"]:
         M(value)
@@ -792,3 +792,208 @@ def test_a_seed_model_under_an_unknown_provider_fails_the_sync(tz, monkeypatch, 
     _fake_sdk(monkeypatch, {"openai/gpt-6-luna": dict(LITELLM_GPT_6_LUNA)})
     with pytest.raises(SeederException):
         asyncio.run(tz.TensorZeroParser.parse_model_data())
+
+
+# ---- C7.2: what the catalog says about each model ------------------------------------------------- #
+#
+# budadmin's model cards and budCustomer's catalog read `cloud_model.description` (and strengths,
+# limitations, use cases, languages, website and GitHub links), which budapp's catalog sync copies
+# from the `details` block of /model/get-compatible-models?include_details=true -- that is, from
+# bud-connect's `model_details` row for the model. A decision model with no row shows "No
+# description available". Most models get their row from `data/model_details.json`, which only the
+# startup seeder applies; a curated decision model carries its own `details` block, which the
+# catalog sync writes, so the row exists wherever the model does.
+
+MODEL_DETAILS_PATH = REPO_ROOT / "budconnect" / "seeders" / "data" / "model_details.json"
+
+#: The `model_details` columns a curated `details` block fills, in that table's own names.
+CURATED_DETAIL_COLUMNS = ("description", "advantages", "disadvantages", "use_cases", "languages")
+
+
+_MODEL_DETAILS_CACHE: dict = {}
+
+
+def _model_details():
+    """data/model_details.json, by uri; read once (it is several megabytes)."""
+    if not _MODEL_DETAILS_CACHE:
+        with MODEL_DETAILS_PATH.open() as handle:
+            _MODEL_DETAILS_CACHE.update(json.load(handle))
+    return _MODEL_DETAILS_CACHE
+
+
+class _RecordingCRUD:
+    """A ProviderCRUD / ModelInfoCRUD / ModelDetailsCRUD double recording each upsert and its id."""
+
+    def __init__(self, sink):
+        self.sink = sink
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return None
+
+    def upsert(self, data, conflict_target=None, **kwargs):
+        row_id = uuid.uuid4()
+        self.sink.append({"data": dict(data), "conflict_target": conflict_target, "id": row_id})
+        return row_id
+
+    def add_engine_version(self, row_id, version_id):
+        return None
+
+
+class _EngineCRUD:
+    def __init__(self, engine):
+        self.engine = engine
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return None
+
+    def get_session(self):
+        import contextlib
+        from unittest.mock import MagicMock
+
+        return contextlib.nullcontext(MagicMock())
+
+    def fetch_one(self, conditions, session):
+        return self.engine
+
+
+def _run_seed(tz, monkeypatch, tmp_path, sdk_models):
+    """Run TensorZeroSeeder.seed over a fake, trusted SDK catalog; return what it upserted, by table."""
+    from unittest.mock import MagicMock
+
+    written = {"provider": [], "model_info": [], "model_details": []}
+    engine = types.SimpleNamespace(versions=[types.SimpleNamespace(version="0.1.0", id=uuid.uuid4())])
+    data_file = tmp_path / "models.json"
+    data_file.write_text("{}")
+
+    async def no_licenses(self):
+        return {}
+
+    async def version_file(version):
+        return str(data_file)
+
+    _fake_sdk(monkeypatch, {uri: dict(config) for uri, config in sdk_models.items()})
+    monkeypatch.setattr(tz, "EngineCRUD", lambda: _EngineCRUD(engine))
+    monkeypatch.setattr(tz, "ProviderCRUD", lambda: _RecordingCRUD(written["provider"]))
+    monkeypatch.setattr(tz, "ModelInfoCRUD", lambda: _RecordingCRUD(written["model_info"]))
+    monkeypatch.setattr(tz, "ModelDetailsCRUD", lambda: _RecordingCRUD(written["model_details"]), raising=False)
+    monkeypatch.setattr(tz.TensorZeroSeeder, "get_license_id_map", no_licenses)
+    monkeypatch.setattr(tz.TensorZeroSeeder, "get_version_file_path", staticmethod(version_file))
+    monkeypatch.setattr(tz.TensorZeroSeeder, "get_existing_provider_types", lambda self, vid: {})
+    monkeypatch.setattr(tz.TensorZeroSeeder, "get_existing_model_uris", lambda self, vid: {})
+    monkeypatch.setattr(tz.TensorZeroSeeder, "deactivate_stale_providers", MagicMock(return_value=0))
+    monkeypatch.setattr(tz.TensorZeroSeeder, "deactivate_stale_models", MagicMock(return_value=0))
+    asyncio.run(tz.TensorZeroSeeder().seed())
+    return written
+
+
+@pytest.mark.parametrize("entry", _seed(), ids=lambda e: e["uri"])
+def test_every_decision_model_has_a_description(entry):
+    """Without one, every decision model card reads "No description available"."""
+    details = entry.get("details") or _model_details().get(entry["uri"]) or {}
+    description = details.get("description")
+    assert isinstance(description, str) and description.strip(), f"{entry['uri']} has no description"
+
+
+@pytest.mark.parametrize("entry", [e for e in _seed() if "details" in e], ids=lambda e: e["uri"])
+def test_a_curated_details_block_never_shadows_model_details_json(entry):
+    """Two writers of one row -- the startup seeder and the sync -- would swap its text on every run."""
+    assert entry["uri"] not in _model_details(), f"{entry['uri']} is described in both files; keep one"
+
+
+@pytest.mark.parametrize("entry", [e for e in _seed() if "details" in e], ids=lambda e: e["uri"])
+def test_a_curated_details_block_says_where_it_came_from(entry):
+    """Every block cites the vendor pages it was read from, so a stale claim can be re-checked."""
+    details = entry["details"]
+    assert details["sources"], f"{entry['uri']} cites no source"
+    for source in details["sources"]:
+        assert source["url"].startswith("https://")
+        assert source["kind"] in {"maker", "host", "third_party"}
+        assert source["title"].strip()
+    for field in ("website_url", "github_url"):
+        assert details.get(field) is None or details[field].startswith("https://"), field
+    for field in CURATED_DETAIL_COLUMNS[1:]:
+        values = details.get(field, [])
+        assert isinstance(values, list) and all(isinstance(v, str) and v.strip() for v in values), field
+
+
+def test_the_curated_details_reach_the_row_the_seeder_upserts(tz, monkeypatch, tmp_path):
+    """Each curated block is upserted into `model_details`, keyed on the model_info row it describes."""
+    written = _run_seed(tz, monkeypatch, tmp_path, {"openai/gpt-6-luna": LITELLM_GPT_6_LUNA})
+    info_ids = {row["data"]["uri"]: row["id"] for row in written["model_info"]}
+    details_by_id = {}
+    for row in written["model_details"]:
+        assert row["conflict_target"] == ["model_info_id"]
+        details_by_id.setdefault(row["data"]["model_info_id"], []).append(row["data"])
+
+    described = [e for e in _seed() if "details" in e]
+    assert described, "no curated entry carries details"
+    for entry in described:
+        rows = details_by_id.get(info_ids[entry["uri"]], [])
+        assert len(rows) == 1, f"{entry['uri']}: {len(rows)} details upserts"
+        row, details = rows[0], entry["details"]
+        for column in CURATED_DETAIL_COLUMNS:
+            assert row[column] == details.get(column, []), (entry["uri"], column)
+        assert row["website_url"] == details.get("website_url")
+        assert row["github_url"] == details.get("github_url")
+        metadata = row["extraction_metadata"]
+        assert metadata["sources"] == details["sources"]
+        assert metadata["extraction_date"] == entry["checked_on"]
+        assert metadata["method"] == "curated"
+    assert len(written["model_details"]) == len(described), "only curated blocks are written"
+
+
+def test_a_model_described_by_model_details_json_gets_no_curated_row(tz, monkeypatch, tmp_path):
+    """gpt-6-luna's research lives in model_details.json; the sync must not overwrite it."""
+    written = _run_seed(tz, monkeypatch, tmp_path, {"openai/gpt-6-luna": LITELLM_GPT_6_LUNA})
+    luna = {row["id"] for row in written["model_info"] if row["data"]["uri"] == "openai/gpt-6-luna"}
+    assert luna
+    assert not [row for row in written["model_details"] if row["data"]["model_info_id"] in luna]
+
+
+def test_the_details_block_never_reaches_the_model_info_row(tz, monkeypatch, tmp_path):
+    """`model_info` has no such columns; the block must not leak into its upsert."""
+    written = _run_seed(tz, monkeypatch, tmp_path, {"openai/gpt-6-luna": LITELLM_GPT_6_LUNA})
+    for row in written["model_info"]:
+        assert "details" not in row["data"]
+        assert "description" not in row["data"]
+
+
+@pytest.mark.parametrize(
+    "details",
+    [
+        {"description": "", "sources": [{"kind": "maker", "title": "Docs", "url": "https://example.com"}]},
+        {"description": "A model.", "sources": []},
+        {"description": "A model.", "sources": [{"kind": "maker", "title": "Docs", "url": "http://example.com"}]},
+        {
+            "description": "A model.",
+            "website_url": "example.com",
+            "sources": [{"kind": "maker", "title": "Docs", "url": "https://example.com"}],
+        },
+        {
+            "description": "A model.",
+            "strengths": ["fast"],
+            "sources": [{"kind": "maker", "title": "Docs", "url": "https://example.com"}],
+        },
+        {
+            "description": "A model.",
+            "use_cases": [""],
+            "sources": [{"kind": "maker", "title": "Docs", "url": "https://example.com"}],
+        },
+        "A model.",
+    ],
+    ids=["empty-description", "no-source", "http-source", "bare-website", "unknown-key", "blank-item", "not-object"],
+)
+def test_a_malformed_details_block_fails_the_sync(tz, monkeypatch, tmp_path, details):
+    """Caught at load, in CI, rather than written into the row budapp copies to every catalog."""
+    entry = dict(_seed_by_uri()["typesafe/jev-latest"], details=details)
+    bad = tmp_path / "decision_models.json"
+    bad.write_text(json.dumps([entry]))
+    monkeypatch.setattr(tz, "DECISION_MODELS_PATH", str(bad))
+    with pytest.raises(SeederException, match=r"jev-latest: details (is invalid|must be an object)"):
+        tz.load_decision_models()
