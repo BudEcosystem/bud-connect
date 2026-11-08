@@ -612,6 +612,52 @@ class ModelDetailsCRUD(CRUDMixin[ModelDetails, None, None]):
         """
         super().__init__(self.__model__)
 
+    def upsert(
+        self,
+        data: Union[DBCreateSchemaType, ModelType, Dict[str, Any]],
+        conflict_target: Optional[List[str]] = None,
+        session: Optional[Session] = None,
+        raise_on_error: bool = True,
+    ) -> UUID:
+        """Create or update a model's details row, keyed on ``model_info_id`` by default.
+
+        Overrides budmicroframe's ``CRUDMixin.upsert``, which calls ``insert`` without importing it
+        (as every other CRUD here does). Only the columns in ``data`` are written on conflict.
+
+        Returns:
+            UUID: The id of the created or updated row.
+        """
+        if conflict_target is None:
+            conflict_target = ["model_info_id"]
+
+        _session = session or self.get_session()
+        try:
+            if isinstance(data, dict):
+                obj = data
+            elif hasattr(data, "model_dump"):
+                obj = data.model_dump()
+            else:
+                raise ValueError("Invalid data type for upsert")
+
+            stmt = insert(self.model.__table__).values(obj)
+            stmt = stmt.on_conflict_do_update(
+                index_elements=conflict_target, set_=conflict_set_clause(stmt, obj, conflict_target)
+            ).returning(self.model.__table__.c.id)
+            result = _session.execute(stmt)
+            _session.commit()
+            row = result.first()
+            if row is None:
+                raise ValueError("No result returned from upsert operation")
+            return UUID(str(row.id))
+        except SQLAlchemyError as e:
+            _session.rollback()
+            logger.exception("Failed to upsert data in %s: %s", self.model.__tablename__, str(e))
+            if raise_on_error:
+                raise ValueError(f"Failed to upsert data in {self.model.__tablename__}") from e
+            return UUID("00000000-0000-0000-0000-000000000000")
+        finally:
+            self.cleanup_session(_session if session is None else None)
+
     def get_by_model_info_ids(
         self, model_info_ids: List[UUID], session: Optional[Session] = None
     ) -> Dict[UUID, ModelDetails]:
