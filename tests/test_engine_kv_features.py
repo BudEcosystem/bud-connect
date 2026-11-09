@@ -251,24 +251,26 @@ def _vllm_versions():
 
 
 def test_the_seeded_cuda_build_lists_what_was_verified_on_it():
-    """bud-vllm 0.11.0 (upstream v0.32.0) on CUDA: nothing yet.
+    """bud-vllm 0.11.0 (upstream v0.32.0) on CUDA: the 0.10.0 set, carried over pending a re-run on 0.11.0.
 
-    A feature is listed only once it has been verified on the build itself, and none has been run on 0.11.0. The
-    0.10.0 set (KV events, the cache salt, the CPU tier in register mode) comes back as each one passes again.
+    KV events and the cache salt, and the CPU tier in register mode, which passed on bare metal on 0.10.0. Not the
+    alloc-mode tier or per-copy transfers (both need a fork patch the build does not carry), not FP8 KV (no 128K
+    needle-in-a-haystack record yet), not the fs tier (vLLM #49829).
     """
     cuda = _vllm_versions()[("0.11.0", "CUDA")]
     assert cuda["upstream_vllm"] == "0.32.0"
-    assert cuda["kv_features"] == []
+    assert cuda["kv_features"] == ["cache_salt", "cpu_offload_shm", "kv_events"]
 
 
 def test_the_seeded_cpu_build_lists_what_was_verified_on_it():
-    """bud-vllm 0.11.0 (upstream v0.32.0) on CPU: nothing yet, until KV events and the cache salt pass on it again.
+    """bud-vllm 0.11.0 (upstream v0.32.0) on CPU: KV events and the cache salt, carried over from 0.10.0.
 
-    No offloading tier even then: vLLM's offloading connector refuses CPU engines, whose KV already lives in host RAM.
+    Verified on PNAP on 0.10.0 (2026-11-06). No offloading tier: vLLM's offloading connector refuses CPU engines,
+    whose KV already lives in host RAM.
     """
     cpu = _vllm_versions()[("0.11.0", "CPU")]
     assert cpu["upstream_vllm"] == "0.32.0"
-    assert cpu["kv_features"] == []
+    assert cpu["kv_features"] == ["cache_salt", "kv_events"]
 
 
 def test_every_seeded_feature_name_is_known():

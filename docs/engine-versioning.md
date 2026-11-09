@@ -60,13 +60,17 @@ withdraws every feature.
 
 | build | `upstream_vllm` | `kv_features` |
 |---|---|---|
-| CUDA `0.11.0` | `0.32.0` | — |
-| CPU `0.11.0` | `0.32.0` | — |
+| CUDA `0.11.0` | `0.32.0` | `cache_salt`, `cpu_offload_shm`, `kv_events` |
+| CPU `0.11.0` | `0.32.0` | `cache_salt`, `kv_events` |
 
-Neither `0.11.0` build lists a feature yet: none has been verified on them. Each `0.10.0` feature comes back once it
-passes on the `0.11.0` build itself. CUDA `0.10.0` listed `cache_salt`, `cpu_offload_shm` and `kv_events`: it lacked the
-alloc-mode tier and per-copy transfers (both need a fork patch the build did not carry), FP8 KV (no needle-in-a-haystack
-run) and the disk tier. CPU `0.10.0` listed the cache salt and KV events, verified on PNAP (Xeon 6767P, 2026-11-06): a
-prompt sent with one salt hits its own blocks and misses under another, and the engine publishes `BlockStored` events
-whose hashes differ by salt, which AIBrix v0.8.0's gateway subscribes to. CPU offloading tiers stay unlisted on every
-build: vLLM's offloading connector refuses CPU engines.
+Both `0.11.0` builds carry the `0.10.0` lists over, by decision, before the features have been re-run on them; re-run
+each on the `0.11.0` build and withdraw any that fails. `v0.32.0` leaves the KV-events code unchanged and only extends
+`cache_salt` to more endpoints, but it reworks the register-mode CPU tier (`vllm/v1/kv_offload/cpu/host_register.py`,
+`shared_offload_region.py`): when pinning the shared region fails, the tier now falls back to pageable copies instead
+of failing, so re-run `cpu_offload_shm` for both store-and-reload and pinned bandwidth.
+
+CUDA lists neither the alloc-mode tier nor per-copy transfers: both need a fork patch that the build does not carry. It
+lists no FP8 KV until the needle-in-a-haystack run passes, and no disk tier. CPU lists the cache salt and KV events,
+verified on `0.10.0` on PNAP (Xeon 6767P, 2026-11-06): a prompt sent with one salt hits its own blocks and misses under
+another, and the engine publishes `BlockStored` events whose hashes differ by salt, which AIBrix v0.8.0's gateway
+subscribes to. Its offloading tiers stay unlisted: vLLM's offloading connector refuses CPU engines.

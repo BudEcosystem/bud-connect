@@ -113,8 +113,11 @@ arch in `_TRANSFORMERS_SUPPORTED_MODELS`, so the Transformers backend serves it
   `RobertaModel`, `RobertaForMaskedLM` and `XLMRobertaModel` gained LoRA; and
   `GPTNeoXForCausalLM` gained it by moving to the Transformers backend. Only a
   full re-derivation (`derive_lora_pp.py`) catches the first kind.
-- `kv_features` were cleared on both builds: they list only what has been
-  verified on that build.
+- `kv_features`: both builds carried the 0.10.0 lists over, by decision, before
+  a re-run on 0.11.0 (an empty list would have switched off KV events, the cache
+  salt and the CPU tier for every new deployment). v0.32.0 reworked the
+  register-mode CPU tier, which now falls back to pageable copies when pinning
+  fails, so `cpu_offload_shm` needs a bandwidth check, not only store-and-reload.
 
 ## 4. Source-of-truth locations inside vLLM
 
