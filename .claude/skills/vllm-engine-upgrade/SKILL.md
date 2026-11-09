@@ -87,7 +87,14 @@ Run this with the transformers version the image pins. **KEEP** the arch in the
 compatibility lists when it prints `KEEP`; only truly remove the rest. Also keep
 removed the ones that are just aliases of a still-supported arch (e.g.
 `InternLMForCausalLM`, `Aquila*`, `Xverse`, `TeleChat` → their real checkpoints
-declare `LlamaForCausalLM`/`TeleChat2ForCausalLM`, which stay listed). See
+declare `LlamaForCausalLM`/`TeleChat2ForCausalLM`, which stay listed). Also leave
+out a `KEEP` whose attention the backend cannot serve: it covers full/sliding
+attention in encoder-only, decoder-only and MoE models, not encoder-decoder or
+cross-attention ones (`MllamaForConditionalGeneration` passes the gate under
+transformers 5.19 but stays out; `vllm/model_executor/models/transformers/base.py`
+says "vLLM does not support encoder-decoder models"). A transformers bump can
+flip old drops to `KEEP` (`Phi4MultimodalForCausalLM` came back this way), so run
+the check on every dropped arch, not only the newly dropped ones. See
 `references/background.md` for the full reasoning and the last run's verdicts.
 
 The final compatibility set = **native archs ∪ Transformers-backend survivors**.
@@ -114,10 +121,16 @@ Apply, per file:
   a dropped model's parser). Rules are shared by every version, but
   `get-compatible-engines` skips a rule's parser on a version whose list lacks it.
 - **model_architectures.json** — remove truly-dropped archs; append new native
-  archs with `architecture_family` from the extract and **null parsers / false
-  flags** (the established default); restore Transformers-backend survivors from
-  git HEAD, **scrubbing any now-invalid parser value to null**, and set their
-  LoRA/PP flags to those of the Transformers backend class that now serves them.
+  archs with `architecture_family` from the extract and **null parsers**; restore
+  Transformers-backend survivors from git history, **scrubbing any now-invalid
+  parser value to null**, and set their LoRA/PP flags to those of the Transformers
+  backend class that now serves them. Then set LoRA/PP for **every** native arch,
+  existing ones included, from `python scripts/derive_lora_pp.py "$VLLM" --arch-json
+  "$BUD/budconnect/seeders/data/model_architectures.json" --out scratchpad/flags.json`
+  (it lists each stored flag that differs from vLLM's classes): a base class
+  gaining an interface changes every arch built on it. An arch vLLM moves into
+  `_TRANSFORMERS_SUPPORTED_MODELS` stays native, but the extract reports its family
+  as `transformers`: keep its real HF `model_type`.
   Keep the class set identical to the CUDA list in engines.json.
 - **arch_support_to_seeder.py** — `python scripts/remirror_seeder.py "$VLLM"
   "$BUD/scripts/arch_support_to_seeder.py" --commit <hash>`. This mirrors the
@@ -138,8 +151,9 @@ model family → arch class via `architecture_family`. Rules:
 - Never invent a parser name — every value must be in the extracted key sets.
 - LoRA / PP flags come from vLLM's own `supports_lora()` / `supports_pp()` on the
   class the CUDA image loads (for per-device `vllm.models.*` packages, the
-  `nvidia/` implementation). The docs table disagrees with the classes in places;
-  the classes are what vLLM enforces.
+  `nvidia/` implementation); `scripts/derive_lora_pp.py` reproduces both from
+  source. The docs table disagrees with the classes in places; the classes are
+  what vLLM enforces.
 - `architecture_family` is the HF `model_type`. For `vllm.models.*` packages use
   `vllm.models.<pkg>` (no platform subpackage); for archs registered via the
   Transformers backend, use the model's real `model_type`, not `transformers`.
@@ -154,8 +168,9 @@ It asserts: every parser reference across engines.json (per-version lists and
 `parser_rules`) and model_architectures.json is a valid registry name; each
 version's parser lists == the registry; CUDA arch list == model_architectures class
 set and every other device list is a subset of it; both JSONs still round-trip; the re-mirrored
-`_VLLM_MODELS` composes to the native count and downstream scripts import; and the
-compatibility set == native ∪ survivors. For a heavier upgrade, additionally have
+`_VLLM_MODELS` composes to the native count and downstream scripts import; the
+compatibility set == native ∪ survivors; and every native arch's LoRA/PP flags
+equal vLLM's classes, with the survivors on the backend classes' flags. For a heavier upgrade, additionally have
 independent agents re-derive the numbers from vLLM and diff the applied files.
 
 ### Step 6 — Ship
@@ -184,5 +199,5 @@ independent agents re-derive the numbers from vLLM and diff the applied files.
 
 `references/background.md` — the vLLM resolution order (why the backend check is
 correct), the categories of why vLLM drops architectures, and the verdicts /
-counts from the last upgrade (native 354, tool 43, reasoning 27, +9 survivors →
-363) as a worked example.
+counts from the last upgrades as worked examples (latest, 0.10.0 → 0.11.0: native
+391, tool 54, reasoning 38, +11 survivors → 402, CPU 399).

@@ -16,6 +16,9 @@ Checks (exits non-zero on any failure):
   4. The re-mirrored _VLLM_MODELS composes to the native count; the compatibility
      set == native ∪ (extra survivors), i.e. only Transformers-backend survivors
      sit on top of the native registry.
+  5. Every native arch's supports_lora / supports_pipeline_parallelism equals what
+     vLLM's classes declare (derive_lora_pp.py), and the Transformers-backend
+     survivors carry the backend classes' flags.
 """
 import importlib.util
 import json
@@ -93,6 +96,24 @@ def main():
         tag = f"{v['device_architecture']} {v['version']}"
         check(set(c.get("supported_tool_calling_parser_types", [])) == VT, f"{tag} tool parser list == registry")
         check(set(c.get("supported_reasoning_parsers", [])) == VR, f"{tag} reasoning parser list == registry")
+
+    print("\n[lora / pp flags]")
+    from derive_lora_pp import derive_flags, diff_flags  # noqa: E402
+    derived = derive_flags(vllm_dir)
+    unresolved = sorted(a for a, r in derived.items() if "error" in r)
+    check(not unresolved, f"every native arch resolves to a vLLM class (unresolved: {unresolved})")
+    mismatches = diff_flags(derived, mp)
+    check(not mismatches, f"native archs' LoRA/PP == vLLM's classes (mismatches: {[m[0] for m in mismatches]})")
+    for arch, want, have, cls in mismatches:
+        print(f"      {arch}: stored {have} -> derived {want}   ({cls})")
+    backend = {(r["lora"], r["pp"]) for a, r in derived.items() if a.startswith("Transformers") and "error" not in r}
+    if len(backend) == 1:
+        want = next(iter(backend))
+        bad = [a["class_name"] for a in ma if a["class_name"] not in native
+               and (a["supports_lora"], a["supports_pipeline_parallelism"]) != want]
+        check(not bad, f"Transformers-backend survivors carry the backend's (lora, pp) {want} (bad: {bad})")
+    else:
+        print(f"      backend classes disagree {sorted(backend)}: check each survivor's flags by hand")
 
     print("\n[mirror]")
     sp = os.path.join(bud, "scripts/arch_support_to_seeder.py")

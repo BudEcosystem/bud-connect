@@ -5,7 +5,7 @@ Deeper context behind the SKILL.md steps. Read the section you need.
 ## Table of contents
 1. vLLM's model-resolution order (why the Transformers-backend check is correct)
 2. Why vLLM drops architectures (the four causes)
-3. Worked example: the last upgrade (0.8.0 → 0.9.0)
+3. Worked examples: 0.8.0 → 0.9.0, and the latest, 0.10.0 → 0.11.0
 4. Where the source-of-truth data lives inside vLLM
 
 ---
@@ -59,7 +59,14 @@ Four recurring causes:
   Persimmon/Fuyu, Mantis, AyaVision, MusicFlamingo, Mono-InternVL).
 
 A related but distinct cause, **V0→V1 engine deprecation**, removed some
-encoder-decoder archs (Donut, Mllama) — worth checking on future upgrades.
+encoder-decoder archs (Donut, Mllama). Mllama passes `is_backend_compatible()`
+under transformers 5.19, but its decoder cross-attends to the vision encoder,
+which the Transformers backend cannot serve, so it stays unlisted.
+
+A fifth move is not a drop: vLLM deletes its own implementation but registers the
+arch in `_TRANSFORMERS_SUPPORTED_MODELS`, so the Transformers backend serves it
+(v0.32.0: Arcee, Cwm, Glm, GPTNeoX, Jais2, Mellum, Phi, SeedOss). It stays in
+`_VLLM_MODELS` and listed; its flags become the backend classes'.
 
 ## 3. Worked example — 0.8.0 → 0.9.0 (vLLM @ 481e481be, transformers 5.13.1)
 
@@ -84,6 +91,34 @@ encoder-decoder archs (Donut, Mllama) — worth checking on future upgrades.
   stayed null; `MiniMaxM2ForCausalLM` reasoning moved `minimax_m2` →
   `minimax_m2_append_think` per `reasoning_outputs.md` (one behavioral overwrite).
 
+### 0.10.0 → 0.11.0 (upstream v0.32.0 @ 5df63a720, transformers 5.19.0)
+
+- Native architectures: **387 → 391** (+4: `ClefOmniForJointSchema`,
+  `EmbeddingGemma2Model`, `MiniCPMV4_7ForConditionalGeneration`, and
+  `ExaoneMoEForCausalLM`, re-registered as an alias of `ExaoneMoeForCausalLM`).
+  Nothing natively dropped; 8 archs moved into `_TRANSFORMERS_SUPPORTED_MODELS`
+  (section 2).
+- Tool parsers **51 → 54** (`hf`, `plamo3`, `qwen3_json`); reasoning **35 → 38**
+  (`hf`, `minicpmv`, `plamo3`). None removed. No arch defaults to the new ones:
+  vLLM's docs name no model for them (the code targets PLaMo3 chat and the
+  Qwen3-based MiniCPM-V 4.x; `qwen3_json` is an alias of `hermes`).
+- Survivors **10 → 11**: all 10 still pass under transformers 5.19.0, and
+  `Phi4MultimodalForCausalLM` (dropped in vLLM 0.12.0) now passes too. Mllama
+  passes as well but is left out (section 2).
+- Final set: **391 + 11 = 402** (CUDA == model_architectures.json); CPU **399**,
+  minus the same 3 archs as 0.10.0.
+- LoRA/PP: 8 flags changed, 7 of them on archs that did not otherwise change.
+  `BertEmbeddingModel` gained `SupportsLoRA`, so `BertModel`,
+  `BertSpladeSparseEmbeddingModel`, `BgeM3EmbeddingModel`, `HF_ColBERT`,
+  `RobertaModel`, `RobertaForMaskedLM` and `XLMRobertaModel` gained LoRA; and
+  `GPTNeoXForCausalLM` gained it by moving to the Transformers backend. Only a
+  full re-derivation (`derive_lora_pp.py`) catches the first kind.
+- `kv_features`: both builds carried the 0.10.0 lists over, by decision, before
+  a re-run on 0.11.0 (an empty list would have switched off KV events, the cache
+  salt and the CPU tier for every new deployment). v0.32.0 reworked the
+  register-mode CPU tier, which now falls back to pageable copies when pinning
+  fails, so `cpu_offload_shm` needs a bandwidth check, not only store-and-reload.
+
 ## 4. Source-of-truth locations inside vLLM
 
 Stable, but vLLM refactors — re-verify if the extractor errors.
@@ -100,6 +135,8 @@ Stable, but vLLM refactors — re-verify if the extractor errors.
   `_REASONING_PARSERS_TO_REGISTER` keys.
 - Recommended arch→parser mapping: `docs/features/tool_calling.md`,
   `docs/features/reasoning_outputs.md`.
-- LoRA / PP flags: `docs/models/supported_models.md` (LoRA and PP columns), or the
-  model class's `Supports*` interfaces.
+- LoRA / PP flags: the model class's `Supports*` interfaces, checked by
+  `supports_lora()` / `supports_pp()` in `vllm/model_executor/models/interfaces.py`
+  and reproduced by `scripts/derive_lora_pp.py`. The LoRA and PP columns of
+  `docs/models/supported_models.md` lag the classes in places.
 - transformers pin (for the backend check): vLLM `requirements/*.txt`.
