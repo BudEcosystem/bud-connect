@@ -1652,5 +1652,46 @@
                 ]
             }
         ]
+    },
+    {
+        "name": "bud-decision",
+        "versions": [
+            {
+                "version": "0.1.0",
+                "device_architecture": "CUDA",
+                "container_image": "registry.bud.studio/runtime/decision-runtime-cuda:0.1.0",
+                "compatibilities": [
+                    {
+                        "architecture": [
+                            "decision:laya",
+                            "decision:julia",
+                            "decision:gliner"
+                        ],
+                        "supported_endpoints": [
+                            "DECISIONS"
+                        ],
+                        "features": []
+                    }
+                ]
+            },
+            {
+                "version": "0.1.0",
+                "device_architecture": "CPU",
+                "container_image": "registry.bud.studio/runtime/decision-runtime-cpu:0.1.0",
+                "compatibilities": [
+                    {
+                        "architecture": [
+                            "decision:laya",
+                            "decision:julia",
+                            "decision:gliner"
+                        ],
+                        "supported_endpoints": [
+                            "DECISIONS"
+                        ],
+                        "features": []
+                    }
+                ]
+            }
+        ]
     }
 ]
