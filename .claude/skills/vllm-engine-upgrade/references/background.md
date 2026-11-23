@@ -5,7 +5,7 @@ Deeper context behind the SKILL.md steps. Read the section you need.
 ## Table of contents
 1. vLLM's model-resolution order (why the Transformers-backend check is correct)
 2. Why vLLM drops architectures (the four causes)
-3. Worked examples: 0.8.0 → 0.9.0, and the latest, 0.10.0 → 0.11.0
+3. Worked examples: 0.8.0 → 0.9.0, 0.10.0 → 0.11.0, and the latest, 0.11.0 → 0.12.0
 4. Where the source-of-truth data lives inside vLLM
 
 ---
@@ -118,6 +118,37 @@ arch in `_TRANSFORMERS_SUPPORTED_MODELS`, so the Transformers backend serves it
   salt and the CPU tier for every new deployment). v0.32.0 reworked the
   register-mode CPU tier, which now falls back to pageable copies when pinning
   fails, so `cpu_offload_shm` needs a bandwidth check, not only store-and-reload.
+
+### 0.11.0 → 0.12.0 (upstream v0.34.0 @ 62d4bc3c7, transformers 5.22.2)
+
+- The Bud images are the linux/amd64 manifests of `vllm/vllm-openai:v0.34.0` and
+  `vllm/vllm-openai-cpu:v0.34.0`, copied unchanged with
+  `crane copy --platform linux/amd64` (as `0.11.0` was for `v0.32.0`; its digests
+  equal upstream's amd64 digests). Both ship `transformers 5.22.2`.
+- Native **391 → 426** (+41, −6). Removed: Keye-VL and Keye-VL-1.5 (no HF class),
+  and the `MedusaModel` / `PEagle*` draft heads, which v0.34.0 no longer registers
+  and does not list in `_PREVIOUSLY_SUPPORTED_MODELS` either.
+- Tool parsers **54 → 62**, reasoning **38 → 44**, none removed. Doc-backed
+  defaults: Beam → `beam`, Muse Spark → `muse`, Ripple (`RicursiveForCausalLM`) →
+  `ripple`, ZAYA1 → `zaya`, Kolibri 1 → `hf`; a prefix rule sends Granite 4.2 to
+  `granite_toolcall_parser`. Following the 0.10.0 precedent (parsers written
+  for a model, or a sibling arch's), Step-5 → `step5`, Kimi-K3.1 → `kimi_k3`
+  (same class as K3), Mistral Large 4 → `mistral` tool only (as Large 3).
+- Survivors: the same 11, all passing under transformers 5.22.2. Final
+  **426 + 11 = 437**.
+- CPU **430** (−7). The chroot / image-Python import test was blocked in this
+  sandbox, so `scripts/cpu_import_check.py` walks each arch's unguarded
+  module-level imports over the CPU image's extracted `site-packages` and reports
+  chains that reach a module the image lacks. It reproduced Dots3Note (now via
+  `vllm.third_party.deep_gemm`) and found `KananaVForConditionalGeneration`
+  (`timm`) and `Terratorch` (`terratorch`). A grep of `vllm/models/*/cpu` found
+  the `DeepSeekV4MTPModel` and `DSparkDraftModel` stubs that raise. All four were
+  already unloadable on the 0.11.0 CPU image but were listed there.
+- v0.34.0 moved Aria, Gemma, OLMoE and StableLM to the Transformers backend and
+  registers Kolibri 1 there directly (family: `kolibri1`, its HF `model_type`).
+  LoRA/PP: 32 flags changed, 5 of them on existing archs.
+- `kv_features` carried over again. `BlockStored` gains a trailing optional
+  `lookahead_token_ids` (omitted by default); the default block size is now 64.
 
 ## 4. Source-of-truth locations inside vLLM
 
