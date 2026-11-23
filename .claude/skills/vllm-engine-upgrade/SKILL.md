@@ -36,7 +36,10 @@ Versions track **Bud releases**, not upstream vLLM (the engine is a fork). See
    touch blocks whose image was actually rebuilt. CUDA and CPU currently ship the
    same vLLM fork, so the CPU list is the CUDA list minus only the archs the CPU
    build provably cannot load (a CPU stub that raises, or an import that needs
-   CUDA kernels) — check per-device `vllm/models/<pkg>/{nvidia,cpu}` packages.
+   CUDA kernels, or a package the CPU image does not ship) — check per-device
+   `vllm/models/<pkg>/{nvidia,cpu}` packages for stubs that raise, and run
+   `scripts/cpu_import_check.py <cpu-image site-packages> <arch->module json>`
+   over the CPU image's extracted `site-packages` for missing imports.
 3. **The vLLM checkout path** (a fresh clone of the fork) and the **transformers
    version each image actually ships** (read it from the image, e.g. stream the
    layers with `crane blob ... | tar -tz | grep transformers-.*dist-info`; the
@@ -144,7 +147,9 @@ The authoritative arch→parser source is vLLM's own docs:
 ("Recommended flags: `--tool-call-parser X`" / `--reasoning-parser X`). Bridge
 model family → arch class via `architecture_family`. Rules:
 
-- Only **fill nulls** where the doc clearly names the parser. Do **not** overwrite
+- Only **fill nulls** where the doc clearly names the parser, a parser is
+  written for that model (its source says so), or a sibling arch sharing the
+  class or lineage already carries one (Kimi-K3 → K3.1, Mistral Large 3 → 4). Do **not** overwrite
   an existing curated value silently — flag it for the user.
 - Most archs stay null. Draft/MTP/Eagle heads, audio/speech, OCR, vision-only,
   embedding, and token-classification models have **no** tool/reasoning parser.
@@ -199,5 +204,5 @@ independent agents re-derive the numbers from vLLM and diff the applied files.
 
 `references/background.md` — the vLLM resolution order (why the backend check is
 correct), the categories of why vLLM drops architectures, and the verdicts /
-counts from the last upgrades as worked examples (latest, 0.10.0 → 0.11.0: native
-391, tool 54, reasoning 38, +11 survivors → 402, CPU 399).
+counts from the last upgrades as worked examples (latest, 0.11.0 → 0.12.0: native
+426, tool 62, reasoning 44, +11 survivors → 437, CPU 430).
